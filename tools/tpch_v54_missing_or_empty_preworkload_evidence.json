@@ -1,0 +1,56 @@
+{
+  "schema_version": "tpch_v54_missing_or_empty_preworkload_evidence_v1",
+  "execution_scope": "local_offline_only",
+  "ssh_calls": 0,
+  "workload_calls": 0,
+  "result": "188 passed",
+  "zero_call_boundary": {
+    "equivalence_contract": "missing_or_strict_empty_directory_zero_call_v1",
+    "accepted_output_root_states": [
+      "missing",
+      "empty_directory"
+    ],
+    "rejected_output_root_states": [
+      "file",
+      "nonempty_directory",
+      "symlink"
+    ],
+    "diagnostic_summary_allowed": false,
+    "formal_package_allowed": false,
+    "formal_run_allowed": false,
+    "failure_log_sha_required": true,
+    "failure_phrase_required": "selection contract mismatch",
+    "cycle_required": 6,
+    "active_process_allowed": false
+  },
+  "pinning": {
+    "accepted_base_runner_sha256": [
+      "03be882bd4c78ebac37f18b1c3f689305050057d3b73a9964b3d3d1f7dc14c5f"
+    ],
+    "multi_sha_allowlist_used": false,
+    "base_runner_replaced": false,
+    "base_runner_mutated": false
+  },
+  "recovery": {
+    "probe_pair_sha_required": true,
+    "probe_pair_bytes_preserved": true,
+    "selection_rebuilt": false,
+    "explain_rebuilt": false,
+    "missing_output_root_created": false,
+    "strict_empty_output_root_quarantined_when_present": true,
+    "failure_log_quarantined": true,
+    "resume_is_separate_explicit_action": true
+  },
+  "frozen_authority": {
+    "controller_state_sha256": "d1431ae426c85f2447012b2b1bdfab83b56a4f1382a07feb5b9cba1b8303c8e2",
+    "formal_state_sha256": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "accepted_counter_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "accepted_count": 1,
+    "accepted_target": 10
+  },
+  "regression": {
+    "result": "188 passed",
+    "v54_tests": 17,
+    "test_sha256": "e212f1e3af537b645857a195147e82def65cbcf95457b8554efbd1fe41ee2a8f"
+  }
+}

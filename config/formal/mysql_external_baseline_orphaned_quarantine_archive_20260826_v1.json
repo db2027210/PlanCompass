@@ -1,0 +1,63 @@
+{
+  "archive": "/disk2/resource_adaptive_mysql_external_baselines_20260826/independent_workers_v1/quarantine/gptuner/gptuner_baseline.failed_preworkload_r3_r5_20260826",
+  "binding_path": "/home/anonymous/program/resource_adaptive/config/formal/mysql_external_baseline_independent_workers_20260826_v1.json",
+  "binding_sha256_before_archive": "066ba8bd3c1c7875f6f932e13aa00d4b04ca1a155a46baa2277a4eaed4e8f3d3",
+  "bytes": 42399306691,
+  "created_at": "2026-08-26T10:20:51.816047+08:00",
+  "deleted": false,
+  "failed_states": [
+    {
+      "error": {
+        "at": "2026-08-26T09:59:52.828519+08:00",
+        "message": "xp_io_w2 exited before MySQL readiness",
+        "type": "RuntimeError"
+      },
+      "path": "/disk2/resource_adaptive_mysql_external_baselines_20260826/20260826_gptuner_aqetuner_four_r3/gptuner/state.json",
+      "physical_workload_invocations": 0,
+      "sha256": "1a5d38e93489375e3248868662a8e28ffc78275eba1ff3dbd0d48bfccc0ab067",
+      "status": "FAILED_CLOSED"
+    },
+    {
+      "error": {
+        "at": "2026-08-26T10:10:58.128058+08:00",
+        "message": "xp_cpu_w1 quarantine target already exists",
+        "type": "RuntimeError"
+      },
+      "path": "/disk2/resource_adaptive_mysql_external_baselines_20260826/20260826_gptuner_aqetuner_four_r5/gptuner/state.json",
+      "physical_workload_invocations": 0,
+      "sha256": "18912470f9a78582bf6ecc3089a79c48e625091a323a587db377d3f5544cc1ea",
+      "status": "FAILED_CLOSED"
+    }
+  ],
+  "live_mounts_moved": false,
+  "live_workers": [
+    {
+      "container": "ra_mysql_ext_xp_cpu_w1_20260826",
+      "container_id": "afcd090f43143b018955770d5a8711082da7e70547de9715db1e74211647f610",
+      "live_datadir": "/disk2/resource_adaptive_mysql_external_baselines_20260826/independent_workers_v1/xp_cpu_w1/datadir",
+      "worker_id": "xp_cpu_w1"
+    },
+    {
+      "container": "ra_mysql_ext_xp_cpu_w2_20260826",
+      "container_id": "1ac1b00269d022cb96c3522fe5971f67ecd226b3cabdc4e8a6b0f40f50f9fad6",
+      "live_datadir": "/disk2/resource_adaptive_mysql_external_baselines_20260826/independent_workers_v1/xp_cpu_w2/datadir",
+      "worker_id": "xp_cpu_w2"
+    },
+    {
+      "container": "ra_mysql_ext_xp_io_w1_20260826",
+      "container_id": "bd955dfd4be751e448ed8e69fa150c1975450bc187cd7c495164ba89ecd6aec7",
+      "live_datadir": "/disk2/resource_adaptive_mysql_external_baselines_20260826/independent_workers_v1/xp_io_w1/datadir",
+      "worker_id": "xp_io_w1"
+    },
+    {
+      "container": "ra_mysql_ext_xp_io_w2_20260826",
+      "container_id": "5d3f13d6a7d362f30c7eb92ddfa12cf66d0f9186e202c03f69767d328174b7b6",
+      "live_datadir": "/disk2/resource_adaptive_mysql_external_baselines_20260826/independent_workers_v1/xp_io_w2/datadir",
+      "worker_id": "xp_io_w2"
+    }
+  ],
+  "recoverable": true,
+  "schema_version": "mysql_external_orphaned_quarantine_archive_v1",
+  "source": "/disk2/resource_adaptive_mysql_external_baselines_20260826/independent_workers_v1/quarantine/gptuner/gptuner_baseline",
+  "status": "PASS"
+}

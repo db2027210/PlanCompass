@@ -1,0 +1,55 @@
+{
+  "artifacts": {
+    "tools/launch_xp_v40_infeasible_reexploration_target10.sh": "2876e80e0031c8d7230e804cb58f9b9c4c56135eb1fd9636b81cac5a27193e97",
+    "tools/preflight_xp_v40_infeasible_reexploration.py": "7291f51d66dc234a1a380aac509d9f954f3c74dfd7e3c137dcca52b1de696083",
+    "tools/recover_xp_v40_infeasible_cont005_zero_call.py": "cf24957b5dffe4da0ba1a5d0462ec6c87aa1159f0411e3dbd0cfde44c4fa9732",
+    "tools/resume_xp_fresh0_fixed_contract_target10_v40.py": "759f74ff363caa8d221ed02a0819f3f387a3bcfab4807d240d5027056f68d8b8",
+    "tools/xp_v40_formal_infeasible_reexploration_patch.py": "34480b3004c16ba235f4507d0935c5b102fa53b006d81f3ab3991b79d9892aec",
+    "tests/test_xp_v40_infeasible_reexploration.py": "2eb6130b86e240b8936aca63a2df631b39e0725b8fe70ba84c41fbdd461f0bc7"
+  },
+  "authority": {
+    "bundle_adapter_sha256": "7db2d54adba6aad1191970dda51a154937a761caff8c9ce152608985e54e510a",
+    "bundle_continuation_sha256": "6b7b7d3364c290af2ec65b672ac61c96b1308a8d8f78d0b6b9668ce3e58c0604",
+    "cont004_replay_sha256": "b6644b3f064776f24f0ceed66bc1bff0fc52ee942860ed6ba4413cdd88c1d259",
+    "cont004_selection_sha256": "c54d45696f26549c870a13719270f8aa430ad54c95d1646bb4ce1bb7b5d8bc07",
+    "cont005_infeasible_reroute_sha256": "5bac3060eb1ec135606caa55086907dcdae267f533ea0ba1cb2bae6c9a5956eb",
+    "formal_state_sha256": "bd8034585cbfe0740a1960889edf2120bee0eb53734d939c2ebc1dccac6439d1",
+    "source_state_sha256": "669f60e63c4a3a775c33f76208f57ab557cdf2664bf1e26b27405eb2240dc3aa"
+  },
+  "contract": "xp_v40_formal_infeasible_routes_to_deterministic_novel_explain_deployment_v1",
+  "cpu_contract": {
+    "mysql_reserved_excluded": "184-199,440-455",
+    "xp_cpuset": "32-51,288-307"
+  },
+  "formal_progress": {
+    "accepted_target": 10,
+    "inherited_accepted": 0,
+    "new_accepted_in_diagnostic_batch": 0,
+    "total_countable_accepted": 0
+  },
+  "repair": {
+    "candidate_generation": "existing_deterministic_explain_three_level_pipeline",
+    "cont005_physical_calls": 0,
+    "manual_candidate_injection": false,
+    "state_fields_mutated": [
+      "next_batch_index",
+      "status",
+      "last_error",
+      "active_phase",
+      "xp_v40_zero_call_infeasible_reexploration_recovery"
+    ],
+    "state_fields_protected": [
+      "accepted_count",
+      "accepted_fingerprints",
+      "incumbent",
+      "incumbent_score",
+      "incumbent_params",
+      "parameter_ranges",
+      "range_state",
+      "gradient_state",
+      "batch_history",
+      "last_batch",
+      "replayed_fingerprints"
+    ]
+  }
+}

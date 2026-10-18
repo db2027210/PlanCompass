@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<parameters>
+
+    
+    <type>POSTGRES</type>
+    <driver>org.postgresql.Driver</driver>
+    <url>jdbc:postgresql://localhost:11001/benchbase?sslmode=disable&amp;ApplicationName=chbenchmark&amp;reWriteBatchedInserts=true</url>
+    <username>gaussdb</username>
+    <password>CHANGE_ME</password>
+    <dbmetrics>false</dbmetrics>
+    <reconnectOnConnectionFailure>true</reconnectOnConnectionFailure>
+    <isolation>TRANSACTION_READ_COMMITTED</isolation>
+    <batchsize>128</batchsize>
+
+    
+    <scalefactor>72</scalefactor>
+
+    
+    <terminals>720</terminals>
+    <loaderThreads>64</loaderThreads>
+    <works>
+        <work>
+		<time>1200</time>
+	        <rate>unlimited</rate>
+            <weights>45,43,4,4,4</weights>
+        </work>
+    </works>
+
+    
+    <transactiontypes>
+        <transactiontype>
+            <name>NewOrder</name>
+            
+            
+        </transactiontype>
+        <transactiontype>
+            <name>Payment</name>
+            
+            
+        </transactiontype>
+        <transactiontype>
+            <name>OrderStatus</name>
+            
+            
+        </transactiontype>
+        <transactiontype>
+            <name>Delivery</name>
+            
+            
+        </transactiontype>
+        <transactiontype>
+            <name>StockLevel</name>
+            
+            
+        </transactiontype>
+    </transactiontypes>
+</parameters>

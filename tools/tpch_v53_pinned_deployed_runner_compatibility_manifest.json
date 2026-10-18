@@ -1,0 +1,47 @@
+{
+  "schema_version": "tpch_v53_pinned_deployed_runner_compatibility_manifest_v1",
+  "execution_scope": "local_offline_only",
+  "stage_files": {
+    "tpch_v52_deployed_diagnostic_authority_03be.py": "03be882bd4c78ebac37f18b1c3f689305050057d3b73a9964b3d3d1f7dc14c5f",
+    "run_tpch_round29_diagnostic_exact_plan_regime_batch_v53_pinned_03be.py": "c4a1ee538080cb5590a719f4d03045cba394a225f3a5300a1a49d4ea173af86c",
+    "tpch_v53_pinned_deployed_runner_compatibility.py": "c4594579b2d0a722e744a84aa281e4e35dd702631662e9dd4b8345b3b2a1417c",
+    "recover_tpch_v53_cycle6_preworkload.py": "03c73f99ccb509494c998a1f90d0a6e9fbf62a7c25f2eea3c52ebf44f30efcf5",
+    "launch_tpch_v53_pinned_deployed_runner_compatibility.sh": "81a259011f89ffa8e7b1e8dd5e0e4dd976e4895065c89e7a0b1a5fdf0d59fc14",
+    "deploy_tpch_v53_pinned_deployed_runner_compatibility.sh": "6ca3aa536db46ddb8b7c8a9ea2fcfc5a1317233380b1b92307eb6e2bbebbe46c",
+    "apply_tpch_v53_cycle6_preworkload_recovery.sh": "1859f1e5795117318f7089b275ba04d4fff78ae48f2823d60e5d4f05a3ca2775",
+    "tpch_v53_pinned_deployed_runner_compatibility_evidence.json": "ad00d745268e26331f620b174a89de859cab45771bf405528b609ca0d9a17d1b"
+  },
+  "required_remote_authority": {
+    "run_tpch_round29_diagnostic_exact_plan_regime_batch_v45_none_return.py": "03be882bd4c78ebac37f18b1c3f689305050057d3b73a9964b3d3d1f7dc14c5f",
+    "tpch_v51_safe_unknown_probe_recovery.py": "2a9aaac13bf3af4d9007466c4fec3e606d9aa41fb5a4ca08da60e28dd80a0d91",
+    "tpch_v50_trusted_evidence_acquisition.py": "ffb8caadb0ee9738e31c0cff081e623ec3ccea7a09c824613a138183540f59fd",
+    "build_tpch_autonomous_successor_top5_v11_evidence_acquisition.py": "8447df5251c53b823bca21e89cc345ea903e333f9688468627c20bfd811d7b49",
+    "validate_tpch_v50_liveness_fix_boundary.py": "cf957dca63f22edc7b69431c7a749b5e55286852fee2e5d50e80ddec7f1e3d31",
+    "tpch_v49_preparing_cycle_continuation.py": "40231d64d94c98af5d98e28b9e27c82933aa46f9a36d4a4113d2cb7da747c405",
+    "tpch_v48_prethird_feasibility_binding.py": "5bf7ff767338860f3e86576c9ef7e5db5b4ce60d111397e89f15776311397458",
+    "tpch_v41_preformal_handoff.py": "bb81fde56677fc2c19b1399e708005e3b8e950169643c5fe777da94e47b36a41",
+    "tpch_fresh10_target10_loop_v32_v8_gate_binding.py": "a7174eb59bd467f51a1e55cff4b98f89ed27999cc4ca329ed291cdea1b1f9a69",
+    "tpch_exact_regime_neighbor_expand_v6_checkpointed.py": "8e16189de0f7677792dcd6c8b5e1ab3fc8015e5242497efa385957b89ae70b9c"
+  },
+  "frozen_boundary": {
+    "controller_state_sha256": "d1431ae426c85f2447012b2b1bdfab83b56a4f1382a07feb5b9cba1b8303c8e2",
+    "formal_state_sha256": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "accepted_counter_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "cycle": 6,
+    "accepted_count": 1
+  },
+  "tests": {
+    "result": "171 passed",
+    "v53_result": "12 passed",
+    "workload_calls": 0,
+    "ssh_calls": 0
+  },
+  "apply_contract": {
+    "command": "bash STAGE/apply_tpch_v53_cycle6_preworkload_recovery.sh STAGE",
+    "starts_workload": false,
+    "rebuilds_explain": false,
+    "mutates_selection": false,
+    "base_runner_replacement": false,
+    "next_action": "separate explicit v53 launcher resume"
+  }
+}

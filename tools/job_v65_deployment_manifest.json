@@ -1,0 +1,70 @@
+{
+  "schema_version": "job_v65_resource_median_eligibility_manifest_v1",
+  "scenario": "JOB",
+  "status": "sealed_offline_not_deployed",
+  "stage_directory": "/tmp/job_v65_resource_median_eligibility_stage_20260803",
+  "files": {
+    "job_fresh10_target10_autonomous_v65.py": "4a7af296ada667463a2b49d63fae01c12038251492b50da4e4f7d45f3798e228",
+    "run_job_round8_strict_serial_robust_v13_resource_eligibility.py": "d43309509d848683695b9efc72435ff2c05c44a27173ca77f9d34a3b76ebe407",
+    "launch_job_target10_autonomous_v65.sh": "382cc701e48587c1f0172e3946c1c6ce1540f506ad6da9a33f1d039ee4b5a094",
+    "test_job_v65_resource_eligibility.py": "85de8b88d6e83403c6e74d4ac71bf4352e3b6fdce45fd7ee2f22c73d6b76753f"
+  },
+  "sealed_dependencies": {
+    "job_fresh10_target10_autonomous_v64.py": "cea34419a1c6ba790b98208dc8c80bbef51b0efdaae81865459b93638181422a",
+    "job_fresh10_target10_autonomous_v63.py": "15b7e1658d3328a3a92d2648ed610cf9153ec2e26e848b46fc2e756a30a74980",
+    "run_job_round8_strict_serial_robust_v12_eligibility.py": "f8a026053bf830bdb7e227a54876ee28aa83e23d30246cbd3ef519c5ef66be6b",
+    "run_job_round8_strict_serial_robust_v11_gradient_state_guard.py": "d8919ef67c0b9fe0b9666717e54eedb8cf197b835d4a1e1a918c18674e1b3043",
+    "run_job_round8_strict_serial_robust_v10_resource_median.py": "e4738c9eb95e123a38e31410bb067bf817bb8b54e234acbb2f5bc14ed89f2b03"
+  },
+  "algorithm": {
+    "eligibility_contract": "job_v65_resource_median_reachability_v1",
+    "acceptance_contract": "job_three_independent_exact_point_resource_median_rescored_v3",
+    "upper_bound": "exact_separable_score_maximum_over_componentwise_median_box",
+    "unproven_bound_action": "keep_trusted_eligible_never_math_skip",
+    "probe_physical_calls": 0,
+    "impossible_trusted_physical_calls": 0,
+    "diagnostic_top5": ["trusted", "trusted", "trusted", "probe", "probe"],
+    "qps_used_for_inner_scoring": false,
+    "manual_candidate_injection": false
+  },
+  "runtime": {
+    "real_filter_target": "base_v10.frozen.run globals and replay-contract validator globals",
+    "dynamic_batch_budget_attempt_count": true,
+    "formal_controller_partial_batch_compatible": true,
+    "formal_transaction_partial_batch_compatible": true,
+    "same_scene_replay_serial": true,
+    "physical_call_cap": 3
+  },
+  "restart": {
+    "recognized_package_runner_versions": ["v11", "v12", "v13"],
+    "v12_or_v13_zero_call_package_repaired_to_v11_before_inherited_prepare": true,
+    "eligibility_selection_journal_idempotent": true,
+    "crash_after_selection_replace_without_staged_copy_recoverable": true,
+    "uncommitted_partial_formal_replay": "fail_closed",
+    "no_eligible_candidates": "zero_call_NoveltyCollision_then_automatic_new_fingerprints"
+  },
+  "tests": {
+    "command": "python -m pytest -q tests/test_job_v65_resource_eligibility.py tests/test_job_v64_robust_eligibility.py tests/test_job_v63_preworkload_resume.py tests/test_job_v63_postclean_branch_audit.py tests/test_job_v62_live_network_authority.py tests/test_job_v58_gradient_state.py",
+    "result": "35 passed",
+    "real_module_integration": [
+      "nested_frozen_loop_invokes_only_eligible_candidates",
+      "dynamic_two_call_formal_controller_commits_transaction",
+      "exact_resource_box_upper_bound",
+      "unproven_bound_never_false_skips_trusted",
+      "top_level_gradient_gate_survives_candidate_without_algorithmic_gate",
+      "noeligible_auto_reexplore",
+      "partial_formal_fail_closed",
+      "accepted10_on_final_allowed_cycle_reports_complete",
+      "repeated_prepare_recognizes_v12_and_v13",
+      "selection_journal_recovers_replace_before_staged_copy"
+    ]
+  },
+  "safety": {
+    "ssh_calls": 0,
+    "workload_calls": 0,
+    "formal_state_updates": 0,
+    "counter_updates": 0,
+    "mysql_touched": false,
+    "deployed": false
+  }
+}

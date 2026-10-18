@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "event": "rank8_pre_docker_transition_barrier_failure",
+  "rank": 8,
+  "docker_started": false,
+  "real_replay_count_incremented": false,
+  "r0_replayed": false,
+  "candidate_log": "results/experience_outer/attempt_1_ranked_replays/rank_08_candidate.log",
+  "error": "NameError: name 'os' is not defined",
+  "failed_candidate_once_sha256": "0c08ef297c7e83a6ea1dfad929679c0b3b1335a84d095b2241b4eff0205be96b",
+  "fixed_candidate_once_sha256": "0fd80b9b6658d4d8d99933dd0db0691eb0d267aaf14db083d563552c576bd002",
+  "disposition": "preserve pre-Docker failure evidence; start replicate-aware rank8 with unique rep_01 point identity"
+}

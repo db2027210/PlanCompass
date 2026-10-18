@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "status": "invalid_algorithm_audit_only",
+  "recorded_at_utc": "2026-07-22T18:32:41Z",
+  "workload": "HyBench AP",
+  "formal_active_parameters": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "invalid_reason": "candidate generation used a two-level Cartesian grid instead of the user-required experience-table T-SGD inner loop",
+  "formal_accounting": {
+    "real_replays": 0,
+    "accepted_candidates": 0,
+    "binary_interval_shrinks": 0,
+    "outer_iterations": 0
+  },
+  "audit_only_artifacts": [
+    {
+      "role": "invalid_inner_algorithm_ranking",
+      "path": "results/experience_outer/attempt_2_63subsets_ap6_v3/subset_ranking.json",
+      "sha256": "8ef955c836916b67b790905a0739a975046f28c23e043f3eb5c930f41b1a21e7"
+    },
+    {
+      "role": "invalid_inner_algorithm_plan_fingerprints",
+      "path": "results/experience_outer/attempt_2_plan_fingerprints_ap6_v3/subset_ranking_with_plan_fingerprints.json",
+      "sha256": "6d0a1f930876afc1ea005bbb4e5a45017c5c9bc48dbfc6566809b23d305e73ab"
+    },
+    {
+      "role": "raw_explain_and_exact_cluster_evidence",
+      "path": "results/experience_outer/attempt_2_plan_fingerprints_ap6_v3/ap6_plan_fingerprint_seal_manifest.json",
+      "sha256": "7464a7c4d661a52d117b0949a1a8037a1e74b86e771be051cb2f7a47406bf671"
+    },
+    {
+      "role": "invalid_inner_algorithm_replay_selection",
+      "path": "results/experience_outer/attempt_2_plan_fingerprints_ap6_v3/ap6_replay_selection_plan.json",
+      "sha256": "e997cdc2583c3a6902971a3f26b0076bf4a7810a94931e5d39bb84bd83129c37"
+    },
+    {
+      "role": "postgresql_guc_roundtrip_audit",
+      "path": "results/experience_outer/attempt_2_plan_fingerprints_ap6_v3/ap6_representative_applied_params.json",
+      "sha256": "8d6b3abc284f0af48aba10332d67acf05c7d59a3ab4e5ddc5973bc2c5aaf67d9"
+    }
+  ],
+  "physical_attempts": [
+    {
+      "attempt": "attempt_3_ap6_exact_plan_replays_v1",
+      "disposition": "technical_failure_before_container_missing_frozen_root_environment",
+      "formal_budget_count": 0
+    },
+    {
+      "attempt": "attempt_3_retry1_ap6_exact_plan_rank1",
+      "disposition": "technical_failure_before_container_missing_template_root_environment",
+      "formal_budget_count": 0
+    },
+    {
+      "attempt": "attempt_3_retry2_ap6_exact_plan_rank1",
+      "disposition": "technical_failure_before_measurement_incomplete_six_parameter_runtime_payload",
+      "formal_budget_count": 0
+    },
+    {
+      "attempt": "attempt_3_retry3_ap6_exact_plan_rank1",
+      "controller_pid": 111622,
+      "candidate_pid": 111641,
+      "container_id_prefix": "c965298f1897",
+      "disposition": "technical_invalid_unquantized_postgresql_readback_contract",
+      "formal_budget_count": 0,
+      "owned_processes_and_container_removed": true
+    },
+    {
+      "attempt": "attempt_3_retry4_ap6_exact_plan_rank1",
+      "controller_pid": 6622,
+      "candidate_pid": 6641,
+      "elapsed_seconds_at_stop": 17,
+      "disposition": "algorithm_mismatch_stopped_before_formal_measurement",
+      "formal_budget_count": 0,
+      "owned_processes_and_container_removed": true
+    }
+  ],
+  "reuse_policy": "raw evidence may be inspected diagnostically, but rankings, cluster representatives, replays, acceptances, and shrink decisions must be regenerated after implementing and verifying the experience-table T-SGD inner loop"
+}

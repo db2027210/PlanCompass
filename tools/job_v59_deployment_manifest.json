@@ -1,0 +1,66 @@
+{
+  "schema_version": "job_v59_deployment_manifest_v1",
+  "created_at": "2026-08-03T15:54:49+0800",
+  "controller": {
+    "path": "tools/job_fresh10_target10_autonomous_v59.py",
+    "sha256": "994c27feba747152372e0155f58d674f47ee306de68fc4ed7f9f4750f51b56d1"
+  },
+  "launcher": {
+    "path": "tools/launch_job_target10_autonomous_v59.sh",
+    "sha256": "c7f0d467b8b858471ac2cd12bdf0b1631357119107ea11c4e4e75cdeb3c7d3bb"
+  },
+  "test": {
+    "path": "tests/test_job_v59_network_restart.py",
+    "sha256": "13e43944ff58ed266d63cc990a700ba0025ec4a68d87161bf96d31932f537d58",
+    "result": "4_passed"
+  },
+  "inherited_dependencies": {
+    "job_fresh10_target10_autonomous_v58.py": "8ed24530017d866c1c9ca3ce31e5d4e69a1c7083b6237827c274c96093623a30",
+    "run_job_round8_strict_serial_robust_v11_gradient_state_guard.py": "d8919ef67c0b9fe0b9666717e54eedb8cf197b835d4a1e1a918c18674e1b3043",
+    "job_formal_target10_batch_controller_v2_gradient_commit.py": "e5e4a090b3731add51005c00996cb2af7c450a3c491708321cc96d5d74cf294b"
+  },
+  "restart_pin": {
+    "accepted_count": 1,
+    "formal_replay_counter": 211,
+    "global_counter": 424,
+    "formal_state_sha256": "8ee73ee31883f0362353ec0e03dc665ef113f91510269a07b6f28109cfda62a7",
+    "gradient_observation_count": 1
+  },
+  "historical_preclaim_failures": {
+    "attempt_count": 3,
+    "physical_workload_calls": 0,
+    "ordinal_claims": 0,
+    "valid_replays": 0,
+    "accepted_added": 0,
+    "quarantined_fingerprint_count": 15,
+    "technical_signature": "invalid_or_prohibited_RA_JOB_DOCKER_NETWORK",
+    "selection_sha256": [
+      "b56a8dcd19ae18eefa74052d8068264cabb59c5f35e284791db59252612f5bcb",
+      "3660e43d6b06e2d60b7a975bde07fd423ea74a9c94c165931490ef7ae5b17ebb",
+      "a611999eaa0011599333d8a00d629ffda4c7068eae2ccf5fe3d2e76a52b4ed9f"
+    ],
+    "summary_sha256": [
+      "26a6084795b7238f0b6f21f0191653f7bf54114f9fec0e582ad030ba5cbaaf01",
+      "25f3c6f32d97d9e4ba8c6193d30c1fcbdeadcd0cf510213a0a61b9758214c311",
+      "fdcc06d13a3701bafc6084721d55be9049fd3f5c37794668c01a1347395c504e"
+    ]
+  },
+  "network_contract": {
+    "name": "ra_job_v53_net",
+    "driver": "bridge",
+    "scope": "local",
+    "internal": false,
+    "bridge_interface": "ra-job-v53",
+    "required_attached_container_count_before_start": 0,
+    "raw_inspect_sha_bound": true
+  },
+  "safety": {
+    "diagnostic_state_neutral": true,
+    "same_fingerprint_retry_allowed": false,
+    "repeated_signature_fail_closed_threshold": 3,
+    "historical_three_failures_quarantined": true,
+    "preflight_new_workload_calls": 0,
+    "qps_inner_scoring": false,
+    "mysql_touched": false
+  }
+}

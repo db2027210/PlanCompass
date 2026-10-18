@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "db": "pg17",
+  "method": "brute_force_grid_search",
+  "completion_contract": {
+    "all_cartesian_candidates_real_validated": true,
+    "expected_candidates_per_outer_round": 128,
+    "require_search_complete": true,
+    "require_zero_validation_errors": true,
+    "require_structured_run_log": true,
+    "authoritative_candidate_status": "ok"
+  },
+  "acceptance_policy": {
+    "db_qps_delta_pct_min": 0.0,
+    "bottleneck_delta_pct_max": 0.0,
+    "prefer_mild_bottleneck_drop_pct_min": -30.0
+  },
+  "repeat_contract": {
+    "description": "B  A  1  B*-R1  A1/A4/A6",
+    "groups": {
+      "B1": {
+        "base_run": "A4-R1",
+        "source_exp_id": "B1-R1",
+        "additional_runs": ["B1-R2", "B1-R3"],
+        "total_runs_including_a": 3
+      },
+      "B2": {
+        "base_run": "A1-R1",
+        "source_exp_id": "B2-R1",
+        "additional_runs": ["B2-R2", "B2-R3"],
+        "total_runs_including_a": 3
+      },
+      "B3": {
+        "base_run": "A6-R1",
+        "source_exp_id": "B3-R1",
+        "additional_runs": ["B3-R2", "B3-R3"],
+        "total_runs_including_a": 3
+      }
+    }
+  },
+  "required_structured_log_fields": {
+    "meta": [
+      "exp_id",
+      "benchmark",
+      "db",
+      "method",
+      "bottleneck",
+      "bottleneck_target",
+      "repeat_id",
+      "machine_spec"
+    ],
+    "outer_loop": [
+      "iter",
+      "params",
+      "qps",
+      "latency_p99_ms",
+      "latency_p95_ms",
+      "resource",
+      "utility",
+      "explain_samples"
+    ],
+    "inner_loop_summary": [
+      "total_iterations",
+      "wall_time_ms",
+      "best_estimated_utility",
+      "best_params"
+    ],
+    "result": [
+      "final_params",
+      "delta_u_pct",
+      "qps_before",
+      "qps_after",
+      "p99_before_ms",
+      "p99_after_ms",
+      "bad_config",
+      "converge_outer_iters",
+      "total_wall_time_s"
+    ]
+  },
+  "runs": [
+    {
+      "exp_id": "B2-R1",
+      "logical_exp_id": "A1-R1",
+      "repeat_role": "base_run_counts_as_a",
+      "benchmark": "hybench_ap",
+      "bottleneck": "memory",
+      "bottleneck_target": 0.9,
+      "repeat_id": 1,
+      "driver": "hybench_runap",
+      "status": "running",
+      "source_jsonl": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R1_hybench_ap_memory/memory_binary_search_hybenchap.jsonl"
+    },
+    {
+      "exp_id": "B2-R2",
+      "repeat_role": "additional_repeat_1",
+      "benchmark": "hybench_ap",
+      "bottleneck": "memory",
+      "bottleneck_target": 0.9,
+      "repeat_id": 2,
+      "driver": "hybench_runap",
+      "status": "pending"
+    },
+    {
+      "exp_id": "B2-R3",
+      "repeat_role": "additional_repeat_2",
+      "benchmark": "hybench_ap",
+      "bottleneck": "memory",
+      "bottleneck_target": 0.9,
+      "repeat_id": 3,
+      "driver": "hybench_runap",
+      "status": "pending"
+    },
+    {
+      "exp_id": "A2-R1",
+      "benchmark": "job",
+      "bottleneck": "memory",
+      "bottleneck_target": 0.9,
+      "repeat_id": 1,
+      "driver": "job_imdb",
+      "status": "running",
+      "source_jsonl": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A2-R1_job_memory/memory_binary_search_job.jsonl"
+    },
+    {
+      "exp_id": "A3-R1",
+      "benchmark": "tpch",
+      "bottleneck": "memory",
+      "bottleneck_target": 0.9,
+      "repeat_id": 1,
+      "driver": "benchbase_tpch",
+      "status": "pending"
+    },
+    {
+      "exp_id": "B1-R1",
+      "logical_exp_id": "A4-R1",
+      "repeat_role": "base_run_counts_as_a",
+      "benchmark": "hybench_tp",
+      "bottleneck": "cpu",
+      "bottleneck_target": 0.9,
+      "repeat_id": 1,
+      "driver": "hybench_runtp",
+      "status": "running",
+      "source_jsonl": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R1_hybench_tp_cpu/cpu_binary_search_hybenchtp.jsonl"
+    },
+    {
+      "exp_id": "B1-R2",
+      "repeat_role": "additional_repeat_1",
+      "benchmark": "hybench_tp",
+      "bottleneck": "cpu",
+      "bottleneck_target": 0.9,
+      "repeat_id": 2,
+      "driver": "hybench_runtp",
+      "status": "pending"
+    },
+    {
+      "exp_id": "B1-R3",
+      "repeat_role": "additional_repeat_2",
+      "benchmark": "hybench_tp",
+      "bottleneck": "cpu",
+      "bottleneck_target": 0.9,
+      "repeat_id": 3,
+      "driver": "hybench_runtp",
+      "status": "pending"
+    },
+    {
+      "exp_id": "A5-R1",
+      "benchmark": "tpcc",
+      "bottleneck": "cpu",
+      "bottleneck_target": 0.9,
+      "repeat_id": 1,
+      "driver": "benchbase_tpcc",
+      "status": "running",
+      "source_jsonl": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A5-R1_tpcc_cpu/cpu_binary_search_tpcc.jsonl"
+    },
+    {
+      "exp_id": "B3-R1",
+      "logical_exp_id": "A6-R1",
+      "repeat_role": "base_run_counts_as_a",
+      "benchmark": "hybench_xp",
+      "bottleneck": "io",
+      "bottleneck_target": 0.9,
+      "repeat_id": 1,
+      "driver": "hybench_runxp",
+      "status": "running",
+      "machine_spec": {
+        "cpu_cores": 5,
+        "mem_gb": 2.3,
+        "disk_bw_mb": 213,
+        "blkio_limit_mb": 100
+      },
+      "source_jsonl": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/io_resume_from_old_round2_fullsearch_isolated_20260716_2321/io_binary_search_hybenchxp.jsonl"
+    },
+    {
+      "exp_id": "B3-R2",
+      "repeat_role": "additional_repeat_1",
+      "benchmark": "hybench_xp",
+      "bottleneck": "io",
+      "bottleneck_target": 0.9,
+      "repeat_id": 2,
+      "driver": "hybench_runxp",
+      "status": "pending",
+      "source_jsonl": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/B3-R2_hybench_xp_io/io_binary_search_hybenchxp.jsonl"
+    },
+    {
+      "exp_id": "B3-R3",
+      "repeat_role": "additional_repeat_2",
+      "benchmark": "hybench_xp",
+      "bottleneck": "io",
+      "bottleneck_target": 0.9,
+      "repeat_id": 3,
+      "driver": "hybench_runxp",
+      "status": "pending",
+      "source_jsonl": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/B3-R3_hybench_xp_io/io_binary_search_hybenchxp.jsonl"
+    },
+    {
+      "exp_id": "E1-R1",
+      "benchmark": "hybench_ap",
+      "bottleneck": "none",
+      "bottleneck_target": null,
+      "repeat_id": 1,
+      "driver": "hybench_runap",
+      "status": "running",
+      "source_jsonl": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E1-R1_hybench_ap_none/none_binary_search_hybenchap.jsonl"
+    },
+    {
+      "exp_id": "E2-R1",
+      "benchmark": "job",
+      "bottleneck": "none",
+      "bottleneck_target": null,
+      "repeat_id": 1,
+      "driver": "job_imdb",
+      "status": "pending"
+    },
+    {
+      "exp_id": "E3-R1",
+      "benchmark": "tpch",
+      "bottleneck": "none",
+      "bottleneck_target": null,
+      "repeat_id": 1,
+      "driver": "benchbase_tpch",
+      "status": "pending"
+    },
+    {
+      "exp_id": "E4-R1",
+      "benchmark": "hybench_tp",
+      "bottleneck": "none",
+      "bottleneck_target": null,
+      "repeat_id": 1,
+      "driver": "hybench_runtp",
+      "status": "pending"
+    },
+    {
+      "exp_id": "E5-R1",
+      "benchmark": "tpcc",
+      "bottleneck": "none",
+      "bottleneck_target": null,
+      "repeat_id": 1,
+      "driver": "benchbase_tpcc",
+      "status": "pending"
+    },
+    {
+      "exp_id": "E6-R1",
+      "benchmark": "hybench_xp",
+      "bottleneck": "none",
+      "bottleneck_target": null,
+      "repeat_id": 1,
+      "driver": "hybench_runxp",
+      "status": "pending"
+    }
+  ]
+}

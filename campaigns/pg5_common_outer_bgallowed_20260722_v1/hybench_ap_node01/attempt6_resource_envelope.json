@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_5",
+  "target_attempt": "attempt_6",
+  "status": "superseded_gate_semantics_reused_as_attempt7_physical_envelope",
+  "derived_at": "2026-07-22T16:52:10+08:00",
+  "derivation": {
+    "sample_count": 610,
+    "elapsed_seconds": 609.0702166510018,
+    "cpu_demand_cores_mean": 2.9962467994836746,
+    "memory_current_bytes": {
+      "mean": 463007488.83934426,
+      "p50": 219394048.0,
+      "p95": 1502846566.4,
+      "maximum": 1697161216.0
+    },
+    "io_total_bytes_per_second_mean": 74249.02151248821,
+    "io_positive_interval_fraction": 0.009852216748768473,
+    "io_max_interval_bytes_per_second": 44885920.76704902
+  },
+  "static_denominator_ranges": {
+    "memory_bytes_for_85_to_90_percent": [514452765.37704915, 544714692.7521697],
+    "cpu_cores_for_30_to_50_percent": [5.992493598967349, 9.987489331612249],
+    "io_bytes_per_second_for_30_to_50_percent": [148498.04302497642, 247496.7383749607]
+  },
+  "selected_resource_contract": {
+    "cpu_quota_cores": 7.5,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 196608,
+    "io_write_bps": 196608,
+    "pids_limit": 512,
+    "max_parallel_workers_per_gather": 2
+  },
+  "static_prediction": {
+    "memory_utilization": 0.8624186531442404,
+    "cpu_utilization": 0.39949957326448995,
+    "io_utilization": 0.37765004768398034
+  },
+  "feasibility": {
+    "cpu": "high_within_8_core_cpuset",
+    "memory": "medium_risk_due_to_p95_and_max_exceeding_selected_limit",
+    "io": "uncertain_due_to_bursty_activity_and_sparse_positive_intervals",
+    "requires_independent_calibration": true,
+    "outer_entry_before_gate_pass": false
+  }
+}

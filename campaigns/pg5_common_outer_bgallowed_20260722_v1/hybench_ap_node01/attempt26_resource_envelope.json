@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "target_attempt": "attempt_26",
+  "immutable_target_resource": "memory",
+  "resource_contract": {"cpu_quota_cores": 6.68, "cpuset_cpus": "16-23", "cpuset_mems": "0", "memory_bytes": 225443840, "memory_swap_bytes": 225443840, "io_read_bps": 67108864, "io_write_bps": 36700160, "io_total_bps": 103809024, "pids_limit": 512},
+  "resource_target": {"memory_preferred_band": [0.85, 0.95], "memory_hard_minimum_exclusive": 0.8, "cpu_hard_band_inclusive": [0.3, 0.5], "io_hard_band_inclusive": [0.3, 0.5]},
+  "prediction": {"cpu_utilization": 0.3683418042219507, "memory_utilization": 0.8759686894379844, "io_utilization": 0.47605297691964427},
+  "target_resource_mutation_allowed": false,
+  "benchmark_matrix_sha256": "23b20f81a129cc90d48456f01983fb911a9d76d9171af716fe028ca5edb87121",
+  "private_runner_sha256": "36171f3e2046373ffe7efa23b5b8d2a040be18ebd6ca9e7bce6c6629923e365a",
+  "accepted_outer_rounds_before_start": 0,
+  "status": "ready_to_launch"
+}

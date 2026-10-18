@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "matrix_spec": "config/double_loop_fresh_sgd_matrix_20260719.json",
+  "result_root": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718",
+  "storage_guard": {
+    "mount_path": "/disk2",
+    "min_available_gib": 300,
+    "max_task_vms": 4
+  },
+  "dispatch_policy": {
+    "lanes_are_physically_isolated": true,
+    "one_runner_per_lane": true,
+    "bottleneck_lanes_priority": ["cpu", "memory", "io"],
+    "low_priority_lane": "none",
+    "same_benchmark_repeats_reuse_current_task_vm": true,
+    "cross_benchmark_requires_validated_seed_rebase": true,
+    "outer_rounds_within_a_run_are_serial": true
+  },
+  "lanes": {
+    "cpu": [
+      {
+        "run_id": "A28_r1_old_gate_attempt",
+        "formal_run_id": "A28_r1",
+        "attempt_tag": "A28_r1_tp3_cpu120_retry8",
+        "benchmark": "hybench_tp",
+        "state": "cancelled_diagnostic_non_countable",
+        "cancelled_after_evidence": {"active_k": 5, "completed_subset_rows": 31, "real_replay_count": 4},
+        "formal_countable": false,
+        "non_countable_reason": "started before strict resource-error p95=0.10 and exact score tie margin=0 defaults",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v14_cpu_matrix_20260718/config/retries/cpu_a28_tp3_120",
+        "requires_vm_rebase": false
+      },
+  {
+    "run_id": "B7_r2_old_gate_attempt",
+    "formal_run_id": "B7_r2",
+    "attempt_tag": "B7_r2_pre_nested_loo_gate",
+    "benchmark": "hybench_tp",
+    "state": "failed_quality_gate_non_countable",
+    "formal_countable": false,
+    "non_countable_reason": "strict nested leave-one-out audit failed; score inversion=0.352381, cpu p95 relative error=0.445838, io p95 relative error=1.416279; old in-run gate was optimistic",
+    "strict_audit": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/runs/cpu/B7_r2/cpu/strict_nested_model_quality_audit.json",
+    "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v14_cpu_matrix_20260718/config/retries/cpu_a28_tp3_120",
+    "requires_vm_rebase": false
+  },
+  {
+    "run_id": "B7_r2",
+    "attempt_tag": "B7_r2_strict_fresh_workload_paced250ms_retry3",
+    "benchmark": "hybench_tp",
+    "state": "diagnostic_running_paced250ms_space_filling_quality_gate",
+    "formal_countable": false,
+    "diagnostic_output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/cpu/A28_tp5_range200k_paced250ms_lattice_quality_diag_v3",
+    "last_stopped_diagnostic": {
+      "output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/cpu/A28_tp5_range200k_lattice_quality_diag_v2",
+      "reason": "fresh normalized CPU 1.076507 had no intersection with sweet upper 0.96 after the required maximum 10% target drop"
+    },
+    "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v14_cpu_matrix_20260718/config/generated/cpu_hybench_tp5_range200k_strict_diag_20260719",
+    "requires_vm_rebase": false
+  },
+      {
+        "run_id": "B7_r3",
+        "benchmark": "hybench_tp",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v14_cpu_matrix_20260718/config/retries/cpu_a28_tp3_120",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "A28_r1",
+        "attempt_tag": "A28_r1_strict_retry9",
+        "benchmark": "hybench_tp",
+        "state": "pending_after_B7_r3",
+        "formal_countable": true,
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v14_cpu_matrix_20260718/config/retries/cpu_a28_tp3_120",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "A29_r1",
+        "benchmark": "tpcc",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v14_cpu_matrix_20260718/config/retries/disk2_matrix_tpcc_cpu",
+        "requires_vm_rebase": true,
+        "seed_overlay": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpcc.qcow2",
+        "vm_profile": {"cpu_cores": 1, "memory_mib": 8192, "read_mb": 800, "write_mb": 800}
+      }
+    ],
+    "memory": [
+      {
+        "run_id": "A25_r1_old_gate_attempt",
+        "formal_run_id": "A25_r1",
+        "attempt_tag": "A25_r1_ap5_retry3",
+        "benchmark": "hybench_ap",
+        "state": "cancelled_diagnostic_non_countable",
+        "cancelled_after_evidence": {"active_k": 7, "completed_subset_rows": 127, "real_replay_count": 26},
+        "formal_countable": false,
+        "non_countable_reason": "started before strict resource-error p95=0.10 and exact score tie margin=0 defaults",
+        "scenario_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/disk2_guard/memory/scenario_config.json",
+        "worker_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/memory_a25_ap5_disk2_retry3/runner_config.json",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "B8_r2_baseline_failed_attempt",
+        "formal_run_id": "B8_r2",
+        "attempt_tag": "B8_r2",
+        "benchmark": "hybench_ap",
+        "state": "completed_failed_non_countable",
+        "formal_countable": false,
+        "failure_reason": "fresh memory baseline 0.9544942790064318 was not above sweet upper 0.97135008",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "B8_r2_pre_nested_loo_attempt",
+        "formal_run_id": "B8_r2",
+        "attempt_tag": "B8_r2_ap6_retry2",
+        "benchmark": "hybench_ap",
+        "state": "failed_quality_gate_non_countable",
+        "formal_countable": false,
+        "non_countable_reason": "strict nested leave-one-out audit failed; cpu/memory/io p95 relative errors=0.542830/0.316842/2.995047 despite score inversion=0.071429",
+        "strict_audit": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/runs/memory/B8_r2_ap6_retry2/memory/strict_nested_model_quality_audit.json",
+        "workload_override": {"apclient": 6},
+        "scenario_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/disk2_guard/memory/scenario_config.json",
+        "worker_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/memory_a25_ap5_disk2_retry3/runner_config.json",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "B8_r2",
+        "attempt_tag": "B8_r2_strict_fresh_workload_retry",
+        "benchmark": "hybench_ap",
+        "state": "diagnostic_running_space_filling_model_quality_fix",
+        "formal_countable": true,
+        "diagnostic_output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/memory/B8_ap6_lattice_quality_diag_v1",
+        "workload_override": {"apclient": 6},
+        "scenario_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/disk2_guard/memory/scenario_config.json",
+        "worker_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/memory_a25_ap5_disk2_retry3/runner_config.json",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "B8_r3",
+        "benchmark": "hybench_ap",
+        "state": "pending",
+        "workload_override": {"apclient": 6},
+        "scenario_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/disk2_guard/memory/scenario_config.json",
+        "worker_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/memory_a25_ap5_disk2_retry3/runner_config.json",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "A25_r1",
+        "attempt_tag": "A25_r1_strict_retry4",
+        "benchmark": "hybench_ap",
+        "state": "pending_after_B8_r3",
+        "formal_countable": true,
+        "workload_override": {"apclient": 6},
+        "scenario_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/disk2_guard/memory/scenario_config.json",
+        "worker_config": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/memory_a25_ap5_disk2_retry3/runner_config.json",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "A26_r1",
+        "benchmark": "job",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/disk2_matrix_job_memory",
+        "requires_vm_rebase": true,
+        "seed_overlay": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/job.qcow2",
+        "vm_profile": {"cpu_cores": 13, "memory_mib": 568, "read_mb": 800, "write_mb": 800}
+      },
+      {
+        "run_id": "A27_r1",
+        "benchmark": "tpch",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v15_memory_matrix_20260718/config/retries/disk2_matrix_tpch_memory",
+        "requires_vm_rebase": true,
+        "seed_overlay": "/disk2/resource_adaptive_experiment_matrix_20260718/vm_seeds/ra-matrix-v15-tpch-mem-r1.qcow2",
+        "seed_requires_privileged_read_chain": true,
+        "vm_profile": {"cpu_cores": 13, "memory_mib": 960, "read_mb": 800, "write_mb": 800}
+      }
+    ],
+    "io": [
+      {
+      "run_id": "A30_r1",
+      "attempt_tag": "A30_r1_exact_tie_retry3",
+      "benchmark": "hybench_xp",
+      "state": "stopped_failed_non_countable",
+      "formal_countable": false,
+      "failure_reason": "preoptimizer quality gate used an in-sample second-stage polynomial resource calibrator; strict nested leave-one-out recomputation failed resource and <=10% ranking gates",
+      "next_action": "resume only the same fresh baseline/pruning/15-replay prefix with leakage-free nested quality evaluation and a model/workload that passes both strict gates",
+      "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v16_io_matrix_20260718/config/retries/io_hybench_xp_disk2_matrix",
+      "requires_vm_rebase": false
+    },
+    {
+      "run_id": "A30_r1",
+      "attempt_tag": "A30_r1_nested_quality_retry11",
+      "benchmark": "hybench_xp",
+      "state": "diagnostic_running_lcg300_tp5_at1_space_filling_quality_fix",
+      "formal_countable": false,
+      "diagnostic_output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/io/A30_groupagg_lcg300_tp5_at1_quality_diag_v11",
+      "last_failed_diagnostic": {
+        "output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/io/A30_groupagg_rotating300_tp5_at1_quality_diag_v10",
+        "reason": "sequential time-derived ranges were satisfied by read-ahead after the first query; v11 applies an LCG to jump roughly 672k source IDs per second"
+      },
+      "preflight_rejected_attempt": {
+        "output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/io/A30_groupagg_paced10k_quality_diag_v5",
+        "reason": "physical-isolation preflight detected the v4 PostgreSQL backend before any v5 workload started"
+      },
+      "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v16_io_matrix_20260718/config/generated/io_hybench_xp_groupagg_strict_diag_20260719",
+      "requires_vm_rebase": false
+    },
+      {
+        "run_id": "B9_r2",
+        "benchmark": "hybench_xp",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v16_io_matrix_20260718/config/retries/io_hybench_xp_disk2_matrix",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "B9_r3",
+        "benchmark": "hybench_xp",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v16_io_matrix_20260718/config/retries/io_hybench_xp_disk2_matrix",
+        "requires_vm_rebase": false
+      }
+    ],
+    "none": [
+      {
+        "run_id": "E25_r1_failed_attempt",
+        "formal_run_id": "E25_r1",
+        "attempt_tag": "E25_r1",
+        "benchmark": "hybench_ap",
+        "state": "completed_failed_non_countable",
+        "formal_countable": false,
+        "failure_reason": "independent final QPS gain 0.068056 below required 0.15; current AP-6/AP-8 workload gain amplitude insufficient",
+        "next_action": "fresh workload probe after E30, then isolated strict rerun",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "E28_r1_old_gate_attempt",
+        "formal_run_id": "E28_r1",
+        "attempt_tag": "E28_r1",
+        "benchmark": "hybench_tp",
+        "state": "stopped_failed_non_countable",
+        "formal_countable": false,
+        "failure_reason": "runner loaded the pre-fix in-sample second-stage quality gate; strict nested fresh audit failed with pairwise inversion 0.257143 (worst 0.333333) and worst resource relative-error p95 1.085487",
+        "next_action": "restart from a new fresh baseline only after a fresh-only model/workload passes <=0.10 nested resource-error p95 and <=0.10 exact-tie ranking inversion",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v17_none_matrix_20260718/config/retries/none_hybench_tp_disk2_matrix",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "E28_r1",
+        "attempt_tag": "E28_r1_nested_quality_retry2",
+        "benchmark": "hybench_tp",
+        "state": "diagnostic_running_workload_plan_cliff_and_strict_gate",
+        "formal_countable": true,
+        "diagnostic_output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/none/E28_tp5_range200k_lattice_quality_diag_v2",
+        "last_stopped_diagnostic": {
+          "output": "/disk2/resource_adaptive_double_loop_sgd_formal_18_v3_20260718/diagnostics/none/E28_tp5_range200k_quality_diag_v1",
+          "reason": "loaded coordinate-first calibration design; stopped after 1/15 fresh replays when the interaction-free Top15 design was replaced"
+        },
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v17_none_matrix_20260718/config/generated/none_hybench_tp5_range200k_strict_diag_20260719",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "E30_r1",
+        "benchmark": "hybench_xp",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v17_none_matrix_20260718/config/retries/none_hybench_xp_disk2_matrix",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "E25_r1",
+        "attempt_tag": "E25_r1_workload_retry2",
+        "benchmark": "hybench_ap",
+        "state": "pending_workload_probe_after_E30",
+        "formal_countable": true,
+        "config_root": null,
+        "config_pending_reason": "must be generated only after current-data workload probe selects a profile with sufficient physical QPS amplitude",
+        "requires_vm_rebase": false
+      },
+      {
+        "run_id": "E26_r1",
+        "benchmark": "job",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v17_none_matrix_20260718/config/retries/disk2_matrix_job_none",
+        "requires_vm_rebase": true,
+        "seed_overlay": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/job.qcow2",
+        "vm_profile": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800}
+      },
+      {
+        "run_id": "E27_r1",
+        "benchmark": "tpch",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v17_none_matrix_20260718/config/retries/disk2_matrix_tpch_none",
+        "requires_vm_rebase": true,
+        "seed_overlay": "/disk2/resource_adaptive_experiment_matrix_20260718/vm_seeds/ra-matrix-v15-tpch-none-r1.qcow2",
+        "seed_requires_privileged_read_chain": true,
+        "vm_profile": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800}
+      },
+      {
+        "run_id": "E29_r1",
+        "benchmark": "tpcc",
+        "state": "pending",
+        "config_root": "/home/anonymous/program/resource_adaptive_sgd_isolated_v17_none_matrix_20260718/config/retries/disk2_matrix_tpcc_none",
+        "requires_vm_rebase": true,
+        "seed_overlay": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpcc.qcow2",
+        "vm_profile": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800}
+      }
+    ]
+  }
+}

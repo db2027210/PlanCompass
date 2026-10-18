@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_5",
+  "recorded_at": "2026-07-22T16:52:10+08:00",
+  "status": "invalid_protocol_resource_band",
+  "eligible_as_formal_r0": false,
+  "eligible_for_outer_entry": false,
+  "reason": "The formal resource gate was corrected after this attempt completed.",
+  "process_disposition": {
+    "point_status_observed": "complete",
+    "runner_workload_and_measurement_sampler_observed_running": false,
+    "container_observed_running": false,
+    "signals_sent": [],
+    "background_provenance_preserved": true
+  },
+  "raw_evidence": {
+    "path": "results/shared_baseline/P0_repeat_1_attempt_5/measurement_resource_samples.jsonl",
+    "sha256": "93ba38dfeee0c0562e59a2f8eac726bc16b386211b74f65675c74e8df8879a73",
+    "sample_count": 610,
+    "elapsed_seconds": 609.0702166510018
+  },
+  "observed": {
+    "db_qps": 0.13770506980973332,
+    "correctness_passed": true,
+    "stability_passed": false,
+    "resource_mean_utilization": {
+      "cpu": 0.9983091410515367,
+      "memory": 0.071983727850285,
+      "io": 0.00006157337811744141
+    }
+  },
+  "corrected_hard_gate": {
+    "target_memory_bottleneck": {"minimum_inclusive": 0.85, "maximum_inclusive": 0.90},
+    "non_bottleneck_cpu": {"minimum_inclusive": 0.30, "maximum_inclusive": 0.50},
+    "non_bottleneck_io": {"minimum_inclusive": 0.30, "maximum_inclusive": 0.50},
+    "correctness_required": true,
+    "stability_required": true,
+    "outer_entry": "forbidden_unless_every_gate_passes"
+  },
+  "gate_result": {
+    "memory": false,
+    "cpu": false,
+    "io": false,
+    "correctness": true,
+    "stability": false,
+    "all_passed": false
+  }
+}

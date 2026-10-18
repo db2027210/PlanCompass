@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "target_attempt": "attempt_34_retry1",
+  "immutable_target_resource": "memory",
+  "target_resource_mutation_allowed": false,
+  "retry_of": "attempt_34",
+  "retry_reason": "attempt_34 failed before formal measurement because DB-QPS instrumentation passed worker key ap instead of owned container kind hybench",
+  "failed_attempt_preserved": true,
+  "formal_samples_in_failed_attempt": 0,
+  "instrumentation_fix_only": {
+    "previous_container_kind_argument": "ap",
+    "correct_container_kind_argument": "hybench",
+    "workload_selection_changed_from_attempt34": false,
+    "resource_contract_changed_from_attempt34": false
+  },
+  "single_workload_adjustment_from_attempt33": {
+    "variable": "ap_request_selection_policy",
+    "selected_value": "fixed 100-request stratified interleaved sequence with client offsets 0-3 and stride 4",
+    "client_count": 4,
+    "aggregate_ap10_count_per_100": 28,
+    "aggregate_each_other_query_count_per_100": 6
+  },
+  "resource_contract": {
+    "cpu_quota_cores": 5.5,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 223155000,
+    "memory_swap_bytes": 223155000,
+    "io_read_bps": 67108864,
+    "io_write_bps": 36700160,
+    "io_total_bps": 103809024,
+    "pids_limit": 512
+  },
+  "resident_memory_contract": {
+    "bytes": 31457280,
+    "same_owned_container_required": true,
+    "same_cgroup_as_container_init_required": true,
+    "helper_source_sha256": "92c367f21256259f53ead73a7af61376db86e4edf2be8b980db84131b0c596d0",
+    "helper_binary_sha256": "2fc5f4bf0e36a1d9f6abc773d6a719d7baa6c7596ed34d346eee56a8de209ecb",
+    "cgroup_v1_v2_probe_required": true,
+    "cleanup_required": true
+  },
+  "stability_contract": {
+    "window_seconds": 30,
+    "required_consecutive_windows": 6,
+    "cross_window_cv_max_inclusive": 0.1,
+    "maximum_measurement_seconds": 600,
+    "relaxed_from_attempt33": false
+  },
+  "formal_db_qps_contract": {
+    "preflight_before_warmup_required": true,
+    "source": "pg_stat_statements_sum_calls_delta_per_second",
+    "database": "hybench_sf10x",
+    "owned_container_kind": "hybench",
+    "required_for_outer_entry": true,
+    "ap_qps_substitution_allowed": false,
+    "fail_closed": true
+  },
+  "ap_query_sequence_contract_sha256": "379d3060d61ab1bf906eac6bae6f08632b54db122cb1802c58e1fcf81e65b27d",
+  "apclient_patch_jar_sha256": "6e25069927261b5eb6e2dc9b9b3412ffa8f9e60553715503d6eb560f6d1a6a90",
+  "apclient_patch_summary_sha256": "2aa64b17af6b98b61aba14dec1bb3784fb6600c24d4ccec781eb14aa18923ea0",
+  "r0_resource_gate_contract_sha256": "547ec566adbb78b51e290b69f9d5bf97e5f9c1cbbdffbe7eb8afac741fddcd16",
+  "private_runner_sha256": "8a314dd0cb821b23f443b707d43980d5563aaab73feea74bbfebdbc35d3434f8",
+  "accepted_outer_rounds_before_start": 0,
+  "status": "ready_to_launch"
+}

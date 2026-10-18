@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_24",
+  "source_controller_elapsed_seconds": 180,
+  "source_complete_window_range": [0, 5],
+  "source_latest_six_mean_raw_utilization": {"cpu": 0.3586705942028952, "memory": 0.7895417882619974, "io": 0.44152087528683936},
+  "source_resource_envelope": {"cpu_quota_cores": 6.68, "memory_MiB": 257, "io_read_MiB_per_second": 64, "io_write_MiB_per_second": 35, "io_total_MiB_per_second": 99},
+  "source_absolute_mean": {"cpu_cores": 2.39591956927534, "memory_MiB": 202.91223958333333, "io_MiB_per_second": 43.710566653397095},
+  "selected_envelope": {"cpu_quota_cores": 6.68, "memory_MiB": 232, "io_read_MiB_per_second": 64, "io_write_MiB_per_second": 35},
+  "prediction_if_absolute_demand_is_preserved": {"cpu_utilization": 0.3586705942028952, "memory_utilization": 0.874621722341954, "io_utilization": 0.44152087528683936},
+  "phase_decoupling_preserved": true,
+  "first_decision_policy": "at 180 seconds, stop when any preferred mean gate is outside memory 0.85-0.95 or CPU/IO 0.30-0.50; only continue for CV convergence when all means pass",
+  "workload_unchanged": true,
+  "stability_contract_unchanged": true
+}

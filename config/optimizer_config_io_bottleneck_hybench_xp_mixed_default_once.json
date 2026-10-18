@@ -1,0 +1,439 @@
+{
+  "capability": {
+    "cpu": 6,
+    "memory": 12,
+    "io": 4.5
+  },
+  "vm_resource": {
+    "vm_name": "artifact-ubuntu20",
+    "cpu": 8,
+    "memory_gb": 16,
+    "read_mb": 60,
+    "write_mb": 10,
+    "disk_dev": "vda",
+    "boost_cpu": 64,
+    "boost_memory_gb": 128,
+    "boost_read_mb": 0,
+    "boost_write_mb": 0
+  },
+  "bottleneck_calibration": {
+    "enabled": false,
+    "resource": "io",
+    "min_util_pct": 80,
+    "target_util_pct": 95,
+    "write_back": true,
+    "backup": true
+  },
+  "optimizer": {
+    "mode": "gradient",
+    "gradient": {
+      "eta": 2.0,
+      "max_iter": 0,
+      "patience": 3,
+      "eta_growth_factor": 1.25,
+      "eta_shrink_factor": 1.0,
+      "initial_exploration_multiplier": 2.0,
+      "max_eta": 50.0,
+      "reexplore_after_no_improve": true,
+      "target_util": 0.75,
+      "near_cap_util": 0.85,
+      "near_cap_weight": 12.0,
+      "overload_weight": 30.0,
+      "underuse_weight": 2.0,
+      "bottleneck_underuse_scale": 0.25,
+      "max_param_delta_ratio": 0.35,
+      "exploration_acceptance_enabled": false,
+      "exploration_acceptance_rel_tol": 0.0,
+      "repeat_candidate_jump_enabled": true,
+      "repeat_candidate_jump_multiplier": 1.5,
+      "gamma": 0.8,
+      "min_eta": 0.001,
+      "aggressive_trial": {
+        "enabled": true,
+        "every": 3,
+        "after_no_improve": 1,
+        "eta_multiplier": 1.2,
+        "scale_multiplier": 1.2,
+        "params": [
+          "seq_page_cost",
+          "random_page_cost",
+          "cpu_tuple_cost",
+          "cpu_operator_cost",
+          "parallel_tuple_cost"
+        ]
+      },
+      "active_params": [
+        "seq_page_cost",
+        "random_page_cost",
+        "cpu_tuple_cost",
+        "cpu_operator_cost",
+        "parallel_tuple_cost"
+      ],
+      "boosted_params": [
+        "seq_page_cost",
+        "random_page_cost",
+        "cpu_tuple_cost",
+        "cpu_operator_cost",
+        "parallel_tuple_cost"
+      ],
+      "no_update_patience": 12
+    },
+    "bruteforce": {
+      "max_iter": 3,
+      "shrink_factor": 0.5,
+      "early_stop_threshold": 2
+    }
+  },
+  "param_step_scale": {
+    "seq_page_cost": 0.55,
+    "random_page_cost": 0.45,
+    "cpu_tuple_cost": 0.0009,
+    "cpu_index_tuple_cost": 0.0,
+    "cpu_operator_cost": 0.00025,
+    "parallel_setup_cost": 0.0,
+    "parallel_tuple_cost": 0.08
+  },
+  "metrics": {
+    "source": "vm-runtime",
+    "plan_estimator": {
+      "bootstrap_workload_once": true,
+      "resource_types": [
+        "memory",
+        "cpu",
+        "io"
+      ],
+      "shared": {
+        "calibration_factor": 1.0,
+        "explain_workers": 8,
+        "block_size": 8192,
+        "work_mem_bytes": 33554432,
+        "hash_mem_multiplier": 1.0
+      },
+      "memory": {
+        "enabled": true,
+        "overlap_factor": 0.6,
+        "concurrency_formula": "baseline_resident_plus_weighted_working",
+        "resident_memory_scale": 1.0,
+        "beta_sort": 1.0,
+        "beta_hash": 1.0,
+        "beta_hashagg": 1.0,
+        "beta_materialize": 1.0,
+        "beta_memoize": 0.0
+      },
+      "io": {
+        "enabled": true,
+        "seq_page_cost": 1.0,
+        "random_page_cost": 4.0,
+        "index_only_heap_back_alpha": 0.3,
+        "seq_scan_page_cap_factor": 1.0,
+        "seq_scan_effective_read_factor": 0.1,
+        "index_scan_page_cap_factor": 4.0,
+        "index_scan_effective_read_factor": 0.2,
+        "index_only_page_cap_factor": 2.0,
+        "index_only_effective_read_factor": 0.1,
+        "bitmap_index_page_cap_factor": 2.0,
+        "bitmap_index_effective_read_factor": 0.1,
+        "bitmap_heap_page_cap_factor": 1.0,
+        "bitmap_heap_effective_read_factor": 0.15,
+        "cache_miss_factors": {
+          "seq_scan": 1.5,
+          "index_scan": 0.5,
+          "index_only": 0.3,
+          "bitmap_index": 0.4,
+          "bitmap_heap": 1.0
+        },
+        "wal_blocks_per_write_statement": 1.0,
+        "read_overlap_factor": 1.0,
+        "write_overlap_factor": 1.0
+      },
+      "io_calibration": {
+        "enabled": false,
+        "topn": 20,
+        "apply_to_runtime": true,
+        "output_dir": "history/io_calibration"
+      },
+      "formula_calibration": {
+        "enabled": false,
+        "topn": 20,
+        "apply_to_runtime": true,
+        "output_dir": "history/formula_calibration",
+        "resources": [
+          "io",
+          "cpu",
+          "memory"
+        ]
+      },
+      "baseline_correction": {
+        "enabled": false,
+        "target_log10_error": 1.0,
+        "max_rounds": 5,
+        "learning_rate": 1.0,
+        "signal_floor": 0.001,
+        "max_scale": 1000.0,
+        "resources": [
+          "cpu",
+          "memory",
+          "io"
+        ]
+      },
+      "cpu": {
+        "enabled": true,
+        "cpu_tuple_cost": 0.01,
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "parallel_setup_cost": 1000.0,
+        "parallel_tuple_cost": 0.1,
+        "cpu_seconds_per_work": 1e-06,
+        "cpu_seconds_bias": 0.0,
+        "overlap_factor": 1.0,
+        "fallback_cost_scale": 1.0
+      },
+      "logging": {
+        "enabled": true,
+        "log_topn": 10,
+        "log_operator_breakdown": true,
+        "log_query_breakdown": true
+      }
+    },
+    "docker_runtime": {
+      "container": "pg-master",
+      "interval_sec": 2,
+      "warmup_sec": 0,
+      "memory_mode": "pss",
+      "io_from_prometheus": false
+    },
+    "vm_runtime": {
+      "host": "192.0.2.8",
+      "ssh_target": "anonymous@192.0.2.8",
+      "ssh_user": "anonymous",
+      "ssh_port": 22,
+      "ssh_identity_file": "",
+      "interval_sec": 2,
+      "warmup_sec": 0,
+      "connect_timeout_sec": 5,
+      "memory_mode": "pg_proc_rss",
+      "disk_devices": [
+        "vda"
+      ]
+    }
+  },
+  "prometheus": {
+    "url": "http://localhost:9090",
+    "step": "5s",
+    "promql": {
+      "memory": "max_over_time(container_memory_working_set_bytes{name=~\"pg-master\"}[1m])",
+      "cpu": "rate(container_cpu_user_seconds_total{name=~\"pg-master\"}[1m])",
+      "io_read": "rate(node_disk_read_bytes_total{device=\"loop15\"}[1m])",
+      "io_write": "rate(node_disk_written_bytes_total{device=\"loop15\"}[1m])",
+      "qps": "rate(pg_stat_statements_calls{datname=\"hybench_sf10x\"}[1m])",
+      "concurrency": "sum(pg_active_sessions_active_sessions{dbname=\"hybench_sf10x\"})",
+      "query_count": "rate(pg_stat_statements_calls{datname=\"hybench_sf10x\"}[1m])",
+      "query_time": null,
+      "p99_read": null,
+      "p99_write": null
+    }
+  },
+  "benchmark": {
+    "workload_cmd": "cd /home/anonymous/HyBench-2024-master && tmp=conf/pg.props.runxp.io_mixed.tmp && cp conf/pg.props \"$tmp\" && sed -i 's/^xtpclient=.*/xtpclient=16/' \"$tmp\" && sed -i 's/^xapclient=.*/xapclient=4/' \"$tmp\" && sed -i 's/^xpRunMins=.*/xpRunMins=10/' \"$tmp\" && sed -i 's/^random_seed=.*/random_seed=4508333/' \"$tmp\" && sed -i 's#^url_ap=.*#url_ap=jdbc:postgresql://192.0.2.8:25432/hybench_sf10x?options=-c%20statement_timeout%3D600000#' \"$tmp\" && sed -i '/^ap_query_ids=/d;/^ap_query_weights=/d;/^ap_query_sequence=/d;/^ap_query_sequence_limit=/d' \"$tmp\" && printf '\\nap_query_sequence=6,12,8,6,12,13,6,8,12,6\\nprogress_windows=10\\n' >> \"$tmp\" && bash hybench -t runxp -c \"$tmp\" -f conf/stmt_postgres.toml",
+    "warmup_enabled": false
+  },
+  "pre_optimizer_process_cleanup": {
+    "enabled": true,
+    "patterns": [
+      "com.hybench.HyBench -t runap",
+      "bash hybench -t runap",
+      "com.hybench.HyBench -t runxp",
+      "bash hybench -t runxp",
+      "com.hybench.HyBench -t runtp",
+      "bash hybench -t runtp",
+      "com.hybench.HyBench -t runhtap",
+      "bash hybench -t runhtap",
+      "conf/pg.props.runap.weighted.tmp",
+      "conf/pg.props.runxp.io_mixed.tmp"
+    ],
+    "term_timeout_s": 2.0
+  },
+  "pre_benchmark_recovery": {
+    "enabled": true,
+    "required": false,
+    "target_db": "hybench_sf10x",
+    "snapshot_restore": {
+      "enabled": true,
+      "required": true,
+      "only_for_tp_workloads": true,
+      "runner": "local",
+        "command": "OPTIMIZER_CONFIG_PATH=/home/anonymous/program/resource_adaptive/config/optimizer_config_io_bottleneck_hybench_xp_mixed_default_once.json DB_HOST=192.0.2.8 DB_PORT=25432 DB_USER=postgres DB_PASSWORD=CHANGE_ME DB_NAME=hybench_sf10x SF=10x /home/anonymous/program/resource_adaptive/shell/rebuild_hybench_sf10x.sh",
+      "timeout_sec": 7200,
+      "tags": [
+        "baseline",
+        "iteration",
+        "final"
+      ]
+    },
+    "vm_drop_cache": {
+      "enabled": true,
+      "required": false,
+      "ssh_target": "anonymous@192.0.2.8",
+      "ssh_port": 22,
+      "ssh_identity_file": "",
+      "command": "sudo -n /home/anonymous/bin/drop_vm_cache.sh",
+      "tags": [
+        "baseline",
+        "iteration",
+        "final"
+      ]
+    },
+    "sql": [
+      "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'hybench_sf10x' AND pid <> pg_backend_pid() AND state <> 'idle';"
+    ]
+  },
+  "noise_guard": {
+    "enabled": true,
+    "max_retries": 1,
+    "io_util_threshold": 1.0,
+    "wal_bytes_threshold": 1073741824,
+    "buffers_checkpoint_threshold": 100000,
+    "buffers_backend_threshold": 100000,
+    "wait_event_min_count": 1
+  },
+  "logging": {
+    "history_path": "history/io_bottleneck_hybench_xp_mixed_default_once_history.jsonl"
+  },
+  "final_evaluation": {
+    "degradation_check_enabled": false
+  },
+  "plan_capture": {
+    "enabled": true,
+    "limit": 100,
+    "output_dir": "history/io_bottleneck_hybench_xp_mixed_default_once_plan_captures",
+    "candidate_limit": 400,
+    "coverage_pct": 0.9,
+    "min_queries": 10,
+    "slow_mean_ms": 10000.0,
+    "modes": [
+      "generic",
+      "custom"
+    ],
+    "whitelist_queryids": [],
+    "whitelist_query_substrings": [
+      "select cid, total_expense",
+      "select c.name, sum(t.amount)",
+      "With big_account_inbound",
+      "select co.companyid, cu.custid"
+    ],
+    "custom_plan_params": {}
+  },
+  "post_benchmark_cleanup": {
+    "enabled": true,
+    "sql": "DISCARD ALL;",
+    "terminate_idle": false,
+    "target_user": "postgres",
+    "target_db": "hybench_sf10x",
+    "target_app": "",
+    "restart_db": true,
+    "restart_container_first": false,
+    "restart_required": true,
+    "vm_restart_cmd": "sudo -n -u postgres /usr/lib/postgresql/17/bin/pg_ctl -D /home/anonymous/pg_master/pg_data -w -t 600 -m fast restart </dev/null >/tmp/resource_adaptive_pg_restart.log 2>&1; rc=$?; cat /tmp/resource_adaptive_pg_restart.log; exit $rc",
+    "vm_restart_ssh_target": "anonymous@192.0.2.8",
+    "vm_restart_ssh_port": 22,
+    "vm_restart_ssh_identity_file": "",
+    "restart_tags": [
+      "baseline",
+      "iteration",
+      "final"
+    ],
+    "db_container": "pg-master",
+    "pg_ctl_path": "/usr/lib/postgresql/17/bin/pg_ctl",
+    "pg_data_dir": "/data/pg_data",
+    "ready_db": "hybench_sf10x",
+    "ready_sql": "SELECT 1;",
+    "restart_wait_timeout_sec": 600,
+    "restart_poll_interval_sec": 2
+  },
+  "auto_explain": {
+    "enabled": false,
+    "required": false,
+    "collect_logs": true,
+    "collect_sql_before_baseline": true,
+    "disable_after_collect": true,
+    "output_dir": "history/io_bottleneck_hybench_xp_mixed_default_once_auto_explain",
+    "db_container": "pg-master",
+    "log_subdir": "pg_data/log",
+    "collect_pattern": "*.log",
+    "parse_pattern": ".log",
+    "log_topn": 10,
+    "postgres_logging": {
+      "logging_collector": true,
+      "log_destination": "stderr",
+      "log_directory": "log",
+      "log_filename": "postgresql-%Y-%m-%d_%H%M%S.log"
+    },
+    "settings": {
+      "log_min_duration": "0",
+      "log_analyze": true,
+      "log_buffers": true,
+      "log_format": "json",
+      "log_nested_statements": true,
+      "log_verbose": true
+    }
+  },
+  "postgres": {
+    "host": "192.0.2.8",
+    "port": 25432,
+    "user": "postgres",
+    "dbname": "hybench_sf10x"
+  },
+  "initial_params": {
+    "seq_page_cost": 0.5,
+    "random_page_cost": 2.0,
+    "cpu_tuple_cost": 0.03,
+    "cpu_index_tuple_cost": 0.005,
+    "cpu_operator_cost": 0.01,
+    "parallel_setup_cost": 100.0,
+    "parallel_tuple_cost": 0.01
+  },
+  "param_ranges": {
+    "seq_page_cost": {
+      "min_value": 1.0,
+      "max_value": 7.2,
+      "discrete_count": 20,
+      "priority": 1
+    },
+    "random_page_cost": {
+      "min_value": 14.0,
+      "max_value": 20.0,
+      "discrete_count": 20,
+      "priority": 2
+    },
+    "cpu_tuple_cost": {
+      "min_value": 1e-06,
+      "max_value": 0.009,
+      "discrete_count": 20,
+      "priority": 3
+    },
+    "cpu_index_tuple_cost": {
+      "min_value": 0.005,
+      "max_value": 0.005,
+      "discrete_count": 1,
+      "priority": 4
+    },
+    "cpu_operator_cost": {
+      "min_value": 1e-06,
+      "max_value": 0.0025,
+      "discrete_count": 20,
+      "priority": 5
+    },
+    "parallel_setup_cost": {
+      "min_value": 1000.0,
+      "max_value": 1000.0,
+      "discrete_count": 1,
+      "priority": 6
+    },
+    "parallel_tuple_cost": {
+      "min_value": 0.35,
+      "max_value": 0.85,
+      "discrete_count": 20,
+      "priority": 7
+    }
+  }
+}

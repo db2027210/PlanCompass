@@ -1,0 +1,88 @@
+{
+  "schema_version": "job_target10_v57_fresh0_resource_median_manifest_v1",
+  "scenario": "JOB",
+  "status": "sealed_offline_not_deployed",
+  "campaign_root": "autonomous_target10_v57_fresh0",
+  "campaign_contract": "job_v57_fresh0_resource_median_no_retry_v1",
+  "authoritative_handoff": {
+    "v55_initial_accepted_count": 0,
+    "v55_countable_accepted_in_v57": 0,
+    "v57_initial_accepted_count": 0,
+    "accepted_target": 10,
+    "baseline_score": 4.416709205648302,
+    "baseline_range_is_point": true,
+    "gradient_observation_count": 0,
+    "external_replay_counters_are_never_decremented": true,
+    "v55_diagnostics_role": "historical_training_only",
+    "v55_formal_failure_role": "technical_quarantine_only"
+  },
+  "failed_fingerprint_policy": {
+    "expected_v55_failed_batch": "physical1_valid0_technical1",
+    "quarantine_is_zero_call": true,
+    "retry_allowed": false,
+    "candidate_reuse_allowed": false,
+    "accepted_or_gradient_or_incumbent_or_range_update": false,
+    "fail_closed_unless_exactly_one_failed_rank_binds_to_selection": true
+  },
+  "sealed_explain_fix": {
+    "old_source": "process_global_sys_argv_1",
+    "new_source": "explicit_args_selection",
+    "selection_path_must_be_absolute": true,
+    "selection_sha256_pinned_for_batch": true,
+    "exact_parameter_match_count": 1,
+    "noncorner_three_level_fingerprint_required": true,
+    "binding_occurs_before_bridge_ordinal_claim": true,
+    "remote_bridge_contract": "job_v55_preexecution_sealed_explain_binding_v1",
+    "remote_bridge_sha256": "406e56aea7b148840a64dff88b190468ed78f6f3683468553cbe31ed57baef23"
+  },
+  "formal_acceptance": {
+    "contract": "job_three_independent_exact_point_resource_median_rescored_v3",
+    "observations": [
+      "clean5_discovery_exact_point_resource",
+      "clean5_repeat_exact_point_resource",
+      "new_formal_raw_resource"
+    ],
+    "exact_validated_plan_regime_required": true,
+    "resource_aggregation": "componentwise_median_of_three",
+    "score_aggregation": "score_recomputed_from_robust_resource_utilization",
+    "raw_formal_resource_and_score_preserved": true,
+    "robust_resource_utilization_and_score_preserved": true,
+    "qps_used_for_inner_scoring": false,
+    "probe_state_update_allowed": false,
+    "rejected_state_update_allowed": false,
+    "accepted_state_score_source": "robust_resource_rescore"
+  },
+  "autonomy": {
+    "manual_candidate_injection": false,
+    "candidate_source": "sealed_algorithmic_successor_discovery",
+    "top5_roles": "trusted3_probe2",
+    "same_scene_real_replay_serial": true,
+    "diagnostic_batch_physical_cap": 5,
+    "successor_generator_slots": 2,
+    "per_generator_timeout_seconds": 1800,
+    "successor_discovery_wall_timeout_seconds": 3720,
+    "timeout_or_incomplete_generation": "sealed_fail_closed_no_automatic_regeneration",
+    "bounded_v55_v56_discovery_hardening_preserved": true
+  },
+  "files": {
+    "tools/run_job_round8_strict_serial_base_v11_explicit_selection.py": "13ad9a6a78c6438794c9c36688b91e0398f8ae5a8eae115c56e4161adc8c23ab",
+    "tools/run_job_round8_strict_serial_robust_v10_resource_median.py": "e4738c9eb95e123a38e31410bb067bf817bb8b54e234acbb2f5bc14ed89f2b03",
+    "tools/job_fresh10_target10_autonomous_v57.py": "ebc884eefe3cc5663ec4ae5738d46ff564afe78e4b56c68ef4b440996198285b",
+    "tools/bootstrap_job_v57_fresh0.py": "ed9b5964a49b4e70f8f615f6928a67e5f747e83f989772e72b159442f8e45002",
+    "tools/launch_job_target10_autonomous_v57_fresh0.sh": "d12611bb16c35f1a8724b5b08b019b770eecb7ba125733e3ac44c67ba4b25220",
+    "tests/test_job_v57_offline.py": "3d5d8ff3c84353479690dab03b1b9e43e24047f600a0de4b0960490e3952cef1"
+  },
+  "verification": {
+    "v57_offline_tests_passed": 5,
+    "inherited_bounded_discovery_tests_passed": 5,
+    "inherited_bridge_boundary_tests_passed": 5,
+    "legacy_three_observation_fixture_test_passed": true,
+    "python_compile_passed": true,
+    "launcher_shell_syntax_passed": true,
+    "git_diff_check_passed": true,
+    "workload_calls": 0,
+    "ssh_calls": 0,
+    "mysql_touched": false,
+    "deployed": false
+  }
+}

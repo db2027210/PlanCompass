@@ -1,0 +1,115 @@
+{
+  "schema_version": 2,
+  "created_for": "full-real Cartesian PG17 benchmark matrix",
+  "updated_at": "2026-07-20",
+  "cpu_pin_map": "config/pg_cpu_pin_map_20260720.json",
+  "data_root": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718",
+  "framework_root": "/disk1/resource_adaptive/bruteforce_pg17_framework_20260717",
+  "network_mode": "host",
+  "rules": {
+    "refuse_existing_container_names": true,
+    "refuse_occupied_ports": true,
+    "refuse_cpuset_overlap_with_running_containers": true,
+    "do_not_modify_external_processes": true,
+    "postgres_image": "postgres:17",
+    "parallel_workers_per_run": 2,
+    "note": "2026-07-20: moved fullgrid cpusets off postgre HT range (416-471) and MySQL (96-127) onto exclusive node0 banks 16-95 + SMT."
+  },
+  "seeds": {
+    "benchbase_job": {
+      "container": "ra_fullgrid_pg17_seed_20260718",
+      "port": 59500,
+      "pgdata": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/seed/pgdata",
+      "databases": [
+        "fullgrid_tpcc",
+        "template_fullgrid_tpcc",
+        "fullgrid_tpch",
+        "template_fullgrid_tpch",
+        "fullgrid_job",
+        "template_fullgrid_job"
+      ]
+    },
+    "hybench": {
+      "pgdata": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/hybench_seed/pgdata",
+      "source_state": "cleanly stopped PG17 copy"
+    }
+  },
+  "pools": {
+    "hybench_memory": {
+      "ports": [59511, 59512],
+      "cpu_sets": ["16-23,272-279", "24-31,280-287"],
+      "containers": [
+        "ra_fullgrid_hybench_mem_20260718_w1",
+        "ra_fullgrid_hybench_mem_20260718_w2"
+      ],
+      "memory": "2200m",
+      "benchmarks": ["hybench_ap"],
+      "targets": ["memory"]
+    },
+    "hybench_cpu": {
+      "ports": [59513, 59514],
+      "cpu_sets": ["32-35,288-291", "36-39,292-295"],
+      "containers": [
+        "ra_fullgrid_hybench_cpu_20260718_w1",
+        "ra_fullgrid_hybench_cpu_20260718_w2"
+      ],
+      "memory": "12g",
+      "benchmarks": ["hybench_tp"],
+      "targets": ["cpu"],
+      "restore_type": "single_pristine_start_then_continuous_real_replay",
+      "per_candidate_restore": false,
+      "pre_validation_warmup_runs": 1
+    },
+    "hybench_none": {
+      "ports": [59515, 59516],
+      "cpu_sets": ["40-47,296-303", "48-55,304-311"],
+      "containers": [
+        "ra_fullgrid_hybench_none_20260718_w1",
+        "ra_fullgrid_hybench_none_20260718_w2"
+      ],
+      "memory": "16g",
+      "benchmarks": ["hybench_ap", "hybench_tp", "hybench_xp"],
+      "targets": ["none"]
+    },
+    "benchbase_job": {
+      "ports": [59521, 59522],
+      "cpu_sets": ["56-63,312-319", "64-71,320-327"],
+      "containers": [
+        "ra_fullgrid_generic_20260718_w1",
+        "ra_fullgrid_generic_20260718_w2"
+      ],
+      "memory": "16g",
+      "benchmarks": ["tpcc", "tpch", "job"],
+      "targets": ["cpu", "memory", "none"]
+    },
+    "benchbase_job_memory": {
+      "ports": [59523, 59524],
+      "cpu_sets": ["72-79,328-335", "80-87,336-343"],
+      "containers": [
+        "ra_fullgrid_generic_mem_20260718_w1",
+        "ra_fullgrid_generic_mem_20260718_w2"
+      ],
+      "memory": "2g",
+      "benchmarks": ["tpch", "job"],
+      "targets": ["memory"],
+      "calibration_basis": {
+        "benchmark": "tpch",
+        "measured_working_set_gib": 1.4719,
+        "source_pool_memory_gib": 16,
+        "reason": "16g baseline was only about 9.2% utilized"
+      }
+    },
+    "hybench_io_existing": {
+      "ports": [59441, 59442],
+      "cpu_sets": ["88-92,344-348", "93-95,218-219,349-351,474-475"],
+      "containers": [
+        "binary_plan_tuning_hybenchxp_io_iso_20260716_w1",
+        "binary_plan_tuning_hybenchxp_io_iso_20260716_w2"
+      ],
+      "memory": "existing",
+      "benchmarks": ["hybench_xp"],
+      "targets": ["io"],
+      "reuse_only_after_current_run_finishes": true
+    }
+  }
+}

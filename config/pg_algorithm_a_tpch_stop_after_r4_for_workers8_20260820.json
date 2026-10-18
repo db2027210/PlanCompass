@@ -1,0 +1,16 @@
+{
+  "authorized": true,
+  "contract": "algorithm_a_round_boundary_stop_v1",
+  "reason": "transition_tpch_from_2_to_8_workers_using_completed_job_xp_cpu_xp_io_slots",
+  "requested_at": "2026-08-20T01:45:00+08:00",
+  "requested_parallelism": 8,
+  "requires_completed_lanes": [
+    "job_memory",
+    "xp_cpu",
+    "xp_io"
+  ],
+  "target_completed_round": 4,
+  "preserve_accepted": true,
+  "preserve_incumbent": true,
+  "preserve_ranges": true
+}

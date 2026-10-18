@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "target_attempt": "attempt_32",
+  "immutable_target_resource": "memory",
+  "target_resource_mutation_allowed": false,
+  "single_variable_adjustment": {
+    "variable": "memory_bytes",
+    "previous_value": 243269632,
+    "previous_observed_utilization": 0.8256422488625478,
+    "target_utilization": 0.90,
+    "formula": "243269632 * 0.8256422488625478 / 0.90",
+    "computed_bytes": 223155311.76533335,
+    "selected_bytes": 223155000
+  },
+  "resource_contract": {
+    "cpu_quota_cores": 6.68,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 223155000,
+    "memory_swap_bytes": 223155000,
+    "io_read_bps": 67108864,
+    "io_write_bps": 36700160,
+    "io_total_bps": 103809024,
+    "pids_limit": 512
+  },
+  "resident_memory_contract": {
+    "bytes": 31457280,
+    "same_owned_container_required": true,
+    "same_cgroup_as_container_init_required": true,
+    "helper_source_sha256": "92c367f21256259f53ead73a7af61376db86e4edf2be8b980db84131b0c596d0",
+    "helper_binary_sha256": "2fc5f4bf0e36a1d9f6abc773d6a719d7baa6c7596ed34d346eee56a8de209ecb",
+    "cgroup_v1_v2_probe_required": true,
+    "cleanup_required": true
+  },
+  "resource_target": {
+    "memory_preferred_band_inclusive": [0.85, 0.95],
+    "cpu_hard_band_inclusive": [0.3, 0.5],
+    "io_hard_band_inclusive": [0.3, 0.5]
+  },
+  "frozen_from_attempt31": [
+    "cpu_quota_cores",
+    "cpuset_cpus",
+    "cpuset_mems",
+    "io_read_bps",
+    "io_write_bps",
+    "pids_limit",
+    "resident_memory_contract",
+    "HyBench AP1-AP13 workload and clients"
+  ],
+  "r0_resource_gate_contract_sha256": "547ec566adbb78b51e290b69f9d5bf97e5f9c1cbbdffbe7eb8afac741fddcd16",
+  "private_runner_sha256": "76a1776eadd837132df777ac34ebb8a316fa8fd7310c6a4969490ed758996b41",
+  "accepted_outer_rounds_before_start": 0,
+  "status": "ready_to_launch"
+}

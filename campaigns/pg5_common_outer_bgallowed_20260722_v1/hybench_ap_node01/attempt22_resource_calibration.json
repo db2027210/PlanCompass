@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_21",
+  "source_controller_elapsed_seconds": 180,
+  "source_complete_window_range": [0, 5],
+  "source_latest_six_mean_raw_utilization": {
+    "cpu": 0.48668941800434334,
+    "memory": 0.7131405409946238,
+    "io": 0.5811968897755126
+  },
+  "source_resource_envelope": {
+    "cpu_quota_cores": 5.13,
+    "memory_MiB": 372,
+    "io_read_MiB_per_second": 64,
+    "io_write_MiB_per_second": 4,
+    "io_total_MiB_per_second": 68
+  },
+  "source_absolute_mean": {
+    "cpu_cores": 2.4967167143622815,
+    "memory_MiB": 265.28828125,
+    "io_MiB_per_second": 39.52138850473486
+  },
+  "selected_envelope": {
+    "cpu_quota_cores": 5.13,
+    "memory_MiB": 303,
+    "io_read_MiB_per_second": 64,
+    "io_write_MiB_per_second": 35
+  },
+  "prediction_if_absolute_demand_is_preserved": {
+    "cpu_utilization": 0.4866894180043434,
+    "memory_utilization": 0.8755388820132014,
+    "io_utilization": 0.3992059444922713
+  },
+  "phase_decoupling_preserved": {
+    "read_cap_unchanged_MiB_per_second": 64,
+    "write_cap_is_metric_denominator_adjustment_MiB_per_second": 35,
+    "intent": "retain the shortened read-bound phase observed in attempt21 while centering the sum-over-cap IO metric"
+  },
+  "first_decision_policy": "at 180 seconds, stop when any preferred mean gate is outside memory 0.85-0.95 or CPU/IO 0.30-0.50; only continue for CV convergence when all means pass",
+  "workload_unchanged": true,
+  "stability_contract_unchanged": true
+}

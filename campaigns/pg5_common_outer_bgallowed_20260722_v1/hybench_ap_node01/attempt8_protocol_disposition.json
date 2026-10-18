@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_8",
+  "recorded_at": "2026-07-22T17:14:00+08:00",
+  "status": "invalid_protocol_timing",
+  "eligible_as_formal_r0": false,
+  "eligible_for_outer_entry": false,
+  "accepted_outer_rounds_after_disposition": 0,
+  "reason": "The invocation fixed measurement_max_seconds to 180 and declared stable_early_stop_runtime_support false instead of using minimum 180, maximum 600 and online six-window early stop.",
+  "stage_at_stop": "warmup_in_progress",
+  "invalid_timing_readback": {
+    "warmup_seconds": 60,
+    "measurement_max_seconds": 180,
+    "stable_early_stop_requested": true,
+    "stable_early_stop_runtime_support": false
+  },
+  "process_disposition": {
+    "runner_pid": 87448,
+    "background_sampler_pid": 87449,
+    "runner_and_workload_process_group": 87448,
+    "signal": "SIGTERM",
+    "signal_scope": "owned_attempt8_process_group_only",
+    "background_sampler_exit": "natural_after_watched_runner_exit",
+    "owned_container_name": "p24_postgresql_recost_gradient_descent_ap_pg5hya201v1",
+    "owned_container_id": "5b3b13e4847dbc7c38712df5a332578eee72f6c791a8635f0d781bd64b70df03",
+    "container_before_stop": {"health": "healthy", "oom_killed": false, "restart_count": 0},
+    "container_stopped_and_removed": true,
+    "foreign_processes_or_containers_touched": false
+  },
+  "preserved_evidence": {
+    "point_state_path": "results/shared_baseline/P0_repeat_1_attempt_8/point_state.json",
+    "point_state_sha256": "3ccaafcf0dbea75f2f90d3d32b4bd9d2695a1a0feda029f3cacf924a9a6cea02",
+    "baseline_invocation_path": "results/shared_baseline/baseline_invocation_attempt_8.json",
+    "baseline_invocation_sha256": "4b4afb9e625eb6bb74d3742cf788e609e91bbc15c14ced57203b48a0d533b50c",
+    "background_provenance_path": "logs/host_background_attempt_8.jsonl",
+    "background_provenance_sha256": "aa360616cec9334bc8b70eaa26394bd78bf1e790ddcc4bad119f8ac693b8d842",
+    "partial_result_directory_preserved": true,
+    "original_point_state_mutated": false
+  },
+  "bound_contracts": {
+    "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+    "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e"
+  }
+}

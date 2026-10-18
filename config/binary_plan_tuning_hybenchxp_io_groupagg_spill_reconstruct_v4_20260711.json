@@ -1,0 +1,244 @@
+{
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": 56441,
+    "user": "postgres",
+    "password": "postgres",
+    "dbname": "hybench_sf10x"
+  },
+  "metrics": {
+    "plan_estimator": {
+      "resource_types": ["memory", "cpu", "io"],
+      "shared": {
+        "calibration_factor": 1,
+        "explain_workers": 4,
+        "block_size": 8192,
+        "work_mem_bytes": 16777216,
+        "hash_mem_multiplier": 1,
+        "feature_window_seconds": 10,
+        "normalize_model_features_to_window": true
+      },
+      "memory": {
+        "enabled": true,
+        "overlap_factor": 1,
+        "concurrency_formula": "baseline_resident_plus_weighted_working",
+        "resident_memory_mb": 128,
+        "beta_sort": 1,
+        "beta_hash": 1,
+        "beta_hashagg": 1,
+        "beta_materialize": 1,
+        "beta_memoize": 0
+      },
+      "cpu": {
+        "enabled": true,
+        "cpu_tuple_cost": 0.01,
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "parallel_setup_cost": 1000,
+        "parallel_tuple_cost": 0.1,
+        "cpu_seconds_per_work": 0.000001,
+        "cpu_seconds_bias": 0,
+        "overlap_factor": 1,
+        "fallback_cost_scale": 1
+      },
+      "io": {
+        "enabled": true,
+        "seq_page_cost": 1,
+        "random_page_cost": 4,
+        "index_only_heap_back_alpha": 0.3,
+        "seq_scan_page_cap_factor": 1,
+        "seq_scan_effective_read_factor": 0.1,
+        "index_scan_page_cap_factor": 4,
+        "index_scan_effective_read_factor": 0.2,
+        "index_only_page_cap_factor": 2,
+        "index_only_effective_read_factor": 0.1,
+        "bitmap_index_page_cap_factor": 2,
+        "bitmap_index_effective_read_factor": 0.1,
+        "bitmap_heap_page_cap_factor": 1,
+        "bitmap_heap_effective_read_factor": 0.15,
+        "cache_miss_factors": {
+          "seq_scan": 1.5,
+          "index_scan": 0.5,
+          "index_only": 0.3,
+          "bitmap_index": 0.4,
+          "bitmap_heap": 1
+        },
+        "wal_blocks_per_write_statement": 1,
+        "read_overlap_factor": 1,
+        "write_overlap_factor": 1
+      },
+      "logging": {
+        "enabled": true,
+        "log_topn": 10,
+        "log_operator_breakdown": true,
+        "log_query_breakdown": true
+      }
+    }
+  },
+  "initial_params": {
+    "seq_page_cost": 1,
+    "random_page_cost": 4,
+    "cpu_tuple_cost": 0.01,
+    "cpu_index_tuple_cost": 0.005,
+    "cpu_operator_cost": 0.0025,
+    "parallel_setup_cost": 1000,
+    "parallel_tuple_cost": 0.1
+  },
+  "param_ranges": {
+    "seq_page_cost": {"min_value": 0.0001, "max_value": 100},
+    "random_page_cost": {"min_value": 0.0001, "max_value": 20},
+    "cpu_tuple_cost": {"min_value": 0.000001, "max_value": 1},
+    "cpu_index_tuple_cost": {"min_value": 0.000001, "max_value": 1},
+    "cpu_operator_cost": {"min_value": 0.000001, "max_value": 1},
+    "parallel_setup_cost": {"min_value": 0, "max_value": 10000},
+    "parallel_tuple_cost": {"min_value": 0.000001, "max_value": 10}
+  },
+  "plan_capture": {
+    "modes": ["generic"],
+    "custom_plan_params": {}
+  },
+  "binary_plan_tuning": {
+    "workload_name": "hybenchxp",
+    "output_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/runs/manual_io_groupagg_spill_v4_20260711",
+    "environment": {
+      "runtime": "docker",
+      "container_prefix": "binary_plan_tuning_hybenchxp",
+      "container": "binary_plan_tuning_hybenchxp_io_disk1",
+      "host_port": 56441,
+      "data_dir": "/disk1/replay_mysql/resource_adaptive/binary_plan_tuning_hybenchxp/workers/io_disk1/pgdata",
+      "log_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/logs",
+      "preferred_data_roots": ["/disk1", "/disk2"],
+      "selected_data_root": "/disk1"
+    },
+    "workload_context": {
+      "workload_family": "CH",
+      "concurrency": 1,
+      "feature_window_seconds": 10,
+      "sql_count": 1
+    },
+    "workload": {
+      "name": "hybenchxp",
+      "plan_sql_file": "shell/hybenchxp_io_groupagg_spill_plan_workload_v1.sql"
+    },
+    "endpoint_screening": {
+      "max_queries": 20,
+      "top_slow_sql": 10,
+      "high_calls_sql": 10,
+      "resource_contribution_sql": true,
+      "endpoint_workers": 2,
+      "random_seed": 20260711,
+      "pg_stat_statements_limit": 100
+    },
+    "binary_search": {
+      "max_rounds": 23,
+      "max_candidates_per_round": 128,
+      "plan_probe_workers": 2,
+      "stop_only_on_epsilon": true,
+      "full_bruteforce": true,
+      "disable_candidate_reduction": true,
+      "run_plan_probe_for_full_bruteforce": true,
+      "no_improvement_round_limit": 0,
+      "replay_candidate_pruning": {"enabled": false},
+      "epsilon": {"default": 0.001, "parallel_setup_cost": 1},
+      "zero_accepted_backtrack": true,
+      "zero_accepted_backtrack_factor": 2
+    },
+    "acceptance_policy": {
+      "min_target_drop_pct": 0,
+      "min_db_qps_gain_pct": 15,
+      "non_target_drop_guard_pct": 35,
+      "hybench_qps_guard_drop_pct": 50,
+      "hybench_tps_guard_drop_pct": 50,
+      "p95_guard_regression_pct": 200,
+      "p99_guard_regression_pct": 500,
+      "resource_capacity": {"cpu_cores": 3, "memory_gib": 0.75},
+      "target_sweet_spot": {
+        "cpu": {"min_pct": 65, "max_pct": 80},
+        "memory": {"min_pct": 70, "max_pct": 80},
+        "io": {"min_mib_s": 50, "max_mib_s": 75}
+      },
+      "target_min_other_sweet_resources": 1
+    },
+    "validation": {
+      "docker_runtime": {
+        "container": "binary_plan_tuning_hybenchxp_io_disk1",
+        "interval_sec": 1,
+        "warmup_sec": 10,
+        "memory_mode": "working_set",
+        "io_mode": "cgroup",
+        "checkpoint_before_validation": true,
+        "checkpoint_after_validation": true,
+        "checkpoint_settle_sec": 2,
+        "evict_data_file_cache_before_validation": true,
+        "evict_data_file_cache_max_files": 0,
+        "evict_data_file_cache_max_bytes": 0,
+        "min_stable_samples": 45,
+        "evict_data_file_cache_host_sudo": true,
+        "evict_data_file_cache_container_fallback": true
+      },
+      "parallel_baseline": {
+        "enabled": true,
+        "compare_mode": "same_worker",
+        "parallelism": 1,
+        "required": true,
+        "target_overrides": {"io": {"parallelism": 1}}
+      },
+      "docker_workers": {
+        "enabled": true,
+        "cpu_memory_parallelism": 1,
+        "io_parallelism": 1,
+        "none_parallelism": 1,
+        "workers": [
+          {
+            "name": "io_disk1",
+            "targets": ["io"],
+            "container": "binary_plan_tuning_hybenchxp_io_disk1",
+            "host": "127.0.0.1",
+            "port": 56441,
+            "dbname": "hybench_sf10x",
+            "user": "postgres",
+            "password": "postgres",
+            "data_dir": "/disk1/replay_mysql/resource_adaptive/binary_plan_tuning_hybenchxp/workers/io_disk1/pgdata",
+            "disk_root": "/disk1",
+            "cpuset_cpus": "80-82"
+          }
+        ]
+      },
+      "hybench_xp": {
+        "enabled": true,
+        "hybench_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master",
+        "launcher": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master/hybench_unblocked",
+        "respect_external_runxp_guard": false,
+        "external_runxp_block_files": ["/tmp/bonect_block_external_runxp"],
+        "base_props_file": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master/conf/pg.props",
+        "statement_file": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master/conf/stmt_postgres.toml",
+        "sf": "10x",
+        "xtpclient": 1,
+        "xapclient": 1,
+        "target_overrides": {
+          "io": {
+            "xtpclient": 1,
+            "xapclient": 1,
+            "ap_query_ids": "6",
+            "ap_query_weights": "100",
+            "ap_query_sequence": "6",
+            "progress_windows": "10",
+            "setup_sql_files": [
+              "shell/hybenchxp_io_groupagg_spill_setup_16mb.sql",
+              "shell/hybenchxp_io_groupagg_spill_vacuum.sql"
+            ],
+            "statement_sql_files": {
+              "AP-6": "shell/hybenchxp_io_ap6_groupagg_spill_switch_v1.sql"
+            }
+          }
+        },
+        "xp_run_mins": 1,
+        "fresh_interval": 20,
+        "random_seed": 4508333,
+        "restore_from_template_before_validation": true,
+        "template_db": "hybench_sf10x_base",
+        "props_output_dir": "hybench_props"
+      }
+    }
+  }
+}

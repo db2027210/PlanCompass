@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_30",
+  "immutable_target_resource": "memory",
+  "resource_envelope": {
+    "cpu_quota_cores": 6.68,
+    "memory_bytes": 243269632,
+    "io_read_bps": 67108864,
+    "io_write_bps": 36700160,
+    "resident_memory_bytes": 31457280
+  },
+  "first_decision_six_window_block": {
+    "end_elapsed_seconds": 180,
+    "coverage": 1.0,
+    "cpu_mean": 0.350950294011583,
+    "cpu_cross_window_cv": 0.20268020694832545,
+    "memory_mean": 0.8504667669420497,
+    "memory_cross_window_cv": 0.05904543193652017,
+    "io_mean": 0.4750170628980371,
+    "io_cross_window_cv": 0.19483592231639674,
+    "resource_mean_profile_passed": true,
+    "stability_passed": false
+  },
+  "stable_six_window_block": {
+    "end_elapsed_seconds": 300,
+    "coverage": 1.0,
+    "cpu_cross_window_cv": 0.09849968356679445,
+    "memory_cross_window_cv": 0.03286559380062697,
+    "io_cross_window_cv": 0.09054097126112262,
+    "stability_passed": true,
+    "stop_reason": "six_consecutive_stable_windows"
+  },
+  "measurement": {
+    "query_count": 116,
+    "qps": 0.3860875841125622,
+    "exit_code": 0,
+    "error_count": 0,
+    "resource_stability_aggregate_sample_coverage": 1.0,
+    "legacy_summary_sample_coverage": 0.5,
+    "legacy_summary_correctness_passed": false
+  },
+  "formal_eligibility": {
+    "eligible": false,
+    "fail_closed": true,
+    "reason": "frozen_runner_correctness_and_early_stop_coverage_semantics_blocked",
+    "details": [
+      "the frozen runner defines HyBench AP correctness as one global result digest across all 13 query types",
+      "the frozen runner divides 300 stable early-stop samples by the 600-second hard maximum even though the rolling stability assessment reports aggregate coverage 1.0"
+    ],
+    "requires_separate_audited_semantics_amendment": true
+  },
+  "evidence_sha256": {
+    "point_result_json": "6610ef63bf743f8a8367dee9b248ed3e6af2d35ed79a6485d0853a33942c7154",
+    "measurement_summary_json": "b5876df0d259019b0a43101c7e2b62928d6def88ab43686ad0da272c7da40e18",
+    "online_stability_controller_jsonl": "ffc38150172836a06513e6cbdc8c34468118112c739abc283f8f8b7c43f854c3",
+    "measurement_props_readback_json": "8dc84a025d34e035d204be799151378aa17b7ae120b16255d71c03e3bcea0e50",
+    "frozen_point_runner_py": "9cadc2c3b6b8c7e1a9f10de96280f435d39b02022b4b4a8d9a469db5e2f44f90"
+  },
+  "outer_loop_effect": {
+    "entered_63_subsets": false,
+    "real_replay_count": 0,
+    "accepted_outer_rounds_contributed": 0,
+    "binary_shrink_applied": false
+  },
+  "resource_probe_policy": {
+    "final_resource_probe_consumed": true,
+    "more_resource_tuning_allowed": false
+  }
+}

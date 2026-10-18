@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_15",
+  "target_attempt": "attempt_16",
+  "fresh_template_copy_required": true,
+  "resource_contract": {
+    "cpu_quota_cores": 2.0,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 8388608,
+    "io_write_bps": 8388608,
+    "io_total_bps": 16777216,
+    "pids_limit": 512
+  },
+  "workload_contract": {
+    "formal_name": "HyBench-AP13-mixed-AP10-weighted",
+    "source_sha256": "23b20f81a129cc90d48456f01983fb911a9d76d9171af716fe028ca5edb87121",
+    "ap_clients": 4,
+    "ap_query_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "ap_query_weights": [6, 6, 6, 6, 6, 6, 6, 6, 6, 28, 6, 6, 6],
+    "generated_properties_readback_required": true
+  },
+  "private_jdbc_patch": {
+    "shared_frozen_driver_mutated": false,
+    "source_sha256": "d1c1f7ba6edcfd31bd5132aa5c94a7b38e2850435338d01cb6ab30137d0b5109",
+    "jar_sha256": "e687e11704d1401bc03cbbad7f80bd51a8dfa89ae76502407800c5bcfb82d186",
+    "ap1_ap13_regression_summary_sha256": "f086d2f33833137a260bf8a38af2cbf497a683ae1ec0d594a6c82b920a3b7dc0",
+    "ap1_ap13_all_passed": true,
+    "classpath_precedence_required": true
+  },
+  "measurement_contract": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "earliest_stable_stop_seconds": 180,
+    "initial_probe_seconds": 300,
+    "initial_probe_is_observational_only": true,
+    "maximum_measurement_seconds": 600,
+    "stability_window_seconds": 30,
+    "required_consecutive_complete_windows": 6,
+    "stability_metrics": ["cpu_utilization", "memory_utilization", "io_utilization"],
+    "throughput_fields_required_for_stability": false,
+    "cross_window_cv_max_inclusive": 0.1,
+    "fail_closed_at_hard_maximum": true
+  },
+  "r0_resource_gate": {
+    "memory_minimum_exclusive": 0.8,
+    "cpu_minimum_inclusive": 0.3,
+    "cpu_maximum_inclusive": 0.5,
+    "io_minimum_inclusive": 0.3,
+    "io_maximum_inclusive": 0.5
+  },
+  "post_r0_algorithm": {
+    "active_parameters": 6,
+    "all_nonempty_subsets": 63,
+    "direction_source": "explicit_experience_table_T_only",
+    "real_replay_initial_top_k": 5,
+    "real_replay_max_top_k": 10,
+    "outer_acceptance": "db_qps_strictly_up_and_memory_bottleneck_strictly_down",
+    "binary_shrink_only_after_acceptance": true
+  },
+  "private_runner_sha256": "d5beb60869683932935b9fd12e8f5ece18819fdbc22dc8f807dd0f4d241d538b",
+  "formal_contracts_py_sha256": "9d097a12d7c79c1903a1d286b30394686f5e1683d44ded18b68baec19a04022d",
+  "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+  "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+  "stability_gate_contract_sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+  "io_utilization_contract_sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+  "accepted_outer_rounds_before_start": 0,
+  "formal_r0_eligible": false,
+  "invalid_reason": "runner_name_error_before_container_start",
+  "status": "invalid_runner_runtime_name_error_before_container_start"
+}

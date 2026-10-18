@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "launcher": "/disk1/resource_adaptive/bruteforce_pg17_framework_20260717/shell/launch_fullgrid_run.py",
+  "finalizer": "/home/anonymous/program/resource_adaptive/shell/finalize_fullgrid_experiment.py",
+  "expected_candidates_per_round": 128,
+  "minimum_complete_rounds": 6,
+  "max_bottleneck_drop_pct": 30,
+  "max_explain_queries": 3,
+  "suite_audit": {
+    "auditor": "/home/anonymous/program/resource_adaptive/shell/audit_fullgrid_experiment_suite.py",
+    "output": "/home/anonymous/program/resource_adaptive/report/bruteforce_fullgrid_pg17_suite_audit.json",
+    "refresh_interval_s": 300,
+    "expected_physical_exp_ids": [
+      "A2-R1",
+      "A3-R1",
+      "A5-R1",
+      "B1-R1",
+      "B1-R2",
+      "B1-R3",
+      "B2-R1",
+      "B2-R2",
+      "B2-R3",
+      "B3-R1",
+      "B3-R2",
+      "B3-R3",
+      "E1-R1",
+      "E2-R1",
+      "E3-R1",
+      "E4-R1",
+      "E5-R1",
+      "E6-R1"
+    ],
+    "expected_logical_exp_ids": [
+      "A1-R1",
+      "A2-R1",
+      "A3-R1",
+      "A4-R1",
+      "A5-R1",
+      "A6-R1",
+      "B1-R1",
+      "B1-R2",
+      "B1-R3",
+      "B2-R1",
+      "B2-R2",
+      "B2-R3",
+      "B3-R1",
+      "B3-R2",
+      "B3-R3",
+      "E1-R1",
+      "E2-R1",
+      "E3-R1",
+      "E4-R1",
+      "E5-R1",
+      "E6-R1"
+    ]
+  },
+  "poll_interval_s": 60,
+  "max_active_tuners": 10,
+  "machine_guard": {
+    "enabled": true,
+    "environment_limit_scope": "task_owned",
+    "max_active_experiment_environments": 10,
+    "task_container_names": [
+      "binary_plan_tuning_hybenchxp_io_iso_20260716_w1",
+      "binary_plan_tuning_hybenchxp_io_iso_20260716_w2",
+      "ra_fullgrid_generic_20260718_w2",
+      "ra_fullgrid_generic_mem_20260718_w1",
+      "ra_fullgrid_generic_mem_20260718_w2",
+      "ra_fullgrid_hybench_cpu_20260718_w1",
+      "ra_fullgrid_hybench_cpu_20260718_w2",
+      "ra_fullgrid_hybench_mem_20260718_w1",
+      "ra_fullgrid_hybench_mem_20260718_w2",
+      "ra_fullgrid_hybench_none_20260718_w1",
+      "ra_fullgrid_hybench_none_20260718_w2"
+    ],
+    "task_vm_names": [],
+    "experiment_container_prefixes": [
+      "ra-",
+      "ra_",
+      "binary_plan_tuning_",
+      "bonect_"
+    ],
+    "min_available_memory_gb": 64,
+    "max_load_per_cpu": 1.0,
+    "max_root_disk_used_pct": 92,
+    "min_root_disk_free_gb": 150,
+    "monitored_disks": [
+      {
+        "path": "/disk1",
+        "expected_source": "/dev/nvme1n1",
+        "max_used_pct": 95,
+        "min_free_gb": 200
+      },
+      {
+        "path": "/disk2",
+        "expected_source": "/dev/nvme2n1",
+        "max_used_pct": 95,
+        "min_free_gb": 200
+      },
+      {
+        "path": "/disk3",
+        "expected_source": "/dev/sda1",
+        "max_used_pct": 95,
+        "min_free_gb": 200
+      }
+    ]
+  },
+  "state_log": "/home/anonymous/program/resource_adaptive/history/bruteforce_repeat_continuation_pg17_20260718.jsonl",
+  "queues": [
+    {
+      "pool_id": "hybench_ap_memory_w1",
+      "entries": [
+        {
+          "exp_id": "B2-R1",
+          "logical_exp_id": "A1-R1",
+          "service": "ra-fullgrid-B2-R1-hybench-ap-memory-pgfadvise-v2-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R1_hybench_ap_memory/optimizer_config.json",
+          "target": "memory",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R1_hybench_ap_memory/memory_binary_search_hybenchap.jsonl"
+        },
+        {
+          "exp_id": "B2-R2",
+          "repeat_role": "additional_repeat_1",
+          "service": "ra-fullgrid-B2-R2-hybench-ap-memory-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R2_hybench_ap_memory/optimizer_config.json",
+          "target": "memory",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R2_hybench_ap_memory/memory_binary_search_hybenchap.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "hybench_ap_memory_w2",
+      "entries": [
+        {
+          "exp_id": "B2-R1",
+          "logical_exp_id": "A1-R1",
+          "service": "ra-fullgrid-B2-R1-hybench-ap-memory-pgfadvise-v2-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R1_hybench_ap_memory/optimizer_config.json",
+          "target": "memory",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R1_hybench_ap_memory/memory_binary_search_hybenchap.jsonl"
+        },
+        {
+          "exp_id": "B2-R3",
+          "repeat_role": "additional_repeat_2",
+          "service": "ra-fullgrid-B2-R3-hybench-ap-memory-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R3_hybench_ap_memory/optimizer_config.json",
+          "target": "memory",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B2-R3_hybench_ap_memory/memory_binary_search_hybenchap.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "hybench_tp_cpu_w1",
+      "entries": [
+        {
+          "exp_id": "B1-R1",
+          "logical_exp_id": "A4-R1",
+          "service": "ra-fullgrid-B1-R1-hybench-tp-default-centered-v6-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R1_hybench_tp_cpu/optimizer_config.json",
+          "target": "cpu",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R1_hybench_tp_cpu/cpu_binary_search_hybenchtp.jsonl"
+        },
+        {
+          "exp_id": "B1-R2",
+          "repeat_role": "additional_repeat_1",
+          "service": "ra-fullgrid-B1-R2-hybench-tp-ext4-continuous-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R2_hybench_tp_cpu/optimizer_config.json",
+          "target": "cpu",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R2_hybench_tp_cpu/cpu_binary_search_hybenchtp.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "hybench_tp_cpu_w2",
+      "entries": [
+        {
+          "exp_id": "B1-R1",
+          "logical_exp_id": "A4-R1",
+          "service": "ra-fullgrid-B1-R1-hybench-tp-default-centered-v6-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R1_hybench_tp_cpu/optimizer_config.json",
+          "target": "cpu",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R1_hybench_tp_cpu/cpu_binary_search_hybenchtp.jsonl"
+        },
+        {
+          "exp_id": "B1-R3",
+          "repeat_role": "additional_repeat_2",
+          "service": "ra-fullgrid-B1-R3-hybench-tp-ext4-continuous-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R3_hybench_tp_cpu/optimizer_config.json",
+          "target": "cpu",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/B1-R3_hybench_tp_cpu/cpu_binary_search_hybenchtp.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "hybench_xp_io_w1",
+      "priority": 10,
+      "entries": [
+        {
+          "exp_id": "B3-R1",
+          "logical_exp_id": "A6-R1",
+          "service": "isolated-io-resume-default-anchor-fix1-20260717.service",
+          "config": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/io_resume_from_old_round2_fullsearch_isolated_20260716_2321/optimizer_config.json",
+          "target": "io",
+          "launcher_args": [
+            "--max-rounds",
+            "6"
+          ],
+          "log": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/io_resume_from_old_round2_fullsearch_isolated_20260716_2321/io_binary_search_hybenchxp.jsonl"
+        },
+        {
+          "exp_id": "B3-R2",
+          "repeat_role": "additional_repeat_1",
+          "service": "ra-fullgrid-B3-R2-hybench-xp-io-20260718.service",
+          "config": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/B3-R2_hybench_xp_io/optimizer_config.json",
+          "target": "io",
+          "launcher_args": [
+            "--max-rounds",
+            "6"
+          ],
+          "log": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/B3-R2_hybench_xp_io/io_binary_search_hybenchxp.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "hybench_xp_io_w2",
+      "priority": 10,
+      "entries": [
+        {
+          "exp_id": "B3-R1",
+          "logical_exp_id": "A6-R1",
+          "service": "isolated-io-resume-default-anchor-fix1-20260717.service",
+          "config": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/io_resume_from_old_round2_fullsearch_isolated_20260716_2321/optimizer_config.json",
+          "target": "io",
+          "launcher_args": [
+            "--max-rounds",
+            "6"
+          ],
+          "log": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/io_resume_from_old_round2_fullsearch_isolated_20260716_2321/io_binary_search_hybenchxp.jsonl"
+        },
+        {
+          "exp_id": "B3-R3",
+          "repeat_role": "additional_repeat_2",
+          "service": "ra-fullgrid-B3-R3-hybench-xp-io-20260718.service",
+          "config": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/B3-R3_hybench_xp_io/optimizer_config.json",
+          "target": "io",
+          "launcher_args": [
+            "--max-rounds",
+            "6"
+          ],
+          "log": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_isolated_io_20260716/runs/B3-R3_hybench_xp_io/io_binary_search_hybenchxp.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "generic_memory",
+      "entries": [
+        {
+          "exp_id": "A2-R1",
+          "service": "ra-fullgrid-A2-R1-job-memory-pgfadvise-v2-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A2-R1_job_memory/optimizer_config.json",
+          "target": "memory",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A2-R1_job_memory/memory_binary_search_job.jsonl",
+          "launcher_args": [
+            "--generic-workload",
+            "job",
+            "--generic-run-seconds",
+            "60",
+            "--benchbase-scalefactor",
+            "1",
+            "--job-statement-timeout-ms",
+            "1800000"
+          ]
+        },
+        {
+          "exp_id": "A3-R1",
+          "service": "ra-fullgrid-A3-R1-tpch-memory-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A3-R1_tpch_memory/optimizer_config.json",
+          "target": "memory",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A3-R1_tpch_memory/memory_binary_search_tpch.jsonl",
+          "launcher_args": [
+            "--generic-workload",
+            "tpch",
+            "--generic-run-seconds",
+            "60",
+            "--benchbase-scalefactor",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "pool_id": "hybench_none_w1",
+      "entries": [
+        {
+          "exp_id": "E1-R1",
+          "service": "ra-fullgrid-E1-R1-hybench-ap-none-pgfadvise-v2-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E1-R1_hybench_ap_none/optimizer_config.json",
+          "target": "none",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E1-R1_hybench_ap_none/none_binary_search_hybenchap.jsonl"
+        },
+        {
+          "exp_id": "E4-R1",
+          "service": "ra-fullgrid-E4-R1-hybench-tp-none-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E4-R1_hybench_tp_none/optimizer_config.json",
+          "target": "none",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E4-R1_hybench_tp_none/none_binary_search_hybenchtp.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "hybench_none_w2",
+      "entries": [
+        {
+          "exp_id": "E1-R1",
+          "service": "ra-fullgrid-E1-R1-hybench-ap-none-pgfadvise-v2-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E1-R1_hybench_ap_none/optimizer_config.json",
+          "target": "none",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E1-R1_hybench_ap_none/none_binary_search_hybenchap.jsonl"
+        },
+        {
+          "exp_id": "E6-R1",
+          "service": "ra-fullgrid-E6-R1-hybench-xp-none-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E6-R1_hybench_xp_none/optimizer_config.json",
+          "target": "none",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E6-R1_hybench_xp_none/none_binary_search_hybenchxp.jsonl"
+        }
+      ]
+    },
+    {
+      "pool_id": "generic_w2_dynamic",
+      "entries": [
+        {
+          "exp_id": "A5-R1",
+          "service": "ra-fullgrid-A5-R1-tpcc-cpu-retry-v2-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A5-R1_tpcc_cpu/optimizer_config.json",
+          "target": "cpu",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A5-R1_tpcc_cpu/cpu_binary_search_tpcc.jsonl",
+          "launcher_args": [
+            "--generic-workload",
+            "tpcc",
+            "--generic-run-seconds",
+            "90",
+            "--benchbase-scalefactor",
+            "10"
+          ]
+        },
+        {
+          "exp_id": "E5-R1",
+          "service": "ra-fullgrid-E5-R1-tpcc-none-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E5-R1_tpcc_none/optimizer_config.json",
+          "target": "none",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E5-R1_tpcc_none/none_binary_search_tpcc.jsonl",
+          "launcher_args": [
+            "--generic-workload",
+            "tpcc",
+            "--generic-run-seconds",
+            "90",
+            "--benchbase-scalefactor",
+            "10"
+          ]
+        },
+        {
+          "exp_id": "E2-R1",
+          "service": "ra-fullgrid-E2-R1-job-none-fixed8-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E2-R1_job_none/optimizer_config.json",
+          "target": "none",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E2-R1_job_none/none_binary_search_job.jsonl",
+          "launcher_args": [
+            "--generic-workload",
+            "job",
+            "--generic-run-seconds",
+            "60",
+            "--benchbase-scalefactor",
+            "1"
+          ]
+        },
+        {
+          "exp_id": "E3-R1",
+          "service": "ra-fullgrid-E3-R1-tpch-none-20260718.service",
+          "config": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E3-R1_tpch_none/optimizer_config.json",
+          "target": "none",
+          "log": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/E3-R1_tpch_none/none_binary_search_tpch.jsonl",
+          "launcher_args": [
+            "--generic-workload",
+            "tpch",
+            "--generic-run-seconds",
+            "60",
+            "--benchbase-scalefactor",
+            "1"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "table_id": "pg5_hybench_xp_io_experience_table_T_v1",
+  "version": "2026-07-22.1",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_tuple_cost"
+  ],
+  "fixed_params": {
+    "parallel_setup_cost": 1000.0
+  },
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "table_sha256": "8e1a4f8913922b99c531d65800370170d0e6effd2785e789f60cdcdaabbca8f2",
+  "table": {
+    "seq_page_cost": {
+      "cpu": -0.1,
+      "memory": 0.03,
+      "io": -0.1
+    },
+    "random_page_cost": {
+      "cpu": 0.2,
+      "memory": 0.05,
+      "io": 0.08
+    },
+    "cpu_tuple_cost": {
+      "cpu": 0.2,
+      "memory": -0.05,
+      "io": -0.25
+    },
+    "cpu_index_tuple_cost": {
+      "cpu": 0.05,
+      "memory": -0.02,
+      "io": 0
+    },
+    "cpu_operator_cost": {
+      "cpu": 0.2,
+      "memory": -0.05,
+      "io": -0.25
+    },
+    "parallel_tuple_cost": {
+      "cpu": -0.2,
+      "memory": 0.05,
+      "io": -0.25
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "overload_threshold": 0.8,
+  "score_mode": "band_target",
+  "resource_weights": {
+    "cpu": 1,
+    "memory": 1,
+    "io": 3
+  },
+  "resource_target_ranges": {
+    "cpu": {
+      "min_pct": 65,
+      "max_pct": 80,
+      "hard_overload_pct": 90
+    },
+    "memory": {
+      "min_pct": 70,
+      "max_pct": 80,
+      "hard_overload_pct": 90
+    },
+    "io": {
+      "min_pct": 50,
+      "max_pct": 75,
+      "hard_overload_pct": 90
+    }
+  }
+}

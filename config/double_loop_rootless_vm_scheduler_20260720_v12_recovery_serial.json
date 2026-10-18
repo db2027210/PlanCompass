@@ -1,0 +1,384 @@
+{
+  "adopted_runs": {},
+  "benchmark_seeds": {
+    "hybench_ap": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_tp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_xp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-serial-debug.qcow2",
+    "job": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/job.qcow2",
+    "tpcc": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpcc.qcow2",
+    "tpch": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpch.qcow2"
+  },
+  "direct_kernel_boot": {
+    "append": "root=/dev/mapper/ubuntu--vg-ubuntu--lv rw fstab=no module_blacklist=ramoops,chromeos_pstore,efi_pstore,pstore_blk,pstore_zone console=ttyS0,115200n8 earlyprintk=serial",
+    "initrd": "/var/tmp/resource_adaptive_flat_seeds/boot/initrd.img-5.4.0-216-generic-minimal",
+    "kernel": "/var/tmp/resource_adaptive_flat_seeds/boot/vmlinuz-5.4.0-216-generic"
+  },
+  "execution_mode": "rootless_qemu_pool",
+  "holds": {
+    "b6_r2": "release only after the unified A18 anchor has a successful independent final replay",
+    "b6_r3": "release only after the unified A18 anchor has a successful independent final replay"
+  },
+  "lane_order": [
+    "memory",
+    "cpu",
+    "io",
+    "none"
+  ],
+  "matrix_config": "config/double_loop_experiment_matrix_20260720_v7.json",
+  "global_max_active": 4,
+  "global_scheduler_state_glob": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled*_20260720/scheduler_state.json",
+  "max_active": 4,
+  "max_auto_retries": 1,
+  "task_profile_overrides": {
+    "a13_r1": {
+      "launcher_args": [
+        "--ap-clients-override",
+        "4",
+        "--hybench-ap-shared-buffers-mb",
+        "960",
+        "--hybench-ap-work-mem-mb",
+        "32",
+        "--hybench-ap-max-parallel-workers-per-gather",
+        "4",
+        "--hybench-ap-query-sequence",
+        "6,8,6,6,8",
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a13_r1/attempt_1/formal_runs/a13_r1_hybench_ap_memory_rootless_a1/memory",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a13_r1/attempt_1/formal_runs/a13_r1_hybench_ap_memory_rootless_a1/memory",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a13_r1/attempt_1/formal_runs/a13_r1_hybench_ap_memory_rootless_a1/memory"
+      ]
+    },
+    "e13_r1": {
+      "launcher_args": [
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/e13_r1/attempt_1/formal_runs/e13_r1_hybench_ap_none_rootless_a1/none",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/e13_r1/attempt_1/formal_runs/e13_r1_hybench_ap_none_rootless_a1/none",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/e13_r1/attempt_1/formal_runs/e13_r1_hybench_ap_none_rootless_a1/none"
+      ]
+    },
+    "a17_r1": {
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "80",
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a17_r1/attempt_1/formal_runs/a17_r1_tpcc_cpu_rootless_a1/cpu",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a17_r1/attempt_1/formal_runs/a17_r1_tpcc_cpu_rootless_a1/cpu",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a17_r1/attempt_1/formal_runs/a17_r1_tpcc_cpu_rootless_a1/cpu"
+      ]
+    },
+    "a18_r1": {
+      "launcher_args": [
+        "--tp-clients-override",
+        "8",
+        "--ap-clients-override",
+        "28",
+        "--hybench-tp-percent-mix",
+        "0,0,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6",
+        "--hybench-ap-query-sequence",
+        "6,6,6,6",
+        "--workload-fixed-horizon-s",
+        "240",
+        "--statement-timeout-ms",
+        "900000",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime_data10x_v2",
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a18_r1/attempt_1/formal_runs/a18_r1_hybench_xp_io_rootless_a1/io",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a18_r1/attempt_1/formal_runs/a18_r1_hybench_xp_io_rootless_a1/io",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a18_r1/attempt_1/formal_runs/a18_r1_hybench_xp_io_rootless_a1/io"
+      ]
+    }
+  },
+  "continuation_revision_rationale": {
+    "cpu:hybench_tp": "A16 with 8 clients reached 1.666/2 cores; the v16 fresh run with 12 clients reached only 1.523 cores (warm-up 1.766), still below the 1.8-core bottleneck threshold, so use 16 clients consistently for A16 and both B4 repeats.",
+    "cpu:tpcc": "A17 baseline was 1.72 cores against a 1.8-core threshold; raise terminals from 60 to 80.",
+    "memory:job": "The v16 attempt 3 fresh baseline crashed PostgreSQL under 16 workers and work_mem=160MB at 768 MiB. Historical 12-worker/144MB real JOB replays completed with about 0.652 GiB measured memory, which remains above 90% of the current 0.693-GiB usable capacity, so use that less extreme bottleneck load for A14 recovery.",
+    "io:hybench_xp": "A18 baseline was 4.09 MiB/s against a 4.59-MiB/s threshold; raise AP clients from 24 to 28 without overshooting the feasible 5-10% drop interval."
+  },
+  "overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v16_unified_grid_overlays_20260720",
+  "poll_interval_s": 2,
+  "prepared_image": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_probe_20260718/pg17-seed-overlay.qcow2",
+  "profiles": {
+    "cpu:hybench_tp": {
+      "cpu_cores": 2,
+      "launcher_args": [
+        "--tp-clients-override",
+        "16"
+      ],
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "cpu:tpcc": {
+      "cpu_cores": 2,
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "80"
+      ],
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "io:hybench_xp": {
+      "cpu_cores": 13,
+      "disk_cache_mode": "none",
+      "launcher_args": [
+        "--tp-clients-override",
+        "8",
+        "--ap-clients-override",
+        "28",
+        "--hybench-tp-percent-mix",
+        "0,0,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6",
+        "--hybench-ap-query-sequence",
+        "6,6,6,6",
+        "--workload-fixed-horizon-s",
+        "240",
+        "--statement-timeout-ms",
+        "900000",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime_data10x_v2"
+      ],
+      "memory_mib": 4096,
+      "read_mb": 5.0,
+      "runtime_overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v16_unified_grid_direct_overlays_20260720",
+      "write_mb": 0.1
+    },
+    "memory:hybench_ap": {
+      "cpu_cores": 10,
+      "launcher_args": [
+        "--ap-clients-override",
+        "4",
+        "--hybench-ap-shared-buffers-mb",
+        "960",
+        "--hybench-ap-work-mem-mb",
+        "32",
+        "--hybench-ap-max-parallel-workers-per-gather",
+        "4",
+        "--hybench-ap-query-sequence",
+        "6,8,6,6,8"
+      ],
+      "memory_mib": 1536,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "memory:job": {
+      "cpu_cores": 13,
+      "launcher_args": [
+      "--job-workers-override",
+      "12",
+      "--job-work-mem-mb",
+      "144",
+      "--job-min-seq-page-cost",
+      "1.0",
+      "--job-fixed-horizon-s",
+        "300",
+        "--statement-timeout-ms",
+        "1800000"
+      ],
+      "memory_mib": 768,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "memory:tpch": {
+      "cpu_cores": 13,
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "8",
+        "--benchbase-work-mem-mb",
+        "16",
+        "--benchbase-shared-buffers-mb",
+        "320"
+      ],
+      "memory_mib": 736,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_ap": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_tp": {
+      "cpu_cores": 16,
+      "launcher_args": [
+        "--tp-clients-override",
+        "8"
+      ],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_xp": {
+      "cpu_cores": 16,
+      "launcher_args": [
+        "--tp-clients-override",
+        "24",
+        "--ap-clients-override",
+        "8",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime_data10x_v2"
+      ],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:job": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:tpcc": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:tpch": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    }
+  },
+  "runtime_overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v16_unified_grid_direct_overlays_20260720",
+  "safety": {
+    "max_cpu_pressure_some_avg10": 60,
+    "max_io_pressure_full_avg10": 30,
+    "min_mem_available_gib_after_launch": 24,
+    "min_output_disk_free_gib": 256,
+    "min_root_disk_free_gib": 64,
+    "min_shm_free_gib": 24
+  },
+  "scheduler_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720",
+  "schema_version": 1,
+  "task_profile_overrides": {
+    "a14_r1": {
+      "launcher_args": [
+        "--job-workers-override",
+        "12",
+        "--job-work-mem-mb",
+        "144",
+        "--job-min-seq-page-cost",
+        "1.0",
+        "--job-fixed-horizon-s",
+        "300",
+        "--statement-timeout-ms",
+        "1800000"
+      ]
+    },
+    "a13_r1": {
+      "launcher_args": [
+        "--ap-clients-override",
+        "4",
+        "--hybench-ap-shared-buffers-mb",
+        "960",
+        "--hybench-ap-work-mem-mb",
+        "32",
+        "--hybench-ap-max-parallel-workers-per-gather",
+        "4",
+        "--hybench-ap-query-sequence",
+        "6,8,6,6,8",
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a13_r1/attempt_1/formal_runs/a13_r1_hybench_ap_memory_rootless_a1/memory",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a13_r1/attempt_1/formal_runs/a13_r1_hybench_ap_memory_rootless_a1/memory",
+        "--resume-model-training-seed-include-candidates",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a13_r1/attempt_1/formal_runs/a13_r1_hybench_ap_memory_rootless_a1/memory"
+      ]
+    },
+    "a17_r1": {
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "80",
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a17_r1/attempt_1/formal_runs/a17_r1_tpcc_cpu_rootless_a1/cpu",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a17_r1/attempt_1/formal_runs/a17_r1_tpcc_cpu_rootless_a1/cpu",
+        "--resume-model-training-seed-include-candidates",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a17_r1/attempt_1/formal_runs/a17_r1_tpcc_cpu_rootless_a1/cpu"
+      ]
+    },
+    "a18_r1": {
+      "launcher_args": [
+        "--tp-clients-override",
+        "8",
+        "--ap-clients-override",
+        "28",
+        "--hybench-tp-percent-mix",
+        "0,0,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6",
+        "--hybench-ap-query-sequence",
+        "6,6,6,6",
+        "--workload-fixed-horizon-s",
+        "240",
+        "--statement-timeout-ms",
+        "900000",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime_data10x_v2",
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a18_r1/attempt_1/formal_runs/a18_r1_hybench_xp_io_rootless_a1/io",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a18_r1/attempt_1/formal_runs/a18_r1_hybench_xp_io_rootless_a1/io",
+        "--resume-model-training-seed-include-candidates",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/a18_r1/attempt_1/formal_runs/a18_r1_hybench_xp_io_rootless_a1/io"
+      ]
+    },
+    "e13_r1": {
+      "launcher_args": [
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/e13_r1/attempt_1/formal_runs/e13_r1_hybench_ap_none_rootless_a1/none",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/e13_r1/attempt_1/formal_runs/e13_r1_hybench_ap_none_rootless_a1/none",
+        "--resume-model-training-seed-include-candidates",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v16_unified_grid_20260720/runs/e13_r1/attempt_1/formal_runs/e13_r1_hybench_ap_none_rootless_a1/none"
+      ]
+    }
+  },
+  "cpu_pin_map": "config/pg_cpu_pin_map_20260720.json",
+  "slots": [
+    {
+      "slot_id": "vm71",
+      "ssh_port": 22741,
+      "postgres_port": 25741,
+      "cpuset_cpus": "220-228,476-484",
+      "client_cpuset_cpus": "0-2,256-258"
+    },
+    {
+      "slot_id": "vm72",
+      "ssh_port": 22742,
+      "postgres_port": 25742,
+      "cpuset_cpus": "229-237,485-493",
+      "client_cpuset_cpus": "3-5,259-261"
+    },
+    {
+      "slot_id": "vm73",
+      "ssh_port": 22743,
+      "postgres_port": 25743,
+      "cpuset_cpus": "238-246,494-502",
+      "client_cpuset_cpus": "6-8,262-264"
+    },
+    {
+      "slot_id": "vm74",
+      "ssh_port": 22744,
+      "postgres_port": 25744,
+      "cpuset_cpus": "247-255,503-511",
+      "client_cpuset_cpus": "9-11,265-267"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": "job_target10_v51_preclaim_fix_deployment_manifest_v1",
+  "scenario": "JOB",
+  "fresh_campaign_root_is_reused": "autonomous_target10_v50_fresh0",
+  "bootstrap_must_not_be_rerun": true,
+  "authoritative_handoff": {
+    "historical_accepted_count": 3,
+    "historical_accepted_excluded": 3,
+    "fresh_countable_accepted_count": 0,
+    "fresh_accepted_target": 10,
+    "fresh_formal_state_global_ordinal": 392,
+    "expected_external_global_ordinal_after_three_v50_technical_calls": 395,
+    "expected_formal_replay_count": 206,
+    "sealed_v50_technical_batches": 3,
+    "resume_phase": "fresh_discovery_04",
+    "baseline_score": 4.416709205648302,
+    "baseline_range_is_point": true
+  },
+  "root_cause": {
+    "failure": "control PostgreSQL closed the readback session transiently",
+    "old_order": [
+      "claim_replay_accounting",
+      "resolve_replay_costs",
+      "read_control_costs"
+    ],
+    "v51_order": [
+      "strict runner seals exact candidate_params in RA_PG_EXPLICIT_COST_PARAMETERS_JSON",
+      "bridge obtains three consecutive control readiness successes within six attempts",
+      "bridge validates the explicit seven-parameter vector and canonical SHA",
+      "claim_replay_accounting",
+      "all later failures remain physical"
+    ]
+  },
+  "files": {
+    "/tmp/job_fresh10_target10_autonomous_v49.py": "3688f00b0a32c490f5dd3781b26642f48361c3ba541256f9855730284016035c",
+    "/tmp/job_fresh10_target10_autonomous_v50.py": "6536262ab4edc0dd76e7c34a1517de9bbc0a93509706426a8973c1c88e61c428",
+    "/tmp/job_fresh10_target10_autonomous_v51.py": "5e1f3beaa37bd88a872ebdff21ed440a99eb8b0b7324f5180d8521cf074f6f1d",
+    "/tmp/run_job_round8_strict_serial_base_v7_explicit_preclaim.py": "03c3cfce2aa0c6badaa9afb2dd3738026ac469d1d8e3e901066b37c1e3b4e0e2",
+    "/tmp/run_job_round8_strict_serial_robust_v9_state_guard.py": "e717449a109669d6ed274e29d5aaf9f4285af8b37c586aeb0ad768970ba02693",
+    "/tmp/run_job_round8_strict_serial_robust_v8_apply_failure.py": "5d965cd9410fba78486856dc2d78bd594b9ebf1d17eda4a8f593a5f43d6fa857",
+    "/tmp/formal_job_outer_replay_v51.py": "c53fbb20b401941ec83555bfd64211162bd873f0919558ae5394405af54a7b1b",
+    "/tmp/deploy_job_v51_control_bridge.py": "5969235043ccacc141762374764e24af04fbe51659dbb6932966d7f73227cd0b",
+    "/tmp/launch_job_target10_autonomous_v51_preclaim_fix.sh": "48e8b0882d8613cc08aae3bda60b36a5be76aca1689773aa8f5d8994a3b66b30"
+  },
+  "v51_contract": {
+    "candidate_cost_source": "sealed exact candidate_params JSON",
+    "control_cost_readback_used_when_explicit_candidate_present": false,
+    "control_readiness_required_consecutive_successes": 3,
+    "control_readiness_maximum_attempts": 6,
+    "unbounded_retry": false,
+    "preclaim_failure_claims_ordinal": false,
+    "preclaim_failure_consumes_diagnostic_attempt_budget": true,
+    "postclaim_failure_is_physical": true,
+    "diagnostic_batch_max_attempts": 5,
+    "technical_batch_is_sealed": true,
+    "next_batch_uses_fresh_fingerprints": true,
+    "fresh_point_range_requires_five_distinct_parameter_points": true,
+    "fresh_point_range_requires_two_changed_dimensions": true,
+    "top5_roles_after_first_clean_observation": [
+      "trusted",
+      "trusted",
+      "trusted",
+      "probe",
+      "probe"
+    ],
+    "entry_gate_is_deterministically_recomputed": true,
+    "rejected_or_probe_state_transition_is_exactly_neutral": true,
+    "formal_clean_discovery_audit_is_path_bound": true,
+    "qps_used_for_inner_scoring": false,
+    "manual_candidate_injection": false,
+    "mysql_touched": false
+  },
+  "verification": {
+    "job_unittest_count": 55,
+    "job_unittests_passed": true,
+    "robust_three_observation_regression_passed": true,
+    "python_compile_passed": true,
+    "launcher_shell_syntax_passed": true,
+    "workload_calls_during_patch_and_tests": 0,
+    "ssh_calls_by_subagent": 0
+  }
+}

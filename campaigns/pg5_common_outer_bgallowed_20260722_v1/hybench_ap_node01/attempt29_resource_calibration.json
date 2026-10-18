@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_27",
+  "supersedes_invalid_attempt": "attempt_28",
+  "immutable_target_resource": "memory",
+  "memory_cap_MiB": 200,
+  "source_memory_absolute_MiB": 164.41048177083331,
+  "target_memory_absolute_MiB": 175,
+  "selected_resident_memory_bytes": 11534336,
+  "prediction_with_resident_memory": {"cpu_utilization": 0.3575916182921049, "memory_utilization": 0.8770524088541666, "io_utilization": 0.45707201255083524},
+  "cgroup_memory_counter_probe_order": ["/sys/fs/cgroup/memory.current", "/sys/fs/cgroup/memory/memory.usage_in_bytes"],
+  "target_resource_mutation_allowed": false,
+  "benchmark_workload_unchanged": true
+}

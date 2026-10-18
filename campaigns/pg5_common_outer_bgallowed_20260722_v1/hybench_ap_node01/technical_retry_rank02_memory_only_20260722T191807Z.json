@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "status": "technical_retry_discarded",
+  "formal_replay_counted": false,
+  "accepted_shrink_counted": false,
+  "generation": 1,
+  "replay_position": 2,
+  "attempt_id": "outer_ap6_tsgd_g01_retry2_rank_0002_rep_01",
+  "interrupted_at_utc": "2026-07-22T19:18:07Z",
+  "reason": "AP target-bottleneck stability must be gated by memory only; the interrupted wrapper incorrectly also gated on non-target CPU and I/O CV",
+  "termination_order": [
+    "outer replay controller PID 18317",
+    "candidate process group 25851",
+    "verified owned Docker container p24_postgresql_recost_gradient_descent_ap_pg5hya201v1"
+  ],
+  "formal_validation_absent": true,
+  "batch_result_absent": true,
+  "last_online_assessment": {
+    "elapsed_seconds": 330.7698929429898,
+    "complete_window_count": 11,
+    "memory_cross_window_cv": 0.052915364815559966,
+    "memory_passed": true,
+    "cpu_cross_window_cv": 0.12591298620160377,
+    "cpu_passed": false,
+    "io_cross_window_cv": 0.1845574983411717,
+    "io_passed": false
+  },
+  "preserved_point_dir": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/hybench_ap_node01/results/experience_outer/candidate_outer_ap6_tsgd_g01_retry2_rank_0002_rep_01",
+  "preserved_evidence_sha256": {
+    "measurement_online_stability_controller.jsonl": "0b3631509c2bb214de57324056fffb94ce44e212a1350091cd0d8ed941028f65",
+    "measurement_queries.jsonl": "669961a093d358c62c522dee3a171f15ca3ddb50683017485b581512dbb4d423",
+    "measurement_resource_samples.jsonl": "2b3987176f3d8d7c25647958b463c586443f6f8057a61e6b938a5582f7131b0d"
+  },
+  "replacement_protocol": {
+    "stability_metric_fields": [
+      "memory_utilization"
+    ],
+    "resource_mean_metric_fields": [
+      "cpu_utilization",
+      "memory_utilization",
+      "io_utilization"
+    ],
+    "cpu_io_stability_role": "diagnostic_only"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "bundle_id": "pg4_current_scale_frozen_20260726_v1",
+  "frozen_at": "2026-07-26",
+  "scope": "paper_and_followup",
+  "dataset_growth_forbidden": true,
+  "environment_mutation_after_launch_forbidden": true,
+  "algorithm": {
+    "name": "algorithm_c_exact_plan_ratio_scale",
+    "accepted_shrink_target": 10,
+    "real_replay_hard_max_per_round": 5,
+    "qps_used_for_inner_scoring": false,
+    "qps_role": "outer_acceptance_only",
+    "first_plan_boundary_role": "minimum_effective_step_only",
+    "reject_all_policy": "round_rejected/no_feasible_candidate_no_state_update",
+    "technical_failure_consumes_replay_budget": false,
+    "non_target_resource_must_not_become_bottleneck": true
+  },
+  "lanes": [
+    {
+      "benchmark": "JOB",
+      "target_resource": "memory",
+      "dataset": "canonical IMDB/JOB current snapshot",
+      "host": "anonymous@192.0.2.4",
+      "control_via": "anonymous@192.0.2.10",
+      "attempt": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726",
+      "authoritative_config": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/config.json",
+      "active_parameters": 7,
+      "only_blocker": "split total memory prediction into fixed same-lane floor plus calibrated dynamic query memory"
+    },
+    {
+      "benchmark": "TPC-H",
+      "target_resource": "memory",
+      "dataset": "TPC-H SF10 current snapshot, Q1-Q22",
+      "host": "anonymous@192.0.2.3",
+      "control_via": "anonymous@192.0.2.10",
+      "attempt": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726",
+      "authoritative_config": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/config/live.json",
+      "active_parameters": 7,
+      "only_blocker": "frozen resource profile conflicts with memory target: R0 CPU 98.24%, memory 51.18%"
+    },
+    {
+      "benchmark": "TPC-C",
+      "target_resource": "cpu",
+      "dataset": "current BenchBase TPC-C scale 10 snapshot",
+      "host": "anonymous@192.0.2.10",
+      "attempt": "/disk2/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/tpcc_experience_sgd/attempt12_plan_cluster_fallback_20260726",
+      "authoritative_config": "/disk2/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/tpcc_experience_sgd/attempt12_plan_cluster_fallback_20260726/config/live.json",
+      "active_parameters": 7,
+      "only_blocker": "identify the non-exiting child after native workload success; cleanup is now bounded and structured"
+    },
+    {
+      "benchmark": "HyBench XP",
+      "target_resource": "io",
+      "dataset": "HyBench 10x current snapshot",
+      "host": "anonymous@192.0.2.10",
+      "attempt": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt39_fresh_from_accepted3_20260726",
+      "authoritative_config": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt39_fresh_from_accepted3_20260726/config/live.json",
+      "active_parameters": 6,
+      "fixed_parameters": {"parallel_setup_cost": 1000.0},
+      "only_blocker": "round3 had zero novel plan clusters; generate the next evidence-based direction batch"
+    }
+  ],
+  "patches": {
+    "job_parameter_optimizer_sha256": "6f2d3a9e37f5e43a324b936dc326235119e0854c65f77e5858438a1e628e173f",
+    "job_hydration_test_sha256": "a631fc0845a97ccbd235c95cf8e66222dede7449533541420e7b811814dcf84b",
+    "tpcc_runner_sha256": "0de61169178fc39e936a34f4a8ac2440fd8c276e47eeca4f948538bba3105fbb",
+    "tpcc_runner_test_sha256": "4f8ba146f38859439ee59d9daa1d707a7275fbf34c6cd5e2b12fbfea9bd919ca",
+    "xp_scanner_sha256": "b920c406e3c2fd91d07114fab689a8f2165571088bb4ee508fc0b44997e9c770",
+    "xp_direction_manifest_sha256": "34d52a9b55ad57fa3f6f538ebe9b726e23bb09b239875adc85ac6a9bd4b59cf9"
+  }
+}

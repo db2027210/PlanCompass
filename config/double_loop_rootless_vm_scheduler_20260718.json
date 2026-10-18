@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "execution_mode": "rootless_qemu_pool",
+  "matrix_config": "config/double_loop_experiment_matrix_20260717.json",
+  "scheduler_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18",
+  "overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/task_overlays",
+  "runtime_overlay_root": "/dev/shm/resource_adaptive_rootless_vm_overlays_20260719",
+  "prepared_image": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_probe_20260718/pg17-seed-overlay.qcow2",
+  "direct_kernel_boot": {
+    "kernel": "/var/tmp/resource_adaptive_flat_seeds/boot/vmlinuz-5.4.0-216-generic",
+    "initrd": "/var/tmp/resource_adaptive_flat_seeds/boot/initrd.img-5.4.0-216-generic-minimal",
+    "append": "root=/dev/mapper/ubuntu--vg-ubuntu--lv rw fstab=no module_blacklist=ramoops,chromeos_pstore,efi_pstore,pstore_blk,pstore_zone console=ttyS0,115200n8 earlyprintk=serial"
+  },
+  "max_active": 6,
+  "poll_interval_s": 30,
+  "max_auto_retries": 1,
+  "safety": {
+    "min_mem_available_gib_after_launch": 32,
+    "min_shm_free_gib": 48,
+    "min_output_disk_free_gib": 512,
+    "min_root_disk_free_gib": 128,
+    "max_cpu_pressure_some_avg10": 40,
+    "max_io_pressure_full_avg10": 20
+  },
+  "lane_order": ["cpu", "memory", "io", "none"],
+  "slots": [
+    {"slot_id": "vm01", "ssh_port": 22101, "postgres_port": 25501},
+    {"slot_id": "vm02", "ssh_port": 22102, "postgres_port": 25502},
+    {"slot_id": "vm03", "ssh_port": 22103, "postgres_port": 25503},
+    {"slot_id": "vm04", "ssh_port": 22104, "postgres_port": 25504},
+    {"slot_id": "vm05", "ssh_port": 22105, "postgres_port": 25505},
+    {"slot_id": "vm06", "ssh_port": 22106, "postgres_port": 25506}
+  ],
+  "benchmark_seeds": {
+    "hybench_ap": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_tp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_xp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-serial-debug.qcow2",
+    "job": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/job.qcow2",
+    "tpch": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpch.qcow2",
+    "tpcc": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpcc.qcow2"
+  },
+  "holds": {},
+  "adopted_runs": {},
+  "profiles": {
+    "memory:hybench_ap": {"cpu_cores": 10, "memory_mib": 1536, "read_mb": 800, "write_mb": 800, "launcher_args": ["--ap-clients-override", "4", "--hybench-ap-shared-buffers-mb", "960", "--hybench-ap-work-mem-mb", "32", "--hybench-ap-max-parallel-workers-per-gather", "4", "--hybench-ap-query-sequence", "6,8,6,6,8", "--model-training-seed-dir", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/a13_r1/attempt_6/formal_runs/a13_r1_hybench_ap_memory_rootless_a6/memory"]},
+    "memory:job": {"cpu_cores": 13, "memory_mib": 768, "read_mb": 800, "write_mb": 800, "launcher_args": ["--job-workers-override", "16", "--job-work-mem-mb", "160", "--job-fixed-horizon-s", "300", "--statement-timeout-ms", "1800000"]},
+    "memory:tpch": {"cpu_cores": 13, "memory_mib": 544, "read_mb": 800, "write_mb": 800, "launcher_args": ["--benchbase-terminals-override", "16"]},
+    "cpu:hybench_tp": {"cpu_cores": 2, "memory_mib": 8192, "read_mb": 800, "write_mb": 800, "launcher_args": ["--tp-clients-override", "2"]},
+    "cpu:tpcc": {"cpu_cores": 2, "memory_mib": 8192, "read_mb": 800, "write_mb": 800, "launcher_args": ["--benchbase-terminals-override", "60", "--model-training-seed-dir", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/a17_r1/attempt_3/formal_runs/a17_r1_tpcc_cpu_rootless_a3/cpu"]},
+    "io:hybench_xp": {"cpu_cores": 13, "memory_mib": 4096, "read_mb": 5.0, "write_mb": 0.1, "runtime_overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_io_direct_overlays_20260719", "disk_cache_mode": "none", "launcher_args": ["--tp-clients-override", "8", "--ap-clients-override", "24", "--hybench-tp-percent-mix", "0,0,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6", "--hybench-ap-query-sequence", "6,6,6,6", "--workload-fixed-horizon-s", "240", "--statement-timeout-ms", "900000", "--hybench-root", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime_data10x_v2"]},
+    "none:hybench_ap": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800, "launcher_args": ["--model-training-seed-dir", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/e13_r1/attempt_4/formal_runs/e13_r1_hybench_ap_none_rootless_a4/none", "--model-training-seed-include-candidates"]},
+    "none:job": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800, "launcher_args": ["--model-training-seed-dir", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/e14_r1/attempt_2/formal_runs/e14_r1_job_none_rootless_a2/none"]},
+    "none:tpch": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800},
+    "none:hybench_tp": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800, "launcher_args": ["--tp-clients-override", "8", "--model-training-seed-dir", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/e16_r1/attempt_1/formal_runs/e16_r1_hybench_tp_none_rootless_a1/none"]},
+    "none:tpcc": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800, "launcher_args": ["--model-training-seed-dir", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/e17_r1/attempt_1/formal_runs/e17_r1_tpcc_none_rootless_a1/none"]},
+    "none:hybench_xp": {"cpu_cores": 16, "memory_mib": 12288, "read_mb": 800, "write_mb": 800, "launcher_args": ["--tp-clients-override", "24", "--ap-clients-override", "8", "--hybench-root", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime", "--model-training-seed-dir", "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/e18_r1/attempt_1/formal_runs/e18_r1_hybench_xp_none_rootless_a1/none"]}
+  }
+}

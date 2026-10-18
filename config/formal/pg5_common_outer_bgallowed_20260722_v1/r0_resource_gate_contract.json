@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "contract_id": "pg5_r0_single_bottleneck_gate_v1",
+  "target_rule": "identify_bottleneck utilization > 0.8",
+  "target_min_pct_exclusive": 80.0,
+  "non_target_min_pct_inclusive": 30.0,
+  "non_target_max_pct_inclusive": 50.0,
+  "required_resources": [
+    "cpu",
+    "memory",
+    "io"
+  ],
+  "candidate_acceptance_affected": false
+}

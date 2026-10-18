@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_22",
+  "source_controller_elapsed_seconds": 180,
+  "source_complete_window_range": [0, 5],
+  "source_latest_six_mean_raw_utilization": {
+    "cpu": 0.5212004728217937,
+    "memory": 0.7943242631554822,
+    "io": 0.4617320645135104
+  },
+  "source_resource_envelope": {
+    "cpu_quota_cores": 5.13,
+    "memory_MiB": 303,
+    "io_read_MiB_per_second": 64,
+    "io_write_MiB_per_second": 35,
+    "io_total_MiB_per_second": 99
+  },
+  "source_absolute_mean": {
+    "cpu_cores": 2.6737584255758016,
+    "memory_MiB": 240.6802517361111,
+    "io_MiB_per_second": 45.71147438683753
+  },
+  "selected_envelope": {
+    "cpu_quota_cores": 6.68,
+    "memory_MiB": 276,
+    "io_read_MiB_per_second": 64,
+    "io_write_MiB_per_second": 35
+  },
+  "prediction_if_absolute_demand_is_preserved": {
+    "cpu_utilization": 0.400263237361647,
+    "memory_utilization": 0.8720298975946055,
+    "io_utilization": 0.4617320645135104
+  },
+  "phase_decoupling_preserved": true,
+  "first_decision_policy": "at 180 seconds, stop when any preferred mean gate is outside memory 0.85-0.95 or CPU/IO 0.30-0.50; only continue for CV convergence when all means pass",
+  "workload_unchanged": true,
+  "stability_contract_unchanged": true
+}

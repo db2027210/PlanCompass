@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_26",
+  "immutable_target_resource": "memory",
+  "status": "r0_resource_mean_gate_fail_at_first_decision",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "first_decision_six_window_block": {
+    "end_elapsed_seconds": 180,
+    "mean_raw_utilization": {"cpu": 0.35336260465275865, "memory": 0.813522993378553, "io": 0.44785543295908403},
+    "mean_absolute_demand": {"cpu_cores": 2.3604621990804278, "memory_MiB": 174.9074435763889, "io_MiB_per_second": 44.337687862949316},
+    "cross_window_cv": {"cpu": 0.18243003527454038, "memory": 0.07921215623583033, "io": 0.1642807532035301},
+    "resource_mean_gate": {"cpu_30_to_50": true, "memory_preferred_85_to_95": false, "memory_hard_above_80": true, "io_30_to_50": true}
+  },
+  "termination": {"raw_sample_rows": 205, "successful_sql_evidence_records": 79, "workload_errors": 0, "runner_process_group": 43084, "background_sampler_pid": 43085, "container_id": "9a97d90b589307da808106da2107d3723a97b97a9961f8e4f83c90aa4e362e22", "owned_process_group_terminated": true, "owned_container_removed": true, "foreign_processes_or_containers_signaled": false},
+  "preserved_evidence": {"point_state.json": "5d4d590d31ecc56be6f2b5d0c29b112d2c3c697479a66e4199ac9034e7f9f28c", "measurement_resource_samples.jsonl": "9c4a04cd16ade34cdb8c9cedf50bfb1584ec52828d3d5bfdbfdc796de64e8c3d", "measurement_queries.jsonl": "f526b68cacc21c9a9e45e38b3af49d3446bd325755eff5dd65619c9f064a676a", "measurement_online_stability_controller.jsonl": "8804b275fae6b86cadf71e3f92065793944892bf6304e3c8a9415831e4cf39f3", "host_background_attempt_26.jsonl": "4a3d53b22f041c43a09c737eb810aecf2a76c3a8c360c291e0b8a8e390b801b2"},
+  "outer_loop_effect": {"anchor_changed": false, "bounds_changed": false, "binary_interval_shrinks": 0, "accepted_outer_rounds_after_disposition": 0},
+  "next_attempt": "attempt_27"
+}

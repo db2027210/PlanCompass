@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_19",
+  "source_controller_elapsed_seconds": 360,
+  "source_complete_window_range": [6, 11],
+  "source_latest_six_mean_raw_utilization": {
+    "cpu": 0.6843634093018909,
+    "memory": 0.785688999720982,
+    "io": 0.33218701459077066
+  },
+  "source_resource_envelope": {
+    "cpu_quota_cores": 3.0,
+    "memory_MiB": 448,
+    "io_total_MiB_per_second": 64
+  },
+  "source_absolute_mean": {
+    "cpu_cores": 2.0530902279056726,
+    "memory_MiB": 351.98867187499997,
+    "io_MiB_per_second": 21.259968933809322
+  },
+  "selected_envelope": {
+    "cpu_quota_cores": 5.13,
+    "memory_MiB": 402,
+    "io_read_MiB_per_second": 27,
+    "io_write_MiB_per_second": 27
+  },
+  "prediction_if_absolute_demand_is_preserved": {
+    "cpu_utilization": 0.4002125200595853,
+    "memory_utilization": 0.8755937111318407,
+    "io_utilization": 0.39370312840387633
+  },
+  "target_centers": {
+    "cpu": 0.4,
+    "memory": 0.875,
+    "io": 0.4
+  },
+  "calibration_note": "resource denominators are calibrated from the attempt-19 360-second latest-six block; changed limits may alter absolute demand and phase timing, so predictions are observational rather than assumed gate results",
+  "workload_unchanged": true,
+  "stability_contract_unchanged": true
+}

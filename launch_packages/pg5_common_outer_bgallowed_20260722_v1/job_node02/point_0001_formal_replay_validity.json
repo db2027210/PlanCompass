@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "point_id": "experience_table_outer_0001",
+  "replay_ordinal": 1,
+  "status": "invalid_post_measurement_serialization",
+  "formal_baseline_eligible": false,
+  "measurement_completed": true,
+  "measurement_stability_passed": true,
+  "reason": "formal resource evidence serialization failed because the frozen runner derived schema omitted total_bps",
+  "exception": "KeyError: total_bps",
+  "point_result_sha256": "86c67526fe5642605b9edc8520344d2bc8c0a1573224b705aa4c199fa134f7cb",
+  "derived_resource_samples_sha256": "1c862a4e54a190a6719021ecb0e1cbff030469a9b61e11d7bc57ef987488c27d",
+  "disposition": "do_not_reuse_as_formal_baseline; restart from a fresh physical template as point_0002",
+  "marked_at_utc": "2026-07-22T10:58:37Z"
+}

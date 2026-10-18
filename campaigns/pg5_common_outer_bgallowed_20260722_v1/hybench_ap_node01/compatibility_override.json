@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "applies_to_attempt": "attempt_5",
+  "recorded_at": "2026-07-22T16:35:00+08:00",
+  "policy": "preserve_original_reporter_output_and_record_campaign_specific_compatibility_separately",
+  "overrides": {
+    "image_digest": {
+      "legacy_expected": "sha256:2006493727bd5277eece187319af1ef82b4cf82cf4fc1ed00da0775b646ac2a4",
+      "campaign_accepted_actual": "sha256:6c2f8e0ad2949b4e100456f138b1184fe58cb2010cd7a9721008abb87f501458",
+      "condition": "PostgreSQL server_version is 17.7 and actual digest is recorded",
+      "reason": "this campaign does not require an identical image digest across hosts"
+    },
+    "swap_semantics": {
+      "legacy_requirement": "host swap disabled",
+      "campaign_requirement": "container swap disabled",
+      "evidence": "Docker HostConfig.MemorySwap equals HostConfig.Memory (6442450944)",
+      "host_swap": "provenance_only"
+    }
+  },
+  "hard_gates_not_overridden": {
+    "warmup": "continuous 60 seconds minimum",
+    "measurement": "180 to 600 seconds with stability assessment",
+    "target_memory_bottleneck_utilization_percent": "strictly greater than 80; no additional upper bound",
+    "non_bottleneck_cpu_utilization_percent": "30 to 50",
+    "non_bottleneck_io_utilization_percent": "30 to 50",
+    "outer_entry": "forbidden unless every hard gate passes",
+    "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+    "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+    "stability_gate_contract_sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+    "io_utilization_contract_sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+    "utilization_clipping_allowed": false,
+    "utilization_domain": "finite_and_non_negative_unbounded",
+    "values_above_one_preserved": true
+  },
+  "original_reporter_mutated": false
+}

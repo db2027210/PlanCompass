@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "created_at": "2026-07-22T15:50:00+08:00",
+  "authorization": {
+    "background_load_allowed": true,
+    "host_wide_idle_gate_required": false,
+    "must_not_stop_or_overwrite_other_work": true,
+    "background_load_recording_required": true
+  },
+  "common_outer_loop": {
+    "acceptance": "db_qps_strictly_increases_and_target_bottleneck_strictly_decreases",
+    "interval_update": "binary_shrink_only_after_acceptance",
+    "reject_action": "keep_anchor_and_bounds_unchanged",
+    "target_accepted_rounds": 10,
+    "real_replay": {
+      "initial_top_k": 5,
+      "expand_by": 1,
+      "maximum_top_k": 10
+    }
+  },
+  "method_order": [
+    "experience_table_all_nonempty_subset_sgd",
+    "random_search_same_outer",
+    "brute_force_same_outer"
+  ],
+  "shared_baseline": {
+    "reuse_across_methods": true,
+    "point_id": "P0",
+    "warmup_seconds": 60,
+    "measurement_max_seconds": 600,
+    "stable_early_stop": true
+  },
+  "formal_resource_gate": {
+    "target_bottleneck": "memory",
+    "target_selection": "identify_bottleneck",
+    "target_utilization_percent": "strictly-greater-than-80-no-extra-upper-bound",
+    "non_bottleneck_utilization_percent": {
+      "cpu": "30-50",
+      "io": "30-50"
+    },
+    "all_bounds_inclusive": true,
+    "outer_entry_requires_all_gates": true,
+    "contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e"
+  },
+  "immutable_target_mapping": {
+    "hybench_ap_node01": "memory"
+  },
+  "common_scoring_contract": {
+    "sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+    "same_fields_required_for_all_five_scenarios": true
+  },
+  "stability_gate_contract": {
+    "sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+    "same_fields_required_for_all_five_scenarios": true
+  },
+  "io_utilization_contract": {
+    "sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+    "same_fields_required_for_all_five_scenarios": true
+  },
+  "utilization_value_semantics": {
+    "clipping_applied": false,
+    "allowed_domain": "finite_and_non_negative_unbounded",
+    "values_above_one_preserved": true,
+    "stability_and_summary_use_raw_values": true
+  },
+  "accepted_outer_rounds": 0,
+  "status": "r0_attempt30_resource_and_stability_pass_formal_correctness_semantics_blocked"
+}

@@ -1,0 +1,12 @@
+ANALYZE TABLE customer;
+ANALYZE TABLE district;
+ANALYZE TABLE history;
+ANALYZE TABLE item;
+ANALYZE TABLE new_order;
+ANALYZE TABLE oorder;
+ANALYZE TABLE order_line;
+ANALYZE TABLE stock;
+ANALYZE TABLE warehouse;
+ANALYZE TABLE nation;
+ANALYZE TABLE region;
+ANALYZE TABLE supplier;

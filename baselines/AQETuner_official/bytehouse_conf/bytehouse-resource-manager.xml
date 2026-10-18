@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<yandex>
+    <!-- Configuration -->
+    <logger>
+        <level>debug</level>
+        <log>/var/log/byconity-server/resource_manager.log</log>
+        <errorlog>/var/log/byconity-server/resource_manager_error.log</errorlog> <!--  -->
+        <size>1000M</size>
+        <count>10</count>
+    </logger>
+
+    <listen_host>::</listen_host>
+
+
+    <!-- Resource Manager Configuration -->
+    <resource_manager>
+        <port>9999</port> <!--  cnch_config.xml  -->
+        <vws>
+            <vw>
+                <name>vw_default</name>
+                <type>Default</type>
+                <num_workers>1</num_workers> <!-- 2  Worker -->
+                <worker_groups>
+                    <worker_group>
+                        <name>vw_default</name> <!--  Server  Worker  -->
+                        <type>Physical</type>
+                    </worker_group>
+                </worker_groups>
+            </vw>
+            <vw>
+                <name>vw_write</name>
+                <type>Default</type>
+                <num_workers>1</num_workers> <!-- 2  Worker -->
+                <worker_groups>
+                    <worker_group>
+                        <name>vw_write</name> <!--  Server  Worker  -->
+                        <type>Physical</type>
+                    </worker_group>
+                </worker_groups>
+            </vw>
+        </vws>
+    </resource_manager>
+
+    <!-- CNCH Configuration -->
+    <cnch_config>/etc/byconity-server/cnch_config.xml</cnch_config>
+</yandex>

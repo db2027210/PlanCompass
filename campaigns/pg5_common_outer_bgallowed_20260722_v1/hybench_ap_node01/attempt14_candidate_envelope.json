@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "candidate_attempt": "attempt_14",
+  "status": "promoted_to_attempt14_resource_envelope",
+  "resource_contract": {
+    "cpu_quota_cores": 2.0,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 8388608,
+    "io_write_bps": 8388608,
+    "io_total_bps": 16777216,
+    "pids_limit": 512
+  },
+  "empirical_prediction_from_attempt11_full_263_samples": {
+    "cpu_utilization_at_2_cores": 0.3002723689153679,
+    "memory_utilization_at_512_MiB": 0.8062176722537429,
+    "io_sum_total_utilization": 0.45620214968645856,
+    "resource_gate_prediction": "pass_all_three_bands"
+  },
+  "memory_observation": {
+    "metric_definition": "raw memory.current / memory.limit",
+    "mean_memory_current_MiB": 412.78344819391634,
+    "max_memory_current_MiB": 511.99609375,
+    "working_set_retroactive_comparison_available": false,
+    "reason": "the preserved sampler rows do not contain inactive_file or a working-set field"
+  },
+  "failcnt_policy": {
+    "capture_same_container_baseline_immediately_after_cgroup_creation": true,
+    "track_delta_from_that_baseline": true,
+    "do_not_compare_across_container_ids": true
+  },
+  "measurement_contract_pending": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "stability_metrics": ["cpu_utilization", "memory_utilization", "io_utilization"],
+    "qps_participates_in_stability": false,
+    "window_seconds": 30,
+    "required_complete_windows": 6,
+    "cross_window_cv_max_inclusive": 0.1,
+    "probe_checkpoint_seconds": 300,
+    "continue_same_point_if_unstable_at_probe": true,
+    "hard_maximum_seconds": 600,
+    "final_contract_sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2"
+  },
+  "launch_allowed": true,
+  "launch_blocker": null,
+  "accepted_outer_rounds_before_start": 0
+}

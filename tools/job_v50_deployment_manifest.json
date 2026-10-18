@@ -1,0 +1,87 @@
+{
+  "schema_version": "job_target10_v50_fresh0_deployment_manifest_v2",
+  "scenario": "JOB",
+  "deployment_is_zero_workload_call": true,
+  "preflight_is_zero_workload_call": true,
+  "authoritative_handoff": {
+    "historical_accepted_count": 3,
+    "historical_accepted_excluded": 3,
+    "fresh_countable_accepted_count": 0,
+    "fresh_accepted_target": 10,
+    "formal_replay_count": 206,
+    "state_global_ordinal": 386,
+    "formal_state_sha256_prefix": "0418",
+    "sealed_diagnostic_physical_calls_after_state_commit": 6,
+    "expected_external_global_counter_before_fresh0": 392,
+    "replay01": {
+      "physical_invocation_count": 5,
+      "successful_real_replay_count": 4,
+      "technical_failure_count": 1,
+      "baseline_restored": true,
+      "state_neutral": true
+    },
+    "replay02": {
+      "physical_invocation_count": 1,
+      "successful_real_replay_count": 0,
+      "technical_failure_count": 1,
+      "baseline_restored": true,
+      "state_neutral": true
+    }
+  },
+  "files": {
+    "/tmp/job_fresh10_target10_autonomous_v49.py": "3688f00b0a32c490f5dd3781b26642f48361c3ba541256f9855730284016035c",
+    "/tmp/job_fresh10_target10_autonomous_v50.py": "3700e33f48d0391d78fc4079dc526f0143edb99f7b2dc9db9de31153798a3508",
+    "/tmp/bootstrap_job_v50_fresh0.py": "2cf636a047dd9acb08bfe881cae2cd21dc559e5c42b1248a913c7378bd596edd",
+    "/tmp/launch_job_target10_autonomous_v50_after_technical.sh": "2c65b73d950ffeb734f2152c25af7243432b6027fef7ff28a82b039aeb5d24d4",
+    "/tmp/audit_job_v49_live_point.py": "b05fcc8e0da86f0eaccf24bbafd52c43e9ccaa92a0d30f9480db9398c2a15ce0",
+    "/tmp/audit_job_v49_discovery_repeat.py": "8be9739c7eb4b24254e10c7b607bc82aa45468a5ae3b3950bab5dc388447321c"
+  },
+  "v50_contract": {
+    "campaign_root": "autonomous_target10_v50_fresh0",
+    "fresh_accepted_counter_is_separate": true,
+    "historical_state_or_accepted_counter_is_modified": false,
+    "historical_incumbent_is_training_seed_only": true,
+    "historical_incumbent_or_range_is_inherited": false,
+    "bootstrap_generated_candidates_rebased_to_fresh_baseline": true,
+    "post_first_fresh_accept_generation_uses_fresh_state": true,
+    "historical_accepted_is_countable": false,
+    "fresh_countable_accepted_origin": 0,
+    "fresh_incumbent_score": 4.416709205648302,
+    "fresh_incumbent_params": {
+      "cpu_index_tuple_cost": 0.0005,
+      "cpu_operator_cost": 0.0025,
+      "cpu_tuple_cost": 0.01,
+      "parallel_setup_cost": 7000.0,
+      "parallel_tuple_cost": 0.001,
+      "random_page_cost": 4.0,
+      "seq_page_cost": 1.0
+    },
+    "fresh_range_is_exact_baseline_point": true,
+    "diagnostic_attempt_count_min": 1,
+    "diagnostic_attempt_count_max": 5,
+    "short_batch_requires_technical_failure": true,
+    "technical_failure_counts_toward_batch_attempt_budget": true,
+    "physical_global_and_formal_ordinals_count_actual_workload_only": true,
+    "technical_failure_updates_valid_or_accepted": false,
+    "diagnostic_updates_formal_state": false,
+    "technical_selection_is_quarantined_before_next_replay": true,
+    "next_batch_after_technical_uses_fresh_explain_discovery": true,
+    "failed_fingerprint_replay": false,
+    "partial_replay_rerun": false,
+    "repeat_roles": [
+      "trusted",
+      "trusted",
+      "trusted",
+      "probe",
+      "probe"
+    ],
+    "qps_used_for_inner_scoring": false,
+    "manual_candidate_injection": false
+  },
+  "verification": {
+    "unit_tests_passed": 34,
+    "robust_three_observation_regression_passed": true,
+    "python_compile_passed": true,
+    "launcher_shell_syntax_passed": true
+  }
+}

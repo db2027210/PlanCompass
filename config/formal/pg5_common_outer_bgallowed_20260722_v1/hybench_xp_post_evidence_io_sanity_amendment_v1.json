@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "contract_id": "pg5_hybench_xp_post_evidence_io_sanity_amendment_v1",
+  "created_after_attempt": 21,
+  "scope": {
+    "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+    "benchmark": "hybench_xp",
+    "lane_id": "hybench_xp_compute00_59630",
+    "target_resource": "io"
+  },
+  "policy": {
+    "path": "/home/anonymous/program/resource_adaptive/config/formal/pg5_common_outer_bgallowed_20260722_v1/hybench_xp_io_model_sanity_policy_v1.json",
+    "sha256": "88d48a783b827e2748bf88367c78dea65c401b80c6430ef41a8560ad2d01928f",
+    "contract_id": "pg5_hybench_xp_io_model_sanity_policy_v1"
+  },
+  "change": {
+    "field": "metrics.plan_estimator.model_retraining.quality_gate.baseline_sanity.anchor_delta_scale_min_by_resource.io",
+    "old": 0.005,
+    "new": 0.0048,
+    "comparison": "baseline_anchor_delta_scale >= 0.0048",
+    "below_new_minimum": "fail_closed",
+    "missing_or_invalid_observation": "fail_closed"
+  },
+  "independent_fresh_r0_evidence": [
+    {
+      "attempt": 20,
+      "baseline_anchor_delta_scale": 0.004934592475132188,
+      "summary": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt20/candidate_measurements/20260722T205406+0800_581536/summary.json",
+      "summary_sha256": "16bfab5b3812b82db2c045638971cfbaf08cbb6a6bb5ebe8d5c7b1dd5b633578"
+    },
+    {
+      "attempt": 21,
+      "baseline_anchor_delta_scale": 0.004892435751437305,
+      "summary": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt21/candidate_measurements/20260722T210353+0800_623717/summary.json",
+      "summary_sha256": "6d5699f7448b2da784d295d4eb3a9ecd636d0049a77ef8f0b71f283a8a9b0b8f"
+    }
+  ],
+  "retained": {
+    "cpu_minimum": 0.05,
+    "memory_minimum": 0.05,
+    "eta": 0.0051,
+    "max_eta": 0.0051,
+    "experience_table_path": "/home/anonymous/program/resource_adaptive/config/formal/pg5_common_outer_bgallowed_20260722_v1/experience_table_T_hybench_xp_io_v2.json",
+    "experience_table_artifact_sha256": "20412a31cb26324ed8ad9bef84f0ad39829154bb420374c2cb8619dce37cd7a4",
+    "experience_table_canonical_sha256": "681665cc8955c95529d1c959405b8c887537cf964c68f974db6b651f1b2ca7ad",
+    "active_param_count": 6,
+    "all_nonempty_subset_count": 63,
+    "fixed_params": {
+      "parallel_setup_cost": 1000.0
+    },
+    "common_outer_acceptance": "candidate DB QPS strictly rises AND candidate IO utilization strictly falls versus latest accepted incumbent",
+    "accepted_only_binary_shrink": true
+  },
+  "eta_amendment": {
+    "path": "/home/anonymous/program/resource_adaptive/config/formal/pg5_common_outer_bgallowed_20260722_v1/hybench_xp_experience_sgd_eta_0p0051_amendment_v1.json",
+    "sha256": "7df469ff2b9d712b4d8961530debd2ddc9b92aa94a3f7f9abeadf581ee861045"
+  },
+  "prohibited": [
+    "Applying 0.0048 outside this exact campaign/benchmark/lane/IO-target tuple.",
+    "Lowering CPU or Memory sanity minima.",
+    "Accepting a missing, malformed, non-finite, negative, or below-threshold anchor scale.",
+    "Treating this calibration as a bypass of fresh R0, retraining, 63-subset enumeration, real replay, or common outer acceptance."
+  ]
+}

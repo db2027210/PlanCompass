@@ -1,0 +1,58 @@
+{
+  "schema_version": "tpch_v46_postclean5_gate_binding_manifest_v1",
+  "scenario": "TPC-H",
+  "deployment_status": "offline_ready_not_deployed",
+  "live_stage_modified": false,
+  "ssh_calls": 0,
+  "workload_calls_added": 0,
+  "stage_directory": "/tmp/tpch_v46_postclean5_gate_stage_20260803",
+  "files": {
+    "tpch_v46_postclean5_gate_binding_and_absorption.py": "877a4a517ea0290c8f7cb96ebb1742e40f5a80f00137d78b24e008f79c52f47f",
+    "tpch_fresh10_target10_loop_v32_v8_gate_binding.py": "a7174eb59bd467f51a1e55cff4b98f89ed27999cc4ca329ed291cdea1b1f9a69",
+    "run_tpch_round29_diagnostic_exact_plan_regime_batch_v45_none_return.py": "af90bc7f2e145de14d83449513016cd143a756f6cd7da1a5c015706ea60c55a2",
+    "launch_tpch_v46_postclean5_gate_binding.sh": "18e9a0bbe6175a8e085944a2b6dbf7d0b57c4a8e1322befae8ac96288d9b85f1",
+    "deploy_tpch_v46_postclean5_gate_binding.sh": "03fe9126fcb50fab222d8b6fcdbfb3a7d256a615e34d8c66d3b0c07f981c9cc8",
+    "test_tpch_v46_postclean5_gate_binding.py": "a7aaf4b68810b9df94a29e569f6fdb1cad57d3dde6dc7f61a47b93ba5fabca85",
+    "test_tpch_v46_real_module_integration.py": "6b0b39d2282ec879ca57c4eee2af65574ad1091e2839ae4b403754ac575fb92b"
+  },
+  "root_cause": {
+    "message": "cycle resume state was not bound before gate",
+    "cause": "v32 bound cycle_resume_states only in build_probe, while v45 correctly skipped build_probe when consuming an already completed clean5",
+    "failed_gate_after_binding": "actual_best_in_predicted_top3 only, actual best predicted rank 4"
+  },
+  "repair": {
+    "cycle_resume_state_binder": "explicit idempotent closure-backed binder",
+    "resealed_evidence_binder": "explicit idempotent source-to-resealed binding",
+    "postclean5_resume": "validate and consume probe/exact/robust clean5 plus existing reseal and gate with zero new workload calls",
+    "failed_gate_route": "rank4 probe remains probe and is absorbed as observed evidence for automatic bounded EXPLAIN re-exploration",
+    "top3_threshold_relaxed": false,
+    "manual_candidate_injection": false,
+    "probe_promoted_to_trusted": false
+  },
+  "postclean5_boundary": {
+    "existing_diagnostic_batches": 3,
+    "physical_calls": 15,
+    "valid_replays": 15,
+    "technical_failures": 0,
+    "baseline_restored_each_batch": true,
+    "new_calls_during_resume": 0,
+    "formal_started": false,
+    "accepted_incumbent_range_gradient_mutation": false,
+    "entry_gate_unique_failed_check": "actual_best_in_predicted_top3",
+    "actual_best_predicted_rank": 4,
+    "trusted_spearman_minimum_exclusive": 0.0,
+    "trusted_resource_factor_maximum": 1.5
+  },
+  "next_remote_actions": [
+    "deploy package with the main agent's single hard-timeout SSH",
+    "run preflight-postclean5-gate with exact controller/formal/counter SHA and cycle",
+    "run resume-postclean5-gate only after preflight passes"
+  ],
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/pytest -q tests/test_tpch_v42_checkpointed_expansion.py tests/test_tpch_v42_diagnostic_continuation.py tests/test_tpch_v44_deterministic_reexploration.py tests/test_tpch_v45_clean5_resume.py tests/test_tpch_v46_postclean5_gate_binding.py tests/test_tpch_v46_real_module_integration.py",
+    "result": "79 passed in 1.33s",
+    "real_module_offline_integration": true,
+    "verified_zero_call_resume_to_next_cycle": true,
+    "verified_other_failed_checks_fail_closed": true
+  }
+}

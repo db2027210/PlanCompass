@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "invalid_configuration",
+  "reason": "invalid_configuration_7param_ap",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "invalid_active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "formal_active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "invalid_subset_count": 127,
+  "formal_subset_count": 63,
+  "deleted_parameter": "cpu_index_tuple_cost",
+  "invalid_ranking_root": "results/experience_outer/attempt_1_127subsets_retry3",
+  "invalid_replay_root": "results/experience_outer/attempt_1_ranked_replays",
+  "formal_algorithm_candidate_eligibility": false,
+  "formal_real_replay_budget_consumed": 0,
+  "formal_accepted_count": 0,
+  "formal_binary_shrink_count": 0,
+  "preserve_physical_measurements_as_diagnostics": true,
+  "rank8_diagnostic": {
+    "attempt_id": "outer_a1_r01_rank_0008_rep_01",
+    "candidate_cpu_index_tuple_cost": 0.005294584502425627,
+    "incumbent_cpu_index_tuple_cost": 0.005,
+    "deleted_parameter_changed": true,
+    "active_subset_included_deleted_parameter": true,
+    "safe_stop_checkpoint_seconds": 510,
+    "safe_stop_window_indices_one_based": [12, 13, 14, 15, 16, 17],
+    "safe_stop_checkpoint_decision": "continue",
+    "completed_measurement_eligible_for_formal_replay": false
+  },
+  "owned_cleanup": {
+    "controller_pid": 90379,
+    "candidate_pid": 90399,
+    "container_id": "9fb6aab460724a97a08cb9a0fe5a64e9e2fe0a2ea80b1953b211713aefcde3fc",
+    "controller_stopped": true,
+    "candidate_process_group_stopped": true,
+    "owned_container_removed": true,
+    "foreign_processes_or_containers_signaled": false
+  }
+}

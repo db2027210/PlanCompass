@@ -1,0 +1,90 @@
+{
+  "source_audit": "report/bonect/hybenchxp_four_scenario_binary_plan_final_audit_20260711.md",
+  "policy": "Teacher coordinates are audit-only and must not alter candidate scores or replay selection.",
+  "scenarios": {
+    "cpu": {
+      "enabled": true,
+      "label": "final_audit_cpu_vm_teacher",
+      "blind_holdout": true,
+      "teacher_label_excluded_from_training": true,
+      "require_no_forced_seed_records": true,
+      "natural_rank_top_k": 15,
+      "expected_candidate_round": 0,
+      "exact_tolerance": 0.000002,
+      "enforce_natural_recall": true,
+      "stop_after_natural_recall": true,
+      "teacher_params": {
+        "seq_page_cost": 75.000025,
+        "random_page_cost": 15.000025,
+        "cpu_tuple_cost": 0.25000075,
+        "cpu_index_tuple_cost": 0.25000075,
+        "cpu_operator_cost": 0.25000075,
+        "parallel_setup_cost": 2500.0,
+        "parallel_tuple_cost": 7.50000025
+      }
+    },
+    "memory": {
+      "enabled": true,
+      "label": "final_audit_memory_vm_teacher",
+      "blind_holdout": true,
+      "teacher_label_excluded_from_training": true,
+      "require_no_forced_seed_records": true,
+      "natural_rank_top_k": 15,
+      "expected_candidate_round": 0,
+      "exact_tolerance": 0.000002,
+      "enforce_natural_recall": true,
+      "stop_after_natural_recall": true,
+      "teacher_params": {
+        "seq_page_cost": 75.0,
+        "random_page_cost": 15.0,
+        "cpu_tuple_cost": 0.01,
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "parallel_setup_cost": 1000.0,
+        "parallel_tuple_cost": 10.0
+      }
+    },
+    "io": {
+      "enabled": true,
+      "label": "final_audit_io_vm_teacher",
+      "blind_holdout": true,
+      "teacher_label_excluded_from_training": true,
+      "require_no_forced_seed_records": true,
+      "natural_rank_top_k": 15,
+      "expected_candidate_round": 0,
+      "exact_tolerance": 0.000002,
+      "enforce_natural_recall": true,
+      "stop_after_natural_recall": true,
+      "teacher_params": {
+        "seq_page_cost": 75.0,
+        "random_page_cost": 15.0,
+        "cpu_tuple_cost": 0.01,
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "parallel_setup_cost": 1000.0,
+        "parallel_tuple_cost": 10.0
+      }
+    },
+    "none": {
+      "enabled": true,
+      "label": "final_audit_none_vm_teacher",
+      "blind_holdout": true,
+      "teacher_label_excluded_from_training": true,
+      "require_no_forced_seed_records": true,
+      "natural_rank_top_k": 15,
+      "expected_candidate_round": 1,
+      "exact_tolerance": 0.000002,
+      "enforce_natural_recall": true,
+      "stop_after_natural_recall": true,
+      "teacher_params": {
+        "seq_page_cost": 87.5000125,
+        "random_page_cost": 2.5000875,
+        "cpu_tuple_cost": 0.625000375,
+        "cpu_index_tuple_cost": 0.875000125,
+        "cpu_operator_cost": 0.375000625,
+        "parallel_setup_cost": 8750.0,
+        "parallel_tuple_cost": 1.250000875
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "run_id": "hyxp_cpu_c04_unique_phase_a_20260715",
+  "host": "127.0.0.1",
+  "port": 56433,
+  "user": "postgres",
+  "database": "hybench_sf10x",
+  "container": "binary_plan_tuning_hybenchxp_cpu_mem_w1",
+  "sql_path": "shell/hybenchxp_memory_ap6_v86_m02_distinct_unique.sql",
+  "candidate_keys": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "seeds": {
+    "default": [1, 4, 0.01, 0.005, 0.0025, 1000, 0.1],
+    "rpc16": [1, 16, 0.01, 0.005, 0.0025, 1000, 0.1],
+    "coc025": [1, 4, 0.01, 0.005, 0.025, 1000, 0.1],
+    "coc05": [1, 4, 0.01, 0.005, 0.05, 1000, 0.1],
+    "ctc1": [1, 4, 1, 0.005, 0.0025, 1000, 0.1],
+    "ctc1_ptc3": [1, 4, 1, 0.005, 0.0025, 1000, 3]
+  },
+  "fixed_settings": {
+    "work_mem": "512MB",
+    "hash_mem_multiplier": 2,
+    "max_parallel_workers_per_gather": 4,
+    "jit": "off",
+    "enable_hashagg": "on",
+    "enable_hashjoin": "on",
+    "enable_mergejoin": "on",
+    "enable_nestloop": "on",
+    "enable_indexscan": "on",
+    "enable_indexonlyscan": "on",
+    "enable_bitmapscan": "on",
+    "enable_seqscan": "on",
+    "enable_sort": "on",
+    "enable_incremental_sort": "on",
+    "enable_material": "on",
+    "enable_memoize": "on",
+    "enable_parallel_hash": "on"
+  },
+  "primary_pair": {
+    "default": "default",
+    "candidate": "ctc1",
+    "expected_default_fingerprint": "bce9f2708ff008fa",
+    "expected_candidate_fingerprint": "9f3e8f045bf25888"
+  },
+  "sampling": {
+    "warmup_pairs": 1,
+    "measured_pairs": 3,
+    "measured_order": [
+      ["default", "candidate"],
+      ["candidate", "default"],
+      ["default", "candidate"]
+    ]
+  },
+  "gates": {
+    "max_median_candidate_default_ratio": 0.85,
+    "min_candidate_peak_delta_mib": 512,
+    "require_answer_digest": true,
+    "require_complete_result_row_count_equal": true,
+    "require_unique_count": 2,
+    "require_gather_merge_count": 1,
+    "require_sort_count": 1
+  },
+  "timeouts": {
+    "map_statement": "2min",
+    "map_process_seconds": 150,
+    "query_statement": "5min",
+    "query_process_seconds": 330
+  },
+  "fallback_db_qps": 183.02089028620412,
+  "runtime_allowed": false,
+  "hybench_allowed": false
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "point_id": "experience_table_outer_0002",
+  "replay_ordinal": 2,
+  "status": "valid_measurement_not_reused_after_model_sanity_failure",
+  "formal_baseline_eligible_for_original_run": true,
+  "reuse_as_restart_baseline": false,
+  "measurement_completed": true,
+  "measurement_stability_passed": true,
+  "formal_resource_serialization_passed": true,
+  "reason": "the optimizer stopped after baseline because stale pre-retrain prediction metadata caused baseline anchor calibration to be applied to the post-retrain model",
+  "optimizer_failure": "memory baseline_relative_error 7.18941 > 1 after stale anchor input",
+  "point_result_sha256": "29684afaf379a26ef20fc98456799c373539dbc4dfa84d85bb1700bf44babb1a",
+  "disposition": "do_not_reuse_as_restart_baseline; restart from a fresh physical template as point_0003",
+  "marked_at_utc": "2026-07-22T11:09:22Z"
+}

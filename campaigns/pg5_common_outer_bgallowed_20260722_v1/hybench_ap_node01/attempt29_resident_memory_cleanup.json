@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "attempt_id": "attempt_29",
+  "target_resource": "memory",
+  "container_id": "fcdc55910614b8d247ee16bd380a2b1eac7f96747cb30f058a516fa916bf8139",
+  "helper_container_pid": 65,
+  "requested_bytes": 11534336,
+  "signal": "SIGTERM",
+  "helper_exit_verified": true,
+  "memory_usage_after_helper_cleanup_bytes": 167858176,
+  "runner_process_group": 52099,
+  "background_sampler_pid": 52100,
+  "owned_process_groups_terminated": true,
+  "owned_container_removed": true,
+  "foreign_processes_or_containers_signaled": false,
+  "cleanup_pending": false
+}

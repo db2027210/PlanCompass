@@ -1,0 +1,56 @@
+{
+  "schema_version": "tpch_v55_bound_base_validator_evidence_v1",
+  "execution_scope": "local_offline_only",
+  "ssh_calls": 0,
+  "workload_calls": 0,
+  "result": "206 passed",
+  "root_cause": {
+    "failure": "outer wrapper replaced base module validate_selection then dynamically called the replaced attribute",
+    "observed_exception": "RecursionError",
+    "observed_repeated_frames": 991,
+    "workload_boundary_crossed": false,
+    "formal_state_mutated": false,
+    "accepted_counter_mutated": false
+  },
+  "binding_fix": {
+    "base_runner_sha256": "03be882bd4c78ebac37f18b1c3f689305050057d3b73a9964b3d3d1f7dc14c5f",
+    "validator_capture_time": "immediately_after_actual_base_import",
+    "validator_called_through_mutable_module_attribute": false,
+    "validator_function_object_persistently_bound": true,
+    "outer_wrapper_identity_rejected": true,
+    "base_attribute_identity_checked_before_main": true,
+    "actual_import_and_single_validate_call_tested": true,
+    "recursive_call_observed_in_test": false
+  },
+  "failure_evidence": {
+    "failure_log_sha256": "c36e72e42548036d07ddc7c88bb9a30ee0d37520983d56ba03a1059b6ae94b61",
+    "required_phrase": "RecursionError",
+    "preworkload_output_root_state": "missing",
+    "diagnostic_summary_present": false,
+    "formal_package_present": false,
+    "formal_run_present": false
+  },
+  "recovery": {
+    "accepted_output_root_states": [
+      "missing",
+      "strict_empty_directory"
+    ],
+    "probe_pair_sha_required": true,
+    "probe_pair_bytes_preserved": true,
+    "selection_rebuilt": false,
+    "explain_rebuilt": false,
+    "resume_is_separate_explicit_action": true
+  },
+  "frozen_authority": {
+    "controller_state_sha256": "d1431ae426c85f2447012b2b1bdfab83b56a4f1382a07feb5b9cba1b8303c8e2",
+    "formal_state_sha256": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "accepted_counter_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "accepted_count": 1,
+    "accepted_target": 10
+  },
+  "regression": {
+    "result": "206 passed",
+    "v55_tests": 18,
+    "test_sha256": "d1b9f4acb4e4837500ac71be1ba08a6e2cf1c701d93c51c3397e4d66fb971f6a"
+  }
+}

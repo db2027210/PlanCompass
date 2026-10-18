@@ -1,0 +1,70 @@
+{
+  "schema_version": "job_v57_first_batch_audit_checklist_v1",
+  "scenario": "JOB",
+  "mode": "offline_read_only_except_optional_local_report",
+  "current_remote_observation": {
+    "phase": "discovery",
+    "physical_start_evidence": 4,
+    "completed_points": 3,
+    "running_rank": 4,
+    "known_technical_failures": 0,
+    "classification": "running_not_yet_sealed",
+    "clean5_conclusion_allowed": false,
+    "technical_failure_conclusion_allowed": false
+  },
+  "checks": {
+    "diagnostic_batch": [
+      "physical_invocation_count_le_5",
+      "successful_plus_technical_le_5",
+      "baseline_restored",
+      "initial_state_equals_final_state",
+      "accepted_gradient_incumbent_range_updates_all_false"
+    ],
+    "selection": [
+      "five_distinct_noncorner_three_level_fingerprints",
+      "all_required_candidate_fields_present",
+      "discovery_probe5_or_trusted3_probe2",
+      "repeat_and_formal_trusted3_probe2"
+    ],
+    "exact_repeat": [
+      "exact_parameter_set_equals_clean_discovery",
+      "clean5_required_before_rank_gate",
+      "entry_gate_double_recompute_byte_identical",
+      "entry_gate_bound_to_selection_and_summary_sha"
+    ],
+    "entry_gate": [
+      "trusted_only_spearman_positive",
+      "actual_best_predicted_rank_le_3",
+      "maximum_trusted_resource_factor_lt_10",
+      "probe_excluded_from_spearman",
+      "qps_excluded_from_inner_score"
+    ],
+    "formal": [
+      "formal_requires_passed_sealed_gate",
+      "formal_parameter_set_equals_clean_discovery",
+      "v55_failed_fingerprint_never_selected",
+      "every_new_formal_technical_fingerprint_never_selected_later",
+      "explicit_args_selection_binding_used",
+      "two_diagnostic_plus_one_formal_resource_component_median_rescored",
+      "probe_and_rejected_rows_state_neutral"
+    ]
+  },
+  "auditor": {
+    "path": "tools/audit_job_v57_first_batch.py",
+    "sha256": "13f43f26d8feed98d85f9a588899c88f42d2660a3e822b8f1b0428bb2759201a",
+    "command_waiting_or_diagnostic": "python tools/audit_job_v57_first_batch.py --root /path/to/synced/autonomous_target10_v57_fresh0",
+    "command_require_formal": "python tools/audit_job_v57_first_batch.py --root /path/to/synced/autonomous_target10_v57_fresh0 --require-formal",
+    "workload_calls": 0,
+    "ssh_calls": 0,
+    "mysql_touched": false
+  },
+  "tests": {
+    "path": "tests/test_job_v57_first_batch_audit.py",
+    "sha256": "4e8f77a6ba82f0bb0e2780af9dbd365f65c5c164b772ed68d0da1c38a211dc67",
+    "passed": 2,
+    "covered": [
+      "complete_discovery_repeat_gate_recomputation",
+      "running_rank_does_not_invent_technical_failure"
+    ]
+  }
+}

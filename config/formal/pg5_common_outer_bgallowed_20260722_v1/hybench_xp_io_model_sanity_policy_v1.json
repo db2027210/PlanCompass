@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "contract_id": "pg5_hybench_xp_io_model_sanity_policy_v1",
+  "decision": "post-evidence campaign-scoped calibration",
+  "scope": {
+    "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+    "benchmark": "hybench_xp",
+    "lane_id": "hybench_xp_compute00_59630",
+    "target_resource": "io"
+  },
+  "configured_field": "metrics.plan_estimator.model_retraining.quality_gate.baseline_sanity.anchor_delta_scale_min_by_resource",
+  "minimum_by_resource": {
+    "cpu": 0.05,
+    "memory": 0.05,
+    "io": 0.0048
+  },
+  "comparison": "baseline_anchor_delta_scale >= configured minimum",
+  "required_observation_fields": [
+    "resource",
+    "baseline_anchor_delta_scale"
+  ],
+  "observation_validation": {
+    "resource_must_be_one_of": [
+      "cpu",
+      "memory",
+      "io"
+    ],
+    "baseline_anchor_delta_scale_must_be_finite": true,
+    "baseline_anchor_delta_scale_must_be_nonnegative": true,
+    "missing_or_invalid_field_result": "fail_closed"
+  },
+  "negative_guards": {
+    "io_below_0p0048": "fail",
+    "missing_resource": "fail",
+    "missing_baseline_anchor_delta_scale": "fail",
+    "nonfinite_baseline_anchor_delta_scale": "fail",
+    "wrong_campaign_benchmark_lane_or_target": "fail",
+    "global_or_other_benchmark_application": "forbidden"
+  },
+  "evidence": [
+    {
+      "attempt": 20,
+      "fresh_r0": true,
+      "baseline_anchor_delta_scale": 0.004934592475132188,
+      "old_minimum": 0.005,
+      "summary": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt20/candidate_measurements/20260722T205406+0800_581536/summary.json",
+      "summary_sha256": "16bfab5b3812b82db2c045638971cfbaf08cbb6a6bb5ebe8d5c7b1dd5b633578"
+    },
+    {
+      "attempt": 21,
+      "fresh_r0": true,
+      "baseline_anchor_delta_scale": 0.004892435751437305,
+      "old_minimum": 0.005,
+      "summary": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt21/candidate_measurements/20260722T210353+0800_623717/summary.json",
+      "summary_sha256": "6d5699f7448b2da784d295d4eb3a9ecd636d0049a77ef8f0b71f283a8a9b0b8f"
+    }
+  ],
+  "calibration": {
+    "resource": "io",
+    "old_minimum": 0.005,
+    "new_minimum": 0.0048,
+    "cpu_minimum_unchanged": 0.05,
+    "memory_minimum_unchanged": 0.05,
+    "applies_only_after_fresh_r0_and_before_subset_search": true,
+    "is_bypass": false
+  },
+  "unchanged": {
+    "other_campaigns_benchmarks_lanes_and_targets": true,
+    "experience_table": "T v2",
+    "optimizer_eta": 0.0051,
+    "common_outer_acceptance": "candidate DB QPS strictly rises AND candidate target-bottleneck utilization strictly falls versus latest accepted incumbent",
+    "range_update": "accepted-only transform-space binary interval shrink"
+  }
+}

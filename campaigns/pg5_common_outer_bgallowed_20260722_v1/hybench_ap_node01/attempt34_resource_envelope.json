@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "target_attempt": "attempt_34",
+  "immutable_target_resource": "memory",
+  "target_resource_mutation_allowed": false,
+  "reconstruction_from_attempt33": {
+    "attempt33_r0_resource_gate_passed": true,
+    "attempt33_stability_gate_passed": false,
+    "attempt33_latest_six_window_cv": {
+      "cpu": 0.1325987756,
+      "memory": 0.0665634870,
+      "io": 0.1912471187
+    },
+    "diagnosis": "four asynchronous weighted-random clients phase-lock on long AP10 requests",
+    "host_background_load_selected_as_cause": false
+  },
+  "single_workload_adjustment": {
+    "variable": "ap_request_selection_policy",
+    "previous_value": "per-client weighted random sampling",
+    "selected_value": "fixed 100-request stratified interleaved sequence with client offsets 0-3 and stride 4",
+    "exact_aggregate_counts": {
+      "1": 6,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 6,
+      "6": 6,
+      "7": 6,
+      "8": 6,
+      "9": 6,
+      "10": 28,
+      "11": 6,
+      "12": 6,
+      "13": 6
+    },
+    "ap10_count_per_client_cycle": [7, 7, 7, 7],
+    "client_count_unchanged": 4,
+    "query_ids_unchanged": true,
+    "query_weights_unchanged": true
+  },
+  "resource_contract": {
+    "cpu_quota_cores": 5.5,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 223155000,
+    "memory_swap_bytes": 223155000,
+    "io_read_bps": 67108864,
+    "io_write_bps": 36700160,
+    "io_total_bps": 103809024,
+    "pids_limit": 512
+  },
+  "resident_memory_contract": {
+    "bytes": 31457280,
+    "same_owned_container_required": true,
+    "same_cgroup_as_container_init_required": true,
+    "helper_source_sha256": "92c367f21256259f53ead73a7af61376db86e4edf2be8b980db84131b0c596d0",
+    "helper_binary_sha256": "2fc5f4bf0e36a1d9f6abc773d6a719d7baa6c7596ed34d346eee56a8de209ecb",
+    "cgroup_v1_v2_probe_required": true,
+    "cleanup_required": true
+  },
+  "resource_target": {
+    "memory_preferred_band_inclusive": [0.85, 0.95],
+    "cpu_hard_band_inclusive": [0.3, 0.5],
+    "io_hard_band_inclusive": [0.3, 0.5]
+  },
+  "stability_contract": {
+    "window_seconds": 30,
+    "required_consecutive_windows": 6,
+    "cross_window_cv_max_inclusive": 0.1,
+    "maximum_measurement_seconds": 600,
+    "relaxed_from_attempt33": false
+  },
+  "formal_db_qps_contract": {
+    "source": "pg_stat_statements_sum_calls_delta_per_second",
+    "database": "hybench_sf10x",
+    "required_for_outer_entry": true,
+    "ap_qps_substitution_allowed": false,
+    "fail_closed": true
+  },
+  "ap_query_sequence_contract_sha256": "379d3060d61ab1bf906eac6bae6f08632b54db122cb1802c58e1fcf81e65b27d",
+  "apclient_patch_jar_sha256": "6e25069927261b5eb6e2dc9b9b3412ffa8f9e60553715503d6eb560f6d1a6a90",
+  "apclient_patch_summary_sha256": "2aa64b17af6b98b61aba14dec1bb3784fb6600c24d4ccec781eb14aa18923ea0",
+  "r0_resource_gate_contract_sha256": "547ec566adbb78b51e290b69f9d5bf97e5f9c1cbbdffbe7eb8afac741fddcd16",
+  "private_runner_sha256": "2bdc2425b4ba1024c66ae818308169599a40e9799e3045f802c68c6209dbaf66",
+  "accepted_outer_rounds_before_start": 0,
+  "status": "ready_to_launch"
+}

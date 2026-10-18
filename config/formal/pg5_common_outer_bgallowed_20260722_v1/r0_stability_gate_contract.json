@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "contract_id": "pg5_r0_cross_window_resource_stability_v2",
+  "timing": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "initial_probe_seconds": 300,
+    "maximum_measurement_seconds": 600,
+    "continue_after_probe_when_unstable": true,
+    "window_seconds": 30,
+    "required_consecutive_complete_windows": 6
+  },
+  "coverage": {
+    "per_window_min_inclusive": 0.9,
+    "cumulative_min_inclusive": 0.9
+  },
+  "metrics": [
+    "cpu_utilization",
+    "memory_utilization",
+    "io_utilization"
+  ],
+  "throughput_stability_required": false,
+  "throughput_role": "outer_acceptance_only",
+  "stability_rule": "for each metric, coefficient of variation across the six 30-second window means must be <= 0.10",
+  "cross_window_cv_max_inclusive": 0.1,
+  "metric_semantics": {
+    "io_utilization": "(read_bps + write_bps) / (read_cap_bps + write_cap_bps)",
+    "io_total_cap": "read_cap_bps + write_cap_bps",
+    "legacy_max_of_read_and_write_ratios_allowed": false
+  },
+  "within_window_one_second_cv_required": false,
+  "early_stop": "first eligible six-window block that passes every metric and coverage gate",
+  "assessment_error_action": "continue_fail_closed"
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "policy_id": "outer_candidate_first_unstable_three_total_replicates_v1",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "applies_from_rank_inclusive": 8,
+  "rank7_preserved_under_previous_runtime": true,
+  "previous_rank_evidence_rewritten": false,
+  "r0_replayed": false,
+  "controller_sha256": "b7c174750423759613884222cf29180b609762e55125630580617f014e8ca454",
+  "first_valid_replicate_stable": "use_first_replicate_directly",
+  "first_valid_replicate_unstable": "collect_exactly_three_total_replicates",
+  "second_replicate_stable_after_first_unstable": "do_not_select_individually; still collect third and average all three",
+  "maximum_total_replicates": 3,
+  "composite_required_valid_replicates": 3,
+  "composite_fields": ["db_qps", "cpu_utilization_pct", "memory_utilization_pct", "io_utilization_pct"],
+  "composite_aggregation": "arithmetic_mean",
+  "technical_failures_enter_average": false,
+  "technical_failure_examples": ["SQL/AP13 correctness failure", "DB QPS counter missing", "owned Docker failure", "resident helper/cleanup failure"],
+  "insufficient_valid_replicates_action": "candidate_fail_closed_without_composite",
+  "acceptance": "composite mean DB QPS strictly above incumbent and composite mean target-memory utilization strictly below incumbent",
+  "evidence": {
+    "per_replicate": "rank_NN_rep_RR_validation.json plus immutable point directory",
+    "composite": "rank_NN_composite_ledger.json",
+    "rank_decision": "rank_NN_validation.json"
+  }
+}

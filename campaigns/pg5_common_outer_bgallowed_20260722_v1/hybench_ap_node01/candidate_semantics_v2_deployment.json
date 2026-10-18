@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "contract_id": "hybench_ap_outer_candidate_checkpoint_semantics_v2",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "applies_from_rank_inclusive": 8,
+  "currently_running_rank_at_deployment": 7,
+  "currently_running_rank_source_is_immutable_in_process": true,
+  "previous_rank_evidence_rewritten": false,
+  "r0_replayed": false,
+  "frozen_baseline_once_sha256": "5116d3d77b27543f530e2a6a394bcdb4298deddde31441f1196dc706b3e125c4",
+  "candidate_once_sha256_before": "37fb705358041740cd36625e52ca2fd4456185c6dea8ce1ef0835e7e108a0f03",
+  "candidate_once_sha256_after": "02e8fa9f0055d5831ba74e15ffdaa167d3a799b664aa2a54f17981b1931c58f4",
+  "candidate_once_sha256_after_rank8_transition_barrier": "0c08ef297c7e83a6ea1dfad929679c0b3b1335a84d095b2241b4eff0205be96b",
+  "candidate_once_sha256_after_transition_import_fix": "0fd80b9b6658d4d8d99933dd0db0691eb0d267aaf14db083d563552c576bd002",
+  "rank8_transition_barrier": "wait before Docker until replicate_controller_v1 authorization; rank7 in-memory source remains unchanged",
+  "window_indexing": "one_based",
+  "window_seconds": 30,
+  "stability_checkpoints_seconds": [180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600],
+  "unstable_increment_seconds": 30,
+  "window_selection_at_checkpoint": "latest_six_complete_windows",
+  "stability_predicate": "cpu_cv <= 0.10 and memory_cv <= 0.10 and io_cv <= 0.10",
+  "resource_band_order": "evaluate construction bands only after stability",
+  "outer_candidate_r0_construction_band": "explicitly_exempt_not_evaluated",
+  "outer_candidate_hard_gates": [
+    "latest_six_window_resource_stability",
+    "ap13_correctness",
+    "pg_stat_statements_db_qps"
+  ],
+  "source_transform_validation": {
+    "expected_replacement_count": 13,
+    "all_replacement_counts_equal_one": true,
+    "transformed_source_compiles": true,
+    "fake_band_true_replacements_absent": true,
+    "candidate_exemption_artifact": "measurement_candidate_r0_exemption.json",
+    "candidate_outer_guard": "hybench_ap_outer_candidate_hard_gate_v2"
+  }
+}

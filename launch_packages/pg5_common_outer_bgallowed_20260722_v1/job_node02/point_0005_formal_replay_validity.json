@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "point_id": "experience_table_outer_0005",
+  "replay_ordinal": 5,
+  "status": "invalid_pre_measurement_duplicate_launcher_cancelled",
+  "formal_baseline_eligible_for_original_run": false,
+  "reuse_as_restart_baseline": false,
+  "eligible_for_benchmark_scoped_training": false,
+  "independent_parameter_vector_sample": false,
+  "measurement_started": false,
+  "reason": "a delayed prior SSH launcher had already started point_0004 and held the lane lock; the second default launcher allocated ordinal 5 but was terminated before acquiring the lane lock, restoring a template, or starting a container",
+  "point_state_sha256": "ee200891570ba1cf05b5452e9ae34cb0e2834dda1eb15032a27f8e77945cc034",
+  "budget_disposition": "consumed_by_fail_closed_counter",
+  "marked_at_utc": "2026-07-22T11:38:54Z"
+}

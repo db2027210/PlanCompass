@@ -1,0 +1,90 @@
+{
+  "contract": "xp_v44_pending_second_observation_post_replay_deployment_v1",
+  "created_at": "2026-08-03T19:07:33+08:00",
+  "deployment_performed": false,
+  "workload_started": false,
+  "ssh_used": false,
+  "mysql_touched": false,
+  "fresh_formal_accepted_count": 0,
+  "accepted_target": 10,
+  "current_boundary": {
+    "campaign": "/home/anonymous/program/resource_adaptive/history/xp_final_algorithm_fresh10_v38_20260803",
+    "completed_diagnostic_batch": "cont007",
+    "blocked_preworkload_batch": "cont008",
+    "physical_calls_in_completed_diagnostic": 5,
+    "valid_replays_in_completed_diagnostic": 5,
+    "technical_failures_in_completed_diagnostic": 0,
+    "baseline_restored": true,
+    "formal_state_neutral": true
+  },
+  "post_replay_gate": {
+    "passed": false,
+    "failed_checks": [
+      "actual_best_in_predicted_top3"
+    ],
+    "trusted_only_spearman": 0.4999999999999999,
+    "actual_best_predicted_rank": 4,
+    "trusted_score_mae": 0.007541524137508304,
+    "trusted_score_bias_actual_minus_predicted": -0.0013083906942294259,
+    "all_score_mae": 0.012060793225450084,
+    "all_score_bias_actual_minus_predicted": 0.006750844326407446,
+    "predicted_score_span": 0.03466297978535238,
+    "replay_noise_bound_2mae": 0.02412158645090017,
+    "maximum_trusted_resource_factor_error": 1.1415809318162915,
+    "threshold_relaxation": false,
+    "manual_candidate_injection": false,
+    "probe_promotion": false
+  },
+  "automatic_next_action": {
+    "action": "existing deterministic EXPLAIN pipeline generates five new noncorner three-level fingerprints",
+    "legacy_probe5_repeat_reused": false,
+    "new_workload_calls_during_recovery": 0,
+    "formal_state_mutation_during_recovery": false,
+    "formal_admission_if_gate_fails": false
+  },
+  "artifacts": {
+    "controller": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/resume_xp_fresh0_fixed_contract_target10_v44.py",
+      "sha256": "69c64a8a39187e0b12ba02aa6c394b3a9b4fc401f3ab212ed6537d4eb13aeed8"
+    },
+    "patch": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/xp_v44_pending_post_replay_patch.py",
+      "sha256": "aa777cf6241b9240f6d4bcd74f28889a5daa98be25d4de01fc35a2eaed6d6385"
+    },
+    "preflight": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/preflight_xp_v44_pending_post_replay_resume.py",
+      "sha256": "26aa8ade44f368d9afd821a867f7a45d01263d71683d37b3dcf6290ad22b084f"
+    },
+    "tests": {
+      "path": "/home/anonymous/program/resource_adaptive/tests/test_xp_v44_pending_post_replay.py",
+      "sha256": "ae1e805fa32bc24d75fd7fbfc433594c23b0249860b9881bbc2b5fd602446e0d"
+    },
+    "launcher": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/launch_xp_v44_pending_post_replay_target10.sh",
+      "sha256": "a0b280a625037283e7300acaeccad3e7881f1aaaf783d461c166e7aed29ff719"
+    }
+  },
+  "authority_artifacts": {
+    "state": {
+      "path": "/home/anonymous/program/resource_adaptive/history/xp_final_algorithm_fresh10_v38_20260803/state.json",
+      "sha256": "b85def4d2d3837f24a5ac69c102da85aac0b2bdefde754d58d26b037389eff45"
+    },
+    "selection": {
+      "path": "/home/anonymous/program/resource_adaptive/history/xp_final_algorithm_fresh10_v38_20260803/batches/cont007/selection.json",
+      "sha256": "bf0d54962de658b97d80fd0a5f0373c6180902938d17efef74d1f4372ca086ca"
+    },
+    "replay": {
+      "path": "/home/anonymous/program/resource_adaptive/history/xp_final_algorithm_fresh10_v38_20260803/batches/cont007/replay_summary.json",
+      "sha256": "e9931aac7742e76a810f25607ca1bedea36394ae1c80745b43dad0cf1364defc"
+    }
+  },
+  "verification": {
+    "v44_tests": "7/7 passed",
+    "python_compile": "passed",
+    "launcher_bash_syntax": "passed",
+    "launcher_preflight_only": "passed",
+    "v43_tests": "4/4 passed",
+    "v38_tests": "5/5 passed",
+    "known_stale_tests": "v42/v39 historical-boundary assertions no longer match the advanced cont007/cont008 authority state"
+  }
+}

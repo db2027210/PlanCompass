@@ -1,0 +1,113 @@
+{
+  "schema_version": "tpch_v42_cycle004_checkpoint_restart_manifest_v1",
+  "created_at": "2026-08-03T16:45:13+08:00",
+  "scenario": "TPC-H",
+  "source_campaign": "tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803",
+  "remote_paths": {
+    "python": "/mnt/nvme1n1/anonymous_resource_adaptive/python311_c7/bin/python3.11",
+    "campaign_root": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803",
+    "controller_state": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803/target10_loop_v41/controller_state.json",
+    "formal_state": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803/adopted_v40_formal/formal_run/formal_state.json",
+    "accepted_counter": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803/formal_search_accepted_counter.txt",
+    "cycle004": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803/target10_loop_v41/cycle_004",
+    "resume_log": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803/target10_loop_v41/v42_checkpoint_restart.log"
+  },
+  "source_controller_state": {
+    "sha256": "216e65012e1d80905fa1773c14d4d2de5ff8beb0d2bed92723bb759ba8bc62e2",
+    "status": "preparing_cycle",
+    "accepted_count": 1,
+    "accepted_target": 10,
+    "next_cycle": 4,
+    "completed_cycles": 0
+  },
+  "failure": {
+    "stage": "cycle_004/dynamic_expansion_v32/expand_a.log",
+    "exception": "ExpansionBudgetExhausted",
+    "reason": "candidate-estimation budget exhausted",
+    "physical_workload_calls_in_failed_cycle": 0,
+    "partial_expansion_output_persisted_by_v5": false,
+    "resume_cursor_persisted_by_v5": false
+  },
+  "v42_first_resume_failure": {
+    "controller_state_sha256": "cddc8c445f7d2befd4d50a3a20ce54d5a10361d9beb2d8dbbf1106d34c81ea61",
+    "checkpoint_sha256": "0455c669b3b7f886d3c6cb0dda7248f73a0e5e5b815a5115ef4a81f0e7fdf069",
+    "failure_log_sha256": "35245af008c67caa64b90e7dba598c290d51f96ad5ae411dfb0f9f275f646003",
+    "failure": "concurrent checkpoint writers shared one PID-only temporary path",
+    "complete_explain_coverage_failed": "5/22",
+    "physical_explain_invocations_observed": 22,
+    "cached_explain_result_count": 22,
+    "lost_result_physical_explain_invocations": 5,
+    "lost_result_outputs_present_in_cache": true,
+    "physical_workload_calls": 0,
+    "formal_state_sha256_unchanged": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "accepted_counter_sha256_unchanged": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  },
+  "compatibility": {
+    "completed_formal_accepted_preserved": 1,
+    "reason": "The completed v41 formal transaction and its scoring, acceptance, incumbent, range, and gradient semantics are unchanged. The patch changes only post-commit EXPLAIN discovery persistence and bounded termination.",
+    "candidate_schedule_before_budget_boundary_unchanged": true,
+    "maximum_candidate_estimations_unchanged": 128,
+    "maximum_explain_invocations_unchanged": 3000,
+    "maximum_wall_seconds_unchanged": 1800,
+    "entry_gate_unchanged": true,
+    "preformal_candidate_acquisition_changed": "v10 automatically measures three exact-regime candidates plus two credible unknown probes when interval separation is not yet available; the batch is state-neutral and cannot directly enter formal replay",
+    "formal_runner_unchanged": true,
+    "manual_candidate_selection": false,
+    "historical_incompatible_algorithm_inheritance": false
+  },
+  "recovery_contract": {
+    "preflight_is_zero_call": true,
+    "apply_is_zero_call": true,
+    "resume_is_a_separate_explicit_mode": true,
+    "accepted_counter_mutation_during_recovery": false,
+    "formal_state_mutation_during_recovery": false,
+    "old_cycle_is_timestamped_and_quarantined": true,
+    "checkpoint_is_bound_to_all_input_sha256_values": true,
+    "budget_exhaustion_emits_partial_only_if_downstream_minimum_neighbor_gate_passes": true,
+    "checkpoint_replay_does_not_reset_candidate_schedule_budget": true,
+    "checkpoint_writes_are_lock_protected": true,
+    "checkpoint_cache_misses_use_per_sql_singleflight": true,
+    "checkpoint_temporary_names_include_pid_and_thread_id": true,
+    "checkpoint_hits_consume_new_physical_explain_budget": false,
+    "physical_explain_attempt_reserved_before_psql": true,
+    "candidate_estimation_schedule_limit_unchanged": 128,
+    "preworkload_cycle004_process_restart_reuses_checkpoint": true,
+    "restart_after_any_diagnostic_or_formal_directory_exists": "fail_closed",
+    "qps_used_for_inner_scoring": false
+  },
+  "artifacts": {
+    "/tmp/tpch_exact_regime_neighbor_expand_v6_checkpointed.py": "8e16189de0f7677792dcd6c8b5e1ab3fc8015e5242497efa385957b89ae70b9c",
+    "/tmp/build_tpch_autonomous_successor_top5_v10_stability_acquisition.py": "da43bfb66ee99f60702685d4b39018ab1ea9d365d3210009c85b6afb6612fc9b",
+    "/tmp/run_tpch_round29_diagnostic_exact_plan_regime_batch_v43_stability.py": "6cf1b0bcf87611a0f18c4ffc65d8d6b246d0e29cd81935b7f42009b4df603074",
+    "/tmp/tpch_fresh10_target10_loop_v32_v7_checkpointed.py": "f5c735de117c129eed442cbbb7caecc07ba34fe6c68d23eb04a56ef654ffeb61",
+    "/tmp/tpch_v42_cycle004_checkpoint_restart.py": "fc7b1637d83e4e9ad14fe43474af90ee9695a318ad9315e59e321788152add3d",
+    "/tmp/launch_tpch_v42_cycle004_checkpoint_restart.sh": "497778470fe1af2e33cefc97423c25dfc7ccf9e84d072ac33cfb1d394617e8e4",
+    "/tmp/tpch_v43_checkpoint_race_zero_call_repair.py": "46f29c699a0b82764a0ff033a8efef8bcdaa104482a6a6696ad0bde412c4febc",
+    "/tmp/tpch_v43_postlaunch_readonly_audit.py": "71ee14e3bcd0b6633cb1398d57201935a78686ba5b89a8817cae05661adee11a",
+    "/tmp/tpch_v43_remote_safe_migrate_and_resume.sh": "fbe329ae9c34c52e2a384d026a689568d478dc3863fef72a50df5a7d0d419572"
+  },
+  "existing_remote_dependencies": {
+    "/tmp/tpch_v41_preformal_handoff.py": "bb81fde56677fc2c19b1399e708005e3b8e950169643c5fe777da94e47b36a41"
+  },
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_tpch_v42_checkpointed_expansion.py",
+    "result": "8 passed",
+    "test_sha256": "09b8a4ec8e9d08a9a5c30b2c50a61535d1b3e45b4cd84cb88ce528969c75e65a"
+  },
+  "deployment_order": [
+    "Copy the updated expander, v32 hook, v42 controller, and v43 zero-call repair to their exact /tmp paths on node01 and verify every SHA256; the existing launcher SHA is unchanged.",
+    "Verify the current controller, formal state, accepted counter, failed checkpoint, and failure log against v42_first_resume_failure.",
+    "Run v43 repair --preflight-only and require audit_passed_ready_to_repair.",
+    "Run v43 repair --apply-repair-only with the same five input hashes and require checkpoint_repair_applied_zero_call.",
+    "Verify controller/formal/counter SHA remain cddc8c44/fc262cea/4355a46b and read checkpoint_sha256_after.",
+    "Require tmux session tpch_v42_checkpoint_restart to be absent, then launch existing launcher mode resume with controller cddc8c44, formal fc262cea, and counter 4355a46b."
+  ],
+  "resume_launch": {
+    "tmux_session": "tpch_v42_checkpoint_restart",
+    "require_session_absent_before_launch": true,
+    "launcher_mode": "resume",
+    "controller_sha_argument": "controller_state_sha256_after_from_apply",
+    "formal_sha_argument": "same_formal_sha_used_for_preflight_and_apply",
+    "counter_sha_argument": "same_counter_sha_used_for_preflight_and_apply"
+  }
+}

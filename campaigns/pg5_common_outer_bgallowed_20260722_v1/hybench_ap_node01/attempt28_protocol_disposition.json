@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_28",
+  "immutable_target_resource": "memory",
+  "status": "invalid_resident_launcher_cgroup_v2_probe_on_v1_host",
+  "formal_r0_eligible": false,
+  "warmup_started": false,
+  "measurement_started": false,
+  "accepted_outer_rounds_contributed": 0,
+  "failure": "container did not expose /sys/fs/cgroup/memory.current; launcher failed closed before copying or starting the resident helper",
+  "resident_helper_started": false,
+  "termination": {"runner_process_group": 49720, "background_sampler_pid": 49721, "owned_process_group_terminated": true, "owned_container_removed": true, "foreign_processes_or_containers_signaled": false},
+  "preserved_evidence": {"point_state.json": "17f775a34a6580713f535933c18661ada9f095101cd94ac879fe3038e10b1f7f", "host_background_attempt_28.jsonl": "f24ac051b88d9e0265f639d5aa45f37056102d15d888eec5f979c8917ad06518"},
+  "outer_loop_effect": {"anchor_changed": false, "bounds_changed": false, "binary_interval_shrinks": 0, "accepted_outer_rounds_after_disposition": 0},
+  "next_attempt": "attempt_29_resident_memory_cgroup_version_probe"
+}

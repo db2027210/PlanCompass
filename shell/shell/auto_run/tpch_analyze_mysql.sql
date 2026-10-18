@@ -1,0 +1,8 @@
+ANALYZE TABLE customer;
+ANALYZE TABLE lineitem;
+ANALYZE TABLE nation;
+ANALYZE TABLE orders;
+ANALYZE TABLE part;
+ANALYZE TABLE partsupp;
+ANALYZE TABLE region;
+ANALYZE TABLE supplier;

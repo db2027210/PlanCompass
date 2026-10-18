@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "tpch_node04",
+  "attempt_id": "attempt_30",
+  "runner_pid": 113592,
+  "runner_workers_configured": 32,
+  "worker_application_name_pattern": "resource-adaptive-tpch-worker-%",
+  "runner_absent": true,
+  "remaining_owned_worker_backend_count": 0,
+  "owned_container": "pg5_tpch_s04_20260722",
+  "container_remained_running": true,
+  "temporary_cleanup_io_drain": {
+    "scope": "owned container blkio cgroup only",
+    "reason": "allow already-TERM-signaled D-state worker backends to unwind",
+    "read_bps_during_drain": 0,
+    "write_bps_during_drain": 0,
+    "drain_seconds": 10,
+    "restored_read_bps": 13312,
+    "restored_write_bps": 13312,
+    "restoration_readback_passed": true
+  },
+  "unrelated_processes_or_containers_modified": false,
+  "cleanup_complete": true
+}

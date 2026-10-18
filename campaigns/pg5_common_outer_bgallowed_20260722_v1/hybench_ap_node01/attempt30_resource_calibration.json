@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "source_attempts": ["attempt_25", "attempt_29"],
+  "immutable_target_resource": "memory",
+  "memory_cap_MiB": 232,
+  "attempt25_measured_memory_absolute_MiB": 188.33326822916666,
+  "selected_resident_memory_bytes": 31457280,
+  "selected_resident_memory_MiB": 30,
+  "prediction_without_reclaim_using_attempt25_exact_mean": 0.9410916734015804,
+  "prediction_with_10MiB_workload_reclaim_using_attempt25_exact_mean": 0.897988225125718,
+  "campaign_planning_prediction_without_reclaim": 0.9188,
+  "campaign_planning_prediction_with_10MiB_reclaim": 0.8757,
+  "selected_envelope": {"cpu_quota_cores": 6.68, "memory_MiB": 232, "io_read_MiB_per_second": 64, "io_write_MiB_per_second": 35},
+  "target_resource_mutation_allowed": false,
+  "benchmark_workload_unchanged": true,
+  "final_resource_probe": true
+}

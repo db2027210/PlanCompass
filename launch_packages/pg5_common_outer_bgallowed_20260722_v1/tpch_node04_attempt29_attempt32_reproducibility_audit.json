@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "tpch_node04",
+  "attempts": [29, 30, 31, 32],
+  "shared_contract": {
+    "runner_sha256": "2b1ffcd8326a024e47644debaed667cb3ab469c10863a3dd85a451d94304e452",
+    "run_manifest_sha256_all_attempts": "7cef8ad1dcb4a9aa7cfd29454abccaa321551d03ef5fe5557e8ac05e77edc8ab",
+    "query_sql_bundle_sha256": "fee93b0edb698000e5fcf37f50fec28bae7757eaf5f3c1f83b7ed0a45d498737",
+    "seed": 20260722,
+    "workers": 32,
+    "session_work_mem": "1MB",
+    "memory_bytes": 2147483648,
+    "io_read_bps": 13312,
+    "io_write_bps": 13312,
+    "target_resource": "memory"
+  },
+  "attempt_comparison": [
+    {
+      "attempt": 29,
+      "cpu_quota_cores": 8.0,
+      "cpu_mean": 0.20395532490514173,
+      "memory_mean": 0.9328116099039714,
+      "io_mean": 0.4738238906723729,
+      "completed_queries": 185,
+      "workload_qps": 1.0277777777777777,
+      "first_completion_elapsed_seconds": 1.105860257986933,
+      "query_error_count": 3
+    },
+    {
+      "attempt": 30,
+      "cpu_quota_cores": 5.4,
+      "cpu_mean": 0.5288025764846772,
+      "memory_mean": 0.9310135099622938,
+      "io_mean": 0.47179486141492455,
+      "completed_queries": 204,
+      "workload_qps": 1.1333333333333333,
+      "first_completion_elapsed_seconds": 4.000714113935828,
+      "query_error_count": 2
+    },
+    {
+      "attempt": 31,
+      "cpu_quota_cores": 7.138834783,
+      "cpu_mean": 0.6052080022528618,
+      "memory_mean": 0.9096375147501627,
+      "io_mean": 0.47403847845839275,
+      "completed_queries": 412,
+      "workload_qps": 2.2888888888888888,
+      "first_completion_elapsed_seconds": 5.480102077824995,
+      "query_error_count": 0
+    },
+    {
+      "attempt": 32,
+      "cpu_quota_cores": 10.8,
+      "cpu_mean": 0.1979099795353593,
+      "memory_mean": 0.894675424363878,
+      "io_mean": 0.43472188558743957,
+      "completed_queries": 270,
+      "workload_qps": 1.5,
+      "first_completion_elapsed_seconds": 100.04745886218734,
+      "query_error_count": 0
+    }
+  ],
+  "database_qps_audit": {
+    "per_attempt_db_qps_available": false,
+    "summary_json_present": false,
+    "nonnull_db_calls_samples": 0,
+    "reason": "the runner records DB calls only in a pre-workload/post-cleanup delta; fail-closed termination before cleanup produced no per-attempt summary"
+  },
+  "database_state_audit": {
+    "container_id": "5bfdab1bb8e8e6d382e70b15c252c9f3b2d74ae3e0ba0a1e05532e2291b479cc",
+    "container_started_at_utc": "2026-07-22T13:20:21.585326391Z",
+    "container_restart_count": 0,
+    "launcher_restores_database": false,
+    "launcher_restarts_database": false,
+    "launcher_drops_cache": false,
+    "same_database_reused_across_attempts": true,
+    "cleanup_temporarily_removed_io_throttle": true,
+    "cleanup_can_advance_pending_queries_and_mutate_database_or_os_cache": true
+  },
+  "conclusion": {
+    "workload_reproduction_consistent": false,
+    "cpu_quota_response_fit_valid": false,
+    "reason": "query throughput, first-completion delay, query mix, and absolute CPU demand are non-monotonic because attempts did not begin from a restored cache/database state and cleanup drains changed that state",
+    "more_proportional_quota_tuning_allowed": false,
+    "required_before_next_attempt": [
+      "define and verify one fresh database/cache restore protocol",
+      "make cleanup terminate workers without advancing their queries under an unthrottled device",
+      "persist per-attempt DB QPS even for the 180-second profile-reconstruct stop",
+      "rerun from an identical initial state before fitting CPU quota"
+    ]
+  }
+}

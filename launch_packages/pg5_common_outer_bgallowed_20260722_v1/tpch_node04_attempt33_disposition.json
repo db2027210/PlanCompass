@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "tpch_node04",
+  "attempt_id": "attempt_33",
+  "status": "r0_profile_rejected",
+  "reason": "CPU utilization is below the strict R0 profile gate after clean state reproduction",
+  "first_180_samples": {
+    "cpu_utilization_mean": 0.087330497731756,
+    "memory_utilization_mean": 0.935416825612386,
+    "io_utilization_mean": 0.498289978469236,
+    "sample_qps_mean": 0.616666667907981,
+    "raw_cpu_cores_mean": 0.943169375503,
+    "raw_memory_bytes_mean": 2008792337.066667,
+    "raw_io_bytes_s_mean": 13266.472387
+  },
+  "query_records": {
+    "total": 111,
+    "ok": 111,
+    "non_ok": 0
+  },
+  "artifact_sha256": {
+    "resource_samples.jsonl": "01036b5963444b8fed711f4524d4a27c0092c3dea815596b0afc4c44ddffc7b0",
+    "queries.jsonl": "385a8999b5d7aca6f5fc64f25b36e3335641c62a934a58d2a54d8faf9eb05ef1",
+    "run_manifest.json": "7cef8ad1dcb4a9aa7cfd29454abccaa321551d03ef5fe5557e8ac05e77edc8ab"
+  },
+  "next_action": "attempt34 changes only CPU quota from 10.8 to 2.4 cores under the same clean reset protocol",
+  "accepted": false,
+  "subset_replay_started": false,
+  "shrink_started": false
+}

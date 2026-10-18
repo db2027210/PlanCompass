@@ -1,0 +1,243 @@
+{
+  "schema_version": 2,
+  "table_id": "pg5_hybench_xp_io_experience_table_T_v2",
+  "version": "2026-07-22.2",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_tuple_cost"
+  ],
+  "fixed_params": {
+    "parallel_setup_cost": 1000
+  },
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "historical_coordinate_injection_enabled": false,
+  "table_sha256": "681665cc8955c95529d1c959405b8c887537cf964c68f974db6b651f1b2ca7ad",
+  "table": {
+    "seq_page_cost": {
+      "cpu": -0.1,
+      "memory": 0.03,
+      "io": 0.5613102813280537
+    },
+    "random_page_cost": {
+      "cpu": 0.2,
+      "memory": 0.05,
+      "io": 1.0
+    },
+    "cpu_tuple_cost": {
+      "cpu": 0.2,
+      "memory": -0.05,
+      "io": -0.08674565106536077
+    },
+    "cpu_index_tuple_cost": {
+      "cpu": 0.05,
+      "memory": -0.02,
+      "io": 0.09906488016356438
+    },
+    "cpu_operator_cost": {
+      "cpu": 0.2,
+      "memory": -0.05,
+      "io": -0.016648943963281707
+    },
+    "parallel_tuple_cost": {
+      "cpu": -0.2,
+      "memory": 0.05,
+      "io": 0.1941188216514085
+    }
+  },
+  "provenance": {
+    "target_resource": "io",
+    "sign_convention": "positive means increasing the parameter increases target IO; negative means increasing the parameter decreases target IO",
+    "evidence_priority": [
+      "same-lane stable real replay near the incumbent",
+      "benchmark-scoped exact resource-interface endpoint screen"
+    ],
+    "magnitude_policy": {
+      "policy": "for every active parameter, abs(T[param][io]) = abs(endpoint_upper_minus_lower_bytes[param]) / max_active_abs_endpoint_upper_minus_lower_bytes",
+      "normalization_denominator_bytes": 50611607.4496,
+      "normalization_denominator_parameter": "random_page_cost",
+      "sign_policy": "use the evidence-priority-selected sign; seq_page_cost sign is overridden by same-lane real replay while retaining its endpoint-derived normalized magnitude",
+      "scope": "dimensionless relative directional strength; coefficients are not claimed to be calibrated physical derivatives"
+    },
+    "unchanged_columns": {
+      "resources": [
+        "cpu",
+        "memory"
+      ],
+      "source": "v1 values retained because this revision audits the XP IO direction only"
+    },
+    "forbidden_direction_sources": {
+      "finite_difference": false,
+      "random_direction": false,
+      "historical_coordinates": false
+    },
+    "sources": {
+      "a13_optimizer_history": {
+        "path": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt13/output/pg5v1_hyxp_exp_sgd_attempt13/io/hybench_xp_optimizer_history_2026-07-22_185814.jsonl",
+        "sha256": "125a11a1d874594565dacbbe46d8c47eac3e07e75d65ef71ad6c660695d78839"
+      },
+      "a13_baseline_summary": {
+        "path": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt13/candidate_measurements/20260722T185947+0800_3575108/summary.json",
+        "sha256": "ebd1768fdeea3d05ce3c401fcbc5c8b2bfe13bfccf6a22121d8a69eadef3b21e"
+      },
+      "a13_seq_replay_summary": {
+        "path": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt13/candidate_measurements/20260722T192229+0800_3928977/summary.json",
+        "sha256": "f122193790646fe4b1cef8c22922c649c6cbe5aaf513d650b671e5d2087ca4fe"
+      },
+      "a13_random_replay_summary": {
+        "path": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt13/candidate_measurements/20260722T192724+0800_3948898/summary.json",
+        "sha256": "61e868a96fb65d74a600d26b4051ee09d4a252548ae826abf660336c06d2c360"
+      },
+      "a13_seq_random_replay_summary": {
+        "path": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt13/candidate_measurements/20260722T193217+0800_4032273/summary.json",
+        "sha256": "213c53534194d8c480e440ea8a849a994d21a3b06ffea25be809344bcd0f74c6"
+      },
+      "xp_endpoint_screen": {
+        "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/history/endpoint_candidate_screen_20260722/postgresql_exact_resource_interface_inputs/hybench_xp.json",
+        "sha256": "bc1761753653c191156b50915b98fd4e167d28521d43147a008a00e246e685e2",
+        "comparison": "single-parameter lower endpoint versus upper endpoint",
+        "io_delta_derivation": "sum(parameter_results[param].resource_interface_input_changes.io.top_changes[*].delta)"
+      }
+    },
+    "io_direction_evidence": {
+      "seq_page_cost": {
+        "selected_sign": "positive",
+        "selected_source": "a13_same_lane_real_replay",
+        "parameter_change": {
+          "from": 1.0,
+          "to": 1.7512328075702361
+        },
+        "actual_io_utilization_change": {
+          "from": 0.800048209022429,
+          "to": 0.8064673772671052,
+          "delta": 0.0064191682446762
+        },
+        "actual_xp_qps_change": {
+          "from": 4.088571428571429,
+          "to": 4.347142857142857,
+          "delta": 0.258571428571428
+        },
+        "endpoint_upper_minus_lower_bytes": -28408815.615999997,
+        "conflict_resolution": "same-lane stable real replay near the incumbent overrides the endpoint sign"
+      },
+      "random_page_cost": {
+        "selected_sign": "positive",
+        "selected_source": "a13_same_lane_real_replay_confirmed_by_endpoint",
+        "parameter_change": {
+          "from": 4.0,
+          "to": 2.779969024903336
+        },
+        "actual_io_utilization_change": {
+          "from": 0.800048209022429,
+          "to": 0.796215205435729,
+          "delta": -0.0038330035867
+        },
+        "actual_xp_qps_change": {
+          "from": 4.088571428571429,
+          "to": 4.0442857142857145,
+          "delta": -0.04428571428571448
+        },
+        "endpoint_upper_minus_lower_bytes": 50611607.4496
+      },
+      "cpu_tuple_cost": {
+        "selected_sign": "negative",
+        "selected_source": "xp_endpoint_screen",
+        "endpoint_upper_minus_lower_bytes": -4390336.839680015
+      },
+      "cpu_index_tuple_cost": {
+        "selected_sign": "positive",
+        "selected_source": "xp_endpoint_screen",
+        "endpoint_upper_minus_lower_bytes": 5013832.826879987,
+        "v1_defect": "IO coefficient was zero despite nonzero benchmark-scoped endpoint evidence"
+      },
+      "cpu_operator_cost": {
+        "selected_sign": "negative",
+        "selected_source": "xp_endpoint_screen",
+        "endpoint_upper_minus_lower_bytes": -842629.8163200014
+      },
+      "parallel_tuple_cost": {
+        "selected_sign": "positive",
+        "selected_source": "xp_endpoint_screen",
+        "endpoint_upper_minus_lower_bytes": 9824665.600000001,
+        "v1_defect": "IO coefficient sign was negative"
+      }
+    },
+    "a13_top3_prediction_actual_audit": [
+      {
+        "rank": 1,
+        "active_subset": [
+          "seq_page_cost"
+        ],
+        "predicted_io_utilization": {
+          "from": 0.9408564069278553,
+          "to": 0.8620862131219944,
+          "delta": -0.0787701938058609
+        },
+        "predicted_qps": null,
+        "actual_io_utilization": {
+          "from": 0.800048209022429,
+          "to": 0.8064673772671052,
+          "delta": 0.0064191682446762
+        },
+        "actual_xp_qps": {
+          "from": 4.088571428571429,
+          "to": 4.347142857142857,
+          "delta": 0.258571428571428
+        },
+        "io_prediction_sign_correct": false
+      },
+      {
+        "rank": 2,
+        "active_subset": [
+          "random_page_cost"
+        ],
+        "predicted_io_utilization": {
+          "from": 0.9408564069278553,
+          "to": 0.8564340371603432,
+          "delta": -0.0844223697675121
+        },
+        "predicted_qps": null,
+        "actual_io_utilization": {
+          "from": 0.800048209022429,
+          "to": 0.796215205435729,
+          "delta": -0.0038330035867
+        },
+        "actual_xp_qps": {
+          "from": 4.088571428571429,
+          "to": 4.0442857142857145,
+          "delta": -0.04428571428571448
+        },
+        "io_prediction_sign_correct": true
+      },
+      {
+        "rank": 3,
+        "active_subset": [
+          "seq_page_cost",
+          "random_page_cost"
+        ],
+        "predicted_io_utilization": {
+          "from": 0.9408564069278553,
+          "to": 0.8600230046190681,
+          "delta": -0.0808334023087872
+        },
+        "predicted_qps": null,
+        "actual_io_utilization": {
+          "from": 0.800048209022429,
+          "to": 0.803420589812332,
+          "delta": 0.003372380789903
+        },
+        "actual_xp_qps": {
+          "from": 4.088571428571429,
+          "to": 4.075714285714286,
+          "delta": -0.0128571428571429
+        },
+        "io_prediction_sign_correct": false
+      }
+    ],
+    "qps_model_note": "experience table T ranks resource-score candidates and does not predict DB QPS; DB QPS is measured only during serial real replay"
+  }
+}

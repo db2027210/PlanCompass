@@ -1,0 +1,183 @@
+{
+  "_meta": {
+    "variant": "cpu_c04_rpc16_xap3_w1_20260715",
+    "kind": "single_exact_seed_candidate_against_external_same_worker_baseline",
+    "phase_a_decision": "report/bonect/phase_a_eligibility_decision_cpu_c04_unique.json",
+    "scope": "wave1 rpc16 exact-seven candidate on CPU w1 against fair xap3 w1 baseline"
+  },
+  "initial_params": {
+    "seq_page_cost": 1,
+    "random_page_cost": 4,
+    "cpu_tuple_cost": 0.01,
+    "cpu_index_tuple_cost": 0.005,
+    "cpu_operator_cost": 0.0025,
+    "parallel_setup_cost": 1000,
+    "parallel_tuple_cost": 0.1
+  },
+  "param_ranges": {
+    "seq_page_cost": {"min_value": 1, "max_value": 1.000001},
+    "random_page_cost": {"min_value": 4, "max_value": 16},
+    "cpu_tuple_cost": {"min_value": 0.01, "max_value": 1},
+    "cpu_index_tuple_cost": {"min_value": 0.005, "max_value": 0.005001},
+    "cpu_operator_cost": {"min_value": 0.0025, "max_value": 0.05},
+    "parallel_setup_cost": {"min_value": 1000, "max_value": 1000.000001},
+    "parallel_tuple_cost": {"min_value": 0.1, "max_value": 3}
+  },
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": 56433,
+    "user": "postgres",
+    "password": "postgres",
+    "dbname": "hybench_sf10x"
+  },
+  "binary_plan_tuning": {
+    "workload_name": "hybenchxp",
+    "output_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/runs/hyxp_cpu_c04_rpc16_xap3_w1_20260715",
+    "environment": {
+      "runtime": "docker",
+      "container_prefix": "binary_plan_tuning_hybenchxp",
+      "container": "binary_plan_tuning_hybenchxp_cpu_mem_w1",
+      "host_port": 56433,
+      "data_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/workers/cpu_mem_w1/pgdata",
+      "log_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/logs",
+      "preferred_data_roots": ["/disk2"],
+      "selected_data_root": "/disk2"
+    },
+    "workload_context": {
+      "workload_family": "CH",
+      "concurrency": 15,
+      "feature_window_seconds": 10,
+      "sql_count": 1,
+      "cpu_c04_note": "Wave1 rpc16 exact-seven candidate; xap3/TP12/AP-6 C04 and all non-cost settings fixed"
+    },
+    "workload": {
+      "name": "hybenchxp",
+      "plan_sql_file": "shell/hybenchxp_memory_ap6_v86_m02_distinct_unique.sql"
+    },
+    "binary_search": {
+      "max_rounds": 23,
+      "max_candidates_per_round": 1,
+      "plan_probe_workers": 1,
+      "stop_only_on_epsilon": true,
+      "full_bruteforce": false,
+      "disable_candidate_reduction": false,
+      "run_plan_probe_for_full_bruteforce": false,
+      "no_improvement_round_limit": 0,
+      "replay_candidate_pruning": {"enabled": false},
+      "epsilon": {"default": 0.001, "parallel_setup_cost": 1}
+    },
+    "acceptance_policy": {
+      "min_target_drop_pct": 5,
+      "min_db_qps_gain_pct": 15,
+      "non_target_drop_guard_pct": 35,
+      "non_target_drop_guard_mode": "require_any_up_sweet",
+      "hybench_qps_guard_drop_pct": 50,
+      "hybench_tps_guard_drop_pct": 50,
+      "p95_guard_regression_pct": 200,
+      "p99_guard_regression_pct": 500,
+      "resource_capacity": {"memory_gib": 8.8, "cpu_cores": 11.1},
+      "target_baseline_band": {
+        "cpu": {"min_pct": 85, "max_pct": 95},
+        "memory": {"min_pct": 85, "max_pct": 95},
+        "io": {"min_pct": 85, "max_pct": 95}
+      },
+      "target_sweet_spot": {
+        "cpu": {"min_pct": 0, "max_pct": 80},
+        "memory": {"min_pct": 70, "max_pct": 80},
+        "io": {"min_mib_s": 50, "max_mib_s": 75}
+      },
+      "target_min_other_sweet_resources": 1
+    },
+    "validation": {
+      "docker_runtime": {
+        "container": "binary_plan_tuning_hybenchxp_cpu_mem_w1",
+        "interval_sec": 1,
+        "warmup_sec": 30,
+        "memory_mode": "working_set",
+        "io_mode": "cgroup",
+        "checkpoint_before_validation": true,
+        "checkpoint_after_validation": true,
+        "checkpoint_settle_sec": 2,
+        "evict_data_file_cache_before_validation": false,
+        "evict_data_file_cache_max_files": 0,
+        "evict_data_file_cache_max_bytes": 0,
+        "min_stable_samples": 45
+      },
+      "parallel_baseline": {
+        "enabled": false,
+        "compare_mode": "same_worker",
+        "parallelism": 1,
+        "required": true,
+        "cpu_candidate_parallelism": 1
+      },
+      "docker_workers": {
+        "enabled": true,
+        "cpu_memory_parallelism": 1,
+        "io_parallelism": 1,
+        "none_parallelism": 1,
+        "workers": [
+          {
+            "name": "cpu_mem_w1",
+            "targets": ["cpu"],
+            "container": "binary_plan_tuning_hybenchxp_cpu_mem_w1",
+            "host": "127.0.0.1",
+            "port": 56433,
+            "dbname": "hybench_sf10x",
+            "user": "postgres",
+            "password": "postgres",
+            "data_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/workers/cpu_mem_w1/pgdata",
+            "disk_root": "/disk2",
+            "cpuset_cpus": "16-23,232,240,248,256,264"
+          }
+        ]
+      },
+      "hybench_xp": {
+        "enabled": true,
+        "hybench_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master",
+        "launcher": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master/hybench_unblocked",
+        "respect_external_runxp_guard": false,
+        "external_runxp_block_files": ["/tmp/bonect_block_external_runxp"],
+        "base_props_file": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master/conf/pg.props",
+        "statement_file": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp/hybench_runtime/HyBench-2024-master/conf/stmt_postgres.toml",
+        "sf": "10x",
+        "xtpclient": 12,
+        "xapclient": 3,
+        "target_overrides": {
+          "cpu": {
+            "xtpclient": 12,
+            "xapclient": 3,
+            "ap_query_ids": "6",
+            "ap_query_weights": "100",
+            "ap_query_sequence": "6",
+            "progress_windows": "10",
+            "statement_sql_files": {
+              "AP-6": "shell/hybenchxp_memory_ap6_v86_m02_distinct_unique.sql"
+            },
+            "setup_sql_files": ["shell/hybenchxp_cpu_prewarm_plan_relations.sql"]
+          }
+        },
+        "xp_run_mins": 2,
+        "fresh_interval": 20,
+        "random_seed": 20260715,
+        "restore_from_template_before_validation": true,
+        "template_db": "hybench_sf10x_base",
+        "props_output_dir": "hybench_props"
+      }
+    }
+  },
+  "metrics": {
+    "plan_estimator": {
+      "resource_types": ["memory", "cpu", "io"],
+      "shared": {
+        "calibration_factor": 1,
+        "explain_workers": 1,
+        "block_size": 8192,
+        "work_mem_bytes": 536870912,
+        "hash_mem_multiplier": 2,
+        "feature_window_seconds": 10,
+        "normalize_model_features_to_window": true
+      }
+    }
+  },
+  "plan_capture": {"modes": ["generic"], "custom_plan_params": {}}
+}

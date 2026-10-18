@@ -1,0 +1,85 @@
+{
+  "schema_version": "job_v64_robust_formal_eligibility_manifest_v1",
+  "scenario": "JOB",
+  "status": "sealed_offline_not_deployed",
+  "stage_directory": "/tmp/job_v64_robust_eligibility_stage_20260803",
+  "files": {
+    "job_fresh10_target10_autonomous_v64.py": "cea34419a1c6ba790b98208dc8c80bbef51b0efdaae81865459b93638181422a",
+    "run_job_round8_strict_serial_robust_v12_eligibility.py": "f8a026053bf830bdb7e227a54876ee28aa83e23d30246cbd3ef519c5ef66be6b",
+    "launch_job_target10_autonomous_v64.sh": "cbc2ce8ef9884b7bf4549739c1cb256d3440ff27fd1ab8c37c41fd647dd8bcc2",
+    "test_job_v64_robust_eligibility.py": "b8ecc4f1ff8db3e9e1afa8e69ca9912fbb09860f526a3e1d01f9df51567a94b5"
+  },
+  "sealed_dependencies": {
+    "job_fresh10_target10_autonomous_v63.py": "15b7e1658d3328a3a92d2648ed610cf9153ec2e26e848b46fc2e756a30a74980",
+    "run_job_round8_strict_serial_robust_v11_gradient_state_guard.py": "d8919ef67c0b9fe0b9666717e54eedb8cf197b835d4a1e1a918c18674e1b3043",
+    "run_job_round8_strict_serial_robust_v10_resource_median.py": "e4738c9eb95e123a38e31410bb067bf817bb8b54e234acbb2f5bc14ed89f2b03"
+  },
+  "algorithm": {
+    "contract": "job_v64_robust_formal_eligibility_v1",
+    "diagnostic_top5": [
+      "trusted",
+      "trusted",
+      "trusted",
+      "probe",
+      "probe"
+    ],
+    "formal_call_roles": [
+      "eligible_trusted_only"
+    ],
+    "three_score_median_supremum": "max(prior_score_1, prior_score_2)",
+    "eligibility_rule": "maximum_attainable_median > running_incumbent_upper_bound + 1e-12",
+    "running_bound_is_monotone_across_formal_rank_order": true,
+    "probe_physical_calls": 0,
+    "impossible_trusted_physical_calls": 0,
+    "all_ineligible_action": "zero_call_audit_then_automatic_new_fingerprint_exploration",
+    "per_formal_batch_physical_cap": "eligible_count<=3",
+    "same_scene_replay_serial": true,
+    "manual_candidate_injection": false,
+    "qps_used_for_inner_scoring": false
+  },
+  "evidence_validation": {
+    "two_independent_prior_summaries": true,
+    "selection_and_summary_sha_binding": true,
+    "exact_candidate_parameter_binding": true,
+    "sealed_actual_score_binding": true,
+    "formal_state_sha_binding": true,
+    "incumbent_score_binding": true,
+    "runner_recomputes_eligibility_before_workload": true
+  },
+  "liveness": {
+    "completed_v63_repeat_supported": true,
+    "unsealed_partial_repeat": "fail_closed",
+    "no_zero_boundary_required_after_completed_repeat": true,
+    "no_eligible_candidates": "NoveltyCollision-compatible zero-call continuation",
+    "next_cycle_generates_new_fingerprints": true,
+    "permanent_fail_closed_on_mathematical_ineligibility": false
+  },
+  "state_contract": {
+    "diagnostics_state_neutral": true,
+    "skipped_candidates_state_neutral": true,
+    "rejected_candidates_do_not_update_state": true,
+    "accepted_only_updates_incumbent_range_gradient": true,
+    "accepted_target": 10,
+    "current_evidence_incumbent_score": 4.542077
+  },
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_job_v64_robust_eligibility.py tests/test_job_v63_preworkload_resume.py tests/test_job_v63_postclean_branch_audit.py tests/test_job_v62_live_network_authority.py tests/test_job_v58_gradient_state.py",
+    "result": "25 passed",
+    "coverage": [
+      "rank2_rank3_both_prior_scores_below_incumbent_are_skipped",
+      "probes_never_reach_workload",
+      "eligible_trusted_subset_is_filtered_before_workload",
+      "no_eligible_batch_reexplores_automatically",
+      "prior_sha_tamper_fails_closed",
+      "completed_v63_repeat_counter_chain_resumes"
+    ]
+  },
+  "safety": {
+    "ssh_calls": 0,
+    "workload_calls": 0,
+    "formal_state_updates": 0,
+    "counter_updates": 0,
+    "mysql_touched": false,
+    "deployed": false
+  }
+}

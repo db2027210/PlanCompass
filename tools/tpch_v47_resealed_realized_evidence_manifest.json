@@ -1,0 +1,83 @@
+{
+  "schema_version": "tpch_v47_resealed_realized_evidence_manifest_v1",
+  "scenario": "TPC-H",
+  "deployment_status": "offline_ready_not_deployed",
+  "live_stage_modified": false,
+  "ssh_calls": 0,
+  "workload_calls_added": 0,
+  "stage_directory": "/tmp/tpch_v47_resealed_realized_evidence_stage_20260803",
+  "files": {
+    "tpch_v47_resealed_realized_evidence.py": "a6f4d515abc944468a192a6d7faf286feba377a78b5f885b095dec9b06400012",
+    "tpch_fresh10_target10_loop_v32_v8_gate_binding.py": "a7174eb59bd467f51a1e55cff4b98f89ed27999cc4ca329ed291cdea1b1f9a69",
+    "run_tpch_round29_diagnostic_exact_plan_regime_batch_v45_none_return.py": "af90bc7f2e145de14d83449513016cd143a756f6cd7da1a5c015706ea60c55a2",
+    "launch_tpch_v47_resealed_realized_evidence.sh": "03972fceb8226e12ce93c6d1e760866cd3e7b36032b9f0c76365266ada6ed239",
+    "deploy_tpch_v47_resealed_realized_evidence.sh": "2e1b8e4637c86ad56408df1c7bf7f42df8052bbdc48108e175e024460a015312",
+    "test_tpch_v47_resealed_realized_evidence.py": "62491200a4b2485f8ff11f47e76beede85f9633824e55fc570da2ff3de94f623",
+    "test_tpch_v47_real_module_integration.py": "075ed2050811adc4db8361737ee43cbd40612f6b9f41ce89568a713f1213a92d",
+    "test_tpch_v47_remote_reseal_fixture.py": "3cb9a0d9067d860202ed9f15801fc08c390cefc692d498ac1408c48a89f74544"
+  },
+  "remote_fixture": {
+    "source_directory": "/tmp/tpch_v46_remote_reseal_a_20260803",
+    "selection_sha256": "a6a781b90a26ceed30c079fceb19a963658dc2d8f0aacbdc5bd07aa28876d98c",
+    "diagnostic_state_sha256": "b89293ab4cd54c385a950978e8dd7861773436f99a8d0b5fc96f35b95c7658af",
+    "diagnostic_summary_sha256": "0879833bacb22bdf190d13ffc065bf7d57570866349fe82df0b179c2148d6d44",
+    "resume_state_sha256": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "predicted_roles": [
+      "trusted",
+      "trusted",
+      "trusted",
+      "probe",
+      "probe"
+    ],
+    "realized_roles": [
+      "trusted",
+      "probe",
+      "trusted",
+      "probe",
+      "trusted"
+    ],
+    "realized_fingerprint_count": 5
+  },
+  "root_cause": {
+    "message": "real postrobust reseal changes plan-derived role and fingerprint after replay",
+    "cause": "v46 incorrectly applied ordinary diagnostic row equality to a resealed artifact whose immutable binding is rank plus exact candidate parameters",
+    "failed_gate_after_reseal": "actual_best_in_predicted_top3 only, actual best predicted rank 4"
+  },
+  "repair": {
+    "ordinary_probe_exact_robust_binding": "strict rank plus identical role and identical three-level fingerprint",
+    "resealed_binding": "strict rank plus exact candidate parameters, then validate realized role and realized three-level fingerprint",
+    "resealed_realized_policy": "exactly three trusted plus two probes and five unique valid realized fingerprints",
+    "rank4_absorption": "use realized rank4 fingerprint and automatic realized evidence overlay",
+    "postclean5_resume": "consume existing three clean diagnostics plus resealed evidence with zero new workload calls",
+    "top3_threshold_relaxed": false,
+    "manual_candidate_injection": false,
+    "probe_promoted_to_trusted": false,
+    "formal_state_mutation": false
+  },
+  "postclean5_boundary": {
+    "existing_diagnostic_batches": 3,
+    "physical_calls": 15,
+    "valid_replays": 15,
+    "technical_failures": 0,
+    "new_calls_during_resume": 0,
+    "formal_started": false,
+    "entry_gate_unique_failed_check": "actual_best_in_predicted_top3",
+    "actual_best_predicted_rank": 4,
+    "trusted_spearman_minimum_exclusive": 0,
+    "trusted_resource_factor_maximum": 1.5
+  },
+  "next_remote_actions": [
+    "deploy package with the main agent's single hard-timeout SSH",
+    "run preflight-postclean5-gate with exact controller, formal, counter SHA and cycle",
+    "run resume-postclean5-gate only after preflight passes"
+  ],
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/pytest -q tests/test_tpch_v42_checkpointed_expansion.py tests/test_tpch_v42_diagnostic_continuation.py tests/test_tpch_v44_deterministic_reexploration.py tests/test_tpch_v45_clean5_resume.py tests/test_tpch_v46_postclean5_gate_binding.py tests/test_tpch_v46_real_module_integration.py tests/test_tpch_v47_resealed_realized_evidence.py tests/test_tpch_v47_real_module_integration.py tests/test_tpch_v47_remote_reseal_fixture.py",
+    "result": "109 passed in 1.60s",
+    "real_remote_fixture_regression": true,
+    "verified_zero_call_resume_to_next_cycle": true,
+    "verified_resealed_tamper_fail_closed": true,
+    "verified_ordinary_row_binding_remains_strict": true,
+    "verified_other_failed_checks_fail_closed": true
+  }
+}

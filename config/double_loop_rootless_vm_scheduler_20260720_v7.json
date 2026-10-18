@@ -1,0 +1,261 @@
+{
+  "adopted_runs": {},
+  "benchmark_seeds": {
+    "hybench_ap": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_tp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_xp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-serial-debug.qcow2",
+    "job": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/job.qcow2",
+    "tpcc": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpcc.qcow2",
+    "tpch": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpch.qcow2"
+  },
+  "direct_kernel_boot": {
+    "append": "root=/dev/mapper/ubuntu--vg-ubuntu--lv rw fstab=no module_blacklist=ramoops,chromeos_pstore,efi_pstore,pstore_blk,pstore_zone console=ttyS0,115200n8 earlyprintk=serial",
+    "initrd": "/var/tmp/resource_adaptive_flat_seeds/boot/initrd.img-5.4.0-216-generic-minimal",
+    "kernel": "/var/tmp/resource_adaptive_flat_seeds/boot/vmlinuz-5.4.0-216-generic"
+  },
+  "execution_mode": "rootless_qemu_pool",
+  "global_max_active": 4,
+  "global_scheduler_state_glob": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled*_20260720/scheduler_state.json",
+  "holds": {
+    "a13_r1": "owned by external v9 scheduler",
+    "a14_r1": "owned by external v9 scheduler",
+    "a16_r1": "owned by external CPU lane v10 scheduler",
+    "a17_r1": "owned by external CPU lane v10 scheduler",
+    "a18_r1": "owned by external v9 scheduler",
+    "b4_r2": "owned by external CPU lane v10 scheduler",
+    "b4_r3": "owned by external CPU lane v10 scheduler",
+    "b5_r2": "owned by external v9 scheduler",
+    "b5_r3": "owned by external v9 scheduler",
+    "b6_r2": "owned by external v9 scheduler",
+    "b6_r3": "owned by external v9 scheduler",
+    "e13_r1": "owned by external v9 scheduler",
+    "e14_r1": "owned by external v9 scheduler",
+    "e16_r1": "owned by external v9 scheduler",
+    "e17_r1": "owned by external v9 scheduler",
+    "e18_r1": "owned by external v9 scheduler"
+  },
+  "lane_order": [
+    "cpu",
+    "memory",
+    "io",
+    "none"
+  ],
+  "matrix_config": "config/double_loop_experiment_matrix_20260720_v7.json",
+  "max_active": 1,
+  "max_auto_retries": 1,
+  "overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v7_overlays_20260720",
+  "poll_interval_s": 30,
+  "prepared_image": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_probe_20260718/pg17-seed-overlay.qcow2",
+  "profiles": {
+    "cpu:hybench_tp": {
+      "cpu_cores": 2,
+      "launcher_args": [
+        "--tp-clients-override",
+        "8"
+      ],
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "cpu:tpcc": {
+      "cpu_cores": 2,
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "80"
+      ],
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "io:hybench_xp": {
+      "cpu_cores": 13,
+      "disk_cache_mode": "none",
+      "launcher_args": [
+        "--tp-clients-override",
+        "8",
+        "--ap-clients-override",
+        "24",
+        "--hybench-tp-percent-mix",
+        "0,0,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6",
+        "--hybench-ap-query-sequence",
+        "6,6,6,6",
+        "--workload-fixed-horizon-s",
+        "240",
+        "--statement-timeout-ms",
+        "900000",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime_data10x_v2"
+      ],
+      "memory_mib": 4096,
+      "read_mb": 5.0,
+      "runtime_overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v6_io_direct_overlays_20260720",
+      "write_mb": 0.1
+    },
+    "memory:hybench_ap": {
+      "cpu_cores": 10,
+      "launcher_args": [
+        "--ap-clients-override",
+        "4",
+        "--hybench-ap-shared-buffers-mb",
+        "960",
+        "--hybench-ap-work-mem-mb",
+        "32",
+        "--hybench-ap-max-parallel-workers-per-gather",
+        "4",
+        "--hybench-ap-query-sequence",
+        "6,8,6,6,8"
+      ],
+      "memory_mib": 1536,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "memory:job": {
+      "cpu_cores": 13,
+      "launcher_args": [
+        "--job-workers-override",
+        "16",
+        "--job-work-mem-mb",
+        "160",
+        "--job-fixed-horizon-s",
+        "300",
+        "--statement-timeout-ms",
+        "1800000"
+      ],
+      "memory_mib": 736,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "memory:tpch": {
+      "cpu_cores": 13,
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "2",
+        "--benchbase-work-mem-mb",
+        "4",
+        "--benchbase-shared-buffers-mb",
+        "256"
+      ],
+      "memory_mib": 736,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_ap": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_tp": {
+      "cpu_cores": 16,
+      "launcher_args": [
+        "--tp-clients-override",
+        "8"
+      ],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_xp": {
+      "cpu_cores": 16,
+      "launcher_args": [
+        "--tp-clients-override",
+        "24",
+        "--ap-clients-override",
+        "8",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime"
+      ],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:job": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:tpcc": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:tpch": {
+      "cpu_cores": 16,
+      "launcher_args": [
+        "--resume-calibration-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v7_20260720/runs/e15_r1/attempt_2/formal_runs/e15_r1_tpch_none_rootless_a2/none",
+        "--resume-model-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/e15_r1/attempt_5/formal_runs/e15_r1_tpch_none_rootless_a5/none",
+        "--resume-independent-exact-training-seed-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/runs/e15_r1/attempt_6/formal_runs/e15_r1_tpch_none_rootless_a6/none",
+        "--resume-model-training-seed-include-candidates",
+        "--resume-candidate-dir",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v7_20260720/runs/e15_r1/attempt_2/formal_runs/e15_r1_tpch_none_rootless_a2/none"
+      ],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    }
+  },
+  "runtime_overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v7_io_direct_overlays_20260720",
+  "safety": {
+    "max_cpu_pressure_some_avg10": 60,
+    "max_io_pressure_full_avg10": 30,
+    "min_mem_available_gib_after_launch": 24,
+    "min_output_disk_free_gib": 256,
+    "min_root_disk_free_gib": 64,
+    "min_shm_free_gib": 24
+  },
+  "scheduler_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v7_20260720",
+  "schema_version": 1,
+  "cpu_pin_map": "config/pg_cpu_pin_map_20260720.json",
+  "slots": [
+    {
+      "slot_id": "vm41",
+      "ssh_port": 22711,
+      "postgres_port": 25711,
+      "cpuset_cpus": "220-231,476-487",
+      "client_cpuset_cpus": "0-2,256-258"
+    },
+    {
+      "slot_id": "vm42",
+      "ssh_port": 22712,
+      "postgres_port": 25712,
+      "cpuset_cpus": "232-243,488-499",
+      "client_cpuset_cpus": "3-5,259-261"
+    },
+    {
+      "slot_id": "vm43",
+      "ssh_port": 22713,
+      "postgres_port": 25713,
+      "cpuset_cpus": "244-255,500-511",
+      "client_cpuset_cpus": "6-8,262-264"
+    },
+    {
+      "slot_id": "vm44",
+      "ssh_port": 22714,
+      "postgres_port": 25714,
+      "cpuset_cpus": "220-231,476-487",
+      "client_cpuset_cpus": "9-11,265-267"
+    },
+    {
+      "slot_id": "vm45",
+      "ssh_port": 22715,
+      "postgres_port": 25715,
+      "cpuset_cpus": "232-243,488-499",
+      "client_cpuset_cpus": "12-14,268-270"
+    },
+    {
+      "slot_id": "vm46",
+      "ssh_port": 22716,
+      "postgres_port": 25716,
+      "cpuset_cpus": "244-255,500-511",
+      "client_cpuset_cpus": "15,271,0-1,256-257"
+    }
+  ]
+}

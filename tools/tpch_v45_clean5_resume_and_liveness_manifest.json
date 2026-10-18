@@ -1,0 +1,87 @@
+{
+  "schema_version": "tpch_v45_clean5_resume_and_liveness_manifest_v1",
+  "scenario": "TPC-H",
+  "deployment_status": "offline_ready_not_deployed",
+  "live_stage_modified": false,
+  "ssh_calls": 0,
+  "workload_calls_added": 0,
+  "stage_directory": "/tmp/tpch_v45_clean5_resume_stage_20260803",
+  "files": {
+    "tpch_v45_clean5_resume_and_liveness.py": "e31089dd10e6f5e7136ca4504b8c76c96277809723f700c814c0051f74f1317a",
+    "run_tpch_round29_diagnostic_exact_plan_regime_batch_v45_none_return.py": "af90bc7f2e145de14d83449513016cd143a756f6cd7da1a5c015706ea60c55a2",
+    "launch_tpch_v45_clean5_resume_and_liveness.sh": "21a7343af874b5a8fa959d885914073d0de648b0a8838d2df96096af507145c9",
+    "deploy_tpch_v45_clean5_resume_and_liveness.sh": "d11449bfc3942bccb4286edb9a0d0b3ae56a6f3eb303527c5a17f736a4070657",
+    "test_tpch_v45_clean5_resume.py": "7ee7833547377e683999bd45d5317677cea25cbc9807c83062f6618d934a1869"
+  },
+  "unchanged_remote_dependencies": {
+    "/tmp/tpch_v41_preformal_handoff.py": "bb81fde56677fc2c19b1399e708005e3b8e950169643c5fe777da94e47b36a41",
+    "/tmp/tpch_fresh10_target10_loop_v32_v7_checkpointed.py": "f5c735de117c129eed442cbbb7caecc07ba34fe6c68d23eb04a56ef654ffeb61",
+    "/tmp/tpch_exact_regime_neighbor_expand_v6_checkpointed.py": "8e16189de0f7677792dcd6c8b5e1ab3fc8015e5242497efa385957b89ae70b9c",
+    "/tmp/build_tpch_autonomous_successor_top5_v10_stability_acquisition.py": "da43bfb66ee99f60702685d4b39018ab1ea9d365d3210009c85b6afb6612fc9b"
+  },
+  "activation_boundary": {
+    "controller_status_before_seal": "preparing_cycle",
+    "accepted_count": 1,
+    "accepted_target": 10,
+    "cycle": 4,
+    "completed_probe": "clean state-neutral 5/5/0",
+    "required_failure": "TypeError from int(original.main()) when sealed original returned None",
+    "controller_formal_counter_sha_required": true,
+    "v42_recovery_formal_counter_cross_binding_required": true,
+    "baseline_restored_required": true,
+    "downstream_exact_robust_formal_artifacts_must_be_absent": true
+  },
+  "clean5_validation": {
+    "state_schema": "tpch_exact_plan_regime_diagnostic_state_v1",
+    "summary_schema_allowlist": [
+      "tpch_exact_plan_regime_diagnostic_batch_summary_v1",
+      "tpch_postrobust_resealed_diagnostic_summary_v1"
+    ],
+    "resume_state_sha256_must_equal_formal_authority": true,
+    "selection_sha256_must_match": true,
+    "physical_valid_technical": "5/5/0",
+    "successful_ranks": [1, 2, 3, 4, 5],
+    "successful_rows_bind_selection_role_and_fingerprint": true,
+    "successful_rows_require_diagnostic_only_and_no_updates": true,
+    "successful_rows_require_qps_outer_only": true,
+    "technical_failures_must_be_empty": true,
+    "formal_and_optimizer_updates_forbidden": true
+  },
+  "recovery_transaction": {
+    "contract": "tpch_v45_v43_none_return_clean5_recovery_v1",
+    "journal": "prepared immutable audit followed by committed controller state",
+    "audit_to_state_crash_reentrant": true,
+    "preparing_to_exact_crash_reentrant": true,
+    "completed_probe_reused_once": true,
+    "dynamic_config_calls_on_resume": 0,
+    "probe_builder_calls_on_resume": 0,
+    "probe_diagnostic_calls_on_resume": 0,
+    "resume_stage": "build_exact_repeat",
+    "unknown_or_partial_exact_artifacts": "fail_closed"
+  },
+  "runner_fix": {
+    "none_return_exit_code": 0,
+    "non_none_return": "int(result)",
+    "sealed_original_sha256": "12b6ade0325541dbe1eadfd40af873fd3144fc1cbf97d9eca52f11a430731872",
+    "selection_contract_validation_unchanged": true
+  },
+  "preserved_contract": {
+    "same_scene_real_replay_serial": true,
+    "maximum_physical_calls_per_diagnostic": 5,
+    "accepted_shrink_target": 10,
+    "diagnostic_does_not_mutate_accepted_incumbent_range_gradient": true,
+    "manual_candidate_injection": false,
+    "thresholds_relaxed": false,
+    "qps_role": "outer_audit_only_not_inner_score",
+    "v44_deterministic_liveness_integrated": true
+  },
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_tpch_v45_clean5_resume.py tests/test_tpch_v44_deterministic_reexploration.py tests/test_tpch_v42_checkpointed_expansion.py -k 'not deployment_manifest'",
+    "result": "49 passed, 1 deselected",
+    "crash_injection_points": [
+      "after prepared audit before state commit",
+      "after preparing_cycle state before exact-repeat builder"
+    ],
+    "probe_calls_after_clean5_resume": 0
+  }
+}

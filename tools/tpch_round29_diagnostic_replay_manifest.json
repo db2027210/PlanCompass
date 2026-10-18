@@ -1,0 +1,53 @@
+{
+  "schema_version": "tpch_round29_diagnostic_replay_package_manifest_v1",
+  "offline_preparation_only": true,
+  "new_ssh_calls": 0,
+  "new_workload_calls": 0,
+  "remote_package": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/gradient_debug_round29_corrected_diagnostic_replay_v1_20260729T2217_package",
+  "remote_output": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/gradient_debug_round29_corrected_diagnostic_replay_v1_20260729T2217_run",
+  "accepted_count_start": 1,
+  "accepted_shrink_target": 10,
+  "incumbent_score": 4.77702526499285,
+  "maximum_physical_calls": 5,
+  "serial_real_replay_required": true,
+  "roles": [
+    "trusted",
+    "trusted",
+    "trusted",
+    "probe",
+    "probe"
+  ],
+  "diagnostic_state_updates": {
+    "accepted": false,
+    "incumbent": false,
+    "range": false,
+    "gradient": false
+  },
+  "technical_failures_count_toward_physical_cap": true,
+  "technical_failures_count_as_valid_or_accepted": false,
+  "qps_used_for_inner_scoring": false,
+  "baseline_summary": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/candidate_measurements/formal_point_20260729T050311Z_3000/summary.json",
+  "baseline_summary_sha256": "50ae4c9dce7a876af0bbea46e76fb0010256c0481f99605237020f79cb995d67",
+  "workload": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt48_global_replay_cap5_20260726/code/preflight/run_tpch_weighted_candidate_attempt48.sh",
+  "workload_sha256": "19595534dccb0fa1fb6d6b2a5de66445516095dcd1511d772d1787e58b7c0c12",
+  "package_file_sha256": {
+    "SHA256SUMS": "b98a79c7692c7ecdb46ef52f07fb014adfdb87ba57ee4a77e1619def44b5a699",
+    "adaptive_replay_policy.py": "c3c7a826ff1ab65c04c93510efd17b26907a79a15b3d13ff91e5ca106de94584",
+    "config.json": "0b6be9e78681028b730682e87bf01a76306169336e921c60b03bd7c0dfd69b92",
+    "gate.json": "02d19baf6ad8ef9bce7432243ed1ffcb97ed7b402e2fe7c4199243260c109be1",
+    "launch_tpch_round29_diagnostic_replay.sh": "b225170452823f227a03e060e4dbb0b4911d64475d3bd1d0261da1ad0d0a3ad3",
+    "resume_state.json": "610a58fd17004c39182fa6fb95da607fa1be95e7e13f85cc88baff07c84798f5",
+    "run_tpch_round29_diagnostic_exact_plan_regime_batch.py": "e5e39a6991fc611bdb2dbc6cc2853a582b54416a55d93518b68163ef96e36b14",
+    "test_tpch_round29_diagnostic_runner.py": "d977d0da93b8e9d73cf2cbe2f366d37fbc63e7190538fd7b1936db06bbd7ccbf",
+    "top5.json": "c83d8597fa9f0934c64674139806781f7d4aa3660c1bce15479989038b01893e",
+    "tpch_round19_plan_regime_select.py": "4654efc4ef328172863235d3c21e04b8f0d905c5f50564a8dce128e1025ea74c",
+    "validate_tpch_round29_diagnostic_package.py": "50f547045d2b864009624d96951a0365198e162a4b9c4282dfa9520e83543c42"
+  },
+  "preflight": {
+    "package_validator": "passed",
+    "runner_success_path_self_test": "passed",
+    "runner_technical_failure_path_self_test": "passed",
+    "shell_syntax": "passed",
+    "python_compile": "passed"
+  }
+}

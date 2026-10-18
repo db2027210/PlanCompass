@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "table_id": "pg5_hybench_ap_memory_experience_table_T_v1",
+  "version": "2026-07-22.1",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "workload": "hybench_ap",
+  "target_bottleneck": "memory",
+  "semantics": "T[param][resource] is the signed effect of increasing the parameter on raw resource use",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_tuple_cost"
+  ],
+  "resource_fields": ["cpu", "memory", "io"],
+  "table": {
+    "seq_page_cost": {"cpu": -0.10, "memory": 0.03, "io": -0.10},
+    "random_page_cost": {"cpu": 0.20, "memory": 0.05, "io": 0.20},
+    "cpu_tuple_cost": {"cpu": 0.20, "memory": -0.05, "io": -0.15},
+    "cpu_index_tuple_cost": {"cpu": 0.05, "memory": -0.02, "io": 0.00},
+    "cpu_operator_cost": {"cpu": 0.20, "memory": -0.05, "io": -0.15},
+    "parallel_tuple_cost": {"cpu": -0.20, "memory": 0.05, "io": -0.10}
+  },
+  "nonzero_audit": {
+    "entry_count": 18,
+    "nonzero_entry_count": 17,
+    "zero_entries": ["cpu_index_tuple_cost.io"],
+    "all_active_rows_have_nonzero_entries": true,
+    "table_is_none": false,
+    "table_is_all_zero": false
+  },
+  "source": {
+    "provenance_document": "result/bonect/experience_table.md",
+    "provenance_document_sha256": "c54e04cb4c3ce55dae4d40af6c4c92e2a37effec61de1eec7d595726dc83a3a9",
+    "implementation_default": "parameter_optimizer.py sensitivity_table",
+    "implementation_default_sha256": "c1185f5fa18962160f6d7c340d54bc3e5698c5c97436a833b4deef2c933ae611",
+    "projection": "exact six-row projection for the frozen HyBench AP six-parameter active set; parallel_setup_cost is fixed and excluded"
+  },
+  "direction_contract": {
+    "formula": "direction[p] = sum_r utility_slope[r] * T[p][r]",
+    "direction_source": "this_experience_table_T_only",
+    "finite_difference_enabled": false,
+    "random_direction_enabled": false,
+    "surrogate_gradient_direction_enabled": false,
+    "missing_table_or_all_zero_action": "fail_closed_before_subset_enumeration"
+  },
+  "subset_contract": {
+    "active_parameter_count": 6,
+    "all_nonempty_subset_count": 63,
+    "enumerate_each_subset_exactly_once": true
+  }
+}

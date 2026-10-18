@@ -1,0 +1,65 @@
+{
+  "schema_version": "job_v57_to_v58_binding_manifest_v1",
+  "bindings": {
+    "summary": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/replay/summary.json",
+      "sha256": "f0b0b1b62b097db89791eb1fedddebe1cbf652ba1ed053bcabf9b036ef9c8b5b"
+    },
+    "events": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/replay/events.jsonl",
+      "sha256": "b38f6f1526573bdbf118423fcfa6d3d1889eec18a3ee443bf18dd2dc3833ecb0"
+    },
+    "state": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/package/formal_state.json",
+      "sha256": "e71e36de657fb05ce0d1c57ccac1e1e303a2a3840de57d3999b36bbb4137dc3a"
+    },
+    "global_counter": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/replay_counter.txt",
+      "sha256": "a739c9f8c9968c03553730c28210af55c32a2748834e750b889d63dc4e7545ea"
+    },
+    "formal_replay_counter": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/formal_search_replay_counter.txt",
+      "sha256": "b0b8bff299a44d1aeff054facc6b4f8211ab4a5b03be5cac34618201ac8f4cef"
+    },
+    "accepted_counter": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/formal_search_accepted_counter.txt",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "transaction": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/replay/formal_state_commit_transaction.json",
+      "sha256": "1d46f16390685888587ba94e721d6d1b683bfd08797a1e92010881d897188eb3"
+    },
+    "selection": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/package/top5_promoted_formal.json",
+      "sha256": "29355a1374c0215de91ffbd414deafbe888c1b8ab68ac1ef78279aebfda19f38"
+    },
+    "gate": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/package/entry_gate.json",
+      "sha256": "886ed2a3dcab540747940440aa00da1ca936874ad9c1d3d0c9bca2de2cab7f58"
+    },
+    "cycle_audit": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/cycle_audit.json",
+      "must_be_absent": true
+    },
+    "controller_lock": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/controller.lock",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "formal_controller": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/package/job_formal_target10_batch_controller.py",
+      "sha256": "3c9246b67a7fbaf5e28115efc59e4ac68066fc96e6515b6524099ca804c69668"
+    },
+    "robust_resource_runner": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/package/run_job_round8_strict_serial.py",
+      "sha256": "e4738c9eb95e123a38e31410bb067bf817bb8b54e234acbb2f5bc14ed89f2b03"
+    },
+    "state_guard": {
+      "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_7_cap5_contract_20260726/job_final_algorithm_fresh10_v36_20260731T2020/autonomous_target10_v57_fresh0/cycle_001/formal/package/run_job_round8_strict_serial_robust_v9_state_guard.py",
+      "sha256": "e717449a109669d6ed274e29d5aaf9f4285af8b37c586aeb0ad768970ba02693"
+    },
+    "v57_controller": {
+      "path": "/tmp/job_fresh10_target10_autonomous_v57.py",
+      "sha256": "ebc884eefe3cc5663ec4ae5738d46ff564afe78e4b56c68ef4b440996198285b"
+    }
+  }
+}

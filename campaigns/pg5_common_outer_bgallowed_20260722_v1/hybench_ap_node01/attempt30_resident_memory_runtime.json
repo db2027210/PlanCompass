@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "attempt_id": "attempt_30",
+  "target_resource": "memory",
+  "container_name": "p24_postgresql_recost_gradient_descent_ap_pg5hya201v1",
+  "container_id": "86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f",
+  "helper_pid": 66,
+  "requested_bytes": 31457280,
+  "helper_vmrss_bytes": 31629312,
+  "helper_cgroup": "11:devices:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n10:cpuset:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n9:pids:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n8:memory:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n7:hugetlb:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n6:freezer:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n5:cpuacct,cpu:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n4:perf_event:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n3:blkio:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n2:net_prio,net_cls:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n1:name=systemd:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f",
+  "container_init_cgroup": "11:devices:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n10:cpuset:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n9:pids:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n8:memory:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n7:hugetlb:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n6:freezer:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n5:cpuacct,cpu:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n4:perf_event:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n3:blkio:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n2:net_prio,net_cls:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f\n1:name=systemd:/docker/86b9b514dda3ff6b4d2d8f155e541ccf11348607b758f81f3c104c344de6405f",
+  "same_cgroup_verified": true,
+  "memory_counter_path": "/sys/fs/cgroup/memory/memory.usage_in_bytes",
+  "memory_current_before": 14987264,
+  "memory_current_after": 46825472,
+  "helper_source_sha256": "92c367f21256259f53ead73a7af61376db86e4edf2be8b980db84131b0c596d0",
+  "helper_binary_sha256": "2fc5f4bf0e36a1d9f6abc773d6a719d7baa6c7596ed34d346eee56a8de209ecb",
+  "helper_log": "resident_memory_ready pid=66 bytes=31457280 page_size=4096",
+  "cleanup_pending": true,
+  "fail_closed": true
+}

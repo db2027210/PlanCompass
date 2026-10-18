@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "campaign_id": "phase2_vm_teacher_validation_v79_20260711",
+  "source_audit": "report/bonect/hybenchxp_four_scenario_binary_plan_final_audit_20260711.md",
+  "teacher_recovery_audit": "config/bonect_phase2_vm_teacher_recovery_20260711.json",
+  "policy": {
+    "validation_only": true,
+    "teacher_points_must_not_be_forced_into_blind_recovery": true,
+    "external_disk2_processes_are_out_of_scope": true,
+    "cost_param_count": 7
+  },
+  "predecessor": {
+    "campaign_id": "none_delta_cal_v78_20260711",
+    "state_path": "report/bonect/none_delta_cal_v78_20260711/state.jsonl",
+    "required_point_indices": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "require_paired_baseline_valid": true,
+    "reject_failed_events": true,
+    "reject_control_decisions": true
+  },
+  "default_params": {
+    "seq_page_cost": 1.0,
+    "random_page_cost": 4.0,
+    "cpu_tuple_cost": 0.01,
+    "cpu_index_tuple_cost": 0.005,
+    "cpu_operator_cost": 0.0025,
+    "parallel_setup_cost": 1000.0,
+    "parallel_tuple_cost": 0.1
+  },
+  "gates": {
+    "min_db_qps_gain_pct": 15.0,
+    "max_default_db_qps_drift_pct": 10.0,
+    "max_default_resource_drift_pct": 15.0,
+    "min_stable_samples": 45,
+    "max_p95_regression_pct": 200.0,
+    "max_p99_regression_pct": 500.0,
+    "required_cpu_source": "vm_runtime_ssh",
+    "required_memory_source": "vm_meminfo_used",
+    "required_io_source": "vm_disk_device",
+    "required_io_device": "vda",
+    "require_nonzero_io_read_or_write": true,
+    "workload_health": {
+      "require_xp_workload_done": true,
+      "require_test_summary": true,
+      "max_too_many_clients": 0,
+      "max_connection_failures": 0,
+      "max_null_pointer_exceptions": 0
+    },
+    "single_bottleneck_target_min_util_pct": 80.0,
+    "single_bottleneck_non_target_max_util_pct": 79.999,
+    "min_target_relief_util_pp": 5.0,
+    "preferred_target_relief_util_pp": 10.0,
+    "min_default_teacher_param_rms_distance": 0.2,
+    "param_distance_reference_ranges": {
+      "seq_page_cost": [0.0001, 100.0],
+      "random_page_cost": [0.0001, 20.0],
+      "cpu_tuple_cost": [0.000001, 1.0],
+      "cpu_index_tuple_cost": [0.000001, 1.0],
+      "cpu_operator_cost": [0.000001, 1.0],
+      "parallel_setup_cost": [0.0, 10000.0],
+      "parallel_tuple_cost": [0.000001, 10.0]
+    },
+    "min_none_sweet_lift": {
+      "cpu": 10.0,
+      "memory": 10.0,
+      "io": 10.0
+    },
+    "sweet_spots": {
+      "cpu_pct": [65.0, 80.0],
+      "memory_pct": [70.0, 80.0],
+      "io_mib_s": [50.0, 75.0]
+    },
+    "none_baseline_ranges": {
+      "cpu_pct": [20.0, 35.0],
+      "memory_pct": [15.0, 50.0],
+      "io_mib_s": [12.0, 30.0]
+    }
+  },
+  "scenarios": {
+    "cpu": {
+      "benchmark": "hybench_xp",
+      "vm_profile": {
+        "cpu": 3,
+        "memory": "8G",
+        "read_mb": 800,
+        "write_mb": 800,
+        "disk_dev": "vda"
+      },
+      "capability": {
+        "cpu": 3.0,
+        "memory": 8.0,
+        "io": 800.0
+      },
+      "run_mins": 5,
+      "statement_timeout_ms": 420000,
+      "validation_warmup_sec": 60,
+      "runtime_monitor_warmup_sec": 30,
+      "tp_clients": 60,
+      "ap_clients": 8,
+      "ap_query_ids": "6,8,10,11",
+      "ap_query_weights": "15,35,35,15",
+      "ap_query_sequence": "8,10,6,8,10,11,8,10,6,8,10,11",
+      "statement_sql_files": {
+        "AP-6": "shell/hybenchxp_cpu_plan_sensitive_v4_ap6_checking_company_group.sql",
+        "AP-8": "shell/hybenchxp_cpu_plan_sensitive_v4_ap8_customer_saving_checking_filter.sql",
+        "AP-9": "shell/hybenchxp_cpu_plan_sensitive_v4_ap9_exists_loan_no_trans.sql",
+        "AP-10": "shell/hybenchxp_cpu_plan_sensitive_v4_ap10_transfer_customer_company_group.sql",
+        "AP-11": "shell/hybenchxp_cpu_plan_sensitive_v4_ap11_company_category_transfer.sql"
+      },
+      "setup_sql_files": [],
+      "teacher_params": {
+        "seq_page_cost": 75.000025,
+        "random_page_cost": 15.000025,
+        "cpu_tuple_cost": 0.25000075,
+        "cpu_index_tuple_cost": 0.25000075,
+        "cpu_operator_cost": 0.25000075,
+        "parallel_setup_cost": 2500.0,
+        "parallel_tuple_cost": 7.50000025
+      }
+    },
+    "memory": {
+      "benchmark": "hybench_xp",
+      "bonect_memory_use_xp": true,
+      "vm_profile": {
+        "cpu": 8,
+        "memory": "3G",
+        "read_mb": 800,
+        "write_mb": 800,
+        "disk_dev": "vda"
+      },
+      "capability": {
+        "cpu": 8.0,
+        "memory": 3.0,
+        "io": 75.0
+      },
+      "run_mins": 5,
+      "validation_warmup_sec": 60,
+      "runtime_monitor_warmup_sec": 30,
+      "tp_clients": 4,
+      "ap_clients": 1,
+      "ap_query_ids": "6,8",
+      "ap_query_weights": "70,30",
+      "ap_query_sequence": "6,8,6,6,8",
+      "statement_sql_files": {
+        "AP-6": "shell/hybenchxp_memory_ap6_transfer_groupagg_switch_v9.sql",
+        "AP-8": "shell/hybenchxp_memory_ap8_fixed_heap_workset_v11.sql"
+      },
+      "setup_sql_files": [
+        "shell/hybenchxp_memory_hashagg_setup.sql",
+        "shell/hybenchxp_memory_groupagg_setup.sql"
+      ],
+      "teacher_params": {
+        "seq_page_cost": 75.0,
+        "random_page_cost": 15.0,
+        "cpu_tuple_cost": 0.01,
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "parallel_setup_cost": 1000.0,
+        "parallel_tuple_cost": 10.0
+      }
+    },
+    "io": {
+      "benchmark": "hybench_xp",
+      "vm_profile": {
+        "cpu": 3,
+        "memory": "1504M",
+        "read_mb": 800,
+        "write_mb": 800,
+        "disk_dev": "vda"
+      },
+      "capability": {
+        "cpu": 3.0,
+        "memory": 1.46875,
+        "io": 75.0
+      },
+      "run_mins": 5,
+      "validation_warmup_sec": 60,
+      "runtime_monitor_warmup_sec": 30,
+      "tp_clients": 1,
+      "ap_clients": 1,
+      "ap_query_ids": "6",
+      "ap_query_weights": "100",
+      "ap_query_sequence": "6",
+      "statement_sql_files": {
+        "AP-6": "shell/hybenchxp_io_ap6_groupagg_spill_switch_v1.sql"
+      },
+      "setup_sql_files": [
+        "shell/hybenchxp_io_groupagg_spill_setup_16mb.sql",
+        "shell/hybenchxp_io_groupagg_spill_vacuum.sql"
+      ],
+      "teacher_params": {
+        "seq_page_cost": 75.0,
+        "random_page_cost": 15.0,
+        "cpu_tuple_cost": 0.01,
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "parallel_setup_cost": 1000.0,
+        "parallel_tuple_cost": 10.0
+      }
+    },
+    "none": {
+      "benchmark": "hybench_xp",
+      "vm_profile": {
+        "cpu": 8,
+        "memory": "8G",
+        "read_mb": 800,
+        "write_mb": 800,
+        "disk_dev": "vda"
+      },
+      "capability": {
+        "cpu": 8.0,
+        "memory": 8.0,
+        "io": 75.0
+      },
+      "run_mins": 5,
+      "validation_warmup_sec": 60,
+      "runtime_monitor_warmup_sec": 30,
+      "tp_clients": 1,
+      "ap_clients": 1,
+      "ap_query_ids": "6",
+      "ap_query_weights": "100",
+      "ap_query_sequence": "6",
+      "statement_sql_files": {
+        "AP-6": "shell/hybenchxp_none_ap6_physio_transfer_range_500k_write1x.sql"
+      },
+      "setup_sql_files": [
+        "shell/hybenchxp_none_physio_setup.sql"
+      ],
+      "teacher_params": {
+        "seq_page_cost": 87.5000125,
+        "random_page_cost": 2.5000875,
+        "cpu_tuple_cost": 0.625000375,
+        "cpu_index_tuple_cost": 0.875000125,
+        "cpu_operator_cost": 0.375000625,
+        "parallel_setup_cost": 8750.0,
+        "parallel_tuple_cost": 1.250000875
+      }
+    }
+  }
+}

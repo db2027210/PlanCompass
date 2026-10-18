@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_25",
+  "immutable_target_resource": "memory",
+  "target_mapping_preflight_sha256": "511804afed3e281ad46f8fb4b213d31ba8188d1eadd800ea789b84c9b72649cf",
+  "status": "r0_resource_mean_gate_fail_at_first_decision",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "first_decision_six_window_block": {
+    "end_elapsed_seconds": 180,
+    "mean_raw_utilization": {"cpu": 0.3683418042219507, "memory": 0.8117813285739942, "io": 0.47605297691964427},
+    "mean_absolute_demand": {"cpu_cores": 2.4605232522026306, "memory_MiB": 188.33326822916666, "io_MiB_per_second": 47.129244715044784},
+    "cross_window_cv": {"cpu": 0.0911773238093245, "memory": 0.0680829413139477, "io": 0.1797178342251649},
+    "resource_mean_gate": {"cpu_30_to_50": true, "memory_preferred_85_to_95": false, "memory_hard_above_80": true, "io_30_to_50": true},
+    "stable": false
+  },
+  "termination": {
+    "last_controller_elapsed_seconds": 210.4435478499945,
+    "raw_sample_rows": 216,
+    "successful_sql_evidence_records": 86,
+    "workload_errors": 0,
+    "runner_process_group": 39750,
+    "background_sampler_pid": 39751,
+    "container_id": "461be18a236d71a86b259f998ba487630baf974c6efe6f3e4f939ceb331a82be",
+    "container_health_before_stop": "healthy",
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "owned_process_group_terminated": true,
+    "owned_container_removed": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "early_seal_rule": "at the first 180-second six-window decision, stop immediately when any preferred resource mean gate is outside memory 0.85-0.95 or CPU/IO 0.30-0.50; continue for CV only when all means pass",
+  "preserved_evidence": {
+    "point_state.json": "235c991baeeab2751f100cbe8aaa8823653080dd4bf0656185d02fc679f38971",
+    "measurement_resource_samples.jsonl": "5488bc1cbc22081f1af431ae171c7523016d0977f7adc2418535c72b8d5ad4f1",
+    "measurement_queries.jsonl": "d279f8e2da881851964dd7b70dc58707e7af3e5befbc2f7f89bf09cd921622e3",
+    "measurement_online_stability_controller.jsonl": "ab0b4e9f4d218c6b6ec6c8dddcc132c0657d9b683eeaaca6afe021f7c1317ee3",
+    "measurement_hybench.log": "925890ed77c726d9af5c8b62680bd341f34c8352a1dbc2069f561b547e532265",
+    "warmup_hybench.log": "4d3b1f981493d6150ea3f4b8eed9e0cb53b67d4107a062ffc9c7f6f9e2ecb15d",
+    "host_background_attempt_25.jsonl": "873f42e4a87d011d9010a068c331acddd30ef0be7e41a12bb16ff0d59a647840"
+  },
+  "outer_loop_effect": {"anchor_changed": false, "bounds_changed": false, "binary_interval_shrinks": 0, "accepted_outer_rounds_after_disposition": 0},
+  "next_attempt": "attempt_26"
+}

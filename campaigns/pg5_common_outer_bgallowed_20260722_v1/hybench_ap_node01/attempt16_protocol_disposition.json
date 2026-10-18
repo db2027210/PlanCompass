@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_16",
+  "status": "invalid_runner_runtime_name_error_before_container_start",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "reason": "the lane-private invocation evidence dictionary used JSON false instead of Python False and raised NameError before run_cost_point or container creation",
+  "runner_pid": 9427,
+  "background_sampler_pid": 9428,
+  "container_created": false,
+  "warmup_started": false,
+  "measurement_started": false,
+  "database_state_observed": false,
+  "outer_loop_effect": {
+    "anchor_changed": false,
+    "bounds_changed": false,
+    "binary_interval_shrinks": 0,
+    "accepted_outer_rounds_after_disposition": 0
+  },
+  "next_attempt": "attempt_17"
+}

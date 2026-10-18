@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<yandex>
+    <!-- Configuration -->
+    <logger>
+        <level>trace</level>
+        <log>/var/log/byconity-server/tso.log</log>
+        <errorlog>/var/log/byconity-server/tso_error.log</errorlog> <!--  -->
+        <size>1000M</size>
+        <count>10</count>
+    </logger>
+
+    <listen_host>::</listen_host>
+
+    <!-- TSO Configuration -->
+    <tso_service>
+        <type>fdb</type>
+        <port>7779</port> <!--  cnch_config.xml  -->
+        <fdb>
+                <cluster_file>/960Gssd/wqy/ByConity/fdb_runtime/config/fdb.cluster</cluster_file> <!--  FoundationDB  -->
+        </fdb>
+        <tso_window_ms>3000</tso_window_ms>
+        <tso_get_leader_info_interval_ms>0</tso_get_leader_info_interval_ms>
+        <tso_max_retry_count>3</tso_max_retry_count>
+    </tso_service>
+
+    <!-- CNCH Configuration -->
+    <cnch_config>/etc/byconity-server/cnch_config.xml</cnch_config>
+</yandex>

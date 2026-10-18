@@ -1,0 +1,74 @@
+{
+  "schema_version": "tpch_v44_deterministic_reexploration_manifest_v1",
+  "scenario": "TPC-H",
+  "deployment_status": "offline_ready_not_deployed",
+  "live_stage_modified": false,
+  "workload_calls_added": 0,
+  "controller": {
+    "path": "/tmp/tpch_v44_deterministic_reexploration.py",
+    "sha256": "656ab4661ae6cdaed4d62e5f4146c6f804eede28668a669648c5f62e52c30af6"
+  },
+  "launcher": {
+    "path": "/tmp/launch_tpch_v44_deterministic_reexploration.sh",
+    "sha256": "17f0b062c0b506b28ff01dc7142d141cc6edf3bcb07e50902b30a374620f6ed5"
+  },
+  "unchanged_dependencies": {
+    "/tmp/tpch_v41_preformal_handoff.py": "bb81fde56677fc2c19b1399e708005e3b8e950169643c5fe777da94e47b36a41",
+    "/tmp/tpch_fresh10_target10_loop_v32_v7_checkpointed.py": "f5c735de117c129eed442cbbb7caecc07ba34fe6c68d23eb04a56ef654ffeb61",
+    "/tmp/tpch_exact_regime_neighbor_expand_v6_checkpointed.py": "8e16189de0f7677792dcd6c8b5e1ab3fc8015e5242497efa385957b89ae70b9c",
+    "/tmp/build_tpch_autonomous_successor_top5_v10_stability_acquisition.py": "da43bfb66ee99f60702685d4b39018ab1ea9d365d3210009c85b6afb6612fc9b",
+    "/tmp/run_tpch_round29_diagnostic_exact_plan_regime_batch_v43_stability.py": "6cf1b0bcf87611a0f18c4ffc65d8d6b246d0e29cd81935b7f42009b4df603074"
+  },
+  "allowlisted_negative_gates": {
+    "exact_repeat": [
+      "source score span is not distinguishable from replay noise",
+      "repeat fingerprints are not distinct"
+    ],
+    "robust_repeat": [
+      "fewer than three stable exact-plan regimes",
+      "three stable regimes require excessive replay-noise span",
+      "robust repeat is not unique trusted3+probe2"
+    ],
+    "prethird_feasibility": [
+      "bounded four-observation median cannot beat incumbent"
+    ],
+    "postrobust_reseal": [
+      "fewer than three resource-stable three-observation regimes",
+      "fewer than three stable three-observation regimes",
+      "three stable regimes require excessive replay-noise span",
+      "post-robust reseal is not unique trusted3+probe2"
+    ]
+  },
+  "activation_gate": {
+    "controller_status": "preparing_cycle",
+    "accepted_count": 1,
+    "accepted_target": 10,
+    "required_completed_diagnostic_shape": "each completed stage is clean state-neutral 5/5/0",
+    "formal_artifacts_must_be_absent": true,
+    "formal_state_sha256_must_match": true,
+    "accepted_counter_sha256_must_match": true,
+    "unknown_errors": "fail_closed",
+    "deployment_timing": "only_after_the_live_v43_controller_exits_on_an_allowlisted_clean_boundary"
+  },
+  "preserved_contract": {
+    "five_new_noncorner_three_level_fingerprints": true,
+    "top5_roles": [
+      "trusted",
+      "trusted",
+      "trusted",
+      "probe",
+      "probe"
+    ],
+    "per_diagnostic_physical_cap": 5,
+    "same_scene_real_replay_serial": true,
+    "manual_candidate_injection": false,
+    "thresholds_relaxed": false,
+    "qps_role": "outer_audit_only_not_inner_score"
+  },
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_tpch_v44_deterministic_reexploration.py tests/test_tpch_v42_checkpointed_expansion.py -k 'not deployment_manifest'",
+    "result": "29 passed, 1 deselected",
+    "v44_test_sha256": "bc79ea2ae1ac6bec4d2d18fd891eaa7b651b1d84d14587dd1d3796393228fea6",
+    "v42_test_sha256": "a63b90395b412db3a2961647e64a94a9dec317ba1f5b87d2bfc820c0298cd644"
+  }
+}

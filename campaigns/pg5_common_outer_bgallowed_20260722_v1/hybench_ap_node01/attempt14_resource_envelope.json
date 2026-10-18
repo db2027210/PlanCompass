@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_13",
+  "target_attempt": "attempt_14",
+  "resource_contract": {
+    "cpu_quota_cores": 2.0,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 8388608,
+    "io_write_bps": 8388608,
+    "io_total_bps": 16777216,
+    "pids_limit": 512
+  },
+  "empirical_prediction_from_attempt11_full_263_samples": {
+    "cpu_utilization_at_2_cores": 0.3002723689153679,
+    "memory_utilization_at_512_MiB": 0.8062176722537429,
+    "io_sum_total_utilization": 0.45620214968645856,
+    "resource_gate_prediction": "pass_all_three_bands"
+  },
+  "measurement_contract": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "initial_probe_seconds": 300,
+    "continue_same_point_if_unstable_at_probe": true,
+    "maximum_measurement_seconds": 600,
+    "stability_window_seconds": 30,
+    "required_consecutive_complete_windows": 6,
+    "stability_metrics": ["cpu_utilization", "memory_utilization", "io_utilization"],
+    "throughput_fields_required_for_stability": false,
+    "cross_window_cv_max_inclusive": 0.1,
+    "fail_closed_at_hard_maximum": true
+  },
+  "utilization_value_semantics": {
+    "clipping_applied": false,
+    "allowed_domain": "finite_and_non_negative_unbounded",
+    "values_above_one_preserved": true
+  },
+  "failcnt_policy": {
+    "capture_same_container_baseline_immediately_after_cgroup_creation": true,
+    "track_delta_from_that_baseline": true,
+    "do_not_compare_across_container_ids": true,
+    "diagnostic_only": true,
+    "nonzero_delta_alone_is_not_a_hard_failure": true,
+    "hard_failure_conditions": [
+      "oom_or_oomkill",
+      "container_restart_or_unhealthy",
+      "workload_error",
+      "invalid_data_or_sampling"
+    ]
+  },
+  "runtime": {
+    "runner_and_online_controller_pid": 106104,
+    "background_sampler_pid": 106105,
+    "container_id": "13a7c7c94c25a799d05d52dab30d0e5fc9c0b025f434c5db9796872874c6559d",
+    "invocation_readback_passed": true,
+    "failcnt_baseline": {
+      "observed_at_local": "2026-07-22T18:09:43+08:00",
+      "phase": "warmup_start",
+      "memory_failcnt": 684,
+      "memory_max_usage_in_bytes": 536870912,
+      "memory_usage_in_bytes": 207126528
+    },
+    "failcnt_second_observation": {
+      "observed_at_local": "2026-07-22T18:10:34+08:00",
+      "memory_failcnt": 61698,
+      "delta_from_baseline": 61014,
+      "memory_max_usage_in_bytes": 536870912,
+      "memory_usage_in_bytes": 470474752,
+      "diagnostic_only": true
+    },
+    "completed": true,
+    "container_removed": true
+  },
+  "private_runner_sha256": "d607c5c94fb95c1c85ce39fcecdcffc1281cf28184e79b922ac82420900e0e66",
+  "formal_contracts_py_sha256": "9d097a12d7c79c1903a1d286b30394686f5e1683d44ded18b68baec19a04022d",
+  "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+  "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+  "stability_gate_contract_sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+  "io_utilization_contract_sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+  "accepted_outer_rounds_before_start": 0,
+  "final_diagnostic_result": {
+    "db_qps": 0.0249658195,
+    "mean_raw_utilization": {
+      "cpu": 0.3605030778,
+      "memory": 0.7352102407,
+      "io": 0.4078030309
+    },
+    "resource_gate_passed": false,
+    "stability_gate_passed": false
+  },
+  "formal_r0_eligible": false,
+  "invalid_reason": "workload_semantics_ap10_only_instead_of_frozen_ap1_ap13_mix",
+  "status": "invalid_workload_semantics_ap10_only"
+}

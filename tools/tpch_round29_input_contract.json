@@ -1,0 +1,143 @@
+{
+  "schema_version": "tpch_round29_local_input_contract_v1",
+  "offline_only": true,
+  "ssh_allowed": false,
+  "workload_calls_allowed": false,
+  "known_round28_assertions": {
+    "accepted_count": 1,
+    "actual_scores_by_rank": [
+      4.7439008,
+      4.5708987,
+      4.423727,
+      4.78594,
+      4.7344076
+    ],
+    "baseline_restored": true,
+    "incumbent_score": 4.77702526499285,
+    "physical_call_count": 5,
+    "technical_failure_count": 0,
+    "valid_replay_count": 5
+  },
+  "locally_available_sources": {
+    "post_round28_formal_state": {
+      "path": "/tmp/tpch_round29_input/round28_formal_state.json",
+      "sha256": "610a58fd17004c39182fa6fb95da607fa1be95e7e13f85cc88baff07c84798f5"
+    },
+    "round28_merged_results": {
+      "path": "/tmp/tpch_round29_input/round28_merged_results.json",
+      "sha256": "e9e3102767983bd65d9029918295baefecb49e781683ef71a3e15d26ebe86a00"
+    },
+    "round28_remote_summary": {
+      "path": "/tmp/tpch_round29_input/round28_summary_remote.json",
+      "sha256": "8179d05e3fb3d45d6d03239134d9799998dc6e8459419d54022c6f8ef9b208f3"
+    },
+    "round28_selection": {
+      "path": "/tmp/tpch_round28_output/top5.json",
+      "sha256": "bc14a9a44617f0891a4b6183c1093aca8c8f269b0ff89dc35f9d87675590d0a1"
+    },
+    "round28_start_state_only_not_post_round28_evidence": {
+      "path": "/tmp/tpch_round28_input/merged_formal_state.json",
+      "sha256": "d866de7efe376946cd2d5c441397d7efb11d27f57a713691df2d82f39d1ea006"
+    },
+    "stale_expansion_for_exhaustion_audit_only": {
+      "path": "/tmp/tpch_round28_input/expanded_candidates.json",
+      "sha256": "ca53708344505aea81e10694dfcb74e1ee997e74d58e9bce69805e94a8136ef5"
+    }
+  },
+  "required_inputs": {
+    "round28_formal_state.json": {
+      "status": "satisfied",
+      "required_fields": [
+        "accepted_count",
+        "baseline_restored",
+        "incumbent_score",
+        "technical_failure_count"
+      ],
+      "required_values": {
+        "accepted_count": 1,
+        "baseline_restored": true,
+        "incumbent_score": 4.77702526499285,
+        "technical_failure_count": 0
+      },
+      "purpose": "Prove the post-round28 formal state and baseline restoration without relying on the pre-round28 state copy."
+    },
+    "round28_merged_results.json": {
+      "status": "satisfied",
+      "per_rank_required_fields": [
+        "rank",
+        "selection_role",
+        "candidate_params or optimized_params",
+        "three_level_fingerprint",
+        "actual_resource.cpu",
+        "actual_resource.io",
+        "actual_resource.memory",
+        "actual_score",
+        "technical_failure",
+        "valid_replay"
+      ],
+      "required_counters": {
+        "physical_call_count": 5,
+        "technical_failure_count": 0,
+        "valid_replay_count": 5
+      },
+      "purpose": "Bind every measurement to the round28 candidate and calculate CPU/IO/memory exact-regime componentwise calibration. Score-only evidence is insufficient."
+    },
+    "round29_expanded_candidates.json": {
+      "status": "pending_explain_only_expansion",
+      "candidate_required_fields": [
+        "candidate_params",
+        "three_level_fingerprint.plan_level",
+        "three_level_fingerprint.feature_ratio_level",
+        "three_level_fingerprint.predicted_resource_level",
+        "final_estimation_metadata.query_features[].queryid",
+        "final_estimation_metadata.query_features[].plan_fingerprint",
+        "feature_ratio",
+        "predicted_resource",
+        "utilization",
+        "dScore/dU",
+        "T",
+        "confidence",
+        "g_j",
+        "eta",
+        "delta_param",
+        "candidate_score",
+        "boundary_corner",
+        "boundary_plateau"
+      ],
+      "diversity_gate": {
+        "minimum_candidates_in_validated_exact_regimes": 3,
+        "minimum_distinct_unknown_exact_regimes": 2,
+        "minimum_novel_noncorner_three_level_fingerprints": 5,
+        "parameters_must_be_novel_and_unique": true
+      },
+      "purpose": "The old expansion is exhausted for trusted selection and cannot supply round29 trusted3+probe2."
+    }
+  },
+  "old_expansion_exhaustion_audit": {
+    "expanded_candidate_count": 56,
+    "eligible_after_all_prior_and_round28_exclusions": 5,
+    "eligible_candidates_in_validated_exact_regimes": 0,
+    "eligible_unknown_candidates": 5,
+    "eligible_unknown_exact_regimes": 5,
+    "round29_top5_buildable_from_old_expansion": false
+  },
+  "round29_output_contract": {
+    "accepted_update_allowed": false,
+    "diagnostic_only": true,
+    "gradient_update_allowed": false,
+    "incumbent_update_allowed": false,
+    "maximum_real_replay_invocations": 5,
+    "probe_measurements_update_calibration": false,
+    "qps_used_for_inner_scoring": false,
+    "range_update_allowed": false,
+    "roles": [
+      "trusted",
+      "trusted",
+      "trusted",
+      "probe",
+      "probe"
+    ],
+    "serial_real_replay_required": true,
+    "unknown_plan_regime_trusted_allowed": false
+  }
+}

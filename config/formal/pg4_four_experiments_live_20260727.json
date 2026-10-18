@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg4_ratio_scale_resource_only_20260727_v1",
+  "interval_seconds": 300,
+  "output_dir": "/home/anonymous/program/resource_adaptive/history/pg4_four_experiments_live_20260727",
+  "experiments": [
+    {
+      "benchmark": "JOB / Memory",
+      "machine": "node02",
+      "ssh": "anonymous@192.0.2.4",
+      "root": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_15_algorithm_c_fresh_setlocal_T_20260727",
+      "process_pattern": "job_algorithm_c_outer.py|attempt_15_algorithm_c_fresh_setlocal_T_20260727",
+      "scheduled_action": "fresh restoreSET LOCAL/readback incumbent",
+      "operator_note": "attempt15  PostgreSQL  GUC  readback 22:15 manifest=1964ae5955577d32df9035074de8bc0fc87c7ed33170da8930a8a2942eb54a7eT=0bc09819a693bd1a3de0ab92975efee404ac9f9d36d3ae226ca7476554ac6341"
+    },
+  {
+    "benchmark": "HyBench XP / IO",
+    "machine": "compute00 / disk1",
+    "root": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt42_setlocal_direction_calibration_20260727",
+    "process_pattern": "run_hyxp_setlocal_direction_calibration.py|attempt42_setlocal_direction_calibration_20260727",
+    "systemd_unit": "pg4-xp-attempt42-setlocal.service",
+    "calibration_expected": 45,
+    "calibration_summary_expected": 45,
+    "scheduled_action": "attempt42  3  fresh scope scope 1 baseline + 14  SET LOCAL endpoint ledger  ranker",
+    "operator_note": "manifest=f162ddf77b774f1e781c3bbf53d57badaae4a0990985945d5a0d54cdcaa843de HyBench cwd  audit locking ALTER SYSTEM  attempt41 "
+    },
+    {
+      "benchmark": "TPC-C / CPU",
+      "machine": "compute00 / disk2",
+      "root": "/disk2/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/tpcc_experience_sgd/attempt16_setlocal_direction_calibration_v7_r0only_20260727",
+      "process_pattern": "attempt16_setlocal_direction_calibration_v7_r0only_20260727|run_tpcc_setlocal_direction_calibration.py",
+      "systemd_unit": "pg4-tpcc-attempt16-setlocal-v7-r0.service",
+      "scheduled_action": "v7  3  300s warmup + 600s measurement fresh R0 profile gate  45 ",
+      "operator_note": " 10 warehousesCPU cap=2.05 coresIO cap=13.5+13.5 MiB/sv7  CPU 85%-90%Memory/IO 30%-50%  fail-closed R0 gate"
+    },
+    {
+      "benchmark": "TPC-H / Memory",
+      "machine": "node01",
+      "ssh": "anonymous@192.0.2.3",
+      "root": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01/experience_sgd/attempt57_sf10_strict_r0_seeded_cpu7p7_w36_20260727",
+      "process_pattern": "run_tpch_attempt57_direction_calibration.py|run_tpch_attempt57_weighted_workload.py|pg_tpch_attempt57_setlocal_calibration",
+      "calibration_expected": 14,
+      "calibration_summary_expected": 14,
+      "scheduled_action": "v5  14  SET LOCAL  sealed summary  ranker ready=true  outer node04/attempt48",
+      "operator_note": "manifest_v5=eecd3c948cc8dd865b5134760ee0e48cb72bfd33a50a0885129de4a660ce8098 runner  summary outer readiness reset/cleanup statement_timeout worker  SET LOCAL + immediate readbackIO cap  16/20 MiB/s"
+    }
+  ]
+}

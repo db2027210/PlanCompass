@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "campaign_id": "phase2_vm_teacher_neighborhood_v80_20260711",
+  "teacher_validation_manifest": "config/bonect_phase2_vm_teacher_validation_20260711.json",
+  "teacher_validation_summary": "report/bonect/phase2_vm_teacher_validation_v79_20260711/summary.json",
+  "policy": {
+    "require_all_vm_teachers_strict_passed": true,
+    "exclude_exact_teacher_from_training": true,
+    "exclude_default_from_candidate_points": true,
+    "external_disk2_processes_are_out_of_scope": true,
+    "cost_param_count": 7
+  },
+  "sampling": {
+    "path_steps": [0.25, 0.5, 0.75],
+    "include_default_single_parameter_projections": true,
+    "include_teacher_single_parameter_ablations": true,
+    "candidate_points_per_paired_default": 3
+  },
+  "binary_parent_points": {
+    "none": {
+      "name": "none_expected_round0_parent_direction",
+      "params": {
+        "seq_page_cost": 75.000025,
+        "random_page_cost": 5.000075,
+        "cpu_tuple_cost": 0.75000025,
+        "cpu_index_tuple_cost": 0.75000025,
+        "cpu_operator_cost": 0.25000075,
+        "parallel_setup_cost": 7500.0,
+        "parallel_tuple_cost": 2.50000075
+      }
+    }
+  }
+}

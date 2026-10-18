@@ -1,0 +1,35 @@
+{
+  "contract": "mysql_optimizer_cost_official_sources_v1",
+  "manual_url": "https://dev.mysql.com/doc/refman/8.0/en/cost-model.html",
+  "source_code_url": "https://dev.mysql.com/doc/dev/mysql-server/8.0.46/opt__costconstants_8h_source.html",
+  "parameters": {
+    "disk_temptable_create_cost": {
+      "default": 20.0,
+      "description": "Cost of creating an internal temporary table in a disk-resident storage engine. Increasing the value makes plans using disk temporary tables more expensive."
+    },
+    "disk_temptable_row_cost": {
+      "default": 0.5,
+      "description": "Cost of inserting, retrieving, or storing a row in an internal disk-resident temporary table."
+    },
+    "io_block_read_cost": {
+      "default": 1.0,
+      "description": "Cost of reading an index or data block from disk. Increasing the value makes plans that read many disk blocks more expensive."
+    },
+    "key_compare_cost": {
+      "default": 0.05,
+      "description": "Cost of comparing two keys during query execution."
+    },
+    "memory_block_read_cost": {
+      "default": 0.25,
+      "description": "Cost of reading an index or data block from an in-memory database buffer."
+    },
+    "memory_temptable_row_cost": {
+      "default": 0.1,
+      "description": "Cost of retrieving or storing a row in an internal temporary table held in memory."
+    },
+    "row_evaluate_cost": {
+      "default": 0.1,
+      "description": "Cost of evaluating record conditions. Increasing the value makes plans that examine many rows more expensive."
+    }
+  }
+}

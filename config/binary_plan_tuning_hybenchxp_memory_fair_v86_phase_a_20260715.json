@@ -1,0 +1,128 @@
+{
+  "controller": "hybenchxp-memory-fair-v86-newop-batch",
+  "executor": "Codex",
+  "attempt": 4,
+  "attempt1_recovery": "report/bonect/hybenchxp_memory_fair_v86_attempt1_shm_recovery_20260715.json",
+  "attempt2_recovery": "report/bonect/hybenchxp_memory_fair_v86_attempt2_interruption_recovery_20260715.json",
+  "attempt3_offline_census": "report/bonect/hybenchxp_memory_fair_v86_attempt3_offline_fingerprint_census_20260715.json",
+  "attempt3_recovery": "report/bonect/hybenchxp_memory_fair_v86_attempt3_m01_output_pruning_recovery_20260715.json",
+  "phase": "A",
+  "host": "127.0.0.1",
+  "port": 57433,
+  "database": "hybench_sf10x",
+  "container": "hybenchxp_memory_v86_w1_20260715",
+  "capability_gib": 6.4,
+  "worker_shm_size_bytes": 1073741824,
+  "candidate_keys": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "fixed_settings": {
+    "work_mem": "512MB",
+    "hash_mem_multiplier": 2.0,
+    "max_parallel_workers_per_gather": 4,
+    "jit": "off",
+    "enable_hashagg": "on",
+    "enable_hashjoin": "on",
+    "enable_mergejoin": "on",
+    "enable_nestloop": "on",
+    "enable_indexscan": "on",
+    "enable_indexonlyscan": "on",
+    "enable_bitmapscan": "on",
+    "enable_seqscan": "on",
+    "enable_sort": "on",
+    "enable_incremental_sort": "on",
+    "enable_material": "on",
+    "enable_memoize": "on",
+    "enable_parallel_hash": "on"
+  },
+  "fixed_runtime_contract": {
+    "clients": "unchanged_not_started_in_phase_a",
+    "data": "hybench_sf10x_reset_from_hybench_sf10x_base",
+    "capability_gib": 6.4
+  },
+  "shapes": [
+    {
+      "id": "M01",
+      "rank": 1,
+      "path": "shell/hybenchxp_memory_ap6_v86_m01_window_stream.sql",
+      "transition": "WindowAgg+Sort materialize -> streaming/index-ordered WindowAgg"
+    },
+    {
+      "id": "M03",
+      "rank": 2,
+      "path": "shell/hybenchxp_memory_ap6_v86_m03_union_unique.sql",
+      "transition": "UNION hash dedup -> Sort+Unique/sorted SetOp"
+    },
+    {
+      "id": "M04",
+      "rank": 3,
+      "path": "shell/hybenchxp_memory_ap6_v86_m04_cte_collapse.sql",
+      "transition": "InitPlan+CTE multi-materialize collapse"
+    },
+    {
+      "id": "M02",
+      "rank": 4,
+      "path": "shell/hybenchxp_memory_ap6_v86_m02_distinct_unique.sql",
+      "transition": "HashAggregate DISTINCT -> Sort+Unique"
+    }
+  ],
+  "default_params": {
+    "seq_page_cost": 1.0,
+    "random_page_cost": 4.0,
+    "cpu_tuple_cost": 0.01,
+    "cpu_index_tuple_cost": 0.005,
+    "cpu_operator_cost": 0.0025,
+    "parallel_setup_cost": 1000.0,
+    "parallel_tuple_cost": 0.1
+  },
+  "vector_overrides": {
+    "default": {},
+    "rpc8": {"random_page_cost": 8.0},
+    "rpc16": {"random_page_cost": 16.0},
+    "rpc1": {"random_page_cost": 1.0},
+    "citc02": {"cpu_index_tuple_cost": 0.02},
+    "citc05": {"cpu_index_tuple_cost": 0.05},
+    "citc10": {"cpu_index_tuple_cost": 0.1},
+    "coc01": {"cpu_operator_cost": 0.01},
+    "coc025": {"cpu_operator_cost": 0.025},
+    "coc05": {"cpu_operator_cost": 0.05},
+    "ctc02": {"cpu_tuple_cost": 0.02},
+    "ctc05": {"cpu_tuple_cost": 0.05},
+    "ctc1": {"cpu_tuple_cost": 1.0},
+    "ctc2": {"cpu_tuple_cost": 2.0},
+    "ctc5": {"cpu_tuple_cost": 5.0},
+    "ctc10": {"cpu_tuple_cost": 10.0},
+    "ptc1": {"parallel_tuple_cost": 1.0},
+    "ptc2": {"parallel_tuple_cost": 2.0},
+    "ptc3": {"parallel_tuple_cost": 3.0},
+    "psc5k": {"parallel_setup_cost": 5000.0},
+    "psc10k": {"parallel_setup_cost": 10000.0},
+    "rpc8_citc05": {"random_page_cost": 8.0, "cpu_index_tuple_cost": 0.05},
+    "rpc16_citc05": {"random_page_cost": 16.0, "cpu_index_tuple_cost": 0.05},
+    "rpc8_ptc3": {"random_page_cost": 8.0, "parallel_tuple_cost": 3.0},
+    "citc05_coc025": {"cpu_index_tuple_cost": 0.05, "cpu_operator_cost": 0.025},
+    "citc10_coc05": {"cpu_index_tuple_cost": 0.1, "cpu_operator_cost": 0.05},
+    "ctc1_ptc3": {"cpu_tuple_cost": 1.0, "parallel_tuple_cost": 3.0},
+    "ctc2_rpc8": {"cpu_tuple_cost": 2.0, "random_page_cost": 8.0},
+    "ctc5_coc025": {"cpu_tuple_cost": 5.0, "cpu_operator_cost": 0.025},
+    "ctc10_spc1": {"cpu_tuple_cost": 10.0, "seq_page_cost": 1.0},
+    "ptc3_psc5k": {"parallel_tuple_cost": 3.0, "parallel_setup_cost": 5000.0},
+    "highrpc_ptc3": {"random_page_cost": 16.0, "parallel_tuple_cost": 3.0}
+  },
+  "gates": {
+    "max_signature_distinct_vectors": 32,
+    "min_peak_or_justified_concurrent_drop_mib": 328.0,
+    "min_elapsed_speedup_pct": 15.0,
+    "reject_new_indexonly_cliff": true,
+    "require_answer_invariant": true,
+    "near_elapsed_band_pct": [12.0, 18.0],
+    "near_elapsed_samples": 3
+  },
+  "fallback_db_qps": 114.12708344892893
+}

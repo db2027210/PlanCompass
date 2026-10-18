@@ -1,0 +1,26 @@
+{
+  "schema_version": "tpch_v51_cycle6_preworkload_failure_fixture_v1",
+  "cycle": 6,
+  "accepted_count": 1,
+  "state_status": "preparing_cycle",
+  "eligible": 22,
+  "trusted": 3,
+  "probes": 19,
+  "stable_trusted": 0,
+  "credible_unknown_probes": 0,
+  "minimum_trusted_interval_gap": 0.002,
+  "target_score": 3.9683158761,
+  "probe_builder_a_log_sha256_prefix": "74602c",
+  "formal_state_changed": false,
+  "accepted_counter_changed": false,
+  "workload_calls": 0,
+  "cycle6_artifacts": [
+    "config.a.json",
+    "config.b.json",
+    "dynamic_expansion_v32/expanded_candidates.a.json",
+    "dynamic_expansion_v32/expanded_candidates.b.json",
+    "dynamic_expansion_v32/audit.json",
+    "probe_builder_a.log"
+  ],
+  "failure": "fail closed: cannot form stable trusted3+credible-probe2 or trusted3 stability-acquisition+credible-probe2; five-probe novelty recovery is forbidden: eligible=22 trusted=3 probes=19 stable_trusted=0 credible_unknown_probes=0 minimum_trusted_interval_gap=0.002 target_score=3.9683158761"
+}

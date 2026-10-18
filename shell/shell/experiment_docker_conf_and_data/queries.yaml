@@ -1,0 +1,183 @@
+pg_memory_global:
+  name: pg_memory_global
+  desc: openGauss global memory usage
+  query:
+    - name: pg_memory_global
+      sql: |
+        SELECT
+          SUM(CASE WHEN memorytype = 'dynamic_used_memory' THEN memorymbytes ELSE 0 END) * 1024 * 1024 AS dynamic_used_bytes,
+          SUM(CASE WHEN memorytype = 'dynamic_peak_memory' THEN memorymbytes ELSE 0 END) * 1024 * 1024 AS dynamic_peak_bytes,
+          SUM(CASE WHEN memorytype = 'backend_used_memory' THEN memorymbytes ELSE 0 END) * 1024 * 1024 AS backend_used_bytes,
+          SUM(CASE WHEN memorytype = 'process_used_memory' THEN memorymbytes ELSE 0 END) * 1024 * 1024 AS process_used_bytes
+        FROM pg_total_memory_detail
+      version: '>=0.0.0'
+  metrics:
+    - name: dynamic_used_bytes
+      usage: GAUGE
+      description: Current dynamic memory used by queries
+    - name: dynamic_peak_bytes
+      usage: GAUGE
+      description: Peak dynamic memory usage since startup
+    - name: backend_used_bytes
+      usage: GAUGE
+      description: Memory used by backend threads
+    - name: process_used_bytes
+      usage: GAUGE
+      description: Total memory used by the openGauss process
+
+user_thread_memory:
+  name: user_thread_memory
+  desc: Memory usage and thread count per user and thread type
+  query:
+    - name: user_thread_memory
+      sql: |
+        SELECT
+          s.usename AS username,
+
+          COALESCE(NULLIF(s.application_name, ''), 'unknown') AS thread_type,
+          COALESCE(SUM(m.totalsize), 0)::float AS memory_bytes,
+          COUNT(DISTINCT m.tid) AS thread_count
+        FROM gs_thread_memory_context m
+        JOIN pg_stat_activity s ON m.tid = s.pid
+        WHERE s.state = 'active'  --
+           OR s.state = 'idle in transaction' -- “”
+        GROUP BY 1, 2
+      version: '>=0.0.0'
+  metrics:
+    - name: username
+      usage: LABEL
+      description: Database user name (or background)
+    - name: thread_type
+      usage: LABEL
+      description: Thread Type (postgres, Worker, etc.)
+    - name: memory_bytes
+      usage: GAUGE
+      description: Total memory usage per user/thread type in bytes
+    - name: thread_count
+      usage: GAUGE
+      description: Number of threads per user/thread type
+
+
+############################################
+
+############################################
+pg_active_sessions:
+  name: pg_active_sessions
+  desc: Active sessions by database
+  query:
+    - name: pg_active_sessions
+      sql: |
+        SELECT
+          datname AS dbname,
+          COUNT(*)::float AS active_sessions
+        FROM pg_stat_activity
+        WHERE state = 'active'
+          AND pid <> pg_backend_pid()
+        GROUP BY 1
+      version: '>=0.0.0'
+  metrics:
+    - name: dbname
+      usage: LABEL
+    - name: active_sessions
+      usage: GAUGE
+
+
+############################################
+
+############################################
+pg_xact:
+  name: pg_xact
+  desc: Transactions per database
+  query:
+    - name: pg_xact
+      sql: |
+        SELECT
+          datname AS dbname,
+          xact_commit::float AS xact_commit,
+          xact_rollback::float AS xact_rollback
+        FROM pg_stat_database
+      version: '>=0.0.0'
+  metrics:
+    - name: dbname
+      usage: LABEL
+    - name: xact_commit
+      usage: COUNTER
+    - name: xact_rollback
+      usage: COUNTER
+
+
+############################################
+
+############################################
+pg_block_io:
+  name: pg_block_io
+  desc: Block IO statistics
+  query:
+    - name: pg_block_io
+      sql: |
+        SELECT
+          datname AS dbname,
+          blks_read::float AS blks_read,
+          blks_hit::float AS blks_hit
+        FROM pg_stat_database
+      version: '>=0.0.0'
+  metrics:
+    - name: dbname
+      usage: LABEL
+    - name: blks_read
+      usage: COUNTER
+    - name: blks_hit
+      usage: COUNTER
+
+
+############################################
+# 5️⃣ shared_buffers
+############################################
+pg_shared_buffers:
+  name: pg_shared_buffers
+  desc: shared_buffers in bytes
+  query:
+    - name: pg_shared_buffers
+      sql: |
+        SELECT
+          CASE lower(coalesce(unit, ''))
+            WHEN '8kb' THEN setting::bigint * 8192
+            WHEN 'kb'  THEN setting::bigint * 1024
+            WHEN 'mb'  THEN setting::bigint * 1024 * 1024
+            WHEN 'gb'  THEN setting::bigint * 1024 * 1024 * 1024
+            WHEN ''    THEN setting::bigint
+            ELSE setting::bigint
+          END::float AS shared_buffers_bytes
+        FROM pg_settings
+        WHERE name = 'shared_buffers'
+      version: '>=0.0.0'
+  metrics:
+    - name: shared_buffers_bytes
+      usage: GAUGE
+
+
+############################################
+
+############################################
+pg_table_size:
+  name: pg_table_size
+  desc: Table total size bytes
+  query:
+    - name: pg_table_size
+      sql: |
+        SELECT
+          n.nspname AS schema_name,
+          c.relname AS table_name,
+          pg_total_relation_size(c.oid)::float AS size_bytes
+        FROM pg_class c
+        JOIN pg_namespace n ON n.oid = c.relnamespace
+        WHERE c.relkind = 'r'
+          AND n.nspname NOT IN ('pg_catalog', 'information_schema')
+      version: '>=0.0.0'
+  metrics:
+    - name: schema_name
+      usage: LABEL
+    - name: table_name
+      usage: LABEL
+    - name: size_bytes
+      usage: GAUGE

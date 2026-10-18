@@ -1,0 +1,214 @@
+{
+  "adopted_runs": {},
+  "benchmark_seeds": {
+    "hybench_ap": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_tp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-flat-v1.qcow2",
+    "hybench_xp": "/var/tmp/resource_adaptive_flat_seeds/hybench10x-serial-debug.qcow2",
+    "job": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/job.qcow2",
+    "tpcc": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpcc.qcow2",
+    "tpch": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260718/seeds/tpch.qcow2"
+  },
+  "direct_kernel_boot": {
+    "append": "root=/dev/mapper/ubuntu--vg-ubuntu--lv rw fstab=no module_blacklist=ramoops,chromeos_pstore,efi_pstore,pstore_blk,pstore_zone console=ttyS0,115200n8 earlyprintk=serial",
+    "initrd": "/var/tmp/resource_adaptive_flat_seeds/boot/initrd.img-5.4.0-216-generic-minimal",
+    "kernel": "/var/tmp/resource_adaptive_flat_seeds/boot/vmlinuz-5.4.0-216-generic"
+  },
+  "execution_mode": "rootless_qemu_pool",
+  "holds": {},
+  "lane_order": [
+    "cpu",
+    "memory",
+    "io",
+    "none"
+  ],
+  "matrix_config": "config/double_loop_experiment_matrix_20260720_v5.json",
+  "max_active": 6,
+  "max_auto_retries": 1,
+  "overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_pool_20260720/task_overlays",
+  "poll_interval_s": 30,
+  "prepared_image": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_probe_20260718/pg17-seed-overlay.qcow2",
+  "profiles": {
+    "cpu:hybench_tp": {
+      "cpu_cores": 2,
+      "launcher_args": [
+        "--tp-clients-override",
+        "2"
+      ],
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "cpu:tpcc": {
+      "cpu_cores": 2,
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "60"
+      ],
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "io:hybench_xp": {
+      "cpu_cores": 13,
+      "disk_cache_mode": "none",
+      "launcher_args": [
+        "--tp-clients-override",
+        "8",
+        "--ap-clients-override",
+        "24",
+        "--hybench-tp-percent-mix",
+        "0,0,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6",
+        "--hybench-ap-query-sequence",
+        "6,6,6,6",
+        "--workload-fixed-horizon-s",
+        "240",
+        "--statement-timeout-ms",
+        "900000",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime_data10x_v2"
+      ],
+      "memory_mib": 4096,
+      "read_mb": 5.0,
+      "runtime_overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v5_io_direct_overlays_20260720",
+      "write_mb": 0.1
+    },
+    "memory:hybench_ap": {
+      "cpu_cores": 10,
+      "launcher_args": [
+        "--ap-clients-override",
+        "4",
+        "--hybench-ap-shared-buffers-mb",
+        "960",
+        "--hybench-ap-work-mem-mb",
+        "32",
+        "--hybench-ap-max-parallel-workers-per-gather",
+        "4",
+        "--hybench-ap-query-sequence",
+        "6,8,6,6,8"
+      ],
+      "memory_mib": 1536,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "memory:job": {
+      "cpu_cores": 13,
+      "launcher_args": [
+        "--job-workers-override",
+        "16",
+        "--job-work-mem-mb",
+        "160",
+        "--job-fixed-horizon-s",
+        "300",
+        "--statement-timeout-ms",
+        "1800000"
+      ],
+      "memory_mib": 768,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "memory:tpch": {
+      "cpu_cores": 13,
+      "launcher_args": [
+        "--benchbase-terminals-override",
+        "16"
+      ],
+      "memory_mib": 544,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_ap": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_tp": {
+      "cpu_cores": 16,
+      "launcher_args": [
+        "--tp-clients-override",
+        "8"
+      ],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:hybench_xp": {
+      "cpu_cores": 16,
+      "launcher_args": [
+        "--tp-clients-override",
+        "24",
+        "--ap-clients-override",
+        "8",
+        "--hybench-root",
+        "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v4_20260719/hybench_xp_latency_runtime"
+      ],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:job": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:tpcc": {
+      "cpu_cores": 16,
+      "launcher_args": [],
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    },
+    "none:tpch": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800
+    }
+  },
+  "runtime_overlay_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_v5_overlays_20260720",
+  "safety": {
+    "max_cpu_pressure_some_avg10": 60,
+    "max_io_pressure_full_avg10": 30,
+    "min_mem_available_gib_after_launch": 24,
+    "min_output_disk_free_gib": 256,
+    "min_root_disk_free_gib": 64,
+    "min_shm_free_gib": 24
+  },
+  "scheduler_root": "/disk1/resource_adaptive_experiment_matrix_20260718/rootless_scheduled_18_v5_20260720",
+  "schema_version": 1,
+  "slots": [
+    {
+      "postgres_port": 25601,
+      "slot_id": "vm21",
+      "ssh_port": 22401
+    },
+    {
+      "postgres_port": 25602,
+      "slot_id": "vm22",
+      "ssh_port": 22402
+    },
+    {
+      "postgres_port": 25603,
+      "slot_id": "vm23",
+      "ssh_port": 22403
+    },
+    {
+      "postgres_port": 25604,
+      "slot_id": "vm24",
+      "ssh_port": 22404
+    },
+    {
+      "postgres_port": 25605,
+      "slot_id": "vm25",
+      "ssh_port": 22405
+    },
+    {
+      "postgres_port": 25606,
+      "slot_id": "vm26",
+      "ssh_port": 22406
+    }
+  ]
+}

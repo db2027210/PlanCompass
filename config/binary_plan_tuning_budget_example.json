@@ -1,0 +1,191 @@
+{
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": 55432,
+    "user": "postgres",
+    "password": "postgres",
+    "dbname": "binary_plan_tuning"
+  },
+  "initial_params": {
+    "seq_page_cost": 1.0,
+    "random_page_cost": 4.0,
+    "cpu_tuple_cost": 0.01,
+    "cpu_index_tuple_cost": 0.005,
+    "cpu_operator_cost": 0.0025,
+    "parallel_setup_cost": 1000.0,
+    "parallel_tuple_cost": 0.1
+  },
+  "param_ranges": {
+    "seq_page_cost": {
+      "min_value": 0.0001,
+      "max_value": 100.0
+    },
+    "random_page_cost": {
+      "min_value": 0.0001,
+      "max_value": 20.0
+    },
+    "cpu_tuple_cost": {
+      "min_value": 0.000001,
+      "max_value": 1.0
+    },
+    "cpu_index_tuple_cost": {
+      "min_value": 0.000001,
+      "max_value": 1.0
+    },
+    "cpu_operator_cost": {
+      "min_value": 0.000001,
+      "max_value": 1.0
+    },
+    "parallel_setup_cost": {
+      "min_value": 0.0,
+      "max_value": 10000.0
+    },
+    "parallel_tuple_cost": {
+      "min_value": 0.000001,
+      "max_value": 10.0
+    }
+  },
+  "metrics": {
+    "plan_estimator": {
+      "resource_types": [
+        "memory",
+        "cpu",
+        "io"
+      ],
+      "shared": {
+        "calibration_factor": 1.0,
+        "explain_workers": 4,
+        "block_size": 8192,
+        "work_mem_bytes": 8388608,
+        "hash_mem_multiplier": 1.0,
+        "feature_window_seconds": 10,
+        "normalize_model_features_to_window": true
+      },
+      "memory": {
+        "enabled": true,
+        "overlap_factor": 1.0,
+        "concurrency_formula": "baseline_resident_plus_weighted_working",
+        "resident_memory_mb": 128.0,
+        "beta_sort": 1.0,
+        "beta_hash": 1.0,
+        "beta_hashagg": 1.0,
+        "beta_materialize": 1.0,
+        "beta_memoize": 0.0
+      },
+      "cpu": {
+        "enabled": true,
+        "cpu_tuple_cost": 0.01,
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "parallel_setup_cost": 1000.0,
+        "parallel_tuple_cost": 0.1,
+        "cpu_seconds_per_work": 0.000001,
+        "cpu_seconds_bias": 0.0,
+        "overlap_factor": 1.0,
+        "fallback_cost_scale": 1.0
+      },
+      "io": {
+        "enabled": true,
+        "seq_page_cost": 1.0,
+        "random_page_cost": 4.0,
+        "index_only_heap_back_alpha": 0.3,
+        "seq_scan_page_cap_factor": 1.0,
+        "seq_scan_effective_read_factor": 0.1,
+        "index_scan_page_cap_factor": 4.0,
+        "index_scan_effective_read_factor": 0.2,
+        "index_only_page_cap_factor": 2.0,
+        "index_only_effective_read_factor": 0.1,
+        "bitmap_index_page_cap_factor": 2.0,
+        "bitmap_index_effective_read_factor": 0.1,
+        "bitmap_heap_page_cap_factor": 1.0,
+        "bitmap_heap_effective_read_factor": 0.15,
+        "cache_miss_factors": {
+          "seq_scan": 1.5,
+          "index_scan": 0.5,
+          "index_only": 0.3,
+          "bitmap_index": 0.4,
+          "bitmap_heap": 1.0
+        },
+        "wal_blocks_per_write_statement": 1.0,
+        "read_overlap_factor": 1.0,
+        "write_overlap_factor": 1.0
+      },
+      "logging": {
+        "enabled": true,
+        "log_topn": 10,
+        "log_operator_breakdown": true,
+        "log_query_breakdown": true
+      }
+    }
+  },
+  "plan_capture": {
+    "modes": [
+      "generic"
+    ],
+    "custom_plan_params": {}
+  },
+  "binary_plan_tuning": {
+    "output_dir": "/disk2/resource_adaptive/binary_plan_tuning/runs/manual",
+    "environment": {
+      "runtime": "docker",
+      "container_prefix": "binary_plan_tuning",
+      "container": "binary_plan_tuning_pg17",
+      "host_port": 55432,
+      "data_dir": "/disk2/resource_adaptive/binary_plan_tuning/pgdata",
+      "log_dir": "/disk2/resource_adaptive/binary_plan_tuning/logs",
+      "preferred_data_roots": [
+        "/disk1",
+        "/disk2"
+      ],
+      "selected_data_root": "/disk2"
+    },
+    "workload_context": {
+      "workload_family": "CH",
+      "concurrency": 4,
+      "feature_window_seconds": 10,
+      "sql_count": 8
+    },
+    "workload": {
+      "plan_sql_file": "shell/binary_plan_tuning_plan_workload.sql"
+    },
+    "endpoint_screening": {
+      "max_queries": 80,
+      "top_slow_sql": 20,
+      "high_calls_sql": 20,
+      "resource_contribution_sql": true,
+      "random_seed": 20260701,
+      "pg_stat_statements_limit": 200
+    },
+    "binary_search": {
+      "max_rounds": 2,
+      "max_candidates_per_round": 8,
+      "epsilon": {
+        "default": 0.000001,
+        "parallel_setup_cost": 1.0
+      }
+    },
+    "acceptance_policy": {
+      "min_target_drop_pct": 0.0,
+      "min_db_qps_gain_pct": 0.0,
+      "non_target_drop_guard_pct": 35.0,
+      "p95_guard_regression_pct": 75.0,
+      "p99_guard_regression_pct": 100.0
+    },
+    "validation": {
+      "docker_runtime": {
+        "container": "binary_plan_tuning_pg17",
+        "interval_sec": 1,
+        "warmup_sec": 1,
+        "memory_mode": "pss"
+      },
+      "pgbench": {
+        "bin": "pgbench",
+        "workload_sql_file": "shell/binary_plan_tuning_pgbench_workload.sql",
+        "clients": 4,
+        "threads": 2,
+        "duration_s": 6,
+        "extra_args": []
+      }
+    }
+  }
+}

@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "audit_id": "pg5_job_resource_model_quality_provenance_audit_v1",
+  "audited_at_utc": "2026-07-22T11:26:02Z",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "job_node02",
+  "workload": "job",
+  "database": "imdb_job",
+  "target_resource": "memory",
+  "decision": "insufficient_independent_job_parameter_vectors_do_not_restart",
+  "optimizer_restart_authorized": false,
+  "thresholds_unchanged": true,
+  "required_quality_gate": {
+    "required_resources": [
+      "cpu",
+      "io",
+      "memory"
+    ],
+    "min_test_samples": 5,
+    "min_test_r2": 0.0,
+    "selected_model_only": true
+  },
+  "frozen_contracts": {
+    "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+    "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+    "io_utilization_contract_sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+    "stability_gate_contract_sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+    "experience_table_artifact_sha256": "f5bfe293923e3c1122ca7363f3dc9b1b37d5f9c430540976535222188d8d7261",
+    "experience_table_sha256": "a2fca76dd0ad04758ceebebb29a675ec43f1e52c5e820efca4b25a5fbaeaf07b"
+  },
+  "required_provenance": {
+    "cpu_quota_cores": 3.0,
+    "memory_bytes": 3221225472,
+    "io_read_bps": 134217728,
+    "io_write_bps": 134217728,
+    "job_terminals": 2,
+    "fresh_physical_template_per_real_point": true,
+    "minimum_measurement_seconds": 180,
+    "initial_observation_probe_seconds": 300,
+    "maximum_measurement_seconds": 600,
+    "parameter_ranges": {
+      "seq_page_cost": {
+        "min_value": 0.1,
+        "max_value": 10.0,
+        "transform": "log"
+      },
+      "random_page_cost": {
+        "min_value": 0.1,
+        "max_value": 20.0,
+        "transform": "log"
+      },
+      "cpu_tuple_cost": {
+        "min_value": 0.001,
+        "max_value": 0.1,
+        "transform": "log"
+      },
+      "cpu_index_tuple_cost": {
+        "min_value": 0.0005,
+        "max_value": 0.05,
+        "transform": "log"
+      },
+      "cpu_operator_cost": {
+        "min_value": 0.00025,
+        "max_value": 0.025,
+        "transform": "log"
+      },
+      "parallel_setup_cost": {
+        "min_value": 0.0,
+        "max_value": 10000.0,
+        "transform": "linear"
+      },
+      "parallel_tuple_cost": {
+        "min_value": 0.001,
+        "max_value": 1.0,
+        "transform": "log"
+      }
+    }
+  },
+  "history_inventory": {
+    "scope": "all history/job point_result.json files under /mnt/nvme2n1/anonymous/resource_adaptive plus R0 attempts without point_result.json",
+    "frozen_bundle_contains_measurement_rows": false,
+    "r0": [
+      {
+        "attempt": 1,
+        "classification": "invalid_provenance",
+        "reasons": [
+          "resource caps differ",
+          "job terminals differ",
+          "stability failed"
+        ],
+        "point_result_sha256": "1dd28f4cf40490e6b5ddb0c6b5c39cf8881b3c5118639f2dc0b44b0f88bbbcaa"
+      },
+      {
+        "attempt": 2,
+        "classification": "invalid_protocol_partial_measurement",
+        "reasons": [
+          "attempt disposition invalid_protocol_resource_band",
+          "outer_allowed false",
+          "no point_result.json"
+        ]
+      },
+      {
+        "attempt": 3,
+        "classification": "invalid_protocol_partial_measurement",
+        "reasons": [
+          "attempt disposition superseded_gate_semantics",
+          "outer_allowed false",
+          "no point_result.json"
+        ]
+      },
+      {
+        "attempt": 4,
+        "classification": "invalid_provenance",
+        "reasons": [
+          "resource caps differ",
+          "job terminals differ",
+          "point status failed",
+          "stability failed"
+        ],
+        "point_result_sha256": "d1b8695b2b72ecf0392e6cc3bd4ee5e84f14d69de324caedf4c65aaf88db75eb"
+      },
+      {
+        "attempt": 5,
+        "classification": "invalid_provenance",
+        "reasons": [
+          "resource caps differ",
+          "job terminals differ",
+          "attempt disposition invalid_metric_semantics",
+          "effective measurement 166 seconds below 180",
+          "stability failed"
+        ],
+        "point_result_sha256": "1fbfe9c32aecbea1992ccc5fa7fb9b88d97cdd1dbc24161c235508c8e0533659"
+      },
+      {
+        "attempt": 6,
+        "classification": "invalid_provenance",
+        "reasons": [
+          "resource caps differ",
+          "job terminals differ",
+          "stability failed"
+        ],
+        "point_result_sha256": "07e81209476f4d723658389fe3be76ae21b1f2b5597ae89d68b387e2505fb08b"
+      },
+      {
+        "attempt": 7,
+        "classification": "invalid_provenance",
+        "reasons": [
+          "IO caps differ",
+          "stability failed",
+          "R0 IO gate failed"
+        ],
+        "point_result_sha256": "a1ca12352b80fc638db7b742f5419d1a13f4f8be3ed7e8311d49802e07758708"
+      },
+      {
+        "attempt": 8,
+        "classification": "eligible_real_measurement",
+        "independent_parameter_vector": true,
+        "parameter_vector_group": "default_job_cost_parameters_v1",
+        "qps": 0.8166666666666667,
+        "resource_mean_utilization": {
+          "cpu": 0.4076057198122318,
+          "memory": 0.8487180429241955,
+          "io": 0.37227169844435576
+        },
+        "point_result_sha256": "b64e759c704b7d757fe8b09f1d3ad49093521087174c28ecd471ed9fdaf6cbca"
+      },
+      {
+        "attempt": "8_aborted_pre_measurement_probe_semantics_fix",
+        "classification": "invalid_pre_measurement",
+        "reasons": [
+          "aborted before measurement",
+          "no resource label"
+        ],
+        "point_result_sha256": "a4a406d6ddcb380df3705ac491a3a9ba3304591cedbd70fcf6ca82bbc2989edf"
+      }
+    ],
+    "outer": [
+      {
+        "point_id": "experience_table_outer_0001",
+        "classification": "invalid_post_measurement_serialization",
+        "independent_parameter_vector": false,
+        "parameter_vector_group": "default_job_cost_parameters_v1",
+        "point_result_sha256": "86c67526fe5642605b9edc8520344d2bc8c0a1573224b705aa4c199fa134f7cb"
+      },
+      {
+        "point_id": "experience_table_outer_0002",
+        "classification": "eligible_real_measurement_same_vector_replicate",
+        "independent_parameter_vector": false,
+        "parameter_vector_group": "default_job_cost_parameters_v1",
+        "training_role": "noise_estimation_only",
+        "qps": 0.8166666666666667,
+        "resource_mean_utilization": {
+          "cpu": 0.40682445929095085,
+          "memory": 0.8486931870103548,
+          "io": 0.37248802995381836
+        },
+        "point_result_sha256": "29684afaf379a26ef20fc98456799c373539dbc4dfa84d85bb1700bf44babb1a"
+      },
+      {
+        "point_id": "experience_table_outer_0003",
+        "classification": "eligible_real_measurement_same_vector_replicate",
+        "independent_parameter_vector": false,
+        "parameter_vector_group": "default_job_cost_parameters_v1",
+        "training_role": "noise_estimation_only",
+        "qps": 0.8166666666666667,
+        "resource_mean_utilization": {
+          "cpu": 0.40716149720393946,
+          "memory": 0.8486403495461803,
+          "io": 0.3724029324284116
+        },
+        "plan_structural_fingerprint": "495dafd87de95927104dba169a525beb206806d8f8a9a477170496cb189b0701",
+        "point_result_sha256": "5fe5571274b7b942c34ba90ad7460001b49941fa5dfad9b878cdcafebb68c425"
+      }
+    ]
+  },
+  "eligible_sample_summary": {
+    "real_measurement_count": 3,
+    "distinct_parameter_vector_count": 1,
+    "distinct_structural_plan_fingerprint_count": 1,
+    "train_test_rows_allowed_at_parameter_point_granularity": 1,
+    "same_vector_replicates_allowed_for_noise_estimation": 2,
+    "same_vector_replicates_allowed_as_independent_train_test_rows": 0,
+    "minimum_distinct_parameter_vectors_required": 5,
+    "shortfall_distinct_parameter_vectors": 4
+  },
+  "query_level_and_ch_audit": {
+    "decision": "not_legal_as_independent_job_parameter_vector_train_test_rows",
+    "job_query_log": {
+      "query_types": 8,
+      "terminals": 2,
+      "available_fields": [
+        "completion timestamp",
+        "latency",
+        "query_id",
+        "terminal",
+        "success"
+      ],
+      "resource_labels": "one-second container-wide concurrent CPU, Memory, and IO samples",
+      "missing_for_query_supervision": [
+        "per-query CPU attribution",
+        "per-query memory attribution",
+        "per-query IO attribution"
+      ],
+      "legal_use": "aggregate plan/query components into one feature row per unique measured parameter point; use temporal/query observations only within a point and keep every row from one parameter vector in the same evaluation group",
+      "illegal_use": "copy the same container-wide baseline label to query executions or randomly split windows from the same default parameter vector across train and test"
+    },
+    "ch_feature_cache": {
+      "eligible_for_job_training": false,
+      "reason": "different workload, schema, concurrency, resource behavior, and no campaign/workload/schema/caps/point provenance columns",
+      "ch_file_count": 120,
+      "ch21_example": {
+        "rows": 119,
+        "active_sql_count_mean": 173509.02521008404,
+        "write_mb_s_mean": 247.62066045168066,
+        "memory_working_set_mb_mean": 799.0358193277314,
+        "pg_active_sessions_mean": 37.72268907563025
+      },
+      "job_contrast": {
+        "terminals": 2,
+        "outer_point_0003_memory_working_set_mb": 2607.023153805866,
+        "outer_point_0003_write_bps": 0.0
+      }
+    }
+  },
+  "quality_gate_failure_observed_after_point_0003": {
+    "io": {
+      "model": "CH.total",
+      "test_samples": 500,
+      "test_r2": -0.21413999040027787,
+      "test_relative_error_p95": 11.597119086511777,
+      "test_relative_error_max": 207.8866412667002
+    },
+    "memory": {
+      "source": "baseline_memory_single_sample_retrain",
+      "train_samples": 1,
+      "test_samples": 0
+    }
+  },
+  "minimum_collection_requirement": {
+    "minimum_new_real_points": 4,
+    "condition": "four distinct non-default cost-parameter vectors, each passing exact provenance, correctness, no-OOM, resource serialization, and stability gates",
+    "evaluation_method_needed_to_make_five_points_legal": "grouped leave-one-parameter-vector-out out-of-fold evaluation, followed by final training on all five unique vectors",
+    "evaluation_groups": "exact cost-parameter-vector hash; R0 attempt 8 and outer points 0002/0003 are one group",
+    "threshold_change": "none",
+    "unchanged_current_random_80_20_split_requirement": {
+      "total_unique_points_required": 25,
+      "new_unique_points_required": 24,
+      "reason": "a 20 percent test split needs at least five held-out rows and must not split repeated-vector rows across train and test"
+    },
+    "recommended_for_seven_active_dimensions": {
+      "total_unique_points": 10,
+      "new_unique_points": 9,
+      "reason": "five points are only the mathematical quality-gate minimum and cannot identify seven independent parameter effects robustly"
+    }
+  },
+  "minimum_four_point_collection_plan": [
+    {
+      "step": 1,
+      "action": "use plan-only evaluation over the 127 formal non-empty subsets with frozen T and frozen ranges; this stage creates no resource-label samples and consumes no real measurement"
+    },
+    {
+      "step": 2,
+      "action": "select four non-default maximin parameter vectors in transformed parameter space, seeded by page-cost, CPU-cost, parallel-cost, and all-seven interaction subset families",
+      "selection_constraints": [
+        "all four vectors differ from default and from each other",
+        "the union covers all seven active dimensions",
+        "prefer distinct aggregate plan-feature vectors and structural plan fingerprints across the eight JOB queries",
+        "predeclare ranked replacements for a duplicate plan/parameter vector"
+      ]
+    },
+    {
+      "step": 3,
+      "action": "measure each selected vector from a fresh frozen physical template using the exact 3 CPU, 3 GiB, 128 MiB/s read, 128 MiB/s write, two-terminal protocol; do not measure default again"
+    },
+    {
+      "step": 4,
+      "action": "write one benchmark-scoped aggregate training row per unique parameter vector with cost parameters, weighted eight-query plan features, and actual CPU cores, Memory MiB, and total IO MiB/s labels; attach source result and plan hashes"
+    },
+    {
+      "step": 5,
+      "action": "evaluate CPU, IO-total, and Memory with grouped leave-one-vector-out out-of-fold predictions; require at least five test predictions and R2 at least zero for every required resource; do not relax any gate"
+    },
+    {
+      "step": 6,
+      "action": "only after all gates pass, train final JOB-scoped models on all five unique vectors and perform a fresh optimizer restart"
+    }
+  ],
+  "budget_note": {
+    "current_outer_replay_counter": 3,
+    "maximum_cumulative_real_replay_count": 10,
+    "conservative_counter_after_four_new_calibration_points": 7,
+    "conservative_remaining_real_replays": 3,
+    "invalid_or_duplicate_new_points": "consume budget under the frozen formal_outer_protocol"
+  },
+  "runtime_state_at_audit": {
+    "optimizer_running": false,
+    "formal_replay_running": false,
+    "outer_container_running": false
+  },
+  "approved_post_calibration_amendment_summary": {
+    "amendment_id": "pg5_job_role_aware_r2_fallback_amendment_v1",
+    "machine_readable_path": "job_role_aware_r2_fallback_amendment.json",
+    "human_readable_path": "job_role_aware_r2_fallback_amendment.md",
+    "decision": "campaign-scoped role-aware bounded-level-error fallback approved after nine-vector grouped LOVO",
+    "global_min_test_r2_unchanged": 0.0,
+    "target_resource_unchanged": "memory",
+    "direction_accuracy_claim": false,
+    "immutable_v3_bundle_content_sha256": "60b2120299b00c58adda540b1875edcf336a356cdd582b704ab84fc0766c00b9",
+    "immutable_v3_manifest_sha256": "9a6ad867a6d1fb04c3b2635f5276ed8130424202a5513daf36cfcfd0bde56ad5",
+    "immutable_v3_quality_sha256": "903d107a231e1291c8d5cd0397299913f7b2efdc43d92a2b4dc46e3dd9f5354f",
+    "policy_sha256": "a1def3ee3f211ae42d99f6de1200ecfbbbefe37e778fa1373b5b002af821c256",
+    "fresh_r0_required_before_restart": true,
+    "shared_global_ordinal_before_fresh_r0": 13,
+    "formal_search_replay_and_accepted_counts_start": 0,
+    "optimizer_startup_baseline_has_separate_counter": true,
+    "optimizer_startup_baseline_consumes_candidate_budget": false,
+    "startup_baseline_reclassification_claim_sha256": "ecacf6c7f3471c969275c34afa3aeb422fa0238e7c47f4d37d695976ae29bab2",
+    "startup_baseline_reclassification_evidence_sha256": "fce377fce54cae30f6c0bc38142030859923df506bc54293627165f8ea8670e1",
+    "restart_authorization_sha256": "5e3175ac8706a5e616a20fecd73475b5b3b50cea5139e4b32abb8cac528704e7"
+  }
+}

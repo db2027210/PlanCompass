@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "point_id": "experience_table_outer_0003",
+  "replay_ordinal": 3,
+  "status": "valid_measurement_stopped_by_independent_resource_model_quality_gate",
+  "formal_baseline_eligible_for_original_run": true,
+  "reuse_as_restart_baseline": false,
+  "eligible_for_benchmark_scoped_training": true,
+  "training_role": "same_parameter_vector_replicate_for_noise_estimation_only",
+  "independent_parameter_vector_sample": false,
+  "measurement_completed": true,
+  "measurement_stability_passed": true,
+  "formal_resource_serialization_passed": true,
+  "baseline_model_sanity_passed": true,
+  "reason": "the real JOB measurement and baseline sanity gate passed; the optimizer then stopped before candidate search because the independent model quality gate rejected CH.total IO R2 and the single-sample Memory retrain",
+  "quality_gate_failures": [
+    "io CH.total test.r2 -0.21413999040027787 < 0",
+    "memory train_samples 1 < 5",
+    "memory test_samples 0 < 5",
+    "memory source baseline_memory_single_sample_retrain is not train/test retraining"
+  ],
+  "cost_parameter_vector_sha256_group": "default_job_cost_parameters_v1",
+  "plan_structural_fingerprint": "495dafd87de95927104dba169a525beb206806d8f8a9a477170496cb189b0701",
+  "point_result_sha256": "5fe5571274b7b942c34ba90ad7460001b49941fa5dfad9b878cdcafebb68c425",
+  "disposition": "retain as a real same-vector replicate for variance estimation; do not count as a distinct train/test parameter-vector sample; do not restart until new non-default calibration points exist",
+  "marked_at_utc": "2026-07-22T11:26:02Z"
+}

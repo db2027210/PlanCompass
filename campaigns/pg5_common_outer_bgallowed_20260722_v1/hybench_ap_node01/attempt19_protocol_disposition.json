@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_19",
+  "status": "r0_stability_and_resource_gate_fail_early_seal",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "measurement": {
+    "raw_sample_rows": 421,
+    "successful_sql_evidence_records": 117,
+    "workload_errors": 0,
+    "last_controller_elapsed_seconds": 420.7417500820011,
+    "last_complete_window_count": 14,
+    "coverage": 1.0
+  },
+  "calibration_source_six_window_block": {
+    "end_elapsed_seconds": 360,
+    "start_window_index": 6,
+    "end_window_index": 11,
+    "mean_raw_utilization": {
+      "cpu": 0.6843634093018909,
+      "memory": 0.785688999720982,
+      "io": 0.33218701459077066
+    },
+    "mean_absolute_demand": {
+      "cpu_cores": 2.0530902279056726,
+      "memory_MiB": 351.98867187499997,
+      "io_MiB_per_second": 21.259968933809322
+    },
+    "cross_window_cv": {
+      "cpu": 0.16752016089464156,
+      "memory": 0.08887750787036573,
+      "io": 0.171284192220024
+    },
+    "passed": false
+  },
+  "last_complete_six_window_block": {
+    "end_elapsed_seconds": 420,
+    "mean_raw_utilization": {
+      "cpu": 0.6854852204142473,
+      "memory": 0.8476709275018601,
+      "io": 0.37519231899264843
+    },
+    "cross_window_cv": {
+      "cpu": 0.2206423887189511,
+      "memory": 0.07733459521651584,
+      "io": 0.17217321755771345
+    },
+    "passed": false
+  },
+  "early_seal_reason": "the 360-second latest-six block had CPU utilization above 0.50 and memory below the preferred 0.85-0.95 construction band while CPU and IO CV remained above 0.10; the 420-second block remained unstable and CPU remained above 0.50",
+  "termination": {
+    "runner_process_group": 17344,
+    "background_sampler_pid": 17345,
+    "container_id": "9b6dd07cf628e558651eaa433c89be50a64d4d66634efdefa4a86b65bff5f482",
+    "container_health_before_stop": "healthy",
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "owned_process_group_terminated": true,
+    "owned_container_removed": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "aa46123853a40ceb130d17609778cc787b82d80925c3d9bce825b54a83046f27",
+    "measurement_resource_samples.jsonl": "9e2c150e2ff0f2b3428a887518973be03b93527e00a1927fd1d670bf63aff183",
+    "measurement_queries.jsonl": "ab01eb3fbc52d20b24350bf4bf53352aeb529a18a7056e011361776d1050dd01",
+    "measurement_online_stability_controller.jsonl": "81e407d8c10a056da2ea56d4b63369a5ada8ab2b8dc53b4db1d662af8456f6e5",
+    "measurement_hybench.log": "925890ed77c726d9af5c8b62680bd341f34c8352a1dbc2069f561b547e532265",
+    "warmup_hybench.log": "ca7022046ee24503b16fea799b4cb9e01a5eec6b4f0e7de3b646f4ee958d5176",
+    "host_background_attempt_19.jsonl": "b6b89236878fecfee0764e1c031f25ff81d83c6521a6e36d298aaf6ccb9aae54"
+  },
+  "outer_loop_effect": {
+    "anchor_changed": false,
+    "bounds_changed": false,
+    "binary_interval_shrinks": 0,
+    "accepted_outer_rounds_after_disposition": 0
+  },
+  "next_attempt": "attempt_20"
+}

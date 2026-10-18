@@ -1,0 +1,24 @@
+{
+  "schema_version": "tpch_fresh0_v36_deployment_manifest_v1",
+  "algorithm_version": "tpch_v36_compensated_plan_preserving_frozen",
+  "accepted_shrink_target": 10,
+  "fresh_accepted_start": 0,
+  "historical_accepted_inherited": 0,
+  "historical_measurements_use": "training_audit_and_fingerprint_exclusion_only",
+  "baseline_authority_sha256": "af8b17dc77b82fb60166102d091d112eae132c4a6f086fb5a560316385e544ee",
+  "candidate_policy": {
+    "maximum_physical_calls_per_diagnostic_batch": 5,
+    "top5_roles": "3_trusted_plus_2_uncertain_probe",
+    "same_scene_real_replay": "strict_serial",
+    "unknown_plan_regime": "probe_only",
+    "qps": "outer_audit_only",
+    "diagnostic_formal_state": "state_neutral"
+  },
+  "files": {
+    "/tmp/tpch_fresh0_target10_v36_compensated.py": "88e585855cdf42c5866144a104bb19c48bdacc0b089f114213eef536e6712cef",
+    "/tmp/tpch_fresh0_target10_loop_v36_base.py": "34107e91b4bcfd0b2fe8d2911a0855e1512fc881665f4db3c3cb67618bd055fb",
+    "/tmp/tpch_exact_regime_neighbor_expand_v4_compensated_plan_preserving.py": "5d8e6da67ed4207b6a5b80d268bf695d4c2a4de4d925d685bb607a7d7fd155f5",
+    "/tmp/build_tpch_autonomous_successor_top5_v7_incumbent_plan_probe.py": "27c8dfdcf16f2387c469d5d133c8dc9c38154419c1ac3575a5c57260f3273b8d",
+    "/tmp/launch_tpch_v36_fresh0.sh": "cf23be21923134e0a5dce05f99b6ce1cb45ed1c2e024ff3f07722abd1b7e1c2d"
+  }
+}

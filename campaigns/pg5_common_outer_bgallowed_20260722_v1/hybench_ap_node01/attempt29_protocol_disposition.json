@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_29",
+  "immutable_target_resource": "memory",
+  "status": "r0_resource_mean_gate_fail_resident_replaced_workload_pages",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "first_decision_six_window_block": {
+    "end_elapsed_seconds": 180,
+    "mean_raw_utilization": {"cpu": 0.33605995185648774, "memory": 0.8264276258680555, "io": 0.46447396239326316},
+    "cross_window_cv": {"cpu": 0.16394574804100792, "memory": 0.04257784523414482, "io": 0.16119865585608859},
+    "resource_mean_gate": {"cpu_30_to_50": true, "memory_preferred_85_to_95": false, "memory_hard_above_80": true, "io_30_to_50": true}
+  },
+  "resident_memory": {"requested_bytes": 11534336, "helper_container_pid": 65, "helper_vmrss_bytes": 11624448, "same_cgroup_verified": true, "runtime_audit_sha256": "5f3a3f81d5350cf2aa823fcc79046276daa011e953ba1e075ff42db2ec783353", "helper_exit_verified": true, "cleanup_pending": false},
+  "termination": {"raw_sample_rows": 241, "successful_sql_evidence_records": 103, "workload_errors": 0, "runner_process_group": 52099, "background_sampler_pid": 52100, "container_id": "fcdc55910614b8d247ee16bd380a2b1eac7f96747cb30f058a516fa916bf8139", "owned_process_groups_terminated": true, "owned_container_removed": true, "foreign_processes_or_containers_signaled": false},
+  "preserved_evidence": {"point_state.json": "7b28d58ac76b7773cb8ea80e34be4a7a3636ad80b0b6f7fa586152b1f867ddc8", "measurement_resource_samples.jsonl": "a048e45d5510503374068a4b7d4b781191986c46803c24f555688def204b108e", "measurement_queries.jsonl": "0b3db887ed59cc648bc5d5f9616c834bd533130e9a53b7789b10c40334640f4e", "measurement_online_stability_controller.jsonl": "c343f0cb17b21c2af69256a3211faf723588f4011ab185f44b19666d19d349ca", "host_background_attempt_29.jsonl": "6a546d8fe9801edebcf5e777e7f0f1e0779e0cd127d3f2cf381fec475221005c"},
+  "outer_loop_effect": {"anchor_changed": false, "bounds_changed": false, "binary_interval_shrinks": 0, "accepted_outer_rounds_after_disposition": 0},
+  "next_attempt": "attempt_30_final_combined_envelope"
+}

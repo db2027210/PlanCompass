@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_25",
+  "immutable_target_mapping": {
+    "case_id": "pg_hybench_ap_memory",
+    "workload": "hybench_ap",
+    "profile": "memory",
+    "target_resource": "memory"
+  },
+  "live_readback": {
+    "point_state_case_id": "pg_hybench_ap_memory",
+    "point_state_workload": "hybench_ap",
+    "point_state_profile": "memory",
+    "lane_manifest_target_bottleneck": "memory"
+  },
+  "passed": true,
+  "fail_closed": true,
+  "mismatch_action": "do_not_start_or_terminate_only_the_owned_attempt_before_outer_entry",
+  "target_resource_mutation_allowed": false
+}

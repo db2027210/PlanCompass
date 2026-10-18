@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "attempt_id": "attempt_30",
+  "container_name": "p24_postgresql_recost_gradient_descent_ap_pg5hya201v1",
+  "runner_pid": 58273,
+  "background_sampler_pid": 58274,
+  "resident_helper_container_pid": 66,
+  "resident_helper_requested_bytes": 31457280,
+  "runner_absent": true,
+  "background_sampler_absent": true,
+  "container_absent": true,
+  "resident_helper_removed_with_owned_container": true,
+  "runtime_overlay_absent": true,
+  "unrelated_processes_modified": false,
+  "cleanup_complete": true
+}

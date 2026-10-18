@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_20",
+  "status": "r0_phase_stability_fail_early_seal",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "measurement": {
+    "raw_sample_rows": 496,
+    "successful_sql_evidence_records": 124,
+    "workload_errors": 0,
+    "last_controller_elapsed_seconds": 480.2710440570081,
+    "last_complete_window_count": 16,
+    "coverage": 1.0
+  },
+  "phase_decoupling_source_six_window_block": {
+    "end_elapsed_seconds": 390,
+    "start_window_index": 7,
+    "end_window_index": 12,
+    "mean_raw_utilization": {
+      "cpu": 0.30135352286100675,
+      "memory": 0.8106148942786069,
+      "io": 0.40978567855815723
+    },
+    "mean_absolute_demand": {
+      "cpu_cores": 1.5459435722769646,
+      "memory_MiB": 325.86718749999994,
+      "io_MiB_per_second": 22.12842664214049
+    },
+    "cross_window_cv": {
+      "cpu": 0.5734198494366931,
+      "memory": 0.14053687703163073,
+      "io": 0.22061286403867672
+    },
+    "passed": false
+  },
+  "last_complete_six_window_block": {
+    "end_elapsed_seconds": 480,
+    "mean_raw_utilization": {
+      "cpu": 0.3258447321680627,
+      "memory": 0.8471038902708679,
+      "io": 0.4377089261349507
+    },
+    "cross_window_cv": {
+      "cpu": 0.3963876190309732,
+      "memory": 0.1338464624663968,
+      "io": 0.20087649684179262
+    },
+    "passed": false
+  },
+  "early_seal_reason": "successive latest-six blocks retained alternating low/high CPU phases and no CPU CV convergence; by 390 seconds the remaining horizon could not contain a credible new stable six-window block under the unchanged phase timing",
+  "next_adjustment": "increase read bandwidth to shorten the AP10 read-bound phase while preserving aggregate IO utilization through an asymmetric 64+4 MiB/s denominator",
+  "termination": {
+    "runner_process_group": 22111,
+    "background_sampler_pid": 22112,
+    "container_id": "dc8826ca5f0950978b233df7ff9a3e2cc8b4efbfe96a0e2b84ba4e30622dcacd",
+    "container_health_before_stop": "healthy",
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "owned_process_group_terminated": true,
+    "owned_container_removed": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "c856c8adb47b57d9abdd6bf9d9b3c40efbaa58675d7089ef0e580d3af7d1b4f3",
+    "measurement_resource_samples.jsonl": "ae449a1058187959c1b624ee82efe2bd5e8af81b721b632cb39e989ece17184a",
+    "measurement_queries.jsonl": "dee3ee40ed4e19f9cfa2e1c33e895c13fe7635c729d762b822704e1b044553f7",
+    "measurement_online_stability_controller.jsonl": "deb93adae658946183a9125f5126609900874af31f75a35cc25746dae30eaba8",
+    "measurement_hybench.log": "925890ed77c726d9af5c8b62680bd341f34c8352a1dbc2069f561b547e532265",
+    "warmup_hybench.log": "b9bcd1313b1a417480ad55f5dda3a40f0eb1a5cf4fe97bd59eaa3092928b1ae0",
+    "host_background_attempt_20.jsonl": "0de155ad6be2d692ad284951284f045839a4a9375bb12e1f2290b24309110c43"
+  },
+  "outer_loop_effect": {
+    "anchor_changed": false,
+    "bounds_changed": false,
+    "binary_interval_shrinks": 0,
+    "accepted_outer_rounds_after_disposition": 0
+  },
+  "next_attempt": "attempt_21"
+}

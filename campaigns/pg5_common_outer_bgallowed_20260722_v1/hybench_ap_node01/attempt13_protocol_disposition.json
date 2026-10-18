@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_13",
+  "status": "calibration_memory_failcnt_delta_fail",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "reason": "the same new container cgroup memory.failcnt increased after its first recorded baseline, proving a current-container increment rather than inherited host or old-container state",
+  "runtime_evidence": {
+    "runner_pid": 103122,
+    "runner_process_group": 103122,
+    "background_sampler_pid": 103123,
+    "container_id": "8ab91448f7180f0d8167e38ffeeb3335b026137b9b7cbd528b0cf65d565726dc",
+    "phase": "warmup",
+    "memory_limit_in_bytes": 520093696,
+    "memory_failcnt_first_observation": 3584,
+    "memory_failcnt_second_observation": 66597,
+    "memory_failcnt_delta": 63013,
+    "memory_max_usage_in_bytes": 520093696,
+    "container_oom_killed": false,
+    "container_health": "healthy",
+    "container_restart_count": 0,
+    "formal_measurement_sample_count": 0,
+    "host_background_record_count": 13,
+    "owned_process_group_terminated": true,
+    "owned_container_stopped_and_removed": true,
+    "background_sampler_exited_naturally_after_watched_runner": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "9babd0228ac23bc0f669359d779562412741b11e90ee19476b0e354289aa9e1f",
+    "baseline_invocation_attempt_13.json": "d7b2c042c4a5b4ffdea70e6b38122d93df7c9e5389c7c556325add415a084fc3",
+    "host_background_attempt_13.jsonl": "af1ed8bec172f6d27769675b62a95ef94ca6c906090a13853bfd35d78fd243ce"
+  },
+  "next_candidate": "attempt_14",
+  "next_candidate_resources": {
+    "cpu_quota_cores": 2.0,
+    "memory_bytes": 536870912,
+    "io_read_bps": 8388608,
+    "io_write_bps": 8388608
+  },
+  "launch_blocker": "await_final_new_stability_contract_hash"
+}

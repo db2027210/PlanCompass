@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "amendment_id": "pg5_job_role_aware_r2_fallback_amendment_v1",
+  "recorded_at": "2026-07-22T21:06:32+08:00",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "job_node02",
+  "workload": "job",
+  "target_resource": "memory",
+  "decision": "authorize_campaign_scoped_role_aware_level_error_fallback_then_require_fresh_r0",
+  "global_quality_thresholds": {
+    "min_test_r2_before": 0.0,
+    "min_test_r2_after": 0.0,
+    "relaxed": false
+  },
+  "direction_accuracy_claim": false,
+  "v2_grouped_lovo_observation": {
+    "unique_parameter_vector_count": 9,
+    "split_strategy": "grouped_leave_one_unique_parameter_vector_out",
+    "bundle_content_sha256": "ad86f13da5979661303472ed20415877fe2f8c675981a70efcc44ab69cb838ba",
+    "bundle_manifest_sha256": "8c2a7e67141b254b6db2483244d9d633450b17b57b576cbfd13ccafdc0e86aca",
+    "quality_sha256": "7854f499349fef3d14e5f3f2ca90f34462e6417021252fe444201a941da42eee",
+    "dataset_sha256": "cf9e68fc92763578dced385947cd4036c8d4d7e39c17671370050d3287c230af",
+    "resources": {
+      "cpu": {
+        "role": "non_target",
+        "test_r2": -0.2660972038859799,
+        "label_cv": 0.025395382782924292,
+        "label_range_over_mean": 0.07662371744873153,
+        "relative_error_p95": 0.05752812514100574,
+        "relative_error_max": 0.07126568481172835,
+        "abs_error_max_utilization_pp": 2.6723445271180544
+      },
+      "io": {
+        "role": "non_target",
+        "test_r2": -0.2595483269704426,
+        "label_cv": 0.03682828089422316,
+        "label_range_over_mean": 0.11527484759321856,
+        "relative_error_p95": 0.08495221320246736,
+        "relative_error_max": 0.1089765165795744,
+        "abs_error_max_utilization_pp": 3.6455326231979512
+      },
+      "memory": {
+        "role": "target_low_variance",
+        "test_r2": -0.7459108735568174,
+        "label_cv": 0.00009629761049556226,
+        "label_range_over_mean": 0.00028537771997959896,
+        "relative_error_p95": 0.00018409413564083975,
+        "relative_error_max": 0.00019150831902789003,
+        "abs_error_max_utilization_pp": 0.016459009186746698
+      }
+    }
+  },
+  "policy": {
+    "policy_id": "pg5_job_role_aware_r2_fallback_v1",
+    "source_path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/launch_outer/job_role_aware_r2_fallback_policy.json",
+    "sha256": "a1def3ee3f211ae42d99f6de1200ecfbbbefe37e778fa1373b5b002af821c256",
+    "minimum_unique_parameter_vectors": 9,
+    "requires_grouped_lovo": true,
+    "requires_oof_abs_error_max": true,
+    "scope_is_exact_campaign_workload_target": true,
+    "fails_closed_on_missing_or_mismatched_evidence": true
+  },
+  "immutable_v3": {
+    "bundle_dir": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_1/job_quality_calibration/job_resource_model_bundle_v3_role_aware",
+    "bundle_content_sha256": "60b2120299b00c58adda540b1875edcf336a356cdd582b704ab84fc0766c00b9",
+    "bundle_manifest_sha256": "9a6ad867a6d1fb04c3b2635f5276ed8130424202a5513daf36cfcfd0bde56ad5",
+    "quality_sha256": "903d107a231e1291c8d5cd0397299913f7b2efdc43d92a2b4dc46e3dd9f5354f",
+    "policy_sha256": "a1def3ee3f211ae42d99f6de1200ecfbbbefe37e778fa1373b5b002af821c256",
+    "quality_passed": true,
+    "fallback_roles": {
+      "cpu": "non_target",
+      "io": "non_target",
+      "memory": "target"
+    }
+  },
+  "replay_accounting": {
+    "immutable_shared_global_ordinal_before_fresh_r0": 13,
+    "global_counter_reset": false,
+    "fresh_r0_scope": "fresh_default_r0",
+    "fresh_r0_consumes_formal_search_budget": false,
+    "optimizer_startup_baseline_scope": "formal_startup_baseline",
+    "optimizer_startup_baseline_maximum_count": 1,
+    "optimizer_startup_baseline_consumes_candidate_replay_budget": false,
+    "formal_search_replay_count_start": 0,
+    "formal_search_accepted_count_start": 0,
+    "formal_search_maximum_replay_count": 10,
+    "formal_search_accepted_target": 10,
+    "real_replay_top_k_protocol": [
+      5,
+      10
+    ]
+  },
+  "startup_baseline_reclassification": {
+    "global_ordinal": 15,
+    "point_result_sha256": "72aacec7a13a37a03eade767af87d11910457e7c6f856bf18bb89639f9edfc3a",
+    "claim_sha256": "ecacf6c7f3471c969275c34afa3aeb422fa0238e7c47f4d37d695976ae29bab2",
+    "evidence_sha256": "fce377fce54cae30f6c0bc38142030859923df506bc54293627165f8ea8670e1",
+    "restart_authorization_sha256": "5e3175ac8706a5e616a20fecd73475b5b3b50cea5139e4b32abb8cac528704e7",
+    "candidate_replay_count_after": 0,
+    "accepted_count_after": 0,
+    "startup_baseline_count_after": 1
+  },
+  "launch_sequence": [
+    "run one fresh default R0 with the 180-second mean-first profile gate",
+    "stop if CPU or IO is outside 30-50 percent or Memory outside 85-95 percent",
+    "bind v3 and the fresh R0 through the fail-closed finalizer",
+    "run all 127 non-empty parameter subsets",
+    "start formal search replays at zero with the 5-to-10 real replay protocol"
+  ]
+}

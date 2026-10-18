@@ -1,0 +1,75 @@
+{
+  "schema_version": "job_target10_v55_fresh0_sealed_explain_manifest_v1",
+  "scenario": "JOB",
+  "status": "sealed_offline_not_deployed",
+  "campaign_root": "autonomous_target10_v55_fresh0",
+  "campaign_contract": "job_v55_fresh0_v54_postrun_seed_technical_excluded_v1",
+  "authoritative_handoff": {
+    "historical_accepted_excluded": 3,
+    "v54_initial_accepted_count": 0,
+    "v54_countable_accepted_in_v55": 0,
+    "v55_initial_accepted_count": 0,
+    "accepted_target": 10,
+    "external_global_ordinal": 399,
+    "external_formal_replay_count": 206,
+    "v54_technical_calls": 1,
+    "v54_failed_fingerprints_excluded": true,
+    "baseline_score": 4.416709205648302,
+    "baseline_range_is_point": true,
+    "gradient_observation_count": 0
+  },
+  "v54_failure_audit": {
+    "classification": "technical",
+    "core_point_result_sealed_before_failure": true,
+    "failure_operation": "postrun_pg_stat_statements_seed",
+    "failure_query": "12a.sql",
+    "failure_message_class": "server_closed_connection",
+    "cause": "v54 executed all JOB SQL files after cleanup as an uncounted auxiliary workload",
+    "accepted_or_gradient_or_incumbent_or_range_update": false,
+    "countable_in_v55": false,
+    "fingerprint_exclusion_required": true
+  },
+  "v55_transaction_boundary": {
+    "candidate_identity_source": "preexecution_sealed_explain_three_level_fingerprint",
+    "exact_parameter_binding_required": true,
+    "binding_validation_occurs_before_ordinal_claim": true,
+    "postrun_pg_stat_statements_seed_removed": true,
+    "postrun_real_query_count": 0,
+    "missing_or_mismatched_binding": "technical_failure_before_ordinal_claim",
+    "formal_measurement_errors_remain_technical": true,
+    "only_recognized_postseal_legacy_seed_failure_is_nonblocking": true,
+    "single_network_v54_fix_preserved": true
+  },
+  "v55_successor_bounds": {
+    "generator_invocation_limit_per_discovery": 2,
+    "per_generator_timeout_seconds": 1800,
+    "successor_discovery_wall_timeout_seconds": 3720,
+    "timeout_or_incomplete_invocation": "sealed_fail_closed_no_automatic_regeneration",
+    "artifact_and_invocation_progress_must_match": true,
+    "first_replay_handoff_is_atomically_sealed": true,
+    "maximum_diagnostic_batches": 5,
+    "unbounded_successor_generation": false
+  },
+  "files": {
+    "launch_packages/pg5_common_outer_bgallowed_20260722_v1/job_node02/formal_job_outer_replay_v55.py": "406e56aea7b148840a64dff88b190468ed78f6f3683468553cbe31ed57baef23",
+    "tools/run_job_round8_strict_serial_base_v10_sealed_explain.py": "6640148153dceee614f04a96096883a1ef8ce12b6eaa84a761c59593640985d7",
+    "tools/job_fresh10_target10_autonomous_v55.py": "cc9b19977c140a2d42d0c33abf11250e607afc65fbff0f89eb5d3d6c8a357dd0",
+    "tools/bootstrap_job_v55_fresh0.py": "7d6a8a5c937ca377a16b400d890a7a530fb290b039a0ec366fdd7f194983b15b",
+    "tools/deploy_job_v55_bridge.py": "e55887664e8ce8f7f6ab91adc8b12669667d0d3250981a1f193433f0ef0cc3bb",
+    "tools/launch_job_target10_autonomous_v55_fresh0.sh": "7b725817bc627b71112389f1a5530df5699875092662b6c6e5750fc90fd88279",
+    "tools/test_job_v55_postrun_seed_classification.py": "8428aea980be5ef0618807fd276df0c60cc56e9a891eef1cd9d921d225be0500",
+    "tools/test_job_v55_successor_bounds.py": "2bb2bfb4ee639136b7eac8395255421a6ef6e3c3c0eb23994fc64d5e3951c80a"
+  },
+  "verification": {
+    "regression_tests_passed": 10,
+    "successor_bound_tests_passed": 5,
+    "twelve_a_disconnect_core_classification_test_passed": true,
+    "preseal_and_formal_measurement_failure_negative_tests_passed": true,
+    "python_compile_passed": true,
+    "launcher_shell_syntax_passed": true,
+    "workload_calls": 0,
+    "ssh_calls": 0,
+    "mysql_touched": false,
+    "deployed": false
+  }
+}

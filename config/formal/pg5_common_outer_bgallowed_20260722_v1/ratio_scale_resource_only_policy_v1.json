@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "policy_id": "pg4_ratio_scale_resource_only_20260726_v1",
+  "benchmarks": {
+    "job": "memory",
+    "tpch": "memory",
+    "tpcc": "cpu",
+    "hybench_xp": "io"
+  },
+  "removed_standalone_benchmarks": [
+    "hybench_ap"
+  ],
+  "experience_table": {
+    "role": "initial_parameter_direction_only",
+    "online_mutation_from_ratio_scale": false
+  },
+  "ratio_scale": {
+    "role": "resource_only_candidate_evaluator",
+    "qps_used_for_scoring": false,
+    "boundary_scan": {
+      "enabled": true,
+      "max_real_replay_candidates_per_batch": 5,
+      "second_replay_batch_enabled": false,
+      "read_only_scan_limit": "direction_exhaustion",
+      "replay_ranking": "top five existing resource utility scores after resource gate",
+      "min_target_improvement_pct": 5.0,
+      "first_boundary_role": "minimum_effective_step_only",
+      "missing_plan_or_error_bound_policy": "fail_closed"
+    },
+    "memory": {
+      "formula": "measured_fixed_floor + measured_dynamic_baseline * structural_dynamic_ratio",
+      "fixed_floor_source": "fresh idle PostgreSQL cgroup resident memory",
+      "require_memory_floor": true,
+      "require_query_latency_for_memory": true
+    },
+    "historical_error_bounds": {
+      "source": "same-lane paired real replay 95 percent bound",
+      "required_before_real_candidate_replay": true,
+      "missing_policy": "fail_closed"
+    }
+  },
+  "outer": {
+    "global_real_replay_top_k_hard_cap": 5,
+    "applies_to_all_algorithms": true,
+    "qps_source": "real paired replay only",
+    "minimum_db_qps_improvement_pct": 15.0,
+    "target_resource_must_strictly_decrease": true,
+    "non_target_resource_must_not_become_bottleneck": true,
+    "rejection_updates_incumbent": false,
+    "rejection_increments_accepted_shrink_count": false,
+    "rejection_shrinks_parameter_range": false
+  }
+}

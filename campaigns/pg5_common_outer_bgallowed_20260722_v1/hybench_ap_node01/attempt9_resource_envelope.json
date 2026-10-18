@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempts": ["attempt_7", "attempt_8"],
+  "target_attempt": "attempt_9",
+  "status": "calibration_warmup_io_saturation",
+  "resource_contract": {
+    "cpu_quota_cores": 7.5,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 2097152,
+    "io_write_bps": 2097152,
+    "pids_limit": 512,
+    "max_parallel_workers_per_gather": 2
+  },
+  "measurement_contract": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "maximum_measurement_seconds": 600,
+    "stability_window_seconds": 30,
+    "required_consecutive_stable_windows": 6,
+    "online_early_stop": true,
+    "evaluator": "formal_measurement.assess_measurement_samples",
+    "fail_closed_on_assessment_error": true
+  },
+  "io_cap_and_denominator_binding": {
+    "physical_read_bps": 2097152,
+    "physical_write_bps": 2097152,
+    "normalization_read_bps": 2097152,
+    "normalization_write_bps": 2097152,
+    "separation_forbidden": true
+  },
+  "private_runner_sha256": "8a85c0ee0252d02ae07f5fed3b7b209cc648b772c63211c9f426134d663c74fc",
+  "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+  "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+  "accepted_outer_rounds_before_start": 0
+}

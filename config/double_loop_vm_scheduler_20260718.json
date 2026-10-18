@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "matrix_config": "config/double_loop_experiment_matrix_20260717.json",
+  "scheduler_root": "/disk1/resource_adaptive_experiment_matrix_20260718/scheduled_18",
+  "overlay_root": "/dev/shm/resource_adaptive_matrix_v15/vm_overlays",
+  "prepared_image": "/dev/shm/double_loop_vm_fast/prepared-flat.qcow2",
+  "max_active": 8,
+  "poll_interval_s": 30,
+  "max_auto_retries": 1,
+  "safety": {
+    "min_mem_available_gib_after_launch": 64,
+    "min_shm_free_gib": 64,
+    "min_output_disk_free_gib": 512
+  },
+  "lane_order": ["cpu", "memory", "io", "none"],
+  "holds": {
+    "a18_r1": "IO baseline workload profile is being recalibrated after statement-timeout evidence"
+  },
+  "adopted_runs": {
+    "a13_r1": {
+      "pid": 3791038,
+      "run_dir": "/disk1/resource_adaptive_experiment_matrix_20260718/ram_only/memory_a13_1312_sb768_ap2_wm32_p4_v6_recover1/formal_runs/a13_r1_hybench_ap_memory_ramonly1312sb768ap2wm32p4v6recover1"
+    },
+    "a16_r1": {
+      "pid": 3791037,
+      "run_dir": "/disk1/resource_adaptive_experiment_matrix_20260718/ram_only/cpu_a16_cpu8tp8_v3_recover12/formal_runs/a16_r1_hybench_tp_cpu_ramonlycpu8tp8v3recover12"
+    },
+    "e16_r1": {
+      "pid": 3307639,
+      "run_dir": "/disk2/resource_adaptive_experiment_matrix_20260718/ram_only/none_e16/formal_runs/e16_r1_hybench_tp_none_ramonlytp8_resume_tabu2"
+    }
+  },
+  "profiles": {
+    "memory:hybench_ap": {
+      "cpu_cores": 10,
+      "memory_mib": 1312,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": [
+        "--ap-clients-override", "2",
+        "--hybench-ap-shared-buffers-mb", "768",
+        "--hybench-ap-work-mem-mb", "32",
+        "--hybench-ap-max-parallel-workers-per-gather", "4",
+        "--hybench-ap-query-sequence", "6,8,6,6,8"
+      ]
+    },
+    "memory:job": {
+      "cpu_cores": 13,
+      "memory_mib": 608,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": []
+    },
+    "memory:tpch": {
+      "cpu_cores": 13,
+      "memory_mib": 960,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": []
+    },
+    "cpu:hybench_tp": {
+      "cpu_cores": 8,
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": ["--tp-clients-override", "8"]
+    },
+    "cpu:tpcc": {
+      "cpu_cores": 1,
+      "memory_mib": 8192,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": []
+    },
+    "io:hybench_xp": {
+      "cpu_cores": 13,
+      "memory_mib": 4096,
+      "read_mb": 3.3,
+      "write_mb": 0.1,
+      "launcher_args": [
+        "--tp-clients-override", "8",
+        "--ap-clients-override", "2",
+        "--hybench-ap-query-sequence", "6,8,6,8",
+        "--statement-timeout-ms", "900000"
+      ]
+    },
+    "none:hybench_ap": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": []
+    },
+    "none:job": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": []
+    },
+    "none:tpch": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": []
+    },
+    "none:hybench_tp": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": ["--tp-clients-override", "8"]
+    },
+    "none:tpcc": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": []
+    },
+    "none:hybench_xp": {
+      "cpu_cores": 16,
+      "memory_mib": 12288,
+      "read_mb": 800,
+      "write_mb": 800,
+      "launcher_args": ["--tp-clients-override", "24", "--ap-clients-override", "8"]
+    }
+  }
+}

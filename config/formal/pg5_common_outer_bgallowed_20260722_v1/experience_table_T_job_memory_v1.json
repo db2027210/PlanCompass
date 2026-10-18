@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "table_id": "pg5_job_memory_experience_table_T_v1",
+  "version": "2026-07-22.1",
+  "benchmark": "job",
+  "target_resource": "memory",
+  "scope": "PostgreSQL planner cost parameters for the frozen JOB workload and resource profile",
+  "direction_semantics": "T[param][resource] is the signed effect of increasing the parameter; directions are computed only as sum(resource_utility_slope * T[param][resource])",
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "source": {
+    "experience_table_document": "result/bonect/experience_table.md",
+    "experience_table_document_sha256": "c54e04cb4c3ce55dae4d40af6c4c92e2a37effec61de1eec7d595726dc83a3a9",
+    "parameter_optimizer_source": "parameter_optimizer.py",
+    "parameter_optimizer_sha256": "c1185f5fa18962160f6d7c340d54bc3e5698c5c97436a833b4deef2c933ae611",
+    "derivation": "Explicit benchmark-scoped freeze of the built-in 2026-07-22 experience prior; no runtime fallback is permitted."
+  },
+  "canonicalization": "UTF-8 JSON of table only, sort_keys=true, separators=(',', ':')",
+  "table_sha256": "a2fca76dd0ad04758ceebebb29a675ec43f1e52c5e820efca4b25a5fbaeaf07b",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "table": {
+    "seq_page_cost": {"cpu": -0.1, "memory": 0.03, "io": -0.1},
+    "random_page_cost": {"cpu": 0.2, "memory": 0.05, "io": 0.2},
+    "cpu_tuple_cost": {"cpu": 0.2, "memory": -0.05, "io": -0.15},
+    "cpu_index_tuple_cost": {"cpu": 0.05, "memory": -0.02, "io": 0.0},
+    "cpu_operator_cost": {"cpu": 0.2, "memory": -0.05, "io": -0.15},
+    "parallel_setup_cost": {"cpu": -0.1, "memory": 0.02, "io": 0.0},
+    "parallel_tuple_cost": {"cpu": -0.2, "memory": 0.05, "io": -0.1}
+  }
+}

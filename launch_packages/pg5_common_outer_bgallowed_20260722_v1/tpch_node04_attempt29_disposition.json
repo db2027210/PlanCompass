@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "tpch_node04",
+  "attempt_id": "attempt_29",
+  "immutable_target_resource": "memory",
+  "first_decision_block": {
+    "end_elapsed_seconds": 180,
+    "sample_count": 180,
+    "cpu_mean": 0.203955,
+    "memory_mean": 0.932812,
+    "io_mean": 0.473824,
+    "target_memory_passed": true,
+    "cpu_non_target_band_passed": false,
+    "io_non_target_band_passed": true,
+    "profile_passed": false,
+    "stop_reason": "r0_profile_reconstruct_early_stop"
+  },
+  "archived_query_record_count": 188,
+  "evidence_sha256": {
+    "run_manifest_json": "7cef8ad1dcb4a9aa7cfd29454abccaa321551d03ef5fe5557e8ac05e77edc8ab",
+    "resource_samples_jsonl": "6c326c22e0e13e6027ab829daba444138842d30268e2acaacb848f5c57f655b0",
+    "queries_jsonl": "bee53503b2cb388bc00025fd48befdcf1d3b9d05de2d158492e41bc4111499d7",
+    "attempt29_launcher": "a1af1c8d776bb7323d2c4a459c8789b209cd307e06b760098fad8e14a7535e2f",
+    "runner": "2b1ffcd8326a024e47644debaed667cb3ab469c10863a3dd85a451d94304e452"
+  },
+  "outer_loop_effect": {
+    "entered_subset_search": false,
+    "real_replay_count": 0,
+    "accepted_outer_rounds_contributed": 0,
+    "binary_shrink_applied": false
+  },
+  "next_attempt": {
+    "attempt_id": "attempt_30",
+    "only_changed_resource": "cpu_quota_cores",
+    "old_cpu_quota_cores": 8.0,
+    "new_cpu_quota_cores": 5.4,
+    "predicted_cpu_mean_if_absolute_demand_is_preserved": 0.30215555555555557,
+    "memory_bytes": 2147483648,
+    "io_read_bps": 13312,
+    "io_write_bps": 13312,
+    "workers": 32,
+    "session_work_mem": "1MB",
+    "target_resource": "memory"
+  }
+}

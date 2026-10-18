@@ -1,0 +1,41 @@
+{
+  "contract": "xp_v46_minimal_safe_pool_routing_probe5_v1",
+  "created_date": "2026-08-03",
+  "status": "offline_validated_awaiting_main_agent_real_explain_only_validation",
+  "files": {
+    "tools/launch_xp_v46_safe_pool_target10.sh": "11ff149176ab1816a17369eb42e9f9e2e04f10b4479ef1a9b4c5ac383daae596",
+    "tools/resume_xp_fresh0_fixed_contract_target10_v46.py": "3efb83efac51bf6187d1ddc6b66705d4ff496842c2650232c96437c0e17747b9",
+    "tools/validate_xp_v46_real_explain_selection.py": "c8dfb5533aa46b43f7078716d9ae11e8df482fad6022eed785c3708822a14934",
+    "tools/xp_v46_safe_novel_pool_selector_patch.py": "dae58a981853c0c4bddd9b62935c1164e1d8576617b07c118537ecb279f16616",
+    "tests/test_xp_v46_real_explain_selection.py": "957f2f48b043b15277d0cdf0b839a5e8e23497f4248dc40f997600458366118b",
+    "tests/test_xp_v46_safe_novel_pool_selector.py": "786c2143ae07deac8052cbc0f69afe2d693fce04f9ea582400c7dbe9c9d0dda6"
+  },
+  "sealed_inputs": {
+    "diagnostic_builder_sha256": "c91fa48a7e79f9a1307b2e3eec4a240809861e08472824aba7b8cfffaf71246e",
+    "state_before_sha256": "e39dfc261c799c3b36dc40b8d5c9979401db8d900f9091c49fbc22a50f173c7d",
+    "state_after_zero_call_recovery_sha256": "6682932359b7e5c480d7de14f72cf9b99f1f67d61fbd81cefa729da952de6086",
+    "cont007_selection_sha256": "bf0d54962de658b97d80fd0a5f0373c6180902938d17efef74d1f4372ca086ca",
+    "cont007_replay_sha256": "e9931aac7742e76a810f25607ca1bedea36394ae1c80745b43dad0cf1364defc"
+  },
+  "offline_evidence": {
+    "successful_explain_subsets": 63,
+    "unique_candidates": 32,
+    "safe_novel_candidates": 13,
+    "safe_transition_candidates": 0,
+    "selected_top5_after_patch": 5,
+    "test_result": "3 passed in 26.83s",
+    "workload_calls": 0,
+    "formal_state_mutations": 0
+  },
+  "routing_change": {
+    "source_edits": 2,
+    "candidate_generation_changed": false,
+    "safety_thresholds_changed": false,
+    "manual_candidates_added": false,
+    "first_probe5_is_diagnostic_only": true,
+    "clean_first_probe5_requires_pending_exact_point_repeat": true,
+    "formal_requires_second_clean_replay_and_trusted3_probe2_entry_gate": true
+  },
+  "main_agent_validation_command": "timeout 900 taskset -c 32-51,288-307 /home/anonymous/miniconda3/envs/py310/bin/python3 -u /home/anonymous/program/resource_adaptive/tools/validate_xp_v46_real_explain_selection.py --output-root /tmp/xp_v46_real_selection_validation_20260803",
+  "launch_command_after_validation": "/home/anonymous/program/resource_adaptive/tools/launch_xp_v46_safe_pool_target10.sh"
+}

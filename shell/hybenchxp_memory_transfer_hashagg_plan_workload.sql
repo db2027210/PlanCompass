@@ -1,0 +1,5 @@
+SELECT count(*) FROM (SELECT t.sourceid, count(*) AS row_count, sum(t.amount) AS total_amount FROM transfer t WHERE t.sourceid BETWEEN 1 AND 300000 GROUP BY t.sourceid ORDER BY total_amount DESC, row_count DESC LIMIT 300000) q;
+SELECT count(*) FROM (SELECT t.sourceid, count(*) AS row_count, sum(t.amount) AS total_amount FROM transfer t WHERE t.sourceid BETWEEN 600001 AND 900000 GROUP BY t.sourceid ORDER BY total_amount DESC, row_count DESC LIMIT 300000) q;
+SELECT count(*) FROM (SELECT t.sourceid, count(*) AS row_count, sum(t.amount) AS total_amount FROM transfer t WHERE t.sourceid BETWEEN 1200001 AND 1500000 GROUP BY t.sourceid ORDER BY total_amount DESC, row_count DESC LIMIT 300000) q;
+SELECT count(*) FROM (SELECT t.sourceid, count(*) AS row_count, sum(t.amount) AS total_amount FROM transfer t WHERE t.sourceid BETWEEN 1800001 AND 2100000 GROUP BY t.sourceid ORDER BY total_amount DESC, row_count DESC LIMIT 300000) q;
+SELECT count(*) FROM (SELECT t.sourceid, count(*) AS row_count, sum(t.amount) AS total_amount FROM transfer t WHERE t.sourceid BETWEEN 2400001 AND 2700000 GROUP BY t.sourceid ORDER BY total_amount DESC, row_count DESC LIMIT 300000) q;

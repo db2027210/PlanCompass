@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_11",
+  "target_attempt": "attempt_12",
+  "adjustment": "lower CPU quota from 7.5 to 2.0 cores and memory limit from 512 MiB to 480 MiB; preserve I/O caps and all measurement semantics",
+  "prediction_from_attempt11_snapshot": {
+    "cpu_utilization": 0.35,
+    "memory_utilization": 0.83,
+    "io_utilization": 0.44
+  },
+  "resource_contract": {
+    "cpu_quota_cores": 2.0,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 503316480,
+    "memory_swap_bytes": 503316480,
+    "io_read_bps": 8388608,
+    "io_write_bps": 8388608,
+    "io_total_bps": 16777216,
+    "io_utilization_formula": "(read_bps + write_bps) / 16777216",
+    "pids_limit": 512,
+    "max_parallel_workers_per_gather": 2
+  },
+  "utilization_value_semantics": {
+    "clipping_applied": false,
+    "allowed_domain": "finite_and_non_negative_unbounded",
+    "values_above_one_preserved": true,
+    "raw_fields_preserved": true,
+    "stability_and_summary_use_raw_values": true
+  },
+  "measurement_contract": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "maximum_measurement_seconds": 600,
+    "stability_window_seconds": 30,
+    "required_consecutive_stable_windows": 6,
+    "online_early_stop": true,
+    "evaluator": "pg5_six_window_mean_stability_v1",
+    "fail_closed_on_assessment_error": true
+  },
+  "oom_policy": {
+    "monitor_oom_killed": true,
+    "monitor_memory_failcnt_or_events": true,
+    "on_oom_or_failcnt": "seal_attempt12_failed_and_retry_new_attempt_at_496_MiB"
+  },
+  "private_runner_sha256": "8068d7ec8f1854c8f278ab7f6fed57f0218f01e2543c818d06047e7eeb0f4867",
+  "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+  "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+  "stability_gate_contract_sha256": "33cf52a83f4a11ba2fd1bffad703aee9c0192141749320b1ece65919a482f6bd",
+  "io_utilization_contract_sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+  "accepted_outer_rounds_before_start": 0,
+  "status": "calibration_memory_failcnt_fail",
+  "formal_r0_eligible": false,
+  "disposition": "attempt12_protocol_disposition.json"
+}

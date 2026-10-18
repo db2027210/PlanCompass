@@ -1,0 +1,24 @@
+{
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "enabled": true,
+  "min_unique_parameter_vectors": 9,
+  "non_target_bounded_level": {
+    "max_abs_error_utilization_pp": 4.0,
+    "max_label_cv": 0.05,
+    "max_label_range_over_mean": 0.15,
+    "max_relative_error_max": 0.15,
+    "max_relative_error_p95": 0.1
+  },
+  "policy_id": "pg5_job_role_aware_r2_fallback_v1",
+  "require_grouped_lovo": true,
+  "require_oof_abs_error_max": true,
+  "target_low_variance": {
+    "max_abs_error_utilization_pp": 0.05,
+    "max_label_cv": 0.001,
+    "max_label_range_over_mean": 0.001,
+    "max_relative_error_max": 0.002,
+    "max_relative_error_p95": 0.001
+  },
+  "target_resource": "memory",
+  "workload": "job"
+}

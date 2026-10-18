@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "formal_status": "algorithm_contract_for_post_baseline_driver",
+  "shared_baseline_required": true,
+  "workload_hard_gate": {
+    "formal_name": "HyBench-AP13-mixed-AP10-weighted",
+    "benchmark_matrix_sha256": "23b20f81a129cc90d48456f01983fb911a9d76d9171af716fe028ca5edb87121",
+    "ap_clients": 4,
+    "ap_query_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "ap_query_weights": [6, 6, 6, 6, 6, 6, 6, 6, 6, 28, 6, 6, 6],
+    "generated_properties_readback_required": true,
+    "mismatch_action": "fail_closed"
+  },
+  "resource_hard_gate": {
+    "target_bottleneck": "memory",
+    "target_selection": "identify_bottleneck",
+    "target_bottleneck_utilization": {
+      "minimum_exclusive": 0.80,
+      "maximum": null
+    },
+    "non_bottleneck_utilization": {
+      "resources": ["cpu", "io"],
+      "minimum_inclusive": 0.30,
+      "maximum_inclusive": 0.50
+    },
+    "warmup_seconds_minimum": 60,
+    "measurement_seconds": {"minimum": 180, "maximum": 600},
+    "stability_required": true,
+    "correctness_required": true,
+    "outer_entry": "forbidden_unless_every_gate_passes"
+  },
+  "common_contract_binding": {
+    "scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+    "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+    "stability_gate_contract_sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+    "io_utilization_contract_sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+    "scoring_fields_must_match_across_all_five_scenarios": true,
+    "resource_weights_are_not_equal": true
+  },
+  "stability_hard_gate": {
+    "minimum_measurement_seconds": 180,
+    "initial_probe_seconds": 300,
+    "initial_probe_is_observational_only": true,
+    "earliest_stable_stop_seconds": 180,
+    "maximum_measurement_seconds": 600,
+    "continue_same_point_if_unstable_at_probe": true,
+    "window_seconds": 30,
+    "required_consecutive_complete_windows": 6,
+    "per_window_coverage_min_inclusive": 0.9,
+    "cumulative_coverage_min_inclusive": 0.9,
+    "metrics": ["cpu_utilization", "memory_utilization", "io_utilization"],
+    "throughput_fields_required_for_stability": false,
+    "cross_window_cv_max_inclusive": 0.1,
+    "within_window_one_second_cv_required": false
+  },
+  "io_metric_semantics": {
+    "formula": "(read_bps + write_bps) / (read_cap_bps + write_cap_bps)",
+    "legacy_max_semantics_allowed": false,
+    "utilization_clipping_allowed": false,
+    "utilization_domain": "finite_and_non_negative_unbounded",
+    "values_above_one_preserved": true
+  },
+  "inner_loop": {
+    "method": "experience_table_sgd",
+    "parameter_pruning": "workload_aware_before_subset_enumeration",
+    "subset_enumeration": "all_nonempty_subsets_exactly_once_per_outer_round",
+    "subset_count": "2^k-1",
+    "common_start_vector": true,
+    "only_subset_coordinates_mutable": true,
+    "measurement_source": "experience_table_estimate_only",
+    "candidate_ranking": "estimated_score"
+  },
+  "experience_table_T": {
+    "path": "experience_table_T.json",
+    "table_id": "pg5_hybench_ap_memory_experience_table_T_v1",
+    "version": "2026-07-22.1",
+    "sha256": "005d503ec38edd8a121d01ab1ba7a50af4a9e07bdfa2e53b27d1eb673c23d038",
+    "active_parameter_count": 6,
+    "nonempty_subset_count": 63,
+    "entry_count": 18,
+    "nonzero_entry_count": 17,
+    "table_is_not_none": true,
+    "table_is_not_all_zero": true,
+    "direction_source": "experience_table_T_only",
+    "missing_or_all_zero_action": "fail_closed"
+  },
+  "real_replay_controller": {
+    "initial_k": 5,
+    "batch_increment": 1,
+    "maximum_k": 10,
+    "selection": "best_real_score_among_replayed_candidates"
+  },
+  "outer_loop": {
+    "acceptance_for_memory_lane": "candidate.db_qps > anchor.db_qps && candidate.memory < anchor.memory",
+    "accepted_action": "replace_anchor_then_binary_shrink_only_accepted_candidate_active_subset",
+    "rejected_action": "keep_anchor_and_all_bounds_unchanged",
+    "termination_target": "10_accepted_outer_rounds",
+    "candidate_measurement_max_seconds": 600,
+    "stable_early_stop_required": true
+  },
+  "later_methods": {
+    "methods": ["random_search", "brute_force"],
+    "must_reuse_shared_baseline": true,
+    "must_use_identical_real_replay_and_outer_acceptance_and_binary_shrink": true
+  },
+  "legacy_runner_restriction": "p24 recost/brute session algorithms are infrastructure-only and must not be labeled as this formal algorithm"
+}

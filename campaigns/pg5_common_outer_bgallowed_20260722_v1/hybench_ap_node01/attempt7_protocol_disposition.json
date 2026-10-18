@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_7",
+  "recorded_at": "2026-07-22T17:07:16+08:00",
+  "status": "calibration_envelope_interaction_fail",
+  "eligible_as_formal_r0": false,
+  "eligible_for_outer_entry": false,
+  "accepted_outer_rounds_after_disposition": 0,
+  "reason": "A 512 MiB memory limit induced physical reads and the 192 KiB/s cap became the active bottleneck, reversing the independent-denominator prediction.",
+  "stage_at_stop": "warmup_in_progress_after_more_than_two_minutes",
+  "calibration_observations": [
+    {
+      "cpu_percent": 1.07,
+      "memory_used_mib": 89.05,
+      "memory_limit_mib": 512,
+      "memory_percent": 17.39,
+      "cumulative_block_read": "23.9MB",
+      "container_health": "healthy",
+      "oom_killed": false
+    },
+    {
+      "cpu_percent": 0.0,
+      "memory_used_mib": 133.4,
+      "memory_limit_mib": 512,
+      "memory_percent": 26.06,
+      "cumulative_block_read": "31.8MB",
+      "container_health": "healthy",
+      "oom_killed": false
+    }
+  ],
+  "io_interpretation": {
+    "configured_read_bps": 196608,
+    "configured_write_bps": 196608,
+    "observed": "sustained physical read growth near the configured read cap",
+    "direction": "wrong_too_low",
+    "normalization_denominator_must_equal_physical_cap": true
+  },
+  "process_disposition": {
+    "runner_pid": 84738,
+    "workload_pid": 85874,
+    "background_sampler_pid": 84739,
+    "runner_and_workload_process_group": 84738,
+    "signal": "SIGTERM",
+    "signal_scope": "owned_attempt7_process_group_only",
+    "background_sampler_exit": "natural_after_watched_runner_exit",
+    "owned_container_name": "p24_postgresql_recost_gradient_descent_ap_pg5hya201v1",
+    "owned_container_id": "75b2b3cb22d0f3c23f167d7c9c3bde89aaa54a32fb8842fbb39301ac3a97022b",
+    "container_before_stop": {"health": "healthy", "oom_killed": false, "restart_count": 0},
+    "container_stopped_and_removed": true,
+    "foreign_processes_or_containers_touched": false
+  },
+  "preserved_evidence": {
+    "point_state_path": "results/shared_baseline/P0_repeat_1_attempt_7/point_state.json",
+    "point_state_sha256": "db8e0bd4f16eeb37f43c876a8ebd725c4206f33cefb8d3c4e76badb53deb9c79",
+    "baseline_invocation_path": "results/shared_baseline/baseline_invocation_attempt_7.json",
+    "baseline_invocation_sha256": "b28d27554b159cfad09a040f96c2225ba5a6ac31be9872fd38e6bb83cea98307",
+    "background_provenance_path": "logs/host_background_attempt_7.jsonl",
+    "background_provenance_sha256": "c739d310249354f0dbf63d5e69c420ce8f3f16ab1faee1e18ee3668fce92eb99",
+    "partial_result_directory_preserved": true,
+    "original_point_state_mutated": false
+  },
+  "bound_contracts": {
+    "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+    "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e"
+  }
+}

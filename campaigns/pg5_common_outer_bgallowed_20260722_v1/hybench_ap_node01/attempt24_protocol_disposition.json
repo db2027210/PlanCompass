@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_24",
+  "status": "r0_resource_mean_gate_fail_at_first_decision",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "first_decision_six_window_block": {
+    "end_elapsed_seconds": 180,
+    "mean_raw_utilization": {"cpu": 0.3586705942028952, "memory": 0.7895417882619974, "io": 0.44152087528683936},
+    "mean_absolute_demand": {"cpu_cores": 2.39591956927534, "memory_MiB": 202.91223958333333, "io_MiB_per_second": 43.710566653397095},
+    "cross_window_cv": {"cpu": 0.10407411354222396, "memory": 0.09738176068608125, "io": 0.18029331431224807},
+    "resource_mean_gate": {"cpu_30_to_50": true, "memory_preferred_85_to_95": false, "memory_hard_above_80": false, "io_30_to_50": true},
+    "stable": false
+  },
+  "termination": {
+    "last_controller_elapsed_seconds": 210.43960548299947,
+    "raw_sample_rows": 227,
+    "successful_sql_evidence_records": 84,
+    "workload_errors": 0,
+    "runner_process_group": 36391,
+    "background_sampler_pid": 36392,
+    "container_id": "8d5a7993cecfd02330a5266df5871704007ee3ae56d8958f5699dd3ad5f7a6e3",
+    "container_health_before_stop": "healthy",
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "owned_process_group_terminated": true,
+    "owned_container_removed": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "early_seal_rule": "at the first 180-second six-window decision, stop immediately when any preferred resource mean gate is outside memory 0.85-0.95 or CPU/IO 0.30-0.50; continue for CV only when all means pass",
+  "preserved_evidence": {
+    "point_state.json": "1cf34e6b8bf1e389be4ba029d17642e4d5cbf94b0286ce5be923d042f4b01c1b",
+    "measurement_resource_samples.jsonl": "791f556140976f6f815c893ff20a3b1b6a1cb1f1f4fcf54681d43d7a70a7338b",
+    "measurement_queries.jsonl": "76a27c68e0f885f34bdd842faec6ac54f58aec4c96927da9ea98aeda427879d2",
+    "measurement_online_stability_controller.jsonl": "6e626e9cc351bbe529ccd5d15a2e25055048b41c7c62dbac37a0fea708b12b2f",
+    "measurement_hybench.log": "925890ed77c726d9af5c8b62680bd341f34c8352a1dbc2069f561b547e532265",
+    "warmup_hybench.log": "1d362ca8dcbf46ab21622414ab66405dc18eae69c70fc696b1f37bec9a77d216",
+    "host_background_attempt_24.jsonl": "f8b2d307cb1dfdeaae0fe49f0e7149c4fb09f994178305d6b72a887b7c8df05b"
+  },
+  "outer_loop_effect": {"anchor_changed": false, "bounds_changed": false, "binary_interval_shrinks": 0, "accepted_outer_rounds_after_disposition": 0},
+  "next_attempt": "attempt_25"
+}

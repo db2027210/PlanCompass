@@ -1,0 +1,370 @@
+{
+  "base_config": "config/optimizer_config_io_bottleneck_hybench_xp_mixed_coarse.json",
+  "generated_config_dir": "config/generated",
+  "history_prefix": "universal_xp_16_8",
+  "calibration": {
+    "enabled": true,
+    "target_initial_util": 0.9,
+    "non_target_initial_util": 0.6,
+    "capability_policy": "exact"
+  },
+  "workload": {
+    "hybench_dir": "/home/anonymous/HyBench-2024-master",
+    "tmp_props": "conf/pg.props.runxp.universal_16_8.tmp",
+    "tp_clients": 16,
+    "ap_clients": 8,
+    "run_mins": 10,
+    "random_seed": 4508333,
+    "ap_query_sequence": "6,12,8,6,12,13,7,11,6,8,12,13",
+    "progress_windows": 10,
+    "url_ap": "jdbc:postgresql://192.0.2.8:25432/hybench_sf10x?options=-c%20statement_timeout%3D600000"
+  },
+  "coarse_strategy": {
+    "optimizer": {
+      "mode": "gradient",
+      "gradient": {
+        "eta": 1.8,
+        "max_iter": 25,
+        "patience": 8,
+        "eta_growth_factor": 1.15,
+        "eta_shrink_factor": 0.8,
+        "initial_exploration_multiplier": 2.0,
+        "max_eta": 10.0,
+        "reexplore_after_no_improve": true,
+        "max_param_delta_ratio": 0.45,
+        "min_param_delta_rel_pct": 12.0,
+        "max_param_delta_rel_pct": 28.0,
+        "repeated_rejected_direction_patience": 3,
+        "repeated_rejected_direction_action": "hybrid",
+        "repeated_rejected_direction_shrink_factor": 0.8,
+        "exploration_acceptance_enabled": false,
+        "exploration_acceptance_rel_tol": 0.0,
+        "repeat_candidate_jump_enabled": true,
+        "repeat_candidate_jump_multiplier": 2.0,
+        "active_bottleneck_underuse_scale": 1.0,
+        "post_bottleneck_target_util": 0.9,
+        "post_bottleneck_non_bottleneck_pressure_scale": 2.0,
+        "post_bottleneck_guard_util_tolerance": 0.1,
+        "gamma": 0.8,
+        "min_eta": 0.001,
+        "active_params": [
+          "seq_page_cost",
+          "random_page_cost",
+          "cpu_tuple_cost",
+          "cpu_index_tuple_cost",
+          "cpu_operator_cost",
+          "parallel_setup_cost",
+          "parallel_tuple_cost"
+        ],
+        "boosted_params": [
+          "seq_page_cost",
+          "random_page_cost",
+          "cpu_tuple_cost",
+          "cpu_index_tuple_cost",
+          "cpu_operator_cost",
+          "parallel_setup_cost",
+          "parallel_tuple_cost"
+        ],
+        "no_update_patience": 12,
+        "aggressive_trial": {
+          "enabled": true,
+          "every": 0,
+          "after_no_improve": 4,
+          "after_no_plan_change": 0,
+          "eta_multiplier": 1.4,
+          "scale_multiplier": 1.5,
+          "params": [
+            "seq_page_cost",
+            "random_page_cost",
+            "cpu_tuple_cost",
+            "cpu_index_tuple_cost",
+            "cpu_operator_cost",
+            "parallel_setup_cost",
+            "parallel_tuple_cost"
+          ]
+        }
+      }
+    },
+    "initial_params": {
+      "seq_page_cost": 1.0,
+      "random_page_cost": 30.0,
+      "cpu_tuple_cost": 0.0005,
+      "cpu_index_tuple_cost": 0.005,
+      "cpu_operator_cost": 0.0001,
+      "parallel_setup_cost": 1000.0,
+      "parallel_tuple_cost": 0.01
+    },
+    "param_ranges": {
+      "seq_page_cost": {
+        "min_value": 0.8,
+        "max_value": 4.0,
+        "discrete_count": 80,
+        "priority": 1
+      },
+      "random_page_cost": {
+        "min_value": 6.0,
+        "max_value": 30.0,
+        "discrete_count": 80,
+        "priority": 2
+      },
+      "cpu_tuple_cost": {
+        "min_value": 0.0001,
+        "max_value": 0.008,
+        "discrete_count": 80,
+        "priority": 3
+      },
+      "cpu_index_tuple_cost": {
+        "min_value": 0.001,
+        "max_value": 0.012,
+        "discrete_count": 80,
+        "priority": 4
+      },
+      "cpu_operator_cost": {
+        "min_value": 0.00005,
+        "max_value": 0.0025,
+        "discrete_count": 80,
+        "priority": 5
+      },
+      "parallel_setup_cost": {
+        "min_value": 300.0,
+        "max_value": 1500.0,
+        "discrete_count": 80,
+        "priority": 6
+      },
+      "parallel_tuple_cost": {
+        "min_value": 0.005,
+        "max_value": 0.18,
+        "discrete_count": 80,
+        "priority": 7
+      }
+    },
+    "param_step_scale": {
+      "seq_page_cost": 0.22,
+      "random_page_cost": 1.6,
+      "cpu_tuple_cost": 0.00045,
+      "cpu_index_tuple_cost": 0.00025,
+      "cpu_operator_cost": 0.00012,
+      "parallel_setup_cost": 60.0,
+      "parallel_tuple_cost": 0.016
+    }
+  },
+  "profiles": {
+    "io": {
+      "target_resource": "io",
+      "capability": {
+        "cpu": 7.2,
+        "memory": 6.1,
+        "io": 20.5
+      },
+      "vm_resource": {
+        "vm_name": "artifact-ubuntu20",
+        "cpu": 8,
+        "memory_gb": 16,
+        "read_mb": 20,
+        "write_mb": 14,
+        "disk_dev": "vda",
+        "boost_cpu": 64,
+        "boost_memory_gb": 128,
+        "boost_read_mb": 0,
+        "boost_write_mb": 0
+      }
+    },
+    "memory": {
+      "target_resource": "memory",
+      "capability": {
+        "cpu": 14,
+        "memory": 8,
+        "io": 1600
+      },
+      "vm_resource": {
+        "vm_name": "artifact-ubuntu20",
+        "cpu": 14,
+        "memory_gb": 10,
+        "read_mb": 800,
+        "write_mb": 800,
+        "disk_dev": "vda",
+        "boost_cpu": 64,
+        "boost_memory_gb": 128,
+        "boost_read_mb": 0,
+        "boost_write_mb": 0
+      },
+      "config_overrides": {
+        "fixed_params": {
+          "effective_cache_size": "4GB",
+          "work_mem": "4MB",
+          "maintenance_work_mem": "64MB",
+          "temp_buffers": "8MB",
+          "max_connections": 100,
+          "shared_buffers": "128MB",
+          "wal_buffers": "4MB",
+          "max_parallel_workers_per_gather": 0,
+          "max_parallel_workers": 14
+        },
+        "initial_params": {
+          "seq_page_cost": 1.0,
+          "random_page_cost": 4.0,
+          "cpu_tuple_cost": 0.01,
+          "cpu_index_tuple_cost": 0.005,
+          "cpu_operator_cost": 0.0025,
+          "parallel_setup_cost": 1000.0,
+          "parallel_tuple_cost": 0.1
+        },
+        "param_ranges": {
+          "seq_page_cost": {
+            "min_value": 0.0001,
+            "max_value": 100.0,
+            "discrete_count": 15,
+            "priority": 1
+          },
+          "random_page_cost": {
+            "min_value": 0.0001,
+            "max_value": 20.0,
+            "discrete_count": 15,
+            "priority": 2
+          },
+          "cpu_tuple_cost": {
+            "min_value": 0.000001,
+            "max_value": 1.0,
+            "discrete_count": 15,
+            "priority": 3
+          },
+          "cpu_index_tuple_cost": {
+            "min_value": 0.000001,
+            "max_value": 1.0,
+            "discrete_count": 15,
+            "priority": 4
+          },
+          "cpu_operator_cost": {
+            "min_value": 0.000001,
+            "max_value": 1.0,
+            "discrete_count": 15,
+            "priority": 5
+          },
+          "parallel_setup_cost": {
+            "min_value": 0.0,
+            "max_value": 10000.0,
+            "discrete_count": 15,
+            "priority": 6
+          },
+          "parallel_tuple_cost": {
+            "min_value": 0.000001,
+            "max_value": 10.0,
+            "discrete_count": 15,
+            "priority": 7
+          }
+        },
+        "param_step_scale": {
+          "seq_page_cost": 10.0,
+          "random_page_cost": 20.0,
+          "cpu_tuple_cost": 0.05,
+          "cpu_index_tuple_cost": 0.02,
+          "cpu_operator_cost": 0.02,
+          "parallel_setup_cost": 5000.0,
+          "parallel_tuple_cost": 1.0
+        }
+      }
+    },
+    "cpu": {
+      "target_resource": "cpu",
+      "workload": {
+        "hybench_dir": "/home/anonymous/HyBench-2024",
+        "mode": "runxp",
+        "tmp_props": "conf/pg.props.runxp.universal_cpu_8_1.tmp",
+        "tp_clients": 8,
+        "ap_clients": 1
+      },
+      "capability": {
+        "cpu": 14,
+        "memory": 16,
+        "io": 60
+      },
+      "vm_resource": {
+        "vm_name": "artifact-ubuntu20",
+        "cpu": 15,
+        "memory_gb": 16,
+        "read_mb": 30,
+        "write_mb": 30,
+        "disk_dev": "vda",
+        "boost_cpu": 64,
+        "boost_memory_gb": 128,
+        "boost_read_mb": 0,
+        "boost_write_mb": 0
+      },
+      "config_overrides": {
+        "fixed_params": {
+          "effective_cache_size": "4GB",
+          "work_mem": "4MB",
+          "maintenance_work_mem": "64MB",
+          "temp_buffers": "8MB",
+          "max_connections": 100,
+          "shared_buffers": "128MB",
+          "wal_buffers": "4MB",
+          "max_parallel_workers_per_gather": 0,
+          "max_parallel_workers": 15
+        },
+        "initial_params": {
+          "seq_page_cost": 1.0,
+          "random_page_cost": 4.0,
+          "cpu_tuple_cost": 0.01,
+          "cpu_index_tuple_cost": 0.005,
+          "cpu_operator_cost": 0.0025,
+          "parallel_setup_cost": 1000.0,
+          "parallel_tuple_cost": 0.1
+        },
+        "param_ranges": {
+          "seq_page_cost": {
+            "min_value": 0.0001,
+            "max_value": 100.0,
+            "discrete_count": 15,
+            "priority": 1
+          },
+          "random_page_cost": {
+            "min_value": 0.0001,
+            "max_value": 20.0,
+            "discrete_count": 15,
+            "priority": 2
+          },
+          "cpu_tuple_cost": {
+            "min_value": 0.000001,
+            "max_value": 1.0,
+            "discrete_count": 15,
+            "priority": 3
+          },
+          "cpu_index_tuple_cost": {
+            "min_value": 0.000001,
+            "max_value": 1.0,
+            "discrete_count": 15,
+            "priority": 4
+          },
+          "cpu_operator_cost": {
+            "min_value": 0.000001,
+            "max_value": 1.0,
+            "discrete_count": 15,
+            "priority": 5
+          },
+          "parallel_setup_cost": {
+            "min_value": 0.0,
+            "max_value": 10000.0,
+            "discrete_count": 15,
+            "priority": 6
+          },
+          "parallel_tuple_cost": {
+            "min_value": 0.000001,
+            "max_value": 10.0,
+            "discrete_count": 15,
+            "priority": 7
+          }
+        },
+        "param_step_scale": {
+          "seq_page_cost": 10.0,
+          "random_page_cost": 20.0,
+          "cpu_tuple_cost": 0.05,
+          "cpu_index_tuple_cost": 0.02,
+          "cpu_operator_cost": 0.02,
+          "parallel_setup_cost": 5000.0,
+          "parallel_tuple_cost": 1.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "created_at": "2026-07-20 08:44:15",
+  "where_bindings_live": {
+    "canonical_pin_map": "/home/anonymous/program/resource_adaptive/config/pg_cpu_pin_map_20260720.json",
+    "bruteforce_layout": "/home/anonymous/program/resource_adaptive/config/bruteforce_runtime_layout_pg17.json",
+    "workers_json": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/*/workers.json",
+    "optimizer_configs": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/*/optimizer_config.json",
+    "scheduler_slots": "/home/anonymous/program/resource_adaptive/config/double_loop_rootless_vm_scheduler_20260720_v7.json",
+    "apply_script": "/home/anonymous/program/resource_adaptive/shell/apply_pg_cpu_pins.py",
+    "this_registry": "/home/anonymous/program/resource_adaptive/config/pg_cpu_pin_registry_20260720.json",
+    "docker_hostconfig": "docker inspect <name> -> HostConfig.CpusetCpus (runtime binding on container object)",
+    "vm_runtime_affinity": "taskset /proc/<qemu-pid>/status Cpus_allowed_list"
+  },
+  "results": [
+    {
+      "container": "ra_fullgrid_hybench_mem_20260718_w1",
+      "create": "exists",
+      "cpuset_wanted": "16-23,272-279",
+      "inspect": "16-23,272-279|exited|2306867200",
+      "port": 59511,
+      "pool": "hybench_memory",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_memory/w1/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_hybench_mem_20260718_w2",
+      "create": "exists",
+      "cpuset_wanted": "24-31,280-287",
+      "inspect": "24-31,280-287|exited|2306867200",
+      "port": 59512,
+      "pool": "hybench_memory",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_memory/w2/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_hybench_cpu_20260718_w1",
+      "create": "exists",
+      "cpuset_wanted": "32-35,288-291",
+      "inspect": "32-35,288-291|exited|12884901888",
+      "port": 59513,
+      "pool": "hybench_cpu",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_cpu/w1/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_hybench_cpu_20260718_w2",
+      "create": "exists",
+      "cpuset_wanted": "36-39,292-295",
+      "inspect": "36-39,292-295|exited|12884901888",
+      "port": 59514,
+      "pool": "hybench_cpu",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_cpu/w2/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_hybench_none_20260718_w1",
+      "create": "created",
+      "cpuset_wanted": "40-47,296-303",
+      "inspect": "40-47,296-303|created|17179869184",
+      "port": 59515,
+      "pool": "hybench_none",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_none/w1/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_hybench_none_20260718_w2",
+      "create": "created",
+      "cpuset_wanted": "48-55,304-311",
+      "inspect": "48-55,304-311|created|17179869184",
+      "port": 59516,
+      "pool": "hybench_none",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_none/w2/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_generic_20260718_w1",
+      "create": "created",
+      "cpuset_wanted": "56-63,312-319",
+      "inspect": "56-63,312-319|created|17179869184",
+      "port": 59521,
+      "pool": "generic",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic/w1/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_generic_20260718_w2",
+      "create": "created",
+      "cpuset_wanted": "64-71,320-327",
+      "inspect": "64-71,320-327|created|17179869184",
+      "port": 59522,
+      "pool": "generic",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic/w2/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_generic_mem_20260718_w1",
+      "create": "created",
+      "cpuset_wanted": "72-79,328-335",
+      "inspect": "72-79,328-335|created|2147483648",
+      "port": 59523,
+      "pool": "generic_memory",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic_memory/w1/pgdata"
+    },
+    {
+      "container": "ra_fullgrid_generic_mem_20260718_w2",
+      "create": "created",
+      "cpuset_wanted": "80-87,336-343",
+      "inspect": "80-87,336-343|created|2147483648",
+      "port": 59524,
+      "pool": "generic_memory",
+      "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic_memory/w2/pgdata"
+    },
+    {
+      "container": "binary_plan_tuning_hybenchxp_io_iso_20260716_w1",
+      "create": "exists",
+      "cpuset_wanted": "88-92,344-348",
+      "inspect": "88-92,344-348|exited|2411724800",
+      "port": 59441,
+      "pool": null,
+      "data_dir": null
+    },
+    {
+      "container": "binary_plan_tuning_hybenchxp_io_iso_20260716_w2",
+      "create": "exists",
+      "cpuset_wanted": "93-95,218-219,349-351,474-475",
+      "inspect": "93-95,218-219,349-351,474-475|exited|2411724800",
+      "port": 59442,
+      "pool": null,
+      "data_dir": null
+    }
+  ]
+}

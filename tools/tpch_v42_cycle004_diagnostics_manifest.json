@@ -1,0 +1,92 @@
+{
+  "schema_version": "tpch_v42_cycle004_diagnostics_manifest_v1",
+  "scenario": "TPC-H",
+  "status": "sealed_offline_not_deployed",
+  "source_campaign": "tpch_final_algorithm_fresh0_v40_retest_compat_20260803",
+  "source_cycle": "target10_loop_v40/cycle_004",
+  "consumer": "tpch_v41_preformal_handoff",
+  "fresh_formal_state": {
+    "accepted_before": 0,
+    "accepted_after": 0,
+    "accepted_target": 10,
+    "formal_physical_calls": 0,
+    "incumbent_or_range_or_gradient_mutation": false
+  },
+  "source_probe": {
+    "reuse_only": true,
+    "required_physical_calls": 5,
+    "required_valid_replays": 5,
+    "required_technical_failures": 0,
+    "required_baseline_restored": true,
+    "required_state_neutral": true,
+    "replay_allowed": false
+  },
+  "runner_fix": {
+    "cause": "v40_wrapper_cast_successful_None_return_to_int",
+    "old_expression": "int(original.main())",
+    "new_success_mapping": "None_or_zero_to_zero",
+    "nonzero_status": "fail_closed",
+    "selection_contract_translation_unchanged": true,
+    "sealed_v40_sha256": "c3d352b980daf403a3344b7381ad5699215f6b2ba59b2a40c10b6e71f91a908d"
+  },
+  "continuation": {
+    "automatic_sequence": [
+      "validate_existing_probe_clean5_state_neutral",
+      "deterministically_build_exact_repeat",
+      "strict_serial_exact_repeat_5",
+      "deterministically_build_robust_repeat",
+      "strict_serial_robust_repeat_5",
+      "seal_v41_handoff_artifact",
+      "stop_without_gate_or_formal"
+    ],
+    "new_physical_call_cap": 10,
+    "per_diagnostic_batch_cap": 5,
+    "same_scene_real_replay": "strict_serial",
+    "technical_failure": "fail_closed_no_partial_phase_retry",
+    "manual_candidate_injection": false,
+    "gate_analysis_in_v42": false,
+    "formal_promotion_in_v42": false,
+    "formal_replay_in_v42": false,
+    "v41_handoff_owns_next_step": true
+  },
+  "selection_contract": {
+    "roles": "trusted3_probe2",
+    "distinct_noncorner_three_level_fingerprints": 5,
+    "required_candidate_fields": [
+      "feature_ratio",
+      "predicted_resource",
+      "utilization",
+      "dScore/dU",
+      "T",
+      "confidence",
+      "g_j",
+      "eta",
+      "delta_param",
+      "candidate_score"
+    ],
+    "qps_used_for_inner_scoring": false
+  },
+  "dependencies": {
+    "/tmp/tpch_fresh0_target10_loop_v36_base.py": "34107e91b4bcfd0b2fe8d2911a0855e1512fc881665f4db3c3cb67618bd055fb",
+    "/tmp/tpch_fresh10_target10_loop_v32_v6_hierarchical.py": "54ac22227f190bfbbc1f2889927cba9500cbe1bd6f4347287d69c3647d6e98b5",
+    "/tmp/tpch_fresh10_robust_validation_v22.py": "e56f3db493201e7aec9b944df67e8b40c5226114a87c85adad7b5def0532e578",
+    "/tmp/tpch_fresh0_handover_v19/build_tpch_exact_plan_repeat_validation.py": "4f1684e73c9c91f32d94655053a4c6af5a8f8f0d2d2eb8a94363eaa24b48cfe7",
+    "/tmp/build_tpch_two_observation_robust_repeat_v3.py": "b124ef363035606c55bcc16a801c220b50725b18d3cbe8e98fe816fdf83195b5"
+  },
+  "files": {
+    "tools/run_tpch_round29_diagnostic_exact_plan_regime_batch_v42.py": "5f6ad0c1afc5bfe0adbb8f93aef9de2e487c1bae5e648fe9c59c793053e9e248",
+    "tools/tpch_v42_complete_cycle004_diagnostics.py": "8e2ba0f8d9e48bfe577d4b63c30e876967b8ad49f43ec4daff9f30722f8114fa",
+    "tools/launch_tpch_v42_cycle004_diagnostics.sh": "fa157637115c7e42d0c34a22168bf758399fdea78a1d9283404bcc6134a4ea9a",
+    "tests/test_tpch_v42_diagnostic_continuation.py": "2ba702d8f8d53912189d76a60de41147a845d2165678f1df36702b129ed66308"
+  },
+  "verification": {
+    "offline_tests_passed": 6,
+    "python_compile_passed": true,
+    "launcher_shell_syntax_passed": true,
+    "git_diff_check_passed": true,
+    "workload_calls": 0,
+    "ssh_calls": 0,
+    "mysql_touched": false,
+    "deployed": false
+  }
+}

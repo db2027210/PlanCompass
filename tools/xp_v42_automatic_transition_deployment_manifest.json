@@ -1,0 +1,71 @@
+{
+  "contract": "xp_v42_automatic_safe_frontier_transition_deployment_v1",
+  "created_at": "2026-08-03T17:25:00+08:00",
+  "campaign_root": "/home/anonymous/program/resource_adaptive/history/xp_final_algorithm_fresh10_v38_20260803",
+  "source_state_sha256": "dee1c2a508980bbd105c006ef3d4943b5c577290a8f2ad01218446e39f2313db",
+  "source_state": {
+    "status": "blocked_preworkload",
+    "last_error": "RuntimeError: XP v36 fallback budget contract mismatch",
+    "accepted_count": 0,
+    "accepted_target": 10,
+    "next_batch_index": 6,
+    "last_completed_batch": "cont004",
+    "last_completed_batch_physical_calls": 5,
+    "active_batch": "cont006",
+    "active_batch_physical_calls": 0,
+    "formal_state_sha256": "bd8034585cbfe0740a1960889edf2120bee0eb53734d939c2ebc1dccac6439d1"
+  },
+  "root_cause": {
+    "legacy_contract": "xp_v36_resource_safe_maximin_probe5_fallback_v1",
+    "description": "The inherited one-use v36 fallback wrapper intercepted the newer cont006 transition-shortfall manifest. Its campaign budget had already been consumed by cont003, so its source-manifest check failed before v41 could return a normal pre-workload block.",
+    "fix": "For the exact SHA-pinned cont006 block, reconstruct a strict provenance-based transition family before the legacy wrapper is consulted; ready v42 bundles are validated and reused idempotently. The v36 budget is neither reset nor reused."
+  },
+  "automatic_transition_algorithm": {
+    "contract": "xp_v42_automatic_safe_frontier_transition_family_probe5_v1",
+    "source_frontier_contract": "bounded_multihop_joint_halton_fresh_explain_probe_v3",
+    "classification": "fresh EXPLAIN, strict formal-range interior, observed and configured relative step <= 0.8, resource/stability safe, anchored at formal incumbent or a validated two-observation clean exact point",
+    "selection": "deterministic maximin5 seeded by the minimum-step clean-anchor exploitation candidate",
+    "resource_safe_candidates": 9,
+    "strict_transition_family_candidates": 6,
+    "selected_top5": 5,
+    "all_candidates_remain_uncertain_probes": true,
+    "trusted_promotion_applied": false,
+    "resource_envelope_relaxed": false,
+    "parameter_step_limit_relaxed": false,
+    "formal_range_relaxed": false,
+    "manual_candidate_injection": false,
+    "workload_calls_during_repair": 0,
+    "explain_calls_repeated": 0
+  },
+  "sealed_inputs": {
+    "explain_only_generation.json": "aa326f82f2f5727fa5288a1484be6eaa3b9fd2be2b373b94f710e5a4ed747751",
+    "v41_blocked_manifest.json": "b0afc740ec1d22fd5003df48ca60c9a6254b92bbaac1c9f51967d74af5c40d5d",
+    "v41_blocked_selection.json": "cef5539fac003d6d6ef61299330e339b43588b33ac354f9d6b37240179001a55",
+    "v41_blocked_config_overlay.json": "c020a52517aa6655514d6713a090b40c0a06d9ec8cfb67489854970a3b34c22a",
+    "v36_consumed_budget.json": "5cd4c824ed124ffb82fe7b9f1cca5553c22b8d35ed81e11c8c847f9e1cb798dc"
+  },
+  "files": {
+    "tools/resume_xp_fresh0_fixed_contract_target10_v42.py": "96e5afdb03f5baa1da444cf8b54eb9d4bbabe85e768b058d3295b6b7cfbf4875",
+    "tools/xp_v42_automatic_transition_family_patch.py": "06e6f25175bf572bc2683c2cee539b018035a0a23f0766ac64b3923f512c63ce",
+    "tools/recover_xp_v42_cont006_transition_zero_call.py": "d197dd81eb069f53ac28e0400d72e25884c523673c9bb8db04451c9bfd6a1892",
+    "tools/preflight_xp_v42_cont006_transition.py": "6001ec58c093284a7b39def97c7349ec0d207832df7d299d2ea13a180db630b0",
+    "tests/test_xp_v42_automatic_transition_family.py": "6e7d8a18736e00e832775684623522d3ccb23cd5d8cd96e71329a94b2ac86382",
+    "tools/launch_xp_v42_automatic_transition_target10.sh": "c212864ef82d936765d5438f8b3112eb4451c5938b469ba7bf5275c074591122"
+  },
+  "inherited_files": {
+    "tools/xp_v41_excluded_ids_sealed_pool_resume_patch.py": "6e52a3d083b393a7ba14268d9acb8bd61c5d57528cf1a42fb8f67f7670042627",
+    "tools/xp_v40_formal_infeasible_reexploration_patch.py": "34480b3004c16ba235f4507d0935c5b102fa53b006d81f3ab3991b79d9892aec",
+    "tools/xp_v39_exact_point_pending_trust_patch.py": "d5b793ddbaa8eea6fb17519570f83e2e3bac5bac7a20d9a71462e5b35bbbdf83",
+    "tools/xp_v38_phase_state_patch.py": "984c2c90117d7dbd777b97db84d499e96c4796ca49231693ec27218c4bb08f5f",
+    "tools/xp_v37_robust_state_patch.py": "af1fc3bc9aa4bc2b508097dbaa3384f2ee890fb29627410a587c03e9016ecddf"
+  },
+  "verification": {
+    "offline_tests": "5/5 passed",
+    "source_preflight": "passed",
+    "selection_gate": "passed",
+    "zero_call_recovery_temp_clone": "passed",
+    "launcher_syntax": "passed",
+    "live_recovery_executed": false,
+    "live_workload_started": false
+  }
+}

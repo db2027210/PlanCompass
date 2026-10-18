@@ -1,0 +1,104 @@
+{
+  "contracts": [
+    {
+      "contract_id": "job_canonical113_memory_v1",
+      "description": "Canonical JOB 113 SQL, full workload replay",
+      "plan_sql_path": "/disk1/resource_adaptive/pg_algorithm_c_four_parallel2_20260809/20260809_formal_v2/job_memory/canonical_job_113_plan.sql",
+      "target": "memory",
+      "workload": "job",
+      "workload_policy": "20260806-pg-experiment-workload-policy"
+    },
+    {
+      "contract_id": "tpch_sf5_q1_q22_serial_memory_v1",
+      "description": "TPC-H SF5 Q1-Q22, one terminal, one serial pass",
+      "plan_sql_path": "/disk1/resource_adaptive/bruteforce_pg17_framework_20260717/config/plan_samples/tpch.sql",
+      "scale_factor": 5,
+      "target": "memory",
+      "workload": "tpch",
+      "workload_policy": "20260806-pg-experiment-workload-policy"
+    },
+    {
+      "contract_id": "tpch_sf1_q1_q22_serial_memory_historical_v1",
+      "description": "Historical TPC-H SF1 Q1-Q22; never transferable to SF5",
+      "plan_sql_path": "/disk1/resource_adaptive/bruteforce_pg17_framework_20260717/config/plan_samples/tpch.sql",
+      "scale_factor": 1,
+      "target": "memory",
+      "workload": "tpch",
+      "workload_policy": "historical_audit_only_for_sf5"
+    },
+    {
+      "contract_id": "hybench_xp_native_sf10x_xtp32_xap4_cpu_v1",
+      "description": "Native HyBench XP SF10x, xtpclient=32, xapclient=4",
+      "plan_sql_path": "/disk1/resource_adaptive/bruteforce_pg17_framework_20260717/config/plan_samples/hybench_xp.sql",
+      "scale_factor": "10x",
+      "target": "cpu",
+      "workload": "hybench_xp",
+      "workload_policy": "20260806-pg-experiment-workload-policy"
+    },
+    {
+      "contract_id": "hybench_xp_native_sf10x_xtp32_xap4_io_v1",
+      "description": "Native HyBench XP SF10x, xtpclient=32, xapclient=4",
+      "plan_sql_path": "/disk1/resource_adaptive/bruteforce_pg17_framework_20260717/config/plan_samples/hybench_xp.sql",
+      "scale_factor": "10x",
+      "target": "io",
+      "workload": "hybench_xp",
+      "workload_policy": "20260806-pg-experiment-workload-policy"
+    }
+  ],
+  "sources": [
+    {
+      "contract_id": "job_canonical113_memory_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/pg_algorithm_c_four_parallel2_20260809/20260809_formal_v2/job_memory/memory_binary_search_job.jsonl"
+    },
+    {
+      "contract_id": "job_canonical113_memory_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A2-R1_job_memory/memory_binary_search_job.jsonl"
+    },
+    {
+      "contract_id": "tpch_sf1_q1_q22_serial_memory_historical_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/pg_algorithm_c_four_parallel2_20260809/20260809_tpch_retry1/tpch_memory/memory_binary_search_tpch.jsonl"
+    },
+    {
+      "contract_id": "tpch_sf1_q1_q22_serial_memory_historical_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/runs/A3-R1_tpch_memory/memory_binary_search_tpch.jsonl"
+    },
+    {
+      "contract_id": "hybench_xp_native_sf10x_xtp32_xap4_cpu_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/pg_algorithm_c_four_parallel2_20260809/20260809_formal_v2/xp_cpu/cpu_binary_search_hybenchxp.jsonl"
+    },
+    {
+      "contract_id": "hybench_xp_native_sf10x_xtp32_xap4_cpu_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/pg_algorithm_c_four_parallel2_20260809/20260809_xp_retry1/xp_cpu/cpu_binary_search_hybenchxp.jsonl"
+    },
+    {
+      "contract_id": "hybench_xp_native_sf10x_xtp32_xap4_io_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/pg_algorithm_c_four_parallel2_20260809/20260809_formal_v2/xp_io/io_binary_search_hybenchxp.jsonl"
+    },
+    {
+      "contract_id": "hybench_xp_native_sf10x_xtp32_xap4_io_v1",
+      "eligible_for_hard_rules": true,
+      "path": "/disk1/resource_adaptive/pg_algorithm_c_four_parallel2_20260809/20260809_xp_retry1/xp_io/io_binary_search_hybenchxp.jsonl"
+    }
+  ],
+  "thresholds": {
+    "envelope_relative_tolerance": 0.05,
+    "holdout_modulus": 5,
+    "min_distinct_param_signatures": 8,
+    "min_distinct_plan_fingerprints": 3,
+    "min_distinct_rounds": 4,
+    "min_distinct_source_logs": 2,
+    "min_holdout_support": 2,
+    "min_support": 12,
+    "min_train_support": 8,
+    "min_wilson_lower_95": 0.75,
+    "require_zero_contradictions": true,
+    "worsening_margin_ratio": 0.005
+  }
+}

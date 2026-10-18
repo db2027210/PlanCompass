@@ -1,0 +1,19 @@
+[Unit]
+Description=Resource Adaptive PostgreSQL 17 cluster
+After=network.target
+
+[Service]
+Type=forking
+User=postgres
+Group=postgres
+ExecStart=/usr/lib/postgresql/17/bin/pg_ctl -D /home/anonymous/pg_master/pg_data -w -t 600 start
+ExecStop=/usr/lib/postgresql/17/bin/pg_ctl -D /home/anonymous/pg_master/pg_data -w -t 600 -m fast stop
+ExecReload=/usr/lib/postgresql/17/bin/pg_ctl -D /home/anonymous/pg_master/pg_data reload
+TimeoutStartSec=650
+TimeoutStopSec=650
+Restart=on-failure
+RestartSec=5
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

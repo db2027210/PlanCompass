@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_27",
+  "immutable_target_resource": "memory",
+  "source_memory_absolute_MiB": 164.41048177083331,
+  "memory_cap_MiB": 200,
+  "target_memory_utilization": 0.875,
+  "target_memory_absolute_MiB": 175,
+  "calculated_resident_gap_MiB": 10.589518229166686,
+  "selected_resident_memory_bytes": 11534336,
+  "selected_resident_memory_MiB": 11,
+  "prediction_with_resident_memory": {"cpu_utilization": 0.3575916182921049, "memory_utilization": 0.8770524088541666, "io_utilization": 0.45707201255083524},
+  "construction": "anonymous pages touched and held by a recorded helper process inside the same owned container cgroup",
+  "target_resource_mutation_allowed": false,
+  "benchmark_workload_unchanged": true
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_14",
+  "target_attempt": "attempt_15",
+  "resource_contract": {
+    "cpu_quota_cores": 2.0,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 8388608,
+    "io_write_bps": 8388608,
+    "io_total_bps": 16777216,
+    "pids_limit": 512
+  },
+  "workload_contract": {
+    "formal_name": "HyBench-AP13-mixed-AP10-weighted",
+    "source": "frozen_config_v9/benchmark_matrix.json",
+    "source_sha256": "23b20f81a129cc90d48456f01983fb911a9d76d9171af716fe028ca5edb87121",
+    "runtime_properties_derived_from_frozen_benchmark_config": true,
+    "ap_clients": 4,
+    "ap_query_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "ap_query_weights": [6, 6, 6, 6, 6, 6, 6, 6, 6, 28, 6, 6, 6],
+    "generated_properties_readback_required": true,
+    "generated_properties_checksum_required": true
+  },
+  "measurement_contract": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "initial_probe_seconds": 300,
+    "initial_probe_is_observational_only": true,
+    "earliest_stable_stop_seconds": 180,
+    "continue_same_point_if_unstable_at_probe": true,
+    "maximum_measurement_seconds": 600,
+    "stability_window_seconds": 30,
+    "required_consecutive_complete_windows": 6,
+    "stability_metrics": ["cpu_utilization", "memory_utilization", "io_utilization"],
+    "throughput_fields_required_for_stability": false,
+    "cross_window_cv_max_inclusive": 0.1,
+    "fail_closed_at_hard_maximum": true
+  },
+  "failcnt_policy": {
+    "diagnostic_only": true,
+    "nonzero_delta_alone_is_not_a_hard_failure": true,
+    "hard_failure_conditions": [
+      "oom_or_oomkill",
+      "container_restart_or_unhealthy",
+      "workload_error",
+      "invalid_data_or_sampling"
+    ]
+  },
+  "runtime": {
+    "runner_and_online_controller_pid": 113630,
+    "background_sampler_pid": 113631,
+    "container_id": "dc28c501182549addd27e7da5c1f46b7711972a3adcf12e579b002c4e4ab877d",
+    "container_health_at_baseline": "healthy",
+    "container_oom_killed_at_baseline": false,
+    "container_restart_count_at_baseline": 0,
+    "memory_failcnt_baseline": 0,
+    "memory_usage_in_bytes_at_baseline": 498466816,
+    "memory_max_usage_in_bytes_at_baseline": 498597888,
+    "warmup_properties_sha256": "7900298ef1acf0a14b8a2010f64d2597acf91163536065a2e9c4e214c278802a",
+    "warmup_properties_direct_readback_passed": true
+  },
+  "private_runner_sha256": "cbc6d129b4749a755d3e121d1d66c53fe2a0140624cafe9bf12096ccd275bbd2",
+  "formal_contracts_py_sha256": "9d097a12d7c79c1903a1d286b30394686f5e1683d44ded18b68baec19a04022d",
+  "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+  "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+  "stability_gate_contract_sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+  "io_utilization_contract_sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+  "accepted_outer_rounds_before_start": 0,
+  "formal_r0_eligible": false,
+  "invalid_reason": "workload_error_ap2_resultset_closed",
+  "status": "hard_fail_workload_error_ap2_resultset_closed"
+}

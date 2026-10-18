@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "contract_id": "pg5_hybench_xp_experience_sgd_eta_0p0051_amendment_v1",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "benchmark": "hybench_xp",
+  "runtime_target_resource": "io",
+  "scope": "experience-table SGD inner loop only",
+  "reason": "Increase the experience-table SGD eta after A20 while retaining the original resource-model sanity gate; this amendment does not relax, lower, bypass, or reinterpret the IO anchor delta-scale minimum.",
+  "changes": {
+    "optimizer.gradient.eta": {
+      "old": 0.005,
+      "new": 0.0051
+    },
+    "optimizer.gradient.max_eta": {
+      "old": 0.005,
+      "new": 0.0051
+    }
+  },
+  "unchanged_hard_gates": {
+    "metrics.plan_estimator.model_retraining.quality_gate.baseline_sanity.anchor_delta_scale_min_by_resource.io": 0.005,
+    "profile_target_bounds_inclusive": [
+      0.85,
+      0.95
+    ],
+    "each_non_target_bounds_inclusive": [
+      0.3,
+      0.5
+    ],
+    "common_outer_acceptance": "candidate DB QPS strictly rises AND candidate IO utilization strictly falls versus latest accepted incumbent"
+  },
+  "unchanged_algorithm_inputs": {
+    "experience_table": "/home/anonymous/program/resource_adaptive/config/formal/pg5_common_outer_bgallowed_20260722_v1/experience_table_T_hybench_xp_io_v2.json",
+    "experience_table_artifact_sha256": "20412a31cb26324ed8ad9bef84f0ad39829154bb420374c2cb8619dce37cd7a4",
+    "experience_table_canonical_sha256": "681665cc8955c95529d1c959405b8c887537cf964c68f974db6b651f1b2ca7ad",
+    "active_param_count": 6,
+    "all_nonempty_subset_count": 63,
+    "fixed_params": {
+      "parallel_setup_cost": 1000.0
+    },
+    "parameter_ranges_changed": false,
+    "direction_table_changed": false
+  },
+  "validation_evidence": {
+    "resource_summary": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt20/candidate_measurements/20260722T205406+0800_581536/summary.json",
+    "resource_summary_sha256": "16bfab5b3812b82db2c045638971cfbaf08cbb6a6bb5ebe8d5c7b1dd5b633578",
+    "projected_utilization": {
+      "cpu": 0.3452950848817668,
+      "memory": 0.4362132994530795,
+      "io": 0.8780486675915093
+    },
+    "directions": {
+      "seq_page_cost": -19.278614235288025,
+      "random_page_cost": -33.8039993110687,
+      "cpu_tuple_cost": 3.1966880158350874,
+      "cpu_index_tuple_cost": -3.3321143443529073,
+      "cpu_operator_cost": 0.8031440299754693,
+      "parallel_tuple_cost": -6.863085730133578
+    },
+    "unclipped_first_step": {
+      "seq_page_cost": 0.901679067400031,
+      "random_page_cost": 3.310398414054198,
+      "cpu_tuple_cost": 0.010163031088807591,
+      "cpu_index_tuple_cost": 0.004915031084219001,
+      "cpu_operator_cost": 0.0025102400863821874,
+      "parallel_tuple_cost": 0.09649982627763187
+    },
+    "relative_first_step": {
+      "seq_page_cost": 0.09832093259996894,
+      "random_page_cost": 0.1724003964864504,
+      "cpu_tuple_cost": 0.01630310888075895,
+      "cpu_index_tuple_cost": 0.01699378315619983,
+      "cpu_operator_cost": 0.004096034552874894,
+      "parallel_tuple_cost": 0.03500173722368125
+    },
+    "maximum_absolute_direction": 33.8039993110687,
+    "maximum_relative_first_step": 0.1724003964864504,
+    "maximum_allowed_relative_first_step": 0.2,
+    "all_first_step_values_inside_documented_ranges": true,
+    "all_first_step_values_unclipped": true,
+    "all_relative_first_steps_within_max_param_delta_ratio": true,
+    "max_eta_equals_eta": true,
+    "legacy_min_param_delta_rel_pct_note": "The frozen experience-table optimizer accepts this field only as a compatibility option and explicitly does not use it in the algorithm; it is not a lower bound on each raw first-step component."
+  },
+  "prohibited_interpretations": [
+    "Do not change the IO resource-model sanity minimum from 0.005.",
+    "Do not change T v2 coefficients or signs.",
+    "Do not inject finite-difference, random, or historical parameter coordinates.",
+    "Do not alter the common outer acceptance or accepted-only binary shrink logic."
+  ]
+}

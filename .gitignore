@@ -1,0 +1,34 @@
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.agents/
+.codex/
+.opencode/
+.claude/
+.idea/
+.vscode/
+# Runtime and generated outputs
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+history/
+result/
+results/
+logs/
+runtime_status/
+*.log
+*.pid
+*.lock
+*.tmp
+*.bak*
+*.orig
+target/
+build/
+dist/
+*.class
+*.jar
+*.joblib

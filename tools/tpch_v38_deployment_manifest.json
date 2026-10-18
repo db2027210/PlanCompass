@@ -1,0 +1,110 @@
+{
+  "schema_version": "tpch_v40_deployment_manifest_v1",
+  "algorithm_version": "tpch_v40_pending_retest_runner_compatibility",
+  "accepted_shrink_target": 10,
+  "fresh_accepted_start": 0,
+  "historical_accepted_inherited": 0,
+  "automatic_pipeline": [
+    "current_default_anchor_two_serial_observations",
+    "anchor_stability_and_state_neutral_gate",
+    "cycle004_exact_point_retest_top5_zero_explain",
+    "autonomous_formal_target10"
+  ],
+  "batch_contract": {
+    "anchor_diagnostic_physical_cap": 2,
+    "top5_diagnostic_physical_cap": 5,
+    "anchor_and_top5_are_separate_batches": true,
+    "same_scene_real_replay": "strict_serial",
+    "technical_failure_counts_toward_physical_cap": true,
+    "technical_failure_counts_as_valid_or_accepted": false
+  },
+  "anchor_contract": {
+    "mode": "default",
+    "independent_observations": 2,
+    "maximum_score_span": 0.05,
+    "maximum_resource_factor": 1.5,
+    "accepted_count": 0,
+    "source_formal_state_mutated": false,
+    "baseline_restore_after_each_observation": true,
+    "formal_resume_anchor": "lower_observed_score_exact_resource_v1",
+    "zero_call_anchor_reseal": "tpch_v38_anchor_zero_call_reseal_v2",
+    "failure_mode": "fail_closed_no_v40_launch"
+  },
+  "candidate_policy": {
+    "entry_top5_roles": "3_trusted_plus_2_uncertain_probe",
+    "unknown_plan_regime": "probe_only",
+    "unknown_ucb_bonus_cap": 0.05,
+    "probe_feasibility_score": "hierarchical_calibrated_expected_score",
+    "raw_structural_ucb_can_clear_target": false,
+    "first_observation_action": "exact_point_independent_retest",
+    "first_observation_dynamic_expansion": "zero_explain_bypass",
+    "validation_repeat_counts_as_novel": false,
+    "validation_repeat_formal_state_updates": false,
+    "global_novelty_exclusion": "all_executed_target10_loop_v40_cycle_top5_files",
+    "unexecuted_v38_v39_top5_treated_as_replayed_history": false,
+    "probe5_recovery_fallback": "forbidden_fail_closed",
+    "qps": "outer_audit_only"
+  },
+  "dynamic_expansion_contract": {
+    "maximum_wall_seconds": 1800,
+    "outer_process_timeout_seconds": 1860,
+    "maximum_explain_invocations": 3000,
+    "maximum_candidate_estimations": 128,
+    "per_explain_timeout_seconds": 30,
+    "budgets_may_be_relaxed_by_cli": false,
+    "determinism_recheck": true,
+    "budget_exhaustion": "fail_closed_no_replay"
+  },
+  "diagnostic_runner_compatibility": {
+    "newly_admitted_selection_contracts": [
+      "exact_structural_plan_regime_trusted3_bounded_probe2_top5_diagnostic_v1",
+      "exact_regime_first_observation_retest_trusted3_probe2_v1"
+    ],
+    "wildcard_contract_admission": false,
+    "delegates_to_sealed_runner_checks": true,
+    "roles_and_required_fields_preserved": true,
+    "unknown_contracts": "fail_closed"
+  },
+  "fresh_root_contract": {
+    "v40_root": "tpch_final_algorithm_fresh0_v40_retest_compat_20260803",
+    "v40_loop": "target10_loop_v40",
+    "accepted_count_start": 0,
+    "failed_v38_v39_roots_preserved": true,
+    "failed_predecessor_physical_calls_required": 0,
+    "failed_predecessor_top5_reuse_allowed": true,
+    "failed_predecessor_top5_counts_as_replayed_history": false,
+    "zero_call_audit_artifact": "failed_v38_v39_zero_workload_audit.json"
+  },
+  "v37_seed_diagnostic": {
+    "selection_sha256": "87402de012a5bf3224079e9d8570b1d1b7e52d1f7cd57ecd67822e8e10a6440c",
+    "summary_sha256": "d805d1617baa709297785d1d88f18b02768a02c2ac9c3622dc7b5e2b8c2382c0",
+    "state_sha256": "4e57cc40782747721a051779afdee5c392749b1d7adf4346e33a1820630a24d7",
+    "physical_calls": 5,
+    "valid_replays": 5,
+    "technical_failures": 0,
+    "baseline_restored": true,
+    "countable_accepted": 0
+  },
+  "files": {
+    "/tmp/run_tpch_current_anchor_revalidation_v38.py": "f76b26d85b9489a7b9f825fe940f8e173f71e4859cb8f14c94cc5d944655da7f",
+    "/tmp/reseal_tpch_v38_anchor_state_v2.py": "e6524aa6074303c2236a52072b48e19080031d54971768e1b2768606f4c74312",
+    "/tmp/tpch_fresh0_target10_v38_bounded_retest.py": "589908b51513b7dc0b2d2baa6a636b7bce7705e81173a4fdb234a3a8e4f67e71",
+    "/tmp/build_tpch_autonomous_successor_top5_v9_bounded_retest.py": "3f2514db76a9e86484029b2bd72162c96f190f5f71af218543335e1b4c93208a",
+    "/tmp/launch_tpch_v38_bounded_retest.sh": "56377f10a003d593f0e643dce452f7dfa2d3553c22f3de079d534d8b44772317",
+    "/tmp/tpch_fresh0_target10_loop_v36_base.py": "34107e91b4bcfd0b2fe8d2911a0855e1512fc881665f4db3c3cb67618bd055fb",
+    "/tmp/tpch_fresh10_target10_loop_v27.py": "d8e1672b4aceea5065f612170d57c1b16917a1dce9bf039fb3af274be4492589",
+    "/tmp/tpch_fresh10_target10_loop_v30.py": "384f2ce8f944525711d706c1e85493bfe61ed075d20d6794f61caed3dd67d7f8",
+    "/tmp/tpch_fresh10_target10_loop_v32_v6_hierarchical.py": "54ac22227f190bfbbc1f2889927cba9500cbe1bd6f4347287d69c3647d6e98b5",
+    "/tmp/tpch_fresh10_target10_loop_v33_prethird_bound.py": "e5c18e3ebe7b8152e12ada134b86f50b32edc610f86346030c37aba5ebd688a0",
+    "/tmp/tpch_exact_regime_neighbor_expand_v5_bounded.py": "dce066d239ca68eb95ec10bd39a77e798212395df782ae850ffe7d27d5346a78",
+    "/tmp/run_tpch_round29_diagnostic_exact_plan_regime_batch_v40.py": "c3d352b980daf403a3344b7381ad5699215f6b2ba59b2a40c10b6e71f91a908d",
+    "source_package/run_tpch_round29_diagnostic_exact_plan_regime_batch.py": "12b6ade0325541dbe1eadfd40af873fd3144fc1cbf97d9eca52f11a430731872",
+    "source_package/run_tpch_weighted_candidate_attempt48_v5_cleanpyenv_completiongate.sh": "25b75a8de7b3fdbe7e06a228dabbda8d42c2d0e2544d9b96a26331c67b6b5008",
+    "source_package/run_pg_weighted_sql_baseline_profile_rolling_v4_completiongate.py": "31c0080ec1487d0f4cb7a840c2584d890c5e780f561f6c4a480099ba029d80eb",
+    "source_package/formal_measurement.py": "90feb3b7b0e9c44a820e4c9c1ff76f6204a22de0b49d9059e06615f0bb1641c6",
+    "source_package/formal_contracts.py": "fca62960cf6328feb7528a0ecfe2e6a01e3072ff9a79742eafd6d0759dec1d8d",
+    "source_package/system_resource_monitor.py": "c960dee360f9de2eada3908f87afaafe2290a13ccfc906cca09352bbdfcfff16",
+    "source_formal_state.json": "af8b17dc77b82fb60166102d091d112eae132c4a6f086fb5a560316385e544ee",
+    "config_fresh0.json": "0708698830d20441c2dcceed1ccc98f66527c41cdad6d4d577011bfc5f93da06"
+  }
+}

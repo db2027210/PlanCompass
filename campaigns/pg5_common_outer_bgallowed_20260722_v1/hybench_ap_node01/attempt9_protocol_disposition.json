@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_9",
+  "recorded_at": "2026-07-22T17:22:58+08:00",
+  "status": "calibration_warmup_io_saturation",
+  "eligible_as_formal_r0": false,
+  "eligible_for_outer_entry": false,
+  "accepted_outer_rounds_after_disposition": 0,
+  "reason": "The 2 MiB/s physical read cap remained saturated and no AP query completed during nearly six minutes of warmup, so no formal measurement could begin.",
+  "stage_at_stop": "warmup_in_progress",
+  "calibration_observation_at_stop": {
+    "warmup_java_elapsed": "00:05:54",
+    "completed_warmup_queries": 0,
+    "warmup_query_log_absent": true,
+    "cpu_percent": 3.04,
+    "memory_used_mib": 102.2,
+    "memory_limit_mib": 512,
+    "memory_percent": 19.95,
+    "cumulative_block_read": "723MB",
+    "cumulative_block_write": "610kB",
+    "configured_read_bps": 2097152,
+    "configured_write_bps": 2097152,
+    "container_health": "healthy",
+    "oom_killed": false,
+    "restart_count": 0
+  },
+  "process_disposition": {
+    "runner_and_online_controller_pid": 89401,
+    "workload_pid": 90158,
+    "background_sampler_pid": 89402,
+    "runner_and_workload_process_group": 89401,
+    "signal": "SIGTERM",
+    "signal_scope": "owned_attempt9_process_group_only",
+    "background_sampler_exit": "natural_after_watched_runner_exit",
+    "owned_container_name": "p24_postgresql_recost_gradient_descent_ap_pg5hya201v1",
+    "owned_container_id": "a0491e56784b3d7b087c65f5fb1ad424f21199d7643bc306219f2da214664dd3",
+    "container_stopped_and_removed": true,
+    "foreign_processes_or_containers_touched": false
+  },
+  "preserved_evidence": {
+    "point_state_path": "results/shared_baseline/P0_repeat_1_attempt_9/point_state.json",
+    "point_state_sha256": "ae6d88a52481b5dc17652cff3854e11b8ca6a11e7e2c0704aeb1e2477b7fcc19",
+    "baseline_invocation_path": "results/shared_baseline/baseline_invocation_attempt_9.json",
+    "baseline_invocation_sha256": "53bab636915beaca581a55073148d035585339e737d96b7728ce600cf6694df5",
+    "background_provenance_path": "logs/host_background_attempt_9.jsonl",
+    "background_provenance_sha256": "a598d48d43ea34fc107a6f24e9cc3ac870cf5d6d4ce77a0f7a1c71360328d3b2",
+    "partial_result_directory_preserved": true,
+    "original_point_state_mutated": false
+  },
+  "bound_contracts": {
+    "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+    "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e"
+  }
+}

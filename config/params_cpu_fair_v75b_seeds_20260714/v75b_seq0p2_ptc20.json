@@ -1,0 +1,9 @@
+{
+  "seq_page_cost": 0.2,
+  "random_page_cost": 4.0,
+  "cpu_tuple_cost": 0.01,
+  "cpu_index_tuple_cost": 0.005,
+  "cpu_operator_cost": 0.0025,
+  "parallel_setup_cost": 1000.0,
+  "parallel_tuple_cost": 20.0
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "tpch_node04",
+  "attempt_id": "attempt_32",
+  "immutable_target_resource": "memory",
+  "first_decision_block": {
+    "end_elapsed_seconds": 180,
+    "sample_count": 180,
+    "cpu_mean": 0.1979099795353593,
+    "memory_mean": 0.894675424363878,
+    "io_mean": 0.43472188558743957,
+    "target_memory_passed": true,
+    "cpu_non_target_band_passed": false,
+    "io_non_target_band_passed": true,
+    "profile_passed": false,
+    "stop_reason": "r0_profile_reconstruct_early_stop"
+  },
+  "workload": {
+    "completed_queries": 270,
+    "workload_qps": 1.5,
+    "first_completion_elapsed_seconds": 100.04745886218734,
+    "error_count": 0
+  },
+  "evidence_sha256": {
+    "run_manifest_json": "7cef8ad1dcb4a9aa7cfd29454abccaa321551d03ef5fe5557e8ac05e77edc8ab",
+    "resource_samples_jsonl": "bcf72c379ce31841608ac349561f665c07c36241887821ac71e5d44b1c613ddc",
+    "queries_jsonl": "7a925f6b862ac5b005e3cd6537b18ff932190d8b0f6efd018e543370d7c1caed",
+    "attempt32_launcher": "b835c3518b9aaa134bbc045a8ea7563df36cc92d2cca11cbdc6eb48381a3192f",
+    "runner": "2b1ffcd8326a024e47644debaed667cb3ab469c10863a3dd85a451d94304e452"
+  },
+  "outer_loop_effect": {
+    "entered_subset_search": false,
+    "real_replay_count": 0,
+    "accepted_outer_rounds_contributed": 0,
+    "binary_shrink_applied": false
+  },
+  "next_action": "stop_quota_scaling_and_audit_workload_reproducibility"
+}

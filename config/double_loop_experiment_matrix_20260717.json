@@ -1,0 +1,62 @@
+{
+  "schema_version": 2,
+  "algorithm": "double_loop_coordinate_grid_resource_estimation",
+  "score_formula": "sigmoid_linear_sweet_band_weighted_mean_v2",
+  "selection": "estimated_resource_score_topk_then_real_resource_score_best",
+  "run_count_semantics": {
+    "total_formal_runs": 18,
+    "b_group_total_runs_include_anchor_a_run": true,
+    "b_group_new_repeat_ids": [
+      2,
+      3
+    ]
+  },
+  "final_goal": {
+    "bottleneck_min_qps_gain_ratio": 0.15,
+    "bottleneck_min_target_drop_ratio": 0.05,
+    "bottleneck_max_target_drop_ratio": 0.10,
+    "none_min_qps_gain_ratio": 0.15,
+    "none_requires_any_resource_gain": true
+  },
+  "experiments": [
+    {"exp_id": "A13", "benchmark": "hybench_ap", "bottleneck": "memory", "runs": 1},
+    {"exp_id": "A14", "benchmark": "job", "bottleneck": "memory", "runs": 1},
+    {"exp_id": "A15", "benchmark": "tpch", "bottleneck": "memory", "runs": 1},
+    {"exp_id": "A16", "benchmark": "hybench_tp", "bottleneck": "cpu", "runs": 1},
+    {"exp_id": "A17", "benchmark": "tpcc", "bottleneck": "cpu", "runs": 1},
+    {"exp_id": "A18", "benchmark": "hybench_xp", "bottleneck": "io", "runs": 1},
+    {"exp_id": "E13", "benchmark": "hybench_ap", "bottleneck": "none", "runs": 1},
+    {"exp_id": "E14", "benchmark": "job", "bottleneck": "none", "runs": 1},
+    {"exp_id": "E15", "benchmark": "tpch", "bottleneck": "none", "runs": 1},
+    {"exp_id": "E16", "benchmark": "hybench_tp", "bottleneck": "none", "runs": 1},
+    {"exp_id": "E17", "benchmark": "tpcc", "bottleneck": "none", "runs": 1},
+    {"exp_id": "E18", "benchmark": "hybench_xp", "bottleneck": "none", "runs": 1},
+    {
+      "exp_id": "B4",
+      "benchmark": "hybench_tp",
+      "bottleneck": "cpu",
+      "runs": 2,
+      "repeat_ids": [2, 3],
+      "anchor_exp_id": "A16",
+      "total_runs_including_anchor": 3
+    },
+    {
+      "exp_id": "B5",
+      "benchmark": "hybench_ap",
+      "bottleneck": "memory",
+      "runs": 2,
+      "repeat_ids": [2, 3],
+      "anchor_exp_id": "A13",
+      "total_runs_including_anchor": 3
+    },
+    {
+      "exp_id": "B6",
+      "benchmark": "hybench_xp",
+      "bottleneck": "io",
+      "runs": 2,
+      "repeat_ids": [2, 3],
+      "anchor_exp_id": "A18",
+      "total_runs_including_anchor": 3
+    }
+  ]
+}

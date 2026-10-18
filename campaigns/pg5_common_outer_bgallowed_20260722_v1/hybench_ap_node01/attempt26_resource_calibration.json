@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_25",
+  "source_controller_elapsed_seconds": 180,
+  "immutable_target_resource": "memory",
+  "source_latest_six_mean_raw_utilization": {"cpu": 0.3683418042219507, "memory": 0.8117813285739942, "io": 0.47605297691964427},
+  "source_resource_envelope": {"cpu_quota_cores": 6.68, "memory_MiB": 232, "io_read_MiB_per_second": 64, "io_write_MiB_per_second": 35},
+  "source_absolute_mean": {"cpu_cores": 2.4605232522026306, "memory_MiB": 188.33326822916666, "io_MiB_per_second": 47.129244715044784},
+  "selected_envelope": {"cpu_quota_cores": 6.68, "memory_MiB": 215, "io_read_MiB_per_second": 64, "io_write_MiB_per_second": 35},
+  "prediction_if_absolute_demand_is_preserved": {"cpu_utilization": 0.3683418042219507, "memory_utilization": 0.8759686894379844, "io_utilization": 0.47605297691964427},
+  "target_resource_mutation_allowed": false,
+  "phase_decoupling_preserved": true,
+  "first_decision_policy": "at 180 seconds, stop when any preferred mean gate is outside memory 0.85-0.95 or CPU/IO 0.30-0.50; only continue for CV convergence when all means pass"
+}

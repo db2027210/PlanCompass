@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_31",
+  "status": "formal_r0_resource_gate_failed_archived",
+  "immutable_target_resource": "memory",
+  "corrected_resource_gate": {
+    "target_band_inclusive": [0.85, 0.95],
+    "non_target_band_inclusive": [0.30, 0.50],
+    "first_six_window_end_elapsed_seconds": 180,
+    "resource_mean_utilization": {
+      "cpu": 0.3390588787367066,
+      "memory": 0.8256422488625478,
+      "io": 0.45460514362555365
+    },
+    "checks": {
+      "cpu": true,
+      "memory": false,
+      "io": true
+    },
+    "passed": false,
+    "reason": "target memory utilization is below the unified 0.85 inclusive lower bound",
+    "legacy_target_greater_than_0_80_does_not_override_unified_band": true
+  },
+  "termination": {
+    "formal_gate_failure": true,
+    "runner_pid": 73218,
+    "sampler_pid": 73219,
+    "container_id": "acf05214f41227349d902daf43a2ed00cf86d56d57ba35fd7deacf798cc0fde3",
+    "runner_stopped": true,
+    "sampler_stopped": true,
+    "owned_container_removed": true,
+    "surviving_attempt31_process_or_container_count": 0,
+    "results_preserved": true,
+    "runtime_evidence_preserved": true
+  },
+  "final_preserved_counts": {
+    "measurement_query_records": 124,
+    "measurement_resource_samples": 364,
+    "online_controller_records": 8
+  },
+  "evidence_sha256": {
+    "measurement_queries_jsonl": "3e1365c1294acd11a1f27d2123cf83085bca98727fc89fde452a170c5e0793a6",
+    "measurement_resource_samples_jsonl": "c3bf4daac5a8cdf4f3502be42ec69e0e04f061fe8869268f747326f0110df00c",
+    "measurement_online_stability_controller_jsonl": "326f9d30a8d762ec71fe9ffd2624866c4b77c587f87163d730f4d938f151e089",
+    "point_state_json": "c564aa3cbfc3d9aa2d46da79b8b224ddc34d01a3271ba35616dc8cc33ff70754",
+    "resident_memory_runtime_json": "06a6cf7c5f98f5f7ad5ccccaa0f5ae5cfa3c524b50f01cf4ed0a22e603ec289f",
+    "launch_log": "e0be8b3a66c7877adae2e39b2b5dd69890884d1dadfe82ef4d37397a6f978df3",
+    "archived_runner": "0adefb99d8db027bc4e1edfee3b3e4e509089c5cceda8bd8b557d9efb5468f07"
+  },
+  "outer_loop_effect": {
+    "entered_63_subsets": false,
+    "real_replay_count": 0,
+    "accepted_outer_rounds_contributed": 0,
+    "binary_shrink_applied": false
+  }
+}

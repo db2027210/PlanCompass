@@ -1,0 +1,67 @@
+{
+  "schema_version": "tpch_v48_prethird_feasibility_binding_manifest_v1",
+  "scenario": "TPC-H",
+  "deployment_status": "offline_ready_not_deployed",
+  "live_stage_modified": false,
+  "ssh_calls": 0,
+  "workload_calls_added": 0,
+  "stage_directory": "/tmp/tpch_v48_prethird_feasibility_binding_stage_20260803",
+  "files": {
+    "tpch_v48_prethird_feasibility_binding.py": "5bf7ff767338860f3e86576c9ef7e5db5b4ce60d111397e89f15776311397458",
+    "tpch_fresh10_target10_loop_v32_v8_gate_binding.py": "a7174eb59bd467f51a1e55cff4b98f89ed27999cc4ca329ed291cdea1b1f9a69",
+    "run_tpch_round29_diagnostic_exact_plan_regime_batch_v45_none_return.py": "af90bc7f2e145de14d83449513016cd143a756f6cd7da1a5c015706ea60c55a2",
+    "launch_tpch_v48_prethird_feasibility_binding.sh": "c28c714d8eace34bee07d7c4ecb6257858df4b428921c13ce31007ce7fb6a53a",
+    "deploy_tpch_v48_prethird_feasibility_binding.sh": "5ea074a07a5fdfa3ec374cafffee717c1ceca9319d0fc7f5be046e04a3625891",
+    "test_tpch_v48_prethird_feasibility_binding.py": "c53eabc1163821c2aed70f9f0e19cb5befe230a38fc44b1ce4472553aa3b3b45",
+    "test_tpch_v48_real_module_integration.py": "150e2e15b1cb9b18eb3cca7c682c6b84285f8aae38aacfeb4b38016e28dd0ce1"
+  },
+  "remote_fixture": {
+    "path": "/tmp/tpch_v48_remote_feasibility_20260803/prethird_acceptance_feasibility.json",
+    "sha256": "ec43a865b38cc9d329c631f0ad2244d1764813069ba8091a3034137c1ee57eb4",
+    "size_bytes": 1932,
+    "contract": "tpch_bounded_four_observation_median_prethird_v1",
+    "resume_state_sha256": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "complete_two_observation_binding": true,
+    "feasible_ranks": [1, 2, 3, 4, 5],
+    "passed": true,
+    "physical_workload_calls": 0,
+    "formal_state_mutated": false,
+    "manual_candidate_injection": false,
+    "thresholds_relaxed": false
+  },
+  "root_cause": {
+    "message": "v47 expected cycle_004/acceptance_feasibility.json",
+    "actual_layout": "cycle_004/prethird_acceptance_feasibility.json",
+    "entry_gate_layout": "cycle_004/entry_gate.json"
+  },
+  "repair": {
+    "primary_live_path": "prethird_acceptance_feasibility.json",
+    "legacy_fixture_path": "acceptance_feasibility.json",
+    "dual_alias_policy": "both are accepted only when byte-identical",
+    "primary_semantic_validation": [
+      "exact contract and complete two-observation binding",
+      "formal, repeat selection, and repeat summary SHA cross-binding",
+      "five ordered trusted3+probe2 candidate bounds",
+      "four-observation median upper-bound formula",
+      "derived feasible ranks and passed value",
+      "zero workload and no state/manual/threshold mutation"
+    ],
+    "top3_threshold_relaxed": false,
+    "manual_candidate_injection": false,
+    "new_workload_calls": 0,
+    "formal_state_mutation": false
+  },
+  "next_remote_actions": [
+    "deploy package with the main agent's single hard-timeout SSH",
+    "run preflight-postclean5-gate with the current controller, formal, counter SHA and cycle 4",
+    "run resume-postclean5-gate only after preflight passes"
+  ],
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/pytest -q tests/test_tpch_v42_checkpointed_expansion.py tests/test_tpch_v42_diagnostic_continuation.py tests/test_tpch_v44_deterministic_reexploration.py tests/test_tpch_v45_clean5_resume.py tests/test_tpch_v46_postclean5_gate_binding.py tests/test_tpch_v46_real_module_integration.py tests/test_tpch_v47_resealed_realized_evidence.py tests/test_tpch_v47_real_module_integration.py tests/test_tpch_v47_remote_reseal_fixture.py tests/test_tpch_v48_prethird_feasibility_binding.py tests/test_tpch_v48_real_module_integration.py",
+    "result": "122 passed in 1.84s",
+    "real_remote_fixture_sha_verified": true,
+    "full_boundary_live_prethird_path_verified": true,
+    "dual_alias_mismatch_fail_closed": true,
+    "legacy_fixture_compatibility_verified": true
+  }
+}

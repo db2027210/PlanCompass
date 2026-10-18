@@ -1,0 +1,38 @@
+{
+  "schema_version": "tpch_v51_safe_unknown_probe_recovery_evidence_v1",
+  "execution_scope": "local_offline_only",
+  "ssh_calls": 0,
+  "workload_calls": 0,
+  "result": "134 passed",
+  "real_failure_fixture": {
+    "path": "tests/fixtures/tpch_v51_cycle6_preworkload_failure.json",
+    "sha256": "21d64417e8ac1a868e8eb18e7e7cb738a053393707ea085788b3a809aaa21802",
+    "eligible": 22,
+    "trusted": 3,
+    "probes": 19,
+    "stable_trusted": 0,
+    "credible_unknown_probes": 0,
+    "target_score": 3.9683158761,
+    "state_or_counter_mutated": false,
+    "workload_calls": 0
+  },
+  "algorithm": {
+    "trusted_or_entry_threshold_relaxed": false,
+    "resource_safety_threshold_relaxed": false,
+    "trusted_evidence_slots": 3,
+    "safe_unknown_probe_slots": 2,
+    "safe_unknown_selection": "bounded_uncertainty_plus_plan_feature_resource_maximin",
+    "count1_regime_priority_retained": true,
+    "novel_unique_noncorner_fingerprints": 5,
+    "maximum_physical_calls": 5,
+    "probe_formal_or_gradient_eligible": false
+  },
+  "recovery": {
+    "cycle6_preworkload_only": true,
+    "existing_probe_builder_a_log_protected": true,
+    "continuation_log_required": true,
+    "candidate_generation_pair_reused_if_complete": true,
+    "formal_state_mutated": false
+  },
+  "test_sha256": "7fd9d3d0bdba195ac6a76c51e082e8022202aec2b8580a6e5d37b1c85a8c4858"
+}

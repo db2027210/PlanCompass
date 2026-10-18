@@ -1,0 +1,41 @@
+{
+  "interval_seconds": 300,
+  "output_dir": "/home/anonymous/program/resource_adaptive/history/pg5_five_experiments_live_20260723",
+  "experiments": [
+    {
+      "benchmark": "HyBench AP / Memory",
+      "machine": "node01",
+      "ssh": "anonymous@192.0.2.3",
+      "root": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/hybench_ap_node01/results/experience_outer/attempt_17_continue_from_accepted4_20260724",
+      "process_pattern": "attempt_17_continue_from_accepted4_20260724"
+    },
+    {
+      "benchmark": "JOB / Memory",
+      "machine": "node02",
+      "ssh": "anonymous@192.0.2.4",
+      "root": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_6_live_target_relative_20260723",
+      "process_pattern": "attempt_6_live_target_relative_20260723|job_live_attempt6"
+    },
+    {
+      "benchmark": "HyBench XP / IO",
+      "machine": "local / disk1",
+      "root": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt37_live_target_relative_20260723",
+      "process_pattern": "attempt37_live_target_relative_20260723",
+      "systemd_unit": "pg5-live-hyxp-a37-resume8.service"
+    },
+    {
+      "benchmark": "TPC-C / CPU",
+      "machine": "local / disk2",
+      "root": "/disk2/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/tpcc_experience_sgd/attempt10_live_target_relative_20260723",
+      "process_pattern": "attempt10_live_target_relative_20260723",
+      "systemd_unit": "pg5-live-tpcc-a10.service"
+    },
+    {
+      "benchmark": "TPC-H / Memory",
+      "machine": "node04",
+      "ssh": "anonymous@192.0.2.7",
+      "root": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/tpch_node04/experience_sgd/attempt46_live_target_relative_20260723",
+      "process_pattern": "attempt46_live_target_relative_20260723"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "attempt": "tpch_node04_attempt4",
+  "formal": false,
+  "accepted_shrink_count": 0,
+  "disposition": "invalid_metric_semantics",
+  "reason": "I/O was evaluated with the superseded single-channel denominator instead of (read+write)/(ReadCap+WriteCap)",
+  "corrected_io_utilization_pct": 9.29950940946368,
+  "evidence_sha256": {
+    "run_manifest.json": "ae3409dd6ffb8741722625e26ea57fe86ab42a01c6c2094b2303e0b9a1e39e87",
+    "resource_samples.jsonl": "f4d5f91180be8c78ff0309bcbf106b381e6c85389a26a9ebe9fa01b1d9e9e5f4",
+    "queries.jsonl": "90151c29d5d5a7e4586ca1b785554b4b810ca1ad02f261220b1baecc4e6f7078",
+    "summary.json": "3aff3ee74c4a42bf2d6a301055a87bbea4b195afec74eef9d01f0136f1c68317"
+  }
+}

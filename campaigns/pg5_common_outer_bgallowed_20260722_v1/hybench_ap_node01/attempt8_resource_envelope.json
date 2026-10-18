@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_7",
+  "target_attempt": "attempt_8",
+  "status": "invalid_protocol_timing",
+  "adjustment": "increase physical and normalization read/write caps together from 192 KiB/s to 2 MiB/s",
+  "resource_contract": {
+    "cpu_quota_cores": 7.5,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 2097152,
+    "io_write_bps": 2097152,
+    "pids_limit": 512,
+    "max_parallel_workers_per_gather": 2
+  },
+  "measurement_contract": {
+    "warmup_seconds": 60,
+    "measurement_seconds_used": 180,
+    "measurement_minimum_seconds": 180,
+    "measurement_maximum_seconds_required": 600,
+    "online_stable_early_stop_required": true
+  },
+  "followup_rule": "if measured IO utilization exceeds 0.50, increase the physical read and write caps together using the raw measured ratio",
+  "denominator_binding": "formal IO normalization denominators must equal the Docker physical caps",
+  "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+  "r0_resource_gate_contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+  "accepted_outer_rounds_before_start": 0
+}

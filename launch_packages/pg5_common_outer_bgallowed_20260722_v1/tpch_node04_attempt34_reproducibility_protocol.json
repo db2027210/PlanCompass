@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "tpch_node04",
+  "attempt_id": "attempt_34",
+  "purpose": "single-variable CPU quota calibration from clean attempt33 absolute CPU demand",
+  "immutable_target_resource": "memory",
+  "calibration_basis": {
+    "source_attempt": "attempt_33",
+    "first_180_mean_raw_cpu_cores": 0.943169375073,
+    "predicted_cpu_utilization": 0.392987239614,
+    "changed_variable": "cpu_quota_cores",
+    "previous_value": 10.8,
+    "new_value": 2.4
+  },
+  "ordered_pre_attempt_protocol": [
+    "verify current blkio remains limited to 13312 read and 13312 write bytes per second",
+    "send TERM only to stale backends for the owned TPC-H database and loopback client sessions",
+    "wait fail-closed until all matching backends including D-state workers are absent while blkio remains limited",
+    "restart only the dedicated pg5_tpch_s04_20260722 container",
+    "wait until PostgreSQL reports ready on port 64304",
+    "verify no stale matching backend remains after restart",
+    "run the unchanged benchmark runner with its fixed 60-second warmup"
+  ],
+  "forbidden_actions": [
+    "host global cache drop",
+    "temporary removal or increase of blkio limits during cleanup",
+    "termination of processes outside the owned container and exact TPC-H database session pattern",
+    "changes to memory, IO, workers, session work_mem, SQL bundle, seed, or benchmark runner"
+  ],
+  "resource_contract": {
+    "cpu_quota_cores": 2.4,
+    "memory_bytes": 2147483648,
+    "io_read_bps": 13312,
+    "io_write_bps": 13312,
+    "workers": 32,
+    "session_work_mem": "1MB"
+  },
+  "fixed_warmup_seconds": 60,
+  "stale_backend_wait_timeout_seconds": 600,
+  "source_launcher_sha256": "a1af1c8d776bb7323d2c4a459c8789b209cd307e06b760098fad8e14a7535e2f",
+  "benchmark_runner_sha256": "2b1ffcd8326a024e47644debaed667cb3ab469c10863a3dd85a451d94304e452"
+}

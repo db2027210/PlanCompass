@@ -1,0 +1,9 @@
+ANALYZE customer;
+ANALYZE district;
+ANALYZE history;
+ANALYZE item;
+ANALYZE new_order;
+ANALYZE oorder;
+ANALYZE order_line;
+ANALYZE stock;
+ANALYZE warehouse;

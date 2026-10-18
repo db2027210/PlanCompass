@@ -1,0 +1,70 @@
+{
+  "schema_version": "job_v63_deployment_manifest_v1",
+  "scenario": "job",
+  "status": "sealed_offline_not_launched",
+  "remote_authority": {
+    "controller_state_sha256": "819845b7689665bb4d7e4d73ea2f149a590667fad0b4beff4323b527260bb841",
+    "repeat_01_top5_sha256": "9ef43934cb9d01047690f1ccc0414f5eb8a1f09a3807c264712450da9d4b15a1",
+    "clean5_authority_bridge_sha256": "b61f0102cde225af27bd9b9fc308282673f0c35e88441979b2de2a93fac1e637",
+    "formal_state_sha256": "8ee73ee31883f0362353ec0e03dc665ef113f91510269a07b6f28109cfda62a7",
+    "global_counter": 429,
+    "formal_replay_counter": 211,
+    "accepted_counter": 1,
+    "repeat_summary_absent": true,
+    "repeat_replay_directory_absent": true
+  },
+  "controller": {
+    "path": "tools/job_fresh10_target10_autonomous_v63.py",
+    "deploy_path": "/tmp/job_fresh10_target10_autonomous_v63.py",
+    "sha256": "15b7e1658d3328a3a92d2648ed610cf9153ec2e26e848b46fc2e756a30a74980"
+  },
+  "launcher": {
+    "path": "tools/launch_job_target10_autonomous_v63.sh",
+    "deploy_path": "/tmp/launch_job_target10_autonomous_v63.sh",
+    "sha256": "c70a5441a0959b9c672862791d38ce72c01cf6ca7db4b5454444b5f76f4ccf4d"
+  },
+  "tests": {
+    "path": "tests/test_job_v63_preworkload_resume.py",
+    "sha256": "c6d2a20dc85474fb2131b1e1928e2c3ad57de32149f6f4d62210f5069122d642",
+    "passed": 4
+  },
+  "sealed_dependencies": [
+    {
+      "path": "tools/job_fresh10_target10_autonomous_v62.py",
+      "deploy_path": "/tmp/job_fresh10_target10_autonomous_v62.py",
+      "sha256": "748ba44a28c446a8510ca1463750b1db3c7a9674f46cd9d4d0876c3c2c021a2a"
+    },
+    {
+      "path": "tools/job_fresh10_target10_autonomous_v61.py",
+      "deploy_path": "/tmp/job_fresh10_target10_autonomous_v61.py",
+      "sha256": "49e6c210380c0852d9b0dffd7da597d318de1932994351c31b028cc6cbf53053"
+    },
+    {
+      "path": "tools/job_fresh10_target10_autonomous_v60.py",
+      "deploy_path": "/tmp/job_fresh10_target10_autonomous_v60.py",
+      "sha256": "394f207eea62d93ceae570d3bca25abe36c4ae787a37f8913cbbc4e492ed222b"
+    }
+  ],
+  "resume_contract": {
+    "name": "job_v63_exact_repeat_preworkload_resume_once_v1",
+    "allowed_phase": "cycle_002/repeat_01",
+    "physical_calls_before_resume": 0,
+    "selection_rebuilt": false,
+    "selection_quarantined": false,
+    "discovery_repeated": false,
+    "same_selection_reuse_only": true,
+    "runner_launch_permitted_once": true,
+    "retry_after_replay_directory_creation": false,
+    "counter_chain": "424_plus_clean5_equals_429_plus_zero_call_repeat",
+    "all_other_no_summary_phases_fail_closed": true
+  },
+  "safety": {
+    "ssh_calls": 0,
+    "workload_calls": 0,
+    "formal_state_updates": 0,
+    "counter_updates": 0,
+    "mysql_touched": false,
+    "qps_used_for_inner_scoring": false,
+    "manual_candidate_injection": false
+  }
+}

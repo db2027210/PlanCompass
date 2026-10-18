@@ -1,0 +1,126 @@
+{
+  "schema_version": 3,
+  "campaign_id": "pg4_ratio_scale_resource_only_20260727_v1",
+  "created_at": "2026-07-22T15:46:00+08:00",
+  "authorization": {
+    "background_load_allowed": true,
+    "background_load_must_be_recorded": true,
+    "may_stop_or_modify_unrelated_processes": false,
+    "source": "user instruction 2026-07-27: remove standalone HyBench AP and move TPC-H from node04 to the former AP slot on node01"
+  },
+  "common_scoring_contract": {
+    "path": "config/formal/pg5_common_outer_bgallowed_20260722_v1/common_scoring_contract.json",
+    "sha256": "65de8b19d794e6323795bb6c39962ef1d41b9139bf5eafb957726ad10d7ee64b",
+    "required_for_all_lanes": true,
+    "lane_override_allowed": false
+  },
+  "r0_resource_gate_contract": {
+    "path": "config/formal/pg5_common_outer_bgallowed_20260722_v1/r0_resource_gate_contract.json",
+    "sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e",
+    "target_rule": "target resource must remain within 85-90 percent for three stable fresh R0 replicates",
+    "non_target_band_pct": [30.0, 50.0]
+  },
+  "io_utilization_contract": {
+    "path": "config/formal/pg5_common_outer_bgallowed_20260722_v1/io_utilization_contract.json",
+    "sha256": "35eb6f304627ef915f4cfb463b64e472a760325834df7978ec67cac85c342064",
+    "formula": "(read_bps + write_bps) / (read_cap_bps + write_cap_bps)",
+    "required_for_all_lanes": true
+  },
+  "stability_gate_contract": {
+    "path": "config/formal/pg5_common_outer_bgallowed_20260722_v1/stability_gate_contract.json",
+    "sha256": "ef368b7e40ebf13e3ee75fef4144bb8d8ce8893ac9510c42823e16f854b488e2",
+    "required_for_all_lanes": true
+  },
+  "shared_outer_loop": {
+    "acceptance": "hard gate passes, measured db_qps strictly exceeds incumbent, target bottleneck utilization strictly decreases, and every non-target resource is strictly below 80 percent",
+    "paper_success": "relative to fresh baseline, db_qps improves by at least 15 percent and target utilization decreases by at least 5 percentage points",
+    "range_update": "binary interval shrink in each active parameter transform space after acceptance only",
+    "accepted_shrink_target": 10,
+    "rejected_or_pruned_attempts_count_as_shrinks": false,
+    "initial_real_replay_top_k": 1,
+    "maximum_real_replay_top_k": 5,
+    "global_real_replay_top_k_hard_cap": 5,
+    "global_real_replay_cap_applies_to": [
+      "experience_table_all_subset_sgd",
+      "random_walk",
+      "brute_force_grid_search"
+    ],
+    "maximum_resource_qualified_real_replays_per_batch": 5,
+    "second_replay_batch_enabled": false,
+    "read_only_distinct_plan_scan": "enumerate all reachable clusters, resource-filter them, then replay the five highest resource-utility scores",
+    "minimum_incumbent_db_qps_improvement_pct_exclusive": 0.0,
+    "minimum_fresh_baseline_db_qps_improvement_pct_for_paper": 15.0,
+    "minimum_fresh_baseline_target_improvement_pp_for_paper": 5.0,
+    "non_target_utilization_pct_exclusive_max": 80.0,
+    "qps_role": "outer_real_measurement_only",
+    "measurement_warmup_seconds": 60,
+    "measurement_initial_probe_seconds": 300,
+    "measurement_hard_maximum_seconds": 600,
+    "continue_after_probe_when_resource_unstable": true,
+    "throughput_stability_required": false,
+    "stable_early_stop_enabled": true
+  },
+  "method_order_per_lane": [
+    "experience_table_all_subset_sgd",
+    "random_walk",
+    "brute_force"
+  ],
+  "experience_table_all_subset_sgd": {
+    "subset_count": "2^k-1",
+    "direction_source": "experience_table_T_only",
+    "finite_difference_sgd_enabled": false,
+    "candidate_evaluator": "ratio_scale_resource_only",
+    "first_plan_boundary_role": "minimum_effective_step_only",
+    "replay_precondition": "conservative target-resource improvement exceeds historical error bound and 5 percent target threshold",
+    "qps_used_for_inner_scoring": false
+  },
+  "lanes": [
+    {
+      "lane_id": "Remote-202",
+      "benchmark": "job",
+      "host": "192.0.2.4",
+      "storage_root": "/mnt/nvme2n1",
+      "status": "preparing"
+    },
+    {
+      "lane_id": "Local-D1",
+      "benchmark": "hybench_xp",
+      "host": "compute00",
+      "storage_root": "/disk1",
+      "status": "preparing"
+    },
+    {
+      "lane_id": "Local-D2",
+      "benchmark": "tpcc",
+      "host": "compute00",
+      "storage_root": "/disk2",
+      "database_port": 59640,
+      "database_cpuset": "104-107,360-363",
+      "status": "provisioning"
+    },
+    {
+      "lane_id": "Remote-201",
+      "benchmark": "tpch",
+      "host": "192.0.2.3",
+      "storage_root": "/mnt/nvme1n1",
+      "database_port_in_container": 64304,
+      "database_host_port": 63301,
+      "storage_medium": "nvme",
+      "status": "r0_reconstruction",
+      "active_root": "/mnt/nvme1n1/anonymous_resource_adaptive/campaigns/pg5_common_outer_bgallowed_20260722_v1/tpch_on_ap_slot_node01",
+      "switch_authorization": "user instruction 2026-07-27: move the node04 TPC-H experiment to node01 after removing standalone HyBench AP"
+    }
+  ],
+  "removed_lanes": [
+    {
+      "benchmark": "hybench_ap",
+      "former_host": "192.0.2.3",
+      "status": "historical_archive_only"
+    },
+    {
+      "benchmark": "tpch",
+      "former_host": "192.0.2.7",
+      "status": "superseded_by_remote_201"
+    }
+  ]
+}

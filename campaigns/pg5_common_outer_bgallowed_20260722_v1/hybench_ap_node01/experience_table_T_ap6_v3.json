@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "table_id": "pg5_hybench_ap_memory_experience_table_T_ap6_v3",
+  "version": "2026-07-23.3",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "workload": "hybench_ap",
+  "target_bottleneck": "memory",
+  "semantics": "T[param][resource] is the signed effect of increasing the parameter on raw resource use",
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "canonicalization": "UTF-8 JSON of table only, sort_keys=true, separators=(',', ':')",
+  "table_sha256": "6b70760c1f3a63eb19ab4eb37c170a8c1fb50a0e5f9b8d432d7fb503b0158add",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "table": {
+    "seq_page_cost": {"cpu": -0.10, "memory": 0.03, "io": -0.10},
+    "random_page_cost": {"cpu": 0.20, "memory": 0.05, "io": 0.20},
+    "cpu_tuple_cost": {"cpu": 0.20, "memory": -0.05, "io": -0.15},
+    "cpu_operator_cost": {"cpu": 0.20, "memory": -0.05, "io": -0.15},
+    "parallel_setup_cost": {"cpu": -0.10, "memory": 0.02, "io": 0.00},
+    "parallel_tuple_cost": {"cpu": -0.20, "memory": 0.05, "io": -0.10}
+  },
+  "source": {
+    "provenance_document": "result/bonect/experience_table.md",
+    "provenance_document_sha256": "c54e04cb4c3ce55dae4d40af6c4c92e2a37effec61de1eec7d595726dc83a3a9",
+    "projection": "formal six-parameter HyBench AP projection; cpu_index_tuple_cost is excluded and parallel_setup_cost is active"
+  },
+  "direction_contract": {
+    "formula": "direction[p] = sum_r utility_slope[r] * T[p][r]",
+    "direction_source": "this_experience_table_T_only",
+    "finite_difference_enabled": false,
+    "random_direction_enabled": false,
+    "surrogate_gradient_direction_enabled": false,
+    "missing_table_or_all_zero_action": "fail_closed_before_subset_enumeration"
+  },
+  "subset_contract": {
+    "active_parameter_count": 6,
+    "all_nonempty_subset_count": 63,
+    "enumerate_each_subset_exactly_once": true
+  },
+  "supersedes_invalid_configuration": {
+    "table_id": "pg5_hybench_ap_memory_experience_table_T_all7_v2",
+    "reason": "cpu_index_tuple_cost_is_not_a_formal_ap_active_parameter",
+    "old_127_subset_ranking_eligible_for_formal_replay": false
+  }
+}

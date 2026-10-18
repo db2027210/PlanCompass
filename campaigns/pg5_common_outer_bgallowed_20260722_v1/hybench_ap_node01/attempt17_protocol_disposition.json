@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_17",
+  "status": "invalid_private_classpath_injection_scope_before_warmup",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "reason": "the composite fixed-plus-shared JDBC classpath string replaced a Path-valued module constant before benchmark_config hashed the shared adapter",
+  "runner_pid": 9793,
+  "background_sampler_pid": 9794,
+  "container_id": "fceafb3b1c57067f1f72c22a88ec2b8621b602afed3562edae447f7d98c2cc59",
+  "container_reached_healthy": true,
+  "warmup_started": false,
+  "measurement_started": false,
+  "cleanup_complete": true,
+  "transient_runtime_discarded": true,
+  "frozen_template_preserved": true,
+  "outer_loop_effect": {
+    "anchor_changed": false,
+    "bounds_changed": false,
+    "binary_interval_shrinks": 0,
+    "accepted_outer_rounds_after_disposition": 0
+  },
+  "next_attempt": "attempt_18"
+}

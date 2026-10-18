@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_18",
+  "status": "r0_stability_and_resource_trend_fail_early_seal",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "measurement": {
+    "raw_sample_rows": 480,
+    "derived_intervals": 479,
+    "elapsed_seconds": 479.070806841,
+    "coverage": 0.9998521996331463,
+    "successful_sql_evidence_records": 55,
+    "workload_errors": 0,
+    "mean_raw_utilization": {
+      "cpu": 0.36377608668300765,
+      "memory": 0.7813617172719044,
+      "io": 0.3963236716744803
+    },
+    "mean_absolute_demand": {
+      "cpu_cores": 0.7275521733660153,
+      "memory_MiB": 400.05719924321505,
+      "io_MiB_per_second": 6.341178746791685
+    }
+  },
+  "last_complete_six_window_block": {
+    "end_elapsed_seconds": 450,
+    "coverage": 1.0,
+    "cross_window_cv": {
+      "cpu": 0.8180702457827879,
+      "memory": 0.15675503234209653,
+      "io": 0.3669316726523816
+    },
+    "passed": false
+  },
+  "early_seal_reason": "the second four-client AP10 occupancy phase would consume the remaining horizon; retaining the low-CPU phase could not satisfy CPU>=0.30 while an AP10 release would leave fewer than six complete windows before 600 seconds",
+  "root_cause": {
+    "weighted_selection_threads_have_independent_derived_seeds": true,
+    "same_random_sequence_cause": false,
+    "ap10_submission_weight": 28,
+    "ap10_long_service_time_caused_four_client_occupancy_convergence": true,
+    "observed_resource_pattern": "alternating_io_saturated_low_cpu_and_release_high_cpu_windows"
+  },
+  "termination": {
+    "runner_process_group": 11102,
+    "background_sampler_pid": 11103,
+    "container_id": "5a7a50575128e1b625793092474b6b1dc614eef1abd53796d48ea8a1df3260aa",
+    "container_health_before_stop": "healthy",
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "memory_failcnt_baseline": 511,
+    "memory_failcnt_before_stop": 420950,
+    "memory_failcnt_role": "diagnostic_only",
+    "owned_process_group_terminated": true,
+    "owned_container_removed": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "9f25ab6bd6c0692c0913c9a353277d773c8c70768a23554aa9b8973fd97cb5f5",
+    "measurement_resource_samples.jsonl": "b1b589fdea233c1704b82f1c34c74dc2f758e99baef66d012c87722967560f5f",
+    "measurement_queries.jsonl": "ce6e13ebb5df8ea699f1ff5f82880b328f16a2f66bee418f6452e892652479d7",
+    "measurement_online_stability_controller.jsonl": "e7072bf2901d9fc46f45da969f53806ad76fcbb9bd69559de09bb98a144bd716",
+    "measurement_hybench.log": "925890ed77c726d9af5c8b62680bd341f34c8352a1dbc2069f561b547e532265",
+    "baseline_invocation_attempt_18.json": "75973683074d9c4f1740e159b51d97aa3f8851d4b28ddd13f765f636e91150f9",
+    "host_background_attempt_18.jsonl": "7cb00b8558fbfb87a7731d0b047ebfd28719a1e002f88303bc58a8faef4a11c7"
+  },
+  "outer_loop_effect": {
+    "anchor_changed": false,
+    "bounds_changed": false,
+    "binary_interval_shrinks": 0,
+    "accepted_outer_rounds_after_disposition": 0
+  },
+  "next_attempt": "attempt_19"
+}

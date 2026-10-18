@@ -1,0 +1,68 @@
+{
+  "schema_version": "tpch_v41_preformal_handoff_manifest_v1",
+  "algorithm_version": "tpch_v41_four_observation_robust_acceptance",
+  "accepted_shrink_target": 10,
+  "fresh_accepted_start": 0,
+  "historical_accepted_inherited": 0,
+  "roots": {
+    "source_v40": "tpch_final_algorithm_fresh0_v40_retest_compat_20260803",
+    "formal_v41": "tpch_final_algorithm_fresh0_v41_robust4_handoff_20260803",
+    "target_loop_v41": "target10_loop_v41",
+    "roots_are_distinct": true
+  },
+  "v40_handoff": {
+    "controller_must_remain_sigstop": true,
+    "source_diagnostic_required": "physical5_valid5_technical0",
+    "source_accepted_count_required": 0,
+    "source_baseline_restored_required": true,
+    "source_state_neutral_required": true,
+    "source_anchor_sha_binding_required": true,
+    "zero_call_double_reseal": true,
+    "zero_call_gate_recomputation": true,
+    "new_diagnostic_calls": 0,
+    "new_physical_calls": 0,
+    "executed_v40_diagnostic_top5_added_to_history": true,
+    "unexecuted_v38_v39_top5_added_to_history": false
+  },
+  "gate_policy": {
+    "roles": "trusted3_probe2",
+    "trusted_only_spearman_must_be_positive": true,
+    "actual_best_must_be_in_predicted_top3": true,
+    "trusted_resource_factor_must_be_below": 10.0,
+    "technical_failures_allowed": 0,
+    "acceptance_feasibility_required": true,
+    "gate_pass_action": "enter_v41_robust_formal",
+    "gate_fail_action": "preserve_evidence_and_autonomously_reexplore"
+  },
+  "formal_acceptance": {
+    "contract": "tpch_componentwise_four_observation_resource_median_rescored_v1",
+    "diagnostic_observations": 3,
+    "new_formal_observations": 1,
+    "aggregation": "componentwise_resource_median_then_rescore",
+    "single_observation_acceptance_forbidden": true,
+    "accepted_resource_score_consistency_required": true,
+    "raw_formal_observation_preserved": true,
+    "probe_updates_forbidden": true,
+    "qps": "outer_audit_only"
+  },
+  "batch_contract": {
+    "same_scene_real_replay": "strict_serial",
+    "diagnostic_physical_cap": 5,
+    "formal_physical_cap": 5,
+    "technical_failure_counts_toward_physical_cap": true,
+    "technical_failure_counts_as_valid_or_accepted": false
+  },
+  "files": {
+    "/tmp/tpch_v41_preformal_handoff.py": "bb81fde56677fc2c19b1399e708005e3b8e950169643c5fe777da94e47b36a41",
+    "/tmp/run_tpch_formal_exact_plan_regime_batch_v41_robust4.py": "2e8daea587b6d158269dbbe8767b086c0882aa0cd92650a3860c39f38e649eeb",
+    "/tmp/launch_tpch_v41_preformal_handoff.sh": "8b371632a10e364fdd0ca7ba6427a7ca9051a9efd97c6eb3ebfff1aad6c4c5ce",
+    "/tmp/tpch_fresh0_target10_loop_v36_base.py": "34107e91b4bcfd0b2fe8d2911a0855e1512fc881665f4db3c3cb67618bd055fb",
+    "/tmp/tpch_fresh10_target10_loop_v27.py": "d8e1672b4aceea5065f612170d57c1b16917a1dce9bf039fb3af274be4492589",
+    "/tmp/tpch_fresh10_target10_loop_v30.py": "384f2ce8f944525711d706c1e85493bfe61ed075d20d6794f61caed3dd67d7f8",
+    "/tmp/tpch_fresh10_target10_loop_v32_v6_hierarchical.py": "54ac22227f190bfbbc1f2889927cba9500cbe1bd6f4347287d69c3647d6e98b5",
+    "/tmp/tpch_fresh10_target10_loop_v33_prethird_bound.py": "e5c18e3ebe7b8152e12ada134b86f50b32edc610f86346030c37aba5ebd688a0",
+    "/tmp/build_tpch_autonomous_successor_top5_v9_bounded_retest.py": "3f2514db76a9e86484029b2bd72162c96f190f5f71af218543335e1b4c93208a",
+    "/tmp/tpch_exact_regime_neighbor_expand_v5_bounded.py": "dce066d239ca68eb95ec10bd39a77e798212395df782ae850ffe7d27d5346a78",
+    "/tmp/run_tpch_round29_diagnostic_exact_plan_regime_batch_v40.py": "c3d352b980daf403a3344b7381ad5699215f6b2ba59b2a40c10b6e71f91a908d"
+  }
+}

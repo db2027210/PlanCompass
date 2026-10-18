@@ -1,0 +1,40 @@
+{
+  "schema_version": "tpch_v51_safe_unknown_probe_recovery_manifest_v1",
+  "scenario": "TPC-H",
+  "deployment_status": "offline_ready_not_deployed",
+  "ssh_calls": 0,
+  "workload_calls_added": 0,
+  "files": {
+    "tpch_v51_safe_unknown_probe_recovery.py": "2a9aaac13bf3af4d9007466c4fec3e606d9aa41fb5a4ca08da60e28dd80a0d91",
+    "tpch_v50_trusted_evidence_acquisition.py": "ffb8caadb0ee9738e31c0cff081e623ec3ccea7a09c824613a138183540f59fd",
+    "build_tpch_autonomous_successor_top5_v11_evidence_acquisition.py": "8447df5251c53b823bca21e89cc345ea903e333f9688468627c20bfd811d7b49",
+    "validate_tpch_v50_liveness_fix_boundary.py": "cf957dca63f22edc7b69431c7a749b5e55286852fee2e5d50e80ddec7f1e3d31",
+    "launch_tpch_v51_safe_unknown_probe_recovery.sh": "cc937e17aa2cd9935730d4efb555affe128eebe65741d8b10fa8a7384f9ebc07",
+    "deploy_tpch_v51_safe_unknown_probe_recovery.sh": "778897d0ab7875dcdf56f74db76e77a7b90d123a8596e1b3ce36eec29012da9e",
+    "apply_tpch_v51_safe_unknown_probe_recovery_at_boundary.sh": "9964f4b8f7111ff6cb1cbd7c2b4465cb84e02d2aa87461ce46ae68087cfa46b1",
+    "tpch_v51_safe_unknown_probe_recovery_evidence.json": "fb3ded6edafdf1e58012f8a731eac621a79f4c66f54abff95b00879a05c6b36b"
+  },
+  "boundary": {
+    "controller_state": "preparing_cycle",
+    "next_cycle": 6,
+    "accepted_count": 1,
+    "cycle6_workload_started": false,
+    "existing_failure_log_is_protected": true,
+    "resume_rewrites_log_instead_of_overwriting": true
+  },
+  "contract": {
+    "trusted_entry_gate_relaxed": false,
+    "credible_probe_score_gate_relaxed": false,
+    "resource_envelope_relaxed": false,
+    "safe_probe_is_diagnostic_only": true,
+    "safe_probe_updates_gradient_incumbent_range_or_accepted": false,
+    "selection_shape": "trusted_evidence3_plus_safe_unknown_probe2",
+    "novel_noncorner_three_level_fingerprints": 5,
+    "maximum_physical_calls": 5,
+    "qps_role": "outer_audit_only"
+  },
+  "tests": {
+    "result": "134 passed",
+    "fixture_sha256": "21d64417e8ac1a868e8eb18e7e7cb738a053393707ea085788b3a809aaa21802"
+  }
+}

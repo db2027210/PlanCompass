@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "contract_id": "pg5_r0_single_bottleneck_gate_v2",
+  "target_rule": "target utilization in inclusive 85-95 percent band",
+  "target_min_pct_inclusive": 85,
+  "target_max_pct_inclusive": 95,
+  "non_target_min_pct_inclusive": 30,
+  "non_target_max_pct_inclusive": 50,
+  "required_resources": ["cpu", "memory", "io"],
+  "evaluation_end_elapsed_seconds": 180,
+  "window_seconds": 30,
+  "window_count": 6,
+  "candidate_acceptance_affected": false,
+  "fail_closed": true
+}

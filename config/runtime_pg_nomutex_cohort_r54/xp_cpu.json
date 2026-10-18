@@ -1,0 +1,977 @@
+{
+  "algorithm_c": {
+    "accepted_start": 0,
+    "accepted_target": 7,
+    "active_params": [
+      "seq_page_cost",
+      "random_page_cost",
+      "cpu_tuple_cost",
+      "cpu_index_tuple_cost",
+      "cpu_operator_cost",
+      "parallel_setup_cost",
+      "parallel_tuple_cost"
+    ],
+    "algorithm_c_contract_compliant": true,
+    "base_topk_dedupe_key": "validated_full_physical_plan_fingerprint",
+    "benchmark": "hybench_xp",
+    "calibration_release": {
+      "compatibility_contract": "algorithm_c_calibration_compatibility_v1",
+      "contract": "algorithm_c_verified_calibration_release_v1",
+      "enabled": true,
+      "formal_baseline_controls_still_required": true,
+      "incompatible_policy": "fresh_calibration",
+      "reuse_requires_exact_baseline_plan_fingerprint": true,
+      "root": "/disk1/resource_adaptive/pg_algorithm_c_calibration_releases_v1"
+    },
+    "controller_client_cpuset": "128-131",
+    "expected_plan_query_count": 50,
+    "experience_table_path": "/disk1/resource_adaptive/pg_algorithm_c_four_experience_sgd_20260809/20260813_algorithm_c_predrank_clean_r50/xp_cpu/experience_table_T_xp_cpu_fresh.json",
+    "fallback_expansion_plan_tree_change_only": true,
+    "fresh_t_calibration_required": true,
+    "fresh_t_independent_holdout_minimum": 3,
+    "fresh_t_train_minimum": 7,
+    "initial_params": {
+      "cpu_index_tuple_cost": 0.005,
+      "cpu_operator_cost": 0.0025,
+      "cpu_tuple_cost": 0.01,
+      "parallel_setup_cost": 1000.0,
+      "parallel_tuple_cost": 0.1,
+      "random_page_cost": 4.0,
+      "seq_page_cost": 1.0
+    },
+    "inner_scoring_contract": "algorithm_c_directional_band_target_v1",
+    "method": "experience_table_all_subset_sgd_algorithm_c_v1",
+    "normalized_width_threshold": 0.01,
+    "operator_resource_pruning_enabled": false,
+    "outer_accept_reject_pruning": {
+      "accepted_counterexample_disables_hard_rule": true,
+      "contract": "algorithm_c_outer_accept_reject_plan_context_v1",
+      "enabled": true,
+      "evidence_log_event": "algorithm_c_outer_replay_admission",
+      "minimum_distinct_parameter_vectors": 2,
+      "minimum_distinct_rounds": 2,
+      "minimum_valid_rejects_per_plan": 2,
+      "missing_context_policy": "fail_open_real_replay",
+      "operator_count_only_rules_forbidden": true,
+      "qps_usage": "outer_label_only_not_resource_prediction_or_candidate_score",
+      "soft_evidence_policy": "deprioritize_without_modifying_inner_score",
+      "technical_failures_excluded": true
+    },
+    "qps_noise_gate": {
+      "confidence_z": 1.645,
+      "enabled": true,
+      "intermediate_acceptance_reference": "canonical_baseline",
+      "intermediate_acceptance_threshold_mode": "static_floor",
+      "maximum_worker_repeat_ratio": 1.25,
+      "startup_complete_workload_controls_per_worker": 2,
+      "static_floor_pct": 0.1,
+      "within_run_qps_dispersion_used": false
+    },
+    "real_replay_parallelism": 2,
+    "real_replay_top_k": 5,
+    "resource_estimation_contract": "algorithm_c_executor_physics_plan_ratio_v2",
+    "resource_estimation_contract_version": 2,
+    "same_plan_different_parameters_retained": false,
+    "scene": "xp_cpu",
+    "ssd_replay_qualification": {
+      "enabled": true,
+      "expected_devices": [
+        "nvme1n1"
+      ],
+      "expected_source": "host_diskstats_io_busy_ms",
+      "io_target_baseline_minimum_ssd_avg_pct": 65.0,
+      "io_target_maximum_ssd_avg_pct": 98.0,
+      "io_target_maximum_ssd_p99_pct": 100.1,
+      "maximum_parallel_avg_skew_pct_points": 5.0,
+      "minimum_stable_samples": 45,
+      "non_target_maximum_container_io_util_pct": 80.0,
+      "non_target_maximum_ssd_avg_pct": 80.0,
+      "non_target_maximum_ssd_p99_pct": 100.1,
+      "non_target_shared_ssd_policy": "container_io_capacity",
+      "out_of_band_is_technical_failure": true
+    },
+    "stability_confirmation_rounds": 2,
+    "subset_max_workers": 4,
+    "target_support_abstention_enabled": false,
+    "technical_failure_state_mutation": false,
+    "workload_contract": {
+      "benchmark": "hybench_xp",
+      "benchmark_concurrency": null,
+      "contract_version": 2,
+      "database": {
+        "dbname": "hybench_sf10x",
+        "template_db": "hybench_sf10x_base",
+        "workers": [
+          {
+            "container": "ra_fullgrid_hybench_cpu_20260718_w1",
+            "cpuset_cpus": "80-83",
+            "host": "127.0.0.1",
+            "name": "w1",
+            "port": 59513
+          },
+          {
+            "container": "ra_fullgrid_hybench_cpu_20260718_w2",
+            "cpuset_cpus": "84-87",
+            "host": "127.0.0.1",
+            "name": "w2",
+            "port": 59514
+          }
+        ]
+      },
+      "inner_candidate_scoring": {
+        "contract": "algorithm_c_directional_band_target_v1",
+        "non_bottleneck_band_pct": [
+          30.0,
+          50.0
+        ],
+        "non_bottleneck_hard_pct": 90.0,
+        "non_bottleneck_preferred_endpoint_pct": 50.0,
+        "qps_feature_forbidden": true,
+        "resource_weights": {
+          "cpu": 1.0,
+          "io": 3.0,
+          "memory": 1.0
+        },
+        "target_bottleneck_band_pct": [
+          85.0,
+          90.0
+        ],
+        "target_bottleneck_hard_pct": 95.0,
+        "target_bottleneck_preferred_endpoint_pct": 85.0
+      },
+      "native_xp": {
+        "at_percentages": {
+          "at1_percent": 40,
+          "at2_percent": 30,
+          "at3_percent": 15,
+          "at4_percent": 5,
+          "at5_percent": 7,
+          "at6_percent": 3
+        },
+        "forbidden_query_selection_fields_absent": true,
+        "native_jar_file": "/disk1/resource_adaptive/pg_algorithm_c_native_hybench_20260809_v2/lib/HyBench-1.0-SNAPSHOT.jar",
+        "native_jar_sha256": "0154a5e0f3bb95c2016ef956c7050d4d67d614f4bb2ec87e0f8ff71c8cd98f3c",
+        "statement_file": "/disk1/resource_adaptive/pg_algorithm_c_native_hybench_20260809_v2/conf/stmt_postgres.toml",
+        "statement_file_sha256": "fd654873c16fe574c531e1c71227b9a80c21e7136cfb1ab7d2e851730d1b1fbf",
+        "xapclient": 1,
+        "xtpclient": 2
+      },
+      "operator_resource_pruning": false,
+      "outer_accept_reject_pruning": {
+        "contract": "algorithm_c_outer_accept_reject_plan_context_v1",
+        "hard_rule_key": [
+          "workload_contract",
+          "target",
+          "acceptance_policy",
+          "required_acceptance_tier",
+          "qps_noise_model",
+          "incumbent_params",
+          "full_plan_fingerprint"
+        ],
+        "label": "outer_semantic_acceptance.accepted",
+        "operator_count_only_rules_forbidden": true,
+        "technical_failures_excluded": true
+      },
+      "outer_qps_acceptance": {
+        "contract": "canonical_baseline_static_floor_v1",
+        "qps_noise_model_role": "required_audit_not_compounded_threshold",
+        "reference": "immutable_canonical_parallel_baseline",
+        "resource_reference": "last_accepted_incumbent",
+        "threshold_source": "outer_acceptance.min_db_qps_gain_pct"
+      },
+      "physical_replay": "native_HyBench_XP_default_full_workload",
+      "plan_evidence": {
+        "duplicate_families_collapsed_only_for_plan_identity": 4,
+        "family_to_plan_identity": {
+          "AP-1.1": "plan_1",
+          "AP-10.1": "plan_10",
+          "AP-11.1": "plan_11",
+          "AP-12.1": "plan_12",
+          "AP-13.1": "plan_13",
+          "AP-2.1": "plan_2",
+          "AP-3.1": "plan_3",
+          "AP-4.1": "plan_4",
+          "AP-5.1": "plan_5",
+          "AP-6.1": "plan_6",
+          "AP-7.1": "plan_7",
+          "AP-8.1": "plan_8",
+          "AP-9.1": "plan_9",
+          "AT-0.1": "plan_34",
+          "AT-00.1": "plan_34",
+          "AT-1.1": "plan_35",
+          "AT-1.2": "plan_36",
+          "AT-2.1": "plan_35",
+          "AT-2.2": "plan_37",
+          "AT-3.1": "plan_38",
+          "AT-3.2": "plan_39",
+          "AT-4.1": "plan_40",
+          "AT-5.1": "plan_41",
+          "AT-6.1": "plan_42",
+          "IQ-1.1": "plan_43",
+          "IQ-2.1": "plan_44",
+          "IQ-3.1": "plan_45",
+          "IQ-4.1": "plan_46",
+          "IQ-5.1": "plan_47",
+          "IQ-6.1": "plan_48",
+          "TP-1.1": "plan_14",
+          "TP-10.1": "plan_23",
+          "TP-11.1": "plan_24",
+          "TP-12.1": "plan_25",
+          "TP-12.3": "plan_26",
+          "TP-13.1": "plan_27",
+          "TP-14.1": "plan_28",
+          "TP-15.1": "plan_29",
+          "TP-16.1": "plan_30",
+          "TP-16.2": "plan_31",
+          "TP-17.1": "plan_32",
+          "TP-17.2": "plan_33",
+          "TP-18.1": "plan_32",
+          "TP-18.2": "plan_33",
+          "TP-2.1": "plan_15",
+          "TP-3.1": "plan_16",
+          "TP-4.1": "plan_17",
+          "TP-5.1": "plan_18",
+          "TP-6.1": "plan_19",
+          "TP-7.1": "plan_20",
+          "TP-8.1": "plan_21",
+          "TP-9.1": "plan_22",
+          "fresh-1.1": "plan_50",
+          "fresh.1": "plan_49"
+        },
+        "native_family_count": 54,
+        "native_family_identities": [
+          "AP-1.1",
+          "AP-2.1",
+          "AP-3.1",
+          "AP-4.1",
+          "AP-5.1",
+          "AP-6.1",
+          "AP-7.1",
+          "AP-8.1",
+          "AP-9.1",
+          "AP-10.1",
+          "AP-11.1",
+          "AP-12.1",
+          "AP-13.1",
+          "TP-1.1",
+          "TP-2.1",
+          "TP-3.1",
+          "TP-4.1",
+          "TP-5.1",
+          "TP-6.1",
+          "TP-7.1",
+          "TP-8.1",
+          "TP-9.1",
+          "TP-10.1",
+          "TP-11.1",
+          "TP-12.1",
+          "TP-12.3",
+          "TP-13.1",
+          "TP-14.1",
+          "TP-15.1",
+          "TP-16.1",
+          "TP-16.2",
+          "TP-17.1",
+          "TP-17.2",
+          "TP-18.1",
+          "TP-18.2",
+          "AT-00.1",
+          "AT-0.1",
+          "AT-1.1",
+          "AT-1.2",
+          "AT-2.1",
+          "AT-2.2",
+          "AT-3.1",
+          "AT-3.2",
+          "AT-4.1",
+          "AT-5.1",
+          "AT-6.1",
+          "IQ-1.1",
+          "IQ-2.1",
+          "IQ-3.1",
+          "IQ-4.1",
+          "IQ-5.1",
+          "IQ-6.1",
+          "fresh.1",
+          "fresh-1.1"
+        ],
+        "path": "/disk1/resource_adaptive/pg_algorithm_c_four_experience_sgd_20260809/20260813_algorithm_c_predrank_clean_r50/xp_cpu/native_xp_full_plan_representatives.sql",
+        "physical_workload_sql_modified": false,
+        "plan_identity_sources": {
+          "plan_1": [
+            "AP-1.1"
+          ],
+          "plan_10": [
+            "AP-10.1"
+          ],
+          "plan_11": [
+            "AP-11.1"
+          ],
+          "plan_12": [
+            "AP-12.1"
+          ],
+          "plan_13": [
+            "AP-13.1"
+          ],
+          "plan_14": [
+            "TP-1.1"
+          ],
+          "plan_15": [
+            "TP-2.1"
+          ],
+          "plan_16": [
+            "TP-3.1"
+          ],
+          "plan_17": [
+            "TP-4.1"
+          ],
+          "plan_18": [
+            "TP-5.1"
+          ],
+          "plan_19": [
+            "TP-6.1"
+          ],
+          "plan_2": [
+            "AP-2.1"
+          ],
+          "plan_20": [
+            "TP-7.1"
+          ],
+          "plan_21": [
+            "TP-8.1"
+          ],
+          "plan_22": [
+            "TP-9.1"
+          ],
+          "plan_23": [
+            "TP-10.1"
+          ],
+          "plan_24": [
+            "TP-11.1"
+          ],
+          "plan_25": [
+            "TP-12.1"
+          ],
+          "plan_26": [
+            "TP-12.3"
+          ],
+          "plan_27": [
+            "TP-13.1"
+          ],
+          "plan_28": [
+            "TP-14.1"
+          ],
+          "plan_29": [
+            "TP-15.1"
+          ],
+          "plan_3": [
+            "AP-3.1"
+          ],
+          "plan_30": [
+            "TP-16.1"
+          ],
+          "plan_31": [
+            "TP-16.2"
+          ],
+          "plan_32": [
+            "TP-17.1",
+            "TP-18.1"
+          ],
+          "plan_33": [
+            "TP-17.2",
+            "TP-18.2"
+          ],
+          "plan_34": [
+            "AT-00.1",
+            "AT-0.1"
+          ],
+          "plan_35": [
+            "AT-1.1",
+            "AT-2.1"
+          ],
+          "plan_36": [
+            "AT-1.2"
+          ],
+          "plan_37": [
+            "AT-2.2"
+          ],
+          "plan_38": [
+            "AT-3.1"
+          ],
+          "plan_39": [
+            "AT-3.2"
+          ],
+          "plan_4": [
+            "AP-4.1"
+          ],
+          "plan_40": [
+            "AT-4.1"
+          ],
+          "plan_41": [
+            "AT-5.1"
+          ],
+          "plan_42": [
+            "AT-6.1"
+          ],
+          "plan_43": [
+            "IQ-1.1"
+          ],
+          "plan_44": [
+            "IQ-2.1"
+          ],
+          "plan_45": [
+            "IQ-3.1"
+          ],
+          "plan_46": [
+            "IQ-4.1"
+          ],
+          "plan_47": [
+            "IQ-5.1"
+          ],
+          "plan_48": [
+            "IQ-6.1"
+          ],
+          "plan_49": [
+            "fresh.1"
+          ],
+          "plan_5": [
+            "AP-5.1"
+          ],
+          "plan_50": [
+            "fresh-1.1"
+          ],
+          "plan_6": [
+            "AP-6.1"
+          ],
+          "plan_7": [
+            "AP-7.1"
+          ],
+          "plan_8": [
+            "AP-8.1"
+          ],
+          "plan_9": [
+            "AP-9.1"
+          ]
+        },
+        "query_count": 50,
+        "role": "offline_explain_all_unique_SQL_from_all_native_AP_and_TP_read_families",
+        "sha256": "7e34e9da0aa5e94e03c585a66167a2917769187b8228dfd684bbbbfbbe872288"
+      },
+      "policy": "20260806-pg-experiment-workload-policy",
+      "qps_inner_scoring": false,
+      "resource_capacity": {
+        "cpu_cores": 4.0,
+        "io_mib_s": 1000.0,
+        "memory_gib": 12.0
+      },
+      "resource_estimation": {
+        "actual_rows_loops_workers_not_fabricated_pre_replay": true,
+        "contract": "algorithm_c_executor_physics_plan_ratio_v2",
+        "post_replay_labels": "pg_stat_statements_post_reset_aggregate_v1",
+        "pre_replay_features": [
+          "full_plan_tree",
+          "plan_rows_and_width",
+          "parent_child_work_ratio",
+          "nested_loop_execution_multiplier_proxy",
+          "planned_parallel_work",
+          "relation_pages_tuples_visibility",
+          "sort_hash_spill_bytes_and_batches_proxy",
+          "catalog_statistics_staleness"
+        ],
+        "qps_feature_forbidden": true
+      },
+      "scene": "xp_cpu",
+      "shared_ssd_coordination": {
+        "contract": "pg_algorithm_c_user_authorized_no_mutex_v1",
+        "covers_cache_eviction_and_physical_workload": false,
+        "database_restore_mode": "none",
+        "device": "nvme1n1",
+        "enabled": false,
+        "parallel_workers_share_process_lease": false,
+        "physical_workload_mode": "none",
+        "reason": "user_authorized_direct_continue_without_disk1_mutex_20260813",
+        "technical_failure_or_acceptance_state_mutation": false
+      },
+      "baseline_cohort": {
+        "contract": "algorithm_c_four_lane_no_mutex_baseline_cohort_v1",
+        "lane_count": 4,
+        "lanes": ["job_memory", "tpch_memory", "xp_cpu", "xp_io"],
+        "synchronized_repetitions": 2
+      },
+      "candidate_cohort": {
+        "contract": "algorithm_c_four_lane_no_mutex_candidate_wave_cohort_v1",
+        "lane_count": 4,
+        "lanes": ["job_memory", "tpch_memory", "xp_cpu", "xp_io"],
+        "synchronization": "every_formal_physical_wave"
+      },
+      "target_resource": "cpu",
+      "top5_replay_parallelism": 2,
+      "wave_shape": [
+        2,
+        2,
+        1
+      ]
+    },
+    "workload_contract_path": "/disk1/resource_adaptive/pg_algorithm_c_four_experience_sgd_20260809/20260813_algorithm_c_predrank_clean_r50/xp_cpu/workload_contract.json"
+  },
+  "binary_plan_tuning": {
+    "acceptance_policy": {
+      "hybench_qps_guard_drop_pct": 100.0,
+      "hybench_tps_guard_drop_pct": 100.0,
+      "min_db_qps_gain_pct": 0.1,
+      "min_other_up_pct": 0.0,
+      "min_target_drop_pct": 0.1,
+      "non_target_drop_guard_pct": 100.0,
+      "none_require_any_sweet_spot": false,
+      "none_require_resource_up": true,
+      "none_required_up_resources": [
+        "cpu",
+        "memory",
+        "io"
+      ],
+      "p95_guard_regression_pct": 100000.0,
+      "p99_guard_regression_pct": 100000.0,
+      "require_other_resource_up": false,
+      "resource_capacity": {
+        "cpu_cores": 4.0,
+        "io_mib_s": 1000.0,
+        "memory_gib": 12.0
+      },
+      "target_min_other_sweet_resources": 0
+    },
+    "binary_search": {
+      "accepted_shrink_target": 7,
+      "disable_candidate_reduction": false,
+      "epsilon": {
+        "cpu_index_tuple_cost": 0.015609375,
+        "cpu_operator_cost": 1.5609375e-05,
+        "cpu_tuple_cost": 0.015609375,
+        "default": 1.5609375e-05,
+        "parallel_setup_cost": 78.125,
+        "parallel_tuple_cost": 4.9394963440130926e-05,
+        "random_page_cost": 0.0006972087429686842,
+        "seq_page_cost": 0.0015609375
+      },
+      "explain_capture": {
+        "enabled": true,
+        "max_chars_per_sample": 100000,
+        "sample_count": 3
+      },
+      "full_bruteforce": false,
+      "max_candidates_per_round": 5,
+      "max_rounds": 100,
+      "nested_loop": {
+        "fallback_plan_change_replay_expansion": {
+          "enabled": false,
+          "max_extra_candidates_per_round": 5,
+          "trigger_after_fallback_miss_rounds": 1
+        },
+        "outer_acceptance": {
+          "acceptance_tier_downgrade_after_rounds": 2,
+          "min_db_qps_gain_pct": 0.1,
+          "min_other_up_pct": 0.1,
+          "min_target_drop_pct": 0.1,
+          "non_target_bottleneck_threshold_pct": 80.0,
+          "qps_reference_mode": "canonical_baseline",
+          "qps_threshold_mode": "static_floor",
+          "threshold_source": "binary_plan_tuning.acceptance_policy"
+        }
+      },
+      "no_improvement_round_limit": 0,
+      "plan_probe_workers": 4,
+      "range_anchor_policy": "nested_inner_resource_outer_semantic_v1",
+      "recompute_resume_decisions": true,
+      "replay_candidate_pruning": {
+        "enabled": false,
+        "operator_resource_hard_pruning_forbidden": true,
+        "reason": "operator changes are not sufficient evidence for direct reject"
+      },
+      "retry_failed_validations_on_resume": true,
+      "run_plan_probe_for_full_bruteforce": true,
+      "stop_only_on_epsilon": false,
+      "zero_accepted_backtrack": true,
+      "zero_accepted_backtrack_factor": 2.0
+    },
+    "endpoint_screening": {
+      "endpoint_workers": 1,
+      "high_calls_sql": 10,
+      "max_queries": 50,
+      "pg_stat_statements_limit": 100,
+      "random_seed": 20260719,
+      "resource_contribution_sql": false,
+      "top_slow_sql": 10
+    },
+    "experiment_meta": {
+      "accepted_shrink_target": 7,
+      "algorithm_c_contract_compliant": true,
+      "algorithm_c_contract_gap": null,
+      "benchmark": "hybench_xp",
+      "bottleneck": "cpu",
+      "bottleneck_target": null,
+      "candidate_generator": "all_nonempty_experience_table_parameter_subsets",
+      "controller_client_allowed_cpu_range": "0-255",
+      "controller_client_cpuset": "128-131",
+      "db": "pg17",
+      "exp_id": "PG-ALGORITHM-C-xp_cpu-20260809",
+      "formal_accepted_start": 0,
+      "machine_spec": {
+        "cpu_cores": 4.0,
+        "disk_bw_mb": 1000.0,
+        "mem_gb": 12.0
+      },
+      "method": "experience_table_all_subset_sgd_algorithm_c_v1",
+      "normalized_width_threshold": 0.01,
+      "repeat_id": 1,
+      "replay_parallelism": 2,
+      "replay_top_k": 5,
+      "replay_wave_shape": [
+        2,
+        2,
+        1
+      ],
+      "stability_confirmation_rounds": 2,
+      "workload_policy": "20260806-pg-experiment-workload-policy"
+    },
+    "output_dir": "/disk1/resource_adaptive/pg_algorithm_c_four_experience_sgd_20260809/20260813_algorithm_c_predrank_clean_r50/xp_cpu",
+    "validation": {
+      "docker_runtime": {
+        "checkpoint_after_validation": true,
+        "checkpoint_before_validation": true,
+        "checkpoint_settle_sec": 1.0,
+        "container": "ra_fullgrid_hybench_cpu_20260718_w1",
+        "evict_data_file_cache_before_validation": true,
+        "evict_data_file_cache_container_fallback": false,
+        "evict_data_file_cache_host_sudo": false,
+        "evict_data_file_cache_max_bytes": 0,
+        "evict_data_file_cache_max_files": 0,
+        "evict_data_file_cache_postgres_program_fallback": true,
+        "evict_data_file_cache_require_success": true,
+        "interval_sec": 1.0,
+        "io_mode": "cgroup",
+        "memory_mode": "working_set",
+        "min_stable_samples": 45,
+        "warmup_sec": 5.0
+      },
+      "docker_workers": {
+        "cpu_memory_parallelism": 2,
+        "enabled": true,
+        "io_parallelism": 2,
+        "none_parallelism": 2,
+        "same_ssd_adaptive_parallelism": {
+          "allow_stable_cap": true,
+          "daily_mean_limit_pct": 75.0,
+          "daily_peak_limit_pct": 90.0,
+          "effective_worker_cap": 2,
+          "enabled": true,
+          "initial": 2,
+          "physical_device": "nvme1n1",
+          "preferred": 8,
+          "stable_cap": 12,
+          "warning_mean_pct": 85.0,
+          "warning_peak_pct": 95.0
+        },
+        "workers": [
+          {
+            "container": "ra_fullgrid_hybench_cpu_20260718_w1",
+            "container_data_dir": "/var/lib/postgresql/data",
+            "cpus": "4",
+            "cpuset_cpus": "80-83",
+            "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_cpu/w1/pgdata",
+            "dbname": "hybench_sf10x",
+            "disk_root": "/disk1",
+            "host": "127.0.0.1",
+            "memory": "12g",
+            "name": "w1",
+            "password": "postgres",
+            "port": 59513,
+            "targets": [
+              "cpu"
+            ],
+            "user": "postgres"
+          },
+          {
+            "container": "ra_fullgrid_hybench_cpu_20260718_w2",
+            "container_data_dir": "/var/lib/postgresql/data",
+            "cpus": "4",
+            "cpuset_cpus": "84-87",
+            "data_dir": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_cpu/w2/pgdata",
+            "dbname": "hybench_sf10x",
+            "disk_root": "/disk1",
+            "host": "127.0.0.1",
+            "memory": "12g",
+            "name": "w2",
+            "password": "postgres",
+            "port": 59514,
+            "targets": [
+              "cpu"
+            ],
+            "user": "postgres"
+          }
+        ]
+      },
+      "executor_telemetry": {
+        "enabled": true,
+        "fields": [
+          "rows",
+          "shared_blks_hit",
+          "shared_blks_read",
+          "shared_blks_dirtied",
+          "shared_blks_written",
+          "temp_blks_read",
+          "temp_blks_written",
+          "blk_read_time",
+          "blk_write_time",
+          "wal_bytes"
+        ],
+        "qps_used_for_resource_prediction": false,
+        "required": true,
+        "role": "post_replay_calibration_label",
+        "source": "pg_stat_statements_post_reset_aggregate_v1"
+      },
+      "hybench_xp": {
+        "allowed_tunable_workload_fields": [
+          "xtpclient",
+          "xapclient",
+          "at1_percent",
+          "at2_percent",
+          "at3_percent",
+          "at4_percent",
+          "at5_percent",
+          "at6_percent"
+        ],
+        "ap_run_mins": 2,
+        "apclient": 4,
+        "at1_percent": 40,
+        "at2_percent": 30,
+        "at3_percent": 15,
+        "at4_percent": 5,
+        "at5_percent": 7,
+        "at6_percent": 3,
+        "backend_name": "hybench_xp",
+        "base_props_file": "/disk1/resource_adaptive/pg_algorithm_c_native_hybench_20260809_v2/conf/pg.props",
+        "base_props_sha256": "494f803ebf397c34f704ca7b8a8c91c4158d94588d13494e49a509b6de6d49c9",
+        "enabled": true,
+        "extra_props": {},
+        "fresh_interval": 20,
+        "hybench_dir": "/disk1/resource_adaptive/pg_algorithm_c_native_hybench_20260809_v2",
+        "launcher": "/home/anonymous/program/resource_adaptive/shell/run_hybench_native_xp_isolated.sh",
+        "mode": "runxp",
+        "native_jar_file": "/disk1/resource_adaptive/pg_algorithm_c_native_hybench_20260809_v2/lib/HyBench-1.0-SNAPSHOT.jar",
+        "native_jar_sha256": "0154a5e0f3bb95c2016ef956c7050d4d67d614f4bb2ec87e0f8ff71c8cd98f3c",
+        "pre_validation_warmup_runs": 1,
+        "primary_metric_key": "xp_qps",
+        "props_output_dir": "workload_props",
+        "respect_external_runxp_guard": false,
+        "restore_from_template_before_validation": true,
+        "run_mins": 5,
+        "sf": "10x",
+        "statement_file": "/disk1/resource_adaptive/pg_algorithm_c_native_hybench_20260809_v2/conf/stmt_postgres.toml",
+        "statement_file_sha256": "fd654873c16fe574c531e1c71227b9a80c21e7136cfb1ab7d2e851730d1b1fbf",
+        "template_db": "hybench_sf10x_base",
+        "tp_run_mins": 2,
+        "tpclient": 8,
+        "workload": "hybench_xp",
+        "xapclient": 1,
+        "xp_run_mins": 5,
+        "xtpclient": 2
+      },
+      "parallel_baseline": {
+        "compare_mode": "same_worker",
+        "enabled": true,
+        "parallelism": 2,
+        "required": true
+      },
+      "shared_disk_restore_barrier": true
+    },
+    "workload": {
+      "name": "hybench_xp",
+      "plan_coverage_gate": {
+        "block_physical_base_topk": true,
+        "catalog_complete": true,
+        "coverage_scope": "all_native_xp_families_unique_sql_plan_universe",
+        "enabled": true,
+        "expected_query_count": 50,
+        "expected_query_ids": [
+          "file_1",
+          "file_2",
+          "file_3",
+          "file_4",
+          "file_5",
+          "file_6",
+          "file_7",
+          "file_8",
+          "file_9",
+          "file_10",
+          "file_11",
+          "file_12",
+          "file_13",
+          "file_14",
+          "file_15",
+          "file_16",
+          "file_17",
+          "file_18",
+          "file_19",
+          "file_20",
+          "file_21",
+          "file_22",
+          "file_23",
+          "file_24",
+          "file_25",
+          "file_26",
+          "file_27",
+          "file_28",
+          "file_29",
+          "file_30",
+          "file_31",
+          "file_32",
+          "file_33",
+          "file_34",
+          "file_35",
+          "file_36",
+          "file_37",
+          "file_38",
+          "file_39",
+          "file_40",
+          "file_41",
+          "file_42",
+          "file_43",
+          "file_44",
+          "file_45",
+          "file_46",
+          "file_47",
+          "file_48",
+          "file_49",
+          "file_50"
+        ],
+        "fail_closed_before_physical_workload": true,
+        "plan_sql_sha256": "7e34e9da0aa5e94e03c585a66167a2917769187b8228dfd684bbbbfbbe872288"
+      },
+      "plan_sql_file": "/disk1/resource_adaptive/pg_algorithm_c_four_experience_sgd_20260809/20260813_algorithm_c_predrank_clean_r50/xp_cpu/native_xp_full_plan_representatives.sql"
+    },
+    "workload_context": {
+      "concurrency": 1,
+      "feature_window_seconds": 60,
+      "sql_count": 6,
+      "workload_family": "OLAP"
+    },
+    "workload_name": "hybench_xp"
+  },
+  "initial_params": {
+    "cpu_index_tuple_cost": 0.005,
+    "cpu_operator_cost": 0.0025,
+    "cpu_tuple_cost": 0.01,
+    "parallel_setup_cost": 1000.0,
+    "parallel_tuple_cost": 0.1,
+    "random_page_cost": 4.0,
+    "seq_page_cost": 1.0
+  },
+  "metrics": {
+    "plan_estimator": {
+      "cpu": {
+        "cpu_index_tuple_cost": 0.005,
+        "cpu_operator_cost": 0.0025,
+        "cpu_seconds_bias": 0.0,
+        "cpu_seconds_per_work": 1e-06,
+        "cpu_tuple_cost": 0.01,
+        "enabled": true,
+        "fallback_cost_scale": 1.0,
+        "overlap_factor": 1.0,
+        "parallel_setup_cost": 1000.0,
+        "parallel_tuple_cost": 0.1
+      },
+      "io": {
+        "enabled": true,
+        "index_only_heap_back_alpha": 0.3,
+        "random_page_cost": 4.0,
+        "read_overlap_factor": 1.0,
+        "seq_page_cost": 1.0,
+        "write_overlap_factor": 1.0
+      },
+      "logging": {
+        "enabled": true,
+        "log_topn": 10
+      },
+      "memory": {
+        "beta_hash": 1.0,
+        "beta_hashagg": 1.0,
+        "beta_materialize": 1.0,
+        "beta_memoize": 0.0,
+        "beta_sort": 1.0,
+        "concurrency_formula": "baseline_resident_plus_weighted_working",
+        "enabled": true,
+        "overlap_factor": 1.0,
+        "resident_memory_mb": 128.0
+      },
+      "physical_model": {
+        "capture_first_point_as_baseline": false,
+        "catalog_relation_stats_required_for_confidence": true,
+        "contract": "algorithm_c_executor_physics_plan_ratio_v2",
+        "enabled": true,
+        "error_bounds_calibrated": false,
+        "nested_loop_execution_multiplier_enabled": true,
+        "parent_child_work_ratio_enabled": true,
+        "planned_parallel_work_enabled": true,
+        "qps_feature_forbidden": true,
+        "require_complete_explain": true,
+        "spill_bytes_and_batches_proxy_enabled": true
+      },
+      "resource_types": [
+        "memory",
+        "cpu",
+        "io"
+      ],
+      "shared": {
+        "block_size": 8192,
+        "calibration_factor": 1.0,
+        "explain_workers": 3,
+        "feature_window_seconds": 60.0,
+        "hash_mem_multiplier": 1.0,
+        "normalize_model_features_to_window": true,
+        "work_mem_bytes": 16777216
+      }
+    }
+  },
+  "param_ranges": {
+    "cpu_index_tuple_cost": {
+      "max_value": 1.0,
+      "min_value": 0.001
+    },
+    "cpu_operator_cost": {
+      "max_value": 0.001,
+      "min_value": 1e-06
+    },
+    "cpu_tuple_cost": {
+      "max_value": 1.0,
+      "min_value": 0.001
+    },
+    "parallel_setup_cost": {
+      "max_value": 10000.0,
+      "min_value": 5000.0
+    },
+    "parallel_tuple_cost": {
+      "max_value": 0.0031622776601683794,
+      "min_value": 1e-06
+    },
+    "random_page_cost": {
+      "max_value": 0.044721359549995794,
+      "min_value": 0.0001
+    },
+    "seq_page_cost": {
+      "max_value": 0.1,
+      "min_value": 0.0001
+    }
+  },
+  "plan_capture": {
+    "custom_plan_params": {},
+    "modes": [
+      "generic"
+    ]
+  },
+  "postgres": {
+    "dbname": "hybench_sf10x",
+    "host": "127.0.0.1",
+    "password": "postgres",
+    "port": 59513,
+    "user": "postgres"
+  }
+}

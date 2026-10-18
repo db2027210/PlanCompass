@@ -1,0 +1,50 @@
+{
+  "schema_version": 3,
+  "contract_id": "pg5_rolling_six_window_resource_stability_v4",
+  "sample_interval_seconds": 1,
+  "warmup_seconds": 60,
+  "minimum_measurement_seconds": 180,
+  "maximum_measurement_seconds": 600,
+  "decision_step_seconds": 30,
+  "decision_checkpoints_seconds": [
+    180,
+    210,
+    240,
+    270,
+    300,
+    330,
+    360,
+    390,
+    420,
+    450,
+    480,
+    510,
+    540,
+    570,
+    600
+  ],
+  "window_seconds": 30,
+  "rolling_window_count": 6,
+  "reported_window_numbering": "one_based",
+  "decision_window": "latest_six_consecutive_30_second_windows",
+  "earlier_windows_affect_current_decision": false,
+  "resource_fields": [
+    "cpu_utilization",
+    "memory_utilization",
+    "io_utilization"
+  ],
+  "coefficient_of_variation_max": 0.1,
+  "throughput_stability_required": false,
+  "decision_order": [
+    "evaluate_latest_six_window_resource_stability",
+    "if_unstable_continue_exactly_30_seconds",
+    "if_stable_evaluate_profile_band_on_the_same_six_windows"
+  ],
+  "stable_profile_band": {
+    "target_bounds_inclusive": [0.85, 0.95],
+    "each_non_target_bounds_inclusive": [0.3, 0.5]
+  },
+  "stable_profile_pass_action": "stop_success",
+  "stable_profile_fail_action": "stop_for_profile_reconstruction",
+  "hard_maximum_unstable_action": "fail_closed"
+}

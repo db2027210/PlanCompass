@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "amendment_id": "pg5_hybench_xp_io_experience_table_dbqps_v3_20260723",
+  "benchmark": "hybench_xp",
+  "target_resource": "io",
+  "reason": "Experience-table schema v2 requires DBQPS effect, confidence, and evidence_count for every active parameter.",
+  "source": {
+    "path": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt22/output/pg5v1_hyxp_exp_sgd_attempt22/io/hybench_xp_optimizer_history_2026-07-22_221130.jsonl",
+    "sha256": "930768061522d29b78e1edb570443e450af0aefff273bcebc6851df429e16d4b",
+    "stable_real_replay_count": 10,
+    "db_qps_source": "candidate_final_validation.db_view_monitor.db_qps",
+    "workload_qps_or_tps_used": false
+  },
+  "calibration": {
+    "baseline_db_qps": 84.59697130955914,
+    "qps_effect_formula": "0.2 * Pearson(log(candidate_param / baseline_param), (candidate_db_qps - baseline_db_qps) / baseline_db_qps)",
+    "confidence_formula": "mean absolute correlation across CPU, memory, IO, and DBQPS outcomes",
+    "low_confidence_freeze_threshold": 0.2,
+    "evidence_count_per_parameter": 10
+  },
+  "synchronization_contract": {
+    "algorithm": "experience_table_all_nonempty_subset_sgd",
+    "scoring_and_table_updated_together": true,
+    "finite_difference_direction_enabled": false,
+    "random_direction_enabled": false,
+    "artifact_path": "/home/anonymous/program/resource_adaptive/config/formal/pg5_common_outer_bgallowed_20260722_v1/experience_table_T_hybench_xp_io_v3.json",
+    "artifact_sha256": "0b41fa98cf589314f3373fb09bb61dbb985af3245b6de4e2a2c59c2a0d4a2887",
+    "table_sha256": "54783b27eaefea2eea28d8384c4f49bbd622593aec7f3b84c7e4cab04bbb3ada"
+  }
+}

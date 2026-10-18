@@ -1,0 +1,83 @@
+{
+  "schema_version": "job_target10_v53_fresh0_dedicated_network_manifest_v1",
+  "scenario": "JOB",
+  "campaign_root": "autonomous_target10_v53_fresh0",
+  "campaign_contract": "job_v53_fresh0_v52r2_technical_excluded_dedicated_network_v1",
+  "authoritative_handoff": {
+    "historical_accepted_excluded": 3,
+    "v50_accepted_excluded": 0,
+    "v52r2_accepted_excluded": 0,
+    "v53_initial_accepted_count": 0,
+    "v53_accepted_target": 10,
+    "external_global_ordinal": 397,
+    "external_formal_replay_count": 206,
+    "v50_technical_batches": 3,
+    "v50_technical_physical_calls": 3,
+    "v52r2_technical_batches": 2,
+    "v52r2_technical_physical_calls": 2,
+    "baseline_score": 4.416709205648302,
+    "baseline_range_is_point": true,
+    "gradient_observation_count": 0
+  },
+  "historical_roots": {
+    "v50_role": "technical_audit_and_fingerprint_exclusion_only",
+    "v52r2_role": "technical_audit_and_fingerprint_exclusion_only",
+    "accepted_or_incumbent_or_range_inherited": false,
+    "all_top5_fingerprints_excluded": true,
+    "old_roots_sha_revalidated_after_initialization": true
+  },
+  "network_contract": {
+    "environment": "RA_JOB_DOCKER_NETWORK",
+    "network_name": "ra_job_v53_net",
+    "bridge_interface": "ra-job-v53",
+    "driver": "bridge",
+    "scope": "local",
+    "internal": false,
+    "prohibited_names": ["bridge", "host", "none"],
+    "launcher_creates_if_absent": true,
+    "launcher_validates_zero_attached_containers": true,
+    "runner_inspects_before_every_bridge_invocation": true,
+    "runner_requires_zero_attached_containers": true,
+    "runner_does_not_create_network": true,
+    "real_workload_used_for_network_preflight": false
+  },
+  "bridge_contract": {
+    "source_base_sha256": "974634b25e4c421ef7674c357f19438a5c43441c498f44534cf97b86dca162e4",
+    "patched_sha256": "ed91561652e52a28fc01e6d542577e7b3006b3c836ea5109d162991b00e4aadd",
+    "patch_scope": "dedicated network environment validation and docker run --network only",
+    "backup_and_replace_are_atomic": true,
+    "network_name_validated_before_ordinal_claim": true,
+    "explicit_exact_seven_cost_environment_required": true,
+    "control_readback_used_with_explicit_costs": false
+  },
+  "preclaim_contract": {
+    "exact_seven_parameter_validation": true,
+    "control_consecutive_successes_required": 3,
+    "control_maximum_attempts": 6,
+    "docker_network_inspect_required": true,
+    "readiness_failure_invokes_bridge": false,
+    "readiness_failure_claims_ordinal": false,
+    "technical_attempt_still_consumes_batch_attempt_budget": true
+  },
+  "files": {
+    "/tmp/job_fresh10_target10_autonomous_v49.py": "3688f00b0a32c490f5dd3781b26642f48361c3ba541256f9855730284016035c",
+    "/tmp/job_fresh10_target10_autonomous_v50.py": "b9dc4ca55d67c4a94938e7498e2359796fae6749d70bb11e704b81124ff43099",
+    "/tmp/job_fresh10_target10_autonomous_v53.py": "c1ef88ab218f0f318a02c0e7debbfb56362de141e5f07a9e24ed40ab3a2aa544",
+    "/tmp/bootstrap_job_v53_fresh0.py": "3b1e33f7b34312176142379feda3182921b958e815b467f00c569882f32efe93",
+    "/tmp/run_job_round8_strict_serial_base_v7_explicit_preclaim.py": "839833efdde6a1294fc43bdd07012562a768039e65c1a146513a1d7911611dd4",
+    "/tmp/run_job_round8_strict_serial_robust_v9_state_guard.py": "e717449a109669d6ed274e29d5aaf9f4285af8b37c586aeb0ad768970ba02693",
+    "/tmp/formal_job_outer_replay_v53.py": "ed91561652e52a28fc01e6d542577e7b3006b3c836ea5109d162991b00e4aadd",
+    "/tmp/deploy_job_v53_network_bridge.py": "3e9c541a35cfc2e0c9a0c28480c17e80214efbf533cf8a1df54bd221fb8e48a0",
+    "/tmp/launch_job_target10_autonomous_v53_fresh0.sh": "e81cce75cb8332b6be57356cb2fcc41a0438a4fff1ea33f7399bebe3bf5b17e1"
+  },
+  "verification": {
+    "job_tests_passed": 56,
+    "superseded_v52_binding_tests_skipped": 2,
+    "python_compile_passed": true,
+    "launcher_shell_syntax_passed": true,
+    "manifest_json_parse_passed": true,
+    "workload_calls_during_build_and_tests": 0,
+    "ssh_calls_by_subagent": 0,
+    "mysql_touched": false
+  }
+}

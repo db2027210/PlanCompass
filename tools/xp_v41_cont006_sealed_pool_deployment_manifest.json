@@ -1,0 +1,51 @@
+{
+  "artifacts": {
+    "tests/test_xp_v41_excluded_ids_sealed_pool.py": "613bd9b8309d0adf197d1557fa01e3016398a13e1c899a4ef382b0f621c7858f",
+    "tools/launch_xp_v41_cont006_sealed_pool_target10.sh": "96c5fa0ae43f9997c45e2326e33e411c937a58bf6b4b7a8837cab3d080ce06a1",
+    "tools/preflight_xp_v41_cont006_sealed_pool.py": "33a4f8dda9c6d2f6156ee7d52a0cee86a7a383591180f1bec4942b9c17c23d3f",
+    "tools/recover_xp_v41_cont006_sealed_pool_zero_call.py": "c0541d287c5ac3e30b4a4883d4c2c0066147131630b8c393452fa898e7f464ce",
+    "tools/resume_xp_fresh0_fixed_contract_target10_v41.py": "3fdd3e6f7fdab03e574abd4c431c8bb4fac5174f72c0a864a4d1c725730e59f2",
+    "tools/xp_v41_excluded_ids_sealed_pool_resume_patch.py": "6e52a3d083b393a7ba14268d9acb8bd61c5d57528cf1a42fb8f67f7670042627"
+  },
+  "authority": {
+    "bundle_adapter_sha256": "7db2d54adba6aad1191970dda51a154937a761caff8c9ce152608985e54e510a",
+    "bundle_continuation_sha256": "6b7b7d3364c290af2ec65b672ac61c96b1308a8d8f78d0b6b9668ce3e58c0604",
+    "formal_state_sha256": "bd8034585cbfe0740a1960889edf2120bee0eb53734d939c2ebc1dccac6439d1",
+    "sealed_cont006_pool_bytes": 115373246,
+    "sealed_cont006_pool_sha256": "aa326f82f2f5727fa5288a1484be6eaa3b9fd2be2b373b94f710e5a4ed747751",
+    "source_state_sha256": "163200e9dcf0a95c27cf2e73aed066229980c85d574c7bc9b2367c1bdf075e75",
+    "subset_success": "63/63"
+  },
+  "contract": "xp_v41_excluded_ids_type_safe_cont006_sealed_pool_resume_deployment_v1",
+  "cpu_contract": {
+    "mysql_reserved_excluded": "184-199,440-455",
+    "xp_cpuset": "32-51,288-307"
+  },
+  "formal_progress": {
+    "accepted_target": 10,
+    "inherited_accepted": 0,
+    "new_accepted_in_cont006": 0,
+    "total_countable_accepted": 0
+  },
+  "known_post_fix_gate": {
+    "corrected_offline_build_executed": true,
+    "novel_non_corner_fingerprints": 14,
+    "resource_safe_probe_candidates": 9,
+    "safe_transition_backtracking_candidates": 1,
+    "selected_top5": 0,
+    "status": "blocked_missing_input",
+    "workload_allowed": false
+  },
+  "repair": {
+    "accepted_incumbent_range_gradient_mutations": 0,
+    "excluded_output_contract": "list[str]",
+    "explain_calls_repeated": 0,
+    "manual_candidate_injection": false,
+    "pool_reuse": "exact_sha_only",
+    "trust_filter_candidate_groups": [
+      "active",
+      "corners"
+    ],
+    "workload_calls_added_by_recovery": 0
+  }
+}

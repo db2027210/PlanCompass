@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "blocked_algorithm_mismatch",
+  "detected_at": "2026-07-23T02:32:37+08:00",
+  "lane": "job_node02",
+  "attempt": "attempt_4_formal_dbqps_v1_retry3",
+  "action": "do_not_start_rank2",
+  "reason": "The deployed gradient_descent_optimizer is a two-level Cartesian grid optimizer, not the required experience-table T-SGD algorithm.",
+  "algorithm_evidence": {
+    "path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/workspace_outer_attempt4_formal_dbqps_v1_retry3/gradient_descent_optimizer.py",
+    "sha256": "60f2f76def411b48caba6c395f81025048683f6a3d90db337dc6bbff9dde97e4",
+    "indicators": [
+      "module docstring says each non-empty subset uses a two-level Cartesian grid",
+      "GradientDescentParameterOptimizer.GRID_VALUES_PER_PARAM equals 2",
+      "candidate enumeration uses itertools.product over the parameter value axes",
+      "sealed algorithm label is all_nonempty_subsets_two_half_interval_midpoint_cartesian_grid_v1"
+    ]
+  },
+  "dry_preflight": {
+    "formal_budget_consumed": false,
+    "rank2_claimed": false,
+    "p43_exists": false,
+    "exit_before_replay_reason": "formal stability_gate_contract configured SHA mismatch",
+    "log_path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_4_formal_dbqps_v1_retry3/launcher_p42_exact_resume_dry.log",
+    "log_sha256": "9f6773ca705174e68e555c532ae2ad90452fe1f780236b5093fefb9abb3e3355"
+  },
+  "sealed_state": {
+    "global_replay_ordinal": 42,
+    "formal_search_replay_count": 11,
+    "accepted_shrink_count": 1,
+    "formal_startup_baseline_count": 1,
+    "last_formal_point": 42,
+    "next_exact_representative_rank": 2,
+    "pause_marker_path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_4_formal_dbqps_v1_retry3/pause_before_next_formal_claim.json",
+    "pause_marker_sha256": "9dfb744acbbba4cb905d110fe9b6851be22e1a6921f6b017045dfb0ae2853016",
+    "p42_partial_checkpoint_path": "/mnt/nvme2n1/anonymous/resource_adaptive/pg5_common_outer_bgallowed_20260722_v1/job_node02/history/job/outer/attempt_4_formal_dbqps_v1_retry3/partial_resume_checkpoint_after_p42_exact_plan_v2.json",
+    "p42_partial_checkpoint_sha256": "51a9c22a95bfaefa64060221e766f2316e61eb61d2a68f083bc2583270956c5b"
+  },
+  "preserve": [
+    "R0 and immutable startup baseline evidence",
+    "formal points p31 through p42",
+    "accepted p40 checkpoint and evidence",
+    "p42 exact rank-1 evidence",
+    "plan-fingerprint clustering and p42 partial checkpoint",
+    "all optimizer histories and counters"
+  ],
+  "resume_condition": "A code and contract audit must confirm the required experience-table T-SGD implementation before the pause marker may be released."
+}

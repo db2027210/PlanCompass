@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_18",
+  "source_sample_rows": 480,
+  "source_elapsed_seconds": 479.070806841,
+  "source_absolute_mean": {
+    "cpu_cores": 0.7275521733660153,
+    "memory_MiB": 400.05719924321505,
+    "io_MiB_per_second": 6.341178746791685
+  },
+  "workload_diagnosis": {
+    "frozen_query_ids_and_weights_unchanged": true,
+    "weighted_chooser_uses_per_thread_derived_seed": true,
+    "all_client_ap10_occupancy_is_service_time_bias_not_shared_rng": true,
+    "fixed_query_sequence_rejected": "would replace the frozen weighted stochastic chooser"
+  },
+  "selected_envelope": {
+    "cpu_quota_cores": 3.0,
+    "memory_MiB": 448,
+    "io_read_MiB_per_second": 32,
+    "io_write_MiB_per_second": 32
+  },
+  "prediction": {
+    "memory_utilization_if_absolute_working_set_is_preserved": 0.8930,
+    "memory_target_band": [0.85, 0.95],
+    "io_read_cap_multiplier": 4.0,
+    "four_client_ap10_phase_seconds_from_observed_150_seconds": 37.5,
+    "phase_smearing_goal": "reduce AP10 occupancy phase toward one 30-second window instead of five windows",
+    "cpu_quota_reason": "provide headroom for CPU demand released by fourfold read bandwidth while targeting 30-50 percent"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "profile_id": "pg5_job_memory_2980mib_quality_v1",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "workload": "job",
+  "database": "imdb_job",
+  "derivation": {
+    "source_point_id": "experience_table_outer_0003",
+    "source_memory_working_set_bytes": 2733661910.52514,
+    "target_memory_utilization": 0.875,
+    "unrounded_memory_cap_bytes": 3124185040.6001596,
+    "rounding": "nearest practical whole MiB upward",
+    "selected_memory_cap_mib": 2980,
+    "selected_memory_cap_bytes": 3124756480,
+    "predicted_memory_utilization_if_demand_constant": 0.8748399844986128
+  },
+  "frozen_resources": {
+    "cpu_quota_cores": 3.0,
+    "memory_bytes": 3124756480,
+    "memory_swap_bytes": 3124756480,
+    "io_read_bps": 134217728,
+    "io_write_bps": 134217728,
+    "job_terminals": 2,
+    "warmup_seconds": 60,
+    "minimum_stable_measurement_seconds": 180,
+    "initial_observation_probe_seconds": 300,
+    "hard_maximum_measurement_seconds": 600
+  },
+  "required_profile_gate_pct": {
+    "memory": [
+      85.0,
+      95.0
+    ],
+    "cpu": [
+      30.0,
+      50.0
+    ],
+    "io": [
+      30.0,
+      50.0
+    ]
+  },
+  "confirmation": {
+    "point_id": "experience_table_outer_0004",
+    "point_result_sha256": "63fceee4ff521519d78ed0e7b9cad320b161106ec80c890ed6d8af8d0cf40b19",
+    "effective_measurement_seconds": 180,
+    "stable": true,
+    "correctness_passed": true,
+    "error_rate": 0.0,
+    "oom_killed": false,
+    "database_restart_count": 0,
+    "qps": 0.8166666666666667,
+    "resource_mean_utilization": {
+      "cpu": 0.40549334645951146,
+      "memory": 0.859347633841532,
+      "io": 0.372321131322592
+    },
+    "profile_gate_passed": true
+  },
+  "created_at_utc": "2026-07-22T11:40:27Z"
+}

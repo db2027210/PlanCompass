@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "table_id": "pg5_hybench_ap_memory_experience_table_T_all7_v2",
+  "version": "2026-07-22.2",
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "workload": "hybench_ap",
+  "target_bottleneck": "memory",
+  "semantics": "T[param][resource] is the signed effect of increasing the parameter on raw resource use",
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "canonicalization": "UTF-8 JSON of table only, sort_keys=true, separators=(',', ':')",
+  "table_sha256": "a2fca76dd0ad04758ceebebb29a675ec43f1e52c5e820efca4b25a5fbaeaf07b",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "table": {
+    "seq_page_cost": {"cpu": -0.10, "memory": 0.03, "io": -0.10},
+    "random_page_cost": {"cpu": 0.20, "memory": 0.05, "io": 0.20},
+    "cpu_tuple_cost": {"cpu": 0.20, "memory": -0.05, "io": -0.15},
+    "cpu_index_tuple_cost": {"cpu": 0.05, "memory": -0.02, "io": 0.00},
+    "cpu_operator_cost": {"cpu": 0.20, "memory": -0.05, "io": -0.15},
+    "parallel_setup_cost": {"cpu": -0.10, "memory": 0.02, "io": 0.00},
+    "parallel_tuple_cost": {"cpu": -0.20, "memory": 0.05, "io": -0.10}
+  },
+  "source": {
+    "provenance_document": "result/bonect/experience_table.md",
+    "provenance_document_sha256": "c54e04cb4c3ce55dae4d40af6c4c92e2a37effec61de1eec7d595726dc83a3a9",
+    "projection": "exact seven-row PostgreSQL cost-parameter projection; parallel_setup_cost restored so all 127 nonempty subsets are enumerated"
+  },
+  "direction_contract": {
+    "formula": "direction[p] = sum_r utility_slope[r] * T[p][r]",
+    "direction_source": "this_experience_table_T_only",
+    "finite_difference_enabled": false,
+    "random_direction_enabled": false,
+    "surrogate_gradient_direction_enabled": false,
+    "missing_table_or_all_zero_action": "fail_closed_before_subset_enumeration"
+  },
+  "subset_contract": {
+    "active_parameter_count": 7,
+    "all_nonempty_subset_count": 127,
+    "enumerate_each_subset_exactly_once": true
+  }
+}

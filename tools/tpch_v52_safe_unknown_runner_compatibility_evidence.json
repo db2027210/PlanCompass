@@ -1,0 +1,54 @@
+{
+  "schema_version": "tpch_v52_safe_unknown_runner_compatibility_evidence_v1",
+  "execution_scope": "local_offline_only",
+  "ssh_calls": 0,
+  "workload_calls": 0,
+  "result": "159 passed",
+  "root_cause": {
+    "existing_selection_contract": "exact_structural_plan_regime_trusted3_stability_safe_unknown_maximin_probe2_diagnostic_v1",
+    "sealed_v45_runner_contract_recognized": false,
+    "v50_crash_safe_pair_reuse_contract_recognized": false,
+    "failure_boundary": "cycle_006_preworkload_selection_contract_mismatch",
+    "formal_state_mutated": false,
+    "accepted_counter_mutated": false,
+    "physical_calls": 0
+  },
+  "compatibility": {
+    "translated_contracts": [
+      "exact_structural_plan_regime_trusted3_stability_safe_unknown_maximin_probe2_diagnostic_v1"
+    ],
+    "translation_target": "sealed_v45_stability_acquisition_contract",
+    "on_disk_selection_mutated": false,
+    "trusted_slots": 3,
+    "safe_unknown_probe_slots": 2,
+    "state_neutral_probe_slots": 2,
+    "unknown_regimes_trusted_allowed": false,
+    "three_level_fingerprint_validation": true,
+    "predicted_resource_validation": true,
+    "trusted_evidence_validation": true,
+    "safe_unknown_maximin_audit_validation": true
+  },
+  "recovery": {
+    "cycle": 6,
+    "preworkload_only": true,
+    "probe_pair_sha_required": true,
+    "probe_pair_bytes_preserved": true,
+    "selection_rebuilt": false,
+    "explain_rebuilt": false,
+    "failed_empty_output_quarantined": true,
+    "failure_log_quarantined": true,
+    "resume_is_separate_explicit_action": true
+  },
+  "frozen_authority": {
+    "controller_state_sha256": "d1431ae426c85f2447012b2b1bdfab83b56a4f1382a07feb5b9cba1b8303c8e2",
+    "formal_state_sha256": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "accepted_counter_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "accepted_count": 1,
+    "accepted_target": 10
+  },
+  "regression": {
+    "result": "159 passed",
+    "v52_tests": 11,
+    "test_sha256": "0297770cdbca5e1e6fad9458d3c295cbf2e4bad5b5fbdd9502c19d48fe03e1ce"
+  }
+}

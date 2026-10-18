@@ -1,0 +1,54 @@
+{
+  "schema_version": "tpch_v50_trusted_evidence_acquisition_manifest_v1",
+  "scenario": "TPC-H",
+  "deployment_status": "offline_ready_not_deployed",
+  "live_stage_modified": false,
+  "ssh_calls": 0,
+  "workload_calls_added": 0,
+  "files": {
+    "tpch_v50_trusted_evidence_acquisition.py": "7deb02401183c6934d3c09fcfad76c7f7e73ab5d226e5cf9d0f772c3e19ef6d6",
+    "build_tpch_autonomous_successor_top5_v11_evidence_acquisition.py": "ff495fda6a4c887b2dd9ebf7761c131e76da1d14cdaef87831b508215437e27f",
+    "launch_tpch_v50_trusted_evidence_acquisition.sh": "f153e7fbe8668ef0c5dc0a03854a97436ef743368117502ac3c14417266f64b9",
+    "deploy_tpch_v50_trusted_evidence_acquisition.sh": "f52d17da41b78cc00cea766a99879ccb20365144884216226d750eeca7aeaf67",
+    "validate_tpch_v50_liveness_fix_boundary.py": "cf957dca63f22edc7b69431c7a749b5e55286852fee2e5d50e80ddec7f1e3d31",
+    "tpch_v50_liveness_fix_regression_evidence.json": "72bfacee1f7625d35fc7bedaaad58245b3de08eac5aa08afb02d92f5c310b823",
+    "apply_tpch_v50_liveness_fix_at_boundary.sh": "30257eb6d0c52bf60634598f100c1241196add4a7081f8a94b2e0e7bdade5314"
+  },
+  "unchanged_remote_dependencies": {
+    "/tmp/tpch_v49_preparing_cycle_continuation.py": "40231d64d94c98af5d98e28b9e27c82933aa46f9a36d4a4113d2cb7da747c405",
+    "/tmp/tpch_v48_prethird_feasibility_binding.py": "5bf7ff767338860f3e86576c9ef7e5db5b4ce60d111397e89f15776311397458",
+    "/tmp/tpch_v41_preformal_handoff.py": "bb81fde56677fc2c19b1399e708005e3b8e950169643c5fe777da94e47b36a41",
+    "/tmp/tpch_fresh10_target10_loop_v32_v8_gate_binding.py": "a7174eb59bd467f51a1e55cff4b98f89ed27999cc4ca329ed291cdea1b1f9a69",
+    "/tmp/tpch_exact_regime_neighbor_expand_v6_checkpointed.py": "8e16189de0f7677792dcd6c8b5e1ab3fc8015e5242497efa385957b89ae70b9c",
+    "/tmp/run_tpch_round29_diagnostic_exact_plan_regime_batch_v45_none_return.py": "af90bc7f2e145de14d83449513016cd143a756f6cd7da1a5c015706ea60c55a2"
+  },
+  "trigger": {
+    "failure": "eligible=23 trusted=1 probes=22 stable_trusted=0 credible_unknown_probes=2",
+    "boundary": "v49 preparing_cycle before diagnostic workload",
+    "new_workload_calls_before_activation": 0
+  },
+  "algorithm": {
+    "normal_gate": "stable trusted3 plus credible probe2 unchanged",
+    "acquisition_gate": "credible probe2 plus three deterministic evidence slots",
+    "acquisition_roles": ["probe", "probe", "probe", "probe", "probe"],
+    "partial_exact_regime_evidence_preferred": true,
+    "one_observation_regime_priority": true,
+    "irrecoverably_unstable_regime_excluded_from_evidence_slots": true,
+    "irrecoverably_unstable_regime_allowed_only_as_uncertain_probe": true,
+    "liveness_path": "probe5_clean5_then_exact_point_retest_then_two_stable_observations_then_trusted3",
+    "unknown_regime_promoted_to_trusted_in_acquisition": false,
+    "credible_probe_score_threshold_relaxed": false,
+    "manual_candidate_injection": false,
+    "deployment_boundary": "SHA-bound inactive preparing_cycle with either retained v47 absorption or cycle5 exact-repeat deterministic-negative-gate evidence and zero workload artifacts",
+    "deployment_starts_workload": false,
+    "per_diagnostic_physical_cap": 5,
+    "clean5_then_automatic_reexploration": true,
+    "accepted_incumbent_range_gradient_mutation": false,
+    "qps_role": "outer_audit_only_not_inner_score"
+  },
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/pytest -q tests/test_tpch_v44_deterministic_reexploration.py tests/test_tpch_v45_clean5_resume.py tests/test_tpch_v46_postclean5_gate_binding.py tests/test_tpch_v46_real_module_integration.py tests/test_tpch_v47_real_module_integration.py tests/test_tpch_v47_remote_reseal_fixture.py tests/test_tpch_v47_resealed_realized_evidence.py tests/test_tpch_v48_prethird_feasibility_binding.py tests/test_tpch_v48_real_module_integration.py tests/test_tpch_v49_preparing_cycle_continuation.py tests/test_tpch_v50_trusted_evidence_acquisition.py tests/test_tpch_v42_checkpointed_expansion.py",
+    "result": "133 passed (the original liveness set was 130 passed; locked-boundary and actual cycle5 negative-gate tests added)",
+    "legacy_v10_sha_preserved": "da43bfb66ee99f60702685d4b39018ab1ea9d365d3210009c85b6afb6612fc9b"
+  }
+}

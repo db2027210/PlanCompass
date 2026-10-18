@@ -1,0 +1,131 @@
+{
+  "algorithm": "double_loop_coordinate_grid_resource_estimation",
+  "experiments": [
+    {
+      "benchmark": "hybench_ap",
+      "bottleneck": "memory",
+      "exp_id": "A13",
+      "runs": 1
+    },
+    {
+      "benchmark": "job",
+      "bottleneck": "memory",
+      "exp_id": "A14",
+      "runs": 1
+    },
+    {
+      "benchmark": "tpch",
+      "bottleneck": "memory",
+      "exp_id": "A15",
+      "runs": 1
+    },
+    {
+      "benchmark": "hybench_tp",
+      "bottleneck": "cpu",
+      "exp_id": "A16",
+      "runs": 1
+    },
+    {
+      "benchmark": "tpcc",
+      "bottleneck": "cpu",
+      "exp_id": "A17",
+      "runs": 1
+    },
+    {
+      "benchmark": "hybench_xp",
+      "bottleneck": "io",
+      "exp_id": "A18",
+      "runs": 1
+    },
+    {
+      "benchmark": "hybench_ap",
+      "bottleneck": "none",
+      "exp_id": "E13",
+      "runs": 1
+    },
+    {
+      "benchmark": "job",
+      "bottleneck": "none",
+      "exp_id": "E14",
+      "runs": 1
+    },
+    {
+      "benchmark": "tpch",
+      "bottleneck": "none",
+      "exp_id": "E15",
+      "runs": 1
+    },
+    {
+      "benchmark": "hybench_tp",
+      "bottleneck": "none",
+      "exp_id": "E16",
+      "runs": 1
+    },
+    {
+      "benchmark": "tpcc",
+      "bottleneck": "none",
+      "exp_id": "E17",
+      "runs": 1
+    },
+    {
+      "benchmark": "hybench_xp",
+      "bottleneck": "none",
+      "exp_id": "E18",
+      "runs": 1
+    },
+    {
+      "anchor_exp_id": "A16",
+      "benchmark": "hybench_tp",
+      "bottleneck": "cpu",
+      "exp_id": "B4",
+      "repeat_ids": [
+        2,
+        3
+      ],
+      "runs": 2,
+      "total_runs_including_anchor": 3
+    },
+    {
+      "anchor_exp_id": "A13",
+      "benchmark": "hybench_ap",
+      "bottleneck": "memory",
+      "exp_id": "B5",
+      "repeat_ids": [
+        2,
+        3
+      ],
+      "runs": 2,
+      "total_runs_including_anchor": 3
+    },
+    {
+      "anchor_exp_id": "A18",
+      "benchmark": "hybench_xp",
+      "bottleneck": "io",
+      "exp_id": "B6",
+      "repeat_ids": [
+        2,
+        3
+      ],
+      "runs": 2,
+      "total_runs_including_anchor": 3
+    }
+  ],
+  "final_goal": {
+    "bottleneck_max_target_drop_ratio": 0.1,
+    "bottleneck_min_qps_gain_ratio": 0.15,
+    "bottleneck_min_target_drop_ratio": 0.05,
+    "none_min_qps_gain_ratio": 0.15,
+    "none_requires_any_resource_gain": true
+  },
+  "run_count_semantics": {
+    "b_group_new_repeat_ids": [
+      2,
+      3
+    ],
+    "b_group_total_runs_include_anchor_a_run": true,
+    "total_formal_runs": 18
+  },
+  "schema_version": 2,
+  "score_formula": "sigmoid_linear_sweet_band_weighted_mean_v2",
+  "selection": "estimated_resource_score_topk_then_real_resource_score_best"
+}

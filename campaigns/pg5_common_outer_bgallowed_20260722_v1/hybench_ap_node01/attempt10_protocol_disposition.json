@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_10",
+  "status": "invalid_metric_clipping_semantics",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "reason": "the private runner passed clipped [0,1] CPU, memory, and I/O utilization values to the online stability controller and final summarizer; the campaign requires original finite non-negative values with values above 1 preserved",
+  "termination": {
+    "runner_pid": 93552,
+    "runner_process_group": 93552,
+    "background_sampler_pid": 93553,
+    "measurement_started_at_local": "2026-07-22T17:33:53+08:00",
+    "resource_sample_count": 191,
+    "online_controller_record_count": 2,
+    "first_online_decision_elapsed_seconds": 180.01489577400207,
+    "six_window_decision_elapsed_seconds": 181.06521462999808,
+    "last_decision": "continue",
+    "stable": false,
+    "accepted": false,
+    "container_healthy_before_stop": true,
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "owned_process_group_terminated": true,
+    "owned_container_stopped_and_removed": true,
+    "background_sampler_exited_naturally_after_watched_runner": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "e2b37ea75922a74e4376545b3b0fc94f9685ef48a4158e552daedbab959f71a9",
+    "baseline_invocation_attempt_10.json": "2c355dfd750d6aeebe8f635755d3a73d1d4e9d2244711408e578e23fdd0895e7",
+    "host_background_attempt_10.jsonl": "056286d9d92cfd5925f284190d602ec058f3f9196c7bd10d417b730ccab27957",
+    "measurement_resource_samples.jsonl": "935bc58788a5c71d1ee544cf9172f95902a53a4b9970b1dd3cf87161edd1c142",
+    "measurement_online_stability_controller.jsonl": "e50737c5dc3dc75422d8e026804cefbe15caf6e197e9a835533d25076a17dbc8"
+  },
+  "next_attempt": "attempt_11"
+}

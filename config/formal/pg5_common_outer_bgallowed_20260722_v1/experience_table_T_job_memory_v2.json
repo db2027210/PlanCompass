@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "table_id": "pg5_job_memory_experience_table_T_v2",
+  "version": "2026-07-22.2",
+  "benchmark": "job",
+  "target_resource": "memory",
+  "scope": "PostgreSQL planner cost parameters for the frozen JOB workload and resource profile",
+  "direction_semantics": "T[param] records signed effects of increasing the parameter for cpu/memory/io/formal_qps plus evidence confidence; confidence below the freeze threshold is not used for online reranking",
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "low_confidence_freeze_threshold": 0.5,
+  "source": {
+    "prior_artifact": "experience_table_T_job_memory_v1.json",
+    "evidence": "JOB quality probes point_0006..0013 and attempt_1 formal replays point_0016..0025",
+    "derivation": "Block-centered ridge sign audit plus single-axis/frontier review; low-confidence and non-monotone rows are frozen for online reranking."
+  },
+  "canonicalization": "UTF-8 JSON of table only, sort_keys=true, separators=(',', ':')",
+  "table_sha256": "c21f73cbce988e0d38e72030e850f5daabf44a142759997a8b6fdf6f00b3786d",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "table": {
+    "seq_page_cost": {"cpu": 0.0, "memory": 0.0, "io": 0.0, "qps": 0.0, "confidence": 0.2, "evidence_count": 18},
+    "random_page_cost": {"cpu": -0.1, "memory": 0.02, "io": 0.0, "qps": -0.01, "confidence": 0.45, "evidence_count": 18},
+    "cpu_tuple_cost": {"cpu": 0.1, "memory": 0.02, "io": 0.2, "qps": 0.02, "confidence": 0.65, "evidence_count": 18},
+    "cpu_index_tuple_cost": {"cpu": -0.15, "memory": 0.0, "io": -0.1, "qps": -0.02, "confidence": 0.55, "evidence_count": 18},
+    "cpu_operator_cost": {"cpu": 0.2, "memory": 0.02, "io": 0.2, "qps": 0.02, "confidence": 0.65, "evidence_count": 18},
+    "parallel_setup_cost": {"cpu": 0.2, "memory": -0.05, "io": 0.1, "qps": 0.05, "confidence": 0.75, "evidence_count": 18},
+    "parallel_tuple_cost": {"cpu": -0.15, "memory": -0.03, "io": -0.2, "qps": -0.03, "confidence": 0.45, "evidence_count": 18}
+  }
+}

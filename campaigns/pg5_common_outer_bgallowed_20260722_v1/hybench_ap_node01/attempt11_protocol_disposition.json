@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_11",
+  "status": "calibration_r0_resource_band_fail",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "reason": "at the first post-180-second resource snapshot, raw CPU utilization was below the inclusive 30-50 percent non-target band and raw memory utilization was below the strict greater-than-80-percent target gate",
+  "decision_snapshot": {
+    "measurement_elapsed_seconds": 203.022203767,
+    "derived_sample_count": 203,
+    "coverage": 0.9998906337997124,
+    "mean_utilization": {
+      "cpu": 0.09501380370174473,
+      "memory": 0.7779186229987685,
+      "io_sum_total": 0.443353704110893
+    },
+    "mean_db_qps": 0.019701927331574574,
+    "resource_gate": {
+      "cpu_30_to_50_inclusive": false,
+      "memory_strictly_greater_than_80": false,
+      "io_30_to_50_inclusive": true,
+      "passed": false
+    }
+  },
+  "last_complete_six_window_block": {
+    "end_elapsed_seconds": 240,
+    "coverage": 1.0,
+    "cross_window_cv": {
+      "cpu": 1.2119439636850668,
+      "memory": 0.1899629620171248,
+      "io": 0.12213893005301761,
+      "qps": 2.23606797749979
+    },
+    "passed": false
+  },
+  "termination": {
+    "runner_pid": 97505,
+    "runner_process_group": 97505,
+    "background_sampler_pid": 97506,
+    "resource_sample_rows_at_seal": 264,
+    "query_records_at_seal": 4,
+    "online_controller_records_at_seal": 4,
+    "container_healthy_before_stop": true,
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "owned_process_group_terminated": true,
+    "owned_container_stopped_and_removed": true,
+    "background_sampler_exited_naturally_after_watched_runner": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "a6080febb421a2e0f1252878f6fb33899cbfb60e21adbe413fe652f55292f3a8",
+    "baseline_invocation_attempt_11.json": "fa18421fb13a24a03fdab1be0e049145a7ffea07a7b00568ac8967466b3dbeed",
+    "host_background_attempt_11.jsonl": "ded01b935a5d9a50434764cad1c871a42dc0e8c6375202ebba05222f4cdb64d7",
+    "measurement_queries.jsonl": "17a90455d8428ba84f0dc4c6be1d7544f140df5aa6e042996bd835117698a869",
+    "measurement_resource_samples.jsonl": "bcda9a2c4ede03342a79efdb2b955c92ab9ec86a4085c08b4577571246bfb4a1",
+    "measurement_online_stability_controller.jsonl": "7f789ccf4353a2808a0b17ba66308ea494a1f3e1604ffb45b22515117641d14e"
+  },
+  "next_attempt": "attempt_12"
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "point_id": "experience_table_outer_0004",
+  "replay_ordinal": 4,
+  "status": "valid_new_cap_default_profile_confirmation",
+  "formal_baseline_eligible_for_original_run": true,
+  "reuse_as_restart_baseline": true,
+  "eligible_for_benchmark_scoped_training": true,
+  "independent_parameter_vector_sample": true,
+  "parameter_vector_group": "default_job_cost_parameters_new_cap_v1",
+  "measurement_completed": true,
+  "measurement_stability_passed": true,
+  "formal_resource_serialization_passed": true,
+  "profile_gate": {
+    "memory_required_pct": [
+      85.0,
+      95.0
+    ],
+    "cpu_required_pct": [
+      30.0,
+      50.0
+    ],
+    "io_required_pct": [
+      30.0,
+      50.0
+    ],
+    "memory_actual_pct": 85.9347633841532,
+    "cpu_actual_pct": 40.549334645951146,
+    "io_actual_pct": 37.2321131322592,
+    "passed": true
+  },
+  "resource_profile": {
+    "cpu_quota_cores": 3.0,
+    "memory_bytes": 3124756480,
+    "io_read_bps": 134217728,
+    "io_write_bps": 134217728,
+    "job_terminals": 2
+  },
+  "qps": 0.8166666666666667,
+  "plan_structural_fingerprint": "495dafd87de95927104dba169a525beb206806d8f8a9a477170496cb189b0701",
+  "point_result_sha256": "63fceee4ff521519d78ed0e7b9cad320b161106ec80c890ed6d8af8d0cf40b19",
+  "disposition": "authoritative default baseline group for JOB quality calibration and all subsequent new-cap points",
+  "marked_at_utc": "2026-07-22T11:40:27Z"
+}

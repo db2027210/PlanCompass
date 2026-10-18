@@ -1,0 +1,93 @@
+{
+  "contract": "xp_v45_automatic_reexploration_deployment_v1",
+  "created_at": "2026-08-03T19:21:06+08:00",
+  "deployment_performed": false,
+  "workload_started_by_subagent": false,
+  "ssh_used": false,
+  "mysql_touched": false,
+  "fresh_formal_accepted_count": 0,
+  "accepted_target": 10,
+  "failure_reproduced": {
+    "state_status": "blocked_preworkload",
+    "last_error": "KeyError: 'trusted_spearman_positive'",
+    "state_sha256": "e39dfc261c799c3b36dc40b8d5c9979401db8d900f9091c49fbc22a50f173c7d",
+    "v44_reroute_created": true,
+    "v44_reroute_sha256": "134a6c6cf38f80680576ab239c54b3c51f07650aef7dfe6b6dd435d87da3a04a",
+    "physical_workload_calls_added": 0
+  },
+  "fix": {
+    "schema_source_key": "trusted_only_spearman_positive",
+    "legacy_consumer_key": "trusted_spearman_positive",
+    "mapping_requires_identical_boolean": true,
+    "gate_passed_changed": false,
+    "actual_best_predicted_rank": 4,
+    "actual_best_top3_gate_bypassed": false,
+    "threshold_relaxation": false,
+    "manual_candidate_injection": false,
+    "probe_promotion": false
+  },
+  "zero_call_recovery": {
+    "source_state_sha256": "e39dfc261c799c3b36dc40b8d5c9979401db8d900f9091c49fbc22a50f173c7d",
+    "expected_recovered_state_sha256": "6682932359b7e5c480d7de14f72cf9b99f1f67d61fbd81cefa729da952de6086",
+    "status_before": "blocked_preworkload",
+    "status_after": "automatic_reexploration",
+    "timestamped_backup_required": true,
+    "formal_state_mutation": false,
+    "accepted_delta": 0,
+    "physical_workload_calls_added": 0,
+    "explain_calls_added": 0
+  },
+  "artifacts": {
+    "controller": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/resume_xp_fresh0_fixed_contract_target10_v45.py",
+      "sha256": "c5759e49118e4e1be8e7f86700f771f3372dcd546760f58b5e13319bd23a5fe9"
+    },
+    "compatibility_patch": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/xp_v45_recovery_compat_patch.py",
+      "sha256": "d37b3b7180a125ee4b5d4cf3014afc9273741934955cb5cddb18ec88f4e1561c"
+    },
+    "recovery": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/recover_xp_v45_blocked_preworkload_zero_call.py",
+      "sha256": "993f27a1ee7b16c390e0dfba514d7b87ade95a2f8a8f71eb2e6a36ad443d7d9c"
+    },
+    "ready_preflight": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/preflight_xp_v45_automatic_reexploration_ready.py",
+      "sha256": "2bf6cab6368028bb5d69aeac0f9df475d28fe71442f952f7a73c8d38d35a3bd7"
+    },
+    "real_explain_validator": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/validate_xp_v45_real_explain_selection.py",
+      "sha256": "f688d3d9e446eaead337f339753279fa62d382dfd7c6a924415e80d6299cd26f"
+    },
+    "tests": {
+      "path": "/home/anonymous/program/resource_adaptive/tests/test_xp_v45_real_reexploration_resume.py",
+      "sha256": "a1b9ef78a0ec6e1afd91fd652bf7ccae82305450dbdc26aabd32c78dc7f591a3"
+    },
+    "launcher": {
+      "path": "/home/anonymous/program/resource_adaptive/tools/launch_xp_v45_automatic_reexploration_target10.sh",
+      "sha256": "4f5599237390317d62cda349ab2eaeb11b1deef14e0584c5b2ec300c10c3e0ee"
+    }
+  },
+  "authority_artifacts": {
+    "selection_sha256": "bf0d54962de658b97d80fd0a5f0373c6180902938d17efef74d1f4372ca086ca",
+    "replay_sha256": "e9931aac7742e76a810f25607ca1bedea36394ae1c80745b43dad0cf1364defc",
+    "v44_reroute_sha256": "134a6c6cf38f80680576ab239c54b3c51f07650aef7dfe6b6dd435d87da3a04a"
+  },
+  "verification": {
+    "python_compile": "passed",
+    "launcher_bash_syntax": "passed",
+    "launcher_pre_recovery_preflight": "passed",
+    "offline_tests": "2 passed, real EXPLAIN integration delegated to main agent",
+    "real_explain_hard_timeout_seconds": 600,
+    "real_explain_must_produce": [
+      "generated_selection.json",
+      "validation_result.json",
+      "selection_sha256",
+      "five unique new noncorner fingerprint ids"
+    ]
+  },
+  "main_agent_run_order": [
+    "timeout 600 /home/anonymous/miniconda3/envs/py310/bin/python3 /home/anonymous/program/resource_adaptive/tools/validate_xp_v45_real_explain_selection.py --output-root /tmp/xp_v45_real_selection_validation_20260803",
+    "/home/anonymous/program/resource_adaptive/tools/launch_xp_v45_automatic_reexploration_target10.sh --recover-only",
+    "/home/anonymous/program/resource_adaptive/tools/launch_xp_v45_automatic_reexploration_target10.sh"
+  ]
+}

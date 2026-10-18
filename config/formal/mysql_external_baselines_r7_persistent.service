@@ -1,0 +1,16 @@
+[Unit]
+Description=MySQL GPTuner then AQETuner four-scene external baselines r7
+After=docker.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/anonymous/program/resource_adaptive
+ExecStart=/bin/bash /home/anonymous/program/resource_adaptive/shell/resume_mysql_external_baseline_r7.sh
+KillMode=control-group
+TimeoutStopSec=120
+Restart=no
+StandardOutput=append:/tmp/mysql_external_r7_persistent.log
+StandardError=append:/tmp/mysql_external_r7_persistent.log
+
+[Install]
+WantedBy=default.target

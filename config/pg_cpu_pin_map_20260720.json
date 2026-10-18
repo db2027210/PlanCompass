@@ -1,0 +1,347 @@
+{
+  "schema_version": 2,
+  "created_at": "2026-07-20",
+  "updated_at": "2026-07-20",
+  "note": "Covers three PG experiment systems: (1) double-loop SGD rootless VMs, (2) bruteforce/fullgrid Docker real validation, (3) grid search + plan resource estimator (EXPLAIN on same Docker endpoints; host client on control cores).",
+  "host": {
+    "model": "AMD EPYC 9755 128-Core Processor",
+    "logical_cpus": 512,
+    "physical_cores": 256,
+    "sockets": 2,
+    "numa": {
+      "node0_cpus": "0-127,256-383",
+      "node1_cpus": "128-255,384-511",
+      "smt_stride": 256
+    },
+    "policy": [
+      "Exclusive banks: physical N..N+k-1 plus SMT siblings N+256..",
+      "Never share cores with live MySQL workers (96-127,352-383).",
+      "Never share cores with libvirt postgre (154-217,410-473).",
+      "Bruteforce/fullgrid Docker and double-loop matrix slots use disjoint banks.",
+      "Plan resource estimator is host-side Python; EXPLAIN hits the same Docker PG endpoints."
+    ]
+  },
+  "systems": {
+    "double_loop_sgd_rootless": {
+      "description": "SGD / formal matrix on rootless QEMU pool + scheduler slots",
+      "execution": "rootless_qemu_pool",
+      "scheduler_config": "config/double_loop_rootless_vm_scheduler_20260720_v7.json"
+    },
+    "bruteforce_fullgrid": {
+      "description": "Cartesian brute-force / fullgrid real replay on Docker PG17 workers",
+      "execution": "docker postgres:17",
+      "layout": "config/bruteforce_runtime_layout_pg17.json",
+      "queues": "config/bruteforce_repeat_queues_pg17.json",
+      "framework": "/disk1/resource_adaptive/bruteforce_pg17_framework_20260717",
+      "runs_root": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718",
+      "max_active_tuners": 6,
+      "active_now": ["B2-R2_hybench_ap_memory", "B2-R3_hybench_ap_memory"]
+    },
+    "grid_plus_resource_estimation": {
+      "description": "Offline grid / binary-plan search with PlanResourceEstimator + optional real validation on Docker/VM workers",
+      "estimator": "plan_resource_estimator.PlanResourceEstimator (host process)",
+      "estimator_config_key": "metrics.plan_estimator",
+      "explain_workers_host_cpuset": "0-15,256-271",
+      "real_validation_backends": "same bruteforce/fullgrid Docker workers or double-loop VMs"
+    }
+  },
+  "zones": {
+    "host_control_and_estimator": {
+      "cpuset_cpus": "0-15,256-271",
+      "physical_cores": 16,
+      "purpose": "OS, agents, plan-estimator EXPLAIN clients, formal host clients"
+    },
+    "bruteforce_fullgrid_docker": {
+      "cpuset_cpus": "16-95,218-219,272-351,474-475",
+      "physical_cores": 82,
+      "purpose": "all ra_fullgrid_* / binary_plan io docker workers"
+    },
+    "matrix_slots": {
+      "cpuset_cpus": "220-255,476-511",
+      "physical_cores": 36,
+      "purpose": "double-loop rootless scheduler slots (max concurrent heavy profiles limited)",
+      "note": "36 physical cores: prefer cpu/memory/io profiles; at most two concurrent none:16 VMs"
+    },
+    "mysql_reserved": {
+      "cpuset_cpus": "96-127,352-383",
+      "physical_cores": 32,
+      "purpose": "live MySQL experiment workers (do not use)"
+    },
+    "rootless_lane_pool": {
+      "cpuset_cpus": "128-153,384-409",
+      "physical_cores": 26,
+      "purpose": "double-loop-sgd-rootless-{none,cpu,memory,io}"
+    },
+    "libvirt_postgre": {
+      "cpuset_cpus": "154-217,410-473",
+      "physical_cores": 64,
+      "purpose": "libvirt domain postgre"
+    }
+  },
+  "vms": [
+    {
+      "system": "double_loop_sgd_rootless",
+      "kind": "rootless_qemu_pool",
+      "name": "double-loop-sgd-rootless-none",
+      "lane": "none",
+      "vcpus": 1,
+      "memory_mib": 8192,
+      "ssh_port": 22304,
+      "postgres_port": 25704,
+      "cpuset_cpus": "128,384",
+      "status": "running"
+    },
+    {
+      "system": "double_loop_sgd_rootless",
+      "kind": "rootless_qemu_pool",
+      "name": "double-loop-sgd-rootless-cpu",
+      "lane": "cpu",
+      "vcpus": 2,
+      "memory_mib": 8192,
+      "ssh_port": 22301,
+      "postgres_port": 25701,
+      "cpuset_cpus": "129-130,385-386",
+      "status": "running"
+    },
+    {
+      "system": "double_loop_sgd_rootless",
+      "kind": "rootless_qemu_pool",
+      "name": "double-loop-sgd-rootless-memory",
+      "lane": "memory",
+      "vcpus": 10,
+      "memory_mib": 1312,
+      "ssh_port": 22302,
+      "postgres_port": 25702,
+      "cpuset_cpus": "131-140,387-396",
+      "status": "running"
+    },
+    {
+      "system": "double_loop_sgd_rootless",
+      "kind": "rootless_qemu_pool",
+      "name": "double-loop-sgd-rootless-io",
+      "lane": "io",
+      "vcpus": 13,
+      "memory_mib": 4096,
+      "ssh_port": 22303,
+      "postgres_port": 25703,
+      "cpuset_cpus": "141-153,397-409",
+      "status": "running"
+    },
+    {
+      "system": "shared_infra",
+      "kind": "libvirt",
+      "name": "postgre",
+      "vcpus": 64,
+      "memory_mib": 131072,
+      "cpuset_cpus": "154-217,410-473",
+      "status": "running"
+    }
+  ],
+  "scheduler_slots": [
+    {
+      "slot_id": "vm41",
+      "ssh_port": 22711,
+      "postgres_port": 25711,
+      "cpuset_cpus": "220-231,476-487",
+      "physical_cores": 12,
+      "max_vcpus": 12,
+      "client_cpuset_cpus": "0-2,256-258"
+    },
+    {
+      "slot_id": "vm42",
+      "ssh_port": 22712,
+      "postgres_port": 25712,
+      "cpuset_cpus": "232-243,488-499",
+      "physical_cores": 12,
+      "max_vcpus": 12,
+      "client_cpuset_cpus": "3-5,259-261"
+    },
+    {
+      "slot_id": "vm43",
+      "ssh_port": 22713,
+      "postgres_port": 25713,
+      "cpuset_cpus": "244-255,500-511",
+      "physical_cores": 12,
+      "max_vcpus": 12,
+      "client_cpuset_cpus": "6-8,262-264"
+    },
+    {
+      "slot_id": "vm44",
+      "ssh_port": 22714,
+      "postgres_port": 25714,
+      "cpuset_cpus": "220-231,476-487",
+      "physical_cores": 12,
+      "max_vcpus": 12,
+      "client_cpuset_cpus": "9-11,265-267",
+      "note": "Shares bank with vm41 — scheduler must not co-schedule both"
+    },
+    {
+      "slot_id": "vm45",
+      "ssh_port": 22715,
+      "postgres_port": 25715,
+      "cpuset_cpus": "232-243,488-499",
+      "physical_cores": 12,
+      "max_vcpus": 12,
+      "client_cpuset_cpus": "12-14,268-270",
+      "note": "Shares bank with vm42 — scheduler must not co-schedule both"
+    },
+    {
+      "slot_id": "vm46",
+      "ssh_port": 22716,
+      "postgres_port": 25716,
+      "cpuset_cpus": "244-255,500-511",
+      "physical_cores": 12,
+      "max_vcpus": 12,
+      "client_cpuset_cpus": "15,271,0-1,256-257",
+      "note": "Shares bank with vm43 — scheduler must not co-schedule both"
+    }
+  ],
+  "docker": [
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_hybench_mem_20260718_w1",
+      "role": "hybench_ap_memory_w1",
+      "port": 59511,
+      "cpuset_cpus": "16-23,272-279",
+      "memory": "2200m",
+      "used_by": ["B2-R1", "B2-R2"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_hybench_mem_20260718_w2",
+      "role": "hybench_ap_memory_w2",
+      "port": 59512,
+      "cpuset_cpus": "24-31,280-287",
+      "memory": "2200m",
+      "used_by": ["B2-R1", "B2-R3"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_hybench_cpu_20260718_w1",
+      "role": "hybench_tp_cpu_w1",
+      "port": 59513,
+      "cpuset_cpus": "32-35,288-291",
+      "memory": "12g",
+      "used_by": ["B1-R1", "B1-R2"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_hybench_cpu_20260718_w2",
+      "role": "hybench_tp_cpu_w2",
+      "port": 59514,
+      "cpuset_cpus": "36-39,292-295",
+      "memory": "12g",
+      "used_by": ["B1-R1", "B1-R3"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_hybench_none_20260718_w1",
+      "role": "hybench_none_w1",
+      "port": 59515,
+      "cpuset_cpus": "40-47,296-303",
+      "memory": "16g",
+      "used_by": ["E1-R1", "E4-R1"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_hybench_none_20260718_w2",
+      "role": "hybench_none_w2",
+      "port": 59516,
+      "cpuset_cpus": "48-55,304-311",
+      "memory": "16g",
+      "used_by": ["E1-R1", "E6-R1"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_generic_20260718_w1",
+      "role": "benchbase_generic_w1",
+      "port": 59521,
+      "cpuset_cpus": "56-63,312-319",
+      "memory": "16g",
+      "used_by": ["tpcc/tpch/job cpu|none"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_generic_20260718_w2",
+      "role": "benchbase_generic_w2",
+      "port": 59522,
+      "cpuset_cpus": "64-71,320-327",
+      "memory": "16g",
+      "used_by": ["A5-R1", "E2-R1", "E3-R1", "E5-R1"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_generic_mem_20260718_w1",
+      "role": "benchbase_memory_w1",
+      "port": 59523,
+      "cpuset_cpus": "72-79,328-335",
+      "memory": "2g",
+      "used_by": ["A2-R1", "A3-R1"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "ra_fullgrid_generic_mem_20260718_w2",
+      "role": "benchbase_memory_w2",
+      "port": 59524,
+      "cpuset_cpus": "80-87,336-343",
+      "memory": "2g",
+      "used_by": ["A2-R1", "A3-R1"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "binary_plan_tuning_hybenchxp_io_iso_20260716_w1",
+      "role": "hybench_xp_io_w1",
+      "port": 59441,
+      "cpuset_cpus": "88-92,344-348",
+      "used_by": ["io lane"]
+    },
+    {
+      "system": "bruteforce_fullgrid",
+      "name": "binary_plan_tuning_hybenchxp_io_iso_20260716_w2",
+      "role": "hybench_xp_io_w2",
+      "port": 59442,
+      "cpuset_cpus": "93-95,218-219,349-351,474-475",
+      "used_by": ["io lane"]
+    },
+    {
+      "system": "grid_plus_resource_estimation",
+      "name": "gptuner_cost7_hybench",
+      "role": "baseline_compare",
+      "cpuset_cpus": "40-47,296-303",
+      "note": "Shares bank with ra_fullgrid_hybench_none_w1; do not co-run"
+    },
+    {
+      "system": "grid_plus_resource_estimation",
+      "name": "gptuner_cost7_job",
+      "role": "baseline_compare",
+      "cpuset_cpus": "48-55,304-311",
+      "note": "Shares bank with ra_fullgrid_hybench_none_w2; do not co-run"
+    },
+    {
+      "system": "grid_plus_resource_estimation",
+      "name": "gptuner_cost7_benchbase",
+      "role": "baseline_compare",
+      "cpuset_cpus": "56-63,312-319",
+      "note": "Shares bank with ra_fullgrid_generic_w1; do not co-run"
+    },
+    {
+      "system": "grid_plus_resource_estimation",
+      "name": "bench-pg-row",
+      "role": "benchbase_pg",
+      "cpuset_cpus": "64-71,320-327",
+      "note": "Shares bank with ra_fullgrid_generic_w2; do not co-run"
+    },
+    {
+      "system": "grid_plus_resource_estimation",
+      "name": "hybenchxp_memory_v86_w1_20260715",
+      "role": "memory_probe",
+      "cpuset_cpus": "72-79,328-335",
+      "note": "Shares bank with ra_fullgrid_generic_mem_w1; do not co-run"
+    }
+  ],
+  "mysql_live_do_not_touch": [
+    {"name": "ra_mysql_gd_hybench_xp_auto6", "cpuset_cpus": "96-103,352-359"},
+    {"name": "ra-mysql-d1-job-w2", "cpuset_cpus": "104-111,360-367"},
+    {"name": "gptuner_mysql_benchbase", "cpuset_cpus": "112-127,368-383"}
+  ]
+}

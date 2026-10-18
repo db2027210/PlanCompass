@@ -1,0 +1,62 @@
+{
+  "schema_version": "tpch_v53_pinned_deployed_runner_compatibility_evidence_v1",
+  "execution_scope": "local_offline_only",
+  "ssh_calls": 0,
+  "workload_calls": 0,
+  "result": "171 passed",
+  "provenance": {
+    "original_v51_manifest_runner_sha256": "af90bc7f2e145de14d83449513016cd143a756f6cd7da1a5c015706ea60c55a2",
+    "deployed_v51_controller_chain_runner_sha256": "03be882bd4c78ebac37f18b1c3f689305050057d3b73a9964b3d3d1f7dc14c5f",
+    "authority_kind": "subsequent_v52_safe_unknown_diagnostic_wrapper_retaining_v51_controller",
+    "captured_authority": "tpch_v52_deployed_diagnostic_authority_03be.py",
+    "captured_payload_byte_identical": true,
+    "captured_staged_byte_identical": true,
+    "remote_capture_byte_identical": true,
+    "sealed_original_runner_sha256": "12b6ade0325541dbe1eadfd40af873fd3144fc1cbf97d9eca52f11a430731872"
+  },
+  "pinning": {
+    "accepted_base_runner_sha256": [
+      "03be882bd4c78ebac37f18b1c3f689305050057d3b73a9964b3d3d1f7dc14c5f"
+    ],
+    "af90_fallback_allowed": false,
+    "multi_sha_allowlist_used": false,
+    "base_runner_replaced": false,
+    "base_runner_mutated": false
+  },
+  "strict_outer_validation": {
+    "translated_contracts": [
+      "exact_structural_plan_regime_trusted3_stability_safe_unknown_maximin_probe2_diagnostic_v1"
+    ],
+    "on_disk_selection_mutated": false,
+    "trusted_slots": 3,
+    "safe_unknown_probe_slots": 2,
+    "unknown_regimes_trusted_allowed": false,
+    "three_level_fingerprint_validation": true,
+    "predicted_resource_validation": true,
+    "utilization_validation": true,
+    "trusted_evidence_validation": true,
+    "probe_state_neutral_validation": true,
+    "safe_unknown_maximin_audit_validation": true
+  },
+  "recovery": {
+    "cycle": 6,
+    "preworkload_only": true,
+    "probe_pair_sha_required": true,
+    "probe_pair_bytes_preserved": true,
+    "selection_rebuilt": false,
+    "explain_rebuilt": false,
+    "resume_is_separate_explicit_action": true
+  },
+  "frozen_authority": {
+    "controller_state_sha256": "d1431ae426c85f2447012b2b1bdfab83b56a4f1382a07feb5b9cba1b8303c8e2",
+    "formal_state_sha256": "fc262cead29c831ca04c09a7c4d1b2ebf1481636f82e692cd0dcf3b2d3539bc8",
+    "accepted_counter_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "accepted_count": 1,
+    "accepted_target": 10
+  },
+  "regression": {
+    "result": "171 passed",
+    "v53_tests": 12,
+    "test_sha256": "6b5faed04c8d6120a96f8a6a9841aa202bcbec5b53074fd37857e223d27084ee"
+  }
+}

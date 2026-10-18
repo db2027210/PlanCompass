@@ -1,0 +1,51 @@
+{
+  "contract": "xp_formal_accepted10_autonomous_v1",
+  "accepted_target": 10,
+  "physical_cap_per_batch": 5,
+  "cpu_affinity": "32-51,288-307",
+  "forbidden_mysql_cpu_affinity": [
+    "184-199",
+    "440-455"
+  ],
+  "qps_used_for_inner_scoring": false,
+  "manual_promotion_allowed": false,
+  "current_batch_root": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt39_fresh_from_accepted3_20260726/formal10_cont16b_accepted4_skip_initial_v1_20260729T2245",
+  "package_root": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt39_fresh_from_accepted3_20260726/xp_autonomous_controller_v1/staging",
+  "target_parent": "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/attempt39_fresh_from_accepted3_20260726",
+  "serial_lock_path": "/tmp/pg_xp_autonomous_59630.lock",
+  "baseline_restore_argv": [
+    "/disk1/pg5_common_outer_bgallowed_20260722_v1/lanes/hybench_xp_compute00_59630/experience_sgd/restore_with_physical_io_reapply_attempt25.sh"
+  ],
+  "baseline_restore_timeout_sec": 300,
+  "baseline_verify_argv": [
+    "psql",
+    "-h",
+    "127.0.0.1",
+    "-p",
+    "59630",
+    "-U",
+    "postgres",
+    "-d",
+    "postgres",
+    "-Atc",
+    "select name||'='||setting from pg_settings where name in ('seq_page_cost','random_page_cost','cpu_tuple_cost','cpu_index_tuple_cost','cpu_operator_cost','parallel_setup_cost','parallel_tuple_cost') order by name"
+  ],
+  "baseline_verify_timeout_sec": 30,
+  "baseline_expected": {
+    "cpu_index_tuple_cost": "0.005",
+    "cpu_operator_cost": "0.0025",
+    "cpu_tuple_cost": "0.01",
+    "parallel_setup_cost": "1000",
+    "parallel_tuple_cost": "0.1",
+    "random_page_cost": "4",
+    "seq_page_cost": "0.2"
+  },
+  "batch_timeout_sec": 21600,
+  "stability": {
+    "consecutive_batch_window": 2,
+    "minimum_trusted_count": 3,
+    "minimum_spearman": 0.0,
+    "maximum_resource_error_factor": 10.0,
+    "maximum_gradient_sign_reversal_rate": 0.5
+  }
+}

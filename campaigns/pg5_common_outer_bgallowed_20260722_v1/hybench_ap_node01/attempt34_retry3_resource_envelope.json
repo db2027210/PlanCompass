@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "target_attempt": "attempt_34_retry3",
+  "immutable_target_resource": "memory",
+  "target_resource_mutation_allowed": false,
+  "retry_of": "attempt_34_retry2",
+  "failed_attempts_preserved": ["attempt_34", "attempt_34_retry1", "attempt_34_retry2"],
+  "retry_reason": "correct effective first stability decision from 300 seconds to the common six-times-30-second 180-second gate",
+  "controller_contract": {
+    "first_decision_seconds": 180,
+    "window_seconds": 30,
+    "required_consecutive_complete_windows": 6,
+    "cross_window_cv_max_inclusive": 0.1,
+    "strict_r0_resource_gate_checked_at_first_decision": true,
+    "early_stop_requires_r0_and_resource_stability": true,
+    "maximum_measurement_seconds": 600
+  },
+  "workload_selection_contract": {
+    "policy": "fixed 100-request stratified interleaved sequence with client offsets 0-3 and stride 4",
+    "client_count": 4,
+    "aggregate_ap10_count_per_100": 28,
+    "aggregate_each_other_query_count_per_100": 6
+  },
+  "resource_contract": {
+    "cpu_quota_cores": 5.5,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 223155000,
+    "memory_swap_bytes": 223155000,
+    "io_read_bps": 67108864,
+    "io_write_bps": 36700160,
+    "io_total_bps": 103809024,
+    "pids_limit": 512
+  },
+  "resident_memory_contract": {
+    "bytes": 31457280,
+    "same_owned_container_required": true,
+    "same_cgroup_as_container_init_required": true,
+    "helper_binary_sha256": "2fc5f4bf0e36a1d9f6abc773d6a719d7baa6c7596ed34d346eee56a8de209ecb",
+    "cleanup_required": true
+  },
+  "formal_db_qps_contract": {
+    "shared_preload_libraries": "pg_stat_statements",
+    "preflight_before_warmup_required": true,
+    "source": "pg_stat_statements_sum_calls_delta_per_second",
+    "database": "hybench_sf10x",
+    "required_for_outer_entry": true,
+    "ap_qps_substitution_allowed": false,
+    "fail_closed": true
+  },
+  "ap_query_sequence_contract_sha256": "379d3060d61ab1bf906eac6bae6f08632b54db122cb1802c58e1fcf81e65b27d",
+  "apclient_patch_jar_sha256": "6e25069927261b5eb6e2dc9b9b3412ffa8f9e60553715503d6eb560f6d1a6a90",
+  "private_runner_sha256": "5116d3d77b27543f530e2a6a394bcdb4298deddde31441f1196dc706b3e125c4",
+  "accepted_outer_rounds_before_start": 0,
+  "status": "ready_to_launch"
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "job_v58_deployment_manifest_v1",
+  "campaign_contract": "job_v57_fresh0_resource_median_no_retry_v1",
+  "controller_version": "v58",
+  "continuation_root": "autonomous_target10_v57_fresh0",
+  "fresh_accepted_reset": false,
+  "requires_zero_call_v57_repair": true,
+  "files": {
+    "job_fresh10_target10_autonomous_v58.py": "8ed24530017d866c1c9ca3ce31e5d4e69a1c7083b6237827c274c96093623a30",
+    "run_job_round8_strict_serial_robust_v11_gradient_state_guard.py": "d8919ef67c0b9fe0b9666717e54eedb8cf197b835d4a1e1a918c18674e1b3043",
+    "job_formal_target10_batch_controller_v2_gradient_commit.py": "e5e4a090b3731add51005c00996cb2af7c450a3c491708321cc96d5d74cf294b",
+    "repair_job_v57_to_v58_gradient_state.py": "6a43da37c73a2601bd7f57c77798dc751316ecfd82c861e9b810d90b9a588399",
+    "audit_job_v57_core_gradient_repair.py": "5b5e784826baf53f61d82db6d62e709decaeecc828f4d578eaba072e1b9297b4",
+    "audit_job_v58_cycles.py": "167bf1e95d74876508b98c36725f4a501427df7ffa1c4400e17f979286c60713",
+    "launch_job_target10_autonomous_v58.sh": "a22cde1a8ecd27d2d1034990987aa3ad347b6f569de3d8e787dec28428f0114c",
+    "test_job_v58_gradient_state.py": "ff76e9cb7f304652b927817e291609b0e2a7db555715e58b1c4019bf54bcdd55",
+    "job_v57_cycle001_to_v58_binding_manifest_20260803.json": "68e56cfc8b7d414ef7943a87ae69ad1d14a431cb299db09215118153e2bd907d"
+  },
+  "sealed_v57_authorities": {
+    "job_fresh10_target10_autonomous_v57.py": "ebc884eefe3cc5663ec4ae5738d46ff564afe78e4b56c68ef4b440996198285b",
+    "job_formal_target10_batch_controller.py": "3c9246b67a7fbaf5e28115efc59e4ac68066fc96e6515b6524099ca804c69668",
+    "run_job_round8_strict_serial_robust_v10_resource_median.py": "e4738c9eb95e123a38e31410bb067bf817bb8b54e234acbb2f5bc14ed89f2b03",
+    "run_job_round8_strict_serial_robust_v9_state_guard.py": "e717449a109669d6ed274e29d5aaf9f4285af8b37c586aeb0ad768970ba02693"
+  },
+  "repair_binding_manifest_schema": "job_v57_to_v58_binding_manifest_v1",
+  "repair_required_bindings": [
+    "summary",
+    "events",
+    "state",
+    "global_counter",
+    "formal_replay_counter",
+    "accepted_counter",
+    "transaction",
+    "selection",
+    "gate",
+    "cycle_audit",
+    "controller_lock",
+    "formal_controller",
+    "robust_resource_runner",
+    "state_guard",
+    "v57_controller"
+  ],
+  "deployment_order": [
+    "wait_for_v57_current_formal_batch_to_seal",
+    "stop_v57_controller_without_replaying_or_deleting_artifacts",
+    "collect_exact_paths_and_sha256_into_binding_manifest",
+    "run_repair_audit_without_apply",
+    "run_repair_with_apply",
+    "verify_committed_repair_journal_and_unchanged_counters",
+    "run_v58_preflight_only",
+    "launch_v58_controller"
+  ],
+  "contract": {
+    "accepted_requires_gradient_update": true,
+    "accepted_gradient_delta": 1,
+    "rejected_probe_technical_gradient_delta": 0,
+    "formal_commit_includes_gradient_observation_count": true,
+    "transaction_pins_gradient_before_after_delta": true,
+    "partial_repair_or_formal_transaction": "fail_closed_no_retry",
+    "repair_new_workload_calls": 0,
+    "repair_counter_updates": 0,
+    "cycle_audit_before_repair": "must_be_absent",
+    "cycle_audit_after_repair": "atomically_generated_from_committed_formal_evidence",
+    "repair_authoritative_state_changes": [
+      "gradient_observation_count"
+    ]
+  }
+}

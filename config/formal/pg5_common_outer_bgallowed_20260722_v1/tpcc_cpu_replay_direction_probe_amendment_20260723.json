@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "amendment_id": "pg5_tpcc_cpu_replay_direction_probe_20260723_v2",
+  "status": "superseded_fail_closed",
+  "benchmark": "tpcc_sensitive",
+  "target_resource": "cpu",
+  "purpose": "Revoke the old full-vector reverse probe after complete history audit; require a grouped-heldout joint direction ranker before all-subset ranking or real replay.",
+  "evidence": {
+    "dataset_path": "/home/anonymous/program/resource_adaptive/docs/artifacts/pg_real_replay_direction_audit_20260723.json",
+    "dataset_sha256": "531d9651abb3fc50fe16cfb20fad1438d32b0ba2357fd1d95991bcf45ba0d16d",
+    "ranker_path": "/home/anonymous/program/resource_adaptive/docs/artifacts/tpcc_sensitive_cpu_real_replay_direction_ranker_20260723.json",
+    "ranker_sha256": "78db53cbdb42ae60b451fb215629fea0be4f76cbcb23dfcc3e334acaf0af152d",
+    "ranker_ready": false,
+    "ranker_reason": "one stable positive vector, one scope, no negative class",
+    "standard_tpcc_cpu_joint_success_failure": [0, 46],
+    "tpcc_sensitive_cpu_joint_success_failure": [2, 0],
+    "tpcc_sensitive_stable_training_rows": 1,
+    "single_parameter_attribution_allowed_for_sensitive_pairs": false
+  },
+  "config_patch": {
+    "optimizer.gradient.replay_direction_calibration.enabled": false,
+    "optimizer.gradient.real_replay_direction_ranker.required": true,
+    "optimizer.gradient.real_replay_direction_ranker.enabled": true,
+    "optimizer.gradient.real_replay_direction_ranker.policy.block_estimated_ranking_when_not_ready": true,
+    "optimizer.gradient.real_replay_direction_ranker.policy.block_real_replay_when_not_ready": true,
+    "optimizer.gradient.real_replay_direction_ranker.policy.online_t_mutation": false
+  },
+  "runtime_semantics": {
+    "old_reverse_probe_revoked": true,
+    "reason": "ten failures can reject one explored vector family but cannot prove that negating every component is correct",
+    "candidate_generation": "blocked before all 127 subset estimates while the exact-profile ranker is not ready",
+    "real_replay": "blocked while the exact-profile ranker is not ready",
+    "outer_acceptance": "unchanged: DB QPS must strictly increase and CPU bottleneck utilization must strictly decrease",
+    "outer_shrink": "only a real accepted replay can add one accepted binary interval shrink"
+  },
+  "promotion_rule": "A new formal T requires exact workload/resource-profile evidence, positive and negative joint labels in multiple outer scopes, grouped-heldout inversion point estimate and 90% scope-bootstrap upper both <=0.10, and the QPS/CPU/Top-1 confidence gates."
+}

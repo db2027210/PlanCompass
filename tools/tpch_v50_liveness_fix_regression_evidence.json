@@ -1,0 +1,22 @@
+{
+  "schema_version": "tpch_v50_liveness_fix_regression_evidence_v1",
+  "generated_at": "2026-08-03T22:45:01+0800",
+  "execution_scope": "local_offline_only",
+  "ssh_calls": 0,
+  "workload_calls": 0,
+  "baseline_result_before_boundary_packaging": "130 passed",
+  "final_result_after_boundary_packaging": "133 passed",
+  "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_tpch_v44_deterministic_reexploration.py tests/test_tpch_v45_clean5_resume.py tests/test_tpch_v46_postclean5_gate_binding.py tests/test_tpch_v46_real_module_integration.py tests/test_tpch_v47_real_module_integration.py tests/test_tpch_v47_remote_reseal_fixture.py tests/test_tpch_v47_resealed_realized_evidence.py tests/test_tpch_v48_prethird_feasibility_binding.py tests/test_tpch_v48_real_module_integration.py tests/test_tpch_v49_preparing_cycle_continuation.py tests/test_tpch_v50_trusted_evidence_acquisition.py tests/test_tpch_v42_checkpointed_expansion.py",
+  "checks": {
+    "probe5_clean5_automatic_reexploration": true,
+    "exact_point_second_observation": true,
+    "stable_two_observation_trusted3": true,
+    "irrecoverable_regime_evidence_slot_exclusion": true,
+    "manual_promotion": false,
+    "formal_state_mutation_during_diagnostic": false,
+    "locked_preparing_cycle_upgrade_boundary": true,
+    "cycle5_exact_repeat_negative_gate_boundary": true,
+    "observed_old_controller_and_launcher_sha_allowlisted": true
+  },
+  "test_sha256": "633efa7dc345f29b54e5e2764435b353b9ea10783e3e00f20433232c22f5c050"
+}

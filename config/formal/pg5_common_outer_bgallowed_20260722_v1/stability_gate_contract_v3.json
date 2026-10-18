@@ -1,0 +1,52 @@
+{
+  "schema_version": 2,
+  "contract_id": "pg5_six_window_resource_mean_stability_v3",
+  "sample_interval_seconds": 1,
+  "warmup_seconds": 60,
+  "minimum_measurement_seconds": 180,
+  "initial_probe_seconds": 180,
+  "maximum_measurement_seconds": 600,
+  "continue_after_probe_when_unstable": true,
+  "continue_after_minimum_only_when_profile_band_passes_and_cv_fails": true,
+  "profile_band_gate_at_minimum": {
+    "enabled": true,
+    "decision_seconds": 180,
+    "mean_scope": "all formal resource samples from measured workload start through the minimum decision",
+    "target_resource_source": "runtime benchmark configuration",
+    "allowed_target_resources": [
+      "cpu_utilization",
+      "memory_utilization",
+      "io_utilization"
+    ],
+    "target_bounds_inclusive": [
+      0.85,
+      0.95
+    ],
+    "each_non_target_bounds_inclusive": [
+      0.3,
+      0.5
+    ],
+    "failure_action": "stop_immediately_and_archive_for_profile_reconstruction",
+    "cv_evaluated_after_profile_band": true
+  },
+  "window_seconds": 30,
+  "required_consecutive_complete_windows": 6,
+  "per_window_coverage_min": 0.9,
+  "aggregate_coverage_min": 0.9,
+  "calculation": "coefficient_of_variation_across_six_window_means",
+  "coefficient_of_variation_max": 0.1,
+  "within_window_one_second_cv_required": false,
+  "normal_fields": [
+    "cpu_utilization",
+    "memory_utilization",
+    "io_utilization"
+  ],
+  "xp_fields": [
+    "cpu_utilization",
+    "memory_utilization",
+    "io_utilization"
+  ],
+  "throughput_fields_required_for_stability": false,
+  "throughput_role": "outer_acceptance_only",
+  "hard_maximum_unstable_result": "fail_closed"
+}

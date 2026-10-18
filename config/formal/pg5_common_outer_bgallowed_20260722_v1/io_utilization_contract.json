@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "contract_id": "pg5_io_total_throughput_utilization_v1",
+  "formula": "(read_bps + write_bps) / (read_cap_bps + write_cap_bps)",
+  "numerator": "read_bps + write_bps",
+  "denominator": "read_cap_bps + write_cap_bps",
+  "read_write_caps_must_match_physical_readback": true,
+  "persist_required_fields": [
+    "read_bps",
+    "write_bps",
+    "read_cap_bps",
+    "write_cap_bps",
+    "io_total_cap_bps",
+    "io_utilization"
+  ],
+  "single_channel_max_formula_allowed": false,
+  "required_for": [
+    "r0",
+    "candidate_real_replay",
+    "outer_acceptance",
+    "final_validation"
+  ]
+}

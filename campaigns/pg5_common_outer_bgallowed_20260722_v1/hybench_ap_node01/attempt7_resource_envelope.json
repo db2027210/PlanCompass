@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_5",
+  "target_attempt": "attempt_7",
+  "status": "calibration_envelope_interaction_fail",
+  "resource_contract": {
+    "cpu_quota_cores": 7.5,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 196608,
+    "io_write_bps": 196608,
+    "pids_limit": 512,
+    "max_parallel_workers_per_gather": 2
+  },
+  "static_prediction_from_attempt5_raw_samples": {
+    "memory_utilization": 0.8624186531442404,
+    "cpu_utilization": 0.39949957326448995,
+    "io_utilization": 0.37765004768398034
+  },
+  "formal_gate": {
+    "target_memory": "strictly_greater_than_0.80",
+    "non_target_cpu": "inclusive_0.30_to_0.50",
+    "non_target_io": "inclusive_0.30_to_0.50",
+    "contract_sha256": "c6c034087393c12da5fa055a0cff8666db0dd70edc2bd39eb83c4146d0d9481e"
+  },
+  "common_scoring_contract_sha256": "47db6e60190b79b44419b76f6823d08b59f9e0058917977f468ed8926475f588",
+  "accepted_outer_rounds_before_start": 0
+}

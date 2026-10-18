@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "table_id": "pg5_tpcc_cpu_experience_table_T_v2",
+  "version": "2026-07-22.2",
+  "benchmark": "tpcc",
+  "target_resource": "cpu",
+  "scope": "PostgreSQL planner cost parameters for the frozen SF10 32-native-plus-1-sensitive-StockLevel TPC-C workload and 4-core CPU-bottleneck profile",
+  "direction_semantics": "T[param][resource] is the signed effect of increasing the parameter; directions are computed only as sum(resource_utility_slope * T[param][resource])",
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "formal_admission": {
+    "ready": false,
+    "reason": "revoked_20260723_single_successful_seven_parameter_vector_cannot_identify_individual_parameter_signs",
+    "superseded_by_prior": "experience_table_T_tpcc_cpu_v3_semantic_prior.json",
+    "may_rank_formal_real_replays": false
+  },
+  "source": {
+    "preflight_report": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/preflight/pg_tpcc_sensitive_workload_validation_20260722.md",
+    "preflight_report_sha256": "2255b66784b72725f5a534a75638cef92f1bdde13086e717c209ee7bfd105a37",
+    "sensitivity_report": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/report/tpcc_pg_mysql_cost_sensitivity_20260722.md",
+    "sensitivity_report_sha256": "2a546057099ab345254b8a0311ab9f7c88bfa30ea2724bbfb343eec4fb2daf78",
+    "paired_real_replay": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/history/pg_tpcc_sensitive_frozen_bounds_validation_20260722/real_pair_sf10/pair_result.json",
+    "paired_real_replay_sha256": "c3e5ecd63e7b760fcd68c270f49ec48e0bfbd1600cfe628312b5c8028f0e6cc3",
+    "plan_boundary_scan": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/history/pg_tpcc_sensitive_frozen_bounds_validation_20260722/plan_scan.json",
+    "plan_boundary_scan_sha256": "25eb58e7028a609e0963c59e2dc0cc51ed84f8511276129de81a2a701f38a2c1",
+    "derivation": "CPU signs are benchmark-specific empirical directions from the successful paired replay: seq down, random down, cpu_tuple up, cpu_index_tuple down, cpu_operator up, parallel_setup down, parallel_tuple down. Magnitudes retain the frozen prior scale; non-target entries retain v1 values. No historical candidate coordinates are injected into runtime candidate generation."
+  },
+  "canonicalization": "UTF-8 JSON of table only, sort_keys=true, separators=(',', ':')",
+  "table_sha256": "74f83706a5f5cbd3df93411e468d66f686276dea9ff308840ea47c9ba4f732ad",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "table": {
+    "seq_page_cost": {"cpu": 0.1, "memory": 0.03, "io": -0.1},
+    "random_page_cost": {"cpu": 0.2, "memory": 0.05, "io": 0.2},
+    "cpu_tuple_cost": {"cpu": -0.2, "memory": -0.05, "io": -0.15},
+    "cpu_index_tuple_cost": {"cpu": 0.05, "memory": -0.02, "io": 0.0},
+    "cpu_operator_cost": {"cpu": -0.2, "memory": -0.05, "io": -0.15},
+    "parallel_setup_cost": {"cpu": 0.1, "memory": 0.02, "io": 0.0},
+    "parallel_tuple_cost": {"cpu": 0.2, "memory": 0.05, "io": -0.1}
+  }
+}

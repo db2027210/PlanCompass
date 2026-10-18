@@ -1,0 +1,69 @@
+{
+  "schema_version": "job_v61_deployment_manifest_v1",
+  "controller": {
+    "path": "tools/job_fresh10_target10_autonomous_v61.py",
+    "sha256": "49e6c210380c0852d9b0dffd7da597d318de1932994351c31b028cc6cbf53053"
+  },
+  "launcher": {
+    "path": "tools/launch_job_target10_autonomous_v61.sh",
+    "sha256": "1c5e9f25084e5f4adcd2ba7afdc6ff6f33673aae787921cac51f89d32509821d"
+  },
+  "test": {
+    "path": "tests/test_job_v61_partial_recovery.py",
+    "sha256": "0ba992dc38166c71015bb369b1629bf039bcea333d98d362a822828a00a76257",
+    "result": "5_passed",
+    "crash_windows": [
+      "started_progress_without_raw_output",
+      "prepared_transaction_after_budget_move",
+      "completed_raw_slot_before_conversion",
+      "unbudgeted_partial_fail_closed",
+      "launcher_zero_call_authority_binding"
+    ]
+  },
+  "inherited_dependencies": {
+    "job_fresh10_target10_autonomous_v60.py": "394f207eea62d93ceae570d3bca25abe36c4ae787a37f8913cbbc4e492ed222b",
+    "job_fresh10_target10_autonomous_v59.py": "994c27feba747152372e0155f58d674f47ee306de68fc4ed7f9f4750f51b56d1"
+  },
+  "restart_pin": {
+    "accepted_count": 1,
+    "formal_replay_counter": 211,
+    "global_counter": 424,
+    "formal_state_sha256": "8ee73ee31883f0362353ec0e03dc665ef113f91510269a07b6f28109cfda62a7"
+  },
+  "remote_partial_authority": {
+    "fresh_attempt": 5,
+    "exclusion_sha256": "b3c9bfa581912b68ee574b312e224aec7ee60d5277932dea0390cf778e5c1dfb",
+    "budget_sha256": "7227bb14d41ad29e0dea76c031b20f69c34578988217998513fa70714b3cea22",
+    "progress_sha256": "8ea0b00e3b0e4b84764ec75e242cc28fdba6f5cf7305d63f877983ad6787da4b",
+    "budget_status": "generating",
+    "started_slot": "historical_training_a.json",
+    "raw_output_exists": false,
+    "top5_exists": false,
+    "workload_calls": 0,
+    "formal_state_updates": 0,
+    "exclusion_fingerprint_count": 1472,
+    "all_historical_twenty_fingerprints_excluded": true,
+    "cursor_reusable": false,
+    "cursor_reuse_reason": "progress contains counts only and lacks generated candidates/per-anchor attempt cursor"
+  },
+  "recovery_contract": {
+    "name": "job_v61_restart_safe_successor_partial_recovery_v1",
+    "epoch": "job_v61_cycle002_attempt05_generator_recovery_v1",
+    "original_files_sha_bound_before_move": true,
+    "atomic_move_to_quarantine": true,
+    "overwrite_without_audit": false,
+    "replacement_budget_generator_limit": 2,
+    "completed_sha_bound_slots_preserved": true,
+    "prepared_transaction_restart_safe": true,
+    "new_workload_calls": 0,
+    "formal_state_updates": 0,
+    "counter_updates": 0
+  },
+  "safety": {
+    "v60_explicit_subprocess_network_environment_retained": true,
+    "twenty_historical_fingerprints_remain_excluded": true,
+    "diagnostic_state_neutral": true,
+    "qps_inner_scoring": false,
+    "mysql_touched": false
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 4,
+  "contract_id": "pg5_target_bottleneck_rolling_stability_v5",
+  "sample_interval_seconds": 1,
+  "warmup_seconds": 60,
+  "warmup_excluded_from_measurement": true,
+  "minimum_measurement_seconds": 180,
+  "maximum_measurement_seconds": 600,
+  "decision_step_seconds": 30,
+  "decision_checkpoints_seconds": [
+    180,
+    210,
+    240,
+    270,
+    300,
+    330,
+    360,
+    390,
+    420,
+    450,
+    480,
+    510,
+    540,
+    570,
+    600
+  ],
+  "window_seconds": 30,
+  "rolling_window_count": 6,
+  "reported_window_numbering": "one_based",
+  "decision_window": "latest_six_consecutive_30_second_windows",
+  "earlier_windows_affect_current_decision": false,
+  "retained_resource_fields": [
+    "cpu_utilization",
+    "memory_utilization",
+    "io_utilization"
+  ],
+  "stability_metric_fields": "target_bottleneck_only_from_runtime_benchmark_configuration",
+  "allowed_target_resources": [
+    "cpu_utilization",
+    "memory_utilization",
+    "io_utilization"
+  ],
+  "calculation": "coefficient_of_variation_across_six_target_resource_window_means",
+  "coefficient_of_variation_max": 0.1,
+  "per_window_coverage_min": 0.9,
+  "aggregate_coverage_min": 0.9,
+  "throughput_stability_required": false,
+  "throughput_role": "outer_acceptance_only",
+  "candidate_profile_band_gate_enabled": false,
+  "r0_profile_construction_gate": {
+    "scope": "baseline_profile_construction_only",
+    "target_bounds_inclusive": [
+      0.85,
+      0.95
+    ],
+    "each_non_target_bounds_inclusive": [
+      0.3,
+      0.5
+    ],
+    "affects_candidate_stability": false,
+    "affects_outer_acceptance": false
+  },
+  "decision_order": [
+    "evaluate_latest_six_target_resource_window_means",
+    "if_stable_stop_success",
+    "if_unstable_and_before_600_seconds_continue_exactly_30_seconds",
+    "if_unstable_at_600_seconds_fail_closed"
+  ],
+  "unstable_point_repeat_policy": {
+    "maximum_total_replicates": 3,
+    "aggregation": "arithmetic_mean_of_valid_replicates"
+  }
+}

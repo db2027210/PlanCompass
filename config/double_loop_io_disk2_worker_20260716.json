@@ -1,0 +1,45 @@
+{
+  "binary_plan_tuning": {
+    "validation": {
+      "docker_runtime": {
+        "container": "binary_plan_tuning_hybenchxp_rebuild_20260703_180311_io_disk2",
+        "interval_sec": 1,
+        "warmup_sec": 10,
+        "memory_mode": "working_set",
+        "io_mode": "cgroup",
+        "checkpoint_before_validation": true,
+        "checkpoint_after_validation": true,
+        "checkpoint_settle_sec": 2,
+        "evict_data_file_cache_before_validation": true,
+        "evict_data_file_cache_max_files": 0,
+        "evict_data_file_cache_max_bytes": 0,
+        "min_stable_samples": 45,
+        "evict_data_file_cache_host_sudo": true,
+        "evict_data_file_cache_container_fallback": true
+      },
+      "docker_workers": {
+        "enabled": true,
+        "cpu_memory_parallelism": 1,
+        "io_parallelism": 1,
+        "none_parallelism": 1,
+        "workers": [
+          {
+            "name": "io_disk2_isolated",
+            "targets": [
+              "io"
+            ],
+            "container": "binary_plan_tuning_hybenchxp_rebuild_20260703_180311_io_disk2",
+            "host": "127.0.0.1",
+            "port": 57443,
+            "dbname": "hybench_sf10x",
+            "user": "postgres",
+            "password": "postgres",
+            "data_dir": "/disk2/resource_adaptive/binary_plan_tuning_hybenchxp_rebuild_20260703_180311/workers/io_disk2/pgdata",
+            "disk_root": "/disk2",
+            "cpuset_cpus": "184-191"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "xp_v36_safe_probe_fallback_manifest_v1",
+  "scenario": "XP",
+  "status": "sealed_offline_not_deployed",
+  "source_campaign": "history/xp_final_algorithm_fresh10_v35_20260803T1220",
+  "target_campaign": "history/xp_final_algorithm_fresh10_v36_20260803",
+  "authoritative_progress": {
+    "historical_accepted_excluded": 4,
+    "v36_initial_accepted_count": 0,
+    "accepted_target": 10,
+    "v35_r0_physical_calls_reused_for_calibration": 1,
+    "v35_cont001_physical_calls": 0,
+    "v36_preparation_physical_calls": 0,
+    "v36_preparation_gradient_updates": 0
+  },
+  "v35_audit_finding": {
+    "controller_alive_after_audit": false,
+    "terminal_state": "blocked_contract",
+    "candidate_builder_status": "blocked_missing_input",
+    "novel_noncorner_fingerprints": 14,
+    "resource_safe_probe_candidates": 11,
+    "safe_probe_candidates": 11,
+    "safe_transition_backtracking_candidates": 1,
+    "selected_top5": 0,
+    "entry_gate_conflict": "campaign_gate_is_initial_authority_only_while_cont001_gate_is_per_batch",
+    "infinite_loop_present": false,
+    "restart_behavior": "same_cont001_is_regenerated_and_fails_closed_without_a_recovery_policy"
+  },
+  "v36_recovery": {
+    "contract": "xp_v36_resource_safe_maximin_probe5_fallback_v1",
+    "trigger": "only_transition_subset_below_four_with_at_least_five_resource_safe_novel_noncorner_probes",
+    "selection_algorithm": "deterministic_parameter_space_maximin_v1",
+    "selected_count": 5,
+    "all_selected_roles": "maximin_uncertain_probe",
+    "trusted_promotion_applied": false,
+    "resource_envelope_relaxed": false,
+    "parameter_step_limit_relaxed": false,
+    "manual_candidate_injection": false,
+    "formal_state_mutation": false,
+    "fallback_batches_per_campaign": 1,
+    "second_fallback": "fail_closed",
+    "next_expected_state": "clean_diagnostic_probe5_then_exact_plan_repeat_then_trusted3_probe2"
+  },
+  "source_sha256": {
+    "v35_state": "006a1180495c5f560ad0cc00e7d012a16346d685cdecaa68f577d689cf98f414",
+    "v35_entry_gate": "b6a2c1b7307499827bd764f7de82159404659a44d546f770212bcf657c7857d3",
+    "v35_cont001_manifest": "8309e4f731cddc5d18e198037d539582efe6eb1aa7c6cc68df54acaeb05c143b",
+    "v35_cont001_selection": "023b112e31d9e2ddfaf8c6aea1b9451b942ee6fed0b2d309e4e6956e3f19657c",
+    "v35_cont001_candidate_pool": "38dc42cb56b5e56f7daf7d458697f5e7041a218d20086e69f8ff1f39f4703367"
+  },
+  "files": {
+    "tools/resume_xp_fresh0_fixed_contract_target10_v36.py": "5a2617884b0cce051480644548f90e673ad023e894b2ad563d9871ee1aecb90c",
+    "tools/prepare_xp_v36_from_v35_zero_call.py": "44e42928ffc78e4a04e1ab3b9ea71963a12578fad8465d0aa0dc9938cbe2847e",
+    "tools/launch_xp_v36_fresh0.sh": "c875099cf6f7c1074a437a970b76d7f6723c95e5de442310b2908fac20628d2f",
+    "tests/test_xp_v36_safe_probe_fallback.py": "04343c3a398f734e68bc531c107b1d0259133ae2928da0f884aac8598fc8edec"
+  },
+  "verification": {
+    "offline_tests_passed": 2,
+    "actual_v35_candidate_pool_reconstructed": true,
+    "continuation_normalization_passed": true,
+    "zero_call_preparer_test_passed": true,
+    "second_fallback_rejected_test_passed": true,
+    "python_compile_passed": true,
+    "launcher_shell_syntax_passed": true,
+    "workload_calls": 0,
+    "ssh_calls": 0,
+    "mysql_touched": false,
+    "running_v35_state_modified": false,
+    "deployed": false
+  }
+}

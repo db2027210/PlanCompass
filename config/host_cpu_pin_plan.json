@@ -1,0 +1,92 @@
+{
+  "updated_at": "2026-07-20 00:58 UTC",
+  "authority": {
+    "pg_sgd_bruteforce_grid": "/home/anonymous/program/resource_adaptive/config/pg_cpu_pin_map_20260720.json",
+    "pg_apply": "/home/anonymous/program/resource_adaptive/shell/apply_pg_cpu_pins.py",
+    "mysql_formal_only": "/home/anonymous/program/resource_adaptive_mysql/scripts/build_and_apply_cpu_pins.py"
+  },
+  "policy": "PG map is source of truth for SGD VMs, bruteforce/fullgrid Docker, matrix slots, and host estimator zone 0-15. This MySQL script only reinforces mysql_reserved formal dockers and host processes in 0-15. Do not co-run MySQL grid/goal workers with fullgrid on phys 16-95.",
+  "zones_from_pg_map": {
+    "host_control_and_estimator": {
+      "cpuset_cpus": "0-15,256-271",
+      "physical_cores": 16,
+      "purpose": "OS, agents, plan-estimator EXPLAIN clients, formal host clients"
+    },
+    "bruteforce_fullgrid_docker": {
+      "cpuset_cpus": "16-95,218-219,272-351,474-475",
+      "physical_cores": 82,
+      "purpose": "all ra_fullgrid_* / binary_plan io docker workers"
+    },
+    "matrix_slots": {
+      "cpuset_cpus": "220-255,476-511",
+      "physical_cores": 36,
+      "purpose": "double-loop rootless scheduler slots (max concurrent heavy profiles limited)",
+      "note": "36 physical cores: prefer cpu/memory/io profiles; at most two concurrent none:16 VMs"
+    },
+    "mysql_reserved": {
+      "cpuset_cpus": "96-127,352-383",
+      "physical_cores": 32,
+      "purpose": "live MySQL experiment workers (do not use)"
+    },
+    "rootless_lane_pool": {
+      "cpuset_cpus": "128-153,384-409",
+      "physical_cores": 26,
+      "purpose": "double-loop-sgd-rootless-{none,cpu,memory,io}"
+    },
+    "libvirt_postgre": {
+      "cpuset_cpus": "154-217,410-473",
+      "physical_cores": 64,
+      "purpose": "libvirt domain postgre"
+    }
+  },
+  "mysql_formal": [
+    {
+      "container": "ra_mysql_gd_hybench_xp_auto6",
+      "cpuset": "96-103,352-359",
+      "cpus": 16,
+      "status": "ok",
+      "detail": "/ra_mysql_gd_hybench_xp_auto6 running cpuset=96-103,352-359"
+    },
+    {
+      "container": "ra-mysql-d1-job-w2",
+      "cpuset": "104-111,360-367",
+      "cpus": 16,
+      "status": "ok",
+      "detail": "/ra-mysql-d1-job-w2 running cpuset=104-111,360-367"
+    },
+    {
+      "container": "gptuner_mysql_benchbase",
+      "cpuset": "112-127,368-383",
+      "cpus": 32,
+      "status": "ok",
+      "detail": "/gptuner_mysql_benchbase running cpuset=112-127,368-383"
+    }
+  ],
+  "host_process_pins": [
+    {
+      "role": "host_estimator",
+      "pid": 913164,
+      "cpuset": "0-3,256-259",
+      "status": "ok",
+      "detail": "ok 0-511 -> 0-3,256-259",
+      "cmd": " 913164 /usr/bin/python3 -B /disk1/resource_adaptive/bruteforce_pg17_framework_20260717/binary_plan_resource_tuner.py --config /disk1/resour"
+    },
+    {
+      "role": "host_estimator",
+      "pid": 913217,
+      "cpuset": "4-7,260-263",
+      "status": "ok",
+      "detail": "ok 0-511 -> 4-7,260-263",
+      "cmd": " 913217 /usr/bin/python3 -B /disk1/resource_adaptive/bruteforce_pg17_framework_20260717/binary_plan_resource_tuner.py --config /disk1/resour"
+    }
+  ],
+  "pg_apply_result": {
+    "status": "ok",
+    "returncode": 0
+  },
+  "mutual_exclusion": [
+    "fullgrid Docker phys 16-95 vs MySQL multi-worker grid/goal on same banks",
+    "matrix slots 220-255 vs any ad-hoc use of those cores",
+    "host estimators stay in 0-15; never 16-31 (fullgrid mem banks)"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "xp_v43_pending_lineage_deployment_manifest_v1",
+  "scenario": "XP",
+  "status": "sealed_offline_ready_not_launched",
+  "created_at": "2026-08-03T18:12:00+08:00",
+  "failure_repaired": {
+    "source_controller": "xp_v42",
+    "source_batch": "cont007",
+    "stage": "offline_reexploration",
+    "physical_workload_calls_in_failed_stage": 0,
+    "error": "v42 probe5 role contract was incorrectly reapplied to the v39 pending 3T+2P exact-point repeat",
+    "accepted_count": 0,
+    "formal_state_mutated": false
+  },
+  "authority": {
+    "state_sha256": "784b35282ec23b712640bd39250ae1ead10f1ef18f3c1f8d82c9ba19e2486dd4",
+    "source_clean5_replay_sha256": "9bafd829462c8b7d9fd8282f6043dddaa76c965e53abeb01aafab29c02b9b601",
+    "exact_point_repeat_selection_sha256": "6150844886753676f2c3f864cfa58cb0debeab3f2cd9eb915e2312543c99422f",
+    "status": "blocked_preworkload",
+    "accepted_count": 0,
+    "accepted_target": 10,
+    "next_batch_index": 7,
+    "cont007_physical_workload_calls": 0
+  },
+  "artifacts": {
+    "tools/xp_v43_pending_lineage_gate_patch.py": "7b747757a29dfc1a97783954604dc3b79fda00209f232a24eb382782f8bae67a",
+    "tools/resume_xp_fresh0_fixed_contract_target10_v43.py": "036db8a591eac544dea495395d89252d9eb9fbf0999d5f4d8cd3f1cd6bd6db9c",
+    "tools/preflight_xp_v43_pending_lineage_resume.py": "33dea5667d16e44aa7a3f082fe4c67bc5199e32ba2904bf54c2f376df7588eaa",
+    "tools/launch_xp_v43_pending_lineage_target10.sh": "2aef28fa2f2bc225ece90147b5b904362f062873866e6b625a329de73d397594",
+    "tests/test_xp_v43_pending_lineage_gate.py": "6c300ae13d2cb3b440fd622cddc01fbcae2d096833384c8706f62919a23400a4"
+  },
+  "compatibility": {
+    "material_algorithm_change": false,
+    "candidate_generation_changed": false,
+    "candidate_order_changed": false,
+    "candidate_parameters_changed": false,
+    "thresholds_relaxed": false,
+    "v42_provenance_removed": false,
+    "stage_specific_gate_routing_fixed": true,
+    "fresh0_continues": true
+  },
+  "contract": {
+    "name": "xp_v43_v42_lineage_to_v39_pending_gate_routing_v1",
+    "v42_probe5_contract_applies_only_to_first_probe_stage": true,
+    "v39_pending_3t2p_contract_applies_to_second_exact_point_stage": true,
+    "same_exact_points_repeated_automatically": true,
+    "manual_candidate_injection": false,
+    "maximum_physical_workload_calls": 5,
+    "formal_state_mutation_during_diagnostic": false,
+    "qps_used_for_inner_scoring": false,
+    "cpuset_cpus": "32-51,288-307",
+    "excluded_mysql_cpus": "184-199,440-455"
+  },
+  "tests": {
+    "command": "/home/anonymous/miniconda3/envs/py310/bin/python3 tests/test_xp_v43_pending_lineage_gate.py",
+    "result": "4 passed",
+    "preflight_status": "passed_zero_call_ready_to_resume"
+  }
+}

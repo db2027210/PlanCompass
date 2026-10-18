@@ -1,0 +1,74 @@
+{
+  "schema_version": "xp_v37_robust_formal_manifest_v1",
+  "status": "offline_verified_ready",
+  "campaign": "/home/anonymous/program/resource_adaptive/history/xp_final_algorithm_fresh10_v37_20260803",
+  "fresh_formal_accepted_start": 0,
+  "accepted_target": 10,
+  "source_v36_final_state_sha256": "c0f4c52ca4ac7ffdab5ef462dc0cf5e865e29ba0dfa4fd96588e908b8742b6ac",
+  "target_state_sha256": "ff303094b4b7d846f29bf7c5a8d5093b4fe37fa97ca92ac0818e18d210541705",
+  "source_cont001_selection_sha256": "e971d85f7c8bdc18b680b4efbcde30de4ebe90c9f379a5c41140d375e9f1b3c5",
+  "source_cont001_replay_sha256": "30657818d7ba00fe7144c933cb05800c9d14e1ce43145283067f63c944b0bfff",
+  "files": {
+    "controller": {
+      "path": "tools/resume_xp_fresh0_fixed_contract_target10_v37.py",
+      "sha256": "4fa3ebe5a669bac3976af6e2815e2b7a12ac40cdb709cd325ba9583cea5fdb13"
+    },
+    "robust_state_patch": {
+      "path": "tools/xp_v37_robust_state_patch.py",
+      "sha256": "af1fc3bc9aa4bc2b508097dbaa3384f2ee890fb29627410a587c03e9016ecddf"
+    },
+    "zero_call_handoff": {
+      "path": "tools/handoff_xp_v36_to_v37_zero_call.py",
+      "sha256": "a7d8d813a854b03a4dc640322752fdb49af5be5e15173d4e4f2eb0c9c3e13b60"
+    },
+    "zero_call_contract_registry_recovery": {
+      "path": "tools/recover_xp_v37_selection_contract_zero_call.py",
+      "sha256": "06e8a8104113211bc43c8a9a33cb616691f159f874cb32ce74008928381ac112"
+    },
+    "clean_boundary_stopper": {
+      "path": "tools/stop_xp_v36_at_clean5_handoff.sh",
+      "sha256": "7b7f4b382421b2f05923614661f7d659b1241f0131a727f627b638e8e6dc1cb8"
+    },
+    "launcher": {
+      "path": "tools/launch_xp_v37_fresh_formal0.sh",
+      "sha256": "c59de4124f9714d40b040937592e601ace62d6841b6b55d7196978ea495dccea"
+    },
+    "robust_tests": {
+      "path": "tests/test_xp_v37_robust_state.py",
+      "sha256": "269da3e6b3d900abe3c8f1a4bc3b11b6b9ad86a5488122bfce54f292b7e312d7"
+    },
+    "repeat_generation_test": {
+      "path": "tests/test_xp_v37_generate_repeat.py",
+      "sha256": "991d5d34c6ecc8ffd3bc690109cf564acb5fb355a923b6f6d68f43cd1385db94"
+    }
+  },
+  "noise_fix": {
+    "bad_bound": 22.107605849570696,
+    "bad_estimator": "two_times_cross_regime_prediction_mae",
+    "root_cause": "old heterogeneous model residual was mislabeled as exact-point replay noise",
+    "first_repeat_policy": "automatic exact-point diagnostic acquisition with no prior repeat-noise estimate",
+    "post_repeat_gate": "score_span_greater_than_two_times_same_point_mae",
+    "post_repeat_gate_relaxed": false
+  },
+  "formal_state_fix": {
+    "preformal_handoff": "sha_sealed_two_actual_score_and_resource_observations",
+    "third_observation_aggregation": "componentwise_resource_median",
+    "acceptance_requires": [
+      "three_observation_score_median_improves",
+      "aggregate_resource_recomputed_score_improves"
+    ],
+    "stored_incumbent_alignment": "score_recomputed_from_stored_actual_resource_and_utilization",
+    "probe_updates": false,
+    "missing_or_changed_handoff": "fail_before_workload"
+  },
+  "candidate_injection": false,
+  "candidate_parameter_changes": false,
+  "workload_calls_added_by_handoff": 0,
+  "mysql_touched": false,
+  "ssh_used": false,
+  "offline_tests": {
+    "robust_state": "5/5 passed",
+    "automatic_repeat_generation": "passed",
+    "preflight": "passed"
+  }
+}

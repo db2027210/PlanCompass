@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_14",
+  "status": "invalid_workload_semantics_ap10_only",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "primary_reason": "the generated HyBench properties ran AP10 only with weight 100 instead of the frozen AP1-AP13 mixed workload",
+  "invalid_runtime_properties": {
+    "ap_query_ids": [10],
+    "ap_query_weights": [100]
+  },
+  "required_frozen_runtime_properties": {
+    "formal_name": "HyBench-AP13-mixed-AP10-weighted",
+    "benchmark_matrix_sha256": "23b20f81a129cc90d48456f01983fb911a9d76d9171af716fe028ca5edb87121",
+    "ap_clients": 4,
+    "ap_query_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "ap_query_weights": [6, 6, 6, 6, 6, 6, 6, 6, 6, 28, 6, 6, 6]
+  },
+  "preserved_diagnostic_result": {
+    "correctness_passed": true,
+    "workload_error_rate": 0.0,
+    "successful_queries": 15,
+    "db_qps": 0.0249658195,
+    "measurement_wall_seconds": 600.82,
+    "resource_sample_count": 601,
+    "resource_sample_coverage": 1.0,
+    "mean_raw_utilization": {
+      "cpu": 0.3605030778,
+      "memory": 0.7352102407,
+      "io": 0.4078030309
+    },
+    "resource_gate": {
+      "cpu_30_to_50_inclusive": true,
+      "memory_strictly_greater_than_80": false,
+      "io_30_to_50_inclusive": true,
+      "passed": false
+    },
+    "final_six_window_cross_window_cv": {
+      "cpu": 0.7959286303,
+      "memory": 0.2873639196,
+      "io": 0.2754747022
+    },
+    "stability_passed": false,
+    "container_oom_killed": false,
+    "container_restart_count": 0,
+    "container_health_failure": false,
+    "memory_failcnt_baseline": 684,
+    "memory_failcnt_last_observed": 383563,
+    "memory_failcnt_role": "diagnostic_only"
+  },
+  "preserved_evidence": {
+    "point_result.json": "88b11101ed272b9ffa6a4bde34770ea95902533f824f93e56675ddb60ba9c307",
+    "point_state.json": "7c7a3b227f84045189252aeb478e614ea16dafd841acf45240f5d4e532ccb05a",
+    "measurement_summary.json": "05a8cb89ed8766d2bd07efe4ea2fd29a3ff3be16dd0ba7c219a1bfc575dc9f04",
+    "baseline_invocation_attempt_14.json": "31b57631dff451c5a9d6304cf2d2e2d635a43d4eb74a51f8701540793c745943",
+    "host_background_attempt_14.jsonl": "356e835b6d68e1c9e8bb9baea6821c8a93b7e691e13a2cef9994d61edc9dee9b",
+    "measurement_queries.jsonl": "89935d142af7ff64db02dcfbec8f917966bbc39257098a3403123cf36dcaa7e5",
+    "measurement_resource_samples.jsonl": "011ef29983450bddd4ff14b8812ae009ff9b2872d9fb43563316097b25a3621f",
+    "measurement_online_stability_controller.jsonl": "517bf8da9123c20636b8ae77b70c36e1cd52e9c28c7675260754dfec0b473a81"
+  },
+  "outer_loop_effect": {
+    "anchor_changed": false,
+    "bounds_changed": false,
+    "binary_interval_shrinks": 0,
+    "accepted_outer_rounds_after_disposition": 0
+  },
+  "next_attempt": "attempt_15"
+}

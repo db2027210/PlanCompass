@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "table_id": "pg5_hybench_ap_memory_experience_table_T_v1",
+  "table_version": "2026-07-22.1",
+  "table_path": "experience_table_T.json",
+  "table_sha256": "005d503ec38edd8a121d01ab1ba7a50af4a9e07bdfa2e53b27d1eb673c23d038",
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_tuple_cost"
+  ],
+  "active_parameter_count": 6,
+  "expected_nonempty_subset_count": 63,
+  "nonzero_fields": [
+    "seq_page_cost.cpu",
+    "seq_page_cost.memory",
+    "seq_page_cost.io",
+    "random_page_cost.cpu",
+    "random_page_cost.memory",
+    "random_page_cost.io",
+    "cpu_tuple_cost.cpu",
+    "cpu_tuple_cost.memory",
+    "cpu_tuple_cost.io",
+    "cpu_index_tuple_cost.cpu",
+    "cpu_index_tuple_cost.memory",
+    "cpu_operator_cost.cpu",
+    "cpu_operator_cost.memory",
+    "cpu_operator_cost.io",
+    "parallel_tuple_cost.cpu",
+    "parallel_tuple_cost.memory",
+    "parallel_tuple_cost.io"
+  ],
+  "nonzero_entry_count": 17,
+  "zero_fields": ["cpu_index_tuple_cost.io"],
+  "validation": {
+    "table_present": true,
+    "table_is_mapping": true,
+    "table_is_not_none": true,
+    "table_is_not_all_zero": true,
+    "every_active_param_has_a_row": true,
+    "every_active_row_has_at_least_one_nonzero_value": true,
+    "all_values_are_finite_numbers": true,
+    "resource_fields_exactly_cpu_memory_io": true,
+    "subset_count_is_2_pow_6_minus_1": true,
+    "passed": true
+  },
+  "direction_provenance": {
+    "formula": "direction[p] = sum_r utility_slope[r] * T[p][r]",
+    "only_signed_parameter_resource_effect_source": "experience_table_T.json",
+    "finite_difference_enabled": false,
+    "random_direction_enabled": false,
+    "surrogate_gradient_direction_enabled": false,
+    "gradient_descent_optimizer_sha256": "60f2f76def411b48caba6c395f81025048683f6a3d90db337dc6bbff9dde97e4",
+    "experience_table_subset_optimizer_sha256": "81bc1ae3dcb6d35be81b84a3eb6c4c52b79eee35374ac40237283c664feb4faf",
+    "parameter_optimizer_sha256": "c1185f5fa18962160f6d7c340d54bc3e5698c5c97436a833b4deef2c933ae611"
+  },
+  "source": {
+    "path": "result/bonect/experience_table.md",
+    "sha256": "c54e04cb4c3ce55dae4d40af6c4c92e2a37effec61de1eec7d595726dc83a3a9",
+    "projection": "HyBench AP frozen six-parameter rows; parallel_setup_cost is fixed and excluded"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_26",
+  "source_controller_elapsed_seconds": 180,
+  "immutable_target_resource": "memory",
+  "source_latest_six_mean_raw_utilization": {"cpu": 0.35336260465275865, "memory": 0.813522993378553, "io": 0.44785543295908403},
+  "source_absolute_mean": {"cpu_cores": 2.3604621990804278, "memory_MiB": 174.9074435763889, "io_MiB_per_second": 44.337687862949316},
+  "selected_envelope": {"cpu_quota_cores": 6.68, "memory_MiB": 200, "io_read_MiB_per_second": 64, "io_write_MiB_per_second": 35},
+  "prediction_if_absolute_demand_is_preserved": {"cpu_utilization": 0.35336260465275865, "memory_utilization": 0.8745372178819445, "io_utilization": 0.44785543295908403},
+  "target_resource_mutation_allowed": false,
+  "fallback_if_adaptive_reclaim_persists": "keep target memory and use a recorded lane-owned 14MiB resident tmpfs construction rather than further blind cap reduction"
+}

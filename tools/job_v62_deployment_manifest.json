@@ -1,0 +1,91 @@
+{
+  "schema_version": "job_v62_deployment_manifest_v1",
+  "scenario": "job",
+  "status": "sealed_offline_not_launched",
+  "authoritative_state": {
+    "accepted_count": 1,
+    "formal_state_sha256": "8ee73ee31883f0362353ec0e03dc665ef113f91510269a07b6f28109cfda62a7",
+    "formal_replay_counter": 211,
+    "global_counter": 429
+  },
+  "controller": {
+    "path": "tools/job_fresh10_target10_autonomous_v62.py",
+    "deploy_path": "/tmp/job_fresh10_target10_autonomous_v62.py",
+    "sha256": "748ba44a28c446a8510ca1463750b1db3c7a9674f46cd9d4d0876c3c2c021a2a"
+  },
+  "launcher": {
+    "path": "tools/launch_job_target10_autonomous_v62.sh",
+    "deploy_path": "/tmp/launch_job_target10_autonomous_v62.sh",
+    "sha256": "f61235c0a838d5afc3237cbc3bf83d278b95c6b3c32f4bb920298dd00fb12a33"
+  },
+  "tests": {
+    "path": "tests/test_job_v62_live_network_authority.py",
+    "sha256": "a3462c20abbc56d3864ae0e4c8312b42572a571822761511588e4b3741b9c1e7",
+    "v62_tests_passed": 6,
+    "inherited_v61_tests_passed": 5,
+    "inherited_v60_tests_passed": 4
+  },
+  "sealed_dependencies": [
+    {
+      "path": "tools/job_fresh10_target10_autonomous_v61.py",
+      "deploy_path": "/tmp/job_fresh10_target10_autonomous_v61.py",
+      "sha256": "49e6c210380c0852d9b0dffd7da597d318de1932994351c31b028cc6cbf53053"
+    },
+    {
+      "path": "tools/job_fresh10_target10_autonomous_v60.py",
+      "deploy_path": "/tmp/job_fresh10_target10_autonomous_v60.py",
+      "sha256": "394f207eea62d93ceae570d3bca25abe36c4ae787a37f8913cbbc4e492ed222b"
+    }
+  ],
+  "network_preflight_contract": {
+    "name": "job_v62_per_runner_live_network_authority_preflight_v1",
+    "lifetime": "one_runner_process_boundary",
+    "maximum_age_seconds": 60,
+    "refresh_before_every_real_runner": true,
+    "sha_sealed_raw_docker_network_inspect": true,
+    "authority_fields": [
+      "formal_state_sha256",
+      "accepted_count",
+      "global_counter",
+      "formal_replay_counter",
+      "accepted_counter"
+    ],
+    "network_name": "ra_job_v53_net",
+    "driver": "bridge",
+    "scope": "local",
+    "internal": false,
+    "bridge_interface": "ra-job-v53",
+    "attached_container_count": 0,
+    "checks_relaxed": false
+  },
+  "authority_bridge_contract": {
+    "name": "job_v62_v61_clean5_authority_bridge_v1",
+    "source_global_counter": 424,
+    "physical_transition": 5,
+    "destination_global_counter": 429,
+    "formal_replay_counter_unchanged": 211,
+    "accepted_counter_unchanged": 1,
+    "formal_state_sha256_unchanged": "8ee73ee31883f0362353ec0e03dc665ef113f91510269a07b6f28109cfda62a7",
+    "discovery_replay_05_clean5_required": true,
+    "new_workload_calls": 0
+  },
+  "controller_recovery_contract": {
+    "name": "job_v62_zero_call_controller_resume_v1",
+    "source_status": "fail_closed",
+    "destination_status": "ready_resume",
+    "cycle": 2,
+    "phase": "repeat_gate",
+    "reuse_selection": "cycle_002/repeat_01/top5.json",
+    "timestamped_backup_required": true,
+    "formal_state_updates": 0,
+    "counter_updates": 0,
+    "new_workload_calls": 0
+  },
+  "safety": {
+    "ssh_calls": 0,
+    "workload_calls": 0,
+    "mysql_touched": false,
+    "manual_candidate_injection": false,
+    "qps_used_for_inner_scoring": false
+  }
+}

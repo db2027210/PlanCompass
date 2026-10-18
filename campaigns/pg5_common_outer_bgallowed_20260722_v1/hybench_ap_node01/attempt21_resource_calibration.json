@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "source_attempt": "attempt_20",
+  "source_controller_elapsed_seconds": 390,
+  "source_complete_window_range": [7, 12],
+  "source_latest_six_mean_raw_utilization": {
+    "cpu": 0.30135352286100675,
+    "memory": 0.8106148942786069,
+    "io": 0.40978567855815723
+  },
+  "source_resource_envelope": {
+    "cpu_quota_cores": 5.13,
+    "memory_MiB": 402,
+    "io_read_MiB_per_second": 27,
+    "io_write_MiB_per_second": 27,
+    "io_total_MiB_per_second": 54
+  },
+  "source_absolute_mean": {
+    "cpu_cores": 1.5459435722769646,
+    "memory_MiB": 325.86718749999994,
+    "io_MiB_per_second": 22.12842664214049
+  },
+  "selected_envelope": {
+    "cpu_quota_cores": 5.13,
+    "memory_MiB": 372,
+    "io_read_MiB_per_second": 64,
+    "io_write_MiB_per_second": 4
+  },
+  "prediction_if_absolute_demand_is_preserved": {
+    "cpu_utilization": 0.30135352286100675,
+    "memory_utilization": 0.8759870631720429,
+    "io_utilization": 0.3254180388550072
+  },
+  "phase_decoupling_adjustment": {
+    "read_cap_multiplier_from_attempt20": 2.3703703703703702,
+    "write_cap_multiplier_from_attempt20": 0.14814814814814814,
+    "total_io_cap_multiplier_from_attempt20": 1.2592592592592593,
+    "intent": "shorten the long read-bound AP10 occupancy phase below a 30-second stability window while keeping sum-over-cap IO utilization inside 0.30-0.50"
+  },
+  "calibration_note": "changed limits may alter absolute demand and phase timing; predictions are observational and all formal gates remain measured fail-closed",
+  "workload_unchanged": true,
+  "stability_contract_unchanged": true
+}

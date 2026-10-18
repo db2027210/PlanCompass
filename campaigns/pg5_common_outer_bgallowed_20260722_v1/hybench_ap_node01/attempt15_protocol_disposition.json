@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_15",
+  "status": "hard_fail_workload_error_ap2_resultset_closed",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "reason": "HyBench AP2 called ResultSet.next after the shared FormalPgCommitDriver had already drained and closed the executeQuery result",
+  "diagnosis": {
+    "hybench_method": "com.hybench.workload.APClient.execQ2",
+    "failure": "org.postgresql.util.PSQLException: This ResultSet is closed",
+    "ap2_sql_result_shape": "single_select_single_resultset",
+    "prepared_statement_scope": "method_local_no_cross_thread_statement_or_resultset_reuse_observed",
+    "driver_configuration_cause": "eager_drain_close_before_executeQuery_return",
+    "concurrent_statement_reuse_cause": false,
+    "multiple_sql_results_cause": false
+  },
+  "runtime_evidence": {
+    "runner_process_group": 113630,
+    "background_sampler_pid": 113631,
+    "container_id": "dc28c501182549addd27e7da5c1f46b7711972a3adcf12e579b002c4e4ab877d",
+    "container_health_before_stop": "healthy",
+    "container_oom_killed_before_stop": false,
+    "container_restart_count_before_stop": 0,
+    "memory_failcnt_baseline": 0,
+    "memory_failcnt_before_stop": 86538,
+    "memory_failcnt_role": "diagnostic_only",
+    "warmup_query_records": 15,
+    "formal_measurement_started": false,
+    "owned_process_group_terminated": true,
+    "owned_container_removed": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "6d69e293cb9d40a247418cdf9ce536f5cab427a4593e6e4ff0c611e4304f91a2",
+    "hybench_warmup.props": "7900298ef1acf0a14b8a2010f64d2597acf91163536065a2e9c4e214c278802a",
+    "warmup_hybench.log": "9f210d10c9688790e2429feb8bf035dd33b0e26ae114767ae128101660e488a9",
+    "warmup_queries.jsonl": "12de53c1c1ab36be557e2dab0885b356c6d7b3815373dbbdc32e2fdb2740140e",
+    "baseline_invocation_attempt_15.json": "d12739886acc55dc4a3e4c3f113e1a9b6875a3fde85b51950773b5e29bd85e26",
+    "host_background_attempt_15.jsonl": "500d5d8e3f82a5faf25e49e94f991c93978cf0b960091c2d0e71f9b3ed2b11cf"
+  },
+  "private_fix": {
+    "source_sha256": "d1c1f7ba6edcfd31bd5132aa5c94a7b38e2850435338d01cb6ab30137d0b5109",
+    "jar_sha256": "e687e11704d1401bc03cbbad7f80bd51a8dfa89ae76502407800c5bcfb82d186",
+    "regression_summary_sha256": "f086d2f33833137a260bf8a38af2cbf497a683ae1ec0d594a6c82b920a3b7dc0",
+    "regression_query_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "all_queries_passed": true
+  },
+  "outer_loop_effect": {
+    "anchor_changed": false,
+    "bounds_changed": false,
+    "binary_interval_shrinks": 0,
+    "accepted_outer_rounds_after_disposition": 0
+  },
+  "next_attempt": "attempt_16"
+}

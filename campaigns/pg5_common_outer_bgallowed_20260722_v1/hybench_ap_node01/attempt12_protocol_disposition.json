@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "attempt_id": "attempt_12",
+  "status": "calibration_memory_failcnt_fail",
+  "formal_r0_eligible": false,
+  "accepted_outer_rounds_contributed": 0,
+  "reason": "the lane-owned PostgreSQL cgroup reported memory.failcnt=4894 during warmup at the 480 MiB limit; the predeclared OOM/failcnt policy requires fail-closed handling",
+  "runtime_evidence": {
+    "runner_pid": 101595,
+    "runner_process_group": 101595,
+    "background_sampler_pid": 101596,
+    "container_id": "0c85e7f9cec7e2e9c676bac31c40247070584b11412d2dcad6390a25033900ba",
+    "phase": "warmup",
+    "memory_failcnt": 4894,
+    "memory_max_usage_in_bytes": 503316480,
+    "memory_usage_in_bytes_at_observation": 209072128,
+    "memory_limit_in_bytes": 503316480,
+    "container_oom_killed": false,
+    "container_health": "healthy",
+    "container_restart_count": 0,
+    "formal_measurement_sample_count": 0,
+    "owned_process_group_terminated": true,
+    "owned_container_stopped_and_removed": true,
+    "background_sampler_exited_naturally_after_watched_runner": true,
+    "foreign_processes_or_containers_signaled": false
+  },
+  "preserved_evidence": {
+    "point_state.json": "6262e7d9618c131dd6e8fd17c7cd2fa05112123912b15b7f7b8291dd6354713a",
+    "baseline_invocation_attempt_12.json": "3811f6a0ff97d9c9c4f884cc3de77154f3bc4a9d0e2389679ef0fcefc5f6f204",
+    "host_background_attempt_12.jsonl": "33907f3956264bcb5f9b19f0a0f3f0cdcf151657fcbcb2ac379f846071a9a30e"
+  },
+  "next_attempt": "attempt_13",
+  "next_memory_bytes": 520093696
+}

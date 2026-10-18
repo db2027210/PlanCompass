@@ -1,0 +1,85 @@
+{
+  "schema_version": 2,
+  "table_id": "pg5_tpcc_cpu_experience_table_T_v3_semantic_prior",
+  "version": "2026-07-23.1-prior-only",
+  "benchmark": "tpcc_sensitive",
+  "target_resource": "cpu",
+  "scope": "SF10 32 native terminals plus one sensitive StockLevel query under the 4-core CPU bottleneck profile",
+  "direction_semantics": "T[param][resource] is the signed physical-resource effect of increasing one PostgreSQL planner cost parameter while other parameters are fixed",
+  "finite_difference_direction_enabled": false,
+  "random_direction_enabled": false,
+  "formal_admission": {
+    "ready": false,
+    "reason": "semantic_and_plan-structure_prior_requires_independent_real_replay_direction_validation",
+    "may_generate_calibration_probes": true,
+    "may_rank_formal_real_replays": false,
+    "may_trigger_outer_acceptance_or_range_shrink": false
+  },
+  "derivation_contract": {
+    "semantic_chain": "parameter increase -> planner path preference -> expected plan-node mix -> expected CPU/memory/read+write IO direction",
+    "qps_policy": "QPS is excluded from T and from the small-loop SGD score; measured db_qps is used only by the real-replay outer acceptance gate",
+    "real_evidence_count_semantics": "evidence_count counts independently attributable real replays only; semantic reasoning does not increment it",
+    "confidence_semantics": "low prior weight used by the SGD direction calculation; it is not a posterior probability",
+    "multi_parameter_replay_policy": "a joint vector replay may support that exact vector but cannot be split into independent per-parameter causal signs",
+    "historical_vector_reference": "experience_table_T_tpcc_cpu_v2.json",
+    "plan_boundary_reference": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/history/pg_tpcc_sensitive_frozen_bounds_validation_20260722/plan_scan.json"
+  },
+  "parameter_rationales": {
+    "seq_page_cost": {
+      "plan_effect": "higher cost discourages sequential scans and can favor index/bitmap access",
+      "resource_effect": "usually fewer heap pages and filtered tuples, but index traversal makes CPU sign weak",
+      "historical_relation": "CPU sign agrees with the old joint vector; IO decrease agrees; individual attribution is absent"
+    },
+    "random_page_cost": {
+      "plan_effect": "higher cost discourages index and bitmap paths and can favor sequential scans",
+      "resource_effect": "more scanned pages and tuples generally raise CPU and total read+write IO",
+      "historical_relation": "resource signs agree with the old table, but the old source was one multi-parameter vector"
+    },
+    "cpu_tuple_cost": {
+      "plan_effect": "higher cost penalizes plans that process many tuples and favors earlier row reduction",
+      "resource_effect": "fewer processed tuples tends to reduce CPU, memory working set and IO",
+      "historical_relation": "resource signs agree with the old table; individual attribution is absent"
+    },
+    "cpu_index_tuple_cost": {
+      "plan_effect": "higher cost discourages index paths and can switch to broader heap/sequence access",
+      "resource_effect": "broader scans generally raise CPU, working set and IO",
+      "historical_relation": "memory and IO signs conflict with or are unsupported by the old table, so confidence is lowest"
+    },
+    "cpu_operator_cost": {
+      "plan_effect": "higher cost penalizes expression, predicate, sort and join work and favors plans applying work to fewer rows",
+      "resource_effect": "expected CPU and IO decrease is weak because alternative plan shapes can trade CPU for IO",
+      "historical_relation": "CPU sign agrees with the old joint vector; independent attribution is absent"
+    },
+    "parallel_setup_cost": {
+      "plan_effect": "higher cost discourages Gather/Gather Merge and parallel-aware children",
+      "resource_effect": "parallel CPU, worker memory and instantaneous IO throughput normally fall; throughput is intentionally not modeled in T",
+      "historical_relation": "semantic CPU sign conflicts with the old joint vector; plan scan contains Gather and Gather Merge, so this remains a low-confidence probe prior"
+    },
+    "parallel_tuple_cost": {
+      "plan_effect": "higher cost discourages tuple transfer through Gather and parallel plans",
+      "resource_effect": "parallel CPU, worker memory and instantaneous IO throughput normally fall; throughput is intentionally not modeled in T",
+      "historical_relation": "semantic CPU sign conflicts with the old joint vector; no independent coordinate evidence"
+    }
+  },
+  "canonicalization": "UTF-8 JSON of table only, sort_keys=true, separators=(',', ':')",
+  "table_sha256": "c87e747d2b5479a4048991952ef02fd4eb30f4c2851d7b8e107031f00f74e776",
+  "low_confidence_freeze_threshold": 0.5,
+  "active_params": [
+    "seq_page_cost",
+    "random_page_cost",
+    "cpu_tuple_cost",
+    "cpu_index_tuple_cost",
+    "cpu_operator_cost",
+    "parallel_setup_cost",
+    "parallel_tuple_cost"
+  ],
+  "table": {
+    "seq_page_cost": {"cpu": 0.05, "memory": -0.03, "io": -0.15, "confidence": 0.15, "evidence_count": 0.0},
+    "random_page_cost": {"cpu": 0.15, "memory": 0.05, "io": 0.20, "confidence": 0.30, "evidence_count": 0.0},
+    "cpu_tuple_cost": {"cpu": -0.15, "memory": -0.04, "io": -0.10, "confidence": 0.25, "evidence_count": 0.0},
+    "cpu_index_tuple_cost": {"cpu": 0.12, "memory": 0.04, "io": 0.15, "confidence": 0.10, "evidence_count": 0.0},
+    "cpu_operator_cost": {"cpu": -0.12, "memory": -0.03, "io": -0.08, "confidence": 0.20, "evidence_count": 0.0},
+    "parallel_setup_cost": {"cpu": -0.15, "memory": -0.08, "io": -0.04, "confidence": 0.20, "evidence_count": 0.0},
+    "parallel_tuple_cost": {"cpu": -0.18, "memory": -0.06, "io": -0.05, "confidence": 0.20, "evidence_count": 0.0}
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "campaign_id": "pg5_common_outer_bgallowed_20260722_v1",
+  "lane_id": "hybench_ap_node01",
+  "source_attempt": "attempt_16",
+  "target_attempt": "attempt_17",
+  "fresh_template_copy_required": true,
+  "resource_contract": {
+    "cpu_quota_cores": 2.0,
+    "cpuset_cpus": "16-23",
+    "cpuset_mems": "0",
+    "memory_bytes": 536870912,
+    "memory_swap_bytes": 536870912,
+    "io_read_bps": 8388608,
+    "io_write_bps": 8388608,
+    "io_total_bps": 16777216,
+    "pids_limit": 512
+  },
+  "workload_contract": {
+    "formal_name": "HyBench-AP13-mixed-AP10-weighted",
+    "benchmark_matrix_sha256": "23b20f81a129cc90d48456f01983fb911a9d76d9171af716fe028ca5edb87121",
+    "ap_clients": 4,
+    "ap_query_ids": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "ap_query_weights": [6, 6, 6, 6, 6, 6, 6, 6, 6, 28, 6, 6, 6]
+  },
+  "private_jdbc_patch": {
+    "source_sha256": "d1c1f7ba6edcfd31bd5132aa5c94a7b38e2850435338d01cb6ab30137d0b5109",
+    "jar_sha256": "e687e11704d1401bc03cbbad7f80bd51a8dfa89ae76502407800c5bcfb82d186",
+    "ap1_ap13_regression_summary_sha256": "f086d2f33833137a260bf8a38af2cbf497a683ae1ec0d594a6c82b920a3b7dc0",
+    "all_queries_passed": true
+  },
+  "measurement_contract": {
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "earliest_stable_stop_seconds": 180,
+    "initial_probe_seconds": 300,
+    "initial_probe_is_observational_only": true,
+    "maximum_measurement_seconds": 600,
+    "window_seconds": 30,
+    "required_complete_windows": 6,
+    "resource_cv_max_inclusive": 0.1
+  },
+  "r0_resource_gate": {
+    "memory_minimum_exclusive": 0.8,
+    "cpu_band_inclusive": [0.3, 0.5],
+    "io_band_inclusive": [0.3, 0.5]
+  },
+  "post_r0_algorithm": {
+    "active_parameters": 6,
+    "all_nonempty_subsets": 63,
+    "direction_source": "explicit_experience_table_T_only",
+    "real_replay_initial_top_k": 5,
+    "real_replay_max_top_k": 10,
+    "outer_acceptance": "db_qps_strictly_up_and_memory_bottleneck_strictly_down",
+    "binary_shrink_only_after_acceptance": true
+  },
+  "private_runner_sha256": "a96e20937384dae495eb897596406940a267caebb9641d5665110d64044c203c",
+  "accepted_outer_rounds_before_start": 0,
+  "formal_r0_eligible": false,
+  "invalid_reason": "private_classpath_injection_scope_before_warmup",
+  "status": "invalid_private_classpath_injection_scope_before_warmup"
+}
