@@ -1,0 +1,49 @@
+{
+  "schema_version": "mysql_algorithm_c_four_scene_boundary_resume_contract_v2",
+  "release_version": "v111-full-docker-path-resilience",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "C",
+  "fresh_search": false,
+  "fresh_formal_baseline_per_scene": false,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "all_four_scenes_start_concurrently": true,
+  "physical_workers_per_scene": 2,
+  "maximum_concurrent_mysql_workers": 8,
+  "per_scene_controller": true,
+  "per_scene_outer_state_machine": true,
+  "four_scene_wave_barrier": false,
+  "sibling_scene_wait": false,
+  "shared_nvme_mutual_exclusion": false,
+  "numa_exclusive_scheduler_lock": false,
+  "whole_round_resource_lease": false,
+  "lease_mode": "none",
+  "algorithm_a_or_previous_c_prior_used": false,
+  "previous_c_accepted_or_rejected_credit_inherited": true,
+  "previous_c_ranges_inherited": true,
+  "completed_outer_history_preserved": true,
+  "incomplete_outer_credit": 0,
+  "stable_definition": "one_complete_outer_per_scene_with_valid_decision",
+  "external_process_control_or_stop_performed": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v21.py",
+      "sha256": "2113c96f396bfa7d169d0d859c295e03e099196486434c6765b8260c49a75019"
+    },
+    "tpch_controller": {
+      "path": "scripts/run_mysql_algorithm_c_tpch_resume_client_primary_v22.py",
+      "sha256": "95559a9e74af1312a277728b2a4df5cf14d4d75d14bf86b90e141db2092acebf"
+    },
+    "outer_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_latest_outer_20260906_v111/algorithm_c_pg_latest_outer_contract.json",
+      "sha256": "c00303a86ed32777bbcd2297a7abf9ec4b64caacf91d77a883ed7ea9e4a952c2"
+    }
+  }
+}

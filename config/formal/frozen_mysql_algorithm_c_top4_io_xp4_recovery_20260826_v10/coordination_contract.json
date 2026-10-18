@@ -1,0 +1,37 @@
+{
+  "candidate_batches": [
+    [
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "created_at": "2026-08-26T01:09:37.715836+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "external_process_control_or_stop_performed": false,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "lease_mode": "none",
+  "maximum_gate_attempts_per_wave": 1,
+  "maximum_idle_load1": 16,
+  "maximum_quiet_wait_seconds": 60,
+  "native_xp_workload_unchanged": true,
+  "numa_exclusive_scheduler_lock": false,
+  "per_wave_quiet_seconds": 15,
+  "schema_version": "mysql_algorithm_c_xp4_no_lease_coordination_v1",
+  "shared_nvme_mutual_exclusion": false,
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "boundary_resume_controller_path": "scripts/run_mysql_four_scene_algorithm_c_xp4_runtime_v2.py",
+    "boundary_resume_controller_sha256": "5c3da950dbba47445d14c9dab5a47879e5ae3654d9437588f2965a0c4e9ada99",
+    "coordination_source_path": "scripts/mysql_cross_project_wave_coordination_v4.py",
+    "coordination_source_sha256": "20001fdf705d0b982c27299e8fe697592885dcb040512e6950378561c6534f3a"
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "whole_round_resource_lease": false,
+  "xp_graceful_quiescence_seconds": 120
+}

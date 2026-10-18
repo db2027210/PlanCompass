@@ -1,0 +1,37 @@
+{
+  "schema_version": "mysql_algorithm_a_same_cohort_prestart_retry_v1",
+  "release_version": "v1",
+  "status": "FROZEN",
+  "created_at": "2026-08-23T04:08:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "maximum_wait_seconds": 600.0,
+  "retry_interval_seconds": 0.5,
+  "retryable_error_prefix": "fresh R0 point non-interference gate blocked:",
+  "external_process_mutation": false,
+  "optimizer_or_measurement_state_mutation_while_waiting": false,
+  "same_worker_cohort_required": true,
+  "accepted_rounds_preserved": true,
+  "interrupted_round_credited": false,
+  "baseline_reused_without_replay": true,
+  "incumbent_reference_reused_without_replay": true,
+  "source_bindings": {
+    "same_cohort_controller": {
+      "path": "scripts/run_mysql_algorithm_a_same_cohort_codefix_resume_v1.py",
+      "sha256": "5741d20c711a0dc8ced157cbba5c0c428355922b05b4ec6907b1b28023ac087c"
+    },
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "two_worker_launcher": {
+      "path": "scripts/launch_mysql_algorithm_a_job_two_worker_resume_v1.py",
+      "sha256": "2bb3b06e9521b22b58da8189b0522ccd4e73ff17d7245c9cfb9b9f29c3b06cee"
+    },
+    "algorithm_a_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260822_v4/algorithm_a_contract.json",
+      "sha256": "d35c01e29c14aeeed4d82870725db686697d3d17188bea28ee9c323f418732bf"
+    }
+  }
+}

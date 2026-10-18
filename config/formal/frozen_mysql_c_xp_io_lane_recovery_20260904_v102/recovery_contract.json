@@ -1,0 +1,78 @@
+{
+  "schema_version": "mysql_c_xp_io_single_failed_baseline_lane_recovery_contract_v102",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "hybench_xp_io",
+  "algorithm": "C",
+  "fresh_search": true,
+  "recovery_scope": "formal_incumbent_baseline_only",
+  "retained_worker": "xp_io_w1",
+  "retained_worker_hard_gate_passed": true,
+  "retained_worker_measurement_seconds": 540,
+  "retried_workers": [
+    "xp_io_w2"
+  ],
+  "failed_worker_reason": "target_resource_stability_only",
+  "stability_threshold_changed": false,
+  "native_xp_workload_changed": false,
+  "resource_envelope_changed": false,
+  "completed_measurement_replay_prohibited": true,
+  "accepted_or_rejected_credit_mutation_prohibited": true,
+  "candidate_batches": [
+    [1, 2],
+    [3, 4],
+    [5]
+  ],
+  "outer_acceptance": "strictly_higher_qps_than_previous_incumbent",
+  "physical_workers_available": 2,
+  "active_baseline_retry_workers": 1,
+  "four_scene_wave_barrier": false,
+  "sibling_scene_wait": false,
+  "shared_nvme_mutual_exclusion": false,
+  "numa_exclusive_scheduler_lock": false,
+  "whole_round_resource_lease": false,
+  "lease_mode": "none",
+  "post_reset_settle_decision_scope": "selected_xp_io_worker_cgroups",
+  "completed_other_c_scenes_immutable": true,
+  "external_process_control_or_stop_permitted": false,
+  "postgresql_process_control_or_stop_permitted": false,
+  "source_bindings": {
+    "parent_release_contract": {
+      "path": "config/formal/frozen_mysql_c_xp_io_release_20260904_v101/release_contract.json",
+      "sha256": "b46d095e2e180f9923d86fc48706b8b063f6a5df9a334c6737268619e0ee2b41"
+    },
+    "lane_recovery_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v12.py",
+      "sha256": "23b0287f513f2987414bc3c5880c603d5cba40957491c6aa6c4787a42f092844"
+    },
+    "scoped_settle_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v11.py",
+      "sha256": "c990d9bf6453ddd62e86f5049f32e2ffd88a5ae19bb107e28c0286be4a42e479"
+    },
+    "failed_run_state": {
+      "path": "history/mysql_four_scene_20260809/v1206_to_c_xp_io_client_primary_v101_20260904_xp_io/run_state.json",
+      "sha256": "cbcb6423195defc33dc6b1e03886729147246ee355f641d8d2701d44859bc38a"
+    },
+    "failed_baseline_batch": {
+      "path": "history/mysql_four_scene_20260809/v1206_to_c_xp_io_client_primary_v101_20260904_xp_io/formal_incumbent_baseline/batch_result.json",
+      "sha256": "7d66af6698dc05a05530f83618816429dbc5d8ae5056368d619d20145820a664"
+    },
+    "failed_run_dynamic_gate": {
+      "path": "history/mysql_four_scene_20260809/v1206_to_c_xp_io_client_primary_v101_20260904_xp_io/formal_incumbent_baseline_dynamic_noninterference_gate.json",
+      "sha256": "71b5411c515d25e8c083e69732e283abe8d526b98435f37dc62e29288346fe27"
+    },
+    "scene_authority_result": {
+      "path": "history/mysql_four_scene_20260809/v1208_to_c_xp_io_lane_recovery_authority_v102_20260904/authority/authority_result.json",
+      "sha256": "19461b9c22a49d3e72113a5f800aea266410ae40dcdd7876abbb6edba3877687"
+    },
+    "scene_prepared_binding": {
+      "path": "history/mysql_four_scene_20260809/v1208_to_c_xp_io_lane_recovery_authority_v102_20260904/authority/prepared_binding.json",
+      "sha256": "b7499190428a424a213a49e271f6a0d18f22928a74759dd2d8d22699696adbaf"
+    },
+    "scene_fresh_r0": {
+      "path": "history/mysql_four_scene_20260809/v1209_to_c_xp_io_lane_recovery_fresh_r0_v102_20260904/fresh_r0_binding.json",
+      "sha256": "f5ee80d839c685f3ade97c33dccce2d8d4f65fa8a893c5de5272dc9fae4c5fe8"
+    }
+  }
+}

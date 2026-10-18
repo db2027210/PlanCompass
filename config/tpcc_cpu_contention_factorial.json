@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "target": {
+    "container": "ra-mysql-grid-tpcc-cpu",
+    "host": "127.0.0.1",
+    "port": 13308,
+    "required_label": "resource-adaptive-mysql.owner=mysql-grid-20260718"
+  },
+  "benchmark": {
+    "driver": "benchbase",
+    "workload": "tpcc",
+    "warmup_seconds": 120,
+    "measure_seconds": 300,
+    "terminals": 32,
+    "repeats_per_point": 1,
+    "randomize_order": true
+  },
+  "factors": {
+    "innodb_spin_wait_delay": [0, 6],
+    "innodb_sync_spin_loops": [0, 30],
+    "innodb_thread_concurrency": [0, 8]
+  },
+  "baseline_values": {
+    "innodb_spin_wait_delay": 6,
+    "innodb_sync_spin_loops": 30,
+    "innodb_thread_concurrency": 4
+  },
+  "documented_mysql80_defaults": {
+    "innodb_spin_wait_delay": 6,
+    "innodb_sync_spin_loops": 30,
+    "innodb_thread_concurrency": 0
+  },
+  "all_factors_global_dynamic": true,
+  "guardrails": {
+    "require_exact_container_label_and_port": true,
+    "snapshot_runtime_globals_before_first_change": true,
+    "restore_after_every_point": true,
+    "verify_restore_by_select": true,
+    "abort_on_restore_failure": true,
+    "max_error_rate_pct": 1.0
+  },
+  "metrics": [
+    "throughput_tps",
+    "latency_p95_ms",
+    "latency_p99_ms",
+    "error_rate_pct",
+    "container_cpu_pct",
+    "cpu_context_switches_per_s",
+    "mysql_threads_running",
+    "mysql_threads_connected"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v166",
+  "release_version": "v166-job-quiet-window-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "resume_only_from_completed_outer_boundary": true,
+  "resume_completed_outer_attempt": 2,
+  "discarded_incomplete_outer_attempt": 3,
+  "incomplete_outer_credit": 0,
+  "failed_v165_job_outer_credit": 0,
+  "prelaunch_quiet_window_seconds": 120,
+  "prelaunch_poll_seconds": 15,
+  "formal_runtime_gate_still_required": true,
+  "plan_capture_timeout_seconds": 900,
+  "plan_capture_outside_formal_measurement_wall_time": true,
+  "candidate_set_changed": false,
+  "workload_changed": false,
+  "resource_envelope_changed": false,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "sibling_scene_wait": false,
+  "shared_nvme_mutual_exclusion": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v165/algorithm_c_full_resume_contract.json",
+    "sha256": "887a83363223cbbee9a862d3c81a0a34d4db7e446a4e73583c8acae6d806f08b"
+  },
+  "source_bindings": {
+    "job_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v76.py",
+      "sha256": "2ca2b1a4b117d12f412dcda3d28c9b769db1625cc3ed242e555b1333f57c9dbe"
+    },
+    "quiet_window_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v166_job_quiet_resume.py",
+      "sha256": "fafe545511a78d35967ca6243d751c840eb27a3bf1bb93558f89632226382dd7"
+    },
+    "failed_v165_job_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v165_job_xpio_outer2_resume_20260923/failed_job_resume_attempt_audit.json",
+      "sha256": "f46f997343075634e7adacbbf3ec28bb88881deab9ab4f4a33e4601bf092a33f"
+    },
+    "job_outer2_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v161_job_outer2_checkpoint_20260923/prepared_binding.json",
+      "sha256": "8fa9acc4fcfca65527ac3c986ad01566a2259fb458c7858d90e39afa40a74a54"
+    },
+    "plan_capture_timeout_successor": {
+      "path": "scripts/mysql_algorithm_c_plan_capture_timeout_v1.py",
+      "sha256": "12f903e1172d2be7fac483aabf91b4ee272b6557fdc0265792fe95d304275e8c"
+    }
+  }
+}

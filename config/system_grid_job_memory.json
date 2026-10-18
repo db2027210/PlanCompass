@@ -1,0 +1,45 @@
+{
+  "scenario": "memory",
+  "benchmark": "job",
+  "seed": 20260718,
+  "randomize_order": true,
+  "target": {
+    "container": "ra-mysql-grid-job-base",
+    "required_label": "resource-adaptive-mysql.owner=mysql-grid-20260718",
+    "host": "127.0.0.1",
+    "port": 13310,
+    "pid": 1241754,
+    "expected_nano_cpus": 0,
+    "expected_memory_bytes": 8589934592,
+    "user": "root",
+    "password": "CHANGE_ME",
+    "database": "imdb_job"
+  },
+  "baseline_values": {
+    "innodb_buffer_pool_size": 6979321856,
+    "innodb_old_blocks_pct": 37
+  },
+  "factors": {
+    "innodb_buffer_pool_size": [5905580032, 6442450944, 6979321856],
+    "innodb_old_blocks_pct": [25, 37, 50]
+  },
+  "workload": {
+    "interval_sec": 1,
+    "warmup_samples": 5,
+    "timeout_sec": 1800,
+    "argv": [
+      "/home/anonymous/miniconda3/envs/resource_adaptive/bin/python",
+      "mysql_benchmark_command.py",
+      "--benchmark", "job",
+      "--host", "127.0.0.1",
+      "--port", "13310",
+      "--database", "imdb_job",
+      "--user", "root",
+      "--password", "CHANGE_ME",
+      "--output-dir", "{output_dir}",
+      "--duration-sec", "60",
+      "--clients", "4",
+      "--job-query-dir", "/home/anonymous/dataset/pg_data/join-order-benchmark"
+    ]
+  }
+}

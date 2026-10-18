@@ -1,0 +1,39 @@
+{
+  "candidate_set_or_workload_changed": false,
+  "completed_measurements_replayed": false,
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "range_lineage_recovery": {
+    "authoritative_live_outer15_range_used": true,
+    "completed_outer17_rejection_preserved": true,
+    "failure_was_not_float_rounding": true,
+    "resume_from_completed_outer": 17,
+    "two_rejection_incumbent_centered_shrink_policy_preserved": true
+  },
+  "release_version": "v175-xpcpu-range-lineage-recovery",
+  "resource_envelope_changed": false,
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v175",
+  "source_bindings": {
+    "predecessor_runtime": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v84.py",
+      "sha256": "0f78f87951d1acdd8d749be952140549db99c167b872ed03a1624373a19c7112"
+    },
+    "range_lineage_recovery_builder": {
+      "path": "scripts/build_mysql_algorithm_c_range_lineage_recovery_checkpoint_v1.py",
+      "sha256": "f24273d86ab35e5f8da09e162b9507cc2e2ea5555b060346e18d82ce615ebdd4"
+    },
+    "recovered_outer17_decision": {
+      "path": "history/mysql_four_scene_20260809/c_v175_xpcpu_outer17_range_recovery_v5_20260925/outer_017/hybench_xp_cpu.decision.json",
+      "sha256": "f54e50fdf406d837bb04f3a919e17181bf2fa31ff9335e872d0e5c9d87d11579"
+    },
+    "recovery_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v175_xpcpu_outer17_range_recovery_v5_20260925/prepared_binding.json",
+      "sha256": "8a5ff7e572df3c443cf54e461f37a9aa95d0a67648157f46639b21317855e230"
+    },
+    "runtime_entry": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v85.py",
+      "sha256": "f7a828a6574c95eb647e204395f6cd6cebf5aef476580598659828154a9ea9d9"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

@@ -1,0 +1,53 @@
+{
+  "active_parameters_by_scene": {
+    "hybench_xp_cpu": [
+      "row_evaluate_cost",
+      "key_compare_cost",
+      "disk_temptable_row_cost",
+      "io_block_read_cost"
+    ],
+    "hybench_xp_io": [
+      "io_block_read_cost",
+      "disk_temptable_row_cost",
+      "disk_temptable_create_cost",
+      "memory_temptable_row_cost"
+    ]
+  },
+  "algorithm_c_outer_flow_changed": false,
+  "candidate_subset_count_by_scene": {
+    "hybench_xp_cpu": 15,
+    "hybench_xp_io": 15
+  },
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "fresh_search_required": true,
+  "predecessor_seven_parameter_evidence_reused": false,
+  "real_top_k_limit": 5,
+  "schema_version": "mysql_xp_scene_specific_top4_parameter_contract_v1",
+  "selection_basis": {
+    "absolute_sensitivity_by_scene": {
+      "hybench_xp_cpu": {
+        "disk_temptable_row_cost": 0.08,
+        "io_block_read_cost": 0.08,
+        "key_compare_cost": 0.16,
+        "row_evaluate_cost": 0.28
+      },
+      "hybench_xp_io": {
+        "disk_temptable_create_cost": 0.325,
+        "disk_temptable_row_cost": 0.39,
+        "io_block_read_cost": 0.416,
+        "memory_temptable_row_cost": 0.286
+      }
+    },
+    "method": "largest_absolute_frozen_target_resource_sensitivity",
+    "source_path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.hybench_xp_io.operator_physics_v1.json",
+    "source_sha256": "7f3077c3f4ea870409643a2674e908052e88878efe522f8c0e376911e410fbbb",
+    "target_resource_by_scene": {
+      "hybench_xp_cpu": "cpu",
+      "hybench_xp_io": "io"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "version": "frozen_mysql_xp_top4_parameters_20260825_v1",
+  "workload_or_resource_envelope_changed": false
+}

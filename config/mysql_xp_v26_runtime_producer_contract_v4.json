@@ -1,0 +1,91 @@
+{
+  "schema_version": "mysql_xp_executable_launch_contract_v4",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "target_bundle_id": "b8e574ea5d2a47faae7cbe1776c7407c6e4b6122b4567c8a9b7dde5513382dcc",
+  "target_manifest_sha256": "1baf26d67479544c2f9aa13e4bd1d9a87fccaec9e6912d0570de3780d896df02",
+  "collector_sha256": "ac78a618881d8adcb9ed274d4f5eef173242ca893c2b43d9d711a3701ea883c6",
+  "collector_contract_repaired_from": "90a527a8ceb003887064cf8e2042965ffd68a497698814373bbf95c7bc225f49",
+  "algorithm": {
+    "method": "experience_table_sgd",
+    "active_parameter_count": 7,
+    "active_parameters": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "key_compare_cost",
+      "disk_temptable_create_cost",
+      "disk_temptable_row_cost",
+      "memory_temptable_row_cost"
+    ],
+    "required_nonempty_subsets": 127,
+    "subset_enumeration": "all_2^7_minus_1_nonempty_subspaces",
+    "gradient_formula": "g_j = sum_r(dScore/dU_r * T[j,r] * confidence)",
+    "original_gradient_only": true,
+    "replacement_search_algorithm_prohibited": true,
+    "parameter_update_source": "g_j_and_eta_only",
+    "required_gradient_event_fields": [
+      "feature_ratio",
+      "predicted_resource",
+      "utilization",
+      "dScore/dU",
+      "T",
+      "confidence",
+      "g_j",
+      "eta",
+      "delta_param",
+      "candidate_score"
+    ],
+    "candidate_order": "global_descending_final_candidate_score",
+    "fixed_real_replay_top_k": 5,
+    "qps_role": "outer_acceptance_after_real_replay_only",
+    "target_accepted_rounds": 10
+  },
+  "fingerprint": {
+    "duplicate_rule": "exact_parameter_signature_and_equal_l1_and_tolerant_l2_l3",
+    "missing_level_policy": "independent_candidate",
+    "l1": [
+      "operator_types",
+      "join_order",
+      "scan_types",
+      "parallel_structure"
+    ],
+    "l2": [
+      "workers",
+      "hash_batches",
+      "sort_spill",
+      "bitmap_lossy_pages",
+      "intermediate_result_scale"
+    ],
+    "l3": [
+      "shared_read_blocks",
+      "shared_write_blocks",
+      "local_read_blocks",
+      "local_write_blocks",
+      "temp_read_blocks",
+      "temp_write_blocks",
+      "io_wait_ms"
+    ]
+  },
+  "formal_envelope": {
+    "cpu_quota_cores": 5.3,
+    "io_read_bps": 29360128,
+    "io_write_bps": 524288,
+    "graceful_quiescence_seconds": 120,
+    "stable_measurement_seconds": 180,
+    "maximum_measurement_seconds": 600
+  },
+  "credit_policy": {
+    "capture_credit": 0,
+    "r0_credit": 0,
+    "debug_credit": 0,
+    "failed_replay_credit": 0,
+    "rejected_round_credit": 0,
+    "accepted_round_credit": 1
+  },
+  "v8_producer_prohibited": true,
+  "private_material_transfer_prohibited": true,
+  "formal_launch_authorized": false,
+  "accepted_round_authorized": false
+}

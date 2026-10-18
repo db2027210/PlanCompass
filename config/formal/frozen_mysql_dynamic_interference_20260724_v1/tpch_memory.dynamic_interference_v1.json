@@ -1,0 +1,66 @@
+{
+  "co_resident_background_health_unchanged": true,
+  "co_resident_process_inventory_complete": true,
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "freeze_id": "frozen_mysql_dynamic_interference_20260724_v1",
+  "host_admission_no_unregistered_pressure": true,
+  "host_analysis": {
+    "active_driver_observation_count": 0,
+    "co_resident_process_inventory_complete": true,
+    "container_signature_stable": true,
+    "database_cpu_stability_passed": true,
+    "database_host_cpu_ratio_max": 1.8517489769086902e-05,
+    "database_io_bytes_per_second_max": null,
+    "database_io_stability_passed": true,
+    "interval_count": 6,
+    "interval_durations_seconds": [
+      30.02896482287906,
+      30.002053095027804,
+      29.996460895054042,
+      30.003796179080382,
+      29.99583066185005,
+      29.999636667082086
+    ],
+    "passed": true,
+    "sample_coverage": 1.0,
+    "valid_sample_count": 7,
+    "window_seconds": 180.02674232097343
+  },
+  "latest_window_count": 6,
+  "latest_window_seconds": 180,
+  "limits": {
+    "p95_increase_max_ratio": 0.1,
+    "p99_increase_max_ratio": 0.1,
+    "target_resource_shift_max_percentage_points": 5.0,
+    "throughput_drop_max_ratio": 0.05
+  },
+  "max_continuous_seconds": 600,
+  "mode": "exclusive_host_no_co_resident_pressure",
+  "mysql_resource_stability_passed": true,
+  "not_applicable_metrics": [
+    "throughput_drop_ratio",
+    "p95_increase_ratio",
+    "p99_increase_ratio",
+    "target_resource_shift_percentage_points"
+  ],
+  "not_applicable_reason": "no_co_resident_workload_or_latency_stream",
+  "passed": true,
+  "sample_coverage": 1.0,
+  "scenario": "tpch_memory",
+  "schema_version": "mysql_only_dynamic_interference_evidence_v1",
+  "sources": {
+    "collector": {
+      "path": "shell/collect_mysql_dynamic_interference_gate.py",
+      "sha256": "8b8875bff67d019e7321083e29945b7535160069b49f144461d8fb07024c2765"
+    },
+    "host_window": {
+      "path": "history/mysql_sgd_env_agents_20260723/dynamic_interference_20260724_v1/host04.window.json",
+      "sha256": "db593ccffbe5b6ae8e833c00cf4099675df6eca142899cb7ffe49af40adee41d"
+    },
+    "remote_sampler": {
+      "path": "shell/remote_sample_mysql_dynamic_interference.py",
+      "sha256": "4581037921d51746db2bfba298b1292424b5ba74d623bb9e1b3e3031c008cc2a"
+    }
+  }
+}

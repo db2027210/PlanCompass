@@ -1,0 +1,86 @@
+{
+  "thresholds": {
+    "min_held_out_r2": 0.0,
+    "top_k": 15,
+    "max_top15_pairwise_inversion_rate": 0.1
+  },
+  "checks": {
+    "cpu": {
+      "status": "pass",
+      "evidence": "/home/anonymous/program/resource_adaptive/mysql_plan_models/cpu/artifacts/mysql_cpu_oof_predictions.csv",
+      "samples": 39,
+      "r2": 0.9563223970763695,
+      "errors": {
+        "mae": 8.230828202049054,
+        "rmse": 19.477528380928522,
+        "median_absolute_error": 1.906694019712809,
+        "p95_absolute_error": 28.444701644995064,
+        "mape_percent": 22.705567592808023
+      },
+      "top15": {
+        "labeled_items": 15,
+        "comparable_pairs": 105,
+        "inversions": 9,
+        "pairwise_inversion_rate": 0.08571428571428572
+      }
+    },
+    "memory": {
+      "status": "pass",
+      "evidence": "/home/anonymous/program/resource_adaptive/mysql_plan_models/memory/artifacts/oof_predictions.csv",
+      "samples": 609,
+      "r2": 0.9226743086685131,
+      "errors": {
+        "mae": 5.069188212511101,
+        "rmse": 19.508843381471976,
+        "median_absolute_error": 0.26864765625032305,
+        "p95_absolute_error": 16.68757893229122,
+        "mape_percent": 0.04397037333463672
+      },
+      "top15": {
+        "labeled_items": 15,
+        "comparable_pairs": 104,
+        "inversions": 5,
+        "pairwise_inversion_rate": 0.04807692307692308
+      }
+    },
+    "io": {
+      "status": "pass",
+      "evidence": "/home/anonymous/program/resource_adaptive/mysql_plan_models/io/output/oof_candidate_predictions.csv",
+      "samples": 40,
+      "r2": 0.9822501690721539,
+      "errors": {
+        "mae": 556.7415775347947,
+        "rmse": 1679.6445404452304,
+        "median_absolute_error": 4.376686851693933,
+        "p95_absolute_error": 4832.577353312227,
+        "mape_percent": 7.608231315219468
+      },
+      "top15": {
+        "labeled_items": 15,
+        "comparable_pairs": 105,
+        "inversions": 1,
+        "pairwise_inversion_rate": 0.009523809523809525
+      }
+    },
+    "io_strict_case_held_out": {
+      "status": "pass",
+      "evidence": "/home/anonymous/program/resource_adaptive/mysql_plan_models/io/output/strict_context_rank_predictions.csv",
+      "samples": 40,
+      "r2": 0.8653153227841549,
+      "errors": {
+        "mae": 1307.3564244469503,
+        "rmse": 4626.785514459721,
+        "median_absolute_error": 58.345261444236534,
+        "p95_absolute_error": 5145.76547905618,
+        "mape_percent": 161.0778786923152
+      },
+      "top15": {
+        "labeled_items": 15,
+        "comparable_pairs": 105,
+        "inversions": 9,
+        "pairwise_inversion_rate": 0.08571428571428572
+      }
+    }
+  },
+  "all_passed": true
+}

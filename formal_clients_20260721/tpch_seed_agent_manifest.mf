@@ -1,0 +1,4 @@
+Premain-Class: com.formal.TpchSeedAgent
+Can-Redefine-Classes: false
+Can-Retransform-Classes: false
+

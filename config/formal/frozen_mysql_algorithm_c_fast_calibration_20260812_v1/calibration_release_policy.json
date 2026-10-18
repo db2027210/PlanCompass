@@ -1,0 +1,291 @@
+{
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "authority": "user_first_valid_data_soft_rule_2026-08-12",
+  "created_at": "2026-08-12T23:02:41.284468+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "current_contextual_model": {
+    "confidence_adjusted_soft_score": true,
+    "empirical_replays": 151,
+    "legacy_tpch_sf5_evidence_present": true,
+    "may_skip_full_workload_replay": false,
+    "may_skip_hard_gates": false,
+    "operator_count_hard_pruning": false,
+    "role": "soft_ranking_prior_not_a_same_workload_calibration_release"
+  },
+  "diagnostic_only_before_first_real_top5": {
+    "confidence": "record_and_downweight_ranking_only",
+    "mae": "record_and_downweight_ranking_only",
+    "may_block_first_formal_replay": false,
+    "recalibrate_after_real_top5": true,
+    "spearman": "record_and_downweight_ranking_only"
+  },
+  "formal_scope": "mysql_only",
+  "fresh_calibration": {
+    "adaptive_expansion_before_first_top5": false,
+    "candidate_waves": 5,
+    "independent_holdout_points": 3,
+    "parallel_candidate_points_per_wave": 2,
+    "real_replay_required": true,
+    "release_may_be_published_only_after_all_hard_gates_pass": true,
+    "total_candidate_points": 10,
+    "training_design_must_be_full_rank": true,
+    "training_points": 7
+  },
+  "hard_gates": {
+    "dynamic_non_interference_gate": "required_by_mysql_only_project_policy",
+    "full_workload_and_timeout": {
+      "job": "113/113 exactly once and <=900 seconds",
+      "native_xp": "native frozen workload complete within contract",
+      "tpch_sf4": "22/22 exactly once in five lanes and <=900 seconds"
+    },
+    "non_target_resource_must_not_become_new_bottleneck": true,
+    "source_and_plan_evidence_complete": true,
+    "ssd_pollution_gate": true,
+    "target_resource_must_be_identifiable": true,
+    "technical_failure_isolation": true
+  },
+  "implementation_bindings": {
+    "algorithm_source": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+      "sha256": "2443685e3ca781429f1da7ed7e9e0efa13510dc57ebfdf8744526b60c37a8a6b"
+    },
+    "current_model_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_contextual_plan_physics_20260809_v2/model_contract.json",
+      "sha256": "85def5201859ba4a42cd5d98eaccc5a6770197e9ca55450aecff0efa3bb30c15"
+    },
+    "current_model_source": {
+      "path": "mysql_algorithm_c_resource_model.py",
+      "sha256": "9af9c2f920f861439109b7483de951eeeffdb8157c477e3fd24dae1b30fc71c2"
+    }
+  },
+  "plan_fingerprint_recheck": {
+    "coverage": {
+      "job": "all_113_SQL",
+      "native_xp": "IQ1-IQ7_and_AT1-AT6_plan_bearing_statements",
+      "tpch_sf4": "Q1-Q22"
+    },
+    "execution": "offline_or_read_only_full_EXPLAIN",
+    "frequency": "once_before_release_reuse",
+    "mismatch_action": "fresh_calibration_7_train_plus_3_holdout",
+    "no_benchmark_replay_required_for_fingerprint": true,
+    "physical_identity_model": "planner_cost_independent_v2"
+  },
+  "purpose": "minimize fresh calibration while preserving first-version validity",
+  "release_reuse": {
+    "all_compatibility_fields_are_hard_exact_match": true,
+    "baseline_controls_still_required_per_run": true,
+    "compatibility_payload": {
+      "active_scenes": [
+        "job_memory",
+        "tpch_sf4_memory",
+        "hybench_xp_cpu",
+        "hybench_xp_io"
+      ],
+      "data_snapshot_identity": {
+        "binding_sha256": "94add246e20bf796f8a2605476c1a900e05c352474c45864f784c329001d7dc8",
+        "databases": [
+          "imdb_job",
+          "tpch",
+          "hybench_sf10x"
+        ],
+        "kind": "sealed_physical_copy_predecessor_binding"
+      },
+      "formal_scope": "mysql_only",
+      "optimizer_parameter_count": 8,
+      "optimizer_parameters": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_create_cost",
+        "disk_temptable_row_cost",
+        "memory_temptable_create_cost",
+        "memory_temptable_row_cost"
+      ],
+      "plan_feature_model": {
+        "contract": {
+          "path": "config/formal/frozen_mysql_algorithm_c_contextual_plan_physics_20260809_v2/model_contract.json",
+          "sha256": "85def5201859ba4a42cd5d98eaccc5a6770197e9ca55450aecff0efa3bb30c15"
+        },
+        "physical_identity_excludes_planner_cost_numbers": true,
+        "source": {
+          "path": "mysql_algorithm_c_resource_model.py",
+          "sha256": "9af9c2f920f861439109b7483de951eeeffdb8157c477e3fd24dae1b30fc71c2"
+        }
+      },
+      "resource_envelope": [
+        {
+          "client_cpuset": "0-3,256-259",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 6.0,
+          "database_cpuset": "104-107,360-363",
+          "database_cpuset_mems": "0",
+          "innodb_buffer_pool_bytes": 8589934592,
+          "io_read_bps": 1205862400,
+          "io_write_bps": 1205862400,
+          "memory_bytes": 10737418240,
+          "pids_max": 512,
+          "scene": "job_memory",
+          "swap_bytes": 0,
+          "worker_id": "job_w1"
+        },
+        {
+          "client_cpuset": "4-7,260-263",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 6.0,
+          "database_cpuset": "108-111,364-367",
+          "database_cpuset_mems": "0",
+          "innodb_buffer_pool_bytes": 8589934592,
+          "io_read_bps": 1205862400,
+          "io_write_bps": 1205862400,
+          "memory_bytes": 10737418240,
+          "pids_max": 512,
+          "scene": "job_memory",
+          "swap_bytes": 0,
+          "worker_id": "job_w2"
+        },
+        {
+          "client_cpuset": "8-11,264-267",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 7.5,
+          "database_cpuset": "200-207,456-463",
+          "database_cpuset_mems": "1",
+          "innodb_buffer_pool_bytes": 4294967296,
+          "io_read_bps": 872415232,
+          "io_write_bps": 872415232,
+          "memory_bytes": 5583454208,
+          "pids_max": 512,
+          "scene": "tpch_sf4_memory",
+          "swap_bytes": 0,
+          "worker_id": "tpch_w1"
+        },
+        {
+          "client_cpuset": "12-15,268-271",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 7.5,
+          "database_cpuset": "208-215,464-471",
+          "database_cpuset_mems": "1",
+          "innodb_buffer_pool_bytes": 4294967296,
+          "io_read_bps": 872415232,
+          "io_write_bps": 872415232,
+          "memory_bytes": 5583454208,
+          "pids_max": 512,
+          "scene": "tpch_sf4_memory",
+          "swap_bytes": 0,
+          "worker_id": "tpch_w2"
+        },
+        {
+          "client_cpuset": "16-19,272-275",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 1.7,
+          "database_cpuset": "112-119,368-375",
+          "database_cpuset_mems": "0",
+          "innodb_buffer_pool_bytes": 4294967296,
+          "io_read_bps": 1205862400,
+          "io_write_bps": 1205862400,
+          "memory_bytes": 8589934592,
+          "pids_max": 1024,
+          "scene": "hybench_xp_cpu",
+          "swap_bytes": 0,
+          "worker_id": "xp_cpu_w1"
+        },
+        {
+          "client_cpuset": "20-23,276-279",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 1.7,
+          "database_cpuset": "120-127,376-383",
+          "database_cpuset_mems": "0",
+          "innodb_buffer_pool_bytes": 4294967296,
+          "io_read_bps": 1205862400,
+          "io_write_bps": 1205862400,
+          "memory_bytes": 8589934592,
+          "pids_max": 1024,
+          "scene": "hybench_xp_cpu",
+          "swap_bytes": 0,
+          "worker_id": "xp_cpu_w2"
+        },
+        {
+          "client_cpuset": "24-27,280-283",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 5.3,
+          "database_cpuset": "216-221,472-477",
+          "database_cpuset_mems": "1",
+          "innodb_buffer_pool_bytes": 2147483648,
+          "io_read_bps": 29360128,
+          "io_write_bps": 524288,
+          "memory_bytes": 6871945216,
+          "pids_max": 1024,
+          "scene": "hybench_xp_io",
+          "swap_bytes": 0,
+          "worker_id": "xp_io_w1"
+        },
+        {
+          "client_cpuset": "28-31,284-287",
+          "client_cpuset_mems": "0",
+          "cpu_quota_cores": 5.3,
+          "database_cpuset": "222-227,478-483",
+          "database_cpuset_mems": "1",
+          "innodb_buffer_pool_bytes": 2147483648,
+          "io_read_bps": 29360128,
+          "io_write_bps": 524288,
+          "memory_bytes": 6871945216,
+          "pids_max": 1024,
+          "scene": "hybench_xp_io",
+          "swap_bytes": 0,
+          "worker_id": "xp_io_w2"
+        }
+      ],
+      "resource_freeze": {
+        "path": "config/formal/frozen_mysql_disk2_two_worker_20260811_v15/four_scene_effective_resource_successor.json",
+        "sha256": "b5d046ad8119ab764a2782ffa0189e11212202bb4e9660737ed52724c49e2c61"
+      },
+      "workload_contracts": {
+        "job_tpch": {
+          "path": "config/formal/frozen_mysql_four_scene_job_schedule_20260810_v3/workload_successor.json",
+          "sha256": "e80ae4119b295f8b5bf1088376bdd722547549a7f7e89173544fe1d3f020a675"
+        },
+        "native_xp": {
+          "path": "config/formal/frozen_mysql_four_scene_native_xp_iq1_iq7_20260809_v2/workload_successor.json",
+          "sha256": "1450345a6129741c848ad5887c97ee753dfde17bb1a2312b93f5637bd2f2cbdf"
+        }
+      },
+      "workload_identity": {
+        "hybench_xp_cpu": {
+          "at_mix": "35/25/15/15/7/3",
+          "clients": 8,
+          "database": "hybench_sf10x",
+          "iq": "IQ1-IQ7_uniform_random",
+          "xap_xtp_ratio": "1:1"
+        },
+        "hybench_xp_io": {
+          "at_mix": "35/25/15/15/7/3",
+          "clients": 8,
+          "database": "hybench_sf10x",
+          "iq": "IQ1-IQ7_uniform_random",
+          "xap_xtp_ratio": "1:1"
+        },
+        "job": {
+          "concurrency": 16,
+          "database": "imdb_job",
+          "sql_count": 113
+        },
+        "tpch": {
+          "database": "tpch",
+          "lanes": 5,
+          "scale_factor": 4,
+          "sql_count": 22
+        }
+      }
+    },
+    "compatibility_signature_sha256": "1468ff815210691f7d8a702d2a3da9a5469e6f96c3281ccd0253389fa0f58ba2",
+    "decision": "reuse_only_on_exact_compatibility_and_plan_fingerprint_pass",
+    "mismatch_action": "fresh_calibration_7_train_plus_3_holdout"
+  },
+  "schema_version": "mysql_algorithm_c_fast_calibration_release_policy_v1",
+  "status": "FROZEN"
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": "mysql_tpcc_template_deployment_evidence_v2",
+  "status": "VERIFIED",
+  "formal_scope": "mysql_only",
+  "scenario": "tpcc_cpu",
+  "benchmark": "tpcc",
+  "engine": "mysql",
+  "source": {
+    "host": "anonymous@192.0.2.7",
+    "hostname": "host04",
+    "mount": "/mnt/mysql_tpcc_nvme3n1",
+    "device": "/dev/nvme3n1",
+    "template_root": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/template",
+    "datadir": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/template/datadir",
+    "template_manifest_sha256": "df833ed4591e7a4ceb728ee3c8bcd77216a923c0ad5d04c1c57211feae4e7fb8"
+  },
+  "target": {
+    "host": "anonymous@192.0.2.3",
+    "hostname": "node01",
+    "mount": "/mnt/mysql_nvme0n1",
+    "device": "/dev/nvme0n1",
+    "cpuset_cpus": "21-24,57-60",
+    "cpuset_mems": "1",
+    "template_root": "/mnt/mysql_nvme0n1/anonymous/resource_adaptive_mysql/tpcc/template",
+    "datadir": "/mnt/mysql_nvme0n1/anonymous/resource_adaptive_mysql/tpcc/template/datadir"
+  },
+  "migration": {
+    "method": "host04_direct_ssh_to_node01_gnu_tar_sparse_gzip",
+    "source_target_data_path": "direct_host04_to_node01",
+    "source_target_pipe_via_compute00": false,
+    "relative_path_size_cmp": "PASS",
+    "source_file_count": 174,
+    "target_file_count": 174,
+    "source_datadir_bytes": 1452441280,
+    "target_datadir_bytes": 1452441280,
+    "datadir_sha256_tree_v1": "872c6861250d9e524e1c4cb2f96af4b640bda158f0e945bc548f5df30ca588ae",
+    "source_target_tree_cmp": "PASS",
+    "migration_manifest_sha256": "338c008cf8bba8260bf032ed0d7e47c5dd987ed28144d7b9a8bcc62d2dbe13d2",
+    "elapsed_seconds": 87
+  },
+  "template_identity": {
+    "template_id": "mysql_tpcc_scale10_20260723_v1",
+    "schema_version": 1,
+    "datadir_file_count": 174,
+    "datadir_directory_count": 6,
+    "datadir_bytes": 1452441280,
+    "warehouses": 10,
+    "terminals": 32,
+    "formal_r0_authorized": false,
+    "clean_shutdown": true,
+    "row_counts": {
+      "warehouse": 10,
+      "district": 100,
+      "customer": 300000,
+      "history": 300000,
+      "item": 100000,
+      "stock": 1000000,
+      "new_order": 90000,
+      "oorder": 300000,
+      "order_line": 3000644
+    }
+  },
+  "formal_use": {
+    "template_deployment_only": true,
+    "production_binding_capture_completed": false,
+    "fresh_r0_completed": false,
+    "algorithm_c_accepted_round": false,
+    "launch_authorized": false
+  },
+  "next_gate": "production_benchbase_binding_capture_then_fresh_node01_r0"
+}

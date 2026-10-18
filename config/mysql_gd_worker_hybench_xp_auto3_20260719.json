@@ -1,0 +1,11 @@
+{
+  "workers": [
+    {
+      "worker_id": "hybench-xp-auto3",
+      "benchmarks": ["hybench_xp"],
+      "port": 32777,
+      "mysqld_pid": 3977112,
+      "database": "hybench"
+    }
+  ]
+}

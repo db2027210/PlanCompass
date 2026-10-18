@@ -1,0 +1,47 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v171",
+  "release_version": "v171-job-outer5-interference-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "resume_completed_outer_attempt": 5,
+  "discarded_incomplete_outer_attempt": 6,
+  "failed_outer_credit": 0,
+  "failure_classification": "DYNAMIC_EXTERNAL_POSTGRESQL_CPU_OVERLAP",
+  "external_process_control_or_stop_performed": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "control_sql_timeout_seconds": 300,
+  "plan_capture_timeout_seconds": 900,
+  "formal_measurement_timeout_changed": false,
+  "candidate_set_or_workload_changed": false,
+  "resource_envelope_changed": false,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v81.py",
+      "sha256": "27d41ce12a17f0cb775f93c449f2dbd7bd01c4e0e0442b44285db212df4c7bdd"
+    },
+    "bounded_runtime_predecessor": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v79.py",
+      "sha256": "c392b864d4bb5c9798198c03ebc19c99ec90b6f90be728ac149fe2bd133891b9"
+    },
+    "failed_attempt": {
+      "path": "history/mysql_four_scene_20260809/c_v167_job_exec_resume_20260923_job/run_state.json",
+      "sha256": "bc239c893edab5e04ce7459275b7d98edbcebe71f6279ffd4e16e2127b067819"
+    },
+    "resume_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v171_job_outer5_checkpoint_20260923/prepared_binding.json",
+      "sha256": "dfa3d1b4e4d81e498b39f97995df9745a4a8756cbbac358fba1c7afc0e83bf85"
+    },
+    "parent_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v169/algorithm_c_full_resume_contract.json",
+      "sha256": "617b3ca88c4c5c7ef89e933ce6f43050a57c1ee5dfb368ecf258ee028729ba21"
+    },
+    "quiet_exec_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v171_job_quiet_exec_resume.py",
+      "sha256": "7ba7d4de200d78860b1e018e97e49bdc67361ebc7672c3b60e0433fe73853847"
+    }
+  }
+}

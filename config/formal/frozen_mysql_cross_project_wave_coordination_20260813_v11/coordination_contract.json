@@ -1,0 +1,165 @@
+{
+  "schema_version": "mysql_cross_project_fair_candidate_wave_lease_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "purpose": "Keep formal waves fail-closed while allowing explicitly non-formal interference pilots to record and traverse a failed quiet gate.",
+  "lock_path": "/tmp/resource_adaptive_pg_ssd_measurement_v1.lock",
+  "lock_mode": "exclusive",
+  "lease_scope": "one complete fixed MySQL candidate batch including reset, physical workload, resource sampling, coverage checks, and plan capture",
+  "lease_acquisition_timeout_seconds": 1200,
+  "per_wave_quiet_seconds": 30,
+  "maximum_quiet_wait_while_held_seconds": 180,
+  "maximum_idle_load1": 16.0,
+  "maximum_wave_lease_seconds": 1140,
+  "fair_release_yield_seconds": 0.5,
+  "candidate_batches": [
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "job_tpch_concurrent_full_suite_preserved": true,
+  "job_query_count_unchanged": 113,
+  "tpch_scale_factor_unchanged": 4,
+  "tpch_query_count_unchanged": 22,
+  "native_xp_workload_unchanged": true,
+  "native_xp_iq_selection": "IQ1-IQ7_uniform_random",
+  "native_xp_at_mix_percent": [
+    35,
+    25,
+    15,
+    15,
+    7,
+    3
+  ],
+  "native_xp_xap_xtp_ratio": [
+    1,
+    1
+  ],
+  "optimizer_invariants": {
+    "binary_interval_shrink_unchanged": true,
+    "maximum_normalized_interval_width": 0.01,
+    "required_consecutive_stable_rounds": 2,
+    "fixed_top_k": 5,
+    "candidate_order_unchanged": true,
+    "accepted_or_rejected_state_mutation_while_waiting": false,
+    "technical_failures_excluded": true
+  },
+  "co_resident_process_policy": {
+    "idle_postgresql_controllers": "inventoried_not_blocking_only_while_the_kernel_exclusive_physical_workload_lease_is_held_or_mysql_is_not_measuring",
+    "active_postgresql_physical_workloads": "fail_closed_during_formal_mysql_reset_measurement_or_plan_capture",
+    "unknown_or_non_cooperating_workload": "runtime_watchdog_sigint_then_bounded_systemd_stop_for_formal_runs",
+    "host_d_state": "formal waves require unknown or target-relevant d-state zero; explicit non-formal pilots record but may traverse the failed gate",
+    "host_load1": "formal waves require load1 at most 16; explicit non-formal pilots record but may traverse the failed gate"
+  },
+  "fairness": {
+    "prelaunch_wait_uses_timed_kernel_blocking_queue": true,
+    "formal_wave_wait_uses_timed_kernel_blocking_queue": true,
+    "release_between_every_candidate_batch": true,
+    "postgresql_observed_lock_wait_timeout_seconds": 1200,
+    "mysql_maximum_wave_lease_seconds": 1140,
+    "safety_margin_seconds": 60,
+    "whole_outer_round_exclusive_lease_prohibited": true
+  },
+  "resource_envelope": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260811_v15/four_scene_effective_resource_successor.json",
+    "sha256": "b5d046ad8119ab764a2782ffa0189e11212202bb4e9660737ed52724c49e2c61",
+    "changed_by_this_contract": false
+  },
+  "outer_runtime_predecessor": {
+    "path": "config/formal/frozen_mysql_algorithm_c_outer_runtime_20260812_v1/optimization_contract.json",
+    "sha256": "b41fb47f258c806d477d668b9fcbcce02e1c65f6a19c0f6c0516ac3dbe52b53c",
+    "measurement_semantics_changed": false
+  },
+  "predecessor_contract": {
+    "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260813_v3/coordination_contract.json",
+    "sha256": "e43cc4282cbbc8893ea1f4beef05c28a83cbda1149010a2a32451f70806921a2"
+  },
+  "interference_override_pilot_successor": {
+    "formal_path_behavior_changed": false,
+    "pilot_run_id_marker_required": "pilot_nonformal",
+    "blocked_interference_evidence_required": true,
+    "failed_quiet_gate_recorded": true,
+    "failed_quiet_gate_may_be_traversed_in_pilot_only": true,
+    "formal_evidence_eligible": false,
+    "accepted_state_credit_prohibited": true,
+    "maximum_outer_attempts": 1,
+    "pilot_candidate_batches": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "pilot_single_candidate_live_lane_selection": true,
+    "unresponsive_lane_excluded_from_pilot_only": true,
+    "pilot_authority_requires_v15_identity_and_one_live_lane_per_scene": true,
+    "pilot_maximum_unavailable_xp_lanes": 1,
+    "formal_candidate_batches": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "formal_serialization_evidence": "five_candidate_interference_override_pilot_v6_all_20_scene_measurements_passed_hard_gates",
+    "within_candidate_full_four_scene_workload_unchanged": true
+  },
+  "source_bindings": {
+    "coordination_source_path": "scripts/mysql_cross_project_wave_coordination_v1.py",
+    "coordination_source_sha256": "cdc175c761c3f86a374b110482db26fa5e49f1ed6cffbf998556ae14fb9a1655",
+    "boundary_resume_controller_path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v2.py",
+    "boundary_resume_controller_sha256": "d46ec5a3492f4e9d54e8099b124b49ba35b49926e8a76189b18b36baa98a0e8a",
+    "runtime_watchdog_path": "scripts/watch_mysql_formal_external_postgres_interference_v1.py",
+    "runtime_watchdog_sha256": "e3759f96ccfa5397aef296d373a0a4c2fe1385533534a0e0d577d41355f2d0ce",
+    "live_preflight_path": "scripts/preflight_mysql_four_scene_live_v8.py",
+    "live_preflight_sha256": "4dac51e2fd62e0fd3862acc8230e3b49edaebf156aa27c4411859a9e45993647",
+    "auto_resume_waiter_path": "scripts/wait_and_resume_mysql_algorithm_c_after_quiet_v1.py",
+    "auto_resume_waiter_sha256": "27dd4eeabfe85e4cc153cbf2e6a28a9b94ea10a586bc018cfe080703edddab14",
+    "live_validator_path": "scripts/validate_mysql_cross_project_wave_coordination_v1.py",
+    "live_validator_sha256": "5f03714cf088c95e38e483f1ec842675209c5e98c07c7084fa5e0007ae83c5eb",
+    "v18_r0_fair_waiter_path": "scripts/wait_and_run_mysql_four_scene_r0_v18.py",
+    "v18_r0_fair_waiter_sha256": "f67e42feef902af51a94222e4bef90315d6dae33f44209f2cbe65785351e7e64"
+  },
+  "predecessor": {
+    "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260813_v10/coordination_contract.json",
+    "sha256": "7857cc9eeda0d9c5842e8af3ee5aa456b50aa9ac20f08dcc3755e572f22a9f5d"
+  },
+  "successor_reason": "preflight_receives_live_exclusive_lease_holder_pid_and_contract",
+  "pruning_contract": {
+    "path": "config/formal/mysql_algorithm_c_plan_replay_pruning_20260813_v2/contract.json",
+    "sha256": "8cde8a25f101092bfebb33333155c4af430e7202e30b53581b6080743e289221"
+  }
+}

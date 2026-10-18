@@ -1,0 +1,38 @@
+{
+  "a_release": "mixed_eight_worker_v10",
+  "created_at": "2026-08-27T17:47:02.035527+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "cross_scene_docker_control_lock": false,
+  "entrypoint_fix": {
+    "algorithm_flow_changed": false,
+    "contract_source_bindings_refreshed": true
+  },
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "physical_workers": 8,
+  "schema_version": "mysql_xp8_b_to_a_handoff_contract_v13",
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "a_contract": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_a_mixed_eight_worker_20260827_v10/algorithm_a_top4_contract.json",
+      "sha256": "f89a7d4bcd77b26a1ab0d0aef86f0c6f88a503d685730f81e07dea7d685d5a64"
+    },
+    "a_launcher": {
+      "path": "scripts/launch_mysql_algorithm_a_xp_top4_mixed_eight_worker_v10.py",
+      "sha256": "519a3d85acf3653c918b926fac2f3c606e7fcaec1c8c997a3f515f648fa585e2"
+    },
+    "builder": {
+      "path": "scripts/build_mysql_xp_b_to_a_monitor_release_v13.py",
+      "sha256": "32108f971d6fd880313dec32f0859aea14715a0a57c632c5ef0238d4d60e8fea"
+    },
+    "monitor": {
+      "path": "scripts/monitor_mysql_b_then_a_mixed_eight_worker_scene_v13.py",
+      "sha256": "c42033f0cacdca8c16fe7fe8df7e962f11be71369a4975abccbc81ac8f7853c0"
+    },
+    "monitor_predecessor": {
+      "path": "scripts/monitor_mysql_b_then_a_mixed_eight_worker_scene_v1.py",
+      "sha256": "e5660b8bcddc0c8720f2ef1bfd2408f4232d9265f79e91883619032850432df5"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": "mysql_external_compose_maintenance_contract_v1",
+  "status": "FROZEN_READY_REQUIRES_USER_AUTHORIZATION",
+  "created_at": "2026-08-13T01:20:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "purpose": "Temporarily freeze two unrelated Overleaf Compose projects whose Mongo health-check execs create mount-namespace D-state interference during the MySQL formal gate and measurements.",
+  "requires_explicit_acknowledgement": "overleaf+baibh-overleaf-pro",
+  "lock_path": "/tmp/mysql_external_compose_maintenance_v1.lock",
+  "containers": [
+    {
+      "name": "sharelatex",
+      "container_id": "3f03773b12d0c12ebd1dfa391ae0d41ee079dca5bc75a999dec87080d2139992",
+      "compose_project": "overleaf",
+      "compose_service": "sharelatex"
+    },
+    {
+      "name": "redis",
+      "container_id": "beff322dfa43c85a2d5acd7d0524279de3caed9246b77e5184b2d6a9cc4765e5",
+      "compose_project": "overleaf",
+      "compose_service": "redis"
+    },
+    {
+      "name": "mongo",
+      "container_id": "4e0f56d16ce0397222c58236b8182c35ea41189bd9a8f776122fe0da135fc70d",
+      "compose_project": "overleaf",
+      "compose_service": "mongo"
+    },
+    {
+      "name": "baibh-overleaf-pro",
+      "container_id": "6ffed7c09c3742514fbb7140c24103a349f90d769b215fba369b24771375dcad",
+      "compose_project": "baibh-overleaf-pro",
+      "compose_service": "sharelatex"
+    },
+    {
+      "name": "baibh-overleaf-pro-git-bridge",
+      "container_id": "92b9442e4455b08e3dc24fdb60c6121bd7999dae89473ba6e4d597e5f7f65bb0",
+      "compose_project": "baibh-overleaf-pro",
+      "compose_service": "git-bridge"
+    },
+    {
+      "name": "baibh-overleaf-pro-redis",
+      "container_id": "82cb32e2c4e6178c28251f929497288e55adf5e5895b71635f415a43512c345f",
+      "compose_project": "baibh-overleaf-pro",
+      "compose_service": "redis"
+    },
+    {
+      "name": "baibh-overleaf-pro-mongo",
+      "container_id": "705ab75bf430fe9e6f1f0390006fb7ed8039e17c45bff57788446ba5ae77acc2",
+      "compose_project": "baibh-overleaf-pro",
+      "compose_service": "mongo"
+    }
+  ],
+  "pause_order": [
+    "sharelatex",
+    "baibh-overleaf-pro-git-bridge",
+    "baibh-overleaf-pro",
+    "redis",
+    "baibh-overleaf-pro-redis",
+    "mongo",
+    "baibh-overleaf-pro-mongo"
+  ],
+  "resume_order": [
+    "mongo",
+    "baibh-overleaf-pro-mongo",
+    "redis",
+    "baibh-overleaf-pro-redis",
+    "baibh-overleaf-pro-git-bridge",
+    "sharelatex",
+    "baibh-overleaf-pro"
+  ],
+  "post_pause_settle_seconds": 20,
+  "runtime_validation_interval_seconds": 5,
+  "recovery_semantics": "Every container paused by the guard is unpaused in the frozen resume order on normal completion, failure, SIGINT, or SIGTERM; execution artifacts record the final inventory.",
+  "healthcheck_evidence": {
+    "containers": ["mongo", "baibh-overleaf-pro-mongo"],
+    "interval_nanoseconds": 10000000000,
+    "command": "echo 'db.stats().ok' | mongosh localhost:27017/test --quiet",
+    "blocker_artifact": "history/mysql_four_scene_20260809/external_overleaf_healthcheck_namespace_blocker_v1_20260813T0116p0800/blocker.json",
+    "blocker_artifact_sha256": "38abb1da47243dd8139f78a212514fa65501d288ea1b7c30b5847fd9adea226c"
+  },
+  "source_binding": {
+    "guard": "scripts/mysql_external_compose_maintenance_guard_v1.py",
+    "guard_sha256": "27a6fe055171ce34fe2fd8f55ebd4a8838ca952cf36fc3c9c58979f25bea28db"
+  },
+  "existing_formal_bindings_unchanged": {
+    "cross_project_coordination_contract": "config/formal/frozen_mysql_cross_project_wave_coordination_20260813_v1/coordination_contract.json",
+    "cross_project_coordination_contract_sha256": "ddf801a7748ee4de49ce5969527036784080331c5b63ffbae94ba509d6634ca0",
+    "candidate_batches": [[1, 2], [3, 4], [5]],
+    "binary_shrink_unchanged": true,
+    "interval_threshold_percent": 1.0,
+    "stable_rounds_required": 2,
+    "workload_and_resource_freezes_unchanged": true
+  }
+}

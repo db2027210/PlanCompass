@@ -1,0 +1,104 @@
+{
+  "schema_version": "mysql_algorithm_a_memory_shared_nvme_wave_contract_v2",
+  "release_version": "v2",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T09:45:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "A",
+  "scenes": ["job_memory", "tpch_sf4_memory"],
+  "shared_device": "/dev/nvme2n1",
+  "shared_mount": "/disk2",
+  "physical_wave_mutual_exclusion": true,
+  "lease_scope": "reset_cache_precondition_and_full_scored_measurement",
+  "per_scene_outer_state_machine_unchanged": true,
+  "scene_round_barrier_required": false,
+  "candidate_and_acceptance_policy_unchanged": true,
+  "cached_valid_prefix_reused": true,
+  "baseline_replayed": false,
+  "incumbent_reference_replayed": false,
+  "interrupted_inflight_wave_reused": false,
+  "post_convergence_stability_required": false,
+  "wall_time_limit_seconds": 900,
+  "generic_measurement_fallback_prohibited": true,
+  "cache_adapter_rebound_after_authority_validation": true,
+  "resume_policy": {
+    "job_predecessor": "v54_to_a_storage_compatible_20260823_attempt001_job",
+    "job_valid_prefix_ranks": [1, 2, 3, 4],
+    "tpch_predecessor": "v54_to_a_storage_compatible_20260823_attempt001_tpch",
+    "tpch_completed_accepted_rounds": 1,
+    "tpch_valid_round_2_prefix_ranks": [1, 2],
+    "v58_new_ranks_reused": false,
+    "reason": "v58 entrypoints bound the cache adapters before asynchronous authority validation; the authority installer then restored the generic adapter. v58 batches therefore lack their mandatory cache-state contract and precondition evidence and are excluded. Only the immutable v54 valid prefixes are reused."
+  },
+  "adapter_binding_order": [
+    "validate frozen live authority",
+    "rebind scene-specific cache measurement adapter",
+    "assert adapter identity",
+    "enter partial-round resume",
+    "acquire shared-NVMe physical-wave lease",
+    "run cache precondition and scored measurement"
+  ],
+  "source_bindings": {
+    "memory_wave_lease_v2": {
+      "path": "scripts/mysql_algorithm_a_shared_nvme_memory_wave_lease_v2.py",
+      "sha256": "da5e684c5510732a3241ed8f9ee8c23b138f0ad4406633ce0730e0d561e12353"
+    },
+    "job_resume_entrypoint_v2": {
+      "path": "scripts/run_mysql_algorithm_a_job_partial_storage_serialized_v2.py",
+      "sha256": "0c996b4ecb413747cb120c482abb08ed9aba517ac16cae99b86e6b63abaac6ba"
+    },
+    "tpch_resume_entrypoint_v2": {
+      "path": "scripts/run_mysql_algorithm_a_tpch_partial_storage_serialized_v2.py",
+      "sha256": "96ee0eae568de3aefe74db587d74577aa58e9d2a3e6d4700426cc57351e51f5a"
+    },
+    "job_measurement_v9": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v9.py",
+      "sha256": "48f7290d8e0355b03394d83a68f202ab65fa4ba4d4592e771753f8831ca1fca1"
+    },
+    "job_cache_contract_v9": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260823_v9/cache_state_contract.json",
+      "sha256": "55c2aa04de0189ace9dc12a96eca7d32722061e4cf1b4b457fbe0673f9c9b0ab"
+    },
+    "tpch_measurement_v1": {
+      "path": "scripts/mysql_tpch_cache_preconditioned_measurement_v1.py",
+      "sha256": "af6053b0fb89e07ce22be74b4b8fa808bb5eea5a6ad4f91f255534be089e7e33"
+    },
+    "tpch_cache_contract_v1": {
+      "path": "config/formal/frozen_mysql_tpch_cache_state_20260823_v1/cache_state_contract.json",
+      "sha256": "cdba5c52e3e57468cfabe3f172746d5d75632b0819fc63fffe0819ab3347acdf"
+    },
+    "partial_round_resume": {
+      "path": "scripts/run_mysql_algorithm_a_partial_round_codefix_resume_v1.py",
+      "sha256": "1e38991063788c18c5d1920785843ea418b408c7dddbe661f1c90d624c338673"
+    },
+    "partial_round_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_partial_round_resume_20260822_v1/partial_round_resume_contract.json",
+      "sha256": "cfff6d72888123dbee10e520a9cbe135559b8b46f82f63f3cac37746717fc176"
+    },
+    "algorithm_a_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260822_v4/algorithm_a_contract.json",
+      "sha256": "d35c01e29c14aeeed4d82870725db686697d3d17188bea28ee9c323f418732bf"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260819_v65/coordination_contract.json",
+      "sha256": "913fa4f81348ba3cdfa9b3db62c5615b6111cd1059ef0512c28908aee0df3c5c"
+    },
+    "job_v54_predecessor_state": {
+      "path": "history/mysql_four_scene_20260809/v54_to_a_storage_compatible_20260823_attempt001_job/algorithm_a_state.json",
+      "sha256": "0beb0dde1f6cec9841ca7e8b1e7e45965235620d6cfc45339ae89430d1e78051"
+    },
+    "tpch_v54_predecessor_state": {
+      "path": "history/mysql_four_scene_20260809/v54_to_a_storage_compatible_20260823_attempt001_tpch/algorithm_a_state.json",
+      "sha256": "c2952dfbb868b3e11efbeb3783a1b9e1556a44b3545ea15afe12a2c28e73a99e"
+    },
+    "job_v58_excluded_batch": {
+      "path": "history/mysql_four_scene_20260809/v58_to_a_memory_nvme_serialized_20260823_attempt001_job/round_001/wave_003/attempt_01/batch_result.json",
+      "sha256": "226d855cea4993c1cab20aaa62d1167c161c38ccca15d1965edf4879caabd3ac"
+    },
+    "tpch_v58_excluded_batch": {
+      "path": "history/mysql_four_scene_20260809/v58_to_a_memory_nvme_serialized_20260823_attempt001_tpch/round_002/wave_003/attempt_01/batch_result.json",
+      "sha256": "33b000cb04939da4b522d34315bd8185a20e0df9ec26650c8d07c2a99ac75791"
+    }
+  }
+}

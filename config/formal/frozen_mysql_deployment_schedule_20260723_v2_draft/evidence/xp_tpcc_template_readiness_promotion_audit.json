@@ -1,0 +1,104 @@
+{
+  "after_readiness_sha256": "f009cdce385f66e8ed42d903ebbcef1bb8a604e8801d0debacd977161b212594",
+  "audit_refresh_reason": "readiness evidence chain changed after template promotion; template projection and NOT_READY status revalidated",
+  "before_readiness_sha256": "672d1fbc0a67f9c722817824b4bce712007d77fe844a2d3417a7bb534032a948",
+  "bundle_publication_unchanged": true,
+  "changed_json_paths": [
+    "scenarios.hybench_xp_io.environment.current_state",
+    "scenarios.hybench_xp_io.environment.deployment_evidence",
+    "scenarios.hybench_xp_io.template.deployment_verification",
+    "scenarios.hybench_xp_io.template.manifest",
+    "scenarios.hybench_xp_io.template.ready",
+    "scenarios.tpcc_cpu.environment.current_state",
+    "scenarios.tpcc_cpu.environment.deployment_evidence.path",
+    "scenarios.tpcc_cpu.environment.deployment_evidence.sha256",
+    "scenarios.tpcc_cpu.template.deployment_verification",
+    "scenarios.tpcc_cpu.template.manifest",
+    "scenarios.tpcc_cpu.template.ready"
+  ],
+  "launch_authorized_unchanged": false,
+  "other_scenarios_unchanged": true,
+  "promoted_evidence": {
+    "hybench_xp_io": {
+      "path": "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/xp_template_deployment_20260723.json",
+      "sha256": "776e9e779d4197680f5a85c3dd78ddfec4870d049567cd081afe23644b8f5ae0"
+    },
+    "tpcc_cpu": {
+      "path": "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/tpcc_e1_template_deployment_20260723.json",
+      "sha256": "ad0c28d93f5fba9800893aade4cc54fdb906ea59ca3c6da531f575554c1fc2bf"
+    }
+  },
+  "promoter": {
+    "path": "shell/promote_mysql_xp_tpcc_template_evidence.py",
+    "sha256": "aa81001a5c694ac17a3d957b4499694dcad7d23e7303e01395cd46e6e820f8fc"
+  },
+  "readiness_reverification": {
+    "exit_code": 1,
+    "failed": 115,
+    "passed": 63,
+    "status": "NOT_READY",
+    "verifier": {
+      "path": "shell/verify_mysql_sgd_v2_readiness.py",
+      "sha256": "07a497a18a07bda50ae731ffe0ca0e0d9d0643a32da991f510593a10b4aac967"
+    }
+  },
+  "ready_or_launch_authorization_set": false,
+  "schema_version": 1,
+  "scope": "xp_tpcc_canonical_template_evidence_only",
+  "status_unchanged": "NOT_READY",
+  "superseded_after_readiness_sha256": "c89a9bacd8c62093e4984ab25f7a17a6a3b914596b8e6264a62fbddf35ac19bb",
+  "verifier_results": {
+    "hybench_xp_io": {
+      "command": [
+        "/home/anonymous/miniconda3/envs/py313/bin/python",
+        "/home/anonymous/program/resource_adaptive_mysql/shell/verify_mysql_xp_canonical_template_evidence.py",
+        "--evidence",
+        "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/xp_template_deployment_20260723.json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "evidence": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/xp_template_deployment_20260723.json",
+        "evidence_sha256": "776e9e779d4197680f5a85c3dd78ddfec4870d049567cd081afe23644b8f5ae0",
+        "post_copy_sha256": "130a9f610f3cdbccde7109216760ebf6ba5c6607e647550a686a13354d2488c3",
+        "ready": false,
+        "sql_count_bundle_member_count": 22,
+        "sql_count_checksums_sha256": "a311472350e188b009473816dceb2c4ef05e901c8a0908639489b31aac1bcbac",
+        "status": "PASS",
+        "table_count": 8,
+        "total_rows": 87060000
+      },
+      "verifier": {
+        "path": "shell/verify_mysql_xp_canonical_template_evidence.py",
+        "sha256": "3230fcbc8ef00678ed656bffce2bc5268be5a98423c032b4bc07eaec3f663dc9"
+      }
+    },
+    "tpcc_cpu": {
+      "command": [
+        "/home/anonymous/miniconda3/envs/py313/bin/python",
+        "/home/anonymous/program/resource_adaptive_mysql/shell/verify_mysql_tpcc_e1_canonical_evidence.py",
+        "--evidence",
+        "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/tpcc_e1_template_deployment_20260723.json"
+      ],
+      "exit_code": 0,
+      "result": {
+        "evidence": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/tpcc_e1_template_deployment_20260723.json",
+        "evidence_sha256": "ad0c28d93f5fba9800893aade4cc54fdb906ea59ca3c6da531f575554c1fc2bf",
+        "lease_free": true,
+        "local_bundle_members": 22,
+        "local_remote_evidence_identical": true,
+        "manifest_tree_readonly_verified": true,
+        "postgresql_unchanged": true,
+        "r0": false,
+        "ready": false,
+        "row_counts_verified": true,
+        "sgd": false,
+        "status": "PASS",
+        "temporary_container_count": 0
+      },
+      "verifier": {
+        "path": "shell/verify_mysql_tpcc_e1_canonical_evidence.py",
+        "sha256": "91e58f41c8e68a1ab317a47dc0bec2deabb876f763c7b565d7e18d33a4c90a30"
+      }
+    }
+  }
+}

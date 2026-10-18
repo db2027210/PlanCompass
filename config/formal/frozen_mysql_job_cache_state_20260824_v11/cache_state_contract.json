@@ -1,0 +1,36 @@
+{
+  "candidate_set_changed": false,
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "full_job_113_once_per_measurement": true,
+  "outer_loop_semantics_changed": false,
+  "per_suite_deadline_begins_after_start_offset": true,
+  "per_suite_hard_timeout_seconds": 900,
+  "physical_replay_parallelism": 4,
+  "release_version": "v11",
+  "resource_envelope_changed": false,
+  "scene": "job_memory",
+  "schema_version": "mysql_job_cache_state_contract_v11",
+  "source_bindings": {
+    "measurement_v10": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v10.py",
+      "sha256": "c04cf3e890c2bb147376fe814fa71ac45cad38f65abc71ecbc1faa18bf2ab9b0"
+    },
+    "measurement_v10_contract": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260823_v10/cache_state_contract.json",
+      "sha256": "7041b85b19271237cfe512c410eb6976095ac040f3b649e7ba0da17c31c9eedb"
+    },
+    "measurement_v11": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v11.py",
+      "sha256": "2f50c7ceffc8cfcdda6c28dc814c910b5dee8cfc66c00837b3c2ea33ebc110e1"
+    }
+  },
+  "stagger_order": [
+    "job_w1",
+    "job_w2",
+    "job_w3",
+    "job_w4"
+  ],
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "worker_start_stagger_seconds": 90.0
+}

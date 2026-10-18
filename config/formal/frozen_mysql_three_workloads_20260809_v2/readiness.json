@@ -1,0 +1,49 @@
+{
+  "schema_version": "mysql_algorithm_c_three_workload_successor_readiness_v2",
+  "status": "PASS_CODE_AND_POLICY_BINDING_ONLY_RUNTIME_GATES_REQUIRED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "formal_launch_authorized": false,
+  "accepted_rounds_credit": 0,
+  "method": "experience_table_all_subset_original_gradient_sgd",
+  "algorithm": {
+    "raw_gradient": "g_j=sum_r(dScore/dU[r]*T[j,r]*confidence[j])",
+    "qps_role": "outer_acceptance_only",
+    "fixed_predicted_top_k_real_replay": 5,
+    "reorder_after_real_replay_prohibited": true,
+    "acceptance_tiers": [
+      "qps_up_target_down_all_non_target_up",
+      "qps_up_target_down",
+      "qps_up"
+    ],
+    "downgrade_after_consecutive_failed_outer_rounds": 5,
+    "same_ssd_parallelism_tiers": [1, 4, 8, 12],
+    "automatic_parallelism_16_prohibited": true
+  },
+  "source_sha256": {
+    "common_outer_loop.py": "047a69dae04031524c383e539ce67035117d9534aecf157e48e8d0ee79323530",
+    "mysql_parameter_optimizer.py": "4f2cc9c523a35c72920cf617c8b86393128d2c378c016a46e413042db741a0e3",
+    "same_ssd_concurrency.py": "6bf157586fdca483d9b8c023a5f5245440b588ff7238089b89a45929d048ff4f",
+    "scripts/prepare_mysql_full_job_tpch_data_planes.py": "1eb019ace2f61a69a9be824576c3da39f46a0bee5d048a7c4af349720051a7ac"
+  },
+  "freeze_sha256": {
+    "manifest.json": "bba14232139cc7b15efc4d295111fab6243ae305c7af21b3135c03fefc809757",
+    "disk_concurrency_policy.json": "5a8b929423984a937d70f586f5063b71dee57f2595d7c562162e360d7198dc93"
+  },
+  "test_evidence": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_same_ssd_concurrency.py tests/test_mysql_three_workload_disk_concurrency_freeze_v2.py tests/test_common_outer_loop_tiered_acceptance.py tests/test_formal_mysql_sgd_orchestration.py",
+    "result": "36 passed",
+    "tests_sha256": {
+      "tests/test_common_outer_loop_tiered_acceptance.py": "13d6157f539136f58915339e5e847141bbfe52f5afd700fe0f0aa7976034a23c",
+      "tests/test_same_ssd_concurrency.py": "2b606c274b8b858b5cba6753c61e23425f1263c490951960b70b2e8b332c43c4",
+      "tests/test_mysql_three_workload_disk_concurrency_freeze_v2.py": "3a6d3ed8e96f21e0a27a674256ba6bd5e02045966caa8f867ed128daee27ecb6"
+    }
+  },
+  "remaining_fail_closed_gates": [
+    "fresh_process_and_container_inventory",
+    "effective_resource_readback",
+    "rolling_dynamic_non_interference",
+    "fresh_capture_and_r0",
+    "binding_correctness_stability_recovery"
+  ]
+}

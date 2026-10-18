@@ -1,0 +1,70 @@
+{
+  "accelerator_topology_discovery_disabled": true,
+  "accepted_expansion_keeps_binary_shrink": true,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "algorithm_contract_path": "config/formal/frozen_mysql_algorithm_c_pg_expansion_commit_20260929_v199/algorithm_c_pg_expansion_commit_contract.json",
+  "algorithm_contract_sha256": "d6b603adc09ebb4484593ac7e2c0e8aef7e9e203b28dc31119b985f7c7f19db2",
+  "all_four_scenes_start_concurrently": true,
+  "async_rejection_policy_override_prevented": true,
+  "completed_v196_v198_rounds_reused": false,
+  "cpu_or_numa_binding_changed": false,
+  "cross_engine_comparison_prohibited": true,
+  "formal_r0_reuse_requires_exact_resource_freeze_and_passed_paper_gate": true,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "fresh_search_required": true,
+  "historical_interval_state_reuse_prohibited": true,
+  "maximum_concurrent_mysql_workers": 8,
+  "optimization_authority_matches_runtime_v3": true,
+  "per_scene_outer_state_machine": true,
+  "physical_workers_per_scene": 2,
+  "plan_capture_outside_formal_measurement_wall_time": true,
+  "plan_capture_read_only": true,
+  "plan_capture_timeout_seconds": 900,
+  "postgresql_process_control_or_stop_performed": false,
+  "rejected_expansion_restores_parent": true,
+  "release_version": "v200-four-scene-pg-expansion-commit-fresh-search",
+  "resource_contract_path": "config/formal/frozen_mysql_algorithm_c_paper_baseline_20260923_v156/algorithm_c_paper_baseline_contract.json",
+  "resource_contract_sha256": "17676fdf32bd24aeb4e3432f1931b725d22e9aa15b4657230cdc6671dea41108",
+  "resource_envelope_changed": false,
+  "schema_version": "mysql_algorithm_c_pg_expansion_four_scene_launch_contract_v1",
+  "shared_storage_lease": false,
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_expansion_commit_20260929_v199/algorithm_c_pg_expansion_commit_contract.json",
+      "sha256": "d6b603adc09ebb4484593ac7e2c0e8aef7e9e203b28dc31119b985f7c7f19db2"
+    },
+    "algorithm_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v55.py",
+      "sha256": "2fd8fdd45d48ae431d55b330734ac8cc2bda97a8f9b92f6eacf9ab01ece0c904"
+    },
+    "base_parallel_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v156_four_scene.py",
+      "sha256": "2ddb64bd07c77c6f88df9ce85ae5aac116bbf012c8a92948b421b4c9bbdf6ee1"
+    },
+    "launch_controller": {
+      "path": "scripts/launch_mysql_algorithm_c_v200_pg_expansion_commit_four_scene.py",
+      "sha256": "c65f35f5ade14e26f311088d9c39668ed11d17cc14a0b8da37ce0d2e9be134e5"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_pg_expansion_launch_v200.py",
+      "sha256": "3188eca2ae6911a14451124d8dd397ba200f99561508865998f256ca6330b2b3"
+    },
+    "resource_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_paper_baseline_20260923_v156/algorithm_c_paper_baseline_contract.json",
+      "sha256": "17676fdf32bd24aeb4e3432f1931b725d22e9aa15b4657230cdc6671dea41108"
+    },
+    "scene_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v102.py",
+      "sha256": "3df964c04cf69d494917c999c94d247acf6c1ce2bebd2d909ad8fa42d2c43fb9"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "workload_changed": false
+}

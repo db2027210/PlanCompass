@@ -1,0 +1,79 @@
+{
+  "atomic_handoff_journal": true,
+  "evidence_id": "host02_job_xp_mutex_local_enforcement_20260723_v1",
+  "fail_closed_cases": [
+    "relative or /tmp control path",
+    "missing required mutex config for either host02 benchmark",
+    "missing pressure probe",
+    "nonzero JOB or XP pressure before acquisition",
+    "concurrent second holder",
+    "invalid or checksum-broken journal",
+    "nonzero pressure after campaign recovery/checksum"
+  ],
+  "formal_config": {
+    "path": "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/experience_table_sgd_formal_config.json",
+    "sha256": "fb913081367c38235806305b45bb7d05929b413c29c1971ba928f387224edd4e"
+  },
+  "generated_at": "2026-07-26T04:27:25+08:00",
+  "implementation": "posix_flock_exclusive_nonblocking",
+  "job_xp_pressure_mutually_exclusive": true,
+  "journal_path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/host02_control/job_xp_lease_journal.jsonl",
+  "journal_sha256_chain": true,
+  "launch_paths": {
+    "hybench_xp_io": "formal_mysql_sgd_campaign.run_production_campaign",
+    "job_memory": "formal_mysql_sgd_campaign.run_production_campaign"
+  },
+  "lock_path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/host02_control/job_xp_pressure.lock",
+  "passed": true,
+  "postrun_zero_pressure_required": true,
+  "preflight_zero_pressure_required": true,
+  "pressure_scope": "before_R0_through_recovery_and_checksum",
+  "remote_pressure_started": false,
+  "schema_version": 1,
+  "sources": {
+    "formal_mysql_sgd_campaign.py": {
+      "path": "formal_mysql_sgd_campaign.py",
+      "sha256": "9bfbd88b4255ae2125fa13f4c1423c85a9763caae7208fb3ac0b34160e6a7a84"
+    },
+    "host02_job_xp_mutex.py": {
+      "path": "host02_job_xp_mutex.py",
+      "sha256": "575d3bb92e8a3bcb69d2cd6b5c15ccbcf32209158bcd9f50dc950bbb417462fc"
+    },
+    "shell/test_host02_job_xp_mutex.py": {
+      "path": "shell/test_host02_job_xp_mutex.py",
+      "sha256": "5830800bfc9292432fb92637c883ac45f47bffccc9282a5543db1d5150761670"
+    },
+    "shell/test_mysql_formal_outer_campaign.py": {
+      "path": "shell/test_mysql_formal_outer_campaign.py",
+      "sha256": "df09ca9b513c2e75ffb05b6a23f26ef033ec150bc437716b0af0ddb1a099daa6"
+    },
+    "shell/test_verify_mysql_sgd_v2_readiness.py": {
+      "path": "shell/test_verify_mysql_sgd_v2_readiness.py",
+      "sha256": "4bf50e33323956deb26e28679938e1ed3a93fca4b287dc578932be0d3bc5a255"
+    },
+    "shell/verify_mysql_sgd_v2_readiness.py": {
+      "path": "shell/verify_mysql_sgd_v2_readiness.py",
+      "sha256": "07a497a18a07bda50ae731ffe0ca0e0d9d0643a32da991f510593a10b4aac967"
+    }
+  },
+  "test_run": {
+    "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q shell/test_host02_job_xp_mutex.py shell/test_mysql_formal_outer_campaign.py shell/test_verify_mysql_sgd_v2_readiness.py",
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 21,
+    "result": "21 passed",
+    "skipped": 0
+  },
+  "tests": {
+    "aborted_scope_zero_pressure_before_unlock": true,
+    "atomic_handoff_journal": true,
+    "both_launch_paths_same_lock": true,
+    "crashed_owner_kernel_release": true,
+    "full_scope_through_recovery_checksum": true,
+    "journal_checksum_chain": true,
+    "preflight_zero_pressure_rejection": true,
+    "second_holder_rejected": true,
+    "stale_state_audited": true
+  },
+  "zero_pressure_handoff_verified": true
+}

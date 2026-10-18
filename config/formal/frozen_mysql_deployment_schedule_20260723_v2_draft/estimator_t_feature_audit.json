@@ -1,0 +1,77 @@
+{
+  "schema_version": "mysql_estimator_t_feature_audit_v1",
+  "decision": "NO_SCENARIO_CURRENTLY_HAS_COMPLETE_ESTIMATOR_T_FREEZE_EVIDENCE",
+  "preflight_requirement": {
+    "section": "19.2",
+    "explicit_rule": "T is independently versioned by mysql x benchmark x workload version x bounds",
+    "real_endpoint_replicates_required": false,
+    "note": "three real lower/upper repeats are an optional later calibration design, not a launch prerequisite"
+  },
+  "frozen_sources": {
+    "trained_estimator": {
+      "path": "trained_model_estimator.py",
+      "sha256": "74c81a80a83c434e3dc9704a96098b01c5959c70f8de65d87738b6f2d8280167"
+    },
+    "models": {
+      "cpu": "f2139cd24964cef56414a70dda4030c64885c2a7290699f0c49838c66ca65455",
+      "memory": "a27068843db8948f9424c58f5fe839fa32f171b0d3b4a61ab3e216912a27a31d",
+      "io": "a6cf1a4dc3bbf0de6437578a128fa86ce9585f13bd68e718ddb1c207acc93eaa"
+    },
+    "workload_registry_sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b",
+    "parameter_space_sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012"
+  },
+  "admission_contract": {
+    "source": "trained_estimator_experience",
+    "real_measurement": false,
+    "required": [
+      "exact workload and SQL-registry checksum binding",
+      "estimator implementation and CPU/Memory/IO model checksums",
+      "100 percent frozen query-ID coverage",
+      "complete EXPLAIN and extracted-feature bundle for anchor and every single-parameter lower/upper endpoint",
+      "finite CPU/Memory/IO predictions matching the feature bundle",
+      "explicit zero T row with NO_DETECTABLE_EFFECT when all three complete endpoint deltas are within tolerance"
+    ]
+  },
+  "scenarios": {
+    "hybench_ap_memory": {
+      "status": "FAIL_CLOSED",
+      "summary_evidence": {"sha256": "c69d4f29de8989f2dcab88819988c0fcd79d9eb2698220605769fad5a82bad5a"},
+      "active_parameter_count": 8,
+      "sensitive_in_old_summary": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost"],
+      "insensitive_in_old_summary": ["key_compare_cost", "disk_temptable_create_cost", "disk_temptable_row_cost", "memory_temptable_create_cost", "memory_temptable_row_cost"],
+      "missing": ["v2-bound complete anchor/endpoint EXPLAIN bundles", "complete feature bundles and SQL-registry coverage"]
+    },
+    "job_memory": {
+      "status": "FAIL_CLOSED",
+      "summary_evidence": {"sha256": "afcf4d332dabe36b64c273a45b20bfd6f5f9adcefaf80384ec1f9ab00498d691"},
+      "active_parameter_count": 4,
+      "sensitive_in_later_summary": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost", "memory_temptable_row_cost"],
+      "missing": ["v2 workload and SQL-registry binding inside evidence", "complete per-endpoint EXPLAIN bundles", "complete per-endpoint feature bundles with current estimator/model checksums", "explicit anchor prediction artifact"]
+    },
+    "tpch_memory": {
+      "status": "FAIL_CLOSED",
+      "summary_evidence": {"sha256": "7f5eacb6f93db5a3f8c509c5e244e57147e29d1293536d86f75ae2be586927d7"},
+      "active_parameter_count": 4,
+      "sensitive_in_old_summary": ["io_block_read_cost", "row_evaluate_cost"],
+      "insensitive_in_old_summary": ["memory_block_read_cost", "disk_temptable_row_cost"],
+      "missing": ["complete v2 anchor/endpoint EXPLAIN and feature bundles", "complete SQL-registry/model checksum binding"]
+    },
+    "tpcc_cpu": {
+      "status": "FAIL_CLOSED",
+      "summary_evidence": {"sha256": "c7425d550bc07a505b34370c537708eb21576a66d7d27c3d693fbb797ea0779d"},
+      "active_parameter_count": 4,
+      "sensitive_in_later_summary": ["memory_block_read_cost", "row_evaluate_cost", "disk_temptable_row_cost", "memory_temptable_row_cost"],
+      "missing": ["v2 workload and SQL-registry binding inside evidence", "complete per-endpoint EXPLAIN bundles", "complete per-endpoint feature bundles with current estimator/model checksums", "explicit anchor prediction artifact"]
+    },
+    "hybench_xp_io": {
+      "status": "FAIL_CLOSED",
+      "summary_evidence": {"sha256": "23557cd5903d2692546c8e0285513f412df1ea5c83233ce79fdd011f4bd1641a"},
+      "active_parameter_count": 7,
+      "sensitive_in_old_summary": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost"],
+      "insensitive_in_old_summary": ["key_compare_cost", "disk_temptable_create_cost", "disk_temptable_row_cost", "memory_temptable_row_cost"],
+      "missing": ["complete v2 anchor/endpoint EXPLAIN and feature bundles", "complete SQL-registry/model checksum binding"]
+    }
+  },
+  "artifacts_created": [],
+  "r06_effect": "MUST_REMAIN_FAIL"
+}

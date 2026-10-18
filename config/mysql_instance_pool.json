@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "image": "mysql:8.0",
+  "label_key": "resource-adaptive-mysql.owner",
+  "label_value": "isolated-pool-v1",
+  "name_prefix": "ra-mysql-isolated-",
+  "target_root": "/disk3",
+  "block_on_external_experiments": false,
+  "external_experiment_markers": ["hybench", "benchbase", "resource_adaptive", "experiment"],
+  "instances": [
+    {
+      "id": "cpu-1",
+      "port": 13307,
+      "cpuset": "32-35",
+      "memory": "8g",
+      "blkio_weight": 500,
+      "pids_limit": 512,
+      "datadir": "/disk3/ra_mysql_isolated/cpu-1"
+    },
+    {
+      "id": "memory-1",
+      "port": 13308,
+      "cpuset": "36-39",
+      "memory": "8g",
+      "blkio_weight": 500,
+      "pids_limit": 512,
+      "datadir": "/disk3/ra_mysql_isolated/memory-1"
+    },
+    {
+      "id": "io-1",
+      "port": 13309,
+      "cpuset": "40-43",
+      "memory": "8g",
+      "blkio_weight": 200,
+      "pids_limit": 512,
+      "datadir": "/disk3/ra_mysql_isolated/io-1"
+    }
+  ]
+}

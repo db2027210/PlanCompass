@@ -1,0 +1,40 @@
+{
+  "covered_contracts": {
+    "checkpoint": "Non-contiguous replay ranks survive resume; changed sealed order, tampering and unsafe recovery fail closed.",
+    "failure_injection": "Injected failure requires a new outer attempt without duplicate acceptance/replay accounting.",
+    "section23": "Formal point adapter rejects missing evidence references and records point trace, immutable point-journal history, checksums, recovery and exactly-once accounting.",
+    "section26": "All-subset integration materializes meta/outer_loop/inner_loop_summary/result plus append-only inner JSONL and verifies its SHA-256."
+  },
+  "evidence_class": "reproducible_local_code_test",
+  "failure_injection_tested": true,
+  "implementation_sources": [
+    {
+      "path": "formal_mysql_sgd_orchestration.py",
+      "sha256": "34640e7dc03f40381a421781c14fcdb1a9200a22f0b32ccc8f19399a89323618"
+    },
+    {
+      "path": "formal_mysql_sgd_checkpoint.py",
+      "sha256": "c97e78170807206004c28de3eba31759e11c6cf4764438d3b14b4e5ceb9f2afe"
+    },
+    {
+      "path": "mysql_parameter_optimizer.py",
+      "sha256": "f9b85f66f46bf55b404a51836368da473282f7bdc64f155ea8bd66231039870d"
+    }
+  ],
+  "passed": true,
+  "recovery_journal_complete": true,
+  "resume_tested": true,
+  "schema_version": 1,
+  "scope_note": "This is code-path evidence only. It does not assert that formal scenario logs already exist or that any lane is READY.",
+  "section23_complete": true,
+  "section26_complete": true,
+  "test_result": {
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 72,
+    "shared_with": "session_adapter_test_evidence.json",
+    "skipped": 0
+  },
+  "tested_at": "2026-07-23T07:05:36+08:00",
+  "trace_sha256_complete": true
+}

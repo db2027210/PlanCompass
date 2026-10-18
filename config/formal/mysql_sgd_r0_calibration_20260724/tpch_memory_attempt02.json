@@ -1,0 +1,9 @@
+{
+  "cpuset": "18-22,54-58",
+  "mems": "1",
+  "cpu_cores": 4.5,
+  "memory_bytes": 5583457485,
+  "pids": 512,
+  "read_bps": 325058560,
+  "write_bps": 325058560
+}

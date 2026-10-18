@@ -1,0 +1,10 @@
+{
+  "cross_engine_comparison_authorized": false,
+  "draft_id": "frozen_mysql_deployment_schedule_20260723_v4_mysql_only",
+  "formal_scope": "mysql_only",
+  "independent_audit_sha256": "da9f57f36a982533863c3b7c38d8e38d40e7414f4f4de1853d3bc557daa6ca1a",
+  "launch_authorized": true,
+  "publication_inputs_sha256": "f9470faea3dd4dc70d959e25085827b7a6cf41d0e351cd1586d50f87664fd98c",
+  "schema_version": "mysql_v4_bundle_ready_v1",
+  "status": "READY"
+}

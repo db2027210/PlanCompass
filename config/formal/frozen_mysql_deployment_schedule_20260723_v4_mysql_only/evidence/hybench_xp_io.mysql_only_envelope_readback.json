@@ -1,0 +1,26 @@
+{
+  "cross_engine_envelope_equality_required": false,
+  "engine": "mysql",
+  "formal_scope_name": "mysql_only",
+  "freeze_id": "frozen_mysql_deployment_schedule_20260723_v4_mysql_only",
+  "normalized_envelope": {
+    "cpu_isolation_degree": 16,
+    "cpu_quota_cores": 16,
+    "io_read_bps": 104857600,
+    "io_write_bps": 104857600,
+    "memory_bytes": 8589934592,
+    "memory_swap_bytes": 8589934592,
+    "numa_isolation_degree": 1,
+    "pids_max": 1024
+  },
+  "postgresql_counterpart_required": false,
+  "scenario": "hybench_xp_io",
+  "schema_version": "mysql_only_scope_bound_envelope_readback_v1",
+  "source_bytes_unchanged": true,
+  "source_freeze_id": "frozen_paired_pg_mysql_resource_envelopes_20260723_v1",
+  "source_mysql_readback": {
+    "path": "history/mysql_sgd_env_agents_20260723/xp/formal_mysql_normalized_envelope_readback.json",
+    "sha256": "93df98a12569f95c88d25e7a3d23dbb07ae8de4f207462bf5f456cd2e44df033"
+  },
+  "status": "SCOPE_BOUND_FROM_AUTHENTIC_MYSQL_READBACK"
+}

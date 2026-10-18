@@ -1,0 +1,21 @@
+{
+  "accepted_rounds": {
+    "hybench_xp": 0,
+    "job": 0,
+    "tpch": 0
+  },
+  "artifacts": {
+    "job_tpch_resource_envelope.json": "254bb8e40c40d802ffd3581c290118b14663167008e0da83b4b9b9500a4aadc8",
+    "mysql_benchmark_command.py": "23f0de9e90c3f15b4e3b4abeeb99fc4519e6832ee45567da1671aeafd2d9feb8",
+    "mysql_workload_adapter.py": "4379fee802ee26d6f981fddb03b11d4f18ed377112cc531c5e766297f09db3d9",
+    "workload_freeze.json": "d616751aed412ff01e3cdb543fe3c441cd1c5529175ec7df79856cb4c08df74e",
+    "xp_cpu_resource_envelope.json": "9109364151eb79d8c150e49caaf17a3c509ebdb7c255abfc9d50cc104b5acf96",
+    "xp_runtime_manifest.json": "3acfc0afae0190f545ffe90dba7efe88dfc180554c7a175cefc02990973a1e43"
+  },
+  "cross_engine_comparison_prohibited": true,
+  "formal_launch_authorized": false,
+  "formal_scope": "mysql_only",
+  "launch_performed": false,
+  "schema_version": "mysql_three_workload_formal_freeze_manifest_v1",
+  "status": "SEALED_PRELAUNCH_GATES_INCOMPLETE"
+}

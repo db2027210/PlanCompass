@@ -1,0 +1,34 @@
+{
+  "cross_engine_comparison_prohibited": true,
+  "evidence": {
+    "hybench_ap_memory": {
+      "path": "config/formal/frozen_mysql_static_isolation_20260724_v1/hybench_ap_memory.static_isolation_v1.json",
+      "sha256": "fa964ca802dbfee2d3a07714e1cfeaa3345460c438632b199f6e7b0f0a8b2a7f"
+    },
+    "hybench_xp_io": {
+      "path": "config/formal/frozen_mysql_static_isolation_20260724_v1/hybench_xp_io.static_isolation_v1.json",
+      "sha256": "e2a0fa37332ed27dcb8f06d34854eef7a31eeed7acd7bfed9f08d9fdf2520b2c"
+    },
+    "job_memory": {
+      "path": "config/formal/frozen_mysql_static_isolation_20260724_v1/job_memory.static_isolation_v1.json",
+      "sha256": "937131d8ff1d477ab111b3e3ab274d970120703b3884295ad8e92755f8cbf003"
+    },
+    "tpcc_cpu": {
+      "path": "config/formal/frozen_mysql_static_isolation_20260724_v1/tpcc_cpu.static_isolation_v1.json",
+      "sha256": "8c7c018bbb49572751882db41a3ac387d0e4bb5bfe41fc1626bc202529b2b8f2"
+    },
+    "tpch_memory": {
+      "path": "config/formal/frozen_mysql_static_isolation_20260724_v1/tpch_memory.static_isolation_v1.json",
+      "sha256": "ac0c066e6ecbaea4c9a2e43e60bcf3d9f03cbdc5250e17ae91f0ce954b2e7431"
+    }
+  },
+  "formal_scope": "mysql_only",
+  "freeze_id": "frozen_mysql_static_isolation_20260724_v1",
+  "generated_at": "2026-07-24T01:50:17+08:00",
+  "host_lane_mutex_controller": {
+    "path": "shell/manual_mysql_sgd_lane_controller.py",
+    "sha256": "f956b48a4f64f755587800e43550b0593250b43c14cd06cd8ccd98e0dc5d5ca1"
+  },
+  "schema_version": "mysql_only_static_isolation_bundle_v1",
+  "status": "FROZEN_STATIC_ISOLATION_PASS"
+}

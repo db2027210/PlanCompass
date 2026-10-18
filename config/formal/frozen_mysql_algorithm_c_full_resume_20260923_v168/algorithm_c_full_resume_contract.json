@@ -1,0 +1,41 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v168",
+  "release_version": "v168-xp-io-zero-credit-instability-retry",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "hybench_xp_io",
+  "resume_completed_outer_attempt": 2,
+  "discarded_incomplete_outer_attempt": 3,
+  "failed_outer_credit": 0,
+  "failure_classification": "TECHNICAL_XP_TARGET_RESOURCE_INSTABILITY_EXCLUDED",
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "candidate_set_or_workload_changed": false,
+  "resource_envelope_changed": false,
+  "native_xp_workload_unchanged": true,
+  "plan_capture_timeout_seconds": 900,
+  "formal_measurement_maximum_seconds": 900,
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v165/algorithm_c_full_resume_contract.json",
+    "sha256": "887a83363223cbbee9a862d3c81a0a34d4db7e446a4e73583c8acae6d806f08b"
+  },
+  "failed_attempt": {
+    "path": "history/mysql_four_scene_20260809/c_v165_job_xpio_outer2_resume_20260923_xp_io/run_state.json",
+    "sha256": "c52ae2d4c217474850c4aa1fb619b3bce1e6b0309b2a8315a6854bd021362caa"
+  },
+  "resume_boundary": {
+    "path": "history/mysql_four_scene_20260809/c_v165_xp_io_outer2_checkpoint_20260923/prepared_binding.json",
+    "sha256": "9da4e89484c19ff75c9f1c79bb1475390d58e59f985665be612ad55dd7f8bb80"
+  },
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v78.py",
+      "sha256": "931e8e6b974c810344a0ff896266dc4b38f23d8eb879cebfa0e2f8beec7f4446"
+    },
+    "predecessor": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v75.py",
+      "sha256": "5f016cf41c23103504ce01e2009c1ea7867b6bc2ad400c56f80f5f37388dc1a9"
+    }
+  }
+}

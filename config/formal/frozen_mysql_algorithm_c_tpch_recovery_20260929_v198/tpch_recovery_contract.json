@@ -1,0 +1,50 @@
+{
+  "schema_version": "mysql_algorithm_c_tpch_recovery_contract_v1",
+  "release_version": "v198-tpch-v196-outer3-gate-recovery",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "completed_outer_attempts_preserved": 3,
+  "discarded_incomplete_outer": 4,
+  "discarded_incomplete_outer_credit": 0,
+  "fresh_search_reset_on_resume": false,
+  "workload_or_candidate_policy_changed": false,
+  "resource_envelope_changed": false,
+  "source_bindings": {
+    "launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v198_tpch_outer3_recovery.py",
+      "sha256": "06f7f544b21c7335ed263a63e2986fd1362f4f1cf8f0318af0f6f2cb27c57111"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v101.py",
+      "sha256": "41f9c48004e45d5ecb47e32225eac7be90b40173f98bf350a7edb9011f80d301"
+    },
+    "controller_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_exact_resume_20260929_v197/algorithm_c_pg_exact_resume_contract.json",
+      "sha256": "e4dd739df92761258ffb811df5102598044bf20a9648a15976fa67c652442b56"
+    }
+  },
+  "evidence_bindings": {
+    "checkpoint": {
+      "sha256": "5237da1eccfeac239d6b645f78b1ae3fe50fe55ac9da705950b254a3d4bdbb1b"
+    },
+    "quarantine": {
+      "sha256": "10d2ee9f60377e20d337278c8ebb7255203ddd0861ef02ab184fd9cd50d37d04"
+    },
+    "source_state": {
+      "sha256": "c76e4fec03e2165c28a98914d744e5d1259f3fe312256b8636699271e67e7adc"
+    },
+    "blocked_gate": {
+      "sha256": "0c6d6f826ee1c2e16687315a64178c10263da2003539edee4547ce5245fdf151"
+    },
+    "fresh_r0": {
+      "sha256": "792d726757b53d2ba6e99ca90ce47ec4696a22c6b546c7895c66e16bc9fe8c37"
+    },
+    "formal_r0_set": {
+      "sha256": "b098e7a5aa510560d4c81e12f9be91faad939ca7e6e24dcdf992c7cb73bc3c4f"
+    },
+    "formal_baseline": {
+      "sha256": "8b4a52a96a8d6d2a370fef2e331a21dc855114d05d0df98b3da56440fe61a5c4"
+    }
+  }
+}

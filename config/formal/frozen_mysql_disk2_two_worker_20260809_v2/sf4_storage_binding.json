@@ -1,0 +1,35 @@
+{
+  "schema_version": "mysql_tpch_sf4_storage_binding_v1",
+  "status": "SEALED_VERIFIED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "predecessor_tpch_sf10_results_prohibited": true,
+  "workload_successor": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260809_v1/tpch_sf4_workload_successor.json",
+    "sha256": "c5b9f11b4bbd1ad92ad7b6da63447e3a84809b8dd765af85488be055d6f237b0"
+  },
+  "storage_manifest": {
+    "path": "/disk2/resource_adaptive_mysql_tpch_sf4_20260809/template/storage_manifest.json",
+    "sha256": "01ac49daa66840615e01458dbc7a34d30617a748e814766467e2251e93ca1e44",
+    "status": "SEALED",
+    "template_path": "/disk2/resource_adaptive_mysql_tpch_sf4_20260809/template/datadir",
+    "template_tree_sha256": "0ba80e971eb127c79acedab002613933f558ff054d9b7c9dfec5ec56f4022dac",
+    "template_bytes": 11035754516,
+    "scale_factor": 4,
+    "database": "tpch",
+    "index_count": 31,
+    "mysql_version": "8.0.45",
+    "row_counts": {
+      "customer": 600000,
+      "lineitem": 23996604,
+      "nation": 25,
+      "orders": 6000000,
+      "part": 800000,
+      "partsupp": 3200000,
+      "region": 5,
+      "supplier": 40000
+    }
+  },
+  "fresh_sf4_r0_required": true,
+  "execution_authorized": false
+}

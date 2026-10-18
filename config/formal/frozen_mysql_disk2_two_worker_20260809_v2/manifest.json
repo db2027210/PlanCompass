@@ -1,0 +1,42 @@
+{
+  "schema_version": "mysql_disk2_two_worker_sf4_bound_successor_manifest_v2",
+  "status": "SEALED_SF4_BOUND_ALGORITHM_C_ADJUSTMENT_AND_RUNTIME_GATES_PENDING",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_scenes": [
+    "job",
+    "tpch",
+    "hybench_xp"
+  ],
+  "retired_scenes": [
+    "tpcc",
+    "hybench_xp_io"
+  ],
+  "predecessor": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260809_v1/manifest.json",
+    "sha256": "ac2bb5c7558655b6f3e292354696623921a6ddb7e08a50c8fb3593e40f11ec27"
+  },
+  "frozen_worker_resource_contract": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260809_v1/worker_resource_freeze.json",
+    "sha256": "6f43d5393f3235494c94c8337e7671234d4104c25a400543884f0da26886f793"
+  },
+  "sf4_storage_binding": {
+    "path": "sf4_storage_binding.json",
+    "sha256": "d8293302b99e8dfbe7360c99776a288f370a0e7e4c0aaaa28d1b8c655812bf1e"
+  },
+  "launch_gates_pending": [
+    "algorithm_c_user_adjustment_freeze",
+    "fresh_process_and_container_inventory",
+    "effective_resource_readback",
+    "rolling_dynamic_non_interference",
+    "fresh_sf4_r0",
+    "binding_correctness_stability_recovery"
+  ],
+  "formal_launch_authorized": false,
+  "launch_performed": false,
+  "accepted_rounds": {
+    "job": 0,
+    "tpch": 0,
+    "hybench_xp": 0
+  }
+}

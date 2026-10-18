@@ -1,0 +1,130 @@
+{
+  "capabilities": {
+    "digest_db_qps": true,
+    "formal_cost_protocol": true,
+    "pairwise_outer": true,
+    "rolling_stability_controller": true,
+    "global_fixed_top5_replay": true,
+    "template_restore": true
+  },
+  "database_qps_contract": {
+    "allowed_attribution_scopes": [
+      "dedicated_mysql_instance",
+      "registered_workload_digest_set"
+    ],
+    "canonical_source": "database_status_counter",
+    "client_completion_or_progress_role": "audit_only",
+    "fail_closed_conditions": [
+      "missing_attribution",
+      "missing_digest_set_sha256",
+      "counter_reset",
+      "identity_change",
+      "unbracketed_window",
+      "sparse_boundary_coverage",
+      "finalizer_dbqps_mismatch"
+    ],
+    "production_runtime_service": "FormalSessionRuntimeServices.database_qps_samples"
+  },
+  "evidence_class": "reproducible_local_code_test",
+  "interpreter": "Python 3.13.9",
+  "passed": true,
+  "production_sources": [
+    {
+      "path": "formal_mysql_database_qps.py",
+      "sha256": "907b1b3aaad4e7cf1b0444447c92dabb59f305b0a9e751b3ffc08ea29af22c51"
+    },
+    {
+      "path": "formal_mysql_continuous_session_factory.py",
+      "sha256": "7f6218d27f3e0f9dea83edacd4add0b9ffe2ab473225a9653fe12523560b3e32"
+    },
+    {
+      "path": "formal_job_continuous_session.py",
+      "sha256": "892926bc86e567df9d2d4c5354f61739776f89046f5d4006171c75a6cf4c16a8"
+    },
+    {
+      "path": "formal_hybench_continuous_session.py",
+      "sha256": "d1cbd74b8d096ec8ba03b85b63aa12182b2b846f991ad036d3a844a0906a2c02"
+    },
+    {
+      "path": "formal_benchbase_continuous_session.py",
+      "sha256": "d0930d81f8e7f82321600f3fdeeecaa213348ff964b6ddb525942639137804ec"
+    },
+    {
+      "path": "formal_stability.py",
+      "sha256": "42e7378e1cd9374ba0f6ef04e63fcf38e111e6daadf38022c04afe11a197fd87"
+    },
+    {
+      "path": "formal_mysql_sgd_orchestration.py",
+      "sha256": "361a7f908c5589b17c34a13984388abb278de98c7e1aa06ea97a816b02276489"
+    },
+    {
+      "path": "formal_mysql_sgd_campaign.py",
+      "sha256": "c2176dc3a2a7faff86ed533be56f3a74202dbfec89d3c8578ae6d51dc429d456"
+    },
+    {
+      "path": "shell/manual_mysql_sgd_lane_controller.py",
+      "sha256": "b558a1a176b132c2c809c3ab44c63d6611921dff4da43ab47aff14bd51489d84"
+    }
+  ],
+  "pytest": "8.4.2",
+  "schema_version": 1,
+  "scope_note": "This evidence proves all six formal adapter capabilities against production wiring and dependency-injected deterministic sessions; it does not prove any scenario environment READY gate.",
+  "test_command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_formal_mysql_database_qps.py tests/test_formal_mysql_sgd_orchestration.py tests/test_formal_mysql_sgd_checkpoint.py tests/test_formal_mysql_continuous_session_factory.py tests/test_formal_benchbase_continuous_session.py tests/test_formal_hybench_continuous_session.py tests/test_formal_job_continuous_session.py shell/test_mysql_all_subset_integration.py shell/test_mysql_formal_outer_campaign.py tests/test_mysql_formal_algorithm_b_contract.py tests/test_run_mysql_sgd_direct_campaign.py tests/test_manual_mysql_sgd_lane_controller.py",
+  "test_sources": [
+    {
+      "path": "tests/test_formal_mysql_database_qps.py",
+      "sha256": "cb4429837989d2637951673e6624941901a56e1446b6822c5a45b2a090a23fab"
+    },
+    {
+      "path": "tests/test_formal_mysql_sgd_orchestration.py",
+      "sha256": "1575c5f4b593b44ab95af329832e58403e3145c1b2f14c6bb59983899e3cb935"
+    },
+    {
+      "path": "tests/test_formal_mysql_sgd_checkpoint.py",
+      "sha256": "99da7fa5c561fa62076a64a7dd4db54f5092ab5bcb40b9758e6c88ba3d287529"
+    },
+    {
+      "path": "tests/test_formal_mysql_continuous_session_factory.py",
+      "sha256": "50e6b919730f5691149fd9a5d6267a269bebfd7803904805f8210c7f8b61e8ac"
+    },
+    {
+      "path": "tests/test_formal_benchbase_continuous_session.py",
+      "sha256": "7b4fcf6d80d4c23b8a89aa4f16dcda9b80b940193cbc25365e645c999019b764"
+    },
+    {
+      "path": "tests/test_formal_hybench_continuous_session.py",
+      "sha256": "74ee02c7f62e9ffad33b724704781efad3763302406bcd503ca4c33a906882df"
+    },
+    {
+      "path": "tests/test_formal_job_continuous_session.py",
+      "sha256": "88b23151ad09b4d897e96247097b4d6d56838558bc6e65339a064c28a7a28e19"
+    },
+    {
+      "path": "shell/test_mysql_all_subset_integration.py",
+      "sha256": "1e60b754e6e23c136bb6857fcf309ae0e1da9ad70cba83f0f4a5577c365bbc95"
+    },
+    {
+      "path": "shell/test_mysql_formal_outer_campaign.py",
+      "sha256": "2435860f45045f0013d7f214b05c1b720613675f403fbd2c6c82e2529da21283"
+    },
+    {
+      "path": "tests/test_mysql_formal_algorithm_b_contract.py",
+      "sha256": "182b6a2f34a89abb07d5cd769441f1b15f21eff9ee708f825b81de4dece9630f"
+    },
+    {
+      "path": "tests/test_run_mysql_sgd_direct_campaign.py",
+      "sha256": "9b3415022a039381dfd1e974cc024b3a24c4e3c45ef7233e202f11124e6e32a6"
+    },
+    {
+      "path": "tests/test_manual_mysql_sgd_lane_controller.py",
+      "sha256": "6bbb7be6699a7cb38e440041745ea44b673de6bf383ac0973b4193588dfa7eaa"
+    }
+  ],
+  "test_suite_result": {
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 96,
+    "skipped": 0
+  },
+  "tested_at": "2026-07-26T04:43:40+08:00"
+}

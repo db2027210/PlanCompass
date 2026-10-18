@@ -1,0 +1,25 @@
+{
+  "scenario": "none", "benchmark": "hybench_ap", "seed": 20260719, "randomize_order": true,
+  "target": {
+    "container": "ra-mysql-grid-hybench-base",
+    "required_label": "resource-adaptive-mysql.owner=mysql-grid-20260718",
+    "host": "127.0.0.1", "port": 13309, "pid": 283284,
+    "expected_nano_cpus": 0, "expected_memory_bytes": 34359738368,
+    "user": "root", "password": "CHANGE_ME", "database": "hybench_sf10x"
+  },
+  "baseline_values": {"innodb_buffer_pool_size": 8589934592, "innodb_old_blocks_pct": 75},
+  "factors": {
+    "innodb_buffer_pool_size": [8589934592, 12884901888, 17179869184],
+    "innodb_old_blocks_pct": [5, 37, 75]
+  },
+  "workload": {
+    "interval_sec": 1, "warmup_samples": 5, "timeout_sec": 600,
+    "argv": [
+      "/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_benchmark_command.py",
+      "--benchmark", "hybench_ap", "--host", "127.0.0.1", "--port", "13309",
+      "--database", "hybench_sf10x", "--user", "root", "--password", "CHANGE_ME",
+      "--output-dir", "{output_dir}", "--duration-sec", "60", "--clients", "4",
+      "--hybench-scale", "10x"
+    ]
+  }
+}

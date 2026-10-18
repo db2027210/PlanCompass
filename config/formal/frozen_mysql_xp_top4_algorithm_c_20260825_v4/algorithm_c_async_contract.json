@@ -1,0 +1,54 @@
+{
+  "schema_version": "mysql_algorithm_c_async_inactive_restart_contract_v1",
+  "release_version": "v55",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "C",
+  "predecessor_contract": {
+    "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v3/algorithm_c_async_contract.json",
+    "sha256": "e68e9bc459603e782095f2ccafe1ee9a749c2ab919839eb33fb8257291933ebf"
+  },
+  "inactive_restarting_external_database_policy": {
+    "intended_mysql_inspect_failure_fails_closed": true,
+    "external_database_inspect_timeout_is_unconditionally_ignored": false,
+    "external_database_summary_state_required": "restarting",
+    "live_cgroup_process_scan_count": 2,
+    "live_cgroup_process_scan_interval_seconds": 0.25,
+    "live_cgroup_process_required_count": 0,
+    "unreadable_proc_cgroup_fails_closed": true,
+    "runtime_process_watch_required": true,
+    "runtime_overlap_fails_affected_scene_closed": true,
+    "runtime_external_database_rolling_window_seconds": 15,
+    "runtime_external_database_maximum_cpu_cores": 0.1,
+    "runtime_external_database_maximum_io_bytes_per_second": 1048576,
+    "runtime_external_database_maximum_rss_growth_bytes": 268435456,
+    "algorithm_or_parameter_flow_changed": false,
+    "candidate_set_changed": false,
+    "accepted_history_preserved": true,
+    "cross_scene_completion_dependency": false,
+    "external_process_control_or_mutation": false
+  },
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v55.py",
+      "sha256": "f8cfdd61ad99f113fccc2d014316eb45550e44f6dec2dc5127c9751150e8e53f"
+    },
+    "process_backed_preflight": {
+      "path": "scripts/preflight_mysql_four_scene_v6.py",
+      "sha256": "414949b9744d48dda5cd2f1613305846939e5459e722ff92c4183403f2d134eb"
+    },
+    "runtime_process_observer": {
+      "path": "scripts/watch_mysql_algorithm_c_async_noninterference_v1.py",
+      "sha256": "33408f79260e2e89a2e67a8685bf9a6d26054e63a3eaeb0f02a4dd7654a0973f"
+    },
+    "clear_window_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_xp_v55_clear_window_v1.py",
+      "sha256": "1cb1c9a9966ef4fa1716f0dc1dfc62dddda0638c8467db928c4fa741edcedff8"
+    },
+    "predecessor_controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v54.py",
+      "sha256": "879d5b357689ec6289d68e9b4b5e2db69b85a7fc056f479ec72e3c0477f4c3bb"
+    }
+  }
+}

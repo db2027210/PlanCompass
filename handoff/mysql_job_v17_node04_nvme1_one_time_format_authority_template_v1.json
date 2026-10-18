@@ -1,0 +1,137 @@
+{
+  "schema_version": "mysql_job_one_time_format_authority_v1",
+  "status": "TEMPLATE_NOT_AUTHORITY",
+  "authorized": false,
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "job_bundle": {
+    "bundle_id": "f45a7300f065e66f23d332fd2be44072702ca867a493769ef2405edc66200233",
+    "manifest_sha256": "5d333b3d9e2567a08e8538c0e798e31a1450086bd29f659f060f88a7b369771b"
+  },
+  "authority": {
+    "authority_id": "FILL_FRESH_RANDOM_128_BIT_NONCE",
+    "authorizer": "FILL_USER_IDENTITY",
+    "authorization_message_exact": "FILL_EXACT_USER_AUTHORIZATION_SENTENCE",
+    "authorization_message_sha256": "FILL_64_HEX_SHA256",
+    "issued_at_utc": "FILL_RFC3339_UTC",
+    "expires_at_utc": "FILL_RFC3339_UTC_MAX_30_MINUTES_AFTER_ISSUE",
+    "single_use": true,
+    "consumed": false,
+    "reuse_after_failure_or_timeout_prohibited": true,
+    "scope_expansion_prohibited": true
+  },
+  "exact_target": {
+    "hostname": "node04",
+    "address": "192.0.2.7",
+    "device": "/dev/nvme1n1",
+    "major_minor": "259:0",
+    "serial": "S5LFNA0RA00592",
+    "wwn": "eui.354c463052a005920025384100000002",
+    "whole_device_only": true,
+    "partition_creation_prohibited": true,
+    "filesystem": "xfs",
+    "xfs_ftype": 1,
+    "mountpoint": "/mnt/mysql_job_nvme1n1",
+    "mount_options": [
+      "rw",
+      "nosuid",
+      "nodev"
+    ]
+  },
+  "exact_authorized_argv": {
+    "format_once": [
+      "/usr/bin/sudo",
+      "-n",
+      "/sbin/mkfs.xfs",
+      "-f",
+      "-n",
+      "ftype=1",
+      "/dev/nvme1n1"
+    ],
+    "create_mountpoint": [
+      "/usr/bin/sudo",
+      "-n",
+      "/usr/bin/mkdir",
+      "-p",
+      "/mnt/mysql_job_nvme1n1"
+    ],
+    "mount_once": [
+      "/usr/bin/sudo",
+      "-n",
+      "/bin/mount",
+      "-t",
+      "xfs",
+      "-o",
+      "rw,nosuid,nodev",
+      "/dev/nvme1n1",
+      "/mnt/mysql_job_nvme1n1"
+    ]
+  },
+  "mandatory_fresh_preconditions": {
+    "captured_after_authority_issue": true,
+    "hostname_and_address_exact": true,
+    "lsblk_identity_exact": true,
+    "device_is_not_mounted": true,
+    "device_is_not_swap": true,
+    "wipefs_signatures_empty": true,
+    "blkid_signatures_empty": true,
+    "holders_empty": true,
+    "fuser_pids_empty": true,
+    "lsof_openers_empty": true,
+    "postgresql_inventory_read_only_only": true,
+    "postgresql_device_or_process_mutation": false,
+    "pre_format_identity_artifact_sha256": "FILL_64_HEX_SHA256"
+  },
+  "consumption_protocol": {
+    "consume_before_format_exec": true,
+    "consumption_record_create_mode": "O_CREAT|O_EXCL",
+    "consumption_record_path": "FILL_ABSOLUTE_CONTROL_PATH/format_authority_consumed_<authority_id>.json",
+    "consumption_record_must_bind": [
+      "authority_document_sha256",
+      "authorization_message_sha256",
+      "pre_format_identity_artifact_sha256",
+      "hostname",
+      "device",
+      "major_minor",
+      "serial",
+      "wwn",
+      "exact_format_argv",
+      "consumed_at_utc",
+      "main_agent_attempt_token"
+    ],
+    "existing_consumption_record_action": "REFUSE_WITHOUT_EXECUTION",
+    "format_nonzero_or_timeout_action": "STOP_AND_REQUIRE_NEW_USER_AUTHORITY",
+    "automatic_retry_prohibited": true
+  },
+  "mandatory_post_format_readback": {
+    "findmnt_source": "/dev/nvme1n1",
+    "findmnt_target": "/mnt/mysql_job_nvme1n1",
+    "lsblk_major_minor": "259:0",
+    "lsblk_serial": "S5LFNA0RA00592",
+    "lsblk_wwn": "eui.354c463052a005920025384100000002",
+    "filesystem": "xfs",
+    "mount_rw": true,
+    "xfs_ftype": 1,
+    "readback_output": "post_format_mount_readback.json",
+    "any_mismatch_action": "STOP_FAIL_CLOSED"
+  },
+  "explicitly_not_authorized": [
+    "any other block device",
+    "partition table creation or modification",
+    "fstab modification",
+    "unmounting or remounting another filesystem",
+    "bundle publication",
+    "Docker or workload start/stop",
+    "container creation, removal, or modification",
+    "PostgreSQL process, container, data, configuration, CPU, memory, disk, port, or mount mutation",
+    "R0, qualification, replay, formal launch, or accepted-round credit"
+  ],
+  "credit": {
+    "qualification": 0,
+    "r0": 0,
+    "candidate": 0,
+    "top5_replay": 0,
+    "accepted_rounds": 0
+  }
+}

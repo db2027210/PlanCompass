@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "audit_id": "mysql_experience_table_provenance_audit_20260723_v1",
+  "created_at": "2026-07-23",
+  "database": "mysql",
+  "target_workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+  "decision": "INSUFFICIENT_EVIDENCE_NO_T_ARTIFACTS_CREATED",
+  "readiness_effect": "R06_MUST_REMAIN_FAIL",
+  "prohibitions": {
+    "invent_values": true,
+    "reuse_postgresql_T": true,
+    "reuse_unbound_cross_benchmark_T": true,
+    "treat_candidate_points_as_observed_sensitivity": true
+  },
+  "target_freeze": {
+    "mysql_workloads": {
+      "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/config/formal/frozen_mysql_workloads_and_parameters_20260722_v2/mysql_workloads.json",
+      "sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b"
+    },
+    "mysql_parameter_spaces": {
+      "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/config/formal/frozen_mysql_workloads_and_parameters_20260722_v2/mysql_parameter_spaces.json",
+      "sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012"
+    }
+  },
+  "target_parameter_definitions": {
+    "io_block_read_cost": {"lower": 0.1, "default": 1.0, "upper": 10.0, "transform": "log"},
+    "memory_block_read_cost": {"lower": 0.025, "default": 0.25, "upper": 2.5, "transform": "log"},
+    "row_evaluate_cost": {"lower": 0.01, "default": 0.1, "upper": 1.0, "transform": "log"},
+    "key_compare_cost": {"lower": 0.005, "default": 0.05, "upper": 0.5, "transform": "log"},
+    "disk_temptable_create_cost": {"lower": 2.0, "default": 20.0, "upper": 200.0, "transform": "log"},
+    "disk_temptable_row_cost": {"lower": 0.05, "default": 0.5, "upper": 5.0, "transform": "log"},
+    "memory_temptable_create_cost": {"lower": 0.1, "default": 1.0, "upper": 10.0, "transform": "log"},
+    "memory_temptable_row_cost": {"lower": 0.01, "default": 0.1, "upper": 1.0, "transform": "log"}
+  },
+  "source_assessments": [
+    {
+      "source_id": "current_mysql_optimizer_config_sensitivity_table",
+      "path": "config/mysql_optimizer_config.json",
+      "sha256": "b94f6fcff2a48ee82d23c1c46b5d2d0982f9f66eaaf234113ee7d36abac45491",
+      "canonical_sensitivity_table_sha256": "497854e67d0c5cfcfb918c9bade7bc4e75943f7dcd97e1fdc6520079e9e9ddf2",
+      "database_evidence": "MySQL connection block and MySQL-only optimizer cost names",
+      "declared_binding": {
+        "benchmark": "hybench_ap",
+        "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2"
+      },
+      "classification": "UNVERIFIED_CONFIGURATION_PRIOR_ONLY",
+      "admissible_for_formal_T": false,
+      "confidence": "UNRATED",
+      "reasons": [
+        "no empirical derivation record or cited raw observations",
+        "no provenance version or source checksum for the numeric T values",
+        "no uncertainty, repeat count, fit residual, or sign-consistency evidence",
+        "only AP is declared; no JOB/TPC-H/TPC-C/XP binding",
+        "the same numeric table was mechanically copied into 45 config files, so repetition is not independent corroboration"
+      ]
+    },
+    {
+      "source_id": "preflight_experience_points_20260721",
+      "path": "preflight/experience_points_20260721.json",
+      "sha256": "950f8f40c988aba1a3b3e8ade0d36627bfcba9985eccd4369646f3944a848a3b",
+      "classification": "CANDIDATE_DESIGN_NOT_T_OBSERVATIONS",
+      "admissible_for_formal_T": false,
+      "reasons": [
+        "all point sources are labelled experience_anchor_or_interpolation",
+        "the file stores proposed cost points but no measured per-parameter resource deltas",
+        "workloads are obsolete subsets such as AP10-only, JOB 9b-only, TPC-C StockLevel-only and XP Q9",
+        "bounds are the obsolete 0.01-to-100 wide space rather than the v2 default/10-to-default*10 bounds",
+        "a candidate coordinate is not evidence for T[p][resource] direction or magnitude"
+      ]
+    },
+    {
+      "source_id": "mysql_endpoint_explain_sensitivity_20260722",
+      "artifacts": [
+        {
+          "path": "preflight/mysql_endpoint_resource_sensitivity_20260722/FINAL_MYSQL_RESOURCE_SENSITIVE_PARAMETERS.md",
+          "sha256": "f92964eaab555cfdd23b27f554a82f64eacef4b8a17f39bad6b5e70816a18d1b"
+        },
+        {
+          "path": "preflight/mysql_endpoint_resource_sensitivity_20260722/final_mysql_parameter_sets.json",
+          "sha256": "22367bb8cf21d6e1cead101332fc73c3947ac5052a3646a4a54d75d123b5fad7"
+        }
+      ],
+      "classification": "MYSQL_OAT_PLAN_INPUT_SCREEN_ONLY",
+      "admissible_for_formal_T": false,
+      "usable_information": "which parameters changed EXPLAIN-derived structural resource inputs",
+      "reasons": [
+        "the report explicitly states that no full benchmark performance replay was executed",
+        "raw transaction JSON files are missing for AP, JOB, TPC-H and XP; only an older TPC-C boundary file is present",
+        "the retained-parameter sets conflict with the v2 complete active sets and therefore cannot supply all required T rows",
+        "plan/input change does not identify signed or scaled CPU/memory/IO effects"
+      ]
+    },
+    {
+      "source_id": "historical_mysql_brute_force_replays",
+      "artifacts": [
+        {
+          "benchmark": "hybench_ap",
+          "path": "history/brute_formal_mixed_20260722_v6_minimal_gate_retry3/mysql/brute_force/A5_r1/run_summary.json",
+          "sha256": "7b0ff75de2f6172abeb4b5f66fbc9aedbe21354be9e5d0f14c96c52ed16fc855",
+          "candidate_points": 10,
+          "complete_points": 10,
+          "stable_points": 0
+        },
+        {
+          "benchmark": "tpch",
+          "path": "history/brute_formal_mixed_20260722_v6_remaining_v1/mysql/brute_force/A7_r1/run_summary.json",
+          "sha256": "e48c938a983650b3a4e326458c2fcdf52dbfd2cfac34da3e95090f167922e39b",
+          "candidate_points": 10,
+          "complete_points": 8,
+          "stable_points": 0
+        },
+        {
+          "benchmark": "hybench_xp",
+          "path": "history/brute_formal_mixed_20260722_v6_remaining_xp_retry2/mysql/brute_force/A8_r1/run_summary.json",
+          "sha256": "76c473d40d4a9b9cc04a444a84957569508d9f3eb035b0a6d4a46a78b9c97919",
+          "candidate_points": 10,
+          "complete_points": 6,
+          "stable_points": 0
+        }
+      ],
+      "classification": "MYSQL_REAL_REPLAY_BUT_NOT_IDENTIFIABLE_T_DATA",
+      "admissible_for_formal_T": false,
+      "reasons": [
+        "every candidate jointly changes the same full eight-parameter set; there is no OAT or otherwise registered identifiable attribution design",
+        "all three completed histories have zero candidates with stable=true",
+        "the search-space SHA is the obsolete wide-space bundle, not mysql_parameter_spaces v2",
+        "point summaries have no canonical db_qps field and predate the latest rolling-window semantics",
+        "no complete formal JOB or TPC-C history exists in this set",
+        "joint corner outcomes cannot be assigned to individual T[p][resource] without a pre-registered estimator and adequate replicated design"
+      ]
+    },
+    {
+      "source_id": "older_mysql_double_loop_grid_logs",
+      "artifacts": [
+        {
+          "path": "history/mysql_experiments/formal/E15_r1_attempt01/run_summary.json",
+          "sha256": "560c4eb0ae41351539896632452860cbaf75ee2fbd082c8a525dcfbaeaf8f4ad"
+        },
+        {
+          "path": "history/mysql_experiments/formal/E15_r1_attempt01/inner_iterations.jsonl",
+          "sha256": "d7174c2d2a65702387863dd40fdebf5e3e0805baac5e4e7096c66d20de8fa4db"
+        }
+      ],
+      "classification": "UNBOUND_OLD_ESTIMATOR_GRID",
+      "admissible_for_formal_T": false,
+      "reasons": [
+        "run summary does not bind engine, benchmark, workload freeze, active params or bounds",
+        "inner rows are estimator grid evaluations and do not constitute replicated real-resource OAT effects",
+        "the recorded final goal decision failed"
+      ]
+    },
+    {
+      "source_id": "sibling_repo_mysql_material",
+      "artifacts": [
+        {
+          "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/preflight/mysql_four_parameter_sensitive_workload_exploration_20260722.md",
+          "sha256": "79f4930722654db35747c612b493bcb1c306ab4dfc02119182ac007ad81005c3"
+        },
+        {
+          "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/preflight/pg_mysql_prediction_endpoint_candidate_audit_20260722.md",
+          "sha256": "072064739d530c11b6417a05fb2e7a8d89c31a642fb673f9c90d0f05f149c072"
+        }
+      ],
+      "classification": "MYSQL_ACTIVE_SET_AND_ESTIMATOR_AUDIT_NOT_T",
+      "admissible_for_formal_T": false,
+      "reasons": [
+        "documents identify plan-sensitive parameters or estimator limitations but contain no versioned numeric MySQL T",
+        "they do not provide signed, scaled, replicated CPU/memory/IO effects for every v2 active parameter"
+      ]
+    },
+    {
+      "source_id": "sibling_repo_postgresql_sgd_material",
+      "example_path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/report/double_loop_sgd_freshfix_v13_20260717_2325/memory_controller/memory/config_isolation.json",
+      "classification": "EXPLICITLY_EXCLUDED_POSTGRESQL",
+      "admissible_for_formal_T": false,
+      "reasons": [
+        "postgresql_default_start_params contains seq_page_cost, random_page_cost and PostgreSQL CPU/parallel costs",
+        "config isolation explicitly reports historical_sensitivity_loaded=false and removes sensitivity_table",
+        "the sibling method protocol requires independent PostgreSQL sessions and is not a MySQL T artifact",
+        "PostgreSQL parameter effects may not be mapped to MySQL optimizer-cost parameters"
+      ]
+    }
+  ],
+  "required_binding_contract": {
+    "canonicalization": "UTF-8 JSON, object keys sorted lexicographically, separators comma/colon, no insignificant whitespace, finite JSON numbers only, trailing newline excluded from canonical digest",
+    "canonical_sha256_scope": "entire T artifact except no self-referential canonical_sha256 field is permitted",
+    "required_fields": [
+      "schema_version",
+      "database",
+      "benchmark",
+      "workload_freeze_id",
+      "workload_registry_sha256",
+      "parameter_space_sha256",
+      "active_params",
+      "bounds",
+      "resource_columns",
+      "table",
+      "provenance",
+      "evidence_class",
+      "confidence",
+      "version"
+    ]
+  },
+  "scenario_decisions": {
+    "hybench_ap_memory": {
+      "database": "mysql",
+      "benchmark": "hybench_ap",
+      "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+      "workload_registry_sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b",
+      "parameter_space_sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012",
+      "bounds_ref": "target_parameter_definitions restricted to active_params",
+      "active_params": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost", "key_compare_cost", "disk_temptable_create_cost", "disk_temptable_row_cost", "memory_temptable_create_cost", "memory_temptable_row_cost"],
+      "artifact_created": false,
+      "version": null,
+      "canonical_sha256": null,
+      "confidence": "INSUFFICIENT",
+      "missing": "benchmark-bound empirical or explicitly versioned MySQL prior provenance for all eight rows"
+    },
+    "job_memory": {
+      "database": "mysql",
+      "benchmark": "job",
+      "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+      "workload_registry_sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b",
+      "parameter_space_sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012",
+      "bounds_ref": "target_parameter_definitions restricted to active_params",
+      "active_params": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost", "memory_temptable_row_cost"],
+      "artifact_created": false,
+      "version": null,
+      "canonical_sha256": null,
+      "confidence": "INSUFFICIENT",
+      "missing": "any complete v2 JOB resource-effect replay and provenance for all four rows"
+    },
+    "tpch_memory": {
+      "database": "mysql",
+      "benchmark": "tpch",
+      "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+      "workload_registry_sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b",
+      "parameter_space_sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012",
+      "bounds_ref": "target_parameter_definitions restricted to active_params",
+      "active_params": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost", "disk_temptable_row_cost"],
+      "artifact_created": false,
+      "version": null,
+      "canonical_sha256": null,
+      "confidence": "INSUFFICIENT",
+      "missing": "stable identifiable v2 effects; historical joint eight-cost corners cannot attribute these four rows"
+    },
+    "tpcc_cpu": {
+      "database": "mysql",
+      "benchmark": "tpcc",
+      "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+      "workload_registry_sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b",
+      "parameter_space_sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012",
+      "bounds_ref": "target_parameter_definitions restricted to active_params",
+      "active_params": ["memory_block_read_cost", "row_evaluate_cost", "disk_temptable_row_cost", "memory_temptable_row_cost"],
+      "artifact_created": false,
+      "version": null,
+      "canonical_sha256": null,
+      "confidence": "INSUFFICIENT",
+      "missing": "formal v2 mixed native-plus-sensitive TPC-C resource-effect data for all four rows"
+    },
+    "hybench_xp_io": {
+      "database": "mysql",
+      "benchmark": "hybench_xp",
+      "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+      "workload_registry_sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b",
+      "parameter_space_sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012",
+      "bounds_ref": "target_parameter_definitions restricted to active_params",
+      "active_params": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost", "key_compare_cost", "disk_temptable_create_cost", "disk_temptable_row_cost", "memory_temptable_row_cost"],
+      "artifact_created": false,
+      "version": null,
+      "canonical_sha256": null,
+      "confidence": "INSUFFICIENT",
+      "missing": "stable identifiable v2 XAP/XTP resource effects for all seven rows"
+    }
+  },
+  "minimum_evidence_to_close_R06": {
+    "per_scenario": [
+      "freeze-bound and checksum-verified workload registry and active parameter space",
+      "pre-registered identifiable design within v2 bounds, with sufficient independent variation for every active parameter",
+      "fresh-template real or explicitly approved model-derived CPU/memory/IO observations with exact requested/readback costs",
+      "replicates and stability/coverage evidence under the latest rolling-window protocol",
+      "documented estimator or fit, residuals/uncertainty and sign-consistency checks",
+      "versioned provenance chain and canonical artifact digest"
+    ],
+    "common_prior_alternative": "allowed only if a separately versioned MySQL-specific prior derivation explicitly declares cross-benchmark scope and uncertainty; no such source was found"
+  }
+}

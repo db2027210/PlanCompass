@@ -1,0 +1,63 @@
+{
+  "schema_version": "mysql_experience_table_source_policy_v1",
+  "freeze_id": "frozen_mysql_experience_table_source_policy_20260723_v1",
+  "database": "mysql",
+  "log_cutoff": "2026-07-21T00:00:00+08:00",
+  "source_precedence": [
+    "historical_mysql_real_replay_numeric_resources",
+    "parameter_induced_strict_plan_features_with_frozen_mysql_resource_model",
+    "targeted_current_real_replay_gap_fill"
+  ],
+  "historical_real_replay": {
+    "database_side_dbqps_required": true,
+    "engine_must_equal": "mysql",
+    "finite_cpu_memory_io_required": true,
+    "full_applied_parameter_readback_required": true,
+    "pre_cutoff_logs_forbidden": true,
+    "same_scenario_and_workload_semantics_required": true,
+    "technical_failure_forbidden": true,
+    "unstable_points": "prior_only_until_three_valid_runs_or_current_envelope_validation",
+    "joint_parameter_design": {
+      "heldout_residuals_required": true,
+      "log_space_design_rank_required": "active_parameter_count_plus_intercept",
+      "projection_to_current_frozen_ranges_required": true
+    },
+    "envelope_mismatch": {
+      "direct_formal_effect_forbidden": true,
+      "historical_prior_allowed": true,
+      "target_envelope_anchor_or_validation_required": true
+    }
+  },
+  "plan_inference": {
+    "cluster_count_alone_forbidden": true,
+    "complete_raw_explain_required": true,
+    "frozen_mysql_resource_model_and_sha256_required": true,
+    "generic_and_custom_plans_required_for_dynamic_sql": true,
+    "representative_bindings_required": true,
+    "required_strict_features": [
+      "node_types",
+      "join_types_and_order",
+      "tables",
+      "indexes",
+      "scan_methods",
+      "parallel_mode_and_workers",
+      "ordered_subtrees",
+      "temporary_table_features"
+    ],
+    "resource_model_error_envelope_required": true,
+    "qps_error_model_forbidden": true
+  },
+  "gap_fill": {
+    "full_oat_forbidden_when_prior_paths_cover_parameter": true,
+    "minimum_missing_parameter_endpoints_only": true,
+    "resource_stability_uses_latest_six_30_second_windows": true,
+    "unstable_first_run_requires_three_valid_independent_runs": true
+  },
+  "prohibitions": {
+    "client_qps_as_dbqps": true,
+    "invented_resource_effects": true,
+    "postgresql_results": true,
+    "pre_cutoff_logs": true,
+    "scalar_predicted_score_error": true
+  }
+}

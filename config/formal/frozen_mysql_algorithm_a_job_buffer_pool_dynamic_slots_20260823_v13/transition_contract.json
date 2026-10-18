@@ -1,0 +1,145 @@
+{
+  "candidate_count_per_round": 16,
+  "completed_accepted_rounds_preserved": true,
+  "contract": "mysql_algorithm_a_tpch_slots_to_job_2_to_4_v1",
+  "coordination": {
+    "fixed_disjoint_cpu_affinity_required": true,
+    "memory_scene_shared_nvme_mutual_exclusion": false,
+    "numa_exclusive_scheduler_lock_required": false,
+    "rolling_dynamic_noninterference_gate_required": true,
+    "xp_cpu_and_xp_io_continue_concurrently": true
+  },
+  "created_at": "2026-08-23T19:05:00+0800",
+  "cross_engine_comparison_prohibited": true,
+  "external_sssp_recovery_contract": "config/formal/frozen_mysql_algorithm_a_external_sssp_memory_recovery_20260823_v2/transition_contract.json",
+  "external_sssp_recovery_contract_sha256": "42fa3f121c6d8f0a54ac258616852ccc2772f1953f9a17eac7b715e049ba9865",
+  "tpch_completed_recovery_evidence_contract": "config/formal/frozen_mysql_algorithm_a_tpch_completed_recovery_evidence_20260823_v1/transition_contract.json",
+  "tpch_completed_recovery_evidence_contract_sha256": "4c2bbbc50f7807fdfb83f8e5dc807ec6cd8a9dc4681784388d47eeb46aeed2ed",
+  "formal_scope": "mysql_only",
+  "fresh_baseline_repetitions_per_worker": 2,
+  "full_job_sql_count": 113,
+  "incumbent_replay_required": true,
+  "job_parallelism": {
+    "after": 4,
+    "before": 2
+  },
+  "management_controller_cpuset": "240-241,496-497",
+  "management_controller_taskset_required": true,
+  "mixed_worker_cohort_round_prohibited": true,
+  "partial_next_round_credited": false,
+  "post_convergence_stability_required": false,
+  "recovered_complete_outer_history_preserved": true,
+  "release_version": "job_buffer_pool_dynamic_slots_v13",
+  "resource_recalibration_required": false,
+  "round_boundary_required": true,
+  "schema_version": "mysql_algorithm_a_job_dynamic_slot_contract_v1",
+  "source_bindings": {
+    "all_scene_parallel_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_all_scene_parallel_20260823_v1/parallel_contract.json",
+      "sha256": "8177a489daedc8bb4581537176d028eb2888aaa67d87d122d20a0ad6ce35fab2"
+    },
+    "buffer_pool_executor_base": {
+      "path": "scripts/execute_mysql_algorithm_a_job_buffer_pool_slot_transition_v3.py",
+      "sha256": "f1fbe78cffcda4bddd4da7c5d51270957d5183183c97655affaefc4634cce11b"
+    },
+    "buffer_pool_four_worker_resume_v9": {
+      "path": "scripts/run_mysql_algorithm_a_job_buffer_pool_dynamic_resume_v3.py",
+      "sha256": "d38cdbe65e7262b09c0466236b57c1817951d3d5b524422193c57deeb64d43b0"
+    },
+    "buffer_pool_measurement_v9": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v9.py",
+      "sha256": "48f7290d8e0355b03394d83a68f202ab65fa4ba4d4592e771753f8831ca1fca1"
+    },
+    "external_sssp_recovery_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_external_sssp_memory_recovery_20260823_v2/transition_contract.json",
+      "sha256": "42fa3f121c6d8f0a54ac258616852ccc2772f1953f9a17eac7b715e049ba9865"
+    },
+    "external_sssp_recovery_controller": {
+      "path": "scripts/run_mysql_algorithm_a_external_sssp_memory_recovery_v2.py",
+      "sha256": "1b4ba744becd8bed0f2c143e69b68253df97d0c401bd41ca12ec7ebcbcb42890"
+    },
+    "tpch_completed_recovery_evidence_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_tpch_completed_recovery_evidence_20260823_v1/transition_contract.json",
+      "sha256": "4c2bbbc50f7807fdfb83f8e5dc807ec6cd8a9dc4681784388d47eeb46aeed2ed"
+    },
+    "tpch_completed_recovery_evidence_controller": {
+      "path": "scripts/run_mysql_algorithm_a_tpch_completed_recovery_evidence_resume_v1.py",
+      "sha256": "5b410263afb42747bffb8646adcafae38ea4e5cedc67509df49ee7ec7fae9f19"
+    },
+    "tpch_one_sided_recovery_gate": {
+      "path": "scripts/run_mysql_algorithm_a_reboot_resume_v3.py",
+      "sha256": "0b12fa3a2a6514d1f7d1120fbf3cc62ae411a69393e646b361a17ae29f98ea8b"
+    },
+    "four_worker_resume_adapter": {
+      "path": "scripts/run_mysql_algorithm_a_job_dynamic_resume_v2.py",
+      "sha256": "613e3a6c1e2c432e0de79a3bcd0ecf2ded1c0d8fdffb7ad2aaf642dd540e5f70"
+    },
+    "four_worker_resume_predecessor": {
+      "path": "scripts/run_mysql_algorithm_a_job_dynamic_resume_v3.py",
+      "sha256": "09030052da368c002ed52fa560b6895c398e020e184da2e54c8952c3a3365a00"
+    },
+    "job_cache_contract_v9": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260823_v9/cache_state_contract.json",
+      "sha256": "55c2aa04de0189ace9dc12a96eca7d32722061e4cf1b4b457fbe0673f9c9b0ab"
+    },
+    "monitor_predecessor": {
+      "path": "scripts/monitor_mysql_algorithm_a_tpch_to_job4_cache_v1.py",
+      "sha256": "41ca1c71f2782f0b19e257ac8cfee79a2ae038078d794649f23d096c996d1ad8"
+    },
+    "parallel_campaign_executor": {
+      "path": "scripts/execute_mysql_algorithm_a_job_all_scene_parallel_slot_transition_v6.py",
+      "sha256": "7804c673da5677914350ba76e4886c358b1ea827421d05cf63d4ae7deab00b7e"
+    },
+    "parallel_campaign_executor_predecessor": {
+      "path": "scripts/execute_mysql_algorithm_a_job_all_scene_parallel_slot_transition_v1.py",
+      "sha256": "94c637b526f7537b265e36ae1864296ba0b28d4627a2cf83e8ebdfa1552dc8c6"
+    },
+    "parallel_campaign_monitor": {
+      "path": "scripts/monitor_mysql_algorithm_a_all_scene_parallel_tpch_to_job4_v7.py",
+      "sha256": "b15c93a481f5b6ef47bcfb09e24403ec2067f30978287e8fdd0752268eb91de1"
+    },
+    "predecessor_transition_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_buffer_pool_dynamic_slots_20260823_v9/transition_contract.json",
+      "sha256": "ccd7e7e5f3eb91379f9a5125a5110d73852c632596b2d43ef0bcf52ab84e8145"
+    },
+    "sealed_worker_adoption": {
+      "path": "scripts/adopt_mysql_algorithm_a_job_slot_workers_v1.py",
+      "sha256": "7a7c1bc5d8b464d9da0d6b7e65443e21a6456c5e0632000fe05a832ce496e823"
+    },
+    "slot_mapping": {
+      "path": "scripts/mysql_algorithm_a_job_dynamic_slots_v1.py",
+      "sha256": "47d7467cf889ddbaa5ecbb6eac0f5c8a455238b591e55ea9466a76fe8703ca49"
+    },
+    "source_resource_freeze": {
+      "path": "config/formal/frozen_mysql_disk2_two_worker_20260813_v18/four_scene_effective_resource_successor.json",
+      "sha256": "a19dff2a72963f147ac914345e4b188522d9dca23dd35b5aa85cba6f1f4801df"
+    },
+    "tpch_partial_round_resume_adapter": {
+      "path": "scripts/run_mysql_algorithm_a_tpch_partial_round_pg_wrapper_resume_v2.py",
+      "sha256": "0f8518e4bfa13e437207b6a8f7457864c2503f061110ff3f4668de6f2a8745e2"
+    },
+    "tpch_partial_round_transition_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_tpch_pg_wrapper_resume_20260823_v2/transition_contract.json",
+      "sha256": "c9f0f731afda65a329513ca23fd9e4ad267e0526feb3fe09c785593ed949eb89"
+    },
+    "transition_executor_base": {
+      "path": "scripts/execute_mysql_algorithm_a_job_slot_transition_v1.py",
+      "sha256": "dd43df3ef5be36247349384ab9bd9667e3a32befc76a6297e4d984a23ef28f7f"
+    },
+    "v65_coordination_contract": {
+      "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260819_v65/coordination_contract.json",
+      "sha256": "913fa4f81348ba3cdfa9b3db62c5615b6111cd1059ef0512c28908aee0df3c5c"
+    }
+  },
+  "source_run_id": "v82_to_a_job_external_sssp_memory_recovery_v2_20260823_attempt001_job",
+  "status": "FROZEN",
+  "successor_run_id": "v91_to_a_job4_external_sssp_recovery_v3_20260823_attempt001_job",
+  "supersession": {
+    "reason": "bind JOB4 to v82 JOB and recovered v90 TPC-H completed-evidence continuation",
+    "successor_of": "config/formal/frozen_mysql_algorithm_a_job_buffer_pool_dynamic_slots_20260823_v12/transition_contract.json",
+    "successor_of_sha256": "7370b22ad37971953e716af4990fed34a2283143eb22268e5179f5ddea4d089d"
+  },
+  "tpch_must_be_complete": true,
+  "tpch_predecessor_run_id": "v83_to_a_tpch_external_sssp_memory_recovery_v2_20260823_attempt001_tpch",
+  "tpch_run_id": "v90_to_a_tpch_completed_recovery_evidence_resume_20260823_attempt001_tpch"
+}

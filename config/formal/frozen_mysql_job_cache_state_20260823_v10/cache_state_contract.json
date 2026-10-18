@@ -1,0 +1,51 @@
+{
+  "schema_version": "mysql_job_cache_state_contract_v10",
+  "release_version": "v10",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T23:40:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "v9_cache_precondition_retained": true,
+  "precondition_mode": "fixed_optimizer_plan_full_job113_innodb_working_set_primer",
+  "precondition_query_count": 113,
+  "precondition_metrics_used_for_scoring": false,
+  "precondition_wall_time_used_for_validity": false,
+  "formal_measurement_replays_per_candidate": 1,
+  "scored_suite_hard_timeout_seconds": 900,
+  "timeout_scope": "complete_scored_job113_suite",
+  "timeout_is_active_termination": true,
+  "subprocess_timeout_clamped_to_remaining_suite_time": true,
+  "timed_out_candidate_is_technical_only": true,
+  "outer_loop_semantics_changed": false,
+  "source_bindings": {
+    "measurement_v10": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v10.py",
+      "sha256": "c04cf3e890c2bb147376fe814fa71ac45cad38f65abc71ecbc1faa18bf2ab9b0"
+    },
+    "measurement_v10_test": {
+      "path": "tests/test_mysql_job_buffer_pool_preconditioned_measurement_v10.py",
+      "sha256": "0eaeea51122bc8e75753f00cf33b3b19f90bf185d2284c537fc6fdee3466282a"
+    },
+    "measurement_v9": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v9.py",
+      "sha256": "48f7290d8e0355b03394d83a68f202ab65fa4ba4d4592e771753f8831ca1fca1"
+    },
+    "measurement_v9_contract": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260823_v9/cache_state_contract.json",
+      "sha256": "55c2aa04de0189ace9dc12a96eca7d32722061e4cf1b4b457fbe0673f9c9b0ab"
+    },
+    "single_scene_measurement": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "job_adapter": {
+      "path": "mysql_workload_adapter.py",
+      "sha256": "9bb2102b90bab8df44a9e976c5753723a8673fea4d7e13eb618ea7fa62595bbb"
+    },
+    "job_tpch_dispatch": {
+      "path": "mysql_benchmark_command.py",
+      "sha256": "e23d413945a895229af40fa952de352729e44799907b7b28cff89c8adc45490d"
+    }
+  }
+}

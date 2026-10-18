@@ -1,0 +1,171 @@
+{
+  "schema_version": "mysql_algorithm_a_xp_four_plus_four_contract_v1",
+  "release_version": "v1",
+  "status": "FROZEN",
+  "created_at": "2026-08-23T08:12:55+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "A",
+  "purpose": "After both memory scenes converge, reassign all eight isolated MySQL slots to two fresh native-XP Algorithm A searches and measure four candidates per XP scene concurrently.",
+  "memory_scenes_must_complete_before_launch": true,
+  "memory_terminal_requirements": {
+    "job_memory": {
+      "status": "COMPLETE",
+      "converged": true,
+      "accepted": 10
+    },
+    "tpch_sf4_memory": {
+      "status": "COMPLETE",
+      "converged": true,
+      "accepted": 10
+    }
+  },
+  "xp_parallelism": {
+    "hybench_xp_cpu": 4,
+    "hybench_xp_io": 4,
+    "total": 8
+  },
+  "xp_scenes_measure_concurrently": true,
+  "direct_four_worker_fresh_baseline": true,
+  "two_worker_intermediate_run_prohibited": true,
+  "fresh_xp_runs_required": true,
+  "historical_accepted_rounds_reused": false,
+  "resource_recalibration_required": false,
+  "post_convergence_stability_required": false,
+  "accepted_target": 10,
+  "normalized_width_threshold": 0.01,
+  "candidate_and_outer_loop_semantics": {
+    "complete_factorial_candidate_set_unchanged": true,
+    "prediction_used_for_selection": false,
+    "prediction_used_for_ordering": false,
+    "acceptance_policy_unchanged": true,
+    "binary_shrink_policy_unchanged": true,
+    "per_scene_outer_state_machine": true,
+    "scene_may_advance_without_sibling_round_barrier": true,
+    "post_target_physical_replays": 0
+  },
+  "coordination": {
+    "cross_project_shared_lease_retained": true,
+    "exclusive_lease_between_xp_sibling_scenes": false,
+    "cpu_disjoint_mysql_sibling_wait_required": false,
+    "rolling_window_dynamic_noninterference_gate_required": true,
+    "co_resident_postgresql_control_or_stop_prohibited": true,
+    "shared_data_device": "/dev/nvme2n1",
+    "device_bandwidth_and_cpu_numa_isolation_readback_required": true
+  },
+  "workload": {
+    "native_hybench_xp_required": true,
+    "iq1_iq7_selection": "uniform_random",
+    "at1_at6_percentages": [35, 25, 15, 15, 7, 3],
+    "frozen_xap_xtp_ratio_unchanged": true,
+    "workload_mix_overrides_prohibited": true
+  },
+  "scenes": {
+    "hybench_xp_cpu": {
+      "target_bottleneck": "cpu",
+      "active_parameters": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_create_cost",
+        "disk_temptable_row_cost",
+        "memory_temptable_row_cost"
+      ],
+      "candidates_per_round": 128,
+      "physical_workers": 4,
+      "physical_waves_per_round": 32
+    },
+    "hybench_xp_io": {
+      "target_bottleneck": "io",
+      "active_parameters": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_create_cost",
+        "disk_temptable_row_cost",
+        "memory_temptable_row_cost"
+      ],
+      "candidates_per_round": 128,
+      "physical_workers": 4,
+      "physical_waves_per_round": 32
+    }
+  },
+  "slot_transition": {
+    "existing_xp_workers_retained": [
+      "xp_cpu_w1",
+      "xp_cpu_w2",
+      "xp_io_w1",
+      "xp_io_w2"
+    ],
+    "completed_job_slots_reassigned": {
+      "job_w1": "xp_cpu_w3",
+      "job_w2": "xp_cpu_w4",
+      "job_w3": "xp_io_w3",
+      "job_w4": "xp_io_w4"
+    },
+    "mixed_worker_cohort_within_round_prohibited": true,
+    "successor_freeze_generated_after_memory_completion": true,
+    "effective_resources_read_back_before_launch": true
+  },
+  "supersession": {
+    "supersedes_storage_schedule_phase3": true,
+    "old_phase3": "serialized XP scenes with two-worker-to-four-worker continuation",
+    "new_phase3": "fresh XP/CPU four-worker and XP/I/O four-worker searches launched concurrently"
+  },
+  "source_bindings": {
+    "four_plus_four_scene_controller": {
+      "path": "scripts/run_mysql_algorithm_a_xp_four_plus_four_fresh_v1.py",
+      "sha256": "bea186d1f25347d0a3cac3c5daced8b3a3ee54786b35fa2f661b33652b26be94"
+    },
+    "four_plus_four_transition_executor": {
+      "path": "scripts/execute_mysql_algorithm_a_job_to_xp_four_plus_four_fresh_v1.py",
+      "sha256": "40ad656518776c62b45c3f00d96e638c5eda32d78ff36e23ea43118af4dfe005"
+    },
+    "four_plus_four_completion_monitor": {
+      "path": "scripts/monitor_mysql_algorithm_a_job_to_xp_four_plus_four_v1.py",
+      "sha256": "0386563402e9e0f581212c03e47b26f2b8bdfb1b5f7f4456d602526a83543e12"
+    },
+    "memory_successor_transition_adapter": {
+      "path": "scripts/execute_mysql_algorithm_a_job_to_xp_four_plus_four_fresh_v2.py",
+      "sha256": "4affc327df4f0b277e3234c006fe7f63adbf7c5ac813b7d87e88170df287ee35"
+    },
+    "memory_successor_completion_monitor": {
+      "path": "scripts/monitor_mysql_algorithm_a_job_to_xp_four_plus_four_v2.py",
+      "sha256": "3a38e04345d53d64f2d043dee70ec352135b61dc2c5f112a9346157284e53807"
+    },
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "slot_mapping": {
+      "path": "scripts/mysql_algorithm_a_job_to_xp_slots_v1.py",
+      "sha256": "35d34d22b4f9227a27a4160068cfc0d6b136c4ccff0c3bc507864ff625f29da9"
+    },
+    "worker_provisioner": {
+      "path": "scripts/provision_mysql_algorithm_a_job_to_xp_workers_v1.py",
+      "sha256": "4f788bd2c387408a3af804becc5dc0103792113fde54e5e462592021165215ba"
+    },
+    "coordination_wrapper": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v2.py",
+      "sha256": "9a29b954f4fd15d10abba5c5e133e47307264f789a51bb5c89226458ae27e405"
+    },
+    "algorithm_a_semantic_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260822_v4/algorithm_a_contract.json",
+      "sha256": "d35c01e29c14aeeed4d82870725db686697d3d17188bea28ee9c323f418732bf"
+    },
+    "job_four_worker_transition_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_buffer_pool_dynamic_slots_20260823_v6/transition_contract.json",
+      "sha256": "079480d2f6d35adcd0925ef3a9e7650069fab40b8b7708f511af1c808aeba8a1"
+    },
+    "cross_project_coordination_contract": {
+      "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260819_v65/coordination_contract.json",
+      "sha256": "913fa4f81348ba3cdfa9b3db62c5615b6111cd1059ef0512c28908aee0df3c5c"
+    },
+    "superseded_storage_schedule_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_storage_compatible_schedule_20260823_v1/schedule_contract.json",
+      "sha256": "c902602087aaedc126c16b67451d924bb9035942c8be35c23163188a5fdee358"
+    }
+  }
+}

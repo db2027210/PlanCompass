@@ -1,0 +1,156 @@
+{
+  "schema_version": "mysql_four_scene_algorithm_b_parallel_221_contract_v1",
+  "release_version": "v15",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-18T00:00:00+00:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "candidate_parallelism": 2,
+  "lane_sequence": {
+    "wave_1": {"w1": 1, "w2": 2},
+    "wave_2": {"w1": 3, "w2": 4},
+    "wave_3": {"w1": 5, "w2": null}
+  },
+  "continuation": {
+    "resume_boundary": "outer_005_rank_3_post_reset_settle",
+    "source_run_root": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008",
+    "failure_class": "disk2_post_reset_writeback_did_not_settle_in_120s",
+    "failure_occurred_before_workload": true,
+    "candidate_or_convergence_state_mutated_by_failure": false,
+    "completed_outer_decisions_reconstructed": [1, 2, 3, 4],
+    "outer5_completed_candidate_ranks_reused": [1, 2],
+    "outer5_rank3_measurement_reused": false,
+    "fresh_outer5_rank3_reset_required": true,
+    "post_reset_settle_thresholds_unchanged": true,
+    "quiet_required_seconds": 15,
+    "quiet_maximum_seconds": 120,
+    "maximum_write_bytes_per_second": 8388608,
+    "maximum_in_flight_ios": 1
+  },
+  "convergence": {
+    "accepted_shrinks_required": 10,
+    "fixed_real_top_k": 5,
+    "maximum_interval_ratio": 1.01,
+    "required_consecutive_stable_accepted_rounds": 2
+  },
+  "score_contract": {
+    "resource_score_only": true,
+    "qps_score_contribution": 0,
+    "qps_used_for_resource_prediction_gradient_or_score": false,
+    "raw_payload_supplied_for_api_compatibility": true
+  },
+  "failure_isolation": {
+    "physical_joint_wave_preserved": true,
+    "rank_specific_derived_batches": true,
+    "known_lane_failure_invalidates_only_that_rank": true,
+    "unknown_failure_invalidates_both_ranks": true,
+    "cross_rank_measurement_mixing": false
+  },
+  "isolation": {
+    "underlying_dynamic_gate_release": "v63",
+    "per_container_cpu_memory_swap_io_and_pids_readback_required": true,
+    "w1_w2_database_cpuset_disjoint": true,
+    "w1_w2_client_cpuset_disjoint": true,
+    "unknown_cross_lane_failure": "fail_both_ranks_closed",
+    "post_reset_storage_settle_fail_closed": true,
+    "post_reset_storage_settle_thresholds_unchanged": true
+  },
+  "workload_contract": {
+    "four_scenes_concurrent_within_each_candidate": true,
+    "two_candidates_concurrent_on_disjoint_frozen_lanes": true,
+    "job": "113 canonical SQL exactly once per candidate",
+    "tpch": "SF4 Q1-Q22 exactly once in frozen five lanes per candidate",
+    "xp_cpu": "native IQ1-IQ7 uniform and frozen XAP:XTP ratio",
+    "xp_io": "native IQ1-IQ7 uniform and frozen XAP:XTP ratio",
+    "maximum_candidate_seconds": 900
+  },
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v15.py",
+      "sha256": "04efcd287eb369b145573c73fa68e8c51e9fdd430b8140774dd91905a26d637f"
+    },
+    "launcher": {
+      "path": "scripts/launch_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v15.py",
+      "sha256": "709ebe2382f42069e874731dcd7b7d8ebe19e212ed39ca11ab5332d4e763d877"
+    },
+    "directed_test": {
+      "path": "tests/test_mysql_algorithm_b_parallel_221_resume_v15.py",
+      "sha256": "1ff92293650bea0a8358b6f672d583752375ed641bc3140c3cb720f4e28d21b2"
+    },
+    "predecessor_controller": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v14.py",
+      "sha256": "895a12168fa334fe10a37a3ab5b3523d8c2e8c9d4605a45f615651dc279ce828"
+    },
+    "predecessor_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_b_parallel_221_20260818_v14/algorithm_b_parallel_221_contract.json",
+      "sha256": "438f0f4956d3d8e5688f16f785310c123420ee2589b003c1c605176d7416d2a9"
+    },
+    "source_failure_state": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/run_state.json",
+      "sha256": "13f1a6256e6a1f1c029a2e0187fed9dc38e921712d5cd173d54a0c7ad925c577"
+    },
+    "failed_post_reset_settle": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/xp_resets/algorithm_b_outer_005_rank_3/post_reset_storage_settle.json",
+      "sha256": "5d4ef32676e0a36db602188c09422b32626920e6ad380fb749b46c27f43c6abf"
+    },
+    "completed_reset_binding": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/xp_resets/algorithm_b_outer_005_rank_3/reset_binding.json",
+      "sha256": "15a921ed7a55d587228f436eede9711a19e8c5401956b7a77fb966b118c6ab87"
+    },
+    "outer5_rankings": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_005/predicted_rankings.json",
+      "sha256": "513c109c3dd531e0854e281e91c3bc217f15f6f32e91e13d10106a3cf37958f6"
+    },
+    "outer5_rank1": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_005/top5_batch_1/batch_result.json",
+      "sha256": "62b5bd6bc60aefddd4b43802da9b3ad5b7b4ab5508c9ee493f2fdebc6588ede0"
+    },
+    "outer5_rank2": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_005/top5_batch_2/batch_result.json",
+      "sha256": "8da94535f738f8f4e09030dfdb4e7baad90ae950267893e8ad7f7723ca893282"
+    },
+    "outer4_rank1": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/top5_batch_1/batch_result.json",
+      "sha256": "082365b9cc7c12a7177a338fb9558f27201bf553be9c10dc61965ea79fcefc59"
+    },
+    "outer4_rank2": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/top5_batch_2/batch_result.json",
+      "sha256": "7c293d191f34e1ce33386d7937c8483b01c14c534515a393d4ba0a57a15ca7dd"
+    },
+    "outer4_rank3": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/top5_batch_3/batch_result.json",
+      "sha256": "8cd82a94005d65cb9fec38d3aa3dd04cbb8cbd01d618528dd25d0779c32dc7fa"
+    },
+    "outer4_rank4": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/top5_batch_4/batch_result.json",
+      "sha256": "1bd3604cf6fafe15c310b4a3533a92a9ab9c80357741575b2063e7b54b6c19ab"
+    },
+    "outer4_rank5": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/top5_batch_5/batch_result.json",
+      "sha256": "86de86b26aa1f7c3f728ee2a7a044864b51bbbb3958fc2ba8d78898fc5ebdbd9"
+    },
+    "outer4_job_decision": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/job_memory.decision.json",
+      "sha256": "71b2a1b31e1f51398142ab3dea854a8ddad70865384b4c1a15c3e8b54ff9be77"
+    },
+    "outer4_tpch_decision": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/tpch_sf4_memory.decision.json",
+      "sha256": "784d86d004abff03da4be9a9254516b6d52854ccc6f1ad23c500675696c532ff"
+    },
+    "outer4_xp_cpu_decision": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/hybench_xp_cpu.decision.json",
+      "sha256": "51575156e620dcc4e3b025addcdb4c6dca67d51fad200f00f2d408507d163110"
+    },
+    "outer4_xp_io_decision": {
+      "path": "history/mysql_four_scene_20260809/v14_formal_parallel221_outer4_quiet_resume_20260818_attempt008/outer_004/hybench_xp_io.decision.json",
+      "sha256": "998b722918263f1a1ca275af7f86dc761333817e1848b7d44774ecd7ebfe81ba"
+    }
+  }
+}

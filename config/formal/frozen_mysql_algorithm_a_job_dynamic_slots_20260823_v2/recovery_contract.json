@@ -1,0 +1,36 @@
+{
+  "schema_version": "mysql_algorithm_a_job_dynamic_slot_recovery_contract_v1",
+  "status": "FROZEN",
+  "created_at": "2026-08-23T02:05:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "reason": "stopped_v39_job_w3_w4_targets_blocked_fresh_v40_provisioning",
+  "boundary_replay_prohibited": true,
+  "preserved_accepted": 7,
+  "preserved_completed_round": 10,
+  "resource_recalibration_performed": false,
+  "stale_artifact_action": "recoverable_rename_archive_only",
+  "archived_runtime_root": "/disk2/resource_adaptive_mysql_algorithm_c_disk2_v4/archive_v39_job_slots_20260823_0153",
+  "archived_containers": [
+    "ra_mysql_disk2_alga_job_w3_20260821_v39_archive_20260823",
+    "ra_mysql_disk2_alga_job_w4_20260821_v39_archive_20260823"
+  ],
+  "bindings": {
+    "transition_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_dynamic_slots_20260823_v2/transition_contract.json",
+      "sha256": "e1f3d4fc34ca22a371faeeef6fb2bca2fad6627548161cfa7a99d32987855aa2"
+    },
+    "successor_freeze": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_dynamic_slots_20260823_v2/job_four_worker_resource_successor.json",
+      "sha256": "fe0faffdfbe4d4cff602c53517fc3b0ff5d1d3c6c7216050867a738044c72c3d"
+    },
+    "boundary_snapshot": {
+      "path": "history/mysql_four_scene_20260809/v40_to_a_last_accepted_20260822_attempt002_job_dynamic_slots_v2/job_memory.predecessor_boundary_snapshot.json",
+      "sha256": "4761b86ad38061d60c91a0e4ac649bf52faae1185345532ddbe2c56e2568e0e1"
+    },
+    "recovery_entrypoint": {
+      "path": "scripts/resume_mysql_algorithm_a_job_slot_transition_v2.py",
+      "sha256": "5133c70bf445365e229e8dc7a986cec13f552d84abb741f585c789c51be4da6c"
+    }
+  }
+}

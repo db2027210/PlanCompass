@@ -1,0 +1,57 @@
+{
+  "schema_version": "mysql_disk2_two_worker_sf4_successor_manifest_v1",
+  "status": "SEALED_TEMPLATE_BUILD_AUTHORIZED_RUNTIME_GATES_PENDING",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "active_benchmarks": [
+    "job",
+    "tpch",
+    "hybench_xp"
+  ],
+  "retired_benchmarks": [
+    "tpcc"
+  ],
+  "tpch_successor": {
+    "scale_factor": 4,
+    "target_template_bytes_minimum": 9000000000,
+    "target_template_bytes_maximum": 13000000000,
+    "fresh_rebuild_required": true,
+    "sf10_result_or_template_reuse_prohibited": true
+  },
+  "authorization": {
+    "tpch_sf4_template_build": true,
+    "fresh_r0_workload_capture_after_template_and_runtime_gates": true,
+    "algorithm_c_accepted_round_credit_before_r0_closure": false,
+    "accepted_rounds": {
+      "job": 0,
+      "tpch": 0,
+      "hybench_xp": 0
+    }
+  },
+  "source_sha256": {
+    "common_outer_loop.py": "047a69dae04031524c383e539ce67035117d9534aecf157e48e8d0ee79323530",
+    "mysql_parameter_optimizer.py": "d40213fe2945643a9022c35b2bcab16a1fa7de37222cf3c9fdf2f76aaafcf9dc",
+    "mysql_benchmark_command.py": "88bea17d6da214ec47cb095aae8c754fce96136e52feb1162d89a8c814989fe3",
+    "same_ssd_concurrency.py": "6bf157586fdca483d9b8c023a5f5245440b588ff7238089b89a45929d048ff4f",
+    "scripts/rebuild_mysql_tpch_sf4_disk2.py": "13744f276825a0f891b9502bab78776e59461ff7da2c66e46556030406f3033d",
+    "worker_resource_freeze.json": "6f43d5393f3235494c94c8337e7671234d4104c25a400543884f0da26886f793",
+    "tpch_sf4_workload_successor.json": "c5b9f11b4bbd1ad92ad7b6da63447e3a84809b8dd765af85488be055d6f237b0",
+    "predecessor_workload_freeze.json": "d616751aed412ff01e3cdb543fe3c441cd1c5529175ec7df79856cb4c08df74e"
+  },
+  "test_sha256": {
+    "tests/test_common_outer_loop_tiered_acceptance.py": "13d6157f539136f58915339e5e847141bbfe52f5afd700fe0f0aa7976034a23c",
+    "tests/test_mysql_plan_tree_replay_extension.py": "c0af26c7884ea5f16ad15ccd614ded102227f17c8b858c10cf78cd10a230b962",
+    "tests/test_mysql_benchmark_command_parallel.py": "dd8a36356e943e67eba4dc00e59a65cfceb3346b58f4910b593fc2629d17eb1c",
+    "tests/test_formal_mysql_sgd_orchestration.py": "fde1047b6608098891e8a57defed8feef8656659c481b64d203190e4d36f65fc"
+  },
+  "test_result": "35 passed",
+  "runtime_requirements": {
+    "continuous_non_interference_seconds": 60,
+    "template_build_only_separate_disk_postgresql_create_load": "inventory_allowed_no_postgresql_mutation_no_measurement_credit",
+    "fresh_r0_separate_disk_build_exception_prohibited": true,
+    "fresh_effective_resource_readback": true,
+    "fresh_sf4_storage_manifest_sha256_binding": true,
+    "readiness_registry_binding_correctness_stability_recovery": true
+  }
+}

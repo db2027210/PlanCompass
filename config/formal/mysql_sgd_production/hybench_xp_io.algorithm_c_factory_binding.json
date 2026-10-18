@@ -1,0 +1,26 @@
+{
+  "algorithm_contract": {
+    "global_fixed_replay_top_k": 5,
+    "maximum_rejected_batches": 5,
+    "non_target_resource_limit": "strictly_below_0.8",
+    "qps_role": "outer_acceptance_only"
+  },
+  "benchmark": "hybench_xp",
+  "factory_source_sha256": "a9300a8001cdf751758a3a0df376aedd7895f7712074027a5e0c962cbfc5a521",
+  "factory_static_checks": {
+    "campaign_cleanup_zero_pressure_gate": true,
+    "fresh_r0_measurement": true,
+    "host02_pressure_probe": true,
+    "hybench_xp_session_factory": true,
+    "py_compile": true,
+    "returns_formal_point_dependencies": true
+  },
+  "launch_authorization_reason": "XP binding capture, raw EXPLAIN, and global readiness are incomplete",
+  "launch_authorized": false,
+  "optimizer_config": "/home/anonymous/program/resource_adaptive_mysql/config/formal/mysql_sgd_production/hybench_xp_io.algorithm_c.optimizer.json",
+  "production_entry": "formal_mysql_sgd_campaign:run_production_campaign",
+  "readiness_required": true,
+  "scenario": "hybench_xp_io",
+  "schema_version": "mysql_algorithm_c_hybench_xp_io_production_factory_binding_v1",
+  "service_factory": "mysql_algorithm_b_production_services:build"
+}

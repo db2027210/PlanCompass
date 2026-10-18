@@ -1,0 +1,49 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v160",
+  "release_version": "v160-live-tpch-normalization-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "tpch_live_measurement_normalization_installed": true,
+  "tpch_same_worker_normalization_preserved": true,
+  "tpch_normalization_recalibration_performed": false,
+  "failed_v159_tpch_outer_credit": 0,
+  "resume_only_from_completed_outer_boundary": true,
+  "paper_baseline_tolerance_percentage_points": 1.0,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "physical_workers_for_tpch": 2,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v159/algorithm_c_full_resume_contract.json",
+    "sha256": "895bd09dd1d3694dd9fbf8f71fb2ff51e5313b6c6ff41bc8855d4262fba7f9db"
+  },
+  "source_bindings": {
+    "tpch_resume_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v160_tpch_resume.py",
+      "sha256": "92053e5d0379629c16f3c952ee13fb1947bf5abb728128e3972426798bfb6b87"
+    },
+    "tpch_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v70.py",
+      "sha256": "462010fadc45e784e588d4fe5ce1247d693c7bda56193b0196b8dd7f6405020a"
+    },
+    "v156_tpch_state": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_tpch/run_state.json",
+      "sha256": "7e67fbed6ecc2869ec6435339b0be67638a06deee4f008e79e92184774d6b0b3"
+    },
+    "tpch_same_worker_normalization": {
+      "path": "history/mysql_four_scene_20260809/c_v148_paper_baseline_calibration_20260923_tpch/formal_incumbent_baseline/same_worker_qps_normalization.json",
+      "sha256": "971662b1c1a3f0bd0837bc341802968e4ca30d62bd1d1535fce82562d8771def"
+    },
+    "failed_v159_tpch_state": {
+      "path": "history/mysql_four_scene_20260809/c_v159_tpch_normalization_resume_20260923_tpch/run_state.json",
+      "sha256": "30a6dfcc70146f4932e5a8bdb09f71fcf9b92e36400fe8ea811fffadfe5b8618"
+    },
+    "excluded_v159_tpch_batch": {
+      "path": "history/mysql_four_scene_20260809/c_v159_tpch_normalization_resume_20260923_tpch/outer_002/top5_batch_1/batch_result.json",
+      "sha256": "73ba7395f45888ba6e4b61120f9ea78ad7d815d3086919d25877f4370b696b62"
+    }
+  }
+}

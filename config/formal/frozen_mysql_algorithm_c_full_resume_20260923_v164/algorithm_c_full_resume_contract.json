@@ -1,0 +1,48 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v164",
+  "release_version": "v164-job-launcher-runtime-interface-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "resume_only_from_completed_outer_boundary": true,
+  "resume_completed_outer_attempt": 2,
+  "discarded_incomplete_outer_attempt": 3,
+  "incomplete_outer_credit": 0,
+  "failed_v161_outer_credit": 0,
+  "failed_v162_outer_credit": 0,
+  "failed_v163_outer_credit": 0,
+  "startup_gate_wrapper_nonrecursive": true,
+  "script_safe_repository_import_path": true,
+  "launcher_runtime_interface_exported": true,
+  "startup_paper_baseline_gate_is_campaign_invariant": true,
+  "paper_baseline_tolerance_percentage_points": 1.0,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "physical_workers_for_job": 2,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "postgresql_process_control_or_stop_performed": false,
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v163/algorithm_c_full_resume_contract.json",
+    "sha256": "862c7929b9eb8d424739bacb875176294311ca236847d413bf0c01112034db16"
+  },
+  "source_bindings": {
+    "job_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v74.py",
+      "sha256": "3403fdb35c0a26378e49c36cbe7a610f0ea5530b13bef4e2f8e46883846b03f1"
+    },
+    "job_resume_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v164_job_resume.py",
+      "sha256": "37ca9d65795563a272b88c2b8e3373d64d186dcd01ce01c1e5e112a0fe7a2e28"
+    },
+    "job_outer2_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v161_job_outer2_checkpoint_20260923/prepared_binding.json",
+      "sha256": "8fa9acc4fcfca65527ac3c986ad01566a2259fb458c7858d90e39afa40a74a54"
+    },
+    "failed_v163_prelaunch_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v163_job_outer2_resume_20260923_prelaunch_failure/failed_prelaunch_audit.json",
+      "sha256": "df96ece312aaedcad6ca136ec5ffe656c4556b632e9266ffe692190a9ae182c3"
+    }
+  }
+}

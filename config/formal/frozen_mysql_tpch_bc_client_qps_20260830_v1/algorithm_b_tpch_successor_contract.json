@@ -1,0 +1,133 @@
+{
+  "schema_version": "mysql_tpch_algorithm_b_client_qps_successor_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "tpch_sf4_memory",
+  "workload": {
+    "scale_factor": 4,
+    "required_queries": "Q1-Q22 exactly once",
+    "lanes": 5,
+    "hard_timeout_seconds": 900
+  },
+  "qps_metric_contract": {
+    "schema_version": "mysql_tpch_full_suite_client_qps_acceptance_v1",
+    "scene": "tpch_sf4_memory",
+    "outer_progress_metric": "fixed_five_lane_q1_q22_client_qps",
+    "required_query_coverage": "Q1-Q22 exactly once",
+    "server_db_qps_role": "audit_only",
+    "client_qps_role": "outer_acceptance_and_incumbent_progress",
+    "other_scene_measurement_semantics_changed": false,
+    "external_algorithm_evidence_used": false
+  },
+  "outer_acceptance": "technically_valid_client_qps_strictly_higher_than_last_accepted",
+  "candidate_diversity": "best_model_point_plus_four_maximin_points_from_complete_ranked_pool",
+  "candidate_count_per_outer": 5,
+  "physical_replay_parallelism": 2,
+  "resource_envelope": "tpch_disk2_two_worker_successor_v1",
+  "target_storage_mounts": [
+    "/disk2"
+  ],
+  "external_postgresql_storage_mounts": [
+    "/disk1"
+  ],
+  "external_process_control_or_stop_performed": false,
+  "active_parameters": [
+    "io_block_read_cost",
+    "memory_block_read_cost",
+    "row_evaluate_cost",
+    "disk_temptable_row_cost"
+  ],
+  "algorithm_a_parameter_or_measurement_read": false,
+  "external_algorithm_evidence_used": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_tpch_algorithm_b_client_qps_fresh_v1.py",
+      "sha256": "7566b591f0228eb831e3f9ec8f9a1e9512ebe2cba20cbc8b4f8e5328210740fc"
+    },
+    "metric_adapter": {
+      "path": "scripts/mysql_tpch_client_qps_measurement_v1.py",
+      "sha256": "13fc623e1ed591d6e6745785ace239c4960a4e682b537ac0f521a16af79b3dcf"
+    },
+    "candidate_diversity": {
+      "path": "scripts/mysql_algorithm_b_candidate_diversity_v1.py",
+      "sha256": "095e3ce5c3ee445008adb936bb299959b8d76807a67e8a7d5c851506974d1a6d"
+    },
+    "strict_progress": {
+      "path": "scripts/mysql_outer_qps_strict_progress_v1.py",
+      "sha256": "6836af020dfc9b3160f34e33525adf2c309f9c42de1b40ff988c6cf9c7aa7585"
+    },
+    "two_reject_shrink": {
+      "path": "scripts/mysql_outer_rejection_cycle_v2.py",
+      "sha256": "60708d3e5ca8b0228aca7f15ecb40ed1830144ba66862f99c02414bd595f6191"
+    },
+    "algorithm_b_core": {
+      "path": "scripts/run_mysql_algorithm_b_xp_top4_async_v1.py",
+      "sha256": "cec3d1233e06eb2acdc08b2c888e79596397be6d8e2e0270e874fa78b6992332"
+    },
+    "two_worker_runtime": {
+      "path": "scripts/run_mysql_algorithm_b_xp_top4_two_worker_v1.py",
+      "sha256": "e7622d101afb72f86ce47075374f74a956e48be79a8d5fc6f0736658bbad41b8"
+    },
+    "four_scene_runtime": {
+      "path": "scripts/run_mysql_algorithm_b_four_scene_top4_two_worker_v1.py",
+      "sha256": "dad3c25fcf1d4d656ca7ad327b4124c415dc96afb6b7792ce944a2e777f7d8a7"
+    },
+    "successor_runtime": {
+      "path": "scripts/run_mysql_algorithm_b_four_scene_top4_two_worker_v8.py",
+      "sha256": "da155873c09835887bda8e96ac0ca5b24c902da2c7bc3314d2df73403d1099dd"
+    },
+    "single_scene_measurement": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_scene_independent_measurement_v5.py",
+      "sha256": "3d44aa96c8aa7acb23e44f66355db2bcd4c5651c23f0db6f812506a8a85a8ee0"
+    },
+    "shared_measurement_core": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+      "sha256": "48b0e652d721a10a8777173ac65c12d6ac919ebf6fab84093fa63f048148166d"
+    },
+    "top4_table": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.tpch_memory.operator_physics_v1.json",
+      "sha256": "8a8166b7500b7845151872366f8d4a6c012acc91746a5e4d1a9954dd72ec5336"
+    },
+    "resource_freeze": {
+      "path": "config/formal/frozen_mysql_tpch_bc_disk2_two_worker_20260830_v1/four_scene_effective_resource_successor.json",
+      "sha256": "b4781e66d37919497a358e31fdbfe71bf95bd2c50a944385eb905dece0b73a06"
+    },
+    "dynamic_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v24.py",
+      "sha256": "de29e9af772558749d157711b24db8790383154b0d5195f0f4948cf8b7c363e7"
+    },
+    "safe_host_pressure": {
+      "path": "scripts/mysql_safe_host_pressure_v1.py",
+      "sha256": "ebfdbee11a7988125cf445659f628cc2374e4a96d0baeb2723033f9ee6be57cd"
+    },
+    "authority_builder": {
+      "path": "scripts/refresh_mysql_tpch_disk2_two_worker_authority_v1.py",
+      "sha256": "43909b0426d4d02f7c7a0d3d48c95271769cb148b2a16bc45ae5e3a1166836c3"
+    },
+    "runtime_authority": {
+      "path": "scripts/mysql_tpch_disk2_two_worker_runtime_authority_v1.py",
+      "sha256": "c0edac14c9ba8b24277607fbd9e83e8ff3a0dca951133c2a5f1facd6ac379d17"
+    },
+    "runtime_preflight": {
+      "path": "history/mysql_four_scene_20260809/v1115_tpch_bc_disk2_two_worker_live_authority_20260830/transition_preflight.json",
+      "sha256": "6eb905734f855d6115e5e5defbe5e133665802eea1da200907f1865ca2a5a48e"
+    },
+    "prepared_binding": {
+      "path": "history/mysql_four_scene_20260809/v1115_tpch_bc_disk2_two_worker_live_authority_20260830/prepared_binding.json",
+      "sha256": "160fea8d9b5c1e3aede2eebc19fff93b33c2ea990394d21ab2498ce952ec6f8f"
+    },
+    "benchmark_accounts": {
+      "path": "history/mysql_four_scene_20260809/v1115_tpch_bc_disk2_two_worker_live_authority_20260830/benchmark_accounts_binding.json",
+      "sha256": "42d199a6187cbe3884fadbfa5c0f91de30b2caca0c616b048266976d79701e9a"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_four_scene_top4_algorithm_b_20260826_v51/coordination_contract.json",
+      "sha256": "578ca3830915c57a542e1a581d38002de9241732eafe242260a3c1cea3bebc91"
+    },
+    "predecessor_contract": {
+      "path": "config/formal/frozen_mysql_four_scene_top4_algorithm_b_20260826_v51/algorithm_b_top4_contract.json",
+      "sha256": "36bf568da49c221ee5d8b081282e9af162ef74c79029314661202de65803bfd1"
+    }
+  }
+}

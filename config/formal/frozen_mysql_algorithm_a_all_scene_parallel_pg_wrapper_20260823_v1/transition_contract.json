@@ -1,0 +1,63 @@
+{
+  "schema_version": "mysql_algorithm_a_all_scene_parallel_pg_wrapper_transition_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T14:27:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "A",
+  "scenes": ["hybench_xp_cpu", "hybench_xp_io"],
+  "physical_replay_parallelism_per_scene": 2,
+  "completed_baseline_reused_without_replay": true,
+  "completed_candidate_measurements_replayed": false,
+  "interrupted_inflight_candidate_credited": false,
+  "accepted_rounds_preserved": true,
+  "candidate_and_outer_loop_policy_changed": false,
+  "resource_recalibration_required": false,
+  "native_xp_workload_unchanged": true,
+  "postgresql_process_control_or_stop_prohibited": true,
+  "rolling_dynamic_noninterference_gate_retained": true,
+  "predecessors": {
+    "hybench_xp_cpu": {
+      "path": "history/mysql_four_scene_20260809/v65_to_a_all_scene_parallel_pg_wrapper_fix_20260823_transition_v1/xp_cpu_predecessor_state.json",
+      "sha256": "e5c02eb388d33c0771b93f8bbea153963012db07f563d1c0a8486e3353b368e6",
+      "accepted": 0,
+      "round_index": 1,
+      "completed_candidates": 0,
+      "baseline_complete": true
+    },
+    "hybench_xp_io": {
+      "path": "history/mysql_four_scene_20260809/v65_to_a_all_scene_parallel_pg_wrapper_fix_20260823_transition_v1/xp_io_predecessor_state.json",
+      "sha256": "f3cc2b709d5c7a95fec56c47456107ed79eb4e639361a7847cbb4cd79994698d",
+      "accepted": 0,
+      "round_index": 1,
+      "completed_candidates": 0,
+      "baseline_complete": true
+    }
+  },
+  "source_bindings": {
+    "xp_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_a_xp_all_scene_parallel_resume_v2.py",
+      "sha256": "dab78521fdf4705c323346abc01f7d5096b570af460a2482243e5f37e6689d81"
+    },
+    "pg_wrapper_allowance": {
+      "path": "scripts/mysql_co_resident_pg_isolation_v14.py",
+      "sha256": "8caebbd817a100aba2ec6600089cc0420d48073d1c8783cf38b8600c160535ed"
+    },
+    "same_cohort_resume": {
+      "path": "scripts/run_mysql_algorithm_a_same_cohort_codefix_resume_v1.py",
+      "sha256": "5741d20c711a0dc8ced157cbba5c0c428355922b05b4ec6907b1b28023ac087c"
+    },
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "all_scene_parallel_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_all_scene_parallel_20260823_v1/parallel_contract.json",
+      "sha256": "8177a489daedc8bb4581537176d028eb2888aaa67d87d122d20a0ad6ce35fab2"
+    },
+    "pg_wrapper_allowance_contract": {
+      "path": "config/formal/frozen_mysql_pg_capture_wrapper_allowance_20260823_v1/allowance_contract.json",
+      "sha256": "714161a841ff7327584d5ab05bbb283f6e4df8036ed9d87063dd81a8136a4c42"
+    }
+  }
+}

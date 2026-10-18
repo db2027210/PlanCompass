@@ -1,0 +1,74 @@
+{
+  "after_readiness_sha256": "4ad17ac8db8e349148c85834738545e19d2c40f7136ee77fd622c0c2fd75c10c",
+  "already_promoted": false,
+  "before_readiness_sha256": "13fae8ddf219af059de51d5f1e7a5a89f4edf43ec9e221a90b88d7e997eb463e",
+  "changed_json_paths": [
+    "scenarios.tpch_memory.mysql_envelope.freeze_id",
+    "scenarios.tpch_memory.mysql_envelope.normalized",
+    "scenarios.tpch_memory.mysql_envelope.readback"
+  ],
+  "evidence_verifier": {
+    "path": "shell/verify_mysql_tpch_formal_envelope_readback.py",
+    "sha256": "f52ef8117b0eb950369da80303bb99a7c11be144532a6c7fe72c6e0500dd254d"
+  },
+  "evidence_verifier_result": {
+    "bundle_members": 14,
+    "clean_shutdown_cleanup": true,
+    "cross_engine_equality": false,
+    "database_cpu_numa_disk_nonoverlap": true,
+    "eight_effective_fields": true,
+    "formal_static_gate": false,
+    "host_driver_unisolated": true,
+    "native_mysqld_unisolated": true,
+    "postgresql_unchanged": true,
+    "r0": false,
+    "readiness_projection": false,
+    "ready": false,
+    "sealed_template_started": false,
+    "sgd": false,
+    "status": "PASS"
+  },
+  "promoted_mysql_envelope": {
+    "freeze_id": "frozen_paired_pg_mysql_resource_envelopes_20260723_v1",
+    "normalized": {
+      "cpu_isolation_degree": 3,
+      "cpu_quota_cores": 3,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "memory_bytes": 6442450944,
+      "memory_swap_bytes": 6442450944,
+      "numa_isolation_degree": 1,
+      "pids_max": 512
+    },
+    "readback": {
+      "path": "history/mysql_sgd_env_agents_20260723/tpch/formal_mysql_normalized_envelope_readback.json",
+      "sha256": "906d5a6d574f32ccb78c5e4c3c530b1ae1512e27a7c2cb8c24afce8dea107b48"
+    }
+  },
+  "promoter": {
+    "path": "shell/promote_mysql_tpch_envelope_readback.py",
+    "sha256": "afa8b3c7c29f4afbadec1564bf62551d179bdbd46e835ca69500177719d144c2"
+  },
+  "protected_fields_unchanged": {
+    "cross_engine_envelope_gate_false": true,
+    "dynamic_interference_unchanged": true,
+    "global_status_not_ready": true,
+    "launch_authorized_false": true,
+    "postgresql_envelope_unchanged": true,
+    "postgresql_envelope_unpromoted": true,
+    "r0_calibration_unchanged": true,
+    "static_isolation_unchanged": true
+  },
+  "readiness_reverification": {
+    "failed": 95,
+    "passed": 83,
+    "ready": false,
+    "status": "NOT_READY"
+  },
+  "readiness_verifier": {
+    "path": "shell/verify_mysql_sgd_v2_readiness.py",
+    "sha256": "07a497a18a07bda50ae731ffe0ca0e0d9d0643a32da991f510593a10b4aac967"
+  },
+  "schema_version": 1,
+  "scope": "tpch_memory_mysql_envelope_only"
+}

@@ -1,0 +1,154 @@
+{
+  "accepted_target": 7,
+  "algorithm": "A",
+  "candidate_batches": [
+    [
+      1,
+      2,
+      3,
+      4
+    ]
+  ],
+  "candidate_search_contract": "lane_local_complete_lr_cartesian_physical_attempt_v2",
+  "complete_round_requires_every_parameter_vector_attempted": true,
+  "cpu_algorithm_b_predecessor_run": "v265_to_b_top4_score_resume_20260826_attempt029_xp_cpu",
+  "created_at": "2026-08-26T06:26:42.551764+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "four_scene_wave_barrier": false,
+  "fresh_baseline_required": true,
+  "historical_algorithm_b_or_c_credit": false,
+  "io_algorithm_b_predecessor_run": "v257_to_b_top4_fresh_20260826_attempt020_xp_io",
+  "lease_mode": "none",
+  "maximum_concurrent_xp_mysql_workers": 8,
+  "maximum_rejected_outer_attempts": 10,
+  "method": "exhaustive_binary_factorial_algorithm_a_v2",
+  "normalized_width_threshold": 0.01,
+  "parallel_expansion_policy": "four_physical_workers_per_scene_at_each_wave_boundary",
+  "per_scene_outer_state_machine": true,
+  "physical_replay_parallelism_per_scene": 4,
+  "post_convergence_stability_required": false,
+  "post_target_physical_replays": 0,
+  "prediction_used_for_ordering": false,
+  "prediction_used_for_selection": false,
+  "qps_reference_mode": "last_accepted",
+  "resource_envelope_version": "20260826_v4",
+  "rolling_gate_observation_budget_seconds": 180,
+  "scenes": {
+    "hybench_xp_cpu": {
+      "active_parameters": [
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_row_cost",
+        "io_block_read_cost"
+      ],
+      "candidates_per_round": 16,
+      "physical_waves_per_round": 4,
+      "physical_workers": 4
+    },
+    "hybench_xp_io": {
+      "active_parameters": [
+        "io_block_read_cost",
+        "disk_temptable_row_cost",
+        "disk_temptable_create_cost",
+        "memory_temptable_row_cost"
+      ],
+      "candidates_per_round": 16,
+      "physical_waves_per_round": 4,
+      "physical_workers": 4
+    }
+  },
+  "schema_version": "mysql_algorithm_a_xp_top4_async_contract_v1",
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "abc_pipeline_monitor": {
+      "path": "scripts/monitor_mysql_four_scene_abc_pipeline_v9.py",
+      "sha256": "c86a75008d2c3682bf5a4bad137927df792f208312feab4d1ac369ae5a0d016f"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_a_xp_top4_async_v7.py",
+      "sha256": "d9e83de142481e12ab536699e933d2610c1e85bbce302d80843562fd572a5b8e"
+    },
+    "controller_predecessor": {
+      "path": "scripts/run_mysql_algorithm_a_xp_top4_async_v3.py",
+      "sha256": "5b3c311a7bb6830152fa75e90a352da26e23d75feaa3728983d581d4c150f20f"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_a_20260826_v7/coordination_contract.json",
+      "sha256": "024fc7388c61269e43a7248c4c94417138040175beef1f30e70e756956293d94"
+    },
+    "current_authority_refresh": {
+      "path": "scripts/refresh_mysql_xp_combined_v4_live_authority_v2.py",
+      "sha256": "2180c6dfdeea1d0ce23bdad16b2ad192c540be31c400c122c354b9e11aace7ae"
+    },
+    "dynamic_noninterference_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v8.py",
+      "sha256": "1ab97e617f24373bf3c79af6caac5ed4e4533a6cfe246e49d6d71abd9c20c797"
+    },
+    "four_worker_runtime_adapter": {
+      "path": "scripts/run_mysql_algorithm_a_job_to_xp_resume_v1.py",
+      "sha256": "ef609f52170637dfb5e2c8514a66a8384eebcf4b8c41186c3bef016205e3dc33"
+    },
+    "full_factorial": {
+      "path": "scripts/mysql_algorithm_a_full_factorial_v1.py",
+      "sha256": "de8287de6c6a0447438faff2c09f8ce14258e51331176681d49d6749e5da437d"
+    },
+    "hybench_adaptive_runner_300s": {
+      "path": "config/formal/frozen_mysql_async_outer_20260820_v38/runtime/hybench-adaptive-runner-v4.jar",
+      "sha256": "c8f8e23fe7c195e21b5cd3e59a37ce7bb78742761edbea66f011d98c583febe3"
+    },
+    "monitor_launcher": {
+      "path": "scripts/launch_mysql_four_scene_abc_top4_monitor_v9.py",
+      "sha256": "1febc5dd2c9366242d75f010f2c0a0db354c4295f1454b305e55248cb0895770"
+    },
+    "no_lease_measurement": {
+      "path": "scripts/mysql_algorithm_b_no_lease_measurement_v1.py",
+      "sha256": "1fabd0e66e65ca6e704a97f2b3dcef4f0e97002dfa9b23ee25f5dcbfbf6395f3"
+    },
+    "pg_aligned_a_core": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "99b7ffde65169a6c11dc90aa62eb0635576a109559e3d6cd4cc8970ac3a05b96"
+    },
+    "pg_outer_policy": {
+      "path": "scripts/mysql_algorithm_b_pg_outer_policy_v36.py",
+      "sha256": "fd346d12bc1633265a1d8cb20774be5e18bda8ca556f0f0d8d4c143ba3a2c97e"
+    },
+    "resource_freeze": {
+      "path": "config/formal/frozen_mysql_xp_cpu_disjoint_slots_20260826_v4/resource_successor.json",
+      "sha256": "31a5e3c5b453754e6e1cedee10346a575fe4c8c8803d1c4dee0cb67ac851aec4"
+    },
+    "scene_launcher": {
+      "path": "scripts/launch_mysql_algorithm_a_xp_top4_scene_v7.py",
+      "sha256": "dce897df77f463df198faa414438f55884d31246f200387406f0d388314fc9cd"
+    },
+    "shared_measurement_core": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+      "sha256": "a2766a16a78d7966a548859a60b66509213698a4f3a45bc3e31162cb1709e25e"
+    },
+    "single_scene_measurement": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "workload_adapter": {
+      "path": "mysql_workload_adapter_v2.py",
+      "sha256": "bd88222170ca6cd9cfd8da791deedc5e9379bd77571ab8fbabcb27eba11930d8"
+    },
+    "xp_cpu_table": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.hybench_xp_cpu.top4.operator_physics_v1.json",
+      "sha256": "5be3d21037ce4fe757e95bc3bd6b6c9b603c619d5e88c23badf587eb4ac840ed"
+    },
+    "xp_io_table": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.hybench_xp_io.top4.operator_physics_v1.json",
+      "sha256": "3d61e77e8e975c86f82bc32b017bc33169a8929a0985356c36c58d2efb4b269e"
+    },
+    "xp_reset": {
+      "path": "scripts/reset_mysql_xp_data_planes_four_worker_v1.py",
+      "sha256": "97f9d929770f193e84ccdfd3c1a23f36e7af0bbd62be90e8746a9f3a10f7eef2"
+    },
+    "xp_reset_implementation": {
+      "path": "scripts/reset_mysql_xp_data_planes_v6.py",
+      "sha256": "378d06f0a1b08c2fcf3c8791844bd3629a8e331edc96c4fc1752457bd3529d0e"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

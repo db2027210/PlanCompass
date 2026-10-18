@@ -1,0 +1,897 @@
+{
+  "schema_version": "mysql_cross_project_fair_candidate_wave_lease_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "purpose": "Keep formal waves fail-closed while allowing explicitly non-formal interference pilots to record and traverse a failed quiet gate.",
+  "lock_path": "/tmp/resource_adaptive_pg_ssd_measurement_v1.lock",
+  "lock_mode": "exclusive",
+  "lease_scope": "one complete fixed MySQL candidate batch including reset, physical workload, resource sampling, coverage checks, and plan capture",
+  "lease_acquisition_timeout_seconds": 3,
+  "per_wave_quiet_seconds": 15,
+  "maximum_quiet_wait_while_held_seconds": 60,
+  "maximum_idle_load1": 16.0,
+  "maximum_wave_lease_seconds": 1140,
+  "fair_release_yield_seconds": 0.5,
+  "candidate_batches": [
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "job_tpch_concurrent_full_suite_preserved": true,
+  "job_query_count_unchanged": 113,
+  "tpch_scale_factor_unchanged": 4,
+  "tpch_query_count_unchanged": 22,
+  "native_xp_workload_unchanged": true,
+  "native_xp_iq_selection": "IQ1-IQ7_uniform_random",
+  "native_xp_at_mix_percent": [
+    35,
+    25,
+    15,
+    15,
+    7,
+    3
+  ],
+  "native_xp_xap_xtp_ratio": [
+    1,
+    1
+  ],
+  "optimizer_invariants": {
+    "binary_interval_shrink_unchanged": true,
+    "maximum_normalized_interval_width": 0.01,
+    "required_consecutive_stable_rounds": 2,
+    "fixed_top_k": 5,
+    "candidate_order_unchanged": true,
+    "accepted_or_rejected_state_mutation_while_waiting": false,
+    "technical_failures_excluded": true
+  },
+  "co_resident_process_policy": {
+    "idle_postgresql_controllers": "inventoried_not_blocking_only_while_the_kernel_exclusive_physical_workload_lease_is_held_or_mysql_is_not_measuring",
+    "active_postgresql_physical_workloads": "allowed only for the exact frozen disk1 cohort after every dynamic isolation check passes",
+    "unknown_or_non_cooperating_workload": "runtime_watchdog_sigint_then_bounded_systemd_stop_for_formal_runs",
+    "host_d_state": "formal waves require unknown or target-relevant d-state zero; explicit non-formal pilots record but may traverse the failed gate",
+    "host_load1": "formal waves require load1 at most 16; explicit non-formal pilots record but may traverse the failed gate"
+  },
+  "fairness": {
+    "prelaunch_wait_uses_timed_kernel_blocking_queue": true,
+    "formal_wave_wait_uses_timed_kernel_blocking_queue": true,
+    "release_between_every_candidate_batch": true,
+    "postgresql_observed_lock_wait_timeout_seconds": 1200,
+    "mysql_maximum_wave_lease_seconds": 1140,
+    "safety_margin_seconds": 60,
+    "whole_outer_round_exclusive_lease_prohibited": true
+  },
+  "resource_envelope": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260813_v18/four_scene_effective_resource_successor.json",
+    "sha256": "a19dff2a72963f147ac914345e4b188522d9dca23dd35b5aa85cba6f1f4801df",
+    "changed_by_this_contract": false
+  },
+  "outer_runtime_predecessor": {
+    "path": "config/formal/frozen_mysql_algorithm_c_outer_runtime_20260812_v1/optimization_contract.json",
+    "sha256": "b41fb47f258c806d477d668b9fcbcce02e1c65f6a19c0f6c0516ac3dbe52b53c",
+    "measurement_semantics_changed": false
+  },
+  "predecessor_contract": {
+    "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260813_v3/coordination_contract.json",
+    "sha256": "e43cc4282cbbc8893ea1f4beef05c28a83cbda1149010a2a32451f70806921a2"
+  },
+  "interference_override_pilot_successor": {
+    "formal_path_behavior_changed": false,
+    "pilot_run_id_marker_required": "pilot_nonformal",
+    "blocked_interference_evidence_required": true,
+    "failed_quiet_gate_recorded": true,
+    "failed_quiet_gate_may_be_traversed_in_pilot_only": true,
+    "formal_evidence_eligible": false,
+    "accepted_state_credit_prohibited": true,
+    "maximum_outer_attempts": 1,
+    "pilot_candidate_batches": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "pilot_single_candidate_live_lane_selection": true,
+    "unresponsive_lane_excluded_from_pilot_only": true,
+    "pilot_authority_requires_current_frozen_identity_and_one_live_lane_per_scene": true,
+    "pilot_maximum_unavailable_xp_lanes": 2,
+    "pilot_requires_one_live_lane_per_xp_scene": true,
+    "formal_candidate_batches": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "formal_serialization_evidence": "five_candidate_interference_override_pilot_v6_all_20_scene_measurements_passed_hard_gates",
+    "within_candidate_full_four_scene_workload_unchanged": true
+  },
+  "source_bindings": {
+    "coordination_source_path": "scripts/mysql_cross_project_wave_coordination_v1.py",
+    "coordination_source_sha256": "e593a0864e798e3247c2be54bfcecd7af18e869030002e723369b1abb31dd94f",
+    "boundary_resume_controller_path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v2.py",
+    "boundary_resume_controller_sha256": "13f510c8025daeb53cf832880b70904f247860d82b17af8de07638972ef02d22",
+    "runtime_watchdog_path": "scripts/watch_mysql_formal_external_postgres_interference_v1.py",
+    "runtime_watchdog_sha256": "760a906516f807430a4e450302f044d933f0d94d8e5ecb5e109aec9330f7c1a8",
+    "live_preflight_path": "scripts/preflight_mysql_four_scene_live_v8.py",
+    "live_preflight_sha256": "eae49860016aa16f69c53aeedf802352ca57903be5264028110548eaf970fccb",
+    "auto_resume_waiter_path": "scripts/wait_and_resume_mysql_algorithm_c_after_quiet_v1.py",
+    "auto_resume_waiter_sha256": "27dd4eeabfe85e4cc153cbf2e6a28a9b94ea10a586bc018cfe080703edddab14",
+    "live_validator_path": "scripts/validate_mysql_cross_project_wave_coordination_v1.py",
+    "live_validator_sha256": "5f03714cf088c95e38e483f1ec842675209c5e98c07c7084fa5e0007ae83c5eb",
+    "v18_r0_fair_waiter_path": "scripts/wait_and_run_mysql_four_scene_r0_v18.py",
+    "v18_r0_fair_waiter_sha256": "ae1ad35e9b3a4155af345f9ac71f4d24ff9bab12515ba846c0d066768f0e6250",
+    "r0_source_path": "scripts/run_mysql_four_scene_r0_v5.py",
+    "r0_source_sha256": "039705c5f3b371e3dd1b03e705c894fd96664d852d494b1957c9978950593633",
+    "v18_r0_wrapper_path": "scripts/run_mysql_four_scene_r0_v18.py",
+    "v18_r0_wrapper_sha256": "e0a5905147265888d068300b143fb580af923f7acbfed358aef982ea59364bc7",
+    "co_resident_isolation_test_path": "tests/test_mysql_cross_project_wave_coordination.py",
+    "co_resident_isolation_test_sha256": "38fca69c577080d6ba85d4ef458b3d0fe0752380ad0e6f89200733e0ab38847e",
+    "same_run_dstate_failure_evidence_path": "history/mysql_four_scene_20260809/v25_formal_outer7_resume_20260814T2339p0800/outer_008/top5_batch_1_cross_project_wave_quiet_gate_attempt_001.json",
+    "same_run_dstate_failure_evidence_sha256": "944c8e3fa86ee2203a5b3d626c0752b6041f40f2c22d8074ec1410bdf86f7f4d",
+    "pg_controller_cpuset_failure_state_path": "history/mysql_four_scene_20260809/v27_formal_outer8_resume_20260815T0109p0800/run_state.json",
+    "pg_controller_cpuset_failure_state_sha256": "4a93fc5c3ada629f34e4b8f327e78ad7123ad083a0f59d0cec91d7c7c30672b0",
+    "native_pg_concurrency_failure_watchdog_path": "history/mysql_four_scene_20260809/v28_formal_outer9_resume_20260815T0243p0800/runtime_external_interference_watchdog.jsonl",
+    "native_pg_concurrency_failure_watchdog_sha256": "d5675249d0e4b3e29093da8bae472320babe47aa9cdaa86b629547c7b8cc0f16",
+    "pg_psql_uri_failure_watchdog_path": "history/mysql_four_scene_20260809/v29_formal_outer9_resume_20260815T0308p0800/runtime_external_interference_watchdog.jsonl",
+    "pg_psql_uri_failure_watchdog_sha256": "e4bac6fba745de84a36705345e48207c21b80f76a37ac953d6aa9a7beece046f",
+    "isolated_load_failure_gate_path": "history/mysql_four_scene_20260809/v30_formal_outer9_resume_20260815T0841p0800/formal_incumbent_baseline_cross_project_wave_quiet_gate_attempt_001.json",
+    "isolated_load_failure_gate_sha256": "75e7c59aae8ecbe2c6bf5411d1a61aabd7ed5ec1676229dd3f06fcf8c0b3960c",
+    "isolated_load_release_builder_path": "scripts/build_mysql_algorithm_c_isolated_load_release_v1.py",
+    "isolated_load_release_builder_sha256": "beacb54e9431eed186ed25c5c3a66d7770274823066490c1c4a51fb23d0ad99f",
+    "isolated_load_activation_v3_builder_path": "scripts/build_mysql_algorithm_c_isolated_load_release_v3.py",
+    "isolated_load_activation_v3_builder_sha256": "6c6ddf84cd7426ca4c7d07d54a473a38539bf5e456bd1117412ddfea9ef3b21e",
+    "lease_release_race_builder_path": "scripts/build_mysql_algorithm_c_lease_release_race_release_v1.py",
+    "lease_release_race_builder_sha256": "54920e05538bb3820a8fea5678d0f6562f3c98309595739f307c7689dbd8ab0d",
+    "lease_release_race_watchdog_path": "history/mysql_four_scene_20260809/v33_formal_outer9_resume_20260815T0853p0800/runtime_external_interference_watchdog.jsonl",
+    "lease_release_race_watchdog_sha256": "a4477502032c92d0476ef96eede5c014c84892332ad96de067f76e05b8b92c74",
+    "lease_release_race_state_path": "history/mysql_four_scene_20260809/v33_formal_outer9_resume_20260815T0853p0800/run_state.json",
+    "lease_release_race_state_sha256": "ec983cfd7f867432d2a465df8cb53bb85a1f322569ad01214c15373477a2b321",
+    "affinity_startup_release_builder_path": "scripts/build_mysql_algorithm_c_affinity_startup_release_v1.py",
+    "affinity_startup_release_builder_sha256": "5dc7cf69e9d42b2e50c4670a4096d589fcc597b076f19c5d723076dff4833cec",
+    "affinity_startup_failure_watchdog_path": "history/mysql_four_scene_20260809/v34_formal_outer9_rank3_resume_20260815T1055p0800/runtime_external_interference_watchdog.jsonl",
+    "affinity_startup_failure_watchdog_sha256": "dec9770b02316172b937d6e8dfc04762d84ac2fac7047c274b722af5f77bc955",
+    "affinity_startup_failure_state_path": "history/mysql_four_scene_20260809/v34_formal_outer9_rank3_resume_20260815T1055p0800/run_state.json",
+    "affinity_startup_failure_state_sha256": "f320780d1185cc8d18a5498027b596510b0c287bded60092199544f52761a5eb",
+    "affinity_startup_watchdog_test_path": "tests/test_mysql_algorithm_c_boundary_technical_isolation.py",
+    "affinity_startup_watchdog_test_sha256": "e93d196705e75086176a815e78f9d19236d583b3894ca43c5886a2a4fd09a484",
+    "prestart_isolation_release_builder_path": "scripts/build_mysql_algorithm_c_prestart_isolation_release_v1.py",
+    "prestart_isolation_release_builder_sha256": "f8aaf92e77951f7be6a43f20bcbcf90b67d7f0a9942063882a1fe356edad68ed",
+    "prestart_isolation_failure_state_path": "history/mysql_four_scene_20260809/v35_formal_outer9_rank5_resume_20260815T1128p0800/run_state.json",
+    "prestart_isolation_failure_state_sha256": "7a7faf75acf18b2392e112aa1c87ee8eaca44461e187e6317dae98b108e401f7",
+    "external_pg_affinity_release_builder_path": "scripts/build_mysql_algorithm_c_external_pg_affinity_release_v1.py",
+    "external_pg_affinity_release_builder_sha256": "a993a6d11a272762d4d258fea85b220a5fecb8cd193d8d38d092b03527f834c2",
+    "external_pg_affinity_guard_path": "scripts/enforce_frozen_external_pg_client_affinity_v1.py",
+    "external_pg_affinity_guard_sha256": "1b730fd5378b4860a3fe53093822f1193048f85fb77426e7f2ec8c509fe06172",
+    "external_pg_affinity_failure_state_path": "history/mysql_four_scene_20260809/v36_formal_outer9_rank5_resume_20260815T1132p0800/run_state.json",
+    "external_pg_affinity_failure_state_sha256": "d2e36752130512df60acec09f37c21960bb42e7608ae73ebf9eafd26d14a63be",
+    "external_pg_affinity_failure_watchdog_path": "history/mysql_four_scene_20260809/v36_formal_outer9_rank5_resume_20260815T1132p0800/runtime_external_interference_watchdog.jsonl",
+    "external_pg_affinity_failure_watchdog_sha256": "f8d2e7742cf655ffe0cb1a79810a179eff89a50a6e7edb57182457acf5287f52",
+    "measurement_checkpoint_release_builder_path": "scripts/build_mysql_algorithm_c_measurement_checkpoint_release_v1.py",
+    "measurement_checkpoint_release_builder_sha256": "f426e1d03fa13c7dc006e33ddbd37135d17464b08a77d2c0a84fda822e2164b5",
+    "measurement_checkpoint_builder_path": "scripts/build_mysql_algorithm_c_outer_checkpoint_v4.py",
+    "measurement_checkpoint_builder_sha256": "ee6d09353287218010e0df5b014c6230e0313656589a37a5dc56075a16dec3a1",
+    "measurement_checkpoint_failure_state_path": "history/mysql_four_scene_20260809/v36_formal_outer9_rank5_resume_20260815T1132p0800/run_state.json",
+    "measurement_checkpoint_failure_state_sha256": "d2e36752130512df60acec09f37c21960bb42e7608ae73ebf9eafd26d14a63be",
+    "native_xp_wrapper_affinity_release_builder_path": "scripts/build_mysql_algorithm_c_native_xp_wrapper_affinity_release_v1.py",
+    "native_xp_wrapper_affinity_release_builder_sha256": "6328ef44c86a6a62d3f86a049deaee68bfedaf8cba3baa2462b2c9c06148184a",
+    "native_xp_wrapper_failure_state_path": "history/mysql_four_scene_20260809/v38_formal_outer10_rank3_resume_20260815T1232p0800/run_state.json",
+    "native_xp_wrapper_failure_state_sha256": "dd8e06ce9ce17b6d08a382a8921ef1a5dba4936ee35ba6548ccc4be8be6d01ea",
+    "native_xp_wrapper_failure_watchdog_path": "history/mysql_four_scene_20260809/v38_formal_outer10_rank3_resume_20260815T1232p0800/runtime_external_interference_watchdog.jsonl",
+    "native_xp_wrapper_failure_watchdog_sha256": "2f35394494f78c4fd15b973e5967457b2781a130fe81845c6c5e9855db8e291e",
+    "native_xp_wrapper_failure_guard_path": "history/mysql_four_scene_20260809/formal_launch_logs/v38_formal_outer10_rank3_resume_20260815T1232p0800.external_pg_affinity.jsonl",
+    "native_xp_wrapper_failure_guard_sha256": "0617af440d9747456638681ff7bb4b30e567c8b0a155c208745afb699bb3349d",
+    "dead_mysqld_reset_release_builder_path": "scripts/build_mysql_algorithm_c_dead_mysqld_reset_release_v1.py",
+    "dead_mysqld_reset_release_builder_sha256": "779de9f7905c8284246b8aa4f81d500dd48f4f9ac86fefed6b9b7a5b037ec6a4",
+    "dead_mysqld_failure_state_path": "history/mysql_four_scene_20260809/v39_formal_outer10_rank3_resume_20260815T1247p0800/run_state.json",
+    "dead_mysqld_failure_state_sha256": "09231ba7470cff65e1f3c9160c5544941ccd2c8b788f9d261d3da1b3171c8050",
+    "dead_mysqld_session_test_path": "tests/test_mysql_algorithm_c_interval_convergence.py",
+    "dead_mysqld_session_test_sha256": "c0bf457436c71f8d7c19b6cc32e2180b96d247ba4ce74befc0d640176fe976e4",
+    "pre_reset_xp_selection_release_builder_path": "scripts/build_mysql_algorithm_c_pre_reset_xp_selection_release_v1.py",
+    "pre_reset_xp_selection_release_builder_sha256": "9d6804c64ef09f1bb1223b29916d2911da69afa46d4d5f6f656f1a2edc54ec77",
+    "pre_reset_xp_selection_failure_state_path": "history/mysql_four_scene_20260809/v40_formal_outer10_rank3_resume_20260815T1304p0800/run_state.json",
+    "pre_reset_xp_selection_failure_state_sha256": "9152ede4337bfb183cd6189fc8934e5cb563b81ef382edf9e77e774ba1f2f58c",
+    "pre_reset_xp_selection_test_path": "tests/test_mysql_algorithm_c_boundary_technical_isolation.py",
+    "pre_reset_xp_selection_test_sha256": "e93d196705e75086176a815e78f9d19236d583b3894ca43c5886a2a4fd09a484",
+    "technical_rank_continuation_release_builder_path": "scripts/build_mysql_algorithm_c_technical_rank_continuation_release_v1.py",
+    "technical_rank_continuation_release_builder_sha256": "709388cba8aac4dcf1b0526e1bba1e165c5287146ec9303cd0f8af67d7d15a8e",
+    "technical_rank_failure_state_path": "history/mysql_four_scene_20260809/v41_formal_outer10_rank3_retry2_20260815T1314p0800/run_state.json",
+    "technical_rank_failure_state_sha256": "b5a2377a00aace931ff7abf44f42f865a3376cef6adb67ee85ec0570c38e909c",
+    "technical_rank_batch_path": "history/mysql_four_scene_20260809/v41_formal_outer10_rank3_retry2_20260815T1314p0800/outer_010/top5_batch_3/batch_result.json",
+    "technical_rank_batch_sha256": "aacd798c685d08dffe0f3638c1eb70c4eed886c1b4894cf429577bad7fcec5b0",
+    "technical_rank_continuation_test_path": "tests/test_mysql_algorithm_c_boundary_technical_isolation.py",
+    "technical_rank_continuation_test_sha256": "e93d196705e75086176a815e78f9d19236d583b3894ca43c5886a2a4fd09a484",
+    "non_target_bottleneck_audit_source_path": "scripts/audit_mysql_algorithm_c_non_target_bottleneck_v1.py",
+    "non_target_bottleneck_audit_source_sha256": "46a16484115d6d37f4e5eed44157b00fab9f18b45aece356153f3e7a6e9259eb",
+    "non_target_bottleneck_audit_path": "history/mysql_four_scene_20260809/algorithm_c_non_target_audit_v1_20260815T1654p0800/audit.json",
+    "non_target_bottleneck_audit_sha256": "1b946b4a5313a12c897c46d16dddd59a54d4d80ba7205ab2aec4b0bddf9a6f85",
+    "non_target_bottleneck_release_builder_path": "scripts/build_mysql_algorithm_c_non_target_hard_gate_release_v1.py",
+    "non_target_bottleneck_release_builder_sha256": "5264522100d7371dba7f3e381fcf98736779a071565071ff0bad296ee9bdcd5b",
+    "non_target_bottleneck_test_path": "tests/test_mysql_algorithm_c_boundary_technical_isolation.py",
+    "non_target_bottleneck_test_sha256": "e93d196705e75086176a815e78f9d19236d583b3894ca43c5886a2a4fd09a484",
+    "coordination_signature_release_builder_path": "scripts/build_mysql_algorithm_c_coordination_signature_release_v1.py",
+    "coordination_signature_release_builder_sha256": "8187e61216cd331b173134e2ace2b7c1333eabc7164dbde968f53ba6e8459be3",
+    "algorithm_source_path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+    "algorithm_source_sha256": "8f2ad0d3f9f4617db0ecf97d2f169a1cc99fd8a58f431591ef2e44c7a59d7242",
+    "top5_supplementation_diagnostic_path": "history/mysql_four_scene_20260809/algorithm_c_top5_supplementation_diagnostic_v5_20260815T2326p0800/diagnostic.json",
+    "top5_supplementation_diagnostic_sha256": "e071c1defc600b8c74d8e1b2cb50a20c3a56ee4c028cb932948d8365d186bd8f",
+    "top5_supplementation_test_path": "tests/test_mysql_algorithm_c_fixed_top5_supplementation.py",
+    "top5_supplementation_test_sha256": "54802ef7391bd9707e00dea75ff01a1864a4ba919d3c1809f970cdb9252102c7",
+    "co_resident_profile_installer_path": "scripts/mysql_co_resident_pg_isolation_v2.py",
+    "co_resident_profile_installer_sha256": "976d1f42d7f5c2534076f11299c2a3ab3b92fdcc0e9adfb958c718a36339d570",
+    "algorithm_c_v47_entrypoint_path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v3.py",
+    "algorithm_c_v47_entrypoint_sha256": "bb2d701378045a3ee93d460f4e49ee5154f940a50f04a5949faf794250885bfe",
+    "algorithm_c_v47_launcher_path": "scripts/launch_mysql_algorithm_c_boundary_resume_v3.py",
+    "algorithm_c_v47_launcher_sha256": "decf0f09349b2bec8aaedc98b3514c813e86f188472ef644752de449708e7aff",
+    "algorithm_c_v47_waiter_path": "scripts/wait_launch_mysql_algorithm_c_boundary_resume_v2.py",
+    "algorithm_c_v47_waiter_sha256": "a6ea8aba5c70f60f0fae10e6cf9f425154ad86a53c93ef4cd34a5843fae8bcf9",
+    "runtime_watchdog_v52_entrypoint_path": "scripts/watch_mysql_formal_external_postgres_interference_v2.py",
+    "runtime_watchdog_v52_entrypoint_sha256": "fefab163e0201e7f66463177f4cad0d5744218b71549a6ebebe3a914fc6a2239",
+    "algorithm_b_controller_path": "scripts/run_mysql_four_scene_algorithm_b_from_c_v1.py",
+    "algorithm_b_controller_sha256": "0d4d35944d85875d5b532d4e39620df57d0d398dd64bc5d7cadd87ae272d924f",
+    "algorithm_b_launcher_path": "scripts/launch_mysql_four_scene_algorithm_b_from_c_v1.py",
+    "algorithm_b_launcher_sha256": "92de619221814e382f74fc2389774dbd6922df922dec4968a39dfb7acd20ef5a",
+    "algorithm_b_auto_waiter_path": "scripts/wait_and_launch_mysql_algorithm_b_after_c_v1.py",
+    "algorithm_b_auto_waiter_sha256": "4351709b7e53a9b41d8d67e667b72f1f3b629468fe1863c66a163d2c9170510f",
+    "empty_quarantine_multi_outer_builder_path": "scripts/rebind_mysql_algorithm_c_empty_replay_quarantine_v2.py",
+    "empty_quarantine_multi_outer_builder_sha256": "fe41f2365450ca95f0a3b6e49323918e4ca305f0a29f833380776fd947ae96c7",
+    "co_resident_profile_release_builder_path": "scripts/build_mysql_algorithm_c_co_resident_profiles_release_v1.py",
+    "co_resident_profile_release_builder_sha256": "3fa87866fc394bb470b552a255f1bbb380c24e60d66354f1b4cce34102dae6ed",
+    "co_resident_profile_test_path": "tests/test_mysql_co_resident_pg_isolation_v2.py",
+    "co_resident_profile_test_sha256": "29c65654d3858d1d1018732c3eed6c239677a2dd68bec8e0c232b9af941e8468",
+    "outer13_failure_state_path": "history/mysql_four_scene_20260809/v46_formal_outer11_top5_supplement_20260815_attempt001/run_state.json",
+    "outer13_failure_state_sha256": "236fa86bc659bd3d19448f19e78d23629253b5257f3f30dc6740a0171a68dd68",
+    "outer13_failure_watchdog_path": "history/mysql_four_scene_20260809/v46_formal_outer11_top5_supplement_20260815_attempt001/runtime_external_interference_watchdog.jsonl",
+    "outer13_failure_watchdog_sha256": "d0e4151514745ddebf8a48538aa334d17a5d0ab9372ee45de48d15fad0cd07b4",
+    "outer13_failure_gate_path": "history/mysql_four_scene_20260809/v46_formal_outer11_top5_supplement_20260815_attempt001/outer_013/top5_batch_2_cross_project_wave_quiet_gate_attempt_001.json",
+    "outer13_failure_gate_sha256": "36178bc497ea73307d7fd9c56a710140bdef84ece7c7c50977977a8afc4ec37d",
+    "outer13_contaminated_rank1_path": "history/mysql_four_scene_20260809/v46_formal_outer11_top5_supplement_20260815_attempt001/outer_013/top5_batch_1/batch_result.json",
+    "outer13_contaminated_rank1_sha256": "1c8538f24101ff6154a8902a0417578c4b3bd05c20e944a84a5f09f4727c762d",
+    "outer12_checkpoint_path": "history/mysql_four_scene_20260809/algorithm_c_v46_outer12_checkpoint_v13_20260816T0210p0800/prepared_binding.json",
+    "outer12_checkpoint_sha256": "7432900990fdcbdb5ecd5ade9c13763984da50f67897f4d46d6b4648916a0f93",
+    "outer12_replay_quarantine_path": "history/mysql_four_scene_20260809/algorithm_c_v47_replay_quarantine_v10_outer12_v13_20260816T1435p0800/replay_quarantine.json",
+    "outer12_replay_quarantine_sha256": "2787ffcf2fb1780b2c1f2080fa7107745e94ef31a02c6c09caf8f764f42c61b7",
+    "co_resident_profile_release_v2_builder_path": "scripts/build_mysql_algorithm_c_co_resident_profiles_release_v2.py",
+    "co_resident_profile_release_v2_builder_sha256": "3a58e6813dfb0996a63a599727e3bff09041641e758c5d5e1b0fc0c80fae1c52",
+    "v47_direct_path_startup_failure_path": "history/mysql_four_scene_20260809/formal_launch_logs/v47_formal_outer13_isolated_pg_profiles_20260816_attempt001.stderr.log",
+    "v47_direct_path_startup_failure_sha256": "9f0f5810c0f97e126a933e8ccfd85febbd95b298ed49828a9672da7add2970f6",
+    "contract_pointer_release_v3_builder_path": "scripts/build_mysql_algorithm_c_contract_pointer_release_v3.py",
+    "contract_pointer_release_v3_builder_sha256": "edc6e53f488a176883ff43609c43550c190a7f33fc32baec28c426e375d38bef",
+    "contract_pointer_failure_path": "history/mysql_four_scene_20260809/formal_launch_logs/v48_formal_outer13_isolated_pg_profiles_20260816_attempt005.wait_v3.stderr.log",
+    "contract_pointer_failure_sha256": "3bedcaad4a9141a6aaf7bb4b3f05983077587750d00120dbf17c9bfd50a343af",
+    "quiet_gate_recovery_release_builder_path": "scripts/build_mysql_algorithm_c_quiet_gate_recovery_release_v1.py",
+    "quiet_gate_recovery_release_builder_sha256": "285d176fdc7e4058e1db29f26dce586c6b4dfccb432f6d477b4ac3564d9c92dc",
+    "algorithm_c_v50_entrypoint_path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v4.py",
+    "algorithm_c_v50_entrypoint_sha256": "6fb854499cbbad90206dd35e5589d0781fa08c4031c53ae9fdb8b9a5a33565e2",
+    "algorithm_c_v50_launcher_path": "scripts/launch_mysql_algorithm_c_boundary_resume_v4.py",
+    "algorithm_c_v50_launcher_sha256": "9214915246bccbe05a258c3d4fbc5d87b49d2e5a3e8340d4376a98c608fd53b6",
+    "co_resident_profile_installer_v3_path": "scripts/mysql_co_resident_pg_isolation_v3.py",
+    "co_resident_profile_installer_v3_sha256": "a89ccba87ff2e39e4a92ecf656d81c12ad26031696d49ef20653fed958186db4",
+    "quiet_gate_partial_resume_test_v4_path": "tests/test_mysql_algorithm_c_quiet_gate_partial_resume_v4.py",
+    "quiet_gate_partial_resume_test_v4_sha256": "a99a04576cba4840de6dc6a63e939e7905939bf27dac0232e8359d4458ecf444",
+    "quiet_gate_timeout_failure_state_path": "history/mysql_four_scene_20260809/v49_formal_outer13_contract_pointer_fix_20260816_attempt006/run_state.json",
+    "quiet_gate_timeout_failure_state_sha256": "fc31dc192b7db4f5b23c6e383da6c39617868b874d8dd458d8e55f53ead85969",
+    "quiet_gate_timeout_failure_gate_path": "history/mysql_four_scene_20260809/v49_formal_outer13_contract_pointer_fix_20260816_attempt006/outer_013/top5_batch_2_cross_project_wave_quiet_gate_attempt_001.json",
+    "quiet_gate_timeout_failure_gate_sha256": "9bf0f18ee1fa1fffa981e49f3909ab5d43a12e3af59729b48881dc4a6d852fdf",
+    "quiet_gate_completed_rank1_path": "history/mysql_four_scene_20260809/v49_formal_outer13_contract_pointer_fix_20260816_attempt006/outer_013/top5_batch_1/batch_result.json",
+    "quiet_gate_completed_rank1_sha256": "9071575322c0094ada83006a4d3b4c4214e730ab75d273ca95dd0144743f07ee",
+    "co_resident_profile_installer_v4_path": "scripts/mysql_co_resident_pg_isolation_v4.py",
+    "co_resident_profile_installer_v4_sha256": "2ec3969014fce68855de19edc52e510bcf19e64bad6ecbcab02bee131bdf65bf",
+    "runtime_watchdog_v56_entrypoint_path": "scripts/watch_mysql_formal_external_postgres_interference_v3.py",
+    "runtime_watchdog_v56_entrypoint_sha256": "7fcab06400bcbc5e19872f139245e26f3628ce2e2205edba334fc2a9b4b92400",
+    "algorithm_c_v56_entrypoint_path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v11.py",
+    "algorithm_c_v56_entrypoint_sha256": "7fe2c514f00d0e5fc4fe28cb8e5ac7cf3b1b50d629c6d9a887c21fc61a6a61e5",
+    "algorithm_c_v56_launcher_path": "scripts/launch_mysql_algorithm_c_boundary_resume_v11.py",
+    "algorithm_c_v56_launcher_sha256": "a44d2dcf7606e80e21b753cb2c5044bb86dd1bbea3d40cdb051dc4fad1aa4d03",
+    "co_resident_mixstrg_test_path": "tests/test_mysql_co_resident_pg_isolation_v4.py",
+    "co_resident_mixstrg_test_sha256": "d028085d71515f6783ecb30cf9927f80cc3aced47be53c241d5f02d8e7849a80"
+  },
+  "predecessor": {
+    "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260816_v55/coordination_contract.json",
+    "sha256": "9eeb0eb4a2920f6dc542b57e37cfd38cfeeb25e3c6fca15caa981fc0aa5f2d15"
+  },
+  "successor_reason": "admit the separately owned BenchBase mixstrg campaign only after read-only live Docker profile and cgroup membership validation proves CPU and storage disjointness; no external process or container mutation; no MySQL workload, resource envelope, Top-5, scoring, binary shrink, acceptance or convergence change",
+  "technical_timeout_isolation": {
+    "classification": "TECHNICAL_TIMEOUT_EXCLUDED",
+    "requires_at_least_one_900_second_workload_timeout": true,
+    "only_derived_skipped_plan_capture_failures_allowed": true,
+    "all_other_failure_shapes_remain_fail_closed": true,
+    "continue_later_candidate_waves": true,
+    "accepted_state_credit_increment": 0,
+    "rejected_outer_attempt_increment": 0,
+    "acceptance_tier_mutation": false,
+    "convergence_mutation": false,
+    "replay_history_mutation": false,
+    "pruning_evidence_eligible": false,
+    "scene_without_any_valid_candidate_has_no_state_mutation": true
+  },
+  "premeasurement_reset_timeout_isolation": {
+    "classification": "TECHNICAL_PREMEASUREMENT_RESET_TIMEOUT_EXCLUDED",
+    "only_exact_mysql_processlist_probe_timeout_allowed": true,
+    "maximum_probe_timeout_seconds": 15,
+    "requires_batch_result_absent": true,
+    "physical_workload_started": false,
+    "all_other_reset_failures_remain_fail_closed": true,
+    "continue_later_candidate_waves": true,
+    "accepted_state_credit_increment": 0,
+    "rejected_outer_attempt_increment": 0,
+    "acceptance_tier_mutation": false,
+    "convergence_mutation": false,
+    "replay_history_mutation": false,
+    "pruning_evidence_eligible": false
+  },
+  "operator_execution_preference": {
+    "path": "PROJECT_OPERATING_PREFERENCES.md",
+    "external_processes_do_not_block_nonformal_pilot": true,
+    "formal_evidence_and_accepted_state_credit_remain_prohibited": true,
+    "pilot_quiet_gate_observation_seconds": 15.0,
+    "pilot_quiet_gate_maximum_wait_seconds": 15.0
+  },
+  "r0_runtime_non_interference": {
+    "contract": "mysql_r0_full_interval_external_workload_watchdog_v1",
+    "sample_interval_seconds": 1.0,
+    "active_measurement_interval_coverage_required": true,
+    "any_overlapping_external_physical_workload_fails_closed": true,
+    "idle_external_controllers_are_inventory_only": true,
+    "formal_outer_launch_prohibited_after_runtime_interference": true
+  },
+  "pruning_contract": {
+    "path": "config/formal/mysql_algorithm_c_plan_replay_pruning_20260813_v2/contract.json",
+    "sha256": "8cde8a25f101092bfebb33333155c4af430e7202e30b53581b6080743e289221"
+  },
+  "maximum_gate_attempts_per_wave": 1,
+  "persistent_d_state_required_consecutive_samples": 3,
+  "single_sample_d_state_action": "record_without_resetting_clean_window",
+  "persistent_d_state_action": "fail_closed",
+  "fast_prestate_contract": {
+    "healthy_release_seconds": 15,
+    "lease_contention_fail_seconds": 3,
+    "quiet_gate_absolute_bound_seconds": 20,
+    "external_physical_workload_action": "immediate_fail_closed",
+    "r0_baseline_rankings_and_completed_candidates_reused_by_sha": true,
+    "workload_measurement_acceptance_and_convergence_unchanged": true
+  },
+  "target_journal_d_state_policy": {
+    "recognized_name_regex": "jbd2/nvme2n1-\\d+",
+    "record_in_every_pressure_sample": true,
+    "kernel_worker_alone_blocks_formal_wave": false,
+    "user_space_or_unknown_d_state_remains_fail_closed": true,
+    "external_physical_workload_remains_fail_closed": true,
+    "cpu_numa_process_and_target_storage_overlap_gates_unchanged": true
+  },
+  "maximum_normalized_load1": 0.1,
+  "co_resident_isolated_pg_allowance": {
+    "status": "FROZEN_LIVE_READBACK_REQUIRED",
+    "allowed_external_cpu_union": "32-103,128-199,228-255,384-415",
+    "mysql_target_cpu_overlap_required": 0,
+    "allowed_postgres_ports": [
+      59513,
+      59514,
+      59515,
+      59516,
+      59521,
+      59522,
+      59523,
+      59524
+    ],
+    "maximum_external_workload_processes": 96,
+    "maximum_external_workload_rss_bytes": 17179869184,
+    "minimum_host_mem_available_bytes": 549755813888,
+    "host_swap_total_bytes_required": 0,
+    "maximum_memory_full_psi_avg10": 0.1,
+    "external_container_pids_limit_readback": null,
+    "process_isolation_evidence": "all target MySQL containers retain frozen finite PidsLimit; external workload count is dynamically capped",
+    "numa_memory_isolation_evidence": "target cpuset_mems remains frozen; PG containers retain sealed 8-24GiB memory cgroup profiles; host headroom, swap and full-memory PSI are gated",
+    "storage_isolation_evidence": "all frozen PG database mounts are exact /disk1 sources and no frozen PG container may mount /disk2",
+    "additional_container_profiles": [
+      {
+        "name": "bench-pg-mixstrg-0817",
+        "role": "mixstrg_postgresql_server",
+        "required": false,
+        "allowed_statuses": ["created", "running"],
+        "image_id": "sha256:a95442ee5014d60764ea8780d6d8a82dfa53b890a9f94228d8e062c3a6d1cbf5",
+        "cpuset_cpus": "144-159,400-415",
+        "cpuset_mems": "",
+        "nano_cpus": 32000000000,
+        "memory_bytes": 68719476736,
+        "memory_swap_bytes": -1,
+        "pids_limit": null,
+        "required_mount_sources": [
+          "/home/anonymous/working/benchbase/pgdata/mixstrg-0817"
+        ],
+        "allowed_mount_prefixes": [
+          "/home/anonymous/working/benchbase/"
+        ],
+        "required_labels": {
+          "com.docker.compose.project": "benchbase",
+          "com.docker.compose.project.config_files": "/home/anonymous/working/benchbase/compose-mixstrg-cmp.yml",
+          "com.docker.compose.service": "pg-mixstrg-0817"
+        }
+      },
+      {
+        "name": "bench-pg-row",
+        "role": "row_postgresql_server",
+        "required": false,
+        "allowed_statuses": ["created", "running"],
+        "image_id": "sha256:6c2f8e0ad2949b4e100456f138b1184fe58cb2010cd7a9721008abb87f501458",
+        "cpuset_cpus": "144-159,400-415",
+        "cpuset_mems": "",
+        "nano_cpus": 32000000000,
+        "memory_bytes": 68719476736,
+        "memory_swap_bytes": -1,
+        "pids_limit": null,
+        "required_mount_sources": [
+          "/home/anonymous/working/benchbase/pgdata/row"
+        ],
+        "allowed_mount_prefixes": [
+          "/home/anonymous/working/benchbase/"
+        ],
+        "required_labels": {
+          "com.docker.compose.project": "benchbase",
+          "com.docker.compose.project.config_files": "/home/anonymous/working/benchbase/compose-mixstrg-cmp.yml",
+          "com.docker.compose.service": "pg-row"
+        }
+      },
+      {
+        "name": "bench-run-mixstrg-opt",
+        "role": "benchbase_client",
+        "required": false,
+        "allowed_statuses": ["created", "running"],
+        "image_id": "sha256:c9a25c10a07aa1ce87f129058f6052c1c147491356921f553e6dffd71e4bb12e",
+        "cpuset_cpus": "128-131,384-387",
+        "cpuset_mems": "",
+        "nano_cpus": 8000000000,
+        "memory_bytes": 12884901888,
+        "memory_swap_bytes": -1,
+        "pids_limit": null,
+        "required_mount_sources": [
+          "/home/anonymous/working/benchbase/bench-profiles"
+        ],
+        "required_mount_prefixes": [
+          "/home/anonymous/working/benchbase/bench-results/mixstrg-cmp/mixstrg-opt/"
+        ],
+        "allowed_mount_prefixes": [
+          "/home/anonymous/working/benchbase/"
+        ],
+        "required_labels": {}
+      },
+      {
+        "name": "bench-run-mixstrg-noopt",
+        "role": "benchbase_client",
+        "required": false,
+        "allowed_statuses": ["created", "running"],
+        "image_id": "sha256:c9a25c10a07aa1ce87f129058f6052c1c147491356921f553e6dffd71e4bb12e",
+        "cpuset_cpus": "128-131,384-387",
+        "cpuset_mems": "",
+        "nano_cpus": 8000000000,
+        "memory_bytes": 12884901888,
+        "memory_swap_bytes": -1,
+        "pids_limit": null,
+        "required_mount_sources": [
+          "/home/anonymous/working/benchbase/bench-profiles"
+        ],
+        "required_mount_prefixes": [
+          "/home/anonymous/working/benchbase/bench-results/mixstrg-cmp/mixstrg-noopt/"
+        ],
+        "allowed_mount_prefixes": [
+          "/home/anonymous/working/benchbase/"
+        ],
+        "required_labels": {}
+      },
+      {
+        "name": "bench-run-row",
+        "role": "benchbase_client",
+        "required": false,
+        "allowed_statuses": ["created", "running"],
+        "image_id": "sha256:c9a25c10a07aa1ce87f129058f6052c1c147491356921f553e6dffd71e4bb12e",
+        "cpuset_cpus": "128-131,384-387",
+        "cpuset_mems": "",
+        "nano_cpus": 8000000000,
+        "memory_bytes": 12884901888,
+        "memory_swap_bytes": -1,
+        "pids_limit": null,
+        "required_mount_sources": [
+          "/home/anonymous/working/benchbase/bench-profiles"
+        ],
+        "required_mount_prefixes": [
+          "/home/anonymous/working/benchbase/bench-results/mixstrg-cmp/row/"
+        ],
+        "allowed_mount_prefixes": [
+          "/home/anonymous/working/benchbase/"
+        ],
+        "required_labels": {}
+      }
+    ],
+    "additional_container_release_evidence": {
+      "external_script_path": "/home/anonymous/working/benchbase/run_mixstrg_0809.sh",
+      "external_script_sha256": "49315d24817f93090043cac07bed97986ee880e390073ae8b0ae50657e1b2b79",
+      "external_compose_path": "/home/anonymous/working/benchbase/compose-mixstrg-cmp.yml",
+      "external_compose_sha256": "220b0714d4370f37d1c99498858dc6cfa808720b7f81d1c95b4e9c78aab7eac3",
+      "external_storage_mount": "/",
+      "external_storage_source": "/dev/nvme0n1p4",
+      "mysql_storage_mount": "/disk2",
+      "mysql_storage_source": "/dev/nvme2n1",
+      "storage_device_overlap": false,
+      "host_swap_total_bytes_required": 0,
+      "dynamic_workload_process_cap_retained": true,
+      "container_pids_limit_readback": null,
+      "container_pids_limit_compensation": "dynamic exact-cgroup workload inventory capped by maximum_external_workload_processes",
+      "cpuset_mems_readback": "",
+      "numa_compensation": "CPU physical-core disjointness plus host memory headroom, swap-disabled, and memory-full PSI gates",
+      "external_mutation": false,
+      "read_only_profile_validation": true
+    },
+    "containers": [
+      {
+        "name": "ra_fullgrid_hybench_cpu_20260718_w1",
+        "container_id": "1ee9ca4ee76aba1f9cc764e3244d4b12a863f8593c98aec35c270000293c2ae1",
+        "cpuset_cpus": "80-83",
+        "memory_bytes": 12884901888,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_cpu/w1/pgdata",
+        "allowed_cpuset_cpus": [
+          "80-83"
+        ],
+        "allowed_memory_bytes": [
+          12884901888
+        ]
+      },
+      {
+        "name": "ra_fullgrid_hybench_cpu_20260718_w2",
+        "container_id": "f34d0ca64b1e1016259aff7165026adcf025f4ee47e23efd2f9d36ec1f6d8119",
+        "cpuset_cpus": "84-87",
+        "memory_bytes": 12884901888,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_cpu/w2/pgdata",
+        "allowed_cpuset_cpus": [
+          "84-87"
+        ],
+        "allowed_memory_bytes": [
+          12884901888
+        ]
+      },
+      {
+        "name": "ra_fullgrid_hybench_none_20260718_w1",
+        "container_id": "d3eaae0769da3d90079ec6e55ef3a309e26f2b2d189b232bb139effdddb1bf2b",
+        "cpuset_cpus": "88-91",
+        "memory_bytes": 12884901888,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_none/w1/pgdata",
+        "allowed_cpuset_cpus": [
+          "88-91",
+          "32-39,88-95,132-133,184-189,196-197,228-241"
+        ],
+        "allowed_memory_bytes": [
+          12884901888,
+          25769803776
+        ]
+      },
+      {
+        "name": "ra_fullgrid_hybench_none_20260718_w2",
+        "container_id": "b447fc532eea4b079c0749e0cd28dd1becea748d72a73d86eb440fc41f53791f",
+        "cpuset_cpus": "96-99",
+        "memory_bytes": 12884901888,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/hybench_none/w2/pgdata",
+        "allowed_cpuset_cpus": [
+          "96-99",
+          "40-47,96-103,134-135,190-195,198-199,242-255"
+        ],
+        "allowed_memory_bytes": [
+          12884901888,
+          25769803776
+        ]
+      },
+      {
+        "name": "ra_fullgrid_generic_20260718_w1",
+        "container_id": "b6d4292d8a1522633a2218ced79729e66dbc465fe937c0726dd3cbe2b6e427d1",
+        "cpuset_cpus": "64-71",
+        "memory_bytes": 8589934592,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic/w1/pgdata",
+        "allowed_cpuset_cpus": [
+          "64-71"
+        ],
+        "allowed_memory_bytes": [
+          8589934592
+        ]
+      },
+      {
+        "name": "ra_fullgrid_generic_20260718_w2",
+        "container_id": "b60d76aece750b4eb1379200f9b572a8370f0bc53d387388168232b306f17fef",
+        "cpuset_cpus": "72-79",
+        "memory_bytes": 8589934592,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic/w2/pgdata",
+        "allowed_cpuset_cpus": [
+          "72-79"
+        ],
+        "allowed_memory_bytes": [
+          8589934592
+        ]
+      },
+      {
+        "name": "ra_fullgrid_generic_mem_20260718_w1",
+        "container_id": "c7be677c9df98ad4b5de2e8d8f5e07b8fc5caa3845e565a1c4b2fcd5bc876714",
+        "cpuset_cpus": "48-55,136-139,160-163,168-171",
+        "memory_bytes": 8589934592,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic_memory/w1/pgdata",
+        "allowed_cpuset_cpus": [
+          "48-55,136-139,160-163,168-171"
+        ],
+        "allowed_memory_bytes": [
+          8589934592
+        ]
+      },
+      {
+        "name": "ra_fullgrid_generic_mem_20260718_w2",
+        "container_id": "60795cb17abf6d951c818f2a19e7ebd7392b0ccf847be792f1fbee9577de74e8",
+        "cpuset_cpus": "56-63,140-143,164-167,172-175",
+        "memory_bytes": 8589934592,
+        "disk1_mount_source": "/disk1/resource_adaptive/bruteforce_pg17_runs_20260718/workers/generic_memory/w2/pgdata",
+        "allowed_cpuset_cpus": [
+          "56-63,140-143,164-167,172-175"
+        ],
+        "allowed_memory_bytes": [
+          8589934592
+        ]
+      }
+    ],
+    "frozen_controller_client_cpu_sets": {
+      "xp_cpu": "128-131",
+      "xp_io": "144-159",
+      "job_memory": "176-179",
+      "tpch_memory": "180-183"
+    },
+    "controller_client_constraints": {
+      "mysql_target_cpu_overlap_required": 0,
+      "recognized_pg_command_and_allowed_port_required": true,
+      "container_disk1_mount_and_memory_readback_unchanged": true,
+      "host_memory_swap_and_psi_gates_unchanged": true
+    },
+    "maximum_external_client_rss_bytes": 17179869184,
+    "raw_per_process_rss_sum_gate": false,
+    "raw_per_process_rss_sum_reason": "PostgreSQL shared pages repeat in each backend RSS; frozen container cgroup limits plus host headroom/swap/PSI remain the physical memory gates",
+    "frozen_workload_process_budget": {
+      "xp_io_native_two_workers": 64,
+      "xp_cpu_native_two_workers": 8,
+      "job_two_clients_and_backends": 4,
+      "tpch_two_clients_and_backends": 4,
+      "plan_probe_safety_margin": 16,
+      "total": 96
+    },
+    "recognized_psql_port_forms": [
+      "-p PORT",
+      "--port PORT",
+      "--port=PORT",
+      "postgresql://...:PORT/database"
+    ],
+    "pg_runtime_config_bindings": {
+      "xp_cpu": {
+        "path": "/home/anonymous/program/resource_adaptive/config/runtime_pg_nomutex_20260813/xp_cpu.json",
+        "sha256": "ebd05d4a40a52c48ae9407478c792def8a3cfd5d9d5b5692327fce8e618fe440"
+      },
+      "xp_io": {
+        "path": "/home/anonymous/program/resource_adaptive/config/runtime_pg_nomutex_20260813/xp_io.json",
+        "sha256": "7d2f5546fbba0f203d72d8547aa544c35dbe3d3203f96113615b1da1602aa973"
+      },
+      "job_memory": {
+        "path": "/home/anonymous/program/resource_adaptive/config/runtime_pg_nomutex_20260813/job_memory.json",
+        "sha256": "99b66c2cb9ff9aee3d75bb96010e863c3999e8c3f5aee87309300cca983ac744"
+      },
+      "tpch_memory": {
+        "path": "/home/anonymous/program/resource_adaptive/config/runtime_pg_nomutex_20260813/tpch_memory.json",
+        "sha256": "fda315bd81fdf6a8195a0c9116358ae52d5deef2b954a70438a43ccc25f408e4"
+      }
+    },
+    "psql_uri_constraints": {
+      "psql_executable_required": true,
+      "embedded_port_must_be_in_allowed_postgres_ports": true,
+      "credential_material_not_persisted": true,
+      "unknown_port_action": "fail_closed"
+    },
+    "container_cpuset_readback_mode": "one_of_explicitly_sealed_cpu_disjoint_profiles",
+    "container_identity_mount_and_memory_readback_required": true,
+    "arbitrary_cpuset_or_memory_drift_action": "fail_closed"
+  },
+  "same_run_observer_d_state_policy": {
+    "scope": "process cmdline contains the exact unique formal run id",
+    "raw_d_state_remains_recorded": true,
+    "external_interference_classification": false,
+    "persistent_external_d_state_gate_unchanged": true,
+    "quiet_seconds_unchanged": true,
+    "maximum_wait_seconds_unchanged": true
+  },
+  "global_load1_policy": {
+    "decision_role": "diagnostic_only",
+    "reason": "host-wide one-minute decay cannot attribute load to the frozen MySQL cpuset",
+    "direct_cpu_overlap_gate_required": true,
+    "co_resident_resource_readback_required": true,
+    "persistent_d_state_gate_required": true,
+    "runtime_watchdog_required": true
+  },
+  "watchdog_lease_release_toctou": {
+    "fresh_state_reread_required_after_missing_lock": true,
+    "second_lock_read_required_when_fresh_phase_is_held": true,
+    "fresh_released_phase_action": "continue_without_interrupt",
+    "true_held_phase_missing_lock_action": "fail_closed",
+    "completed_rank_reuse": [
+      1,
+      2
+    ],
+    "uncompleted_rank_credit": 0
+  },
+  "runtime_affinity_startup_confirmation": {
+    "confirmation_seconds": 3.0,
+    "same_pid_and_error_required": true,
+    "transient_startup_mask_action": "continue_and_reinventory",
+    "persistent_overlap_action": "fail_closed",
+    "applies_at": [
+      "prestart_point_gate",
+      "r0_full_interval",
+      "candidate_runtime"
+    ],
+    "interrupted_rank_reuse": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "interrupted_rank_credit": 0
+  },
+  "frozen_external_pg_client_affinity_enforcement": {
+    "source_path": "scripts/enforce_frozen_external_pg_client_affinity_v1.py",
+    "source_sha256": "efb5d376788fe3e7cbf49e0fa047d126f7068d63549b61afe7671eafbc7e203e",
+    "discovery_authority": "disk1 optimizer_config algorithm_c.controller_client_cpuset",
+    "poll_seconds": 0.25,
+    "management_cpuset": "240-241,496-497",
+    "postgres_backends_modified": false,
+    "containers_modified": false,
+    "databases_modified": false,
+    "unrelated_processes_modified": false,
+    "affinity_readback_required": true,
+    "runtime_watchdog_remains_fail_closed": true,
+    "interrupted_rank_credit": 0,
+    "formal_resume_rank": 3,
+    "client_recognition_markers": [
+      "com.hybench.HyBench",
+      "stmt_postgres.toml",
+      "benchbase.jar",
+      "psql"
+    ],
+    "native_xp_wrapper_pinned_before_exec": true,
+    "same_optimizer_config_cpuset_authority": true
+  },
+  "measurement_checkpoint_recovery": {
+    "builder_path": "scripts/build_mysql_algorithm_c_outer_checkpoint_v4.py",
+    "builder_sha256": "ee6d09353287218010e0df5b014c6230e0313656589a37a5dc56075a16dec3a1",
+    "completed_outer_attempt": 9,
+    "interrupted_outer_attempt": 10,
+    "reusable_completed_ranks": [
+      1,
+      2
+    ],
+    "replayed_rank": 3,
+    "interrupted_rank_credit": 0,
+    "latest_completed_outer_attempt": 12,
+    "latest_interrupted_outer_attempt": 13,
+    "latest_reusable_completed_ranks": [
+      1
+    ],
+    "latest_resume_rank": 2
+  },
+  "dead_mysqld_predecessor_recovery": {
+    "formal_resume_rank": 3,
+    "sql_probe_timeout_alone_never_sufficient": true,
+    "exact_container_name_id_and_labels_required": true,
+    "docker_identity_reread_required": true,
+    "live_or_d_state_mysqld_remains_fail_closed": true,
+    "only_absent_or_zombie_mysqld_is_discardable": true,
+    "predecessor_datadir_discard_only": true,
+    "failed_rank_credit": 0
+  },
+  "pre_reset_xp_candidate_selection": {
+    "formal_resume_rank": 3,
+    "xp_worker_selection": "deterministic_frozen_w1_reset_target",
+    "xp_sql_liveness_before_reset_required": false,
+    "exact_identity_and_session_drain_still_required_in_reset": true,
+    "job_tpch_live_sql_lane_still_required": true,
+    "failed_rank_credit": 0
+  },
+  "technical_rank_continuation": {
+    "formal_resume_rank": 4,
+    "completed_technical_rank": 3,
+    "technical_rank_batch_status": "FAILED_CLOSED",
+    "technical_rank_replayed_without_rerun": true,
+    "technical_rank_excluded_from_decisions": true,
+    "accepted_state_credit_increment": 0,
+    "rejected_outer_attempt_increment": 0,
+    "tier_convergence_replay_and_pruning_mutation": false,
+    "next_reset_mutation_before_failure": false
+  },
+  "non_target_bottleneck_hard_gate": {
+    "threshold": 0.8,
+    "comparison": "each_non_target_resource_strictly_below_threshold",
+    "applies_to_acceptance_tiers": [
+      "strict_three_level",
+      "qps_target",
+      "fallback_qps"
+    ],
+    "candidate_score_mutation": false,
+    "qps_resource_prediction_gradient_or_score_role": false,
+    "prior_credited_acceptance_audit_status": "PASS",
+    "prior_credited_acceptance_mutation": false,
+    "future_violation_effect": "hard_gate_failed"
+  },
+  "coordination_signature_repair": {
+    "workload_semantics_changed": false,
+    "resource_envelope_changed": false,
+    "candidate_schedule_changed": true,
+    "candidate_rank_schedule_unchanged": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "candidate_scoring_changed": false,
+    "hard_pruning_changed": false,
+    "binary_interval_shrink_changed": false,
+    "accepted_state_credit_increment": 0,
+    "rejected_outer_attempt_increment": 0,
+    "resume_outer_attempt": 10,
+    "next_outer_attempt": 11,
+    "resume_rank": 1
+  },
+  "release_version": "v56",
+  "isolated_co_resident_runtime_v2": {
+    "formal_scope": "mysql_only",
+    "cross_engine_comparison_prohibited": true,
+    "workload_or_resource_envelope_changed": false,
+    "candidate_schedule_scoring_acceptance_and_convergence_changed": false,
+    "isolated_external_physical_workload_allowed": true,
+    "cpu_overlap_or_disk2_mount_action": "fail_closed",
+    "unsealed_container_profile_action": "fail_closed",
+    "persistent_d_state_required_consecutive_samples": 3,
+    "outer13_rank1_reuse_prohibited_due_to_runtime_overlap": true,
+    "resume_checkpoint_outer_attempt": 12,
+    "resume_outer_attempt": 13,
+    "resume_rank": 1,
+    "entrypoint_import_repair": true
+  },
+  "quiet_gate_bounded_recovery": {
+    "required_clean_seconds": 15,
+    "maximum_wait_seconds": 60,
+    "maximum_gate_attempts_per_wave": 1,
+    "persistent_d_state_required_consecutive_samples": 3,
+    "persistent_d_state_action": "fail_closed",
+    "completed_rank_reuse_after_premeasurement_timeout": true,
+    "interrupted_rank_state_credit": 0
+  }
+}

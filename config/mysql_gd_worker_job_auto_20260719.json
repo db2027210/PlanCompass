@@ -1,0 +1,11 @@
+{
+  "workers": [
+    {
+      "worker_id": "job-auto",
+      "benchmarks": ["job"],
+      "port": 32773,
+      "mysqld_pid": 3204768,
+      "database": "job"
+    }
+  ]
+}

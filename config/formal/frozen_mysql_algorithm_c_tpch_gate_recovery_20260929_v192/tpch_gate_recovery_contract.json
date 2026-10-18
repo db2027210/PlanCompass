@@ -1,0 +1,52 @@
+{
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "fresh_scene_search_required": true,
+  "historical_interval_state_reused": false,
+  "other_scene_process_control_or_stop_performed": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "release_version": "v192-tpch-v191-gate-recovery",
+  "resource_envelope_changed": false,
+  "scene": "tpch_sf4_memory",
+  "schema_version": "mysql_algorithm_c_tpch_gate_recovery_contract_v1",
+  "source_bindings": {
+    "recovery_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_tpch_v191_gate_recovery_v192.py",
+      "sha256": "4fca4a18708fffcdffa7ddef4ddff93653b8853bf65c2789fb93edc3251fc1fa"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_tpch_v191_gate_recovery_v192.py",
+      "sha256": "e66629c9e59a3d4221195f5a5ac0947640d9f8532afabfcab43c1ff4fef9c8f1"
+    },
+    "scene_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v98.py",
+      "sha256": "7032911c7465844310699862876be430a3f5b9cd75ae7c5b889e304af8185735"
+    },
+    "source_batch_1": {
+      "path": "history/mysql_four_scene_20260809/c_v191_pg_exact_hwloc_four_scene_20260929_tpch/outer_001/top5_batch_1/batch_result.json",
+      "sha256": "9ddd2cbbf7d3266524e106c587ece4300be7360ef2b35e83a31d0a9673581d3c"
+    },
+    "source_batch_2": {
+      "path": "history/mysql_four_scene_20260809/c_v191_pg_exact_hwloc_four_scene_20260929_tpch/outer_001/top5_batch_2/batch_result.json",
+      "sha256": "eefe91eb27104812c4a3fb41030c155e448624be0d31ab3f765479d9a9956ad2"
+    },
+    "source_batch_3_gate": {
+      "path": "history/mysql_four_scene_20260809/c_v191_pg_exact_hwloc_four_scene_20260929_tpch/outer_001/top5_batch_3_dynamic_noninterference_gate.json",
+      "sha256": "bb06b0b039d1f7c3d2338668e9c8100922641fe46a9b8b3f8019494608557aa7"
+    },
+    "source_failed_state": {
+      "path": "history/mysql_four_scene_20260809/c_v191_pg_exact_hwloc_four_scene_20260929_tpch/run_state.json",
+      "sha256": "8c40f41d70ac504a9eaf24987934d4a3b5343939ea7ba01e36f199274e4a71b8"
+    },
+    "source_four_scene_launch": {
+      "path": "history/mysql_four_scene_20260809/c_v191_pg_exact_hwloc_four_scene_20260929/launch_manifest.json",
+      "sha256": "a469f917b4010acf8eda2c96b0a084a4ee93e36481ba6040af810e1a7cb86b29"
+    }
+  },
+  "source_completed_batches_not_counted_as_outer_round": true,
+  "source_failure": "transient_dynamic_noninterference_window_timeout",
+  "source_formal_credit": 0,
+  "source_four_scene_started_concurrently": true,
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "workload_or_candidate_policy_changed": false
+}

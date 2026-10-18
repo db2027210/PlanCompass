@@ -1,0 +1,317 @@
+{
+  "schema_version": "mysql_algorithm_c_outer_runtime_optimization_v6",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "objective": "reduce one four-scene outer attempt from 60-70 minutes toward 45 minutes without changing formal measurements or convergence",
+  "unchanged_contracts": {
+    "active_scenes": [
+      "job_memory",
+      "tpch_sf4_memory",
+      "hybench_xp_cpu",
+      "hybench_xp_io"
+    ],
+    "fixed_top_k": 5,
+    "candidate_rank_order": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "job_full_query_count": 113,
+    "job_executions_per_measurement": 1,
+    "job_workers": 16,
+    "job_maximum_concurrent_long_queries": 4,
+    "tpch_scale_factor": 4,
+    "tpch_full_query_count": 22,
+    "tpch_executions_per_measurement": 1,
+    "tpch_lanes": 5,
+    "xp_measurement_seconds": 600,
+    "xp_iq_selection": "uniform_random_IQ1_IQ7",
+    "xp_at_mix_percent": [
+      35,
+      25,
+      15,
+      15,
+      7,
+      3
+    ],
+    "xp_xap_xtp_ratio": [
+      1,
+      1
+    ],
+    "binary_log_interval_shrink_unchanged": true,
+    "maximum_interval_ratio": 1.01,
+    "required_consecutive_stable_accepted_rounds": 2,
+    "hard_gates_and_coverage_unchanged": true,
+    "formal_baseline_controls_unchanged": true,
+    "resource_envelope_unchanged": true
+  },
+  "optimized_reset": {
+    "old_behavior": "authenticated normal shutdown could spend 120 seconds in docker wait and another 120 seconds in docker stop on an old datadir that is always quarantined",
+    "new_behavior": "after client drain set innodb_fast_shutdown=2 on the discard-only predecessor, wait at most 30 seconds, then use audited SIGKILL only if it still has not exited; preserve an identity-verified stopped wrapper, replace its bind-source runtime with a sealed-template copy, restart it, and restore innodb_fast_shutdown=1",
+    "legacy_fallback": "prohibited_for_discard_only_predecessor",
+    "fallback": "docker_kill_SIGKILL_after_30_second_authenticated_fast_shutdown_bound",
+    "fallback_is_audited": true,
+    "fresh_template_copy_required": true,
+    "bootstrap_required": false,
+    "transient_bootstrap_container_prohibited": true,
+    "credential_initialization": "mysqld_init_file",
+    "credential_init_file_private_mode": "0400",
+    "credential_init_file_owner": "999:999",
+    "credential_init_file_direct_read_only_bind_mount": true,
+    "credential_init_file_sha256_evidence_required": true,
+    "post_start_root_and_benchmark_login_verification_required": true,
+    "credential_rotation_required": true,
+    "post_start_resource_readback_required": true,
+    "independent_reset_workers": 4,
+    "reset_concurrency": 4,
+    "single_candidate_batch_reset_worker_ids": [
+      "xp_cpu_w1",
+      "xp_io_w1"
+    ],
+    "single_candidate_companion_workers_not_reset": [
+      "xp_cpu_w2",
+      "xp_io_w2"
+    ],
+    "partial_reset_companion_container_identity_readback_required": true,
+    "docker_control_concurrency": 2,
+    "docker_control_timeout_seconds": 240,
+    "discard_authenticated_exit_wait_seconds": 30,
+    "discard_sigkill_wait_seconds": 30,
+    "discarded_datadir_never_reused": true,
+    "completed_reset_quarantine_retention": "zero",
+    "completed_reset_quarantine_cleanup_after_binding_required": true,
+    "interrupted_reset_quarantine_retained_until_recovery_complete": true,
+    "cleanup_live_mount_validation_required": true,
+    "cleanup_failure_before_workload_is_fail_closed": true,
+    "stopped_wrapper_reuse": "required when the exact predecessor container survives shutdown; a removed wrapper falls back to a fresh docker run",
+    "stopped_wrapper_full_id_mount_command_and_state_validation_required": true,
+    "sealed_datadir_and_credentials_replaced_before_restart": true,
+    "discard_only_blkio_throttle_lift": "remove old-container target-device read/write throttle after workload drain and restore frozen caps on the new measurement container",
+    "discard_only_blkio_lift_readback_required": true,
+    "measurement_innodb_fast_shutdown_readback": 1,
+    "measurement_concurrency_changed": true
+  },
+  "serialized_candidate_scheduling": {
+    "predecessor_batches": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "successor_batches": [
+      [
+        1
+      ],
+      [
+        2
+      ],
+      [
+        3
+      ],
+      [
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "maximum_concurrent_candidate_points": 1,
+    "candidate_set_and_order_unchanged": true,
+    "within_candidate_four_scene_concurrency_unchanged": true,
+    "job_tpch_internal_schedules_unchanged": true,
+    "resource_envelopes_unchanged": true,
+    "formal_acceptance_and_convergence_unchanged": true,
+    "evidence_run": "four_scene_algorithm_c_outer5_pilot_nonformal_serial_v6_20260813T1048p0800",
+    "evidence_batches_passed": 5,
+    "evidence_scene_measurements_passed": 20
+  },
+  "optimized_plan_ranking": {
+    "old_behavior": "four independent scene rankings executed serially",
+    "new_behavior": "four independent scene rankings execute concurrently on distinct representative workers",
+    "maximum_concurrency": 4,
+    "representative_worker_per_scene": true,
+    "candidate_generation_unchanged": true,
+    "candidate_scoring_unchanged": true,
+    "fixed_top_k_unchanged": true,
+    "real_replay_unchanged": true,
+    "measurement_concurrency_changed": false,
+    "per_scene_elapsed_audit_required": true
+  },
+  "replay_quarantine_policy": {
+    "schema_version": "mysql_algorithm_c_replay_quarantine_v6",
+    "soft_replayed_points_by_scene": {
+      "job_memory": 10,
+      "tpch_sf4_memory": 4,
+      "hybench_xp_cpu": 8,
+      "hybench_xp_io": 8
+    },
+    "permanent_invalid_points_by_scene": {
+      "job_memory": 3,
+      "tpch_sf4_memory": 5,
+      "hybench_xp_cpu": 5,
+      "hybench_xp_io": 5
+    },
+    "soft_points_may_reenter_only_after_allowed_pool_exhaustion": true,
+    "permanent_invalid_points_may_reenter": false,
+    "permanent_invalid_reason": "formal 900-second wall timeout invalid measurement",
+    "fixed_top_k_unchanged": true,
+    "candidate_generation_unchanged": true,
+    "candidate_scoring_unchanged": true,
+    "real_replay_unchanged": true,
+    "new_v18_campaign_initial_counts_by_scene": {
+      "job_memory": 0,
+      "tpch_sf4_memory": 0,
+      "hybench_xp_cpu": 0,
+      "hybench_xp_io": 0
+    },
+    "pre_v18_evidence_imported": false
+  },
+  "historical_runtime_basis_seconds": {
+    "outer_002_plan_ranking_approximate": 483,
+    "outer_002_reset_total": 1277,
+    "outer_002_measurement_total": 2204,
+    "outer_002_decision_overhead_approximate": 5,
+    "outer_002_total_approximate": 3969,
+    "optimized_v2_observed_parallel_plan_ranking": 105.526,
+    "optimized_v2_observed_batch_1_reset": 287,
+    "optimized_v2_reset_bottleneck": "four transient bootstrap containers all required docker-stop fallback; slowest workers spent approximately 93-95 seconds in bootstrap shutdown alone",
+    "single_start_reset_pilot_status": "PASS",
+    "single_start_reset_pilot_elapsed_seconds": 160.7716304929927,
+    "single_start_reset_pilot_workers_started_in_this_attempt": 3,
+    "single_start_reset_pilot_completed_worker_reused": 1,
+    "single_start_reset_pilot_bootstrap_container_count": 0,
+    "optimized_v3_outer3_plan_ranking_seconds": 171.52822894603014,
+    "optimized_v3_batch1_reset_seconds": 318.0108828030061,
+    "optimized_v3_batch2_reset_seconds": 357.40050033596344,
+    "optimized_v3_batch1_measurement_seconds": 696.5194001820055,
+    "optimized_v3_batch2_measurement_status": "FAILED_CLOSED_AT_911_SECONDS",
+    "optimized_v3_reset_bottleneck": "discard shutdown reached 285.9 seconds on xp_io_w1 after docker wait timeout and docker stop fallback",
+    "discard_fast_shutdown_fresh_container_pilot_seconds": 318.8278802210116,
+    "stopped_wrapper_reuse_pilot_status": "PASS",
+    "stopped_wrapper_reuse_pilot_seconds": 196.86847680801293,
+    "stopped_wrapper_reuse_pilot_all_four_workers": true,
+    "stopped_wrapper_reuse_pilot_full_resource_and_account_readback": true,
+    "optimized_v4_batch1_reset_seconds": 223.76149331004126,
+    "optimized_v4_batch1_measurement_seconds": 682.8534596209647,
+    "optimized_v4_batch2_reset_seconds": 233.30266434204532,
+    "optimized_v4_batch2_measurement_seconds": 628.5297648159903,
+    "optimized_v4_batch3_reset_seconds_before_partial_reset": 277.26983741601,
+    "optimized_v4_batch3_status": "FAILED_CLOSED_AT_907_SECONDS",
+    "partial_single_candidate_reset_pilot_status": "PASS",
+    "partial_single_candidate_reset_pilot_seconds": 104.0087605699664,
+    "partial_single_candidate_reset_companion_ids_unchanged": true,
+    "interrupted_v5_reset_recovery_status": "PASS",
+    "interrupted_v5_reset_recovery_seconds": 127.40709132602206,
+    "optimized_v6_batch1_status": "PASS",
+    "optimized_v6_batch1_reset_seconds": 226.955776554998,
+    "optimized_v6_batch1_measurement_seconds": 646.7048570829793,
+    "optimized_v6_batch2_status": "FAILED_CLOSED_AT_910_SECONDS",
+    "optimized_v6_failed_workload_discard_recovery_status": "PASS",
+    "optimized_v6_failed_workload_discard_recovery_seconds": 152.9695204779855,
+    "zero_retention_cleanup_runtime_validation_status": "PASS",
+    "zero_retention_cleanup_deleted_bytes": 43885851936,
+    "disk2_use_percent_after_manual_backlog_and_runtime_cleanup": 78
+  },
+  "target_runtime_seconds": {
+    "conservative_reset_total": 600,
+    "observed_expected_reset_total": 561.072918222053,
+    "measurement_total_unchanged": 2204,
+    "observed_expected_measurement_total": 1940,
+    "conservative_plan_ranking": 172,
+    "observed_plan_ranking": 106,
+    "decision_overhead": 5,
+    "conservative_outer_total": 2981,
+    "conservative_outer_minutes": 49.7,
+    "estimated_outer_total": 2612,
+    "estimated_outer_minutes": 43.5,
+    "target_description": "approximately 45 minutes from two observed passing batches plus a 600-second single-candidate batch and the validated 104-second partial reset"
+  },
+  "activation": {
+    "hot_reload_into_active_formal_controller_prohibited": true,
+    "activate_only_from_verified_outer_boundary_checkpoint": true,
+    "fresh_rolling_noninterference_preflight_required": true,
+    "fresh_live_resource_binding_required": true,
+    "fresh_benchmark_account_verification_required": true,
+    "first_single-start_reset_is_a_runtime_pilot": true,
+    "pilot_failure_action": "fail_closed_or_use_audited_legacy_fallback",
+    "single_start_reset_runtime_validated": true,
+    "discard_fast_shutdown_runtime_validated": true,
+    "stopped_wrapper_reuse_runtime_validated": true,
+    "single_candidate_partial_reset_runtime_validated": true,
+    "runtime_validated": true,
+    "completed_reset_zero_retention_runtime_validated": true
+  },
+  "bindings": {
+    "resource_freeze_path": "config/formal/frozen_mysql_disk2_two_worker_20260813_v18/four_scene_effective_resource_successor.json",
+    "resource_freeze_sha256": "a19dff2a72963f147ac914345e4b188522d9dca23dd35b5aa85cba6f1f4801df",
+    "reset_source_path": "scripts/reset_mysql_xp_data_planes_v5.py",
+    "reset_source_sha256": "c5365f38965b4c59864c9897921cbe19aa15ccbace3427861bac18acc690e271",
+    "discard_reset_pilot_source_path": "scripts/pilot_mysql_algorithm_c_discard_reset_v2.py",
+    "discard_reset_pilot_source_sha256": "1d49dec1ae20e0c00fca963518fdf48f426730bf87e8ab40a9f3d1dcb6f56955",
+    "partial_reset_pilot_source_path": "scripts/pilot_mysql_algorithm_c_partial_xp_reset_v1.py",
+    "partial_reset_pilot_source_sha256": "7353de802c0f21322ab93da3939f33fb4fb15aa3a2acf4e37eebcfe09a446a37",
+    "partial_reset_pilot_path": "history/mysql_four_scene_20260809/algorithm_c_partial_xp_reset_pilot_v1_20260812T073927p0800/pilot_result.json",
+    "partial_reset_pilot_sha256": "7134ecff12e42e22314a83f0b7b5b4e5ba3199a36e21e2657b797009b1679c89",
+    "partial_reset_binding_path": "history/mysql_four_scene_20260809/algorithm_c_partial_xp_reset_pilot_v1_20260812T073927p0800/xp_resets/partial_single_candidate_xp_reset_v1/reset_binding.json",
+    "partial_reset_binding_sha256": "84658b07e276df37cdc0cb38ce49b275af46975ec52c3d08dfb7e6faa773bdd6",
+    "runtime_validation_pilot_path": "history/mysql_four_scene_20260809/algorithm_c_discard_reset_pilot_v2_retry8_20260812T062136p0800/pilot_result.json",
+    "runtime_validation_pilot_sha256": "47673597cbaaf23cff5a51c1523c5ccf1c3ad84f895b5206ad6b1925c0871eb0",
+    "runtime_validation_reset_binding_path": "history/mysql_four_scene_20260809/algorithm_c_discard_reset_pilot_v2_retry8_20260812T062136p0800/xp_resets/discard_fast_shutdown_pilot_v2/reset_binding.json",
+    "runtime_validation_reset_binding_sha256": "e48375240aeab5c3d92385fc5fcdfce21d5f90700a6938360ee2be233cab8a81",
+    "algorithm_source_path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+    "algorithm_source_sha256": "246be35d23882add56fa88667ba7eb105cf3581a3a56f7f5edb6cf2654979491",
+    "resume_controller_path": "scripts/run_mysql_four_scene_algorithm_c_resume_v1.py",
+    "resume_controller_sha256": "6ecb0a952acd99aa59a1c660ffbd6b161c15168d10f9b4188373488ff7a801e0",
+    "boundary_resume_controller_path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v2.py",
+    "boundary_resume_controller_sha256": "ffdbe9d5cee20dcb440fb0a3685ca5bfa6ae691dcbd594237b4a99aa66e29846",
+    "boundary_launch_source_path": "scripts/launch_mysql_algorithm_c_boundary_resume_v2.py",
+    "boundary_launch_source_sha256": "5855215b55d50d686a8a3c1aac05e9ed17c800cf874741fd067802d10802d480",
+    "replay_quarantine_builder_path": "scripts/build_mysql_algorithm_c_replay_quarantine_v4.py",
+    "replay_quarantine_builder_sha256": "e0709fa439ec682d61d3e036258120e1fb19834a01670b68e68381590d3f9bd0",
+    "replay_quarantine_path": "history/mysql_four_scene_20260809/algorithm_c_replay_quarantine_outer3_v4_20260812/replay_quarantine.json",
+    "replay_quarantine_sha256": "1310b64a88d0142a9e0af28e052f865b611d3676a95a9b1f06687647332f859c",
+    "v6_discard_recovery_pilot_path": "history/mysql_four_scene_20260809/algorithm_c_discard_reset_after_v6_batch2_v1_retry2_20260812T0848p0800/pilot_result.json",
+    "v6_discard_recovery_pilot_sha256": "b132044abb0c177d084f124f303843725ab80ab81aab0091748a7ff480f8fd98",
+    "v6_discard_recovery_binding_path": "history/mysql_four_scene_20260809/algorithm_c_discard_reset_after_v6_batch2_v1_retry2_20260812T0848p0800/xp_resets/discard_fast_shutdown_pilot_v2/reset_binding.json",
+    "v6_discard_recovery_binding_sha256": "d0665ce53d855f68597e3296c9824fd7a1c39cfd81b60edc058134a139dcf508",
+    "interrupted_reset_recovery_source_path": "scripts/recover_mysql_algorithm_c_interrupted_formal_reset_v1.py",
+    "interrupted_reset_recovery_source_sha256": "633e653d0df750953397b45d790654cfe1f92b27d09ed47253a9fbcfa535cd8d",
+    "interrupted_reset_recovery_result_path": "history/mysql_four_scene_20260809/algorithm_c_interrupted_v5_reset_recovery_v1_20260812T0805p0800/recovery_result.json",
+    "interrupted_reset_recovery_result_sha256": "5156960bfde2aee1d26b5d03db16927c05dc383038bf1d543728a5acc7800384",
+    "interrupted_reset_recovery_binding_path": "history/mysql_four_scene_20260809/algorithm_c_interrupted_v5_reset_recovery_v1_20260812T0805p0800/recovered_xp_binding.json",
+    "interrupted_reset_recovery_binding_sha256": "6d2b862498dfb1b7cd59e00201bb36d757dca3c4d2545876aa94c691c29e5e40",
+    "completed_quarantine_cleanup_source_path": "scripts/cleanup_mysql_algorithm_c_completed_quarantine_v1.py",
+    "completed_quarantine_cleanup_source_sha256": "a6597462c5acb4e04d3efd0bf0e47d6e98f360940245501f7b21d810a9d2e079",
+    "zero_retention_runtime_validation_path": "history/mysql_four_scene_20260809/algorithm_c_discard_reset_after_v6_batch2_v1_retry2_20260812T0848p0800/xp_resets/discard_fast_shutdown_pilot_v2/quarantine_cleanup.json",
+    "zero_retention_runtime_validation_sha256": "d68107e05630e02eb6b037dc827e0c656dc0fa6449920ca024d9a5814bb294c3",
+    "plan_replay_pruning_source_path": "mysql_algorithm_c_plan_replay_pruning.py",
+    "plan_replay_pruning_source_sha256": "5c7ff00a8e2b48934ec5586ae0075ce5e2fd9205858e1d6fb4dd6cc93361c088",
+    "plan_replay_pruning_contract_path": "config/formal/mysql_algorithm_c_plan_replay_pruning_20260813_v2/contract.json",
+    "plan_replay_pruning_contract_sha256": "8cde8a25f101092bfebb33333155c4af430e7202e30b53581b6080743e289221"
+  },
+  "predecessor": {
+    "path": "config/formal/frozen_mysql_algorithm_c_outer_runtime_20260813_v5/optimization_contract.json",
+    "sha256": "abadcdba0978be4a33cfb1aec06c62dbb84c6ea3b94213b85895af853293d737"
+  },
+  "successor_reason": "activate_empty_v18_pruning_v2_replay_quarantine_without_importing_v15_invalid_evidence",
+  "plan_replay_pruning_v2": {
+    "contract_path": "config/formal/mysql_algorithm_c_plan_replay_pruning_20260813_v2/contract.json",
+    "contract_sha256": "8cde8a25f101092bfebb33333155c4af430e7202e30b53581b6080743e289221",
+    "single_reject": "soft_ranking_penalty_only",
+    "hard_prune_requires_distinct_rounds": 2,
+    "hard_prune_requires_distinct_parameter_points": 2,
+    "accepted_counterexample_prohibits_pruning": true,
+    "acceptance_tier_insufficiency_learnable": false,
+    "qps_used_for_resource_prediction_gradient_or_candidate_score": false
+  }
+}

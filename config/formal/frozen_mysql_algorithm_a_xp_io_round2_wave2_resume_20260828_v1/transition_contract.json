@@ -1,0 +1,53 @@
+{
+  "schema_version": "mysql_algorithm_a_xp_io_round2_wave2_resume_contract_v1",
+  "release_version": "v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "A",
+  "scene": "hybench_xp_io",
+  "round1_committed_state_retained": true,
+  "round2_wave1_physical_evidence_reused": true,
+  "round2_wave2_recovered_reset_reused": true,
+  "completed_candidate_measurements_replayed_false": true,
+  "accepted_or_rejected_credit_for_recovery_zero": true,
+  "candidate_set_unchanged": true,
+  "resource_envelope_unchanged": true,
+  "native_xp_workload_unchanged": true,
+  "physical_replay_parallelism_eight": true,
+  "external_process_control_or_stop_prohibited": true,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_a_xp_io_round2_wave2_recovered_resume_v1.py",
+      "sha256": "f20684fa2ed058e612de245c1a7e1d300fd57aa96e603e2f27e63e5bee71b556"
+    },
+    "runtime_v12": {
+      "path": "scripts/run_mysql_algorithm_a_xp_top4_mixed_eight_worker_v12.py",
+      "sha256": "c92f53da4f1c4f9263dd13d23e547d286f11053edbaee4ae58f9dedab04129a9"
+    },
+    "source_state": {
+      "path": "history/mysql_four_scene_20260809/v853_to_a_io_round1_w5_recovered_resume_20260828_xp_io/algorithm_a_state.json",
+      "sha256": "bf51968b703b76b31dce5b71b56da6bf22a1d01f6adf8f6ecd41add77d5db6b4"
+    },
+    "source_candidates": {
+      "path": "history/mysql_four_scene_20260809/v853_to_a_io_round1_w5_recovered_resume_20260828_xp_io/round_002/candidates.json",
+      "sha256": "e455eecbeb7847caa99dd23569cf069d258483f66cca15b406870c43fea19ea3"
+    },
+    "source_wave1": {
+      "path": "history/mysql_four_scene_20260809/v853_to_a_io_round1_w5_recovered_resume_20260828_xp_io/round_002/wave_001/attempt_01/batch_result.json",
+      "sha256": "bb6a054ccda3c3ef52cbde8dbc03c4335f5d2cfbf5a3759ee2ca0d4c727206fd"
+    },
+    "recovered_reset": {
+      "path": "history/mysql_four_scene_20260809/v856_to_a_io_v855_interrupted_baseline_recovery_20260828/xp_resets/v856_to_a_io_v855_interrupted_baseline_recovery_20260828/reset_binding.json",
+      "sha256": "b762a2859291501e34ec3ea63b8fcf5bdce623b4fb23d73ce15193a026c377e1"
+    },
+    "recovered_settle": {
+      "path": "history/mysql_four_scene_20260809/v856_to_a_io_v855_interrupted_baseline_recovery_20260828/xp_resets/v856_to_a_io_v855_interrupted_baseline_recovery_20260828/post_reset_storage_settle.json",
+      "sha256": "0b33af40e185214eda27e22c4a174e8a7db0c7c2971175c939a038198ce335d2"
+    },
+    "live_authority": {
+      "path": "history/mysql_four_scene_20260809/v857_to_a_io_v856_recovery_authority_20260828/live_authority.json",
+      "sha256": "d914b63140f5a06092b99e3fc9c47b7815cc53e483fe7024e7d6e0f510063681"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "workers": [
+    {
+      "worker_id": "job-1",
+      "benchmarks": ["job"],
+      "port": 57752,
+      "mysqld_pid": 1906133,
+      "database": "job"
+    }
+  ]
+}

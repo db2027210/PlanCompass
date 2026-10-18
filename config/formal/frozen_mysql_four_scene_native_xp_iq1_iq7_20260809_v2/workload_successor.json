@@ -1,0 +1,70 @@
+{
+  "schema_version": "mysql_four_scene_native_xp_iq1_iq7_workload_successor_v2",
+  "status": "FROZEN",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "authority": "user_supplied_AGENTS_2026-08-09",
+  "execution_authorized": true,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "job_tpch_predecessor": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260809_v1/tpch_sf4_workload_successor.json",
+    "sha256": "c5b9f11b4bbd1ad92ad7b6da63447e3a84809b8dd765af85488be055d6f237b0",
+    "unchanged": true
+  },
+  "native_hybench_xp": {
+    "at_mix_percent": [
+      35,
+      25,
+      15,
+      15,
+      7,
+      3
+    ],
+    "exclusive_random_range": [
+      1,
+      8
+    ],
+    "forbidden_overrides": [
+      "ap_query_ids",
+      "ap_query_weights",
+      "ap_query_sequence",
+      "ap_query_sequence_limit",
+      "AT/TP mix",
+      "one-query XP"
+    ],
+    "iq7_parameter_authority": "existing_HyBench_execQ7",
+    "iq7_sql_authority": "existing_HyBench_AP_7",
+    "iq_selection": "uniform_random_IQ1_IQ7",
+    "mode": "native_runxp",
+    "xap_xtp_baseline": [
+      8,
+      8
+    ],
+    "xap_xtp_reduced_ratio": [
+      1,
+      1
+    ],
+    "cpu_and_io_workload_identical": true,
+    "runtime_manifest": {
+      "path": "artifacts/mysql_xp_native_iq1_iq7_successor_v2/e3e3a32e6b095e10d5e229be5ec211131f626374bc82764d98ad3f910344e017/manifest.json",
+      "sha256": "3a8c6569368e8b0971b85569312a60daaacc5add390796bb9e1bde4846196656"
+    },
+    "runtime_jar": {
+      "path": "artifacts/mysql_xp_native_iq1_iq7_successor_v2/e3e3a32e6b095e10d5e229be5ec211131f626374bc82764d98ad3f910344e017/runtime/HyBench-native-IQ1-IQ7-v2.jar",
+      "sha256": "c1c353eedf8bc0a4d4f9a3f92c46c6e2c31241991e789a10f800ab887bee50a3"
+    }
+  },
+  "predecessor_failed_r0": {
+    "path": "history/mysql_four_scene_20260809/four_scene_native_iq1_iq7_r0_v7_retry2_20260809T195600p0800/r0_binding.json",
+    "sha256": "0f74676cf53b2481a8588bb3e6b08830c5c29db84c8264ef64eafd444f544c7b",
+    "accepted_rounds_credit": 0
+  },
+  "iq1_iq6_artifacts_prohibited": true,
+  "incomplete_iq1_iq7_v1_artifacts_prohibited": true,
+  "fresh_xp_data_plane_and_r0_required": true
+}

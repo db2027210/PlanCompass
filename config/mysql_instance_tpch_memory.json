@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "image": "mysql:8.0",
+  "label_key": "resource-adaptive-mysql.owner",
+  "label_value": "mysql-grid-20260718",
+  "name_prefix": "ra-mysql-grid-",
+  "target_root": "/disk3",
+  "block_on_external_experiments": false,
+  "external_experiment_markers": ["hybench", "benchbase", "resource_adaptive", "experiment"],
+  "instances": [
+    {"id": "tpch-memory", "port": 13307, "cpuset": "64-67", "memory": "8g", "blkio_weight": 500, "pids_limit": 512, "datadir": "/disk3/ra_mysql_isolated/tpch-memory"}
+  ]
+}

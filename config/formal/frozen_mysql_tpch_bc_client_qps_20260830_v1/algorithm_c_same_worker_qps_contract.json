@@ -1,0 +1,28 @@
+{
+  "schema_version": "mysql_tpch_algorithm_c_same_worker_qps_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "tpch_sf4_memory",
+  "normalization_schema_version": "mysql_tpch_same_worker_client_qps_normalization_v1",
+  "comparison_semantics": "candidate_raw_client_qps_times_canonical_over_same_worker_baseline",
+  "canonical_baseline_aggregation": "arithmetic_mean_of_two_valid_worker_baselines",
+  "fresh_baseline_capture_required": true,
+  "raw_worker_client_qps_preserved": true,
+  "outer_acceptance_uses_normalized_client_qps": true,
+  "candidate_set_or_ranking_changed": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_tpch_algorithm_c_client_qps_normalized_v2.py",
+      "sha256": "14dac9cda6436d0541afdd9b1a49176ad644ed9804b927e498884c81eccd2486"
+    },
+    "normalization": {
+      "path": "scripts/mysql_tpch_worker_qps_normalization_v1.py",
+      "sha256": "aecfad4c0a417781736a1c1abc4db7e0e23cdf6323f23b8febf2b0ea4bd47c20"
+    },
+    "client_qps_predecessor": {
+      "path": "scripts/run_mysql_tpch_algorithm_c_client_qps_fresh_v1.py",
+      "sha256": "22f506a7f6223172ac00a29c428ee1344813c84a8cd1f21ed99c10fd4b80ae2f"
+    }
+  }
+}

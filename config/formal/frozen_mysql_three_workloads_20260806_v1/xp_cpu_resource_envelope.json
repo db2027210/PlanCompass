@@ -1,0 +1,38 @@
+{
+  "benchmark": "hybench_xp",
+  "cross_engine_comparison_prohibited": true,
+  "execution_authorized": false,
+  "formal_scope": "mysql_only",
+  "intended": {
+    "cpu_period_us": 100000,
+    "cpu_quota_cores": 2.7682,
+    "cpu_quota_us": 276820,
+    "cpuset_cpus": "184-199,440-455",
+    "cpuset_mems": "1",
+    "innodb_buffer_pool_bytes": 4294967296,
+    "io_device": "8:0",
+    "io_read_bps": 1205862400,
+    "io_write_bps": 1205862400,
+    "memory_bytes": 8589934592,
+    "memory_swap_bytes": 0,
+    "pids_max": 1024
+  },
+  "pressure_construction": "resource_envelope_only",
+  "required_effective_readback": [
+    "inner_and_outer_cpu_quota",
+    "cpuset_cpus",
+    "cpuset_mems",
+    "memory",
+    "swap",
+    "io_device_and_caps",
+    "pids",
+    "innodb_buffer_pool",
+    "cpu_and_numa_isolation",
+    "co_resident_inventory",
+    "rolling_dynamic_non_interference"
+  ],
+  "schema_version": "mysql_xp_cpu_resource_envelope_freeze_v1",
+  "status": "FROZEN_INTENT_READBACK_REQUIRED",
+  "target_bottleneck": "cpu",
+  "workload_freeze_sha256": "d616751aed412ff01e3cdb543fe3c441cd1c5529175ec7df79856cb4c08df74e"
+}

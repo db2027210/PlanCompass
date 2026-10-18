@@ -1,0 +1,124 @@
+{
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "candidate_batches": [
+    [1, 2],
+    [3, 4],
+    [5]
+  ],
+  "candidate_diversity": {
+    "inner_candidate_score_modified": false,
+    "parameter_space_farthest_first_within_resource_score_window": true,
+    "qps_used": false,
+    "soft_negative_evidence_primary": true
+  },
+  "candidate_parallelism": 2,
+  "continuation": {
+    "accepted_round_credit_changed": false,
+    "completed_outer_decisions_reconstructed": [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+    ],
+    "historical_predicted_rankings_restored_verified_without_recomputation": true,
+    "historical_measurements_or_decisions_rewritten": false,
+    "outer12_fresh_ranks_required": [1, 2, 3, 4, 5],
+    "resume_boundary": "outer_011_complete_outer_012_fresh_replay",
+    "source_partial_outer12_measurement_credit": false,
+    "source_partial_outer12_retained_as_failure_evidence": true
+  },
+  "convergence": {
+    "accepted_shrinks_required_per_scene": 10,
+    "fixed_real_top_k_per_scene": 5,
+    "maximum_interval_ratio": 1.01,
+    "required_consecutive_stable_accepted_rounds_per_scene": 2,
+    "same_progress_across_scenes_required": false
+  },
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "online_resource_model_update": {
+    "accepted_and_rejected_valid_measurements_used": true,
+    "effective_from_outer": 12,
+    "historical_valid_top5_bootstrap_outers": [
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+    ],
+    "inner_candidate_score_modified": false,
+    "qps_used_as_model_input_feature": false,
+    "qps_used_for_resource_prediction_gradient_or_score": false,
+    "qps_used_for_resource_target": false,
+    "valid_formal_top5_resources_added_after_each_outer": true
+  },
+  "range_shrink": {
+    "effective_from_outer": 7,
+    "historical_range_state_reconstructed": true,
+    "policy": "accepted_candidate_active_subset_only_v1",
+    "untested_active_parameter_ranges_shrunk": false
+  },
+  "release_version": "v23",
+  "schema_version": "mysql_four_scene_algorithm_b_parallel_221_contract_v1",
+  "source_bindings": {
+    "clean_boundary_drain": {
+      "path": "history/mysql_four_scene_20260809/v22_formal_online_resource_model_outer11_20260818_attempt022/stopped_after_outer11_local_trust_v23_drain.json",
+      "sha256": "45dc74df32ed2567b53ad560182bef5ec50998c7dc0d0dfb78c7c7db6fa00f2d"
+    },
+    "candidate_diversity": {
+      "path": "scripts/mysql_algorithm_b_candidate_diversity_v1.py",
+      "sha256": "095e3ce5c3ee445008adb936bb299959b8d76807a67e8a7d5c851506974d1a6d"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v23.py",
+      "sha256": "37f31db8cf5571eb222220b2e82cba90a20ed78415fc1018f2027809b6afe3ca"
+    },
+    "core": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_lane_failure_isolation_core_v22.py",
+      "sha256": "6765ef67f49a99217be475ad982526e66ff3dad50dff9840bb04a3a7e27fe66b"
+    },
+    "launcher": {
+      "path": "scripts/launch_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v23.py",
+      "sha256": "7da8113bb79a12d027ec7cbf6273c994939dffefb00fb263f2b20a6fa172342f"
+    },
+    "measurement": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_scene_independent_measurement_v4.py",
+      "sha256": "d784d0028a79ddfcab75bcc95499dcdbc71a881d77e7e836ba60e82de04d4c70"
+    },
+    "session_drain": {
+      "path": "scripts/mysql_algorithm_b_benchmark_session_drain_v1.py",
+      "sha256": "43465b75ca638a6915816df864801f1bd95a8cee3d60dad07b0fc85897725d60"
+    },
+    "source_run_state": {
+      "path": "history/mysql_four_scene_20260809/v22_formal_online_resource_model_outer11_20260818_attempt022/run_state.json",
+      "sha256": "305aead6dda77f571eac46f11d1a13279ffa566954f0f4d38c45721041d34396"
+    },
+    "source_partial_outer12_failed_batch": {
+      "path": "history/mysql_four_scene_20260809/v22_formal_online_resource_model_outer11_20260818_attempt022/outer_012/top5_batch_1/batch_result.json",
+      "sha256": "74c529a13659944b47791ab39eda9e57f3f379db7e5f329b867073216eccedcd"
+    },
+    "tpch_plan_ranker": {
+      "path": "scripts/mysql_algorithm_b_tpch_full_suite_plan_ranker_v4.py",
+      "sha256": "e7e70970c42750bf8d21b7b954fa00b0370a765db94ff7e3b60e89b5c635af3f"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "tpch_plan_ranking": {
+    "candidate_hard_pruning": false,
+    "candidate_pool": "global_resource_grid_plus_incumbent_local_probes",
+    "global_shortlist_size": 64,
+    "inner_candidate_score_modified": false,
+    "local_probe_fractions": [0.25, 0.5],
+    "local_probe_one_coordinate_at_a_time": true,
+    "per_query_q1_q22_risk": true,
+    "qps_used_for_probe_generation_or_ranking": false,
+    "symmetric_risk": true,
+    "top5_global_quota": 3,
+    "top5_incumbent_local_quota": 2
+  },
+  "workload_contract": {
+    "job_full_sql_count": 113,
+    "maximum_valid_measurement_seconds": 900,
+    "native_xp_mix_unchanged": true,
+    "tpch_query_count": 22,
+    "tpch_scale_factor": 4
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "accepted_round_target": null,
+  "actual_accepted_decisions_restored": 8,
+  "chained_resume_entry_release": "v118",
+  "completed_outer_attempts_preserved": 13,
+  "cross_engine_comparison_prohibited": true,
+  "current_pg_runtime_release": "v59",
+  "discarded_incomplete_outer": 14,
+  "discarded_incomplete_outer_credit": 0,
+  "dynamic_gate_release": "v210",
+  "evidence_bindings": {
+    "benchmark_accounts": {
+      "path": "history/mysql_four_scene_20260809/c_v223_xp_cpu_live_identity_rebind_20260929/authority/benchmark_accounts_binding.json",
+      "sha256": "5a732dd2f4d8a2ea1d64d45f0b604e12dd5fb1868558d4b72e0fd282e70218b9"
+    },
+    "checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v226_xp_cpu_v224_outer13_dynamic_gate_checkpoint_20260929/prepared_binding.json",
+      "sha256": "ff964ef407d8ffebaedef24bfff0a6cc2c0ec6583d694092bb2ea5be5e6c5948"
+    },
+    "container_identity_rebind_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v223_xp_cpu_live_identity_rebind_20260929/authority/container_identity_rebind_audit.json",
+      "sha256": "712ba9714d275f35bd28a2075b1e0c8f8ad940d095b662b9dd97b8b859147cb7"
+    },
+    "failed_dynamic_gate": {
+      "path": "history/mysql_four_scene_20260809/c_v224_xp_cpu_dynamic_gate_recovery_20260929_xp_cpu/outer_014/top5_batch_2_dynamic_noninterference_gate.json",
+      "sha256": "fecb31b9f954f8f7d3590d7007519c269d4602eb095c3447af706c505fc168d9"
+    },
+    "formal_baseline": {
+      "path": "history/mysql_four_scene_20260809/c_v149_paper_baseline_calibration_20260923_xp_cpu/formal_incumbent_baseline/batch_result.json",
+      "sha256": "38b88cb48d376ae545fc1de5247988e800b4c867de99761902097810cd8a9f7a"
+    },
+    "formal_r0_set": {
+      "path": "history/mysql_four_scene_20260809/c_v152_formal_r0_set_v36_20260923/formal_r0_set.json",
+      "sha256": "b098e7a5aa510560d4c81e12f9be91faad939ca7e6e24dcdf992c7cb73bc3c4f"
+    },
+    "fresh_r0": {
+      "path": "history/mysql_four_scene_20260809/c_v224_xp_cpu_fresh_r0_identity_successor_20260929/fresh_r0_binding.json",
+      "sha256": "ea6b71a7843fece13f16f2011eed5ac5e6fd5c30ff9459aeca1ea6d0165d09f7"
+    },
+    "prepared_binding": {
+      "path": "history/mysql_four_scene_20260809/c_v223_xp_cpu_live_identity_rebind_20260929/authority/prepared_binding.json",
+      "sha256": "13aa5c797654273a3a9680ce34c284fa0ff6935599a94b28f300bfd3c5d41f97"
+    },
+    "quarantine": {
+      "path": "history/mysql_four_scene_20260809/c_v226_xp_cpu_v224_outer13_dynamic_gate_quarantine_20260929/replay_quarantine.json",
+      "sha256": "696ccc00ab688774c945b7acb555aef4336146979faeeea488805df65ecc59e6"
+    },
+    "source_decision": {
+      "path": "history/mysql_four_scene_20260809/c_v211f_pg_dynamic_gate_four_scene_20260929_xp_cpu/outer_013/hybench_xp_cpu.decision.json",
+      "sha256": "96c806ecb01df76767ad7ea1d044305a86cbeb74dabff2cfcc805c405cb21f48"
+    },
+    "source_state": {
+      "path": "history/mysql_four_scene_20260809/c_v224_xp_cpu_dynamic_gate_recovery_20260929_xp_cpu/run_state.json",
+      "sha256": "1991fdb97c902065c92737c53f38184c4f91dea5ec141b20bec04947c8bc2233"
+    },
+    "transition_preflight": {
+      "path": "history/mysql_four_scene_20260809/c_v223_xp_cpu_live_identity_rebind_20260929/authority/transition_preflight.json",
+      "sha256": "956eb3e700b9b0242b5eb8f93dfdbba898a2769381429d3ac441450257051558"
+    }
+  },
+  "formal_scope": "mysql_only",
+  "fresh_search_lineage_preserved": true,
+  "fresh_search_reset_on_resume": false,
+  "legacy_post_target_cap_retired": true,
+  "normal_stop_uses_actual_interval_width": true,
+  "other_scene_control_or_stop_performed": false,
+  "post_restart_swappiness_reapplied_and_read_back": true,
+  "post_search_stability_confirmation": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "rejected_decisions_preserved": 5,
+  "release_version": "v226-xp-cpu-swappiness-recovery",
+  "resource_envelope_changed": false,
+  "scene": "hybench_xp_cpu",
+  "schema_version": "mysql_algorithm_c_xp_cpu_swappiness_recovery_contract_v1",
+  "source_bindings": {
+    "chained_resume_entry": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v118.py",
+      "sha256": "5bfa4dafe9cb609b49172ea2a5e5627c24ce46514214ef01c06214ced83d5254"
+    },
+    "checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_scene_resume_checkpoint_v17.py",
+      "sha256": "3528bd564688cc647e93d7dfdb3547e18dc0bc978a0a8a34de82d2996c170b66"
+    },
+    "current_pg_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v59.py",
+      "sha256": "66f2b1f6b59530ec34abeaa8dd6b9b489c596f5d45c2d9349f4c55c75828ef01"
+    },
+    "dynamic_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v31.py",
+      "sha256": "eb519377db253e660e9bd7a977106c7c2caa9d4b66853883c30e3895decc3d58"
+    },
+    "dynamic_gate_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v107.py",
+      "sha256": "8593d3994acb6d83ce922073cb962a1e82c21c122c32a52283cd84a950cc9a7d"
+    },
+    "fresh_r0_identity_rebind_builder": {
+      "path": "scripts/build_mysql_algorithm_c_fresh_r0_identity_rebind_v1.py",
+      "sha256": "d28778a8752db6497d05dff59984122d74a77d97ea8b9aeda027f0ae0929b230"
+    },
+    "legacy_cap_retirement_reference": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v82.py",
+      "sha256": "c9d8aea96cdeb1890a6204b4f73caad6cde03acf6d10461d80d7bc29ed002864"
+    },
+    "post_restart_swappiness_enforcer": {
+      "path": "scripts/mysql_algorithm_c_reset_affinity_v2.py",
+      "sha256": "e6ff79a8c32556802bf65282602739c957a163aeb1ce45225d7984d2a2814c5a"
+    },
+    "quarantine_builder": {
+      "path": "scripts/build_mysql_algorithm_c_empty_quarantine_for_scene_checkpoint_v11.py",
+      "sha256": "4121799a12616432633217541c8a6f7be61de5380d66782854e5c6ba9c62991c"
+    },
+    "recovery_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v226_xp_cpu_swappiness_recovery.py",
+      "sha256": "50b17e5c7a315d4e70e3e5c32d92c547ddc54c7f26515ebe64c92cfe9fcfafeb"
+    },
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v124.py",
+      "sha256": "a5e2f4f052c93c951b7cd918bd3d300f1c50caedc7d7c039e31035d0cc7c96fa"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "workload_or_candidate_policy_changed": false
+}

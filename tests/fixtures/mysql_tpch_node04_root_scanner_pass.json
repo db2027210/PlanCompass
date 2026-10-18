@@ -1,0 +1,16 @@
+{
+  "schema_version": "mysql_tpch_proc_open_owner_inventory_v1",
+  "scanner_identity": {
+    "uid": 0,
+    "gid": 0,
+    "euid": 0,
+    "egid": 0
+  },
+  "proc_root": "/host-proc",
+  "template": "/mnt/nvme0n1/anonymous/resource_adaptive_mysql/tpch/template",
+  "scanned_pid_count": 715,
+  "open_owners": [],
+  "unreadable_pids": [],
+  "complete": true,
+  "pass": true
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "mysql_experience_table_sgd_tpch_factory_binding_v1",
+  "method_id": "experience_table_sgd",
+  "method": "experience_table_all_subset_sgd",
+  "scenario": "tpch_memory",
+  "benchmark": "tpch",
+  "optimizer_config": "/home/anonymous/program/resource_adaptive_mysql/config/formal/mysql_sgd_production/tpch_memory.algorithm_c.optimizer.json",
+  "profile": "config/formal/mysql_sgd_production/profiles/tpch_memory.json",
+  "production_entry": "formal_mysql_sgd_campaign:run_production_campaign",
+  "service_factory": "mysql_algorithm_b_production_services:build",
+  "factory_source_sha256": "a9300a8001cdf751758a3a0df376aedd7895f7712074027a5e0c962cbfc5a521",
+  "formal_method_config": {
+    "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/experience_table_sgd_formal_config.json",
+    "sha256": "ff224d59197789431cb04382e649ee451733a214113ab64386d8e504e5d9d96e"
+  },
+  "experience_table": {
+    "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.tpch_memory.operator_physics_v1.json",
+    "sha256": "8a8166b7500b7845151872366f8d4a6c012acc91746a5e4d1a9954dd72ec5336"
+  },
+  "algorithm_contract": {
+    "candidate_generator": "all_nonempty_subsets_experience_table_analytic_sgd_v1",
+    "qps_role": "outer_acceptance_only",
+    "global_fixed_replay_top_k": 5,
+    "strict_acceptance": "db_qps_up AND target_resource_down AND every_non_target_strictly_below_0.8"
+  },
+  "data_binding": {
+    "expected_host": "node01",
+    "expected_root": "/mnt/nvme1n1/anonymous/resource_adaptive_mysql/tpch",
+    "migration_status": "external_pending",
+    "migration_performed_by_this_task": false
+  },
+  "validation_gate": {
+    "config_loader": "blocked_fail_closed",
+    "blocking_reason": "TPC-H registry execution_authorized=false and dynamic Q1-Q22 representative_bindings are empty",
+    "formal_launch_authorized": false,
+    "global_readiness_required": true,
+    "launch_authorized": false
+  },
+  "output_directory": "history/mysql_sgd_algorithm_c/tpch_memory"
+}

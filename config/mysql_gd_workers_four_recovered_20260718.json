@@ -1,0 +1,32 @@
+{
+  "workers": [
+    {
+      "worker_id": "hybench-1",
+      "benchmarks": ["hybench_ap", "hybench_tp", "hybench_xp"],
+      "port": 57751,
+      "mysqld_pid": 247101,
+      "database": "hybench"
+    },
+    {
+      "worker_id": "job-1",
+      "benchmarks": ["job"],
+      "port": 57752,
+      "mysqld_pid": 245853,
+      "database": "job"
+    },
+    {
+      "worker_id": "tpch-1",
+      "benchmarks": ["tpch"],
+      "port": 57753,
+      "mysqld_pid": 243791,
+      "database": "tpch"
+    },
+    {
+      "worker_id": "tpcc-1",
+      "benchmarks": ["tpcc"],
+      "port": 57750,
+      "mysqld_pid": 241972,
+      "database": "tpcc10"
+    }
+  ]
+}

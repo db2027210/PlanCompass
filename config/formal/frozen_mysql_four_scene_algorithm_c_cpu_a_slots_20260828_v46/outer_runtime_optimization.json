@@ -1,0 +1,58 @@
+{
+  "bindings": {
+    "algorithm_source_path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+    "algorithm_source_sha256": "b27a7303c92a1b0e77d0461bc47a87445dae7311c3c898784740b83a62b2adb2",
+    "reset_source_path": "scripts/reset_mysql_xp_data_planes_mixed_four_worker_v4.py",
+    "reset_source_sha256": "0e36da5621315281a157983fb8041a6e81e7e553be1399ff38be7fe95f5d0131",
+    "resource_freeze_path": "config/formal/frozen_mysql_four_scene_cpu_a_slots_four_worker_20260828_v3/four_scene_effective_resource_successor.json",
+    "resource_freeze_sha256": "2c79da4c617c90de447fda98772a5384aaf437cebdf0987659553145b9df385e"
+  },
+  "candidate_batches": [
+    [
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "created_at": "2026-08-28T15:24:04.507443+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "four_scene_two_worker_freeze_path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_four_scene_cpu_a_slots_two_worker_20260828_v2/four_scene_effective_resource_successor.json",
+  "four_scene_two_worker_freeze_sha256": "8f1988d3b26edb27f6920f95025282b6987b597375fd50f5258b683cd9f983af",
+  "optimized_reset": {
+    "mixed_storage_reset": true,
+    "per_scene_partial_reset": true,
+    "reset_concurrency": 4,
+    "scene_local_storage_settle": true
+  },
+  "pg_search_outer": {
+    "accepted_target": null,
+    "candidate_batches": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "outer_rejection_cycle_policy_id": "mysql_bc_qps_strict_two_reject_incumbent_shrink_v2",
+    "post_search_stability_confirmation": false,
+    "real_top_k_limit": 5,
+    "required_acceptance_tier": "qps_strict_progress",
+    "terminal_normalized_width": 0.01
+  },
+  "physical_replay_parallelism_per_xp_scene": 4,
+  "release_version": "v75-cpu-a-slots",
+  "released_at": "2026-08-28T02:30:00+08:00",
+  "schema_version": "mysql_algorithm_c_cpu_a_slots_four_worker_optimization_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

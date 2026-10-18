@@ -1,0 +1,90 @@
+{
+  "accepted_after_recovery": 2,
+  "accepted_before_recovery": 2,
+  "accepted_target": 10,
+  "algorithm": "A",
+  "candidate_measurements_replayed": false,
+  "candidate_set_changed": false,
+  "cross_engine_comparison_prohibited": true,
+  "existing_complete_round_re_evaluated": false,
+  "external_process_control_or_stop_prohibited": true,
+  "external_workload_wait_required": false,
+  "external_workloads_diagnostic_only": true,
+  "formal_scope": "mysql_only",
+  "full_job_113_required_per_valid_replica": true,
+  "incumbent_measurements_replayed": false,
+  "invalid_refresh_workers": [
+    "job_w2"
+  ],
+  "minimum_valid_refresh_replicas": 3,
+  "outer_acceptance_policy_changed": false,
+  "physical_replay_parallelism": 4,
+  "predecessor_state_path": "history/mysql_four_scene_20260809/v117_to_a_job_partial_suite_timer_resume_20260824_attempt001_job/algorithm_a_state.json",
+  "predecessor_state_sha256": "64b899430a7401ec1eaa494a33e3162f9c11f9b00954ad4a9c85c568fec12b64",
+  "recovered_round_index": 4,
+  "refresh_batch_path": "history/mysql_four_scene_20260809/v117_to_a_job_partial_suite_timer_resume_20260824_attempt001_job/round_004/incumbent_reference_refresh/refresh_01/attempt_01/batch_result.json",
+  "refresh_batch_sha256": "2e80b6eeccf18db28fa67c420191706bf4d748468f7de597ab49f9da62a46fba",
+  "refresh_replica_policy": "aggregate_complete_valid_replicas_only",
+  "refreshed_reference_first_used_in_round": 5,
+  "resource_envelope_changed": false,
+  "round4_decision_path": "history/mysql_four_scene_20260809/v117_to_a_job_partial_suite_timer_resume_20260824_attempt001_job/round_004/outer_decision.json",
+  "round4_decision_sha256": "639adf8e5d8c4be56ebd11035ad0a71198214888be4e0d63269532dd938d0d99",
+  "round4_original_rejection_preserved": true,
+  "scene": "job_memory",
+  "schema_version": "mysql_algorithm_a_job_valid_replica_refresh_resume_v1",
+  "source_bindings": {
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_a_job_valid_replica_refresh_resume_v1.py",
+      "sha256": "36d8b58329d022e0c17943e34f5ce54d6eb9b8dacc7f731f66fbfebf84f6775a"
+    },
+    "external_diagnostic_gate": {
+      "path": "scripts/mysql_external_workload_diagnostic_gate_v1.py",
+      "sha256": "d7347b9ae3d982e59dc7e4d22144e6d8c71cc479c7e35515ba0fae377d98a9c1"
+    },
+    "freezer": {
+      "path": "scripts/freeze_mysql_algorithm_a_job_valid_replica_refresh_resume_v1.py",
+      "sha256": "11a22593d2d8488eedcfc22178867a09222ff52ac1ff58460adb66498035ccb1"
+    },
+    "measurement_v12": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v12.py",
+      "sha256": "6689e3a5979adf1f1aa2d84a49241f0d6ae3211fe1355f959e3849780bda7c4f"
+    },
+    "measurement_v12_contract": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260824_v12/cache_state_contract.json",
+      "sha256": "46b2488122a31ea18245a1763f6f5ac5f3e6bc7e987e78c028b2752fa8f28a81"
+    },
+    "pg_outer_policy": {
+      "path": "scripts/mysql_algorithm_b_pg_outer_policy_v36.py",
+      "sha256": "fd346d12bc1633265a1d8cb20774be5e18bda8ca556f0f0d8d4c143ba3a2c97e"
+    },
+    "predecessor_state": {
+      "path": "history/mysql_four_scene_20260809/v117_to_a_job_partial_suite_timer_resume_20260824_attempt001_job/algorithm_a_state.json",
+      "sha256": "64b899430a7401ec1eaa494a33e3162f9c11f9b00954ad4a9c85c568fec12b64"
+    },
+    "refresh_batch": {
+      "path": "history/mysql_four_scene_20260809/v117_to_a_job_partial_suite_timer_resume_20260824_attempt001_job/round_004/incumbent_reference_refresh/refresh_01/attempt_01/batch_result.json",
+      "sha256": "2e80b6eeccf18db28fa67c420191706bf4d748468f7de597ab49f9da62a46fba"
+    },
+    "round4_decision": {
+      "path": "history/mysql_four_scene_20260809/v117_to_a_job_partial_suite_timer_resume_20260824_attempt001_job/round_004/outer_decision.json",
+      "sha256": "639adf8e5d8c4be56ebd11035ad0a71198214888be4e0d63269532dd938d0d99"
+    },
+    "transition_authority": {
+      "path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.transition_authority.json",
+      "sha256": "c11efc9746f3e0404750d3eb6f6ddd4301306260f73d68c9d5a4ed88ec770472"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "suite_deadline_seconds": 900,
+  "transition_authority_path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.transition_authority.json",
+  "transition_authority_sha256": "c11efc9746f3e0404750d3eb6f6ddd4301306260f73d68c9d5a4ed88ec770472",
+  "valid_refresh_workers": [
+    "job_w1",
+    "job_w3",
+    "job_w4"
+  ]
+}

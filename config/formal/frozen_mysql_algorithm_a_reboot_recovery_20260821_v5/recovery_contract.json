@@ -1,0 +1,58 @@
+{
+  "schema_version": "mysql_algorithm_a_reboot_recovery_contract_v5",
+  "release_version": "v5",
+  "status": "FROZEN",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "A",
+  "contract": "mysql_algorithm_a_host_reboot_same_cohort_resume_v5",
+  "cause": "host_reboot",
+  "same_two_worker_cohort_required": true,
+  "preserve_accepted_search_state": true,
+  "preserve_canonical_baseline": true,
+  "discard_interrupted_partial_round": true,
+  "repeat_interrupted_round_from_start": true,
+  "fresh_baseline_per_worker": 1,
+  "incumbent_replay_required": true,
+  "post_convergence_stability_required": false,
+  "co_resident_pg_algorithm_a_tpch_allowance": {
+    "contract": "exact_pg_a_tpch_psql_lineage_isolation_v1",
+    "controller_lineage_required": true,
+    "allowed_command_classes": [
+      "metrics_query",
+      "checkpoint",
+      "database_control"
+    ],
+    "allowed_databases": ["postgres", "fullgrid_tpch_sf5"],
+    "fullgrid_tpch_sf5_reference_required": true,
+    "metrics_client_ports": [59521, 59522, 59527, 59528],
+    "additional_container_ports": [59527, 59528],
+    "additional_container_ids": [
+      "415d2064098e1c722e211f302268b61a5b5e0f637b37759ad5a5185f399e40d1",
+      "a686f54bd2d51cef38bb9473366e29b591c09c50532da4183d9531f93b8a6b1f"
+    ],
+    "cpu_overlap_prohibited": true,
+    "disk2_mount_prohibited": true,
+    "live_container_readback_required": true,
+    "host_memory_swap_and_psi_gates_inherited": true,
+    "external_mutation": false
+  },
+  "source_bindings": {
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_a_reboot_resume_v1.py",
+      "sha256": "506f61e3d8dfd53d6b3006cb2f82e8c640c543711625a3d8b52402bb80fd414d"
+    },
+    "base_algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v1.py",
+      "sha256": "35a3d0b5128d7fcf5ba08ab61344db2e1009b914bef05d79f3fe44add029458d"
+    },
+    "algorithm_a_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260820_v1/algorithm_a_contract.json",
+      "sha256": "864d252328f6c03e938177236ba6c09fbb60aa18d605ebe845bc83186d6856f5"
+    },
+    "predecessor_launch_manifest": {
+      "path": "history/mysql_four_scene_20260809/formal_launch_logs/v39_to_a_per_scene_20260820_attempt002.async_a.launch_manifest.json",
+      "sha256": "df4094d0f6770e88f5c6cd935085bbb6a3b1b822f2a870098378d7a58b4f26b0"
+    }
+  }
+}

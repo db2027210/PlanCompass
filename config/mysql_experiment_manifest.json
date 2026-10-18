@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "db": "mysql8",
+  "method": "full_grid_real_replay",
+  "max_parallel": 12,
+  "acceptance": {
+    "min_bottleneck_drop_pct_points": 5.0,
+    "max_bottleneck_drop_pct_points": 10.0,
+    "bottleneck_clear_threshold": 0.90,
+    "min_qps_gain_pct": 15.0,
+    "none_require_no_bottleneck": true
+  },
+  "machine_spec": {
+    "cpu_cores": 4,
+    "mem_gb": 8,
+    "disk_bw_mb": 100
+  },
+  "worker_pool": [
+    {"worker_id": "hybench-1", "benchmarks": ["hybench_ap", "hybench_tp", "hybench_xp"], "bottlenecks": ["cpu", "none"]},
+    {"worker_id": "hybench-2", "benchmarks": ["hybench_ap", "hybench_tp", "hybench_xp"], "bottlenecks": ["cpu", "none"]},
+    {"worker_id": "hybench-3", "benchmarks": ["hybench_ap", "hybench_tp", "hybench_xp"], "bottlenecks": ["memory", "none"]},
+    {"worker_id": "hybench-4", "benchmarks": ["hybench_ap", "hybench_tp", "hybench_xp"], "bottlenecks": ["memory", "none"]},
+    {"worker_id": "hybench-5", "benchmarks": ["hybench_xp"], "bottlenecks": ["io"]},
+    {"worker_id": "hybench-6", "benchmarks": ["hybench_xp"], "bottlenecks": ["io"]},
+    {"worker_id": "job-1", "benchmarks": ["job"], "bottlenecks": ["memory", "none"]},
+    {"worker_id": "job-2", "benchmarks": ["job"], "bottlenecks": ["memory", "none"]},
+    {"worker_id": "tpch-1", "benchmarks": ["tpch"], "bottlenecks": ["memory", "none"]},
+    {"worker_id": "tpch-2", "benchmarks": ["tpch"], "bottlenecks": ["memory", "none"]},
+    {"worker_id": "tpcc-1", "benchmarks": ["tpcc"], "bottlenecks": ["cpu", "none"]},
+    {"worker_id": "tpcc-2", "benchmarks": ["tpcc"], "bottlenecks": ["cpu", "none"]}
+  ],
+  "experiments": [
+    {"exp_id": "A7", "benchmark": "hybench_ap", "bottleneck": "memory", "runs": 1, "resource_key": "hybench_ap_memory"},
+    {"exp_id": "A8", "benchmark": "job", "bottleneck": "memory", "runs": 1, "resource_key": "job_memory"},
+    {"exp_id": "A9", "benchmark": "tpch", "bottleneck": "memory", "runs": 1, "resource_key": "tpch_memory"},
+    {"exp_id": "A10", "benchmark": "hybench_tp", "bottleneck": "cpu", "runs": 1, "resource_key": "hybench_tp_cpu"},
+    {"exp_id": "A11", "benchmark": "tpcc", "bottleneck": "cpu", "runs": 1, "resource_key": "tpcc_cpu"},
+    {"exp_id": "A12", "benchmark": "hybench_xp", "bottleneck": "io", "runs": 1, "resource_key": "hybench_xp_io"},
+
+    {"exp_id": "E7", "benchmark": "hybench_ap", "bottleneck": "none", "runs": 1, "resource_key": "hybench_none"},
+    {"exp_id": "E8", "benchmark": "job", "bottleneck": "none", "runs": 1, "resource_key": "job_none"},
+    {"exp_id": "E9", "benchmark": "tpch", "bottleneck": "none", "runs": 1, "resource_key": "tpch_none"},
+    {"exp_id": "E10", "benchmark": "hybench_tp", "bottleneck": "none", "runs": 1, "resource_key": "hybench_none"},
+    {"exp_id": "E11", "benchmark": "tpcc", "bottleneck": "none", "runs": 1, "resource_key": "tpcc_none"},
+    {"exp_id": "E12", "benchmark": "hybench_xp", "bottleneck": "none", "runs": 1, "resource_key": "hybench_none"},
+
+    {"exp_id": "B1", "benchmark": "hybench_tp", "bottleneck": "cpu", "runs": 2, "repeat_start": 2, "target_total_including_a": 3, "resource_key": "hybench"},
+    {"exp_id": "B2", "benchmark": "hybench_ap", "bottleneck": "memory", "runs": 2, "repeat_start": 2, "target_total_including_a": 3, "resource_key": "hybench"},
+    {"exp_id": "B3", "benchmark": "hybench_xp", "bottleneck": "io", "runs": 2, "repeat_start": 2, "target_total_including_a": 3, "resource_key": "hybench"}
+  ]
+}

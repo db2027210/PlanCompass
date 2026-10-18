@@ -1,0 +1,109 @@
+{
+  "schema_version": "mysql_algorithm_b_pg_latest_outer_contract_v1",
+  "release_version": "v104-pg-latest-outer",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "created_on": "2026-09-05",
+  "strategy": {
+    "algorithm": "B",
+    "method": "mysql_algorithm_b_pg_grid_shared_outer_v41_v1",
+    "formal_scope": "mysql_only",
+    "cross_engine_comparison_prohibited": true,
+    "outer_runtime": "mysql_algorithm_c_pg_latest_outer_v41",
+    "only_algorithmic_difference_from_c": "inner_candidate_generation",
+    "inner_candidate_generation": {
+      "method": "mysql_algorithm_b_pg_coordinate_grid_v30",
+      "search_contract": "coordinate_grid15_plus_exhaustive_interactions_2_to_4_v1",
+      "grid_points": 15,
+      "max_coordinate_passes": 20,
+      "no_improvement_patience": 2,
+      "interaction_min_size": 2,
+      "interaction_max_size": 4,
+      "interaction_values_per_parameter": 3,
+      "interaction_candidate_cap": 0,
+      "audit_candidate_limit": 64,
+      "real_top_k_limit": 5,
+      "top_k_is_upper_bound": true,
+      "partial_top_k_allowed": true,
+      "duplicate_plan_padding_allowed": false,
+      "baseline_padding_allowed": false,
+      "candidate_parameter_universe": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_create_cost",
+        "disk_temptable_row_cost",
+        "memory_temptable_create_cost",
+        "memory_temptable_row_cost"
+      ],
+      "qps_used_for_prediction_or_score": false,
+      "physical_workload_invocations": 0
+    },
+    "local_real_replay_limit": 10,
+    "global_coverage_sample_count": 256,
+    "global_coverage_real_replay_limit": 10,
+    "coverage_after_every_exhausted_local_round": true,
+    "coverage_domain": "current_formal_interval_only",
+    "original_domain_reopened_after_shrink": false,
+    "strict_higher_qps_acceptance": true,
+    "two_rejections_before_incumbent_shrink": true,
+    "post_search_stability_confirmation": false,
+    "algorithm_a_prior_used": false
+  },
+  "postgresql_b_reference": {
+    "path": "/home/anonymous/program/resource_adaptive/shell/run_pg_algorithm_b_scene.py",
+    "sha256": "854492c3c6884e2cca13db3227bf91b4fa7c34773228488516fad08c7ec58cde"
+  },
+  "postgresql_outer_reference": {
+    "path": "/home/anonymous/program/resource_adaptive/shell/run_pg_algorithm_c_scene.py",
+    "sha256": "38dbd2864671b381f178679e17dea196d56ee4384fb7433baee44a25e8cb6f2f"
+  },
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_b_four_scene_client_primary_pg_latest_v1.py",
+      "sha256": "aeda4de15b37d0586fe4fcd22cf1dc7db6ba51726021efa3e51a9aabe1136ace"
+    },
+    "docker_inspect_retry": {
+      "path": "scripts/preflight_mysql_four_scene_v10.py",
+      "sha256": "f2396832275a785735b16f244b6ddba59f7c9701200f4199f1b4734d55eb9a90"
+    },
+    "external_inventory_retry_adapter": {
+      "path": "scripts/mysql_c_external_storage_inventory_only_v2.py",
+      "sha256": "df88f2a370c43d2579a27e3417e49c0095403a3fd71bed3139fd794e5cf6a40b"
+    },
+    "algorithm_b_inner": {
+      "path": "scripts/mysql_four_scene_algorithm_b_pg_grid_v30.py",
+      "sha256": "83c6aef8023ca345d24caa83d99006348aee22215a951890f25b838758ea14a1"
+    },
+    "shared_outer_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v41.py",
+      "sha256": "04f8860e75dcec71199183eccfa5c045dd4b5b8d97368680faad1e2d73967d14"
+    },
+    "mysql_global_coverage": {
+      "path": "scripts/mysql_algorithm_c_global_coverage_v1.py",
+      "sha256": "e3a88dccf6764dcbb4c1becf966d2172564e0b72a53a90ebf0ce729f2a0d79c4"
+    },
+    "mysql_strict_qps_acceptance": {
+      "path": "scripts/mysql_outer_qps_strict_progress_v1.py",
+      "sha256": "6836af020dfc9b3160f34e33525adf2c309f9c42de1b40ff988c6cf9c7aa7585"
+    },
+    "mysql_two_reject_cycle": {
+      "path": "scripts/mysql_outer_rejection_cycle_v2.py",
+      "sha256": "60708d3e5ca8b0228aca7f15ecb40ed1830144ba66862f99c02414bd595f6191"
+    },
+    "single_scene_measurement": {
+      "path": "scripts/mysql_single_scene_measurement_v2.py",
+      "sha256": "fcfbaac69e4ecb97880a7c2760ac2f6f63e5a7f5c6b8ef3d7a2c6956a3645e79"
+    },
+    "client_primary_optimization": {
+      "path": "config/formal/frozen_mysql_four_scene_algorithm_c_client_primary_20260904_v95/outer_runtime_optimization.json",
+      "sha256": "97480473817423568b16b06a4a897bc173dc02aa6b506b07b5f0a74dec36e020"
+    },
+    "resource_freeze": {
+      "path": "config/formal/frozen_mysql_four_scene_two_worker_20260903_v20/four_scene_effective_resource_successor.json",
+      "sha256": "7855970daee5be3aae78a325055feebbefccf6792453819ba4cf67e501f7b286"
+    }
+  }
+}

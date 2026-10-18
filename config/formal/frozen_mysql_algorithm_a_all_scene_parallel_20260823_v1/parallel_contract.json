@@ -1,0 +1,134 @@
+{
+  "schema_version": "mysql_algorithm_a_all_scene_parallel_contract_v1",
+  "release_version": "v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T14:04:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "A",
+  "purpose": "Run all four formal MySQL Algorithm A scenes concurrently with two physical workers per scene.",
+  "concurrent_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "physical_replay_parallelism_per_scene": {
+    "job_memory": 2,
+    "tpch_sf4_memory": 2,
+    "hybench_xp_cpu": 2,
+    "hybench_xp_io": 2
+  },
+  "total_concurrent_mysql_workers": 8,
+  "accepted_target": 10,
+  "post_convergence_stability_required": false,
+  "post_target_physical_replays": 0,
+  "coordination": {
+    "fixed_disjoint_cpu_affinity_required": true,
+    "numa_exclusive_scheduler_lock_required": false,
+    "effective_numa_and_memory_values_read_back": true,
+    "memory_scene_shared_nvme_mutual_exclusion": false,
+    "mysql_sibling_wave_wait_required": false,
+    "cross_project_shared_mysql_lease_retained": true,
+    "rolling_dynamic_noninterference_gate_required": true,
+    "shared_data_device": "/dev/nvme2n1",
+    "whole_outer_round_lease_prohibited": true,
+    "co_resident_postgresql_control_or_stop_prohibited": true
+  },
+  "worker_cpu_authority": {
+    "job_w1": {"database_cpuset": "104-107,360-363", "client_cpuset": "0-3,256-259"},
+    "job_w2": {"database_cpuset": "108-111,364-367", "client_cpuset": "4-7,260-263"},
+    "tpch_w1": {"database_cpuset": "200-207,456-463", "client_cpuset": "8-11,264-267"},
+    "tpch_w2": {"database_cpuset": "208-215,464-471", "client_cpuset": "12-15,268-271"},
+    "xp_cpu_w1": {"database_cpuset": "112-119,368-375", "client_cpuset": "16-19,272-275"},
+    "xp_cpu_w2": {"database_cpuset": "120-127,376-383", "client_cpuset": "20-23,276-279"},
+    "xp_io_w1": {"database_cpuset": "216-221,472-477", "client_cpuset": "24-27,280-283"},
+    "xp_io_w2": {"database_cpuset": "222-227,478-483", "client_cpuset": "28-31,284-287"}
+  },
+  "transition": {
+    "completed_accepted_rounds_reused": true,
+    "completed_candidate_measurements_replayed": false,
+    "incomplete_wave_credited": false,
+    "resource_recalibration_required": false,
+    "candidate_or_outer_loop_policy_changed": false,
+    "job_predecessor_state": {
+      "path": "history/mysql_four_scene_20260809/v63_to_a_all_scene_parallel_20260823_transition_v1/job_predecessor_state.json",
+      "sha256": "a67e92ed86dd1e47ce73df5518ab1e8d6049d49d47aaf193431e13776a948581",
+      "accepted": 1,
+      "interrupted_round": 2,
+      "completed_candidates_in_interrupted_round": 0
+    },
+    "tpch_predecessor_state": {
+      "path": "history/mysql_four_scene_20260809/v63_to_a_all_scene_parallel_20260823_transition_v1/tpch_predecessor_state.json",
+      "sha256": "20ad8788e4d93dd1157279d2e3de204db2e60586fd97ea8eac9ff3eda841a6e4",
+      "accepted": 2,
+      "interrupted_round": 3,
+      "completed_candidates_in_interrupted_round": 0
+    },
+    "xp_cpu_fresh_start_required": true,
+    "xp_io_fresh_start_required": true
+  },
+  "algorithm_semantics": {
+    "complete_factorial_candidate_set_unchanged": true,
+    "prediction_used_for_selection": false,
+    "prediction_used_for_ordering": false,
+    "qps_reference_mode": "last_accepted",
+    "acceptance_policy_unchanged": true,
+    "binary_shrink_policy_unchanged": true,
+    "per_scene_outer_state_machine": true,
+    "four_scene_wave_barrier": false,
+    "scene_may_advance_immediately": true
+  },
+  "workloads": {
+    "job": "full canonical JOB113 once per formal measurement",
+    "tpch": "TPC-H SF4 Q1-Q22 once per formal measurement",
+    "xp_cpu": "native HyBench XP",
+    "xp_io": "native HyBench XP"
+  },
+  "source_bindings": {
+    "parallel_policy": {
+      "path": "scripts/mysql_algorithm_a_all_scene_parallel_policy_v1.py",
+      "sha256": "bddf67d1cccce7730a507ad602cdb827f8af51ac6436987327f027aee6eeabaf"
+    },
+    "job_parallel_resume": {
+      "path": "scripts/run_mysql_algorithm_a_job_all_scene_parallel_resume_v1.py",
+      "sha256": "bb9ca9fc71178d88192f952d03ac35b32a5a00e247c64aaefad01a5b9e8c934c"
+    },
+    "tpch_parallel_resume": {
+      "path": "scripts/run_mysql_algorithm_a_tpch_all_scene_parallel_resume_v1.py",
+      "sha256": "a63fecac5c46c04e9c19c500adf934b91eab86826ecbc71a4994736ed9a86b97"
+    },
+    "xp_parallel_fresh": {
+      "path": "scripts/run_mysql_algorithm_a_xp_all_scene_parallel_fresh_v1.py",
+      "sha256": "12d98294e96faecd5ff50f5ef98f2091b183f3936087a0844dc1482e3603daf1"
+    },
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "same_cohort_resume": {
+      "path": "scripts/run_mysql_algorithm_a_same_cohort_codefix_resume_v1.py",
+      "sha256": "5741d20c711a0dc8ced157cbba5c0c428355922b05b4ec6907b1b28023ac087c"
+    },
+    "job_measurement": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v9.py",
+      "sha256": "48f7290d8e0355b03394d83a68f202ab65fa4ba4d4592e771753f8831ca1fca1"
+    },
+    "tpch_measurement": {
+      "path": "scripts/mysql_tpch_cache_preconditioned_measurement_v1.py",
+      "sha256": "af6053b0fb89e07ce22be74b4b8fa808bb5eea5a6ad4f91f255534be089e7e33"
+    },
+    "shared_mysql_coordination": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v2.py",
+      "sha256": "9a29b954f4fd15d10abba5c5e133e47307264f789a51bb5c89226458ae27e405"
+    },
+    "algorithm_a_semantic_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260822_v4/algorithm_a_contract.json",
+      "sha256": "d35c01e29c14aeeed4d82870725db686697d3d17188bea28ee9c323f418732bf"
+    },
+    "effective_resource_freeze": {
+      "path": "config/formal/frozen_mysql_disk2_two_worker_20260813_v18/four_scene_effective_resource_successor.json",
+      "sha256": "a19dff2a72963f147ac914345e4b188522d9dca23dd35b5aa85cba6f1f4801df"
+    }
+  }
+}

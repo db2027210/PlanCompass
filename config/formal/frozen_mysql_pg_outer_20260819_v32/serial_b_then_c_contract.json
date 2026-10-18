@@ -1,0 +1,72 @@
+{
+  "schema_version": "mysql_pg_outer_serial_b_then_c_v1",
+  "release_version": "v32",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm_b_run_id": "v32_formal_pg_outer_fresh_20260819_attempt029",
+  "algorithm_c_handoff_run_id": "v41_pg_outer_after_b_prepare_20260819_attempt001",
+  "algorithm_c_run_id": "v41_pg_outer_after_b_prepare_20260819_attempt001_algorithm_c_v2",
+  "concurrent_b_and_c_controllers_prohibited": true,
+  "algorithm_c_fresh_search": true,
+  "algorithm_c_historical_outer_credit": false,
+  "handoff_sequence": [
+    "wait for Algorithm B controller terminal state",
+    "stop the B affinity observer",
+    "acquire the shared workload lease",
+    "run a fresh rolling 60-second non-interference preflight",
+    "rebind all eight live MySQL workers",
+    "verify existing benchmark accounts against the new binding",
+    "run a fresh eight-worker R0",
+    "release the preparation lease",
+    "launch Algorithm C with --fresh-search"
+  ],
+  "algorithm_c_outer_contract": {
+    "accepted_target": 10,
+    "candidate_batches": [[1, 2], [3, 4], [5]],
+    "post_search_stability_confirmation": false,
+    "post_target_physical_replays": 0
+  },
+  "source_bindings": {
+    "handoff_controller": {
+      "path": "scripts/wait_prepare_and_launch_mysql_c_after_b_pg_outer_v1.py",
+      "sha256": "1d1e0c5694b056ae16ea04e1eb0589ccf52adeebe8b7b2cd09d79bbbfebbea10"
+    },
+    "preparation_pipeline": {
+      "path": "scripts/wait_and_run_mysql_four_scene_r0_v18.py",
+      "sha256": "666b4e28091219209e5f26d5f57d13a00fcdc9a7eb1b52255473d7b3cff503d8"
+    },
+    "fresh_preflight_wrapper": {
+      "path": "scripts/preflight_mysql_four_scene_live_pg_outer_v32.py",
+      "sha256": "00f39af90768f6b3e187aaf5eb03ec994d0c29036227a1fe634eba5d416a397c"
+    },
+    "fresh_r0_wrapper": {
+      "path": "scripts/run_mysql_four_scene_r0_pg_outer_v32.py",
+      "sha256": "cb3c0ea3363afdae1384fe091d0fb2f69715003a1b9f9ae8d981725e4fe55558"
+    },
+    "algorithm_c_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_pg_outer_fresh_v41.py",
+      "sha256": "8787e20813a8028d9e54e94e828fb5b8915cfd045de5bf30ff1cb6118ede5561"
+    },
+    "algorithm_b_contract": {
+      "path": "config/formal/frozen_mysql_pg_outer_20260819_v32/algorithm_b_fresh_contract.json",
+      "sha256": "ee8b26e2485d3c3a9a03361d7d6baad785deed7bec096b06cab9b8a7175e7630"
+    },
+    "algorithm_c_contract": {
+      "path": "config/formal/frozen_mysql_pg_outer_20260819_v32/algorithm_c_optimization_contract.json",
+      "sha256": "d3d189cd90200a2edd998455e23a44e761921e8acd966e79ae5c664b9e54e0b4"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_pg_outer_20260819_v32/coordination_contract.json",
+      "sha256": "144490d9d2cc705fdcadb2f8f98b531fd6c4aac4714d94b09c40d97fdd360855"
+    },
+    "checkpoint_authority": {
+      "path": "history/mysql_four_scene_20260809/algorithm_c_v79_outer17_checkpoint_v20_20260817T1425p0800/prepared_binding.json",
+      "sha256": "0a2ca7d335361021db0a4fc3e96e337cd16d11291256c60e4c2cf4616f054c21"
+    },
+    "replay_quarantine_authority": {
+      "path": "history/mysql_four_scene_20260809/algorithm_c_v79_replay_quarantine_v15_outer17_20260817T1427p0800/replay_quarantine.json",
+      "sha256": "92892232e1a01b2cf4ac43e8f244eaa9a7c83f3dfc94a387e08d39e03657be3b"
+    }
+  }
+}

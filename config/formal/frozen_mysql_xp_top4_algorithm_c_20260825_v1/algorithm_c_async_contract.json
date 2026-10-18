@@ -1,0 +1,281 @@
+{
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "cached_incumbent_preemption_successor": {
+    "accepted_and_rejected_credit_changed": false,
+    "cached_only_prephysical_acceptance_allowed": false,
+    "candidate_generation_prediction_or_ranking_changed": false,
+    "failure_repaired": "cached incumbent accepted before movement validation suppressed all fresh Top-5 physical waves",
+    "fresh_physical_top5_preserved": true,
+    "measurement_batches_changed": false,
+    "postgresql_outer_flow_changed": false,
+    "recalibration_required": false
+  },
+  "candidate_batches": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "completed_scene_companion_workload": false,
+  "coordination": {
+    "co_resident_pg_control_file_role": "inventory_only_not_launch_authority",
+    "external_cross_project_workload_action": "release_shared_lease_wait_30_seconds_and_retry_without_optimizer_state_mutation",
+    "legacy_or_postgresql_lease": "exclusive",
+    "mysql_scene_leases": "shared",
+    "one_time_startup_authority_barrier": true,
+    "per_round_barrier": false,
+    "prestart_authority_lease": "shared",
+    "resource_isolation_contract": "config/formal/frozen_mysql_cross_project_wave_coordination_20260819_v65/coordination_contract.json",
+    "resource_isolation_contract_sha256": "913fa4f81348ba3cdfa9b3db62c5615b6111cd1059ef0512c28908aee0df3c5c",
+    "sibling_mysql_scene_wait_required": false
+  },
+  "created_at": "2026-08-20T02:05:00+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "four_scene_wave_barrier": false,
+  "independent_checkpoint_resume": true,
+  "kernel_cgroup_readback_successor": {
+    "all_other_cgroup_fields_exact": true,
+    "effective_memory_limit_readback_recorded": true,
+    "memory_limit_validation": "requested_value_rounded_down_to_system_page",
+    "recalibration_required": false,
+    "resource_envelope_changed": false
+  },
+  "measurement_stability_contract": {
+    "job_tpch_complete_within_hard_timeout_is_valid": true,
+    "job_tpch_full_canonical_suite_completion_required": true,
+    "job_tpch_hard_timeout_seconds": 900,
+    "job_tpch_minimum_measurement_seconds": null,
+    "job_tpch_target_resource_stability_required": false,
+    "xp_docker_reset_control_lock": "/tmp/mysql_async_xp_docker_reset_v1.lock",
+    "xp_docker_reset_lock_scope": "docker_control_critical_section_only_not_measurement_or_outer_round",
+    "xp_maximum_measurement_seconds": 900,
+    "xp_minimum_measurement_seconds": 300,
+    "xp_stable_resource_counter_may_end_after_minimum": true
+  },
+  "mysql_effective_parameter_movement_required": true,
+  "other_scene_completion_required": false,
+  "per_scene_outer_state_machine": true,
+  "post_search_stability_confirmation": false,
+  "recalibration_required": false,
+  "release_version": "v52",
+  "released_at": "2026-08-25T12:00:00+08:00",
+  "scene_may_advance_immediately": true,
+  "schema_version": "mysql_algorithm_c_async_outer_contract_v2",
+  "source_bindings": {
+    "async_xp_post_reset_settle": {
+      "path": "scripts/mysql_async_xp_post_reset_settle_v1.py",
+      "sha256": "9f3599f9da763bf75a90d0518b8b24047ac48a6084e7cfd18f1e10d1102de11a"
+    },
+    "boundary_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v2.py",
+      "sha256": "265946aefeaded1266d6c49031ebf1022eb524bcfead6d9afbde87614a0053c8"
+    },
+    "cached_preemption_regression_test": {
+      "path": "tests/test_mysql_algorithm_c_cached_preemption_v51.py",
+      "sha256": "4822075547783bfc6cb9d0e40dc8cbed55fb496726ef1144cd1e5b9a9a7de839"
+    },
+    "co_resident_isolation_v13": {
+      "path": "scripts/mysql_co_resident_pg_isolation_v13.py",
+      "sha256": "19cf7fd9c18ce51a8833e0db606309cdc172772ce09fe4a24b2cd1e639e45fba"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v52.py",
+      "sha256": "a4ac35071a85e2e2d5c6a14fed3b10eab60beeb92f515e2277fecce0b266576c"
+    },
+    "device_scoped_quiet_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v2.py",
+      "sha256": "9a29b954f4fd15d10abba5c5e133e47307264f789a51bb5c89226458ae27e405"
+    },
+    "hybench_runner_v4": {
+      "path": "config/formal/frozen_mysql_async_outer_20260820_v38/runtime/hybench-adaptive-runner-v4.jar",
+      "sha256": "c8f8e23fe7c195e21b5cd3e59a37ce7bb78742761edbea66f011d98c583febe3"
+    },
+    "hybench_runner_v4_builder": {
+      "path": "scripts/build_mysql_hybench_adaptive_runner_v4.py",
+      "sha256": "4011753fb09f3107bf713a02f9c1d40934301b8bc53d9fb6ab27bde6b0ebdd69"
+    },
+    "independent_checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_independent_boundary_checkpoint_v2.py",
+      "sha256": "6ed0b759eceda71a09ffb215b7d9a3e24e2205da894b187e1cab53327418bc22"
+    },
+    "job_table_unchanged_copy": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.job_memory.operator_physics_v1.json",
+      "sha256": "1bbcc4cc16ab785205ae1050320436a69ac0442256414fef8d16e2df6156a8f6"
+    },
+    "launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_async_v52.py",
+      "sha256": "dc36a003031ff56ccf19e85e322f0935831b3b4475ffdcffdaffb439d636dffd"
+    },
+    "legacy_predecessor_controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v49.py",
+      "sha256": "246af7051b307825afc03167cc033931cf59bfaea3adb737c01acca4376d335f"
+    },
+    "measurement_duration_policy": {
+      "path": "scripts/mysql_four_scene_adaptive_measurement_v1.py",
+      "sha256": "9a1780b5314c651f386ad39e99b32c6e0a487e24a47893b2d32a8d50acfca043"
+    },
+    "page_aware_cgroup_readback": {
+      "path": "scripts/mysql_cgroup_resource_readback_v2.py",
+      "sha256": "7deb7d43e972f4b4d8035aeb59a655536e0be8c5d4ffa5b7c548758081624969"
+    },
+    "page_aware_cgroup_readback_test": {
+      "path": "tests/test_mysql_cgroup_resource_readback_v2.py",
+      "sha256": "515dbd927b89f1ca5e2399be2fd29b3b8a9e8065fee77dc5c96b7605fa508bfb"
+    },
+    "predecessor_controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v50.py",
+      "sha256": "04899ca4eaaa6f8dd4f0e5ab9a5b3712cd10e64a5a96d5b636b5129e0014afb0"
+    },
+    "predecessor_controller_v51": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v51.py",
+      "sha256": "329194dae96f78b54a5eb16ae121445a941ad132f1e754abea575bfa0393a54b"
+    },
+    "predecessor_hybench_java_source": {
+      "path": "scripts/java/com/hybench/HyBenchAdaptiveMain.java",
+      "sha256": "efaae729d77fda26cd0867bd9a9560dc792576fd4a4d99bb5ec2cdefaad3e78d"
+    },
+    "predecessor_hybench_runner": {
+      "path": "config/formal/frozen_mysql_pg_outer_20260819_v35/runtime/hybench-adaptive-runner-v3.jar",
+      "sha256": "e999a130d6317a2d1ab6c4b1c3cd497a6a7d259ae94e27cabcf9e8a8165ec524"
+    },
+    "predecessor_independent_checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_independent_checkpoint_v1.py",
+      "sha256": "92b079af58c1ea5b0eecc40aaa9d99c30e373f271c484f6ff30b3962916a5e54"
+    },
+    "predecessor_workload_adapter": {
+      "path": "mysql_workload_adapter.py",
+      "sha256": "9bb2102b90bab8df44a9e976c5753723a8673fea4d7e13eb618ea7fa62595bbb"
+    },
+    "scene_independent_measurement_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_scene_independent_measurement_v4.py",
+      "sha256": "1def6a24cd40a569ae8b19003d2b49eba92029028fac69b27a58e59ed8118045"
+    },
+    "scene_scoped_xp_session_drain": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v19.py",
+      "sha256": "c2840424a8389f9c7471effc046b6013f9397001b3e4a31f708ee27db53bde67"
+    },
+    "scoped_point_authority": {
+      "path": "scripts/run_mysql_four_scene_r0_v5.py",
+      "sha256": "05767114a25b87feefe7ec61ce202dacd63d77d4ab62ec7ea542777d17acdad0"
+    },
+    "scoped_r0_stable_window_recovery": {
+      "path": "scripts/recover_mysql_scoped_r0_stable_window_bottleneck_v1.py",
+      "sha256": "e63d31d1b9113947a51082915d4fefb91c4fba4c579187365fdb10ed308d5576"
+    },
+    "shared_coordination": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v1.py",
+      "sha256": "c9e7365a4b7d90e42e7e1093416130722d4810f97abcf685cd80f260d6761b89"
+    },
+    "shared_prestart_authority": {
+      "path": "scripts/mysql_async_shared_prestart_authority_v1.py",
+      "sha256": "39e21812fee6ce2d05102afab11f639fc973e220d13f974e32c38d32576bcda7"
+    },
+    "single_scene_measurement": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "startup_barrier": {
+      "path": "scripts/mysql_async_scene_start_barrier_v1.py",
+      "sha256": "81eb989d07409c4557b1e58a5f01e29048339fb370cba1689f2df879bf344ad0"
+    },
+    "tpch_table_unchanged_copy": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.tpch_memory.operator_physics_v1.json",
+      "sha256": "8a8166b7500b7845151872366f8d4a6c012acc91746a5e4d1a9954dd72ec5336"
+    },
+    "xp_cpu_top4_table": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.hybench_xp_cpu.top4.operator_physics_v1.json",
+      "sha256": "5be3d21037ce4fe757e95bc3bd6b6c9b603c619d5e88c23badf587eb4ac840ed"
+    },
+    "xp_io_top4_table": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.hybench_xp_io.top4.operator_physics_v1.json",
+      "sha256": "3d61e77e8e975c86f82bc32b017bc33169a8929a0985356c36c58d2efb4b269e"
+    },
+    "xp_quiescence_successor_adapter": {
+      "path": "mysql_workload_adapter_v2.py",
+      "sha256": "bd88222170ca6cd9cfd8da791deedc5e9379bd77571ab8fbabcb27eba11930d8"
+    },
+    "xp_quiescence_successor_test": {
+      "path": "tests/test_mysql_workload_adapter_xp_quiescence_v2.py",
+      "sha256": "0e244c79e06eeba2358a522147ed9189709eb2daaf31467950a16a8f3bf48075"
+    },
+    "xp_top4_parameter_contract": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/parameter_contract.json",
+      "sha256": "d3399257c7a03556b61b49319eacad5891a643705966c53b6b92db25be60dd4f"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "technical_candidate_failure_policy": {
+    "failed_candidate_excluded_without_outer_state_mutation": true,
+    "generic_hybench_exit_two_remains_fail_closed": true,
+    "postgresql_outer_semantics": true,
+    "valid_parallel_sibling_retained": true,
+    "xp_adaptive_stop_drain_timeout_requires_artifact_proof": true
+  },
+  "xp_quiescence_successor": {
+    "adapter_validation_maximum_seconds": 300,
+    "failure_repaired": "runtime_requested_300_but_predecessor_adapter_rejected_values_above_120",
+    "graceful_quiescence_seconds": 300,
+    "measurement_minimum_or_maximum_changed": false,
+    "predecessor_adapter_unchanged": true,
+    "recalibration_required": false,
+    "resource_envelope_changed": false,
+    "successor_adapter_isolated": true,
+    "workload_mix_changed": false
+  },
+  "xp_top4_parameter_successor": {
+    "accepted_target_unchanged": 10,
+    "active_parameters_by_scene": {
+      "hybench_xp_cpu": [
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_row_cost",
+        "io_block_read_cost"
+      ],
+      "hybench_xp_io": [
+        "io_block_read_cost",
+        "disk_temptable_row_cost",
+        "disk_temptable_create_cost",
+        "memory_temptable_row_cost"
+      ]
+    },
+    "algorithm_c_outer_flow_changed": false,
+    "candidate_batches_unchanged": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "candidate_subset_count_by_scene": {
+      "hybench_xp_cpu": 15,
+      "hybench_xp_io": 15
+    },
+    "fresh_search_required": true,
+    "parameter_contract": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/parameter_contract.json",
+      "sha256": "d3399257c7a03556b61b49319eacad5891a643705966c53b6b92db25be60dd4f"
+    },
+    "post_search_stability_confirmation": false,
+    "predecessor_seven_parameter_evidence_reused": false,
+    "real_top_k_limit": 5
+  }
+}

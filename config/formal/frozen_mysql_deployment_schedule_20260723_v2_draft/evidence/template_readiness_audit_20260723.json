@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "artifact_type": "template_readiness_audit",
+  "audit_scope": "local frozen files and history only",
+  "formal_launch_authorized": false,
+  "scenarios": {
+    "hybench_ap_memory": {
+      "template_ready": false,
+      "reason": "Internal row-count contradiction: the ten recorded table counts sum to 87716003 while the same evidence declares 87695503, a difference of 20500.",
+      "source": "history/mysql_sgd_env_agents_20260723/ap/patrol_log_20260723.jsonl"
+    },
+    "job_memory": {
+      "template_ready": true,
+      "canonical_manifest": "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/job_template_manifest_20260723.json"
+    },
+    "hybench_xp_io": {
+      "template_ready": false,
+      "reason": "Freeze was revoked: actual total 87225907 differs from authoritative 87695503 by -469596.",
+      "source": "history/mysql_sgd_env_agents_20260723/xp/patrol_log_20260723.jsonl"
+    },
+    "tpch_memory": {
+      "template_ready": true,
+      "canonical_manifest": "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/tpch_template_manifest_20260723.json"
+    },
+    "tpcc_cpu": {
+      "template_ready": false,
+      "environment_allocated": true,
+      "reason": "Only E0 empty XFS mount is complete; no template has been generated."
+    }
+  }
+}

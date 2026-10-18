@@ -1,0 +1,25 @@
+{
+  "schema_version": "mysql_algorithm_c_full_plan_replay_pruning_v3",
+  "status": "FROZEN",
+  "qps_branch": {
+    "predecessor": "mysql_algorithm_c_full_plan_replay_pruning_v2",
+    "single_reject": "soft_ranking_penalty_only",
+    "minimum_distinct_parameter_points": 2,
+    "minimum_distinct_outer_rounds": 2,
+    "accepted_counterexample_prohibits_qps_pruning": true
+  },
+  "technical_instability_branch": {
+    "minimum_independent_formal_incumbent_baseline_incidents": 2,
+    "internal_database_hang_or_crash_required": true,
+    "coverage_must_be_incomplete": true,
+    "formal_state_credit_increment_must_be_zero": true,
+    "complete_plan_identity_required": true,
+    "accepted_counterexample_does_not_override_server_safety": true,
+    "same_parameter_point_may_confirm_reproducibility": true
+  },
+  "candidate_score_mutation": false,
+  "qps_resource_prediction": false,
+  "qps_gradient": false,
+  "qps_candidate_score": false,
+  "workload_docker_concurrency_and_execution_order_unchanged": true
+}

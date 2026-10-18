@@ -1,0 +1,99 @@
+{
+  "schema_version": "mysql_three_workload_disk_concurrency_freeze_v2",
+  "status": "FROZEN_POLICY_READBACK_AND_INDEPENDENT_WORKER_POOL_REQUIRED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "execution_authorized": false,
+  "policy": "hybench_xp_single_ssd_20260809",
+  "policy_source": {
+    "path": "../resource_adaptive/docs/hybench_xp_single_ssd_concurrency_summary_20260809.md",
+    "sha256": "ed867b98b402d43c3008b5b4b1f12c65d06c6e6acc3df954eb698213e816aa6d"
+  },
+  "implementation": {
+    "path": "same_ssd_concurrency.py",
+    "sha256": "6bf157586fdca483d9b8c023a5f5245440b588ff7238089b89a45929d048ff4f"
+  },
+  "inter_scene": {
+    "parallel_data_planes": ["job", "tpch", "hybench_xp"],
+    "maximum_parallel_scenes": 3,
+    "required": [
+      "distinct_mysql_container",
+      "distinct_datadir",
+      "distinct_host_port",
+      "disjoint_cpuset",
+      "physical_device_readback",
+      "rolling_dynamic_non_interference"
+    ],
+    "shared_mysql_instance_prohibited": true
+  },
+  "same_physical_ssd_replay": {
+    "tiers": [1, 4, 8, 12],
+    "initial_parallelism": 1,
+    "preferred_parallelism": 8,
+    "stable_cap": 12,
+    "allow_stable_cap": false,
+    "automatic_16_prohibited": true,
+    "effective_cap_by_fixed_top5": 5,
+    "scale_up": {
+      "mean_util_pct_lt": 75.0,
+      "peak_util_pct_lt": 90.0,
+      "maximum_tier_steps_per_accepted_round": 1
+    },
+    "scale_down": {
+      "mean_util_pct_gte": 85.0,
+      "peak_util_pct_gte": 95.0,
+      "tier_steps": 1
+    },
+    "missing_or_invalid_physical_ssd_observation": "hold_current",
+    "technical_failure": "not_scaling_evidence",
+    "worker_independence_required": [
+      "unique_container_id",
+      "unique_datadir",
+      "unique_host_port",
+      "exactly_one_common_physical_ssd",
+      "per_worker_recovery_and_clean_template"
+    ],
+    "same_mysql_instance_parallel_candidate_replay_prohibited": true
+  },
+  "current_readback": {
+    "job": {
+      "mount": "/disk1",
+      "physical_device": "/dev/nvme1n1",
+      "host_port": 65211,
+      "independent_replay_workers": 1,
+      "effective_replay_parallelism": 1,
+      "adaptive_same_ssd_enabled": false,
+      "reason": "single_independent_mysql_worker"
+    },
+    "tpch": {
+      "mount": "/disk2",
+      "physical_device": "/dev/nvme2n1",
+      "host_port": 65212,
+      "independent_replay_workers": 1,
+      "effective_replay_parallelism": 1,
+      "adaptive_same_ssd_enabled": false,
+      "reason": "single_independent_mysql_worker"
+    },
+    "hybench_xp": {
+      "mount": "/disk3",
+      "physical_device": "/dev/sda1",
+      "throttle_device": "/dev/sda",
+      "host_port": 65213,
+      "scenario": "hybench_xp_cpu",
+      "target_resource": "cpu",
+      "independent_replay_workers": 1,
+      "effective_replay_parallelism": 1,
+      "adaptive_same_ssd_enabled": false,
+      "reason": "single_worker_and_reference_hardware_is_nvme1n1_not_sda",
+      "explicit_same_ssd_hardware_evidence_required_before_enable": true
+    }
+  },
+  "workload_threads_unchanged": {
+    "job_workers": 16,
+    "job_maximum_concurrent_long_queries": 4,
+    "tpch_lanes": 5,
+    "hybench_xp_native_iq1_iq7_uniform_random": true,
+    "hybench_xp_at_mix_percent": "35/25/15/15/7/3",
+    "hybench_xp_xap_xtp_ratio_frozen": true
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "mysql_algorithm_a_job_slot_transition_recovery_v1",
+  "status": "FROZEN",
+  "created_at": "2026-08-24T09:18:00+08:00",
+  "release_version": "job_external_diagnostic_transition_schema_readback_recovery_v3",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "recovery_reason": "monitor_self_stop_then_unselected_job_database",
+  "failed_stage": "SUCCESSOR_FREEZE_SEALED",
+  "predecessor_round": 3,
+  "predecessor_accepted": 2,
+  "job_parallelism": {
+    "before": 2,
+    "after": 4
+  },
+  "predecessor_replay_prohibited": true,
+  "archived_partial_round_credit_prohibited": true,
+  "resource_recalibration_required": false,
+  "candidate_count_per_round": 16,
+  "full_job_sql_count": 113,
+  "benchmark_identity_readback": {
+    "sealed_defaults_select_database": false,
+    "required_database": "imdb_job",
+    "verification_method": "USE imdb_job; SELECT CURRENT_USER(),DATABASE();",
+    "credential_mutation_performed": false
+  },
+  "external_workloads_diagnostic_only": true,
+  "external_workload_wait_required": false,
+  "external_process_control_or_stop_prohibited": true,
+  "mysql_fixed_cpu_affinity_retained": true,
+  "numa_exclusive_scheduler_lock_required": false,
+  "source_bindings": {
+    "recovery_executor": {
+      "path": "scripts/resume_mysql_algorithm_a_job_external_diagnostic_slot_transition_v3.py",
+      "sha256": "b7ff3f5ecb5ccc94652807c49da2a4ab820bddc5b90142c62a5adbada5660d64"
+    },
+    "prior_recovery_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_external_diagnostic_transition_recovery_20260824_v2/recovery_contract.json",
+      "sha256": "f420ccc07d77e86b3e189e92e709998131b56ac14ebc03b2827bd1f231cdde22"
+    },
+    "prior_recovery_failure": {
+      "path": "history/mysql_four_scene_20260809/formal_launch_logs/v109_to_a_job4_transition_recovery_20260824.recovery.json",
+      "sha256": "5fd4f4872882eef94dd33a45f60bec36941b0efc502bdb7ea8ee48ca5e5deb43"
+    },
+    "database_null_handoff_snapshot": {
+      "path": "history/mysql_four_scene_20260809/formal_launch_logs/v100_to_a_tpch_to_v99_job4_external_diagnostic_20260823.handoff.database_null_snapshot.json",
+      "sha256": "e4dfa91bd41168d8fc59c3523c6304975045a948a53b2fe853a6a08221de93d1"
+    },
+    "sealed_predecessor_boundary": {
+      "path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.predecessor_boundary_snapshot.json",
+      "sha256": "9ae2aee42cbc52e7e5fb590f670e76239a7d4f21f0fad7e94ccccf1d864f2a56"
+    },
+    "original_transition_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_external_diagnostic_slots_20260823_v1/transition_contract.json",
+      "sha256": "d44073093ffb32b9950e1d0971fb7a83649682ad2dfb87a4eeaecfd67805da8e"
+    }
+  }
+}

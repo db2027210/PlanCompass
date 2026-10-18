@@ -1,0 +1,11 @@
+ MySQL JOB/Memory  agent mysql_sgd_job_20260723
+
+ AGENTS.mdconfig/formal/frozen_mysql_deployment_schedule_20260723_v3_draft/FROZEN_CONFIG.md  checksums.sha256 v2_draft/FROZEN_CONFIG.md  readiness_manifest.jsonconfig/formal/frozen_mysql_workloads_and_parameters_20260723_v3/FROZEN_CONFIG.mdjob_mix.json  checksums.sha256preflight/mysql_experience_sgd_eight_algorithm_contract_20260723.sha256 sha256sum -cpreflight/mysql_five_benchmark_resource_envelope_and_search_algorithms_20260722.md SGD
+
+ MySQL JOB/Memoryhost02 192.0.2.4MySQL  /dev/nvme1n1 host09PG ///kill/ SQLJOB  XP MySQL EXPLAIN host02_job_xp_mutex XP
+
+ v3 /// MySQL  readiness  formal_mysql_sgd_campaignR0//SGD  shell/verify_mysql_sgd_v2_readiness.py verifier ready=true/status=READYmanifest status=READY/launch_authorized=true fail-closed
+
+ history/mysql_sgd_env_agents_20260723/job/  checkpoint R0 rank 5  Asia/Shanghai  history/mysql_sgd_env_agents_20260723/job/patrol_log_20260723.jsonl  JSONMachine/mutex ownerJOB/XP/PG CPU/Memory/BlockIOBlocking issue checkpoint
+
+ SGD 85%-95% 30%-50%DB  DBQPS 30 180→210→…→600 5→10→K10 Reason

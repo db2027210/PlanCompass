@@ -1,0 +1,88 @@
+{
+  "completed_outer_attempts_preserved": 10,
+  "cross_engine_comparison_prohibited": true,
+  "current_pg_runtime_release": "v58",
+  "discarded_incomplete_outer": 11,
+  "discarded_incomplete_outer_credit": 0,
+  "dynamic_gate_release": "v210",
+  "evidence_bindings": {
+    "benchmark_accounts": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_authority_v36_20260923/authority/benchmark_accounts_binding.json",
+      "sha256": "81ba93987b581681cb62a8b085173a9120b9edc535a75860db0e5493eb110ea6"
+    },
+    "checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v212_tpch_v211_outer10_cleanup_checkpoint_20260929/prepared_binding.json",
+      "sha256": "e9ce3b11579c174dabaeff141413d5ad9ebbd274c3b106792244f37e0e7746ca"
+    },
+    "formal_baseline": {
+      "path": "history/mysql_four_scene_20260809/c_v148_paper_baseline_calibration_20260923_tpch/formal_incumbent_baseline/batch_result.json",
+      "sha256": "8b4a52a96a8d6d2a370fef2e331a21dc855114d05d0df98b3da56440fe61a5c4"
+    },
+    "formal_r0_set": {
+      "path": "history/mysql_four_scene_20260809/c_v152_formal_r0_set_v36_20260923/formal_r0_set.json",
+      "sha256": "b098e7a5aa510560d4c81e12f9be91faad939ca7e6e24dcdf992c7cb73bc3c4f"
+    },
+    "fresh_r0": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_fresh_r0_v36_20260923/fresh_r0_binding.json",
+      "sha256": "792d726757b53d2ba6e99ca90ce47ec4696a22c6b546c7895c66e16bc9fe8c37"
+    },
+    "prepared_binding": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_authority_v36_20260923/authority/prepared_binding.json",
+      "sha256": "8dcac4616c820ef6e3d60413e383a7ea3165616c68eaf0b684353bbb524fdb8b"
+    },
+    "quarantine": {
+      "path": "history/mysql_four_scene_20260809/c_v212_tpch_v211_outer10_cleanup_quarantine_20260929/replay_quarantine.json",
+      "sha256": "f00a71be2130f5dde18871130b2cdb9b56021edb4540a35ecf0530bf834bab16"
+    },
+    "source_state": {
+      "path": "history/mysql_four_scene_20260809/c_v211f_pg_dynamic_gate_four_scene_20260929_tpch/run_state.json",
+      "sha256": "8ee48829650ef1fe4952d0745f8549de4d0a7ec6eb44770514c9b35889b3a0b7"
+    },
+    "transition_preflight": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_authority_v36_20260923/authority/transition_preflight.json",
+      "sha256": "956eb3e700b9b0242b5eb8f93dfdbba898a2769381429d3ac441450257051558"
+    }
+  },
+  "formal_scope": "mysql_only",
+  "fresh_search_lineage_preserved": true,
+  "fresh_search_reset_on_resume": false,
+  "other_scene_control_or_stop_performed": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "recovery_reason": "bounded DROP VIEW IF EXISTS tpch.revenue0 timeout after incomplete outer 11",
+  "release_version": "v212-tpch-cleanup-timeout-recovery",
+  "resource_envelope_changed": false,
+  "scene": "tpch_sf4_memory",
+  "schema_version": "mysql_algorithm_c_tpch_cleanup_recovery_contract_v1",
+  "source_bindings": {
+    "checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_scene_resume_checkpoint_v11.py",
+      "sha256": "b34957a80fd13cf718132e7ef8e1d84ae502788421251949ed635710e03b1580"
+    },
+    "current_pg_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v58.py",
+      "sha256": "50cd4bfe715975b77fd1805c1c790a0a429b34a0a62b3692a7e9c68d18a24a42"
+    },
+    "dynamic_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v31.py",
+      "sha256": "eb519377db253e660e9bd7a977106c7c2caa9d4b66853883c30e3895decc3d58"
+    },
+    "dynamic_gate_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v107.py",
+      "sha256": "8593d3994acb6d83ce922073cb962a1e82c21c122c32a52283cd84a950cc9a7d"
+    },
+    "quarantine_builder": {
+      "path": "scripts/build_mysql_algorithm_c_empty_quarantine_for_scene_checkpoint_v7.py",
+      "sha256": "212170d2978d539d3248fba22d2f7e2f848339b766f29775b9d1cba22b03aca2"
+    },
+    "recovery_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v212_tpch_cleanup_recovery.py",
+      "sha256": "87f7583dd8ecc791984face61b37215efe43a2a5211d5745d03181840032119a"
+    },
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v108.py",
+      "sha256": "b1333c239b89d9eb5ba13a1982c5d65b1009e4591ae32eb98f3bb4d1fbdf863c"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "workload_or_candidate_policy_changed": false
+}

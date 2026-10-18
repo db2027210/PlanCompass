@@ -1,0 +1,11 @@
+{
+  "workers": [
+    {
+      "worker_id": "tpch-1",
+      "benchmarks": ["tpch"],
+      "port": 57753,
+      "mysqld_pid": 1960830,
+      "database": "tpch"
+    }
+  ]
+}

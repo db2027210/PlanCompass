@@ -1,0 +1,84 @@
+{
+  "schema_version": "mysql_xp_canonical_template_deployment_evidence_v1",
+  "artifact_type": "mysql_template_deployment_evidence",
+  "status": "TEMPLATE_DEPLOYMENT_VERIFIED_NOT_READY",
+  "scenario": "hybench_xp_io",
+  "benchmark": "hybench_xp",
+  "engine": "mysql",
+  "host": "192.0.2.4",
+  "hostname": "node02",
+  "device": "/dev/nvme0n1p1",
+  "filesystem": "ext4",
+  "mount": "/mnt/mysql_nvme0n1p1",
+  "template_path": "/mnt/mysql_nvme0n1p1/anonymous/resource_adaptive_mysql/hybench_xp/template_v2",
+  "database": "hybench_sf10x",
+  "mysql_version": "8.0.45",
+  "template_identity": {
+    "database_manifest_sha256": "fd7c9918890fe6eea33f900da05a8d2825e204bc3f3cbf90505ddc43b98b52fa",
+    "template_tree_sha256": "c512bc478abb3e210ddafe3e5f69cf2058f8bfdbd7e90afa251b9b9f156c10ac",
+    "database_size_bytes": 11033004101,
+    "regular_file_count": 173,
+    "directory_count": 6,
+    "symlink_count": 1
+  },
+  "exact_row_counts": {
+    "checking": 6000000,
+    "checkingAccount": 3020000,
+    "company": 20000,
+    "customer": 3000000,
+    "loanapps": 6000000,
+    "loantrans": 6000000,
+    "savingAccount": 3020000,
+    "transfer": 60000000
+  },
+  "table_count": 8,
+  "total_rows": 87060000,
+  "read_only": {
+    "template_directory_mode": "0555",
+    "database_manifest_mode": "0444",
+    "post_copy_verification": true
+  },
+  "template_unchanged": {
+    "passed": true,
+    "method": "SQL counts ran only against an independent writable copy; before/after canonical-template inventory bytes are identical",
+    "before_inventory_sha256": "39bef2441b02739b3fdaf5766be9418df71a12327e078320f137d17f614010b3",
+    "after_inventory_sha256": "39bef2441b02739b3fdaf5766be9418df71a12327e078320f137d17f614010b3"
+  },
+  "sql_count_closure": {
+    "passed": true,
+    "temporary_container_exit_code": 0,
+    "oom_killed": false,
+    "clean_shutdown": true,
+    "temporary_container_removed": true,
+    "temporary_network_removed": true,
+    "credential_material_used": false,
+    "authentication_mode": "isolated_skip_grant_tables_skip_networking",
+    "pg_mutation_performed": false
+  },
+  "source_evidence": {
+    "post_copy": {
+      "path": "history/mysql_sgd_env_agents_20260723/xp/post_copy_closure_20260723_0544_retry1/xp_post_copy_verification.json",
+      "sha256": "130a9f610f3cdbccde7109216760ebf6ba5c6607e647550a686a13354d2488c3",
+      "sidecar_path": "history/mysql_sgd_env_agents_20260723/xp/post_copy_closure_20260723_0544_retry1/xp_post_copy_verification.json.sha256"
+    },
+    "sql_count_bundle": {
+      "directory": "history/mysql_sgd_env_agents_20260723/xp/xp_sql_count_20260723_0620",
+      "checksums_path": "history/mysql_sgd_env_agents_20260723/xp/xp_sql_count_20260723_0620/checksums.sha256",
+      "checksums_sha256": "a311472350e188b009473816dceb2c4ef05e901c8a0908639489b31aac1bcbac",
+      "verdict_path": "history/mysql_sgd_env_agents_20260723/xp/xp_sql_count_20260723_0620/sql_count_verdict.json",
+      "verdict_sha256": "ce49a15598c5368a7f007a2e7c3c0a9280f3ba5807b6881d8c1d8bf248c23eb4",
+      "summary_path": "history/mysql_sgd_env_agents_20260723/xp/xp_sql_count_20260723_0620/summary.json",
+      "summary_sha256": "c32d138f171fc2193f2682ef191dca95f4ac5d1d523651faac1d90052e57e72b"
+    }
+  },
+  "formal_scope": {
+    "template_deployment_only": true,
+    "r0": false,
+    "sgd": false,
+    "accepted_iteration": false,
+    "readiness_changed": false,
+    "ready": false,
+    "launch_authorized": false
+  },
+  "scope_note": "Canonical XP template deployment and SQL row-count closure only. This does not prove paired resource envelopes, co-residency non-interference, R0, SGD, or formal launch readiness."
+}

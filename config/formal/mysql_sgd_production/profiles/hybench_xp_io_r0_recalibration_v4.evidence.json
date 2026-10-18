@@ -1,0 +1,56 @@
+{
+  "adjustments": {
+    "cpu_cores": {
+      "formula": "old_quota * measured_cpu / target_cpu_0.40",
+      "new": 3.75,
+      "old": 1.5,
+      "predicted_cpu": 0.39039810107531936
+    },
+    "io_read_bps": {
+      "formula": "new_total_cap chosen near measured_io * old_total_cap / target_io_0.90",
+      "new": 4500000,
+      "new_total_cap": 5024288,
+      "old": 4200000,
+      "old_total_cap": 4724288,
+      "predicted_io": 0.9069376086251896,
+      "write_bps": 524288
+    },
+    "memory_bytes": {
+      "formula": "unchanged because measured_memory_is_in_band",
+      "new": 5637144576,
+      "old": 5637144576
+    }
+  },
+  "cpu_isolation": {
+    "job_cpuset": "18-20,54-56",
+    "overlap": "none",
+    "reason": "retain disjoint host02 CPU affinity while increasing cgroup quota within XP cpuset",
+    "xp_cpuset": "21-33,57-69"
+  },
+  "created_utc": "2026-07-26T06:56:17Z",
+  "profile_path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/mysql_sgd_production/profiles/hybench_xp_io_r0_recalibration_v4.json",
+  "qps_used_for_calibration": false,
+  "scenario": "hybench_xp_io",
+  "schema_version": "hybench_xp_resource_profile_calibration_v4",
+  "source_observations": {
+    "cpu": 0.9759952526882985,
+    "io": 0.9645296272717152,
+    "memory": 0.48673938569568453
+  },
+  "source_run_id": "XP_CAPTURE_R0_TRACE_20260726T0615Z",
+  "target_bands": {
+    "cpu": [
+      0.3,
+      0.5
+    ],
+    "io": [
+      0.85,
+      0.95
+    ],
+    "memory": [
+      0.3,
+      0.5
+    ]
+  },
+  "workload_unchanged": true
+}

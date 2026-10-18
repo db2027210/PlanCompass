@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "artifact_type": "mysql_template_manifest",
+  "scenario": "job_memory",
+  "benchmark": "job",
+  "engine": "mysql",
+  "host": "192.0.2.4",
+  "device": "/dev/nvme1n1",
+  "template_path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/job/template",
+  "database": "imdb_job",
+  "mysql_version": "8.0.45",
+  "ready": true,
+  "frozen_read_only": true,
+  "clean_shutdown": true,
+  "table_count": 21,
+  "exact_row_counts": {
+    "aka_name": 901343,
+    "aka_title": 361472,
+    "cast_info": 36244344,
+    "char_name": 3140339,
+    "comp_cast_type": 4,
+    "company_name": 234997,
+    "company_type": 4,
+    "complete_cast": 135086,
+    "info_type": 113,
+    "keyword": 134170,
+    "kind_type": 7,
+    "link_type": 18,
+    "movie_companies": 2609129,
+    "movie_info": 14835720,
+    "movie_info_idx": 1380035,
+    "movie_keyword": 4523930,
+    "movie_link": 29997,
+    "name": 4167491,
+    "person_info": 2963664,
+    "role_type": 12,
+    "title": 2528312
+  },
+  "cost_override_count": 0,
+  "ibd_file_count": 21,
+  "ibd_permissions": "0444",
+  "template_directory_permissions": "0555",
+  "remote_database_manifest_sha256": "aa430eceaa6fcc710769ae25ece93458fa0544cf2bc0b9600a0034982652a552",
+  "remote_ibd_checksum_manifest_sha256": "7ff455b6f0591207ea3cd259d12cf5306b623ebca18adb345c382aca2a7840bc",
+  "remote_full_checksum_manifest_sha256": "e9e0190c9bdffc191a02e8df500d8be217eb494b9921222ab794822736852933",
+  "source_evidence": [
+    {
+      "path": "history/mysql_sgd_env_agents_20260723/job/12_template_freeze_and_lease_release_20260723_0230.md",
+      "sha256": "3362daa775eafa9ed31fa547676667cf361409f4f9c61b414f864c2956e88e0b"
+    },
+    {
+      "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/config/formal/frozen_mysql_deployment_schedule_20260722_v1/job_deployment_verification_20260723.json",
+      "sha256": "e2723b955a9c170b1afaa56f6c7f9b34f19e6b97b8948d79de2f1a61cf6b2042"
+    }
+  ],
+  "scope_note": "Template readiness only; this does not prove paired envelopes, interference, R0, experience table, lease, or launch readiness."
+}

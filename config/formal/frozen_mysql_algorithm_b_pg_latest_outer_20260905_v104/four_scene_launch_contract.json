@@ -1,0 +1,50 @@
+{
+  "schema_version": "mysql_algorithm_b_four_scene_fresh_launch_contract_v1",
+  "release_version": "v104-pg-latest-outer",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "B",
+  "fresh_search": true,
+  "fresh_formal_baseline_per_scene": true,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "all_four_scenes_start_concurrently": true,
+  "physical_workers_per_scene": 2,
+  "maximum_concurrent_mysql_workers": 8,
+  "per_scene_controller": true,
+  "per_scene_outer_state_machine": true,
+  "four_scene_wave_barrier": false,
+  "sibling_scene_wait": false,
+  "shared_nvme_mutual_exclusion": false,
+  "numa_exclusive_scheduler_lock": false,
+  "whole_round_resource_lease": false,
+  "lease_mode": "none",
+  "algorithm_a_or_previous_b_prior_used": false,
+  "previous_b_accepted_or_rejected_credit_inherited": false,
+  "previous_b_ranges_inherited": false,
+  "external_process_control_or_stop_performed": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_b_four_scene_client_primary_pg_latest_v1.py",
+      "sha256": "aeda4de15b37d0586fe4fcd22cf1dc7db6ba51726021efa3e51a9aabe1136ace"
+    },
+    "algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_b_pg_latest_outer_20260905_v104/algorithm_b_pg_latest_outer_contract.json",
+      "sha256": "4a1f280a23364ad8cd96c0963d5d56ae7d0da9dad065fd71fc5baeb2684b4fbd"
+    },
+    "fresh_search_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/v1185_to_c_client_primary_bootstrap_20260903/checkpoint/prepared_binding.json",
+      "sha256": "fdd9f22b0da70e9642f34f2d56e6b75604d05a8b2dfaf820a4584f42926da998"
+    },
+    "replay_quarantine": {
+      "path": "history/mysql_four_scene_20260809/v1185_to_c_client_primary_bootstrap_20260903/replay_quarantine/replay_quarantine.json",
+      "sha256": "03a33c3eeb1cc7a9a812ac348912fccff030a26fdfe3e32462cff8be49621f31"
+    }
+  }
+}

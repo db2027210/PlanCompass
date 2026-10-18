@@ -1,0 +1,45 @@
+{
+  "algorithm_decision_logic_changed": false,
+  "candidate_set_changed": false,
+  "cross_engine_comparison_prohibited": true,
+  "cross_scene_completion_dependency": false,
+  "database_and_benchmark_processes_remain_fail_closed": true,
+  "effective_maximum_clean_window_wait_seconds": 120,
+  "exact_target_journal_classification": true,
+  "formal_scope": "mysql_only",
+  "fresh_search_required": true,
+  "parent_algorithm_contract_path": "config/formal/frozen_mysql_algorithm_c_pg_startup_isolation_20260929_v208/algorithm_c_pg_startup_isolation_contract.json",
+  "parent_algorithm_contract_sha256": "7a1691699fee9a87aac96e5791cf2c2e803f1a3c02020468b3bfa79c32d2ef4a",
+  "postgresql_process_control_or_stop_performed": false,
+  "release_version": "v210-pg-dynamic-gate",
+  "required_clean_window_seconds": 15,
+  "resource_envelope_changed": false,
+  "schema_version": "mysql_algorithm_c_pg_dynamic_gate_release_v1",
+  "sibling_scene_completion_checked": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v107.py",
+      "sha256": "8593d3994acb6d83ce922073cb962a1e82c21c122c32a52283cd84a950cc9a7d"
+    },
+    "correspondence_test": {
+      "path": "tests/test_mysql_algorithm_c_pg_correspondence_v8.py",
+      "sha256": "2afa975110e365061ff9c0234ffce68b8e914f84d992a94c84fab36f110434a2"
+    },
+    "dynamic_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v31.py",
+      "sha256": "eb519377db253e660e9bd7a977106c7c2caa9d4b66853883c30e3895decc3d58"
+    },
+    "parent_algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_startup_isolation_20260929_v208/algorithm_c_pg_startup_isolation_contract.json",
+      "sha256": "7a1691699fee9a87aac96e5791cf2c2e803f1a3c02020468b3bfa79c32d2ef4a"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_pg_dynamic_gate_v210.py",
+      "sha256": "3d3b02d5c8793ac48e5a968b0daf5e6ad8c0c131412513c24912320974038608"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "superseded_v209_rounds_reusable": false,
+  "unknown_user_processes_remain_fail_closed": true,
+  "workload_changed": false
+}

@@ -1,0 +1,56 @@
+{
+  "cost_parameters": {
+    "active": ["io_block_read_cost", "memory_block_read_cost", "row_evaluate_cost", "key_compare_cost", "disk_temptable_create_cost", "disk_temptable_row_cost", "memory_temptable_create_cost", "memory_temptable_row_cost"],
+    "ranges": {
+      "io_block_read_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0},
+      "memory_block_read_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0},
+      "row_evaluate_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0},
+      "key_compare_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0},
+      "disk_temptable_create_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0},
+      "disk_temptable_row_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0},
+      "memory_temptable_create_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0},
+      "memory_temptable_row_cost": {"min_multiplier": 0.5, "max_multiplier": 2.0}
+    }
+  },
+  "mysql_workers": {"cpu": {"host": "127.0.0.1", "port": 13308}},
+  "scenarios": {
+    "cpu": {
+      "benchmarks": ["c"],
+      "capability": {"cpu": 0.24, "memory": 16.0, "io": 100.0},
+      "scoring": {
+        "overload_threshold": 0.8,
+        "score_mode": "band_target",
+        "resource_weights": {"cpu": 3.0, "memory": 1.0, "io": 1.0},
+        "resource_target_ranges": {
+          "cpu": {"min_pct": 70.0, "max_pct": 85.0, "hard_overload_pct": 95.0},
+          "memory": {"min_pct": 10.0, "max_pct": 80.0, "hard_overload_pct": 95.0},
+          "io": {"min_pct": 0.0, "max_pct": 80.0, "hard_overload_pct": 95.0}
+        }
+      }
+    }
+  },
+  "benchmarks": {
+    "c": {
+      "family": "C_TPCC",
+      "mysql": {"user": "root", "password": "CHANGE_ME", "database": "tpcc", "engine_name": "default", "query_timeout_sec": 60},
+      "validation_estimator": {
+        "type": "command",
+        "command": ["python", "mysql_resource_monitor.py", "--pid", "1034978", "--interval-sec", "1", "--warmup-samples", "3", "--", "python", "mysql_benchmark_command.py", "--benchmark", "tpcc", "--host", "127.0.0.1", "--port", "13308", "--database", "tpcc", "--user", "root", "--password", "CHANGE_ME", "--output-dir", "history/mysql_experiments/A11/workload", "--duration-sec", "30", "--clients", "8", "--scale-factor", "143"],
+        "cwd": "/home/anonymous/program/resource_adaptive_mysql",
+        "timeout_sec": 180
+      }
+    }
+  },
+  "workflow": {
+    "max_parallel": 1,
+    "full_replay": {
+      "grid_points": 3,
+      "active_params": ["row_evaluate_cost", "key_compare_cost"],
+      "predict_before_replay": false,
+      "validation_repeats": 1,
+      "checkpoint_every": 1,
+      "commit_best": false,
+      "output_directory": "history/mysql_experiments/A11/full_grid"
+    }
+  }
+}

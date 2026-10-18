@@ -1,0 +1,30 @@
+{
+  "schema_version": "mysql_algorithm_a_job_recovery_replay_excluded_resume_v2",
+  "status": "FROZEN",
+  "created_at": "2026-08-23T20:09:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "algorithm": "A",
+  "prestart_evidence_deferred_until_output_creation": true,
+  "preworkload_failed_attempts_excluded": [1, 2],
+  "optimizer_semantics_changed": false,
+  "resource_envelope_changed": false,
+  "candidate_set_changed": false,
+  "accepted_credit_changed": false,
+  "rejected_credit_changed": false,
+  "source_bindings": {
+    "controller": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_algorithm_a_job_recovery_replay_excluded_resume_v2.py",
+      "sha256": "fd890cdbe9cf14253017d98aadaf06a261946d3cbe43ede65f32b553df0329ee"
+    },
+    "recovery_resume_v1": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_algorithm_a_job_recovery_replay_excluded_resume_v1.py",
+      "sha256": "773516023ff5ce635a47cf989f3957e3f297efa66c89b0cb98a1ab9b0e60c2af"
+    },
+    "recovery_resume_v1_contract": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_algorithm_a_job_recovery_replay_excluded_20260823_v1/transition_contract.json",
+      "sha256": "4862a04e62303b793b1d6e9c6da506dc408e36ee68d042105ff696a5c857dee1"
+    }
+  }
+}

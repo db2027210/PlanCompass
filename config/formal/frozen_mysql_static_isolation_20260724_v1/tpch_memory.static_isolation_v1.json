@@ -1,0 +1,66 @@
+{
+  "captured_at": "2026-07-24T01:48:39+08:00",
+  "co_resident": {
+    "active_driver_processes": [],
+    "container_count": 1,
+    "container_names": [
+      "pg5_tpch_s04_20260722"
+    ],
+    "devices": [
+      "/dev/nvme2n1",
+      "/dev/sda3"
+    ],
+    "process_count": 7,
+    "process_cpu_conflicts": [],
+    "process_numa_conflicts": [],
+    "target_container_candidates": []
+  },
+  "cpu_nonoverlap": true,
+  "cross_engine_comparison_prohibited": true,
+  "engine": "mysql",
+  "formal_scope": "mysql_only",
+  "freeze_id": "frozen_mysql_static_isolation_20260724_v1",
+  "host_admission_passed": true,
+  "host_lane_mutex": {
+    "controller": {
+      "path": "shell/manual_mysql_sgd_lane_controller.py",
+      "sha256": "f956b48a4f64f755587800e43550b0593250b43c14cd06cd8ccd98e0dc5d5ca1"
+    },
+    "group": "host04",
+    "lock_root": "history/mysql_sgd_env_agents_20260723/formal_host_lane_mutexes",
+    "policy": "at most one formal MySQL campaign per physical host"
+  },
+  "memory_swap_nonoverlap": true,
+  "no_active_benchmark_driver_pressure": true,
+  "numa_nonoverlap": true,
+  "passed": true,
+  "physical_disk_nonoverlap": true,
+  "process_inventory_complete": true,
+  "same_host_scenario_mutex_enforced": true,
+  "scenario": "tpch_memory",
+  "schema_version": "mysql_only_static_isolation_evidence_v1",
+  "sources": {
+    "inventory_capture_summary": {
+      "path": "history/mysql_sgd_env_agents_20260723/static_isolation_20260724T0134/capture_summary.json",
+      "sha256": "3e6b59d5a1210951b97d33cb94f77fdb5f72e486b2b65198590e4ce4f5b98506"
+    },
+    "live_host_inventory": {
+      "path": "history/mysql_sgd_env_agents_20260723/static_isolation_20260724T0134/host04.inventory.json",
+      "sha256": "69b07056a03ddc276d85994fad287c749a7d2dbf65efd1fd841725ed0abd37e8"
+    },
+    "target_effective_envelope_readback": {
+      "path": "history/mysql_sgd_env_agents_20260723/tpch/formal_mysql_normalized_envelope_readback.json",
+      "sha256": "906d5a6d574f32ccb78c5e4c3c530b1ae1512e27a7c2cb8c24afce8dea107b48"
+    }
+  },
+  "target": {
+    "cpuset_cpus": "18-20,54-56",
+    "cpuset_mems": "1",
+    "device": "/dev/nvme0n1",
+    "device_family": "/dev/nvme0n1",
+    "memory_bytes": 6442450944,
+    "memory_swap_bytes": 6442450944,
+    "runtime_admission": "stopped until static, dynamic, R0 bottleneck, and lease gates pass"
+  },
+  "target_runtime_currently_stopped_or_isolated": true
+}

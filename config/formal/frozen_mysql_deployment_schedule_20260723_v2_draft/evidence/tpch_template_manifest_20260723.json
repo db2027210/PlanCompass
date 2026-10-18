@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "artifact_type": "mysql_template_manifest",
+  "scenario": "tpch_memory",
+  "benchmark": "tpch",
+  "engine": "mysql",
+  "host": "192.0.2.7",
+  "device": "/dev/nvme0n1",
+  "template_path": "/mnt/nvme0n1/anonymous/resource_adaptive_mysql/tpch/template",
+  "scale_factor": 10,
+  "mysql_version": "8.0.45",
+  "ready": true,
+  "frozen_read_only": true,
+  "clean_build_exit_code": 0,
+  "table_count": 8,
+  "exact_row_counts": {
+    "customer": 1500000,
+    "lineitem": 59986052,
+    "nation": 25,
+    "orders": 15000000,
+    "part": 2000000,
+    "partsupp": 8000000,
+    "region": 5,
+    "supplier": 100000
+  },
+  "cost_override_count": 0,
+  "remote_checksum_manifest": "template_checksum_20260723.sha256",
+  "remote_checksum_entry_count": 141,
+  "source_evidence": [
+    {
+      "path": "history/mysql_sgd_env_agents_20260723/tpch/05_template_rowcount_verified_20260723_0209.md",
+      "sha256": "32361fcefe6c489482b9b3a6692c5b6aca63699b04087cd32a5b81976220a1bf"
+    },
+    {
+      "path": "history/mysql_sgd_env_agents_20260723/tpch/patrol_log_20260723.jsonl",
+      "evidence_events": ["template_status", "template_checksum_verification"]
+    }
+  ],
+  "scope_note": "Template readiness only; the row-count validation runtime explicitly lacked effective I/O-throttle evidence and cannot prove the formal envelope or launch readiness."
+}

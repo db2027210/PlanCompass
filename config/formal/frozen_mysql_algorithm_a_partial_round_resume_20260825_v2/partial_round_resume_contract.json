@@ -1,0 +1,31 @@
+{
+  "algorithm": "A",
+  "base_algorithm_a_contract_path": "config/formal/frozen_mysql_algorithm_a_async_20260825_v5/algorithm_a_contract.json",
+  "base_algorithm_a_contract_sha256": "9178a06a3c5ae199d170a12d64630ffebcea8de0db459a598c133b34a564fadf",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "partial_round_recovery_flow": {
+    "baseline_reused_without_replay": true,
+    "cached_attempted_prefix_physically_replayed": false,
+    "cached_attempted_prefix_reclassified_by_v5": true,
+    "cached_batch_sha256_required": true,
+    "candidate_document_exact_equivalence_required": true,
+    "incumbent_reference_reused_without_replay": true,
+    "new_physical_work_starts_after_cached_prefix": true,
+    "same_worker_cohort_required": true,
+    "technical_failures_count_as_semantic_rejections": false,
+    "convergence_mode": "all_active_intervals_normalized_width_lte_0_01"
+  },
+  "release_version": "v2",
+  "source_bindings": {
+    "partial_round_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_a_partial_round_codefix_resume_v2.py",
+      "sha256": "093216ed05ba674edfd0837045741d618eced536489ffcd941794c1511c8d2ea"
+    },
+    "partial_round_resume_test": {
+      "path": "tests/test_mysql_algorithm_a_partial_round_codefix_resume_v1.py",
+      "sha256": "fcdf2c23b23a97574f8554e1d43972ea97cc505daa6c33f4f6923d8d9e855088"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

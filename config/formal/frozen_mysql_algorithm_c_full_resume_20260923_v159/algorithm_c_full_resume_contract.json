@@ -1,0 +1,49 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v159",
+  "release_version": "v159-tpch-normalization-lineage-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "tpch_same_worker_normalization_preserved": true,
+  "tpch_normalization_recalibration_performed": false,
+  "failed_v158_tpch_outer_credit": 0,
+  "resume_only_from_completed_outer_boundary": true,
+  "startup_paper_baseline_gate_is_campaign_invariant": true,
+  "paper_baseline_tolerance_percentage_points": 1.0,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "physical_workers_for_tpch": 2,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v158/algorithm_c_full_resume_contract.json",
+    "sha256": "8a7c140ac2e55cef22fde7ce579828b4a3615f8374b40e544c02d714954582e2"
+  },
+  "source_bindings": {
+    "tpch_resume_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v159_tpch_resume.py",
+      "sha256": "a947a44338d9e322d28c52cae3dd62f0e3a73f7d4915ee8dfd95a80f306cf475"
+    },
+    "tpch_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v69.py",
+      "sha256": "fda57c11e120827a237a523515e92fdcbc1b158cff64003e369dfbb225d30082"
+    },
+    "v156_tpch_state": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_tpch/run_state.json",
+      "sha256": "7e67fbed6ecc2869ec6435339b0be67638a06deee4f008e79e92184774d6b0b3"
+    },
+    "tpch_same_worker_normalization": {
+      "path": "history/mysql_four_scene_20260809/c_v148_paper_baseline_calibration_20260923_tpch/formal_incumbent_baseline/same_worker_qps_normalization.json",
+      "sha256": "971662b1c1a3f0bd0837bc341802968e4ca30d62bd1d1535fce82562d8771def"
+    },
+    "failed_v158_tpch_state": {
+      "path": "history/mysql_four_scene_20260809/c_v158_full_algorithm_resume_20260923_tpch/run_state.json",
+      "sha256": "65823ad62410995b26472e18469661753ae135b0bc88defc1ee9468a4a823092"
+    },
+    "excluded_v158_tpch_batch": {
+      "path": "history/mysql_four_scene_20260809/c_v158_full_algorithm_resume_20260923_tpch/outer_002/top5_batch_1/batch_result.json",
+      "sha256": "b3eb3bde02d289506bf94c91e43df9ceecdefebf7d9b63ecfdddac5ed2c36541"
+    }
+  }
+}

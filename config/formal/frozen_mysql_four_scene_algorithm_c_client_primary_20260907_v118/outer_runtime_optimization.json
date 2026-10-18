@@ -1,0 +1,68 @@
+{
+  "all_four_scenes_declared_in_same_formal_campaign": true,
+  "all_four_scenes_started_together": false,
+  "bindings": {
+    "algorithm_source_path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+    "algorithm_source_sha256": "48b0e652d721a10a8777173ac65c12d6ac919ebf6fab84093fa63f048148166d",
+    "reset_source_path": "scripts/reset_mysql_xp_data_planes_client_primary_v6.py",
+    "reset_source_sha256": "35b2a38bb0b1a97f865389f207360559a2c1bb34498979df088b3ba3d7dfe6b2",
+    "resource_freeze_path": "config/formal/frozen_mysql_four_scene_two_worker_20260903_v20/four_scene_effective_resource_successor.json",
+    "resource_freeze_sha256": "7855970daee5be3aae78a325055feebbefccf6792453819ba4cf67e501f7b286"
+  },
+  "completed_scene_early_release_allowed": true,
+  "created_at": "2026-09-04T01:20:33.775937+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "four_scene_two_worker_freeze_path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_four_scene_two_worker_20260826_v19/four_scene_effective_resource_successor.json",
+  "four_scene_two_worker_freeze_sha256": "b178770c5101e63fb54b64c3782942c4396ca1de5073995a4546a63f2e655195",
+  "four_scene_wave_barrier": false,
+  "job_tpch_metric_semantics_changed": false,
+  "lease_mode": "none",
+  "live_authority_kernel_gate": true,
+  "maximum_concurrent_mysql_workers": 8,
+  "mixed_memory_scene_batch_supported": true,
+  "nested_measurement_campaign_root": true,
+  "optimized_reset": {
+    "legacy_freeze_runtime_root_derivation": true,
+    "per_scene_partial_reset": true,
+    "reset_concurrency": 4,
+    "stale_containerd_task_recovery": true
+  },
+  "per_scene_b_completion_release": true,
+  "pg_search_outer": {
+    "accepted_target": null,
+    "candidate_batches": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "outer_rejection_cycle_policy_id": "mysql_bc_qps_strict_two_reject_incumbent_shrink_v2",
+    "post_search_stability_confirmation": false,
+    "real_top_k_limit": 5,
+    "required_acceptance_tier": "qps_strict_progress",
+    "terminal_normalized_width": 0.01
+  },
+  "physical_workers_per_scene": 2,
+  "prelaunch_binding_correction": "bind_algorithm_source_sha256_to_current_frozen_algorithm_core",
+  "release_version": "v118-semantic-state-incumbent-audit",
+  "released_at": "2026-09-07T10:25:06.568508+08:00",
+  "scene_release_policy": "after_same_scene_algorithm_b_complete",
+  "schema_version": "mysql_algorithm_c_outer_runtime_optimization_v65",
+  "semantic_state_incumbent_audit": true,
+  "sibling_scene_wait": false,
+  "single_candidate_tail_batch_supported": true,
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "tpch_outer_primary_metric": "fixed_five_lane_q1_q22_client_qps",
+  "tpch_same_worker_client_qps_normalization_required": true,
+  "xp_candidate_local_instability_exclusion": true,
+  "xp_outer_primary_metric": "native_hybench_xp_client_xap_qps",
+  "xp_server_questions_qps_role": "audit_only"
+}

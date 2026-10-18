@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+"""v140 scene-independent search with SHA-bound formal R0 reuse."""
+
+from __future__ import annotations
+
+from pathlib import Path
+import sys
+import types
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts import run_mysql_algorithm_c_four_scene_client_primary_v49 as predecessor
+from scripts import run_mysql_four_scene_algorithm_c_boundary_resume_v48 as old_runtime
+from scripts import run_mysql_four_scene_algorithm_c_boundary_resume_v49 as runtime
+
+FREEZE = predecessor.FREEZE
+FREEZE_SCHEMA = predecessor.FREEZE_SCHEMA
+OPTIMIZATION_CONTRACT = ROOT / "config/formal/frozen_mysql_four_scene_algorithm_c_client_primary_20260920_v140/outer_runtime_optimization.json"
+CONTRACT = ROOT / "config/formal/frozen_mysql_algorithm_c_paper_baseline_20260920_v140/algorithm_c_paper_baseline_contract.json"
+PARENT = predecessor.CONTRACT
+
+
+def validate_contract() -> dict[str, Any]:
+    contract = runtime.alg.load(CONTRACT)
+    if (
+        contract.get("release_version") != "v140-formal-r0-reuse-v30"
+        or contract.get("status") != "FROZEN_RUNTIME_VALIDATED"
+        or contract.get("formal_scope") != "mysql_only"
+        or contract.get("cross_engine_comparison_prohibited") is not True
+        or contract.get("candidate_search_requires_paper_baseline_pass") is not True
+        or contract.get("tolerance_percentage_points") != 1.0
+        or contract.get("resource_freeze", {}).get("sha256") != runtime.alg.sha(FREEZE)
+        or contract.get("parent_contract", {}).get("sha256") != runtime.alg.sha(PARENT)
+    ):
+        raise RuntimeError("Algorithm C v140 formal R0 reuse contract differs")
+    for name, raw in dict(contract.get("source_bindings") or {}).items():
+        path = ROOT / str(raw.get("path") or "")
+        if path.is_symlink() or not path.is_file() or runtime.alg.sha(path) != raw.get("sha256"):
+            raise RuntimeError(f"Algorithm C v140 source differs: {name}: {path}")
+    return contract
+
+
+def runtime_owners() -> list[types.ModuleType]:
+    pending = [predecessor]
+    seen: set[int] = set()
+    owners: list[types.ModuleType] = []
+    while pending:
+        module = pending.pop()
+        if id(module) in seen:
+            continue
+        seen.add(id(module))
+        if getattr(module, "runtime", None) is old_runtime:
+            owners.append(module)
+        for name in ("predecessor", "optimization_controller", "prestart_controller", "gate_controller"):
+            child = getattr(module, name, None)
+            if isinstance(child, types.ModuleType):
+                pending.append(child)
+    if not owners:
+        raise RuntimeError("Algorithm C v140 runtime owner graph differs")
+    return owners
+
+
+def main() -> int:
+    predecessor.validate_contract()
+    validate_contract()
+    owners = runtime_owners()
+    previous_optimization = predecessor.OPTIMIZATION_CONTRACT
+    for owner in owners:
+        owner.runtime = runtime
+    predecessor.OPTIMIZATION_CONTRACT = OPTIMIZATION_CONTRACT
+    try:
+        return int(predecessor.main())
+    finally:
+        predecessor.OPTIMIZATION_CONTRACT = previous_optimization
+        for owner in owners:
+            owner.runtime = old_runtime
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,75 @@
+{
+  "schema_version": "mysql_job_cache_state_contract_v3",
+  "release_version": "v3",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T03:34:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "successor_reason": "v2 used unprivileged Path.resolve on a deliberately non-traversable MySQL datadir before its audited sudo read path",
+  "predecessor_v2_measurement_started": false,
+  "historical_artifacts_immutable": true,
+  "historical_accepted_rounds_reusable": false,
+  "precondition_mode": "verified_host_page_cache_full_imdb_job_ibd",
+  "precondition_scope": "every regular imdb_job/*.ibd file in each assigned frozen JOB datadir",
+  "path_authority": "exact frozen lexical datadir plus sudo-find exact file count and byte count",
+  "expected_ibd_file_count_per_worker": 21,
+  "expected_ibd_bytes_per_worker": 9728327680,
+  "minimum_resident_fraction": 1.0,
+  "residency_readback_tool": "/usr/bin/fincore",
+  "prefetch_read_tool": "/usr/bin/dd",
+  "prefetch_io_priority": "idle",
+  "prefetch_metrics_used_for_scoring": false,
+  "precondition_query_count": 0,
+  "precondition_metrics_used_for_scoring": false,
+  "precondition_accepted_state_credit": 0,
+  "precondition_interval_shrink_credit": 0,
+  "candidate_parameter_application_after_precondition": true,
+  "formal_measurement_replays_per_candidate": 1,
+  "formal_measurement_query_set": "all 113 canonical JOB SQL files exactly once",
+  "formal_measurement_hard_timeout_seconds": 900,
+  "outer_loop_semantics_changed": false,
+  "candidate_generation_changed": false,
+  "candidate_ranking_changed": false,
+  "acceptance_policy_changed": false,
+  "convergence_policy_changed": false,
+  "mysql_measurement_interface_changed": true,
+  "tpch_execution_changed": false,
+  "xp_execution_changed": false,
+  "v2_failure_evidence": {
+    "path": "history/mysql_four_scene_20260809/v42_to_a_job_page_cache_fixed_20260823_attempt001_job/formal_baseline_job_page_cache_precondition.json",
+    "sha256": "fc29d504750cc1dd614b57ca40b19372e881cecf42c0e0decfe301f17b7f9d7e",
+    "error": "unprivileged datadir Path.resolve permission denied",
+    "scored_job_replays": 0
+  },
+  "source_bindings": {
+    "permission_safe_binding": {
+      "path": "scripts/mysql_job_page_cache_preconditioned_measurement_v3.py",
+      "sha256": "ebe0483a1a6c7c4d6b0da1ace2495e9fbea6f65fb766e1e4858fe5d3a0814d2a"
+    },
+    "page_cache_preconditioned_measurement_base": {
+      "path": "scripts/mysql_job_page_cache_preconditioned_measurement_v2.py",
+      "sha256": "06d267ac62c67df1468077c5d8a58187f5d79b4fa09a11d85858fbb5c3f62320"
+    },
+    "algorithm_a_page_cache_controller": {
+      "path": "scripts/run_mysql_algorithm_a_job_page_cache_fixed_v3.py",
+      "sha256": "3fae30ce2646fccda7fbbf882154a63352f21c0912db874d4a942d67df57c60d"
+    },
+    "algorithm_a_page_cache_launcher": {
+      "path": "scripts/launch_mysql_algorithm_a_job_page_cache_fixed_v3.py",
+      "sha256": "40725188904f77f4bddf9cc6c41bac02ba46fef16240ca40062d1e40e27372d7"
+    },
+    "launcher_base": {
+      "path": "scripts/launch_mysql_algorithm_a_job_cache_fixed_v1.py",
+      "sha256": "2ae8d5d6c6318b9f35c0520ddb4caad6cdc79a0fbac309fa2c7b40dee1ed27ae"
+    },
+    "single_scene_predecessor": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "algorithm_a_predecessor_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    }
+  }
+}

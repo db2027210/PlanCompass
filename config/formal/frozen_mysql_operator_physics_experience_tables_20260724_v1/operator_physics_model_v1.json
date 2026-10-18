@@ -1,0 +1,173 @@
+{
+  "benchmark_resource_multipliers": {
+    "hybench_ap": {
+      "cpu": 0.9,
+      "io": 1.0,
+      "memory": 1.2
+    },
+    "hybench_xp": {
+      "cpu": 1.0,
+      "io": 1.3,
+      "memory": 0.8
+    },
+    "job": {
+      "cpu": 1.2,
+      "io": 1.0,
+      "memory": 1.1
+    },
+    "tpcc": {
+      "cpu": 1.3,
+      "io": 0.7,
+      "memory": 0.7
+    },
+    "tpch": {
+      "cpu": 1.15,
+      "io": 1.1,
+      "memory": 1.15
+    }
+  },
+  "composition": "parameter planner semantics -> encouraged/discouraged executor operators -> CPU/memory/IO physical pressure",
+  "cross_engine_prior_used": false,
+  "database": "mysql",
+  "effect_unit": "utilization_fraction_change_across_frozen_parameter_log_range",
+  "formal_scope": "mysql_only",
+  "magnitude_policy": "conservative bounded expert prior; optional R0/OAT calibration may rescale magnitude without changing the frozen source classification",
+  "parameter_rules": {
+    "disk_temptable_create_cost": {
+      "base_resource_effect": {
+        "cpu": 0.05,
+        "io": -0.25,
+        "memory": 0.15
+      },
+      "discouraged_operators": [
+        "disk temporary table",
+        "disk materialization"
+      ],
+      "encouraged_operators": [
+        "pipeline execution",
+        "in-memory aggregation"
+      ],
+      "planner_semantics": "raise the fixed price of creating a disk temporary table"
+    },
+    "disk_temptable_row_cost": {
+      "base_resource_effect": {
+        "cpu": 0.08,
+        "io": -0.3,
+        "memory": 0.18
+      },
+      "discouraged_operators": [
+        "large disk materialization",
+        "spill-heavy sort or aggregate"
+      ],
+      "encouraged_operators": [
+        "pipeline execution",
+        "in-memory hash or aggregate"
+      ],
+      "planner_semantics": "raise the per-row price of a disk temporary table"
+    },
+    "io_block_read_cost": {
+      "base_resource_effect": {
+        "cpu": 0.08,
+        "io": -0.32,
+        "memory": 0.04
+      },
+      "discouraged_operators": [
+        "disk-page-heavy table scan",
+        "random heap/page fetch",
+        "disk-backed materialization"
+      ],
+      "encouraged_operators": [
+        "covering index access",
+        "early selective lookup",
+        "lower-page-count join order"
+      ],
+      "planner_semantics": "raise the price of disk-page access"
+    },
+    "key_compare_cost": {
+      "base_resource_effect": {
+        "cpu": -0.16,
+        "io": 0.05,
+        "memory": 0.1
+      },
+      "discouraged_operators": [
+        "comparison-heavy filesort",
+        "repeated ordered-key probe",
+        "merge-style comparison stream"
+      ],
+      "encouraged_operators": [
+        "hash lookup",
+        "lower-comparison join order"
+      ],
+      "planner_semantics": "raise the price of key comparison"
+    },
+    "memory_block_read_cost": {
+      "base_resource_effect": {
+        "cpu": 0.04,
+        "io": 0.06,
+        "memory": -0.08
+      },
+      "discouraged_operators": [
+        "buffer-page-heavy scan",
+        "repeated cached inner lookup"
+      ],
+      "encouraged_operators": [
+        "early selective predicate",
+        "lower-page-count access path"
+      ],
+      "planner_semantics": "raise the price of buffer-resident page access"
+    },
+    "memory_temptable_create_cost": {
+      "base_resource_effect": {
+        "cpu": 0.04,
+        "io": 0.18,
+        "memory": -0.2
+      },
+      "discouraged_operators": [
+        "in-memory temporary table",
+        "materialize-once plan"
+      ],
+      "encouraged_operators": [
+        "pipeline recomputation",
+        "disk-backed alternative when unavoidable"
+      ],
+      "planner_semantics": "raise the fixed price of creating an in-memory temporary table"
+    },
+    "memory_temptable_row_cost": {
+      "base_resource_effect": {
+        "cpu": 0.06,
+        "io": 0.22,
+        "memory": -0.25
+      },
+      "discouraged_operators": [
+        "large in-memory materialization",
+        "memory-heavy temporary aggregate"
+      ],
+      "encouraged_operators": [
+        "pipeline execution",
+        "bounded-memory or disk-backed alternative"
+      ],
+      "planner_semantics": "raise the per-row price of an in-memory temporary table"
+    },
+    "row_evaluate_cost": {
+      "base_resource_effect": {
+        "cpu": -0.28,
+        "io": 0.04,
+        "memory": 0.08
+      },
+      "discouraged_operators": [
+        "high-cardinality scan filter",
+        "large nested-loop probe stream",
+        "late predicate evaluation"
+      ],
+      "encouraged_operators": [
+        "index condition pushdown",
+        "early filtering",
+        "selective join order"
+      ],
+      "planner_semantics": "raise the price of evaluating each candidate row"
+    }
+  },
+  "real_measurement": false,
+  "schema_version": "mysql_operator_physics_resource_effect_model_v1",
+  "version": "frozen_mysql_operator_physics_experience_tables_20260724_v1"
+}

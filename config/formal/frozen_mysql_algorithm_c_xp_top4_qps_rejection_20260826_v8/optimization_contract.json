@@ -1,0 +1,37 @@
+{
+  "bindings": {
+    "algorithm_source_path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+    "algorithm_source_sha256": "a2766a16a78d7966a548859a60b66509213698a4f3a45bc3e31162cb1709e25e",
+    "reset_source_path": "scripts/reset_mysql_xp_data_planes_four_worker_v1.py",
+    "reset_source_sha256": "5ec05a4f636e73f6bffc0114b0c87661286d9c40dc9a2f7c10438f03648d7399",
+    "resource_freeze_path": "config/formal/frozen_mysql_xp_cpu_disjoint_slots_20260826_v4/resource_successor.json",
+    "resource_freeze_sha256": "31a5e3c5b453754e6e1cedee10346a575fe4c8c8803d1c4dee0cb67ac851aec4"
+  },
+  "created_at": "2026-08-26T10:03:07.655461+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "optimized_reset": {
+    "reset_concurrency": 4
+  },
+  "pg_search_outer": {
+    "accepted_target": null,
+    "candidate_batches": [
+      [
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "outer_rejection_cycle_policy_id": "mysql_bc_qps_strict_two_reject_incumbent_shrink_v1",
+    "post_search_stability_confirmation": false,
+    "real_top_k_limit": 5,
+    "required_acceptance_tier": "qps_strict_progress",
+    "terminal_normalized_width": 0.01
+  },
+  "schema_version": "mysql_algorithm_c_xp4_optimization_contract_v2",
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

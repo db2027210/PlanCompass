@@ -1,0 +1,50 @@
+{
+  "algorithm_decision_logic_changed": false,
+  "candidate_set_changed": false,
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "fresh_search_required": true,
+  "parent_algorithm_contract_path": "config/formal/frozen_mysql_algorithm_c_pg_boundary_fallback_20260929_v206/algorithm_c_pg_boundary_fallback_contract.json",
+  "parent_algorithm_contract_sha256": "f643ad6efafa2cb3d9fb31c447b4aa4e32e24084af3c863ea8a46b219faf5069",
+  "postgresql_process_control_or_stop_performed": false,
+  "read_only_probe_maximum_attempts": 3,
+  "read_only_probe_retry_bounded": true,
+  "release_version": "v208-pg-startup-isolation",
+  "resource_envelope_changed": false,
+  "schema_version": "mysql_algorithm_c_pg_startup_isolation_release_v1",
+  "sibling_descendant_gate_installed": true,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v106.py",
+      "sha256": "c3bf26689d665f0b1939b4fa62c7719d0798a7ed1e575c72f0070a56037fc462"
+    },
+    "correspondence_test": {
+      "path": "tests/test_mysql_algorithm_c_pg_correspondence_v7.py",
+      "sha256": "4b58464865c493aa887d991112f92916b36f09f2750ac54aad64c85cc6445f40"
+    },
+    "parent_algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_boundary_fallback_20260929_v206/algorithm_c_pg_boundary_fallback_contract.json",
+      "sha256": "f643ad6efafa2cb3d9fb31c447b4aa4e32e24084af3c863ea8a46b219faf5069"
+    },
+    "probe_resilience": {
+      "path": "scripts/mysql_algorithm_c_benchmark_probe_resilience_v1.py",
+      "sha256": "68f4651fc0062e52e2be17593ec67705eb34e722b9eac68296909a1065afb2b6"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_pg_startup_isolation_v208.py",
+      "sha256": "f8536699e65c624249fb1e4e69c0c604e78baf8cb650cfd59c5651b13acc5e90"
+    },
+    "reset_affinity": {
+      "path": "scripts/mysql_algorithm_c_reset_affinity_v1.py",
+      "sha256": "1aaa31e7fb55f0c3655b2023ad1fee62e8f9d64a4c36c91a2004dbd2e88c788b"
+    },
+    "sibling_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v28.py",
+      "sha256": "ae8641ab6cc5bcfac97a2cbdd136e3458e3a8a072bf321ce4705663601651f63"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "superseded_v207_rounds_reusable": false,
+  "workload_changed": false,
+  "xp_reset_management_affinity_frozen": true
+}

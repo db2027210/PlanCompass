@@ -1,0 +1,59 @@
+{
+  "schema_version": "mysql_algorithm_a_job_recovery_replay_excluded_resume_v1",
+  "status": "FROZEN",
+  "created_at": "2026-08-23T19:59:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "algorithm": "A",
+  "active_workload": "full_job_113",
+  "resource_envelope_changed": false,
+  "candidate_set_changed": false,
+  "algorithm_a_outer_flow_changed": false,
+  "accepted_credit_for_excluded_replay": false,
+  "rejected_credit_for_excluded_replay": false,
+  "incumbent_reference_replaced_by_excluded_replay": false,
+  "incumbent_reference_refresh_trigger": "two_consecutive_semantic_rejections",
+  "resume_interrupted_round_from_rank_one": true,
+  "partial_interrupted_round_credited": false,
+  "formal_job_wall_time_limit_seconds": 900,
+  "maximum_prestart_wait_seconds": 600.0,
+  "prestart_retry_interval_seconds": 0.5,
+  "external_process_mutation_while_waiting": false,
+  "optimizer_or_measurement_state_mutation_while_waiting": false,
+  "transition_semantics": {
+    "preserved_search_state": "sealed_pre_interruption_round_boundary",
+    "preserved_worker_cohort": true,
+    "preserved_same_worker_baseline": true,
+    "recovery_replay_coverage": "113_of_113_for_both_workers",
+    "recovery_replay_disposition": "technical_failure_excluded_from_scoring_because_wall_time_exceeded_900_seconds",
+    "next_outer_action": "restart_interrupted_round_2_from_rank_1",
+    "new_incumbent_replay_required": false
+  },
+  "source_bindings": {
+    "predecessor_state": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v74_to_a_external_sssp_memory_recovery_20260823/job.external_memory_boundary_snapshot.json",
+      "sha256": "ede8f27953f014b1909cb41728c438a542046649f0e96716ca80dd7ee40190c8"
+    },
+    "excluded_recovery_state": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v82_to_a_job_external_sssp_memory_recovery_v2_20260823_attempt001_job/algorithm_a_state.json",
+      "sha256": "5acb9c0c46a7d4ae3fec3d686e5e17ee5b255b466bed6bce21269323af976960"
+    },
+    "excluded_recovery_batch": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v82_to_a_job_external_sssp_memory_recovery_v2_20260823_attempt001_job/recovery_incumbent_replay/batch_result.json",
+      "sha256": "e0550f7d44e1a9f1ed486b4c6c9b4c7aa35919101ce91e750514124af2d5be14"
+    },
+    "controller": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_algorithm_a_job_recovery_replay_excluded_resume_v1.py",
+      "sha256": "773516023ff5ce635a47cf989f3957e3f297efa66c89b0cb98a1ab9b0e60c2af"
+    },
+    "same_cohort_resume": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_algorithm_a_same_cohort_codefix_resume_v1.py",
+      "sha256": "5741d20c711a0dc8ced157cbba5c0c428355922b05b4ec6907b1b28023ac087c"
+    },
+    "algorithm_a_core": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "workers": [
+    {
+      "worker_id": "tpcc-auto3",
+      "benchmarks": ["tpcc"],
+      "port": 32791,
+      "mysqld_pid": 3517991,
+      "database": "tpcc10"
+    }
+  ]
+}

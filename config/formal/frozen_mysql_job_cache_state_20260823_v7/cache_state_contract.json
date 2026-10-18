@@ -1,0 +1,82 @@
+{
+  "schema_version": "mysql_job_cache_state_contract_v7",
+  "release_version": "v7",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T04:13:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "precondition_mode": "fixed_optimizer_plan_full_job113_innodb_working_set_primer",
+  "precondition_parameter_role": "cache_priming_only_not_algorithm_default_or_scored_candidate",
+  "precondition_parameter_vector": {
+    "disk_temptable_create_cost": 20,
+    "disk_temptable_row_cost": 0.5,
+    "io_block_read_cost": 0.575439937337,
+    "key_compare_cost": 0.05,
+    "memory_block_read_cost": 0.434450207187,
+    "memory_temptable_create_cost": 1,
+    "memory_temptable_row_cost": 0.173780082875,
+    "row_evaluate_cost": 0.0575439937337
+  },
+  "precondition_query_count": 113,
+  "precondition_replays_per_scored_measurement": 1,
+  "precondition_metrics_used_for_scoring": false,
+  "precondition_accepted_state_credit": 0,
+  "precondition_interval_shrink_credit": 0,
+  "candidate_parameter_application_after_precondition": true,
+  "formal_measurement_replays_per_candidate": 1,
+  "full_job_sql_count": 113,
+  "scored_measurement_wall_time_limit_seconds": 900,
+  "prestart_read_only_retry_seconds": 600,
+  "prestart_retry_interval_seconds": 0.5,
+  "outer_loop_semantics_changed": false,
+  "candidate_generation_changed": false,
+  "candidate_ranking_changed": false,
+  "acceptance_policy_changed": false,
+  "convergence_policy_changed": false,
+  "supersedes_failed_preconditions": [
+    "default_cost_full_job113_did_not_establish_a_stable_working_set",
+    "host_page_cache_full_ibd_prefetch_did_not_control_innodb_direct_reads"
+  ],
+  "primer_provenance": {
+    "role": "fixed_non_scoring_plan_vector_selected_before_v7_launch",
+    "historical_batch": "history/mysql_four_scene_20260809/v39_to_c_per_scene_20260820_attempt073_job_cached_preemption_resume_job/formal_incumbent_baseline/batch_result.json",
+    "historical_batch_sha256": "c0a5907cda7f5b4d388d4671de0bb7fea025754c480d97865b1849f64a0851f9",
+    "historical_batch_elapsed_seconds": 308.3800705790054,
+    "historical_batch_status": "PASS"
+  },
+  "source_bindings": {
+    "full_job_precondition_base": {
+      "path": "scripts/mysql_job_cache_preconditioned_measurement_v1.py",
+      "sha256": "0ee61c68733abfc8495f0bdf9c375160b8c49310b6005cbe3abc5c156aacd1da"
+    },
+    "measurement_runtime": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "algorithm_a_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260822_v4/algorithm_a_contract.json",
+      "sha256": "d35c01e29c14aeeed4d82870725db686697d3d17188bea28ee9c323f418732bf"
+    },
+    "primer_measurement": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v7.py",
+      "sha256": "d629693840e806ec9524b380bfb4ee453802b33c58a4a50974eda8ed3a8325be"
+    },
+    "formal_runner": {
+      "path": "scripts/run_mysql_algorithm_a_job_buffer_pool_fixed_v7.py",
+      "sha256": "e5e5d73d199268b4f817f992fe735e19f2e03d74aab2a1b24ffe993ada631017"
+    },
+    "formal_launcher": {
+      "path": "scripts/launch_mysql_algorithm_a_job_buffer_pool_fixed_v7.py",
+      "sha256": "e960632208a8729b397d12a380ee410e537758fed8b3c004b6b5a2826d75f2be"
+    },
+    "primer_provenance_batch": {
+      "path": "history/mysql_four_scene_20260809/v39_to_c_per_scene_20260820_attempt073_job_cached_preemption_resume_job/formal_incumbent_baseline/batch_result.json",
+      "sha256": "c0a5907cda7f5b4d388d4671de0bb7fea025754c480d97865b1849f64a0851f9"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema_version": "mysql_algorithm_b_job_production_factory_binding_v1",
+  "scenario": "job_memory",
+  "benchmark": "job",
+  "optimizer_config": "/home/anonymous/program/resource_adaptive_mysql/config/formal/mysql_sgd_production/job_memory.algorithm_b.optimizer.json",
+  "production_entry": "formal_mysql_sgd_campaign:run_production_campaign",
+  "service_factory": "mysql_algorithm_b_production_services:build",
+  "readiness_required": true,
+  "launch_authorized_by": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/readiness_manifest.json",
+  "algorithm_contract": {
+    "global_fixed_replay_top_k": 5,
+    "qps_role": "outer_acceptance_only",
+    "non_target_resource_limit": "strictly_below_0.8",
+    "maximum_rejected_batches": 5
+  },
+  "factory_static_checks": {
+    "py_compile": true,
+    "returns_formal_point_dependencies": true,
+    "fresh_r0_measurement": true,
+    "campaign_cleanup_zero_pressure_gate": true,
+    "host02_pressure_probe": true,
+    "job_session_factory": true
+  },
+  "factory_source_sha256": "a9300a8001cdf751758a3a0df376aedd7895f7712074027a5e0c962cbfc5a521"
+}

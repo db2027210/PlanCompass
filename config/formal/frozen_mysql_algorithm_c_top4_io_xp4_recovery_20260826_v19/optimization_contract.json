@@ -1,0 +1,67 @@
+{
+  "active_parameter_sets": {
+    "hybench_xp_cpu": [
+      "row_evaluate_cost",
+      "key_compare_cost",
+      "disk_temptable_row_cost",
+      "io_block_read_cost"
+    ],
+    "hybench_xp_io": [
+      "io_block_read_cost",
+      "disk_temptable_row_cost",
+      "disk_temptable_create_cost",
+      "memory_temptable_row_cost"
+    ]
+  },
+  "bindings": {
+    "algorithm_source_path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+    "algorithm_source_sha256": "a2766a16a78d7966a548859a60b66509213698a4f3a45bc3e31162cb1709e25e",
+    "reset_source_path": "scripts/reset_mysql_xp_data_planes_four_worker_v1.py",
+    "reset_source_sha256": "97f9d929770f193e84ccdfd3c1a23f36e7af0bbd62be90e8746a9f3a10f7eef2",
+    "resource_freeze_path": "config/formal/frozen_mysql_algorithm_c_xp4_handoff_20260826_v2/xp_four_worker_resource_successor.json",
+    "resource_freeze_sha256": "1d1b49df4beaa1a99c127242c2931985a0f9562e02ab14d8ac16279be82aef0b",
+    "workload_adapter_path": "mysql_workload_adapter.py",
+    "workload_adapter_sha256": "9bb2102b90bab8df44a9e976c5753723a8673fea4d7e13eb618ea7fa62595bbb"
+  },
+  "created_at": "2026-08-26T02:34:41.115872+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "optimized_reset": {
+    "reset_concurrency": 4
+  },
+  "pg_search_outer": {
+    "accepted_target": 10,
+    "candidate_batches": [
+      [
+        1,
+        2,
+        3,
+        4
+      ],
+      [
+        5
+      ]
+    ],
+    "post_search_stability_confirmation": false,
+    "real_top_k_limit": 5,
+    "required_acceptance_tier": "fallback"
+  },
+  "schema_version": "mysql_algorithm_c_xp4_optimization_contract_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "top4_operator_table_projection": {
+    "physics_coefficients_changed": false,
+    "ranking_formula_changed": false,
+    "status": "FROZEN_RUNTIME_VALIDATED",
+    "undeclared_parameter_candidates_prohibited": true
+  },
+  "xp_adaptive_measurement": {
+    "candidate_or_outer_flow_changed": false,
+    "cap_completion_is_not_stability": true,
+    "completion_policy": "stable_after_300s_or_complete_at_900s_v1",
+    "coverage_and_nonstability_hard_gates_required_at_cap": true,
+    "graceful_quiescence_seconds": 120,
+    "maximum_measurement_seconds": 900,
+    "minimum_measurement_seconds": 300,
+    "native_workload_unchanged": true
+  }
+}

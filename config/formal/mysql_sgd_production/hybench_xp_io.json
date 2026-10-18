@@ -1,0 +1,19 @@
+{
+  "schema_version": "mysql_sgd_direct_production_v1",
+  "formal_scope": "mysql_only",
+  "scenario": "hybench_xp_io",
+  "benchmark": "hybench_xp",
+  "lane": "xp",
+  "target_resource": "io",
+  "r0_evidence": "config/formal/frozen_mysql_r0_calibration_20260724_v1/hybench_xp_io.r0_calibration_v1.json",
+  "experience_table": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.hybench_xp_io.operator_physics_v1.json",
+  "profile": "config/formal/mysql_sgd_production/profiles/hybench_xp_io.json",
+  "measurement_seconds": 600,
+  "maximum_technical_retries": 3,
+  "qps_noninferiority_tolerance": 0.05,
+  "target_utilization_noise_tolerance": 0.005,
+  "utility_improvement_epsilon": 0.0001,
+  "target_accepted_shrinks": 10,
+  "host_mutex": true,
+  "cross_engine_comparison_prohibited": true
+}

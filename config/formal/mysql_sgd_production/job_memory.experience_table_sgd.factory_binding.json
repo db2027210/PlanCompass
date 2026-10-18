@@ -1,0 +1,52 @@
+{
+  "schema_version": "mysql_experience_table_sgd_job_factory_binding_v1",
+  "method": "experience_table_all_subset_sgd",
+  "scenario": "job_memory",
+  "benchmark": "job",
+  "method_id": "experience_table_sgd",
+  "profile": "config/formal/mysql_sgd_production/profiles/job_memory.json",
+  "optimizer_config": "/home/anonymous/program/resource_adaptive_mysql/config/formal/mysql_sgd_production/job_memory.experience_table_sgd.optimizer.json",
+  "production_entry": "formal_mysql_sgd_campaign:run_production_campaign",
+  "service_factory": "mysql_algorithm_b_production_services:build",
+  "factory_source_sha256": "a9300a8001cdf751758a3a0df376aedd7895f7712074027a5e0c962cbfc5a521",
+  "formal_method_config": {
+    "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/experience_table_sgd_formal_config.json",
+    "sha256": "ff224d59197789431cb04382e649ee451733a214113ab64386d8e504e5d9d96e"
+  },
+  "experience_table": {
+    "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.job_memory.operator_physics_v1.json",
+    "sha256": "1bbcc4cc16ab785205ae1050320436a69ac0442256414fef8d16e2df6156a8f6"
+  },
+  "data_template": {
+    "path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/job/template",
+    "manifest": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/job_template_manifest_20260723.json",
+    "manifest_sha256": "ce4fc5f5396904b82e4ae185f4f2a3d006f2cca502ac34cbc731e48f0a73acce"
+  },
+  "algorithm_contract": {
+    "candidate_generator": "all_nonempty_subsets_experience_table_analytic_sgd_v1",
+    "qps_role": "outer_acceptance_only",
+    "global_fixed_replay_top_k": 5,
+    "strict_acceptance": "db_qps_up AND target_resource_down AND every_non_target_strictly_below_0.8"
+  },
+  "launch_gate": {
+    "formal_launch_authorized": false,
+    "readiness_manifest_status": "NOT_READY",
+    "launch_authorized": false,
+    "must_wait_for_global_readiness": true,
+    "factory_profile_override_verified": true,
+    "factory_profile_required_fields": [
+      "cpuset",
+      "mems",
+      "cpu_cores",
+      "memory_bytes",
+      "pids",
+      "read_bps",
+      "write_bps",
+      "buffer_pool_bytes"
+    ],
+    "must_not_use": [
+      "mysql_double_loop_grid_runner.py",
+      "config/formal/mysql_sgd_production/job_memory.algorithm_b.optimizer.json"
+    ]
+  }
+}

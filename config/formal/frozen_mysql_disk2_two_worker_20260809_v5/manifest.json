@@ -1,0 +1,27 @@
+{
+  "schema_version": "mysql_disk2_four_scene_effective_resource_successor_manifest_v5",
+  "status": "SEALED_EFFECTIVE_RESOURCE_SUCCESSOR_RUNTIME_GATES_PENDING",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "predecessor_manifest": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260809_v4/manifest.json",
+    "sha256": "23cca716fc8683c11987ced1435b59373fc05ef19b9d617f03b3ba28d229b843"
+  },
+  "successor_reason": "freeze_xp_io_memory_at_page_aligned_kernel_effective_value",
+  "artifacts": {
+    "four_scene_effective_resource_successor.json": "bcf67bbe41e087b5c37f59c2f65bab0f8f32ae9c88501eaab7fc7d9696b98d42",
+    "common_outer_loop.py": "047a69dae04031524c383e539ce67035117d9534aecf157e48e8d0ee79323530",
+    "mysql_parameter_optimizer.py": "d40213fe2945643a9022c35b2bcab16a1fa7de37222cf3c9fdf2f76aaafcf9dc",
+    "preflight_mysql_four_scene_v3.py": "cee059bcfd00c65dd9bfb420b6fe82765988fdbcbc105f84a0804a984bd4433a",
+    "prepare_mysql_four_scene_v4.py": "f1cd221e751b93489c81b9ebb45f20316d584d69ed3140ad66c794ab81e9c925",
+    "predecessor_data_plane_failure": "94add246e20bf796f8a2605476c1a900e05c352474c45864f784c329001d7dc8"
+  },
+  "formal_launch_authorized": false,
+  "launch_performed": false,
+  "accepted_rounds": {
+    "job_memory": 0,
+    "tpch_sf4_memory": 0,
+    "hybench_xp_cpu": 0,
+    "hybench_xp_io": 0
+  }
+}

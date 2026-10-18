@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+"""Reset XP onto the v15 strong-I/O envelope after failed v14 R0."""
+
+from pathlib import Path
+import sys
+
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts import reset_mysql_xp_data_planes_v5 as implementation
+
+
+implementation.FREEZE = (
+    ROOT / "config/formal/frozen_mysql_disk2_two_worker_20260811_v15"
+    / "four_scene_effective_resource_successor.json"
+)
+implementation.PREPARED = (
+    ROOT / "history/mysql_four_scene_20260809"
+    / "four_scene_live_rebind_v25_20260811T130000p0800"
+    / "prepared_binding.json"
+)
+implementation.INVALID_R0 = (
+    ROOT / "history/mysql_four_scene_20260809"
+    / "four_scene_native_iq1_iq7_r0_v25_20260811T130500p0800"
+    / "r0_binding.json"
+)
+implementation.RESET_SAME_FREEZE = False
+implementation.OUTPUT_SCHEMA = "mysql_four_scene_v15_xp_reprepared_after_r0_v1"
+implementation.AUTHORITY_VERSION = "v15"
+
+
+if __name__ == "__main__":
+    raise SystemExit(implementation.main())

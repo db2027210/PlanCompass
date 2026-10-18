@@ -1,0 +1,130 @@
+{
+  "schema_version": "mysql_algorithm_c_async_contract_v59",
+  "release_version": "v59",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "frozen_at": "2026-08-25T22:00:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_scenes": [
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "post_search_stability_confirmation": false,
+  "candidate_set_changed": false,
+  "empty_candidate_wave_policy": {
+    "partial_top_k_empty_wave_skipped": true,
+    "physical_workload_started": false,
+    "mysql_container_reset_performed": false,
+    "quiet_gate_wait_performed": false,
+    "semantic_batch_evaluated_from_all_admitted_candidates": true
+  },
+  "mysql_interface_changed": false,
+  "outer_algorithm_changed": false,
+  "dynamic_noninterference_gate": {
+    "required_clean_seconds": 15,
+    "maximum_wait_seconds": 60,
+    "minimum_host_mem_available_bytes": 274877906944,
+    "maximum_window_memory_decline_bytes": 8589934592,
+    "maximum_memory_full_psi_avg10": 0.1,
+    "cpu_affinity_overlap_permitted": false,
+    "external_disk2_mount_permitted": false,
+    "swap_permitted": false,
+    "persistent_d_state_required_consecutive_samples": 3,
+    "external_process_control_or_stop_performed": false,
+    "cross_scene_completion_dependency": false,
+    "algorithm_or_candidate_flow_changed": false,
+    "historical_512gib_absolute_headroom_gate_superseded": true,
+    "superseded_gate_bytes": 549755813888,
+    "frozen_mysql_worker_memory_limit_sum_bytes": 67377291264,
+    "reason": "The historical 512 GiB floor blocks CPU- and disk-disjoint full-parallel execution despite zero swap, zero memory PSI, and more than 256 GiB available."
+  },
+  "zero_value_telemetry_release": {
+    "swap_zero_is_valid": true,
+    "memory_full_psi_zero_is_valid": true,
+    "missing_values_remain_fail_closed": true,
+    "external_process_control_or_stop_performed": false,
+    "cross_scene_completion_dependency": false,
+    "algorithm_or_candidate_flow_changed": false,
+    "reason": "Numeric zero is a valid read-back value; truth-value fallback in v58 incorrectly converted swap=0 to -1 and memory PSI=0 to infinity, making every otherwise clean sample fail."
+  },
+  "in_place_boundary_transition": {
+    "allowed": true,
+    "transition_only_while_not_measuring": true,
+    "completed_candidate_measurements_replayed": false,
+    "accepted_or_rejected_state_mutation": false,
+    "runtime_state_binding_required": true,
+    "old_gate_evidence_retained": true,
+    "new_gate_required_before_next_physical_measurement": true
+  },
+  "docker_daemon_interruption_checkpoint_release": {
+    "source_status_required": "RUNNING",
+    "source_stage_required": "OUTER_{N+1}_BATCH_3_RESETTING_XP",
+    "completed_outer_decisions_reconstructed_from_sha_bound_evidence": true,
+    "interrupted_outer_decision_required_absent": true,
+    "interrupted_outer_credit_increment": 0,
+    "docker_restart_timestamp_required_after_source_stage": true,
+    "source_controller_required_inactive": true,
+    "live_source_controller_process_required_absent": true,
+    "candidate_scoring_changed": false,
+    "outer_algorithm_changed": false,
+    "accepted_or_rejected_credit_changed": false
+  },
+  "full_parallel_sibling_mysql_point_gate": {
+    "exact_authority_bound": true,
+    "admitted_workers": ["job_w3", "job_w4"],
+    "cpu_overlap_required": 0,
+    "same_disk_allowed_with_cpu_disjointness": true,
+    "container_identity_cpu_memory_pids_mount_and_label_readback_required": true,
+    "cross_scene_completion_dependency": false,
+    "sibling_container_mutation_performed": false,
+    "candidate_or_outer_flow_changed": false,
+    "reason": "The full-parallel successor prohibits a sibling-scene barrier; exact frozen MySQL siblings on disjoint CPUs must be inventoried and admitted rather than classified as external disk2 databases."
+  },
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v59.py",
+      "sha256": "33f706aa7abca7f9f62c43b4dfb03f90f81d8d7209cf5cb7fe2856eaf8e90f0d"
+    },
+    "dynamic_noninterference_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v4.py",
+      "sha256": "20001fdf705d0b982c27299e8fe697592885dcb040512e6950378561c6534f3a"
+    },
+    "runtime_process_observer": {
+      "path": "scripts/watch_mysql_algorithm_c_async_noninterference_v2.py",
+      "sha256": "f5c3479949882d696296bef4dbfcda06008b0c9c4b6e770fbda169cbf673da7d"
+    },
+    "predecessor_controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v58.py",
+      "sha256": "2480addc8d02311655deac2d6222510886fe5c862a64c8d08fe43eb5132b3b57"
+    },
+    "predecessor_v56_controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v56.py",
+      "sha256": "448d3969d599bfb1e99e31cadbf15b27709e1ea13f0a1bc2c01dc4ab20ed9d0d"
+    },
+    "predecessor_v55_controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v55.py",
+      "sha256": "f8cfdd61ad99f113fccc2d014316eb45550e44f6dec2dc5127c9751150e8e53f"
+    },
+    "process_backed_preflight": {
+      "path": "scripts/preflight_mysql_four_scene_v6.py",
+      "sha256": "414949b9744d48dda5cd2f1613305846939e5459e722ff92c4183403f2d134eb"
+    },
+    "full_parallel_sibling_preflight": {
+      "path": "scripts/preflight_mysql_four_scene_v7.py",
+      "sha256": "78a674b2080aeb2179909fed7d474faa87d1ed29e3e87e5461ec1ffe35490320"
+    },
+    "job_four_worker_transition_authority": {
+      "path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.transition_authority.json",
+      "sha256": "c11efc9746f3e0404750d3eb6f6ddd4301306260f73d68c9d5a4ed88ec770472"
+    },
+    "job_four_worker_resource_freeze": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_external_diagnostic_slots_20260823_v1/job_four_worker_resource_successor.json",
+      "sha256": "b704b724b1fea47473dcc518d31ad9a5a777b198cabe130393ebcee50a2df3af"
+    },
+    "docker_daemon_interruption_checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_independent_docker_interruption_checkpoint_v1.py",
+      "sha256": "63fb3ec5ede61ab02ab4a63340bd970a80217e180ba12844bfbece5a196fdc8c"
+    }
+  }
+}

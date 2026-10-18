@@ -1,0 +1,11 @@
+ MySQL HyBench AP/Memory  agent mysql_sgd_ap_20260723
+
+ AGENTS.mdconfig/formal/frozen_mysql_deployment_schedule_20260723_v3_draft/FROZEN_CONFIG.md  checksums.sha256 v2_draft/FROZEN_CONFIG.md  readiness_manifest.jsonconfig/formal/frozen_mysql_workloads_and_parameters_20260723_v3/FROZEN_CONFIG.md  checksums.sha256preflight/mysql_experience_sgd_eight_algorithm_contract_20260723.sha256 sha256sum -cpreflight/mysql_five_benchmark_resource_envelope_and_search_algorithms_20260722.md SGD
+
+ MySQL HyBench AP/Memoryhost01 192.0.2.3MySQL  /dev/nvme0n1 host09/192.0.2.9PG Configuration SQLkill PG /cgroup/ defaults-file/
+
+ v3  ENVIRONMENT PREPARATION ONLY / NO FORMAL LAUNCH/// MySQL  fail-closed readiness  formal_mysql_sgd_campaign  R0//SGD  shell/verify_mysql_sgd_v2_readiness.py JSON ready=truestatus=READYreadiness_manifest  status=READY  launch_authorized=true
+
+ history/mysql_sgd_env_agents_20260723/ap/  checkpoint R0 replayed_candidate_ranks 5  Asia/Shanghai  history/mysql_sgd_env_agents_20260723/ap/patrol_log_20260723.jsonl  JSONMachine/Current phasePG/MySQL CPU/Memory/BlockIO  checkpoint READY
+
+ SGD CPU apply/EXPLAIN/ 85%-95% 30%-50%DB  DBQPS 30 180  30  600  5→10→K10 ////

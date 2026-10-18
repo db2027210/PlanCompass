@@ -1,0 +1,87 @@
+{
+  "schema_version": "mysql_job_v3_same_live_adoption_remote_compatibility_tests_v1",
+  "status": "READ_ONLY_REMOTE_REPRODUCTION_TEMPLATE_NOT_EXECUTED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "tests": [
+    {
+      "name": "node02_system_python_is_incompatible_negative",
+      "argv": [
+        "/usr/bin/python3",
+        "[SAME_LIVE_SUCCESSOR]/runtime/mysql_job_v3_same_live_adoption_v1.py",
+        "--help"
+      ],
+      "expected_exit": "nonzero",
+      "expected_reason": "node02 /usr/bin/python3 is Python 3.6 and cannot parse the sealed 3.9+ control source"
+    },
+    {
+      "name": "sealed_python_parses_control_positive",
+      "argv": [
+        "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/job/runtime_algorithm_c_successor_20260729/runtime/python311-3a8073397536ab806e125061395c291b20edd40c1da015eb4ebd87bc3c403c89/bin/python3.11",
+        "[SAME_LIVE_SUCCESSOR]/runtime/mysql_job_v3_same_live_adoption_v1.py",
+        "--help"
+      ],
+      "expected_exit": 0
+    },
+    {
+      "name": "renamed_binding_with_original_sidecar_negative",
+      "operation": "copy xp_successor_binding.json and its sidecar to a different JSON basename without rewriting sidecar content, then invoke verify_xp_binding_basename",
+      "expected_exit": "nonzero",
+      "expected_reason": "binding basename/sidecar mismatch"
+    },
+    {
+      "name": "original_2ea99_binding_positive",
+      "path": "[SAME_LIVE_SUCCESSOR]/authority/xp_successor_binding.json",
+      "expected_exit": 0,
+      "expected_sha256": "55fc9d15c2e606604682b966dd51cb1036fa53b8804b3c21af35823e313ee65c"
+    },
+    {
+      "name": "systemd219_mainpid_property_positive",
+      "operation": "run systemctl show --property=MainPID UNIT and parse exact output MainPID=46",
+      "expected_exit": 0,
+      "expected_reason": "systemd 219 supports property assignment form without --value"
+    },
+    {
+      "name": "systemd_mainpid_ambiguous_or_zero_negative",
+      "operation": "feed MainPID=0, duplicate MainPID lines, or any extra output to the parser",
+      "expected_exit": "nonzero",
+      "expected_reason": "daemon PID authority must be one exact nonzero MainPID assignment"
+    },
+    {
+      "name": "docker_started_at_trailing_zero_same_instant_positive",
+      "operation": "compare baseline 2026-08-03T01:29:21.760024310Z with Docker 2026-08-03T01:29:21.76002431Z",
+      "expected_exit": 0,
+      "expected_reason": "strict RFC3339 UTC parsing maps both spellings to the same nanosecond integer"
+    },
+    {
+      "name": "docker_started_at_one_nanosecond_change_negative",
+      "operation": "compare 2026-08-03T01:29:21.760024310Z with 2026-08-03T01:29:21.760024311Z",
+      "expected_exit": "nonzero",
+      "expected_reason": "a real one-nanosecond container start-time change remains fail-closed"
+    },
+    {
+      "name": "docker_mount_and_io_array_order_positive",
+      "operation": "feed two otherwise identical selected-field readbacks with reversed mount and blkio array order",
+      "expected_exit": 0,
+      "expected_reason": "canonical stable projection sorts contract rows"
+    },
+    {
+      "name": "docker_irrelevant_mount_diagnostic_positive",
+      "operation": "change an unconsumed Docker mount diagnostic field while keeping Type/Name/Source/Destination/Driver/Mode/RW/Propagation exact",
+      "expected_exit": 0
+    },
+    {
+      "name": "docker_real_identity_resource_change_negative",
+      "operation": "change PID, StartedAt, cpuset, memory, throttle Path/Rate, or a stable mount field between reads",
+      "expected_exit": "nonzero",
+      "expected_reason": "real stable identity/resource change remains fail-closed"
+    }
+  ],
+  "docker_mutation_performed": false,
+  "database_mutation_performed": false,
+  "postgresql_mutation_performed": false,
+  "qualification_authorized": false,
+  "formal_launch_authorized": false,
+  "accepted_round_authorized": false
+}

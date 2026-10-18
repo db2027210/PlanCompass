@@ -1,0 +1,56 @@
+{
+  "schema_version": "mysql_cpu_c_from_completed_a_transition_contract_v1",
+  "release_version": "v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "C",
+  "scene": "hybench_xp_cpu",
+  "physical_workers": 2,
+  "top4_candidate_set_unchanged": true,
+  "fresh_search": true,
+  "global_monotonic_incumbent_policy": true,
+  "algorithm_a_measurement_credit_reused": false,
+  "accepted_round_credit_increment": 0,
+  "scene_transition_independent": true,
+  "four_scene_barrier": false,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "running_xp_io_cohort_mutated": false,
+  "external_process_control_or_stop_performed": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "source_bindings": {
+    "transition_controller": {
+      "path": "scripts/prepare_and_launch_mysql_algorithm_c_cpu_from_completed_a_v1.py",
+      "sha256": "7145c769ecda09ab2930e1677849d37623ea6316005210b85db90967f279acab"
+    },
+    "algorithm_c_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_async_v74.py",
+      "sha256": "152ba8df367761ee7630b133582987818c0659b71fa909b7ca913f69a22e9ba3"
+    },
+    "algorithm_c_controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_v74.py",
+      "sha256": "70c93ff7e45f0b8d13ec461cb095d6fce53994dceea140527a5c43621e7eb609"
+    },
+    "resource_freeze": {
+      "path": "config/formal/frozen_mysql_four_scene_two_worker_20260826_v19/four_scene_effective_resource_successor.json",
+      "sha256": "b178770c5101e63fb54b64c3782942c4396ca1de5073995a4546a63f2e655195"
+    },
+    "source_algorithm_a_state": {
+      "path": "history/mysql_four_scene_20260809/v843_to_a_cpu_round5_control2_resume_20260827_xp_cpu/algorithm_a_state.json",
+      "sha256": "613383babc35691dafcbb1a72ff1105f534b1d707a97ba6bd69af8bb56cc654a"
+    },
+    "source_algorithm_a_reset_binding": {
+      "path": "history/mysql_four_scene_20260809/v843_to_a_cpu_round5_control2_resume_20260827_xp_cpu/round_010/wave_002/xp_resets/v843_to_a_cpu_round5_control2_resume_20260827_xp_cpu_round_010_wave_002_attempt_01/reset_binding.json",
+      "sha256": "02e5b3e77f9dd7f1bc7bbf542242ff66e2b17ff4d0f1c8b8d0384e6142c89dbd"
+    },
+    "source_authority_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/v301_to_four_scene_two_worker_live_authority_20260826/checkpoint/prepared_binding.json",
+      "sha256": "36033fe05908139bf0b355921d8f25846675a6a118efd13f94a99b48db7f0ca2"
+    },
+    "source_replay_quarantine": {
+      "path": "history/mysql_four_scene_20260809/v301_to_four_scene_two_worker_live_authority_20260826/replay_quarantine/replay_quarantine.json",
+      "sha256": "3b15cab69326d5168ca310796e8914499288b07b8a20a211b180acade5831aef"
+    }
+  }
+}

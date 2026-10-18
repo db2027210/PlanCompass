@@ -1,0 +1,260 @@
+{
+  "benchmark": "job",
+  "method_id": "experience_table_sgd",
+  "method": "experience_table_all_subset_sgd",
+  "profile": "config/formal/mysql_sgd_production/profiles/job_memory.json",
+  "production": {
+    "formal_entry": "formal_mysql_sgd_campaign:run_production_campaign",
+    "service_factory": "mysql_algorithm_c_production_services:build",
+    "readiness_manifest": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/readiness_manifest.json",
+    "launch_authorized": false
+  },
+  "method_contract": {
+    "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/experience_table_sgd_formal_config.json",
+    "sha256": "7e3edba76792d96f404fdebf33d22582a25b63cb9988f6aa625715df237a6a80"
+  },
+  "capability": {
+    "cpu": 1.0,
+    "io": 1.0,
+    "memory": 1.0
+  },
+  "commit_best": false,
+  "cost_parameters": {
+    "active": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "memory_temptable_row_cost"
+    ],
+    "baseline_values": {
+      "io_block_read_cost": 1.0,
+      "memory_block_read_cost": 0.25,
+      "memory_temptable_row_cost": 0.1,
+      "row_evaluate_cost": 0.1
+    },
+    "ranges": {
+      "io_block_read_cost": {
+        "max_value": 10.0,
+        "min_value": 0.1
+      },
+      "memory_block_read_cost": {
+        "max_value": 2.5,
+        "min_value": 0.025
+      },
+      "memory_temptable_row_cost": {
+        "max_value": 1.0,
+        "min_value": 0.01
+      },
+      "row_evaluate_cost": {
+        "max_value": 1.0,
+        "min_value": 0.01
+      }
+    }
+  },
+  "estimator": {
+    "baseline_real": {
+      "cpu": 0.4073785270968318,
+      "io": 0.4758991501706904,
+      "memory": 0.8912795800799053
+    },
+    "feature_source": {
+      "active_sql_count": 107.5,
+      "benchmark_id": "job",
+      "queries": [
+        {
+          "dynamic": false,
+          "query_id": "job_1a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(mc.note) AS production_note,\n       MIN(t.title) AS movie_title,\n       MIN(t.production_year) AS movie_year\nFROM company_type AS ct,\n     info_type AS it,\n     movie_companies AS mc,\n     movie_info_idx AS mi_idx,\n     title AS t\nWHERE ct.kind = 'production companies'\n  AND it.info = 'top 250 rank'\n  AND mc.note NOT LIKE '%(as Metro-Goldwyn-Mayer Pictures)%'\n  AND (mc.note LIKE '%(co-production)%'\n       OR mc.note LIKE '%(presents)%')\n  AND ct.id = mc.company_type_id\n  AND t.id = mc.movie_id\n  AND t.id = mi_idx.movie_id\n  AND mc.movie_id = mi_idx.movie_id\n  AND it.id = mi_idx.info_type_id",
+          "weight": 10.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_5a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(t.title) AS typical_european_movie\nFROM company_type AS ct,\n     info_type AS it,\n     movie_companies AS mc,\n     movie_info AS mi,\n     title AS t\nWHERE ct.kind = 'production companies'\n  AND mc.note LIKE '%(theatrical)%'\n  AND mc.note LIKE '%(France)%'\n  AND mi.info IN ('Sweden',\n                  'Norway',\n                  'Germany',\n                  'Denmark',\n                  'Swedish',\n                  'Denish',\n                  'Norwegian',\n                  'German')\n  AND t.production_year > 2005\n  AND t.id = mi.movie_id\n  AND t.id = mc.movie_id\n  AND mc.movie_id = mi.movie_id\n  AND ct.id = mc.company_type_id\n  AND it.id = mi.info_type_id",
+          "weight": 10.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_9a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(an.name) AS alternative_name,\n       MIN(chn.name) AS character_name,\n       MIN(t.title) AS movie\nFROM aka_name AS an,\n     char_name AS chn,\n     cast_info AS ci,\n     company_name AS cn,\n     movie_companies AS mc,\n     name AS n,\n     role_type AS rt,\n     title AS t\nWHERE ci.note IN ('(voice)',\n                  '(voice: Japanese version)',\n                  '(voice) (uncredited)',\n                  '(voice: English version)')\n  AND cn.country_code ='[us]'\n  AND mc.note IS NOT NULL\n  AND (mc.note LIKE '%(USA)%'\n       OR mc.note LIKE '%(worldwide)%')\n  AND n.gender ='f'\n  AND n.name LIKE '%Ang%'\n  AND rt.role ='actress'\n  AND t.production_year BETWEEN 2005 AND 2015\n  AND ci.movie_id = t.id\n  AND t.id = mc.movie_id\n  AND ci.movie_id = mc.movie_id\n  AND mc.company_id = cn.id\n  AND ci.role_id = rt.id\n  AND n.id = ci.person_id\n  AND chn.id = ci.person_role_id\n  AND an.person_id = n.id\n  AND an.person_id = ci.person_id",
+          "weight": 10.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_12a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(cn.name) AS movie_company,\n       MIN(mi_idx.info) AS rating,\n       MIN(t.title) AS drama_horror_movie\nFROM company_name AS cn,\n     company_type AS ct,\n     info_type AS it1,\n     info_type AS it2,\n     movie_companies AS mc,\n     movie_info AS mi,\n     movie_info_idx AS mi_idx,\n     title AS t\nWHERE cn.country_code = '[us]'\n  AND ct.kind = 'production companies'\n  AND it1.info = 'genres'\n  AND it2.info = 'rating'\n  AND mi.info IN ('Drama',\n                  'Horror')\n  AND mi_idx.info > '8.0'\n  AND t.production_year BETWEEN 2005 AND 2008\n  AND t.id = mi.movie_id\n  AND t.id = mi_idx.movie_id\n  AND mi.info_type_id = it1.id\n  AND mi_idx.info_type_id = it2.id\n  AND t.id = mc.movie_id\n  AND ct.id = mc.company_type_id\n  AND cn.id = mc.company_id\n  AND mc.movie_id = mi.movie_id\n  AND mc.movie_id = mi_idx.movie_id\n  AND mi.movie_id = mi_idx.movie_id",
+          "weight": 10.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_16a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(an.name) AS cool_actor_pseudonym,\n       MIN(t.title) AS series_named_after_char\nFROM aka_name AS an,\n     cast_info AS ci,\n     company_name AS cn,\n     keyword AS k,\n     movie_companies AS mc,\n     movie_keyword AS mk,\n     name AS n,\n     title AS t\nWHERE cn.country_code ='[us]'\n  AND k.keyword ='character-name-in-title'\n  AND t.episode_nr >= 50\n  AND t.episode_nr < 100\n  AND an.person_id = n.id\n  AND n.id = ci.person_id\n  AND ci.movie_id = t.id\n  AND t.id = mk.movie_id\n  AND mk.keyword_id = k.id\n  AND t.id = mc.movie_id\n  AND mc.company_id = cn.id\n  AND an.person_id = ci.person_id\n  AND ci.movie_id = mc.movie_id\n  AND ci.movie_id = mk.movie_id\n  AND mc.movie_id = mk.movie_id",
+          "weight": 10.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_20a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(t.title) AS complete_downey_ironman_movie\nFROM complete_cast AS cc,\n     comp_cast_type AS cct1,\n     comp_cast_type AS cct2,\n     char_name AS chn,\n     cast_info AS ci,\n     keyword AS k,\n     kind_type AS kt,\n     movie_keyword AS mk,\n     name AS n,\n     title AS t\nWHERE cct1.kind = 'cast'\n  AND cct2.kind LIKE '%complete%'\n  AND chn.name NOT LIKE '%Sherlock%'\n  AND (chn.name LIKE '%Tony%Stark%'\n       OR chn.name LIKE '%Iron%Man%')\n  AND k.keyword IN ('superhero',\n                    'sequel',\n                    'second-part',\n                    'marvel-comics',\n                    'based-on-comic',\n                    'tv-special',\n                    'fight',\n                    'violence')\n  AND kt.kind = 'movie'\n  AND t.production_year > 1950\n  AND kt.id = t.kind_id\n  AND t.id = mk.movie_id\n  AND t.id = ci.movie_id\n  AND t.id = cc.movie_id\n  AND mk.movie_id = ci.movie_id\n  AND mk.movie_id = cc.movie_id\n  AND ci.movie_id = cc.movie_id\n  AND chn.id = ci.person_role_id\n  AND n.id = ci.person_id\n  AND k.id = mk.keyword_id\n  AND cct1.id = cc.subject_id\n  AND cct2.id = cc.status_id",
+          "weight": 10.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_26a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(chn.name) AS character_name,\n       MIN(mi_idx.info) AS rating,\n       MIN(n.name) AS playing_actor,\n       MIN(t.title) AS complete_hero_movie\nFROM complete_cast AS cc,\n     comp_cast_type AS cct1,\n     comp_cast_type AS cct2,\n     char_name AS chn,\n     cast_info AS ci,\n     info_type AS it2,\n     keyword AS k,\n     kind_type AS kt,\n     movie_info_idx AS mi_idx,\n     movie_keyword AS mk,\n     name AS n,\n     title AS t\nWHERE cct1.kind = 'cast'\n  AND cct2.kind LIKE '%complete%'\n  AND chn.name IS NOT NULL\n  AND (chn.name LIKE '%man%'\n       OR chn.name LIKE '%Man%')\n  AND it2.info = 'rating'\n  AND k.keyword IN ('superhero',\n                    'marvel-comics',\n                    'based-on-comic',\n                    'tv-special',\n                    'fight',\n                    'violence',\n                    'magnet',\n                    'web',\n                    'claw',\n                    'laser')\n  AND kt.kind = 'movie'\n  AND mi_idx.info > '7.0'\n  AND t.production_year > 2000\n  AND kt.id = t.kind_id\n  AND t.id = mk.movie_id\n  AND t.id = ci.movie_id\n  AND t.id = cc.movie_id\n  AND t.id = mi_idx.movie_id\n  AND mk.movie_id = ci.movie_id\n  AND mk.movie_id = cc.movie_id\n  AND mk.movie_id = mi_idx.movie_id\n  AND ci.movie_id = cc.movie_id\n  AND ci.movie_id = mi_idx.movie_id\n  AND cc.movie_id = mi_idx.movie_id\n  AND chn.id = ci.person_role_id\n  AND n.id = ci.person_id\n  AND k.id = mk.keyword_id\n  AND cct1.id = cc.subject_id\n  AND cct2.id = cc.status_id\n  AND it2.id = mi_idx.info_type_id",
+          "weight": 30.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_33a",
+          "representative_bindings": [],
+          "sql": "SELECT MIN(cn1.name) AS first_company,\n       MIN(cn2.name) AS second_company,\n       MIN(mi_idx1.info) AS first_rating,\n       MIN(mi_idx2.info) AS second_rating,\n       MIN(t1.title) AS first_movie,\n       MIN(t2.title) AS second_movie\nFROM company_name AS cn1,\n     company_name AS cn2,\n     info_type AS it1,\n     info_type AS it2,\n     kind_type AS kt1,\n     kind_type AS kt2,\n     link_type AS lt,\n     movie_companies AS mc1,\n     movie_companies AS mc2,\n     movie_info_idx AS mi_idx1,\n     movie_info_idx AS mi_idx2,\n     movie_link AS ml,\n     title AS t1,\n     title AS t2\nWHERE cn1.country_code = '[us]'\n  AND it1.info = 'rating'\n  AND it2.info = 'rating'\n  AND kt1.kind IN ('tv series')\n  AND kt2.kind IN ('tv series')\n  AND lt.link IN ('sequel',\n                  'follows',\n                  'followed by')\n  AND mi_idx2.info < '3.0'\n  AND t2.production_year BETWEEN 2005 AND 2008\n  AND lt.id = ml.link_type_id\n  AND t1.id = ml.movie_id\n  AND t2.id = ml.linked_movie_id\n  AND it1.id = mi_idx1.info_type_id\n  AND t1.id = mi_idx1.movie_id\n  AND kt1.id = t1.kind_id\n  AND cn1.id = mc1.company_id\n  AND t1.id = mc1.movie_id\n  AND ml.movie_id = mi_idx1.movie_id\n  AND ml.movie_id = mc1.movie_id\n  AND mi_idx1.movie_id = mc1.movie_id\n  AND it2.id = mi_idx2.info_type_id\n  AND t2.id = mi_idx2.movie_id\n  AND kt2.id = t2.kind_id\n  AND cn2.id = mc2.company_id\n  AND t2.id = mc2.movie_id\n  AND ml.linked_movie_id = mi_idx2.movie_id\n  AND ml.linked_movie_id = mc2.movie_id\n  AND mi_idx2.movie_id = mc2.movie_id",
+          "weight": 10.0
+        },
+        {
+          "dynamic": false,
+          "query_id": "job_sensitive_title_cast_role5_movie100k",
+          "representative_bindings": [],
+          "sql": "SELECT COUNT(*)\nFROM title AS t\nWHERE t.id IN (\n    SELECT ci.movie_id\n    FROM cast_info AS ci\n    WHERE ci.role_id = 5\n      AND ci.movie_id <= 100000\n    GROUP BY ci.movie_id\n)",
+          "weight": 7.5
+        }
+      ],
+      "registry_query_ids": [
+        "job_1a",
+        "job_5a",
+        "job_9a",
+        "job_12a",
+        "job_16a",
+        "job_20a",
+        "job_26a",
+        "job_33a",
+        "job_sensitive_title_cast_role5_movie100k"
+      ],
+      "require_strict_plan_registry": true,
+      "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+      "workload_registry_path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_workloads_and_parameters_20260723_v3/plan_workload_registries/job.mysql_plan_workload_registry_v1.json",
+      "workload_registry_sha256": "aeab100f43ec1b74bc4454751025977e82ddd345b9c11a025b7da87a25253646"
+    },
+    "type": "ratio_scale",
+    "uncalibrated_transition_log_step": 0.05
+  },
+  "evidence": {
+    "experience_table_sgd_formal_config": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/experience_table_sgd_formal_config.json",
+      "sha256": "7e3edba76792d96f404fdebf33d22582a25b63cb9988f6aa625715df237a6a80"
+    },
+    "experience_table": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.job_memory.operator_physics_v1.json",
+      "sha256": "1bbcc4cc16ab785205ae1050320436a69ac0442256414fef8d16e2df6156a8f6"
+    },
+    "feature_source": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_workloads_and_parameters_20260723_v3/plan_workload_registries/job.trained_estimator_feature_source.json",
+      "sha256": "a8fe53ecd1ea8eab6d2bd72b61e9efcb33bf59d3afce8485095c4874d1bcbaa8"
+    },
+    "formal_incumbent_requires_fresh_measurement": true,
+    "historical_r0_stable": false,
+    "r0_estimator_scale": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_r0_calibration_20260724_v1/job_memory.r0_calibration_v1.json",
+      "sha256": "d55ee2c4b2f1ff18ada650eeb188d94284121bf29bf25d49028541253f4c4ec6"
+    }
+  },
+  "exp_id": "mysql_algorithm_c_job_memory_v3",
+  "formal_outer_protocol": {
+    "formal_search_initial_replay_top_k": 5,
+    "formal_search_max_replay_top_k": 5,
+    "max_outer_attempts": 100,
+    "plan_basin_escape": {
+      "maximum_radius": 0.32,
+      "maximum_rejected_batches": 5,
+      "minimum_eta": 0.00031875,
+      "orthogonal_radius": 0.08,
+      "radius_gamma": 0.5
+    },
+    "target_accepted_shrinks": 10
+  },
+  "formal_scope": "mysql_only",
+  "freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+  "host02_job_xp_mutex": {
+    "journal_path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_sgd_env_agents_20260723/host02_control/job_xp_lease_journal.jsonl",
+    "lock_path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_sgd_env_agents_20260723/host02_control/job_xp_pressure.lock",
+    "required": true,
+    "mode": "isolated_parallel_dynamic_gate",
+    "scenario": "job_memory"
+  },
+  "mysql": {
+    "database": "imdb_job",
+    "device_type": 0,
+    "engine_name": "default",
+    "host": "127.0.0.1",
+    "mysql_binary": "mysql",
+    "port": 65102,
+    "query_timeout_sec": 120,
+    "user": "root"
+  },
+  "optimizer": {
+    "candidate_generator": "all_nonempty_subsets_experience_table_analytic_sgd_v1",
+    "eta": 0.0051,
+    "gamma": 0.5,
+    "max_iter": 1,
+    "max_param_delta_ratio": 0.2,
+    "patience": 1,
+    "subset_max_workers": 4
+  },
+  "output": {
+    "directory": "history/mysql_sgd_algorithm_c/job_memory",
+    "verbose": true
+  },
+  "scenario": "job_memory",
+  "data_template": {
+    "path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/job/template",
+    "manifest": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/job_template_manifest_20260723.json",
+    "manifest_sha256": "ce4fc5f5396904b82e4ae185f4f2a3d006f2cca502ac34cbc731e48f0a73acce",
+    "ready": true,
+    "frozen_read_only": true,
+    "clean_shutdown": true
+  },
+  "schema_version": "mysql_experience_table_sgd_optimizer_config_v1",
+  "scoring": {
+    "overload_threshold": 0.8,
+    "resource_weights": {
+      "cpu": 1.0,
+      "io": 1.0,
+      "memory": 1.0
+    },
+    "score_mode": "band_target"
+  },
+  "sensitivity_table": {
+    "io_block_read_cost": {
+      "cpu": 0.096,
+      "io": -0.32,
+      "memory": 0.044
+    },
+    "memory_block_read_cost": {
+      "cpu": 0.048,
+      "io": 0.06,
+      "memory": -0.088
+    },
+    "memory_temptable_row_cost": {
+      "cpu": 0.072,
+      "io": 0.22,
+      "memory": -0.275
+    },
+    "row_evaluate_cost": {
+      "cpu": -0.336,
+      "io": 0.04,
+      "memory": 0.088
+    }
+  },
+  "target_resource": "memory",
+  "workload_registry": {
+    "immutable": true,
+    "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_workloads_and_parameters_20260723_v3/plan_workload_registries/job.mysql_plan_workload_registry_v1.json",
+    "sha256": "aeab100f43ec1b74bc4454751025977e82ddd345b9c11a025b7da87a25253646"
+  }
+}

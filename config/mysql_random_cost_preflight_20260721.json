@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "description": "Reproducible 8-cost plan/resource sensitivity preflight; workload-specific tuning follows this gate.",
+  "workloads": [
+    {
+      "name": "hybench_ap",
+      "target": "memory",
+      "mysql": {"host": "127.0.0.1", "port": 13365, "user": "root", "password": "CHANGE_ME", "database": "hybench_10x", "query_timeout_sec": 30},
+      "capability": {"cpu": 4.0, "memory": 2.0, "io": 100.0},
+      "timeout_sec": 240,
+      "command": ["/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_hybench_runner.py", "--workload", "ap", "--port", "13365", "--user", "root", "--password", "CHANGE_ME", "--database", "hybench_10x", "--mysqld-pid", "2824087", "--warmup-duration-sec", "2", "--duration-sec", "5", "--random-seed", "20260721", "--output-root", "{output_dir}", "--ap-clients", "2", "--ap-query-sequence", "9"]
+    },
+    {
+      "name": "job",
+      "target": "memory",
+      "mysql": {"host": "127.0.0.1", "port": 13412, "user": "root", "password": "CHANGE_ME", "database": "job", "query_timeout_sec": 30},
+      "capability": {"cpu": 4.0, "memory": 7.15, "io": 100.0},
+      "timeout_sec": 180,
+      "command": ["/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_job_runner.py", "--port", "13412", "--user", "root", "--password", "mysql", "--database", "job", "--mysqld-pid", "2826000", "--warmup-duration-sec", "3", "--duration-sec", "10", "--concurrency", "4", "--query-timeout-ms", "5000", "--query-names", "1a.sql,1b.sql,1d.sql,6c.sql,11a.sql,11b.sql,21a.sql,21b.sql,21c.sql,27a.sql,27b.sql,27c.sql,31b.sql,33a.sql,33b.sql,33c.sql", "--output-root", "{output_dir}"]
+    },
+    {
+      "name": "tpch",
+      "target": "memory",
+      "mysql": {"host": "127.0.0.1", "port": 57652, "user": "root", "password": "CHANGE_ME", "database": "tpch", "query_timeout_sec": 30},
+      "capability": {"cpu": 4.0, "memory": 2.2, "io": 100.0},
+      "timeout_sec": 180,
+      "command": ["/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_benchmark_runner.py", "--benchmark", "tpch", "--port", "57652", "--database", "tpch", "--user", "admin", "--password", "password", "--mysqld-pid", "2831094", "--terminals", "4", "--warmup-duration-sec", "3", "--duration-sec", "10", "--output-root", "{output_dir}"]
+    },
+    {
+      "name": "hybench_tp",
+      "target": "cpu",
+      "mysql": {"host": "127.0.0.1", "port": 13365, "user": "root", "password": "CHANGE_ME", "database": "hybench_10x", "query_timeout_sec": 30},
+      "capability": {"cpu": 1.5, "memory": 8.0, "io": 100.0},
+      "timeout_sec": 120,
+      "command": ["/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_hybench_runner.py", "--workload", "tp", "--port", "13365", "--user", "root", "--password", "CHANGE_ME", "--database", "hybench_10x", "--mysqld-pid", "2824087", "--warmup-duration-sec", "2", "--duration-sec", "8", "--random-seed", "20260721", "--output-root", "{output_dir}", "--tp-clients", "16"]
+    },
+    {
+      "name": "tpcc",
+      "target": "cpu",
+      "mysql": {"host": "127.0.0.1", "port": 57652, "user": "root", "password": "CHANGE_ME", "database": "tpcc", "query_timeout_sec": 30},
+      "capability": {"cpu": 0.8, "memory": 8.0, "io": 100.0},
+      "timeout_sec": 180,
+      "command": ["/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_benchmark_runner.py", "--benchmark", "tpcc", "--port", "57652", "--database", "tpcc", "--user", "root", "--password", "mysql", "--mysqld-pid", "2831094", "--terminals", "32", "--warmup-duration-sec", "3", "--duration-sec", "10", "--output-root", "{output_dir}"]
+    },
+    {
+      "name": "hybench_xp",
+      "target": "io",
+      "mysql": {"host": "127.0.0.1", "port": 32811, "user": "root", "password": "CHANGE_ME", "database": "hybench", "query_timeout_sec": 30},
+      "capability": {"cpu": 4.0, "memory": 8.0, "io": 0.57},
+      "timeout_sec": 180,
+      "command": ["/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_hybench_runner.py", "--workload", "xp", "--port", "32811", "--user", "root", "--password", "mysql", "--database", "hybench", "--mysqld-pid", "2300031", "--warmup-duration-sec", "3", "--duration-sec", "10", "--random-seed", "20260719", "--output-root", "{output_dir}", "--xap-clients", "8", "--xtp-clients", "24"]
+    }
+  ]
+}

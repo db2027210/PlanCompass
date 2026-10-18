@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "method": "experience_table_all_subset_sgd_with_plan_basin_escape_v3",
+  "formal_outer_protocol_overlay": {
+    "plan_basin_escape": {
+      "enabled": true,
+      "maximum_batches": 5,
+      "required_plan_clusters": 2,
+      "maximum_candidates_per_batch": 128,
+      "orthogonal_radius": 0.08,
+      "minimum_radius": 0.005,
+      "radius_gamma": 0.5
+    }
+  },
+  "activation_policy": {
+    "requires_full_per_lane_optimizer_config": true,
+    "requires_production_service_factory": true,
+    "requires_ready_launch_authority": true,
+    "direct_config_may_not_be_promoted": true
+  }
+}

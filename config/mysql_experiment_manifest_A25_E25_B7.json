@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "db": "mysql8",
+  "method": "gradient_descent",
+  "max_parallel": 4,
+  "acceptance": {
+    "min_bottleneck_drop_pct_points": 5.0,
+    "max_bottleneck_drop_pct_points": 10.0,
+    "bottleneck_clear_threshold": 0.90,
+    "min_qps_gain_pct": 15.0,
+    "none_require_no_bottleneck": true,
+    "none_require_resource_increase": true
+  },
+  "machine_spec": {"cpu_cores": 4, "mem_gb": 8, "disk_bw_mb": 100},
+  "experiments": [
+    {"exp_id": "A25", "benchmark": "hybench_ap", "bottleneck": "memory", "runs": 1, "resource_key": "hybench_worker"},
+    {"exp_id": "A26", "benchmark": "job", "bottleneck": "memory", "runs": 1, "resource_key": "job_worker"},
+    {"exp_id": "A27", "benchmark": "tpch", "bottleneck": "memory", "runs": 1, "resource_key": "tpch_worker"},
+    {"exp_id": "A28", "benchmark": "hybench_tp", "bottleneck": "cpu", "runs": 1, "resource_key": "hybench_worker"},
+    {"exp_id": "A29", "benchmark": "tpcc", "bottleneck": "cpu", "runs": 1, "resource_key": "tpcc_worker"},
+    {"exp_id": "A30", "benchmark": "hybench_xp", "bottleneck": "io", "runs": 1, "resource_key": "hybench_worker"},
+    {"exp_id": "E25", "benchmark": "hybench_ap", "bottleneck": "none", "runs": 1, "resource_key": "hybench_worker"},
+    {"exp_id": "E26", "benchmark": "job", "bottleneck": "none", "runs": 1, "resource_key": "job_worker"},
+    {"exp_id": "E27", "benchmark": "tpch", "bottleneck": "none", "runs": 1, "resource_key": "tpch_worker"},
+    {"exp_id": "E28", "benchmark": "hybench_tp", "bottleneck": "none", "runs": 1, "resource_key": "hybench_worker"},
+    {"exp_id": "E29", "benchmark": "tpcc", "bottleneck": "none", "runs": 1, "resource_key": "tpcc_worker"},
+    {"exp_id": "E30", "benchmark": "hybench_xp", "bottleneck": "none", "runs": 1, "resource_key": "hybench_worker"},
+    {"exp_id": "B7", "benchmark": "hybench_tp", "bottleneck": "cpu", "runs": 2, "resource_key": "hybench_worker"},
+    {"exp_id": "B8", "benchmark": "hybench_ap", "bottleneck": "memory", "runs": 2, "resource_key": "hybench_worker"},
+    {"exp_id": "B9", "benchmark": "hybench_xp", "bottleneck": "io", "runs": 2, "resource_key": "hybench_worker"}
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "mysql_c_memory_pair_completion_contract_v102",
+  "status": "FROZEN",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "C",
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory"
+  ],
+  "closure_only": true,
+  "measurement_replay_prohibited": true,
+  "measurement_or_optimizer_state_mutation_prohibited": true,
+  "historical_launcher_manifest_mutation_prohibited": true,
+  "closure_reason": "post_run_audit_v1_rejected_legitimate_memory_pair_shape_after_algorithm_state_completed",
+  "required_state_status": "COMPLETE",
+  "required_state_stage": "FINISHED",
+  "required_outer_attempt": 16,
+  "required_converged_scenes": [
+    "job_memory",
+    "tpch_sf4_memory"
+  ],
+  "required_chain_audit_status": "PASS",
+  "required_decision_path_count": 32,
+  "external_process_control_or_stop_permitted": false,
+  "postgresql_process_control_or_stop_permitted": false,
+  "source_bindings": {
+    "closure_tool": {
+      "path": "scripts/close_mysql_c_memory_pair_v102.py",
+      "sha256": "6852d8df14c9a52159389011730a59e4bcd45265b22048fcf094e06bdfbdfc30"
+    },
+    "chain_audit_source_v2": {
+      "path": "scripts/audit_mysql_algorithm_c_global_incumbent_chain_v2.py",
+      "sha256": "aa83bee37cc7d1a9a6b7431c139ca42cba252ddec19cf8546be8ba1b1ba362ed"
+    },
+    "completed_run_state": {
+      "path": "history/mysql_four_scene_20260809/v1199_to_c_memory_normalization_resume_20260904_memory_pair_job/run_state.json",
+      "sha256": "320125db75b8a3da12d0c67e51ac1180018e30175fccd66e5884a5619347f336"
+    },
+    "global_incumbent_chain_audit_v2": {
+      "path": "history/mysql_four_scene_20260809/v1199_to_c_memory_normalization_resume_20260904_memory_pair_job/global_incumbent_chain_audit_v2.json",
+      "sha256": "13f443573b8626031ed056b0fd28e32f9e6b71a93d5bbb0c281c9419b0128c0d"
+    },
+    "historical_failed_launcher_manifest": {
+      "path": "history/mysql_four_scene_20260809/v1199_mysql_c_memory_normalization_recovery_20260904/launch_manifest.json",
+      "sha256": "b819d5e23f5c4e20d3169b66d981251ddd9792907ddfc579622d334aa2f90054"
+    },
+    "historical_controller_log": {
+      "path": "history/mysql_four_scene_20260809/v1199_mysql_c_memory_normalization_recovery_20260904/memory_pair.controller.log",
+      "sha256": "4603019fbfa089920fc7fbd2baa8f57bf5f6225fe3a2492b50888d8b188a858f"
+    }
+  }
+}

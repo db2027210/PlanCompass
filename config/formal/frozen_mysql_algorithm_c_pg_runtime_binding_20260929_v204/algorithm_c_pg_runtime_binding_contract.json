@@ -1,0 +1,56 @@
+{
+  "cross_engine_comparison_prohibited": true,
+  "expanded_runtime_interval_control_bound": true,
+  "expanded_runtime_recovery_policy_bound": true,
+  "expanded_runtime_rejection_cycle_bound": true,
+  "first_decision_path_tested": true,
+  "formal_scope": "mysql_only",
+  "fresh_search_required": true,
+  "parent_algorithm_contract_path": "config/formal/frozen_mysql_algorithm_c_pg_complete_recovery_20260929_v202/algorithm_c_pg_complete_recovery_contract.json",
+  "parent_algorithm_contract_sha256": "2d3211cf3ef53a2456960b6a39b91b3f283f9465d977963599f3b6aec8c62502",
+  "postgresql_process_control_or_stop_performed": false,
+  "release_version": "v204-pg-runtime-binding",
+  "resource_envelope_changed": false,
+  "schema_version": "mysql_algorithm_c_pg_runtime_binding_release_v1",
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v104.py",
+      "sha256": "0c01c2518768da92530059387477eb87508f1da7df41ec6a2a57e02676c78412"
+    },
+    "expanded_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v56.py",
+      "sha256": "4170219759fd2574813058cf239df22882c2054af47ba4997a611946dde735c6"
+    },
+    "interval_control": {
+      "path": "scripts/mysql_algorithm_c_interval_control_v2.py",
+      "sha256": "b2d206614c27a041305888d1054eef4ba95a07fef1bb81eeb03b3a63e77fef5d"
+    },
+    "parent_algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_complete_recovery_20260929_v202/algorithm_c_pg_complete_recovery_contract.json",
+      "sha256": "2d3211cf3ef53a2456960b6a39b91b3f283f9465d977963599f3b6aec8c62502"
+    },
+    "recovery_policy": {
+      "path": "scripts/mysql_algorithm_c_pg_recovery_v1.py",
+      "sha256": "91d3e6e2d0fc0c4568a4ed90d7d69762718bb7f5784a97ad515d7cdeebe44968"
+    },
+    "rejection_cycle": {
+      "path": "scripts/mysql_outer_rejection_cycle_v3.py",
+      "sha256": "27a5d3ff3acbecd390c90038d0cfd06b2ffbbf90707758075ac7487841e71b2c"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_pg_runtime_binding_v204.py",
+      "sha256": "b41ea3db178f894d8381393c05df17b5cd457967718cbf6966afd55b95571427"
+    },
+    "runtime_binding": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v57.py",
+      "sha256": "f37cdef4a72075bc681325c51cbcfce8e198384e2660a923e7cdf80b7218b0fe"
+    },
+    "runtime_binding_test": {
+      "path": "tests/test_mysql_algorithm_c_pg_correspondence_v5.py",
+      "sha256": "30a56e65adf71e35939dc11cc0f7f4e0fa2de50d6b3ee8ba2a5361d8cc06e41b"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "superseded_v203_rounds_reusable": false,
+  "workload_changed": false
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "mysql_three_workload_disk_concurrency_successor_manifest_v2",
+  "status": "SEALED_SUCCESSOR_PRELAUNCH_GATES_INCOMPLETE",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "formal_launch_authorized": false,
+  "launch_performed": false,
+  "accepted_rounds": {
+    "job": 0,
+    "tpch": 0,
+    "hybench_xp": 0
+  },
+  "predecessor": {
+    "path": "config/formal/frozen_mysql_three_workloads_20260806_v1/manifest.json",
+    "sha256": "a136b91cbb9ad778e868e40dc07854c6f09ef06c5965b892300882e0b81a73f3"
+  },
+  "inherited_immutable_artifacts": {
+    "workload_freeze.json": "d616751aed412ff01e3cdb543fe3c441cd1c5529175ec7df79856cb4c08df74e",
+    "job_tpch_resource_envelope.json": "254bb8e40c40d802ffd3581c290118b14663167008e0da83b4b9b9500a4aadc8",
+    "xp_cpu_resource_envelope.json": "9109364151eb79d8c150e49caaf17a3c509ebdb7c255abfc9d50cc104b5acf96"
+  },
+  "successor_artifacts": {
+    "disk_concurrency_policy.json": "5a8b929423984a937d70f586f5063b71dee57f2595d7c562162e360d7198dc93",
+    "same_ssd_concurrency.py": "6bf157586fdca483d9b8c023a5f5245440b588ff7238089b89a45929d048ff4f"
+  },
+  "activation": {
+    "inter_scene_parallelism": 3,
+    "intra_scene_replay_parallelism": {
+      "job": 1,
+      "tpch": 1,
+      "hybench_xp": 1
+    },
+    "reason": "one independent MySQL worker exists per scene; same-instance candidate replay is prohibited",
+    "future_same_ssd_scaling_requires_new_successor": true
+  }
+}

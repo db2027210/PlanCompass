@@ -1,0 +1,1372 @@
+{
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "authority": "user_fixed_sequence_and_docker_behavior_2026-08-12",
+  "checkpoint_parameter_space": {
+    "path": "history/mysql_four_scene_20260809/algorithm_c_outer4_checkpoint_v2_optimized_20260812/prepared_binding.json",
+    "sha256": "4b5b1fd1de90de153c13ae6004bf29aabd0f21db26b675664ea90c77b8cbfdb2"
+  },
+  "created_at": "2026-08-12T23:17:07.828256+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "docker_behavior": {
+    "candidate_parameters_applied_in_worker_id_order": true,
+    "container_replacement_between_points": "XP_only_using_sealed_reset;_JOB_TPCH_shared_frozen_database",
+    "image": "mysql:8.0",
+    "image_id": "sha256:b3197d59eb3b270cf21bc1166fa726f9c511438416b421504068301df90c3172",
+    "maximum_recorded_start_skew_seconds": 2.0,
+    "measurement_source": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+      "sha256": "2443685e3ca781429f1da7ed7e9e0efa13510dc57ebfdf8744526b60c37a8a6b"
+    },
+    "physical_snapshot_binding_sha256": "94add246e20bf796f8a2605476c1a900e05c352474c45864f784c329001d7dc8",
+    "readback_before_each_wave_required": [
+      "image_id",
+      "container_id",
+      "mysql_version",
+      "optimizer_parameters",
+      "cpu_quota_and_cpuset",
+      "cpuset_mems",
+      "memory_and_swap",
+      "io_read_write_limits",
+      "pids_limit",
+      "innodb_buffer_pool",
+      "datadir_snapshot_lineage"
+    ],
+    "readback_mismatch_action": "fail_closed_before_workload_start",
+    "reset_source": {
+      "path": "scripts/reset_mysql_xp_data_planes_v5.py",
+      "sha256": "d33fec346c76a6a0b4c630aff5455db4326725c8affad9a6b7e6045f592d3c8c"
+    },
+    "two_phase_start_barrier_required": true,
+    "workload_scheduler_source": {
+      "path": "mysql_benchmark_command.py",
+      "sha256": "e23d413945a895229af40fa952de352729e44799907b7b28cff89c8adc45490d"
+    }
+  },
+  "execution_contract": {
+    "dynamic_point_generation_or_reordering_prohibited": true,
+    "executor_must_consume_this_exact_schedule_sha256": true,
+    "partial_wave_credit_prohibited": true,
+    "ssd_pollution_and_dynamic_non_interference_gates_unchanged": true,
+    "technical_failure_must_be_isolated_and_replayed_in_same_slot": true,
+    "worker_slot_substitution_prohibited": true
+  },
+  "formal_scope": "mysql_only",
+  "holdout_isolation": {
+    "H01_measured_concurrently_with_T07": true,
+    "fit_input_allowlist": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07"
+    ],
+    "fit_input_denylist": [
+      "H01",
+      "H02",
+      "H03"
+    ],
+    "holdout_bytes_must_not_be_read_before_training_model_is_sealed": true,
+    "training_model_sha256_required_before_holdout_scoring": true
+  },
+  "predecessor_policy": {
+    "path": "config/formal/frozen_mysql_algorithm_c_fast_calibration_20260812_v1/calibration_release_policy.json",
+    "sha256": "74d5e2370fa48d084a831c24c8c97b1433a1b3aee4aac2ff1e297904a7874e74"
+  },
+  "rank_audit": {
+    "hybench_xp_cpu": {
+      "active_dimension": 7,
+      "active_parameters": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_create_cost",
+        "disk_temptable_row_cost",
+        "memory_temptable_row_cost"
+      ],
+      "full_column_rank": true,
+      "intercept": "sealed_incumbent_delta_zero_not_separately_fitted",
+      "matrix_rank": 7,
+      "training_rows": 7
+    },
+    "hybench_xp_io": {
+      "active_dimension": 7,
+      "active_parameters": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_create_cost",
+        "disk_temptable_row_cost",
+        "memory_temptable_row_cost"
+      ],
+      "full_column_rank": true,
+      "intercept": "sealed_incumbent_delta_zero_not_separately_fitted",
+      "matrix_rank": 7,
+      "training_rows": 7
+    },
+    "job_memory": {
+      "active_dimension": 4,
+      "active_parameters": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "memory_temptable_row_cost"
+      ],
+      "full_column_rank": true,
+      "intercept": "sealed_incumbent_delta_zero_not_separately_fitted",
+      "matrix_rank": 4,
+      "training_rows": 7
+    },
+    "tpch_sf4_memory": {
+      "active_dimension": 4,
+      "active_parameters": [
+        "io_block_read_cost",
+        "memory_block_read_cost",
+        "row_evaluate_cost",
+        "disk_temptable_row_cost"
+      ],
+      "full_column_rank": true,
+      "intercept": "sealed_incumbent_delta_zero_not_separately_fitted",
+      "matrix_rank": 4,
+      "training_rows": 7
+    }
+  },
+  "schedule": {
+    "materialized_points_by_scene": {
+      "hybench_xp_cpu": {
+        "H01": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.5,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.5,
+            "key_compare_cost": 0.5,
+            "memory_block_read_cost": 0.5,
+            "memory_temptable_row_cost": 0.5,
+            "row_evaluate_cost": 0.5
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 6.324555320336757,
+            "disk_temptable_row_cost": 0.15811388300841897,
+            "io_block_read_cost": 0.316227766016838,
+            "key_compare_cost": 0.015811388300841896,
+            "memory_block_read_cost": 0.0790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.0316227766016838,
+            "row_evaluate_cost": 0.316227766016838
+          },
+          "optimizer_parameters_sha256": "0a13a118db1c7f2706854975fa23e31e9437a841444c48a26aa6f31f1e4b8e2d",
+          "role": "holdout"
+        },
+        "H02": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.35,
+            "disk_temptable_row_cost": 0.65,
+            "io_block_read_cost": 0.35,
+            "key_compare_cost": 0.65,
+            "memory_block_read_cost": 0.65,
+            "memory_temptable_row_cost": 0.35,
+            "row_evaluate_cost": 0.35
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 4.477442277136679,
+            "disk_temptable_row_cost": 0.2233417960754816,
+            "io_block_read_cost": 0.22387211385683395,
+            "key_compare_cost": 0.022334179607548164,
+            "memory_block_read_cost": 0.11167089803774084,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.022387211385683402,
+            "row_evaluate_cost": 0.22387211385683395
+          },
+          "optimizer_parameters_sha256": "497c65da7bdd8b7e2b709e2779fefdbd74569496afe5573674445e557bd4ed15",
+          "role": "holdout"
+        },
+        "H03": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.65,
+            "disk_temptable_row_cost": 0.35,
+            "io_block_read_cost": 0.65,
+            "key_compare_cost": 0.35,
+            "memory_block_read_cost": 0.35,
+            "memory_temptable_row_cost": 0.65,
+            "row_evaluate_cost": 0.65
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 8.933671843019264,
+            "disk_temptable_row_cost": 0.11193605692841697,
+            "io_block_read_cost": 0.4466835921509632,
+            "key_compare_cost": 0.011193605692841705,
+            "memory_block_read_cost": 0.05596802846420848,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.044668359215096334,
+            "row_evaluate_cost": 0.4466835921509632
+          },
+          "optimizer_parameters_sha256": "da954932c8aadbe7724124fb20595dc6d6d37ee3e72b2695bbb89b819770b398",
+          "role": "holdout"
+        },
+        "T01": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.75,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 3.5565588200778455,
+            "disk_temptable_row_cost": 0.08891397050194613,
+            "io_block_read_cost": 0.5623413251903492,
+            "key_compare_cost": 0.00889139705019462,
+            "memory_block_read_cost": 0.044456985250973066,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.01778279410038924,
+            "row_evaluate_cost": 0.1778279410038923
+          },
+          "optimizer_parameters_sha256": "140a7ebe340cf9d3ddd07e623d8c338223de8cc7071a2bab167816852d0a8704",
+          "role": "training"
+        },
+        "T02": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.75,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 3.5565588200778455,
+            "disk_temptable_row_cost": 0.08891397050194613,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.00889139705019462,
+            "memory_block_read_cost": 0.1405853312975873,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.01778279410038924,
+            "row_evaluate_cost": 0.1778279410038923
+          },
+          "optimizer_parameters_sha256": "be0d8da3d0277953e9d5e7c649ec0850fce9c9985c4b4e31cb5f6e5b3e994082",
+          "role": "training"
+        },
+        "T03": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.75
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 3.5565588200778455,
+            "disk_temptable_row_cost": 0.08891397050194613,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.00889139705019462,
+            "memory_block_read_cost": 0.044456985250973066,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.01778279410038924,
+            "row_evaluate_cost": 0.5623413251903492
+          },
+          "optimizer_parameters_sha256": "0af5f0b3d77308b9cf2e27af209264e82c2737fcea3893c9dd4c0802a737c4b8",
+          "role": "training"
+        },
+        "T04": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.75,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 3.5565588200778455,
+            "disk_temptable_row_cost": 0.08891397050194613,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.028117066259517463,
+            "memory_block_read_cost": 0.044456985250973066,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.01778279410038924,
+            "row_evaluate_cost": 0.1778279410038923
+          },
+          "optimizer_parameters_sha256": "bb17c08c3bc26f562af725d7385094035aa95dd78972ca3e27f5ee065a42f394",
+          "role": "training"
+        },
+        "T05": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.75,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 11.246826503806982,
+            "disk_temptable_row_cost": 0.08891397050194613,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.00889139705019462,
+            "memory_block_read_cost": 0.044456985250973066,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.01778279410038924,
+            "row_evaluate_cost": 0.1778279410038923
+          },
+          "optimizer_parameters_sha256": "7728020abe5ca4af5e88b8aa10f535f30e5971440f4371739900b1befa715b7d",
+          "role": "training"
+        },
+        "T06": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.75,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 3.5565588200778455,
+            "disk_temptable_row_cost": 0.28117066259517454,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.00889139705019462,
+            "memory_block_read_cost": 0.044456985250973066,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.01778279410038924,
+            "row_evaluate_cost": 0.1778279410038923
+          },
+          "optimizer_parameters_sha256": "9ac0821e8b6c9bbbcf0bf3a0fe630a246a4bc05c89e13947d7d4e3517c2a8f44",
+          "role": "training"
+        },
+        "T07": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.75,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 3.5565588200778455,
+            "disk_temptable_row_cost": 0.08891397050194613,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.00889139705019462,
+            "memory_block_read_cost": 0.044456985250973066,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.05623413251903493,
+            "row_evaluate_cost": 0.1778279410038923
+          },
+          "optimizer_parameters_sha256": "265b4c51f0144e399ec94c95461deef481b2e266c30000aac7e944fa5e6e7376",
+          "role": "training"
+        }
+      },
+      "hybench_xp_io": {
+        "H01": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.5,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.5,
+            "key_compare_cost": 0.5,
+            "memory_block_read_cost": 0.5,
+            "memory_temptable_row_cost": 0.5,
+            "row_evaluate_cost": 0.5
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 35.56558820077844,
+            "disk_temptable_row_cost": 0.8891397050194615,
+            "io_block_read_cost": 1.778279410038923,
+            "key_compare_cost": 0.028117066259517463,
+            "memory_block_read_cost": 0.14058533129758727,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.05623413251903493,
+            "row_evaluate_cost": 0.05623413251903493
+          },
+          "optimizer_parameters_sha256": "34f66d4a1343d2503b0b19860d9161f6404d3ec7a735a0f0118e7e3a48135431",
+          "role": "holdout"
+        },
+        "H02": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.35,
+            "disk_temptable_row_cost": 0.65,
+            "io_block_read_cost": 0.35,
+            "key_compare_cost": 0.65,
+            "memory_block_read_cost": 0.65,
+            "memory_temptable_row_cost": 0.35,
+            "row_evaluate_cost": 0.35
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 29.92471312188867,
+            "disk_temptable_row_cost": 1.0567445199183236,
+            "io_block_read_cost": 1.4962356560944334,
+            "key_compare_cost": 0.033417195878430735,
+            "memory_block_read_cost": 0.16708597939215367,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.04731512589614806,
+            "row_evaluate_cost": 0.04731512589614806
+          },
+          "optimizer_parameters_sha256": "b543d64f2366b5078570c0b5892533fc7954b1cf826cf71d765d2c940fb781f7",
+          "role": "holdout"
+        },
+        "H03": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.65,
+            "disk_temptable_row_cost": 0.35,
+            "io_block_read_cost": 0.65,
+            "key_compare_cost": 0.35,
+            "memory_block_read_cost": 0.35,
+            "memory_temptable_row_cost": 0.65,
+            "row_evaluate_cost": 0.65
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 42.26978079673293,
+            "disk_temptable_row_cost": 0.7481178280472167,
+            "io_block_read_cost": 2.113489039836647,
+            "key_compare_cost": 0.023657562948074026,
+            "memory_block_read_cost": 0.11828781474037015,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.06683439175686147,
+            "row_evaluate_cost": 0.06683439175686147
+          },
+          "optimizer_parameters_sha256": "a4e62f634a4eb2dd94e9b76b3346a4bfda616f3ea8f8e7fdca0b3039e5744f50",
+          "role": "holdout"
+        },
+        "T01": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.75,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 26.67042864326648,
+            "disk_temptable_row_cost": 0.6667607160816621,
+            "io_block_read_cost": 2.3713737056616555,
+            "key_compare_cost": 0.021084825171429115,
+            "memory_block_read_cost": 0.1054241258571456,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.04216965034285824,
+            "row_evaluate_cost": 0.04216965034285824
+          },
+          "optimizer_parameters_sha256": "9b26116f6e283f590e966f5cbf9a2b3bd9b9c7c43ea87c85ebb7af785a26e1da",
+          "role": "training"
+        },
+        "T02": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.75,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 26.67042864326648,
+            "disk_temptable_row_cost": 0.6667607160816621,
+            "io_block_read_cost": 1.333521432163324,
+            "key_compare_cost": 0.021084825171429115,
+            "memory_block_read_cost": 0.18747355233311397,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.04216965034285824,
+            "row_evaluate_cost": 0.04216965034285824
+          },
+          "optimizer_parameters_sha256": "00b997d945249bbd234739f4899eddf0a01d83a8cf36eb65ae67b37b5fdb3766",
+          "role": "training"
+        },
+        "T03": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.75
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 26.67042864326648,
+            "disk_temptable_row_cost": 0.6667607160816621,
+            "io_block_read_cost": 1.333521432163324,
+            "key_compare_cost": 0.021084825171429115,
+            "memory_block_read_cost": 0.1054241258571456,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.04216965034285824,
+            "row_evaluate_cost": 0.07498942093324559
+          },
+          "optimizer_parameters_sha256": "e320c81f240492ac98c708cdc692c13b6d7add152035ce8630693fea0b6ed94a",
+          "role": "training"
+        },
+        "T04": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.75,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 26.67042864326648,
+            "disk_temptable_row_cost": 0.6667607160816621,
+            "io_block_read_cost": 1.333521432163324,
+            "key_compare_cost": 0.03749471046662279,
+            "memory_block_read_cost": 0.1054241258571456,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.04216965034285824,
+            "row_evaluate_cost": 0.04216965034285824
+          },
+          "optimizer_parameters_sha256": "6dde33429d56aa5e2c6e8ed5e00e91a294b799cf6aa8a556bcaa081581411a8c",
+          "role": "training"
+        },
+        "T05": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.75,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 47.427474113233096,
+            "disk_temptable_row_cost": 0.6667607160816621,
+            "io_block_read_cost": 1.333521432163324,
+            "key_compare_cost": 0.021084825171429115,
+            "memory_block_read_cost": 0.1054241258571456,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.04216965034285824,
+            "row_evaluate_cost": 0.04216965034285824
+          },
+          "optimizer_parameters_sha256": "9a4d29cc75c4894b8ccc4607ffd5e0162e6eb048da1bb5875a6a34fce0c981dd",
+          "role": "training"
+        },
+        "T06": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.75,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 26.67042864326648,
+            "disk_temptable_row_cost": 1.1856868528308278,
+            "io_block_read_cost": 1.333521432163324,
+            "key_compare_cost": 0.021084825171429115,
+            "memory_block_read_cost": 0.1054241258571456,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.04216965034285824,
+            "row_evaluate_cost": 0.04216965034285824
+          },
+          "optimizer_parameters_sha256": "222069a041a6e98c412121f2a1060c5deb7ae5f74cea40a1515628e461bd870b",
+          "role": "training"
+        },
+        "T07": {
+          "normalized_active_parameters": {
+            "disk_temptable_create_cost": 0.25,
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "key_compare_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.75,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 26.67042864326648,
+            "disk_temptable_row_cost": 0.6667607160816621,
+            "io_block_read_cost": 1.333521432163324,
+            "key_compare_cost": 0.021084825171429115,
+            "memory_block_read_cost": 0.1054241258571456,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.07498942093324559,
+            "row_evaluate_cost": 0.04216965034285824
+          },
+          "optimizer_parameters_sha256": "0f154cf598bdd8b21c4a5719be687e262b9f2e7c9c6db5548a33c0e1b2f89564",
+          "role": "training"
+        }
+      },
+      "job_memory": {
+        "H01": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.5,
+            "memory_block_read_cost": 0.5,
+            "memory_temptable_row_cost": 0.5,
+            "row_evaluate_cost": 0.5
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.316227766016838,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.316227766016838,
+            "row_evaluate_cost": 0.0316227766016838
+          },
+          "optimizer_parameters_sha256": "397cbce5fa40cf2c62a0c1ab14f6d337cdbdbc867f7800f450db916455055282",
+          "role": "holdout"
+        },
+        "H02": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.35,
+            "memory_block_read_cost": 0.65,
+            "memory_temptable_row_cost": 0.65,
+            "row_evaluate_cost": 0.35
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.22387211385683395,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 1.1167089803774082,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.4466835921509632,
+            "row_evaluate_cost": 0.022387211385683402
+          },
+          "optimizer_parameters_sha256": "bf9aef67abe79f9ca2d8c1a1d53de2bfc7349af88275809e1d2ebbe91e2e36d3",
+          "role": "holdout"
+        },
+        "H03": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.65,
+            "memory_block_read_cost": 0.35,
+            "memory_temptable_row_cost": 0.35,
+            "row_evaluate_cost": 0.65
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.4466835921509632,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.559680284642085,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.22387211385683395,
+            "row_evaluate_cost": 0.044668359215096334
+          },
+          "optimizer_parameters_sha256": "20f8f6a0d8eb96feaae784dec8c0b7368a9814c3a87a48e1c2331e9401680dbb",
+          "role": "holdout"
+        },
+        "T01": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.75,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.5623413251903492,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.44456985250973075,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1778279410038923,
+            "row_evaluate_cost": 0.01778279410038924
+          },
+          "optimizer_parameters_sha256": "db51cd72f1f12b32ffa2c855851f1ce3c30e8f513cc3cdbad99df3be0209c0b5",
+          "role": "training"
+        },
+        "T02": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.75,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 1.405853312975873,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1778279410038923,
+            "row_evaluate_cost": 0.01778279410038924
+          },
+          "optimizer_parameters_sha256": "bea0102f5d104182311d2da876c522dd43e466c6d418d3265cf85e74af8db051",
+          "role": "training"
+        },
+        "T03": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.75
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.44456985250973075,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1778279410038923,
+            "row_evaluate_cost": 0.05623413251903493
+          },
+          "optimizer_parameters_sha256": "55e731fe57766ab6d6797912b3c67c93bf4ecadc84fc26c23363c65b0fd15916",
+          "role": "training"
+        },
+        "T04": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.75,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.44456985250973075,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.5623413251903492,
+            "row_evaluate_cost": 0.01778279410038924
+          },
+          "optimizer_parameters_sha256": "813936a0413320b4f83ceb41d7c674bf094bd784ae831c7d52148b8bcb547592",
+          "role": "training"
+        },
+        "T05": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.44456985250973075,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1778279410038923,
+            "row_evaluate_cost": 0.01778279410038924
+          },
+          "optimizer_parameters_sha256": "09eb8c1d187d3fcf481a3344f26c8b6289dd27635017fe1a74260201e4526a1e",
+          "role": "training"
+        },
+        "T06": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.44456985250973075,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1778279410038923,
+            "row_evaluate_cost": 0.01778279410038924
+          },
+          "optimizer_parameters_sha256": "09eb8c1d187d3fcf481a3344f26c8b6289dd27635017fe1a74260201e4526a1e",
+          "role": "training"
+        },
+        "T07": {
+          "normalized_active_parameters": {
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "memory_temptable_row_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.1778279410038923,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.44456985250973075,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1778279410038923,
+            "row_evaluate_cost": 0.01778279410038924
+          },
+          "optimizer_parameters_sha256": "09eb8c1d187d3fcf481a3344f26c8b6289dd27635017fe1a74260201e4526a1e",
+          "role": "training"
+        }
+      },
+      "tpch_sf4_memory": {
+        "H01": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.5,
+            "io_block_read_cost": 0.5,
+            "memory_block_read_cost": 0.5,
+            "row_evaluate_cost": 0.5
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.49999999999999994,
+            "io_block_read_cost": 1.0000000000000004,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.25000000000000006,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.10000000000000002
+          },
+          "optimizer_parameters_sha256": "4b76a3845000099b1db5494244a2952eeb00357105c8422b49e9a411c9bd8e76",
+          "role": "holdout"
+        },
+        "H02": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.65,
+            "io_block_read_cost": 0.35,
+            "memory_block_read_cost": 0.65,
+            "row_evaluate_cost": 0.35
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.99763115748444,
+            "io_block_read_cost": 0.5011872336272724,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.49881557874222016,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.05011872336272723
+          },
+          "optimizer_parameters_sha256": "bb7fe296ce2793063067a39f00539d072e05fcb6dc35d15129265ee9e42e4b8c",
+          "role": "holdout"
+        },
+        "H03": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.35,
+            "io_block_read_cost": 0.65,
+            "memory_block_read_cost": 0.35,
+            "row_evaluate_cost": 0.65
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.2505936168136361,
+            "io_block_read_cost": 1.995262314968881,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.12529680840681806,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.19952623149688806
+          },
+          "optimizer_parameters_sha256": "eb3229fdc8f88006969e9c66f52fe0e0ad031328c5a193c1bef46fdf61c8fbf3",
+          "role": "holdout"
+        },
+        "T01": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.75,
+            "memory_block_read_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.15811388300841897,
+            "io_block_read_cost": 3.1622776601683813,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.0790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.0316227766016838
+          },
+          "optimizer_parameters_sha256": "ffc7df1c10a7acd0291f9394590a78c33d334276ed8ba5a1c279820ed74ee967",
+          "role": "training"
+        },
+        "T02": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.75,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.15811388300841897,
+            "io_block_read_cost": 0.31622776601683805,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.7905694150420951,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.0316227766016838
+          },
+          "optimizer_parameters_sha256": "0eb11a6590bab13fd3ab7fb8f80f707d1b259a5f99c71aba6923081e07d3ac83",
+          "role": "training"
+        },
+        "T03": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "row_evaluate_cost": 0.75
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.15811388300841897,
+            "io_block_read_cost": 0.31622776601683805,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.0790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.31622776601683805
+          },
+          "optimizer_parameters_sha256": "05abf350d67f5ade3f749c52e38c76a8deee0e61a1dcd5ec232db3e97cfb2c03",
+          "role": "training"
+        },
+        "T04": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.75,
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 1.5811388300841898,
+            "io_block_read_cost": 0.31622776601683805,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.0790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.0316227766016838
+          },
+          "optimizer_parameters_sha256": "94b2f700d48cad993c51b52630d3f72be980f443055a1c3bb3f0b9d68cfe6c70",
+          "role": "training"
+        },
+        "T05": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.15811388300841897,
+            "io_block_read_cost": 0.31622776601683805,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.0790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.0316227766016838
+          },
+          "optimizer_parameters_sha256": "49fad836a177e5b54fc48f2b1ec82c03db9909c2d90346bc469ebd6f00856d9d",
+          "role": "training"
+        },
+        "T06": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.15811388300841897,
+            "io_block_read_cost": 0.31622776601683805,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.0790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.0316227766016838
+          },
+          "optimizer_parameters_sha256": "49fad836a177e5b54fc48f2b1ec82c03db9909c2d90346bc469ebd6f00856d9d",
+          "role": "training"
+        },
+        "T07": {
+          "normalized_active_parameters": {
+            "disk_temptable_row_cost": 0.25,
+            "io_block_read_cost": 0.25,
+            "memory_block_read_cost": 0.25,
+            "row_evaluate_cost": 0.25
+          },
+          "optimizer_parameters": {
+            "disk_temptable_create_cost": 20.0,
+            "disk_temptable_row_cost": 0.15811388300841897,
+            "io_block_read_cost": 0.31622776601683805,
+            "key_compare_cost": 0.05,
+            "memory_block_read_cost": 0.0790569415042095,
+            "memory_temptable_create_cost": 1.0,
+            "memory_temptable_row_cost": 0.1,
+            "row_evaluate_cost": 0.0316227766016838
+          },
+          "optimizer_parameters_sha256": "49fad836a177e5b54fc48f2b1ec82c03db9909c2d90346bc469ebd6f00856d9d",
+          "role": "training"
+        }
+      }
+    },
+    "normalized_holdout_vectors": {
+      "H01": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "H02": [
+        0.35,
+        0.65,
+        0.35,
+        0.65,
+        0.35,
+        0.65,
+        0.35
+      ],
+      "H03": [
+        0.65,
+        0.35,
+        0.65,
+        0.35,
+        0.65,
+        0.35,
+        0.65
+      ]
+    },
+    "normalized_training_vectors": {
+      "T01": [
+        0.75,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "T02": [
+        0.25,
+        0.75,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "T03": [
+        0.25,
+        0.25,
+        0.75,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "T04": [
+        0.25,
+        0.25,
+        0.25,
+        0.75,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "T05": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.75,
+        0.25,
+        0.25
+      ],
+      "T06": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.75,
+        0.25
+      ],
+      "T07": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.75
+      ]
+    },
+    "point_order": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "H01",
+      "H02",
+      "H03"
+    ],
+    "slots": {
+      "A": {
+        "candidate_slot_is_stable_across_all_waves": true,
+        "resource_envelope": {
+          "job_w1": {
+            "client_cpuset": "0-3,256-259",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 6.0,
+            "database_cpuset": "104-107,360-363",
+            "database_cpuset_mems": "0",
+            "innodb_buffer_pool_bytes": 8589934592,
+            "io_read_bps": 1205862400,
+            "io_write_bps": 1205862400,
+            "memory_bytes": 10737418240,
+            "pids_max": 512,
+            "scene": "job_memory",
+            "swap_bytes": 0,
+            "worker_id": "job_w1"
+          },
+          "tpch_w1": {
+            "client_cpuset": "8-11,264-267",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 7.5,
+            "database_cpuset": "200-207,456-463",
+            "database_cpuset_mems": "1",
+            "innodb_buffer_pool_bytes": 4294967296,
+            "io_read_bps": 872415232,
+            "io_write_bps": 872415232,
+            "memory_bytes": 5583454208,
+            "pids_max": 512,
+            "scene": "tpch_sf4_memory",
+            "swap_bytes": 0,
+            "worker_id": "tpch_w1"
+          },
+          "xp_cpu_w1": {
+            "client_cpuset": "16-19,272-275",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 1.7,
+            "database_cpuset": "112-119,368-375",
+            "database_cpuset_mems": "0",
+            "innodb_buffer_pool_bytes": 4294967296,
+            "io_read_bps": 1205862400,
+            "io_write_bps": 1205862400,
+            "memory_bytes": 8589934592,
+            "pids_max": 1024,
+            "scene": "hybench_xp_cpu",
+            "swap_bytes": 0,
+            "worker_id": "xp_cpu_w1"
+          },
+          "xp_io_w1": {
+            "client_cpuset": "24-27,280-283",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 5.3,
+            "database_cpuset": "216-221,472-477",
+            "database_cpuset_mems": "1",
+            "innodb_buffer_pool_bytes": 2147483648,
+            "io_read_bps": 29360128,
+            "io_write_bps": 524288,
+            "memory_bytes": 6871945216,
+            "pids_max": 1024,
+            "scene": "hybench_xp_io",
+            "swap_bytes": 0,
+            "worker_id": "xp_io_w1"
+          }
+        },
+        "workers": [
+          "job_w1",
+          "tpch_w1",
+          "xp_cpu_w1",
+          "xp_io_w1"
+        ]
+      },
+      "B": {
+        "candidate_slot_is_stable_across_all_waves": true,
+        "resource_envelope": {
+          "job_w2": {
+            "client_cpuset": "4-7,260-263",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 6.0,
+            "database_cpuset": "108-111,364-367",
+            "database_cpuset_mems": "0",
+            "innodb_buffer_pool_bytes": 8589934592,
+            "io_read_bps": 1205862400,
+            "io_write_bps": 1205862400,
+            "memory_bytes": 10737418240,
+            "pids_max": 512,
+            "scene": "job_memory",
+            "swap_bytes": 0,
+            "worker_id": "job_w2"
+          },
+          "tpch_w2": {
+            "client_cpuset": "12-15,268-271",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 7.5,
+            "database_cpuset": "208-215,464-471",
+            "database_cpuset_mems": "1",
+            "innodb_buffer_pool_bytes": 4294967296,
+            "io_read_bps": 872415232,
+            "io_write_bps": 872415232,
+            "memory_bytes": 5583454208,
+            "pids_max": 512,
+            "scene": "tpch_sf4_memory",
+            "swap_bytes": 0,
+            "worker_id": "tpch_w2"
+          },
+          "xp_cpu_w2": {
+            "client_cpuset": "20-23,276-279",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 1.7,
+            "database_cpuset": "120-127,376-383",
+            "database_cpuset_mems": "0",
+            "innodb_buffer_pool_bytes": 4294967296,
+            "io_read_bps": 1205862400,
+            "io_write_bps": 1205862400,
+            "memory_bytes": 8589934592,
+            "pids_max": 1024,
+            "scene": "hybench_xp_cpu",
+            "swap_bytes": 0,
+            "worker_id": "xp_cpu_w2"
+          },
+          "xp_io_w2": {
+            "client_cpuset": "28-31,284-287",
+            "client_cpuset_mems": "0",
+            "cpu_quota_cores": 5.3,
+            "database_cpuset": "222-227,478-483",
+            "database_cpuset_mems": "1",
+            "innodb_buffer_pool_bytes": 2147483648,
+            "io_read_bps": 29360128,
+            "io_write_bps": 524288,
+            "memory_bytes": 6871945216,
+            "pids_max": 1024,
+            "scene": "hybench_xp_io",
+            "swap_bytes": 0,
+            "worker_id": "xp_io_w2"
+          }
+        },
+        "workers": [
+          "job_w2",
+          "tpch_w2",
+          "xp_cpu_w2",
+          "xp_io_w2"
+        ]
+      }
+    },
+    "waves": [
+      {
+        "slot_A": "T01",
+        "slot_B": "T02",
+        "wave": 1
+      },
+      {
+        "slot_A": "T03",
+        "slot_B": "T04",
+        "wave": 2
+      },
+      {
+        "slot_A": "T05",
+        "slot_B": "T06",
+        "wave": 3
+      },
+      {
+        "slot_A": "T07",
+        "slot_B": "H01",
+        "wave": 4
+      },
+      {
+        "slot_A": "H02",
+        "slot_B": "H03",
+        "wave": 5
+      }
+    ]
+  },
+  "schedule_sha256": "c269cc83fab104dbd4be95396fb2a3ff3272d955ec32ea1de723e8e4dbc840a7",
+  "schema_version": "mysql_algorithm_c_fixed_calibration_replay_schedule_v2",
+  "status": "FROZEN",
+  "workload_schedule": {
+    "job": {
+      "clients": 16,
+      "heavy_order": "longest_estimated_first",
+      "heavy_pool_workers": 4,
+      "heavy_start_stagger_seconds": 1,
+      "heavy_threshold_seconds": 30,
+      "maximum_concurrent_heavy": 4,
+      "short_order": "shortest_estimated_first",
+      "short_pool_workers": 12,
+      "sql_set": "113/113 exactly once"
+    },
+    "job_and_tpch_start_concurrently_within_each_slot": true,
+    "native_xp": {
+      "at_mix": "35/25/15/15/7/3",
+      "clients": 8,
+      "duration_seconds": 600,
+      "fixed_ap_query_ids_weights_or_sequence_prohibited": true,
+      "fixed_query_sequence_override_prohibited": true,
+      "iq_selection": "native_uniform_random_IQ1_IQ7",
+      "rng_seed_may_be_fixed_only_if_native_runtime_exposes_it_without_mix_override": true,
+      "xap_xtp_ratio": "1:1"
+    },
+    "tpch_sf4": {
+      "lane_submission_order": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "lanes": [
+        [
+          9
+        ],
+        [
+          22,
+          16,
+          12,
+          8,
+          15
+        ],
+        [
+          17,
+          6,
+          20,
+          4,
+          3
+        ],
+        [
+          19,
+          18,
+          13,
+          10,
+          21
+        ],
+        [
+          2,
+          11,
+          14,
+          5,
+          7,
+          1
+        ]
+      ],
+      "sql_set": "Q1-Q22 exactly once",
+      "terminals_per_lane": 1
+    },
+    "wall_timeout_seconds": 900,
+    "wave_parallel_tasks": [
+      "slot_A_JOB_TPCH_pair",
+      "slot_B_JOB_TPCH_pair",
+      "slot_A_XP_CPU",
+      "slot_B_XP_CPU",
+      "slot_A_XP_IO",
+      "slot_B_XP_IO"
+    ]
+  }
+}

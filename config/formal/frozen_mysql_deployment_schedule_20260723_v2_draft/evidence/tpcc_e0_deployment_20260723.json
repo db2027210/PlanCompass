@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "artifact_type": "mysql_environment_deployment",
+  "scenario": "tpcc_cpu",
+  "benchmark": "tpcc",
+  "engine": "mysql",
+  "host_id": "04",
+  "host_address": "192.0.2.7",
+  "device": "/dev/nvme3n1",
+  "major_minor": "259:2",
+  "serial": "S5LFNA0RA00595",
+  "filesystem": "xfs",
+  "filesystem_uuid": "bf82de40-be84-4610-8404-5a7dc7078ed9",
+  "mount": "/mnt/mysql_tpcc_nvme3n1",
+  "project_root": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc",
+  "e0_complete": true,
+  "template_ready": false,
+  "pressure_started": false,
+  "source_evidence": {
+    "path": "history/mysql_sgd_env_agents_20260723/tpcc/E0_nvme3n1_audit_report_20260723.md",
+    "sha256": "81c11da2718314665324e697461b17d9ade7da3fad24e988e2bb0fb8dd897bee"
+  },
+  "authority": {
+    "path": "config/formal/frozen_mysql_deployment_schedule_20260723_v3_draft/FROZEN_CONFIG.md",
+    "sha256": "a5c5f64cb147c4238d90667ffcbb30dc576048bd0fb8116c05620047ac22450e"
+  },
+  "blocking_condition": "E1 template generation remains blocked while unregistered gaussdb pressure is active on host04."
+}

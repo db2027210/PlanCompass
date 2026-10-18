@@ -1,0 +1,10 @@
+{
+  "active": true,
+  "controller_contract_version": "mysql_formal_auto_launch_v3_host_mutex",
+  "controller_pid": 4152375,
+  "exclusive": true,
+  "lease_id": "mysql_only_tpch_memory_20260724_v1",
+  "lock_path": "history/mysql_sgd_env_agents_20260723/manual_controllers/tpch_memory/controller.lock",
+  "method": "experience_table_all_subset_sgd",
+  "scenario": "tpch_memory"
+}

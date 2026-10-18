@@ -1,0 +1,10 @@
+{
+  "cpuset": "24-35,60-71",
+  "mems": "1",
+  "cpu_cores": 10.0,
+  "memory_bytes": 4294967296,
+  "pids": 512,
+  "read_bps": 33554432,
+  "write_bps": 33554432,
+  "buffer_pool_bytes": 3221225472
+}

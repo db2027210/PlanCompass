@@ -1,0 +1,29 @@
+{
+  "scenario": "memory", "benchmark": "tpch", "seed": 20260724,
+  "randomize_order": true, "restart_between_points": true,
+  "target": {
+    "container": "ra-mysql-grid-tpch-memory",
+    "required_label": "resource-adaptive-mysql.owner=mysql-grid-20260718",
+    "host": "127.0.0.1", "port": 13307, "pid": 1036811,
+    "expected_nano_cpus": 0, "expected_memory_bytes": 7516192768,
+    "user": "root", "password": "CHANGE_ME", "database": "tpch"
+  },
+  "baseline_values": {
+    "innodb_buffer_pool_size": 7516192768,
+    "range_optimizer_max_mem_size": 1024
+  },
+  "factors": {
+    "innodb_buffer_pool_size": [6979321856, 7516192768],
+    "range_optimizer_max_mem_size": [1024, 8388608]
+  },
+  "workload": {
+    "interval_sec": 1, "warmup_samples": 5, "timeout_sec": 360,
+    "argv": [
+      "/home/anonymous/miniconda3/envs/resource_adaptive/bin/python", "mysql_benchmark_command.py",
+      "--benchmark", "tpch", "--host", "127.0.0.1", "--port", "13307",
+      "--database", "tpch", "--user", "root", "--password", "CHANGE_ME",
+      "--output-dir", "{output_dir}", "--duration-sec", "60", "--clients", "2",
+      "--scale-factor", "10", "--tpch-query-id", "6"
+    ]
+  }
+}

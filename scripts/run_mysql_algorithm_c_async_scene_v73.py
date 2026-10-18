@@ -1,0 +1,894 @@
+#!/usr/bin/env python3
+"""Run Top-4 C with semantic-empty expansion-wave skipping v73."""
+
+from __future__ import annotations
+
+import copy
+from pathlib import Path
+import sys
+from typing import Any, Mapping
+
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts import build_mysql_algorithm_c_outer_checkpoint_v4 as checkpointmod
+from scripts import mysql_cross_project_wave_coordination_v11 as gate_v11
+from scripts import mysql_outer_qps_strict_progress_v1 as qps_policy
+from scripts import mysql_outer_rejection_cycle_v2 as rejection_cycle
+from scripts import preflight_mysql_four_scene_v9 as preflight_v9
+from scripts import run_mysql_algorithm_c_async_scene_v52 as top4
+from scripts import run_mysql_algorithm_c_async_scene_v63 as predecessor
+from scripts import run_mysql_four_scene_algorithm_c_boundary_resume_v28 as v28
+
+
+alg = predecessor.alg
+runtime = predecessor.predecessor.runtime
+CONTRACT_ROOT = (
+    ROOT / "config/formal/frozen_mysql_four_scene_algorithm_c_qps_20260826_v25"
+)
+ASYNC_CONTRACT = CONTRACT_ROOT / "algorithm_c_async_contract.json"
+OPTIMIZATION_CONTRACT = CONTRACT_ROOT / "outer_runtime_optimization.json"
+
+
+def _mapping(value: Any, label: str) -> dict[str, Any]:
+    if not isinstance(value, Mapping):
+        raise RuntimeError(f"{label} must be an object")
+    return dict(value)
+
+
+def _checkpoint_incumbent_baseline(
+    *, reconstructed: Mapping[str, Any], scene: str,
+) -> tuple[Path, dict[str, Any]]:
+    contract = alg.load(ASYNC_CONTRACT)
+    bindings = _mapping(
+        contract.get("partial_incumbent_carry_forward_baselines"),
+        "partial incumbent baselines",
+    )
+    binding = _mapping(bindings.get(scene), f"{scene} incumbent baseline binding")
+    path = (ROOT / str(binding.get("path") or "")).resolve()
+    if (
+        not path.is_file()
+        or path.is_symlink()
+        or alg.sha(path) != str(binding.get("sha256") or "")
+    ):
+        raise RuntimeError("checkpoint incumbent baseline binding differs")
+    document = alg.load(path)
+    rows = _mapping(document.get("measurements"), "incumbent baseline rows")
+    incumbent = _mapping(
+        _mapping(reconstructed.get("incumbents"), "incumbents").get(scene),
+        "checkpoint incumbent",
+    )
+    params = _mapping(
+        _mapping(reconstructed.get("params_by_scene"), "params").get(scene),
+        "checkpoint params",
+    )
+    if (
+        document.get("schema_version")
+        != "mysql_algorithm_c_checkpoint_incumbent_baseline_v1"
+        or document.get("status") != "PASS"
+        or document.get("failures") not in ([], None)
+        or document.get("scene") != scene
+        or document.get("checkpoint_incumbent_carry_forward") is not True
+        or document.get("physical_workload_started") is not False
+        or len(rows) != 2
+        or any(
+            row.get("scene") != scene
+            or row.get("hard_gate_passed") is not True
+            or row.get("coverage_complete") is not True
+            or row.get("checkpoint_incumbent_carry_forward") is not True
+            or row.get("formal_measurement_performed") is not False
+            or float(row.get("db_qps") or 0) != float(incumbent["db_qps"])
+            or alg.optimizer_params_key(row.get("params") or {})
+            != alg.optimizer_params_key(params)
+            for row in rows.values()
+        )
+    ):
+        raise RuntimeError("checkpoint incumbent baseline differs")
+    return path, document
+
+
+def _has_formal_candidate_assignment(
+    assignments: Mapping[str, Mapping[str, Any]],
+) -> bool:
+    """Return true only when a physical assignment carries a candidate rank."""
+    return any(
+        int((assignment or {}).get("rank") or 0) > 0
+        for assignment in assignments.values()
+    )
+
+
+def _candidate_batch_kind(stage_prefix: str) -> str | None:
+    """Map every PG semantic candidate-wave stage to its batch kind."""
+    return next((
+        kind for token, kind in (
+            ("_BATCH_", "base_top5"),
+            ("_FALLBACK_PLAN_CHANGE_WAVE_", "fallback_plan_change"),
+            (
+                "_FULL_RANGE_PLAN_BASIN_ESCAPE_WAVE_",
+                "full_range_plan_basin_escape",
+            ),
+        )
+        if stage_prefix.startswith("OUTER_") and token in stage_prefix
+    ), None)
+
+
+def _semantic_noop_measurements(
+    assignments: Mapping[str, Mapping[str, Any]],
+    workers: Mapping[str, Mapping[str, Any]],
+) -> dict[str, dict[str, Any]]:
+    rows = {
+        worker_id: {
+            "task": worker_id,
+            "worker_id": worker_id,
+            "scene": str((workers.get(worker_id) or {}).get("scene") or ""),
+            "rank": 0,
+            "params": copy.deepcopy(dict(assignment.get("params") or {})),
+            "hard_gate_passed": True,
+            "coverage_complete": True,
+            "semantic_noop": True,
+            "formal_measurement_performed": False,
+            "physical_workload_started": False,
+        }
+        for worker_id, assignment in assignments.items()
+    }
+    if any(not row["scene"] for row in rows.values()):
+        raise RuntimeError("semantic-empty worker scene is absent")
+    return rows
+
+
+def _checkpoint_incumbent_measurements(
+    *, assignments: Mapping[str, Mapping[str, Any]],
+    workers: Mapping[str, Mapping[str, Any]], state: Mapping[str, Any],
+) -> dict[str, dict[str, Any]]:
+    """Carry the last accepted checkpoint incumbent into a resumed run."""
+    raw_incumbents = state.get("incumbents")
+    if not isinstance(raw_incumbents, Mapping):
+        checkpoint_path = Path(str(state.get("checkpoint_path") or "")).resolve()
+        if (
+            not checkpoint_path.is_file()
+            or checkpoint_path.is_symlink()
+            or alg.sha(checkpoint_path)
+            != str(state.get("checkpoint_sha256") or "")
+        ):
+            raise RuntimeError("checkpoint incumbent authority differs")
+        checkpoint = verify_top4_checkpoint(checkpoint_path)
+        raw_incumbents = _mapping(
+            checkpoint.get("reconstructed_state"),
+            "checkpoint reconstructed state",
+        ).get("incumbents")
+    incumbents = _mapping(raw_incumbents, "checkpoint incumbents")
+    rows: dict[str, dict[str, Any]] = {}
+    for worker_id, assignment in assignments.items():
+        scene = str((workers.get(worker_id) or {}).get("scene") or "")
+        incumbent = _mapping(incumbents.get(scene), f"{scene} incumbent")
+        resource_means = _mapping(
+            incumbent.get("resource_means"), f"{scene} incumbent resources",
+        )
+        if not scene or any(
+            not isinstance(incumbent.get(name), (int, float))
+            for name in ("db_qps", "p95_ms", "p99_ms")
+        ) or any(
+            not isinstance(resource_means.get(name), (int, float))
+            for name in ("cpu", "memory", "io")
+        ):
+            raise RuntimeError("checkpoint incumbent carry-forward differs")
+        rows[worker_id] = {
+            "task": worker_id,
+            "worker_id": worker_id,
+            "scene": scene,
+            "rank": 0,
+            "params": copy.deepcopy(dict(assignment.get("params") or {})),
+            "db_qps": float(incumbent["db_qps"]),
+            "p95_ms": float(incumbent["p95_ms"]),
+            "p99_ms": float(incumbent["p99_ms"]),
+            "resource_means": {
+                name: float(resource_means[name])
+                for name in ("cpu", "memory", "io")
+            },
+            "hard_gate_passed": True,
+            "coverage_complete": True,
+            "checkpoint_incumbent_carry_forward": True,
+            "formal_measurement_performed": False,
+            "physical_workload_started": False,
+        }
+    return rows
+
+
+def validate_contract() -> dict[str, Any]:
+    contract = alg.load(ASYNC_CONTRACT)
+    partial = contract.get("partial_topk_settlement_recovery") or {}
+    transient = contract.get("actual_disjoint_transient_client_policy") or {}
+    if (
+        contract.get("release_version") != "v73"
+        or contract.get("status") != "FROZEN_RUNTIME_VALIDATED"
+        or contract.get("formal_scope") != "mysql_only"
+        or contract.get("cross_engine_comparison_prohibited") is not True
+        or contract.get("outer_acceptance_policy") != qps_policy.policy_contract()
+        or contract.get("outer_rejection_cycle_policy")
+        != rejection_cycle.policy_contract()
+        or contract.get("candidate_batches") != [[1, 2], [3, 4], [5]]
+        or contract.get("physical_replay_parallelism_per_scene") != 2
+        or contract.get("maximum_concurrent_mysql_workers") != 8
+        or contract.get("four_scene_wave_barrier") is not False
+        or contract.get("sibling_scene_wait") is not False
+        or contract.get("lease_mode") != "none"
+        or contract.get("post_search_stability_confirmation") is not False
+        or contract.get("empty_candidate_wave_policy", {}).get(
+            "implemented_by_runtime_successor_v68"
+        ) is not True
+        or contract.get("empty_candidate_wave_policy", {}).get(
+            "all_rank_zero_assignments_are_semantically_empty"
+        ) is not True
+        or contract.get("empty_candidate_wave_policy", {}).get(
+            "interrupted_rank_zero_wave_settles_completed_candidates"
+        ) is not True
+        or contract.get("empty_candidate_wave_policy", {}).get(
+            "caller_cardinality_satisfied_by_semantic_noop_rows"
+        ) is not True
+        or contract.get("empty_candidate_wave_policy", {}).get(
+            "v70_cardinality_failure_recovers_without_candidate_replay"
+        ) is not True
+        or contract.get("empty_candidate_wave_policy", {}).get(
+            "implemented_by_runtime_successor_v73"
+        ) is not True
+        or contract.get("empty_candidate_wave_policy", {}).get(
+            "candidate_batch_kinds"
+        ) != [
+            "base_top5",
+            "fallback_plan_change",
+            "full_range_plan_basin_escape",
+        ]
+        or contract.get("resume_incumbent_policy", {}).get(
+            "qps_reference_preserved_from_checkpoint"
+        ) is not True
+        or contract.get("resume_incumbent_policy", {}).get(
+            "physical_incumbent_remeasurement_required"
+        ) is not False
+        or contract.get("partial_topk_settlement_recovery", {}).get(
+            "outer_decision_recomputed_against_checkpoint_incumbent"
+        ) is not True
+        or contract.get("interrupted_empty_wave_settlement", {}).get(
+            "real_candidate_remeasurement_required"
+        ) is not False
+        or contract.get("xp_top4_boundary_integrity", {}).get(
+            "active_and_range_keys_must_match_frozen_top4"
+        ) is not True
+        or partial.get("settle_when_all_selected_candidates_measured") is not True
+        or partial.get("empty_candidate_ranks_require_no_gate_or_measurement") is not True
+        or transient.get("actual_target_cpu_overlap_prohibited") is not True
+        or transient.get("external_process_mutation_performed") is not False
+    ):
+        raise RuntimeError("v73 Algorithm C recovery contract differs")
+    for binding in (contract.get("source_bindings") or {}).values():
+        if not isinstance(binding, Mapping):
+            raise RuntimeError("v73 Algorithm C source binding is not an object")
+        path = ROOT / str(binding.get("path") or "")
+        if (
+            not path.is_file() or path.is_symlink()
+            or alg.sha(path) != str(binding.get("sha256") or "")
+        ):
+            raise RuntimeError(f"v73 Algorithm C source binding differs: {path}")
+    carry_bindings = _mapping(
+        contract.get("partial_incumbent_carry_forward_baselines"),
+        "partial incumbent carry-forward bindings",
+    )
+    if set(carry_bindings) != {"hybench_xp_cpu", "hybench_xp_io"}:
+        raise RuntimeError("v72 partial incumbent binding set differs")
+    for scene, raw in carry_bindings.items():
+        binding = _mapping(raw, f"{scene} partial incumbent binding")
+        path = (ROOT / str(binding.get("path") or "")).resolve()
+        if (
+            not path.is_file()
+            or path.is_symlink()
+            or alg.sha(path) != str(binding.get("sha256") or "")
+        ):
+            raise RuntimeError(f"v72 partial incumbent binding differs: {path}")
+    return contract
+
+
+_ORIGINAL_CHECKPOINT_VERIFY = checkpointmod.verify_checkpoint
+
+
+def verify_top4_checkpoint(path: Path) -> dict[str, Any]:
+    checkpoint = _ORIGINAL_CHECKPOINT_VERIFY(path)
+    boundary = checkpoint.get("independent_scene_boundary") or {}
+    scene = str(boundary.get("scene") or "")
+    if scene in top4.EXPECTED_ACTIVE:
+        reconstructed = checkpoint.get("reconstructed_state") or {}
+        active = list((reconstructed.get("active_by_scene") or {}).get(scene) or [])
+        ranges = (reconstructed.get("ranges_by_scene") or {}).get(scene) or {}
+        expected = list(top4.EXPECTED_ACTIVE[scene])
+        if active != expected or set(ranges) != set(expected):
+            raise RuntimeError(f"{scene} boundary is not frozen Top-4")
+    return checkpoint
+
+
+def _validate_semantic_empty_wave_interruption(
+    *, source_root: Path, checkpoint: Mapping[str, Any],
+    reconstructed: Mapping[str, Any], start_rank: int,
+    completed_rank5_root: Path | None = None,
+) -> dict[str, Any] | None:
+    """Settle every measured candidate when only rank-zero padding remains."""
+    del checkpoint
+    source_root = Path(source_root).resolve()
+    if start_rank != 5 or completed_rank5_root is not None:
+        return None
+    state_path = source_root / "run_state.json"
+    state = alg.load(state_path)
+    scene = str(state.get("async_scene") or "")
+    expected_outer = int(reconstructed.get("outer_attempt") or 0) + 1
+    outer_root = source_root / f"outer_{expected_outer:03d}"
+    ranking_path = outer_root / "predicted_rankings.json"
+    if not ranking_path.is_file() or ranking_path.is_symlink():
+        return None
+    ranking = alg.load(ranking_path)
+    selected = _mapping(ranking.get("selected_top_k"), "selected Top-K")
+    selected_rows = list(selected.get(scene) or [])
+    candidate_count = len(selected_rows)
+    if candidate_count < 1 or candidate_count >= 5:
+        return None
+    completed_batch_count = (candidate_count + 1) // 2
+    empty_batch_index = completed_batch_count + 1
+    expected_stage = f"OUTER_{expected_outer:03d}_BATCH_{empty_batch_index}_MEASURING"
+    empty_batch_path = (
+        outer_root / f"top5_batch_{empty_batch_index}" / "batch_result.json"
+    )
+    state_fields = (
+        "accepted_rounds", "rejected_outer_attempts", "acceptance_tier",
+        "consecutive_failed_rounds", "interval_stable_rounds",
+        "stable_intervals", "converged",
+    )
+    running_empty_source = (
+        state.get("status") == "RUNNING"
+        and state.get("stage") == expected_stage
+        and state.get("error") in (None, "")
+        and not empty_batch_path.exists()
+    )
+    failed_v70_skip_source = (
+        state.get("status") == "FAILED_CLOSED"
+        and state.get("stage") == "FAILED"
+        and state.get("error") == (
+            f"RuntimeError: outer {expected_outer} batch {empty_batch_index} "
+            f"failed closed; see {empty_batch_path}"
+        )
+        and empty_batch_path.is_file()
+        and not empty_batch_path.is_symlink()
+    )
+    if (
+        not (running_empty_source or failed_v70_skip_source)
+        or state.get("formal_evidence_eligible") is not True
+        or state.get("formal_scope") != "mysql_only"
+        or state.get("cross_engine_comparison_prohibited") is not True
+        or scene not in top4.EXPECTED_ACTIVE
+        or int(state.get("outer_attempt") or -1)
+        != int(reconstructed.get("outer_attempt") or -2)
+        or any(state.get(field) != reconstructed.get(field) for field in state_fields)
+        or (state.get("full_plan_replay_history_v2") or {}).get(scene)
+        != (reconstructed.get("full_plan_replay_history_v2") or {}).get(scene)
+        or list(outer_root.glob("*.decision.json"))
+    ):
+        return None
+    if (
+        ranking.get("schema_version")
+        != "mysql_four_scene_algorithm_c_rankings_boundary_resume_v2"
+        or int(ranking.get("outer_attempt") or 0) != expected_outer
+        or ranking.get("active_decision_scenes") != [scene]
+        or set(selected) != {scene}
+        or not candidate_count <= len(
+            _mapping(ranking.get("all_nonempty_subsets"), "all rankings")
+            .get(scene) or []
+        ) <= 15
+        or ranking.get("top_k_is_upper_bound") is not True
+        or ranking.get("partial_top_k_allowed") is not True
+    ):
+        raise RuntimeError("semantic-empty interruption ranking differs")
+
+    evaluations = {scene: []}
+    completed_batches: list[dict[str, Any]] = []
+    seen_ranks: set[int] = set()
+    for batch_index in range(1, completed_batch_count + 1):
+        batch_path = outer_root / f"top5_batch_{batch_index}/batch_result.json"
+        if not batch_path.is_file() or batch_path.is_symlink():
+            raise RuntimeError("semantic-empty candidate batch is incomplete")
+        batch = alg.load(batch_path)
+        measurements = _mapping(batch.get("measurements"), "candidate measurements")
+        expected_ranks = {
+            rank for rank in (2 * batch_index - 1, 2 * batch_index)
+            if rank <= candidate_count
+        }
+        candidate_rows = {
+            int(row.get("rank") or 0): row
+            for row in measurements.values()
+            if int(row.get("rank") or 0) > 0
+        }
+        if (
+            batch.get("status") != "PASS"
+            or batch.get("failures") not in ([], None)
+            or set(candidate_rows) != expected_ranks
+            or any(
+                row.get("scene") != scene
+                or row.get("hard_gate_passed") is not True
+                or row.get("coverage_complete") is not True
+                for row in candidate_rows.values()
+            )
+            or any(
+                int(row.get("rank") or 0) == 0
+                and (
+                    row.get("scene") != scene
+                    or alg.optimizer_params_key(row.get("params") or {})
+                    != alg.optimizer_params_key(
+                        _mapping(reconstructed.get("params_by_scene"), "params")
+                        [scene]
+                    )
+                )
+                for row in measurements.values()
+            )
+        ):
+            raise RuntimeError("semantic-empty candidate batch differs")
+        binding = {
+            "batch_index": batch_index,
+            "candidate_ranks": sorted(expected_ranks),
+            "path": str(batch_path),
+            "sha256": alg.sha(batch_path),
+        }
+        completed_batches.append(binding)
+        for rank in sorted(expected_ranks):
+            predicted = _mapping(selected_rows[rank - 1], "predicted candidate")
+            row = copy.deepcopy(dict(candidate_rows[rank]))
+            if alg.optimizer_params_key(row.get("params") or {}) != alg.optimizer_params_key(
+                _mapping(predicted.get("optimized_params"), "predicted params")
+            ):
+                raise RuntimeError(f"semantic-empty rank {rank} parameters differ")
+            row["candidate_ranking"] = copy.deepcopy(predicted)
+            row["formal_partial_replay_source"] = copy.deepcopy(binding)
+            row["outer_decision"] = qps_policy.pg_outer_qps_strict_progress(
+                row,
+                _mapping(reconstructed.get("incumbents"), "incumbents")[scene],
+                target=alg.TARGET[scene],
+            )
+            row["partial_outer_decision_recomputed"] = {
+                "policy": qps_policy.POLICY_ID,
+                "reference": "checkpoint_last_accepted_incumbent",
+                "reference_db_qps": float(
+                    _mapping(reconstructed.get("incumbents"), "incumbents")
+                    [scene]["db_qps"]
+                ),
+                "stale_measurement_time_outer_decision_discarded": True,
+            }
+            evaluations[scene].append(row)
+            seen_ranks.add(rank)
+    if seen_ranks != set(range(1, candidate_count + 1)):
+        raise RuntimeError("semantic-empty candidate coverage differs")
+
+    baseline_binding = _mapping(
+        state.get("formal_incumbent_baseline"), "formal incumbent baseline",
+    )
+    baseline_path = Path(str(baseline_binding.get("path") or "")).resolve()
+    baseline = alg.load(baseline_path)
+    baseline_rows = _mapping(baseline.get("measurements"), "baseline measurements")
+    gate_path = outer_root / (
+        f"top5_batch_{empty_batch_index}_dynamic_noninterference_gate.json"
+    )
+    boundary_evidence_path = gate_path
+    boundary_evidence_valid = False
+    if running_empty_source:
+        gate = alg.load(gate_path)
+        boundary_evidence_valid = (
+            gate.get("status") == "PASS"
+            and gate.get("errors") in ([], None)
+        )
+    else:
+        semantic_skip = alg.load(empty_batch_path)
+        boundary_evidence_path = empty_batch_path
+        boundary_evidence_valid = (
+            semantic_skip.get("status") == "PASS"
+            and semantic_skip.get("failures") in ([], None)
+            and semantic_skip.get("empty_candidate_wave") is True
+            and semantic_skip.get("candidate_count") == 0
+            and semantic_skip.get("measurements") == {}
+            and semantic_skip.get("physical_workload_started") is False
+            and semantic_skip.get("mysql_container_reset_performed") is False
+            and semantic_skip.get("dynamic_noninterference_gate_started") is False
+        )
+    if (
+        baseline_binding.get("sha256") != alg.sha(baseline_path)
+        or baseline.get("status") != "PASS"
+        or baseline.get("failures") not in ([], None)
+        or not baseline_rows
+        or any(
+            row.get("scene") != scene
+            or row.get("hard_gate_passed") is not True
+            or row.get("coverage_complete") is not True
+            for row in baseline_rows.values()
+        )
+        or not boundary_evidence_valid
+    ):
+        raise RuntimeError("semantic-empty boundary evidence differs")
+    carry_path, _carry_document = _checkpoint_incumbent_baseline(
+        reconstructed=reconstructed, scene=scene,
+    )
+    return {
+        "source_root": str(source_root),
+        "source_state": {"path": str(state_path), "sha256": alg.sha(state_path)},
+        "baseline": {"path": str(carry_path), "sha256": alg.sha(carry_path)},
+        "source_measurement_baseline": {
+            "path": str(baseline_path), "sha256": alg.sha(baseline_path),
+        },
+        "predicted_rankings": {
+            "path": str(ranking_path), "sha256": alg.sha(ranking_path),
+        },
+        "blocked_gate": {
+            "path": str(boundary_evidence_path),
+            "sha256": alg.sha(boundary_evidence_path),
+        },
+        "continuation_reason": (
+            "settle_v70_semantic_skip_caller_cardinality_failure"
+            if failed_v70_skip_source
+            else "settle_interrupted_semantic_empty_rank_zero_wave"
+        ),
+        "runtime_interruption_watchdog": None,
+        "completed_batches": completed_batches,
+        "start_rank": 6,
+        "outer_attempt": expected_outer,
+        "ranking_document": ranking,
+        "evaluations": evaluations,
+        "technical_batch_exclusions": [],
+        "candidate_state_mutation_before_continuation": False,
+        "accepted_state_credit_before_continuation": 0,
+        "completed_rank_release_race": False,
+        "completed_rank5_recovery": None,
+        "empty_candidate_ranks": list(range(candidate_count + 1, 6)),
+        "empty_candidate_gate_and_measurement_skipped": True,
+        "legacy_empty_wave_incumbent_measurement_excluded_from_decision": True,
+    }
+
+
+def _validate_partial_topk_settlement(
+    *, source_root: Path, checkpoint: Mapping[str, Any],
+    reconstructed: Mapping[str, Any], start_rank: int,
+    completed_rank5_root: Path | None = None,
+) -> dict[str, Any] | None:
+    """Reuse the two real candidates and settle; ranks 3..5 do not exist."""
+    semantic_empty = _validate_semantic_empty_wave_interruption(
+        source_root=source_root,
+        checkpoint=checkpoint,
+        reconstructed=reconstructed,
+        start_rank=start_rank,
+        completed_rank5_root=completed_rank5_root,
+    )
+    if semantic_empty is not None:
+        return semantic_empty
+    source_root = Path(source_root).resolve()
+    if start_rank != 5 or completed_rank5_root is not None:
+        return None
+    scene = "hybench_xp_io"
+    expected_outer = int(reconstructed.get("outer_attempt") or 0) + 1
+    state_path = source_root / "run_state.json"
+    outer_root = source_root / f"outer_{expected_outer:03d}"
+    ranking_path = outer_root / "predicted_rankings.json"
+    batch1_path = outer_root / "top5_batch_1/batch_result.json"
+    empty_batch_path = outer_root / "top5_batch_2/batch_result.json"
+    gate_path = outer_root / "top5_batch_3_dynamic_noninterference_gate.json"
+    source_state_preview = alg.load(state_path)
+    baseline_binding_path = Path(str(
+        (source_state_preview.get("formal_incumbent_baseline") or {}).get("path")
+        or source_root / "formal_incumbent_baseline/batch_result.json"
+    )).resolve()
+    required = (
+        state_path, ranking_path, batch1_path, empty_batch_path,
+        gate_path, baseline_binding_path,
+    )
+    if any(not path.is_file() or path.is_symlink() for path in required):
+        raise RuntimeError("partial-TopK settlement evidence is incomplete")
+
+    state = alg.load(state_path)
+    ranking = alg.load(ranking_path)
+    batch1 = alg.load(batch1_path)
+    empty_batch = alg.load(empty_batch_path)
+    gate = alg.load(gate_path)
+    baseline = alg.load(baseline_binding_path)
+    state_fields = (
+        "accepted_rounds", "rejected_outer_attempts", "acceptance_tier",
+        "consecutive_failed_rounds", "interval_stable_rounds",
+        "stable_intervals", "converged",
+    )
+    failed_gate_source = (
+        state.get("status") == "FAILED_CLOSED"
+        and state.get("stage") == "FAILED"
+        and state.get("error")
+        == "RuntimeError: dynamic non-interference gate failed closed"
+    )
+    stopped_empty_wave_source = (
+        state.get("status") == "RUNNING"
+        and state.get("stage")
+        == f"OUTER_{expected_outer:03d}_BATCH_3_MEASURING"
+        and state.get("error") in (None, "")
+    )
+    if (
+        not (failed_gate_source or stopped_empty_wave_source)
+        or state.get("formal_evidence_eligible") is not True
+        or state.get("formal_scope") != "mysql_only"
+        or state.get("cross_engine_comparison_prohibited") is not True
+        or state.get("async_scene") != scene
+        or int(state.get("outer_attempt") or -1)
+        != int(reconstructed.get("outer_attempt") or -2)
+        or any(state.get(field) != reconstructed.get(field) for field in state_fields)
+        or (state.get("full_plan_replay_history_v2") or {}).get(scene)
+        != (reconstructed.get("full_plan_replay_history_v2") or {}).get(scene)
+        or list(outer_root.glob("*.decision.json"))
+        or (outer_root / "top5_batch_3/batch_result.json").exists()
+    ):
+        raise RuntimeError("partial-TopK source state differs")
+
+    selected = _mapping(ranking.get("selected_top_k"), "selected Top-K")
+    selected_rows = list(selected.get(scene) or [])
+    if (
+        ranking.get("schema_version")
+        != "mysql_four_scene_algorithm_c_rankings_boundary_resume_v2"
+        or int(ranking.get("outer_attempt") or 0) != expected_outer
+        or ranking.get("active_decision_scenes") != [scene]
+        or set(selected) != {scene}
+        or len(selected_rows) != 2
+        or len((_mapping(ranking.get("all_nonempty_subsets"), "all rankings").get(scene) or [])) != 15
+        or ranking.get("top_k_is_upper_bound") is not True
+        or ranking.get("partial_top_k_allowed") is not True
+    ):
+        raise RuntimeError("partial-TopK ranking differs")
+
+    measurements = _mapping(batch1.get("measurements"), "candidate measurements")
+    if (
+        batch1.get("status") != "PASS"
+        or batch1.get("failures") not in ([], None)
+        or len(measurements) != 2
+        or sorted(int(row.get("rank") or 0) for row in measurements.values()) != [1, 2]
+        or {str(row.get("scene")) for row in measurements.values()} != {scene}
+        or any(
+            row.get("hard_gate_passed") is not True
+            or row.get("coverage_complete") is not True
+            for row in measurements.values()
+        )
+    ):
+        raise RuntimeError("partial-TopK candidate batch differs")
+    by_rank = {int(row["rank"]): row for row in measurements.values()}
+    for rank, predicted in enumerate(selected_rows, start=1):
+        if alg.optimizer_params_key(by_rank[rank]["params"]) != alg.optimizer_params_key(
+            _mapping(predicted.get("optimized_params"), "predicted params")
+        ):
+            raise RuntimeError(f"partial-TopK rank {rank} parameters differ")
+
+    empty_rows = _mapping(empty_batch.get("measurements"), "legacy empty-wave rows")
+    incumbent_params = _mapping(
+        _mapping(reconstructed.get("params_by_scene"), "checkpoint params").get(scene),
+        "checkpoint scene params",
+    )
+    if (
+        empty_batch.get("status") != "PASS"
+        or empty_batch.get("failures") not in ([], None)
+        or len(empty_rows) != 2
+        or any(
+            int(row.get("rank", -1)) != 0
+            or row.get("scene") != scene
+            or row.get("hard_gate_passed") is not True
+            or row.get("coverage_complete") is not True
+            or alg.optimizer_params_key(row.get("params") or {})
+            != alg.optimizer_params_key(incumbent_params)
+            for row in empty_rows.values()
+        )
+    ):
+        raise RuntimeError("legacy empty-wave diagnostic differs")
+
+    baseline_binding = _mapping(
+        state.get("formal_incumbent_baseline"), "formal incumbent baseline"
+    )
+    baseline_rows = _mapping(baseline.get("measurements"), "baseline measurements")
+    if (
+        baseline_binding.get("path") != str(baseline_binding_path)
+        or baseline_binding.get("sha256") != alg.sha(baseline_binding_path)
+        or baseline.get("status") != "PASS"
+        or baseline.get("failures") not in ([], None)
+        or len(baseline_rows) != 2
+        or any(
+            row.get("scene") != scene
+            or row.get("hard_gate_passed") is not True
+            or row.get("coverage_complete") is not True
+            for row in baseline_rows.values()
+        )
+        or not (
+            (
+                failed_gate_source
+                and gate.get("status") == "BLOCKED_FAIL_CLOSED"
+                and gate.get("errors") == ["dynamic_noninterference_window_timeout"]
+                and float(gate.get("observed_seconds") or 0) >= 180.0
+            )
+            or (
+                stopped_empty_wave_source
+                and gate.get("status") == "PASS"
+                and gate.get("errors") in ([], None)
+            )
+        )
+    ):
+        raise RuntimeError("partial-TopK boundary evidence differs")
+
+    batch_binding = {
+        "batch_index": 1,
+        "candidate_ranks": [1, 2],
+        "path": str(batch1_path),
+        "sha256": alg.sha(batch1_path),
+    }
+    empty_binding = {
+        "batch_index": 2,
+        "candidate_ranks": [],
+        "path": str(empty_batch_path),
+        "sha256": alg.sha(empty_batch_path),
+        "legacy_incumbent_only_empty_wave_excluded": True,
+    }
+    evaluations = {scene: []}
+    for rank in (1, 2):
+        row = copy.deepcopy(dict(by_rank[rank]))
+        row["candidate_ranking"] = copy.deepcopy(selected_rows[rank - 1])
+        row["formal_partial_replay_source"] = copy.deepcopy(batch_binding)
+        evaluations[scene].append(row)
+    return {
+        "source_root": str(source_root),
+        "source_state": {"path": str(state_path), "sha256": alg.sha(state_path)},
+        "baseline": {
+            "path": str(baseline_binding_path),
+            "sha256": alg.sha(baseline_binding_path),
+        },
+        "predicted_rankings": {
+            "path": str(ranking_path), "sha256": alg.sha(ranking_path),
+        },
+        "blocked_gate": {"path": str(gate_path), "sha256": alg.sha(gate_path)},
+        "continuation_reason": (
+            "settle_interrupted_empty_wave_after_all_selected_candidates_completed"
+            if stopped_empty_wave_source
+            else "settle_completed_partial_topk_without_empty_waves"
+        ),
+        "runtime_interruption_watchdog": None,
+        "completed_batches": [batch_binding, empty_binding],
+        "start_rank": 6,
+        "outer_attempt": expected_outer,
+        "ranking_document": ranking,
+        "evaluations": evaluations,
+        "technical_batch_exclusions": [],
+        "candidate_state_mutation_before_continuation": False,
+        "accepted_state_credit_before_continuation": 0,
+        "completed_rank_release_race": False,
+        "completed_rank5_recovery": None,
+        "empty_candidate_ranks": [3, 4, 5],
+        "empty_candidate_gate_and_measurement_skipped": True,
+        "legacy_empty_wave_incumbent_measurement_excluded_from_decision": True,
+    }
+
+
+def main() -> int:
+    v62 = predecessor.predecessor
+    v62.gate_v8 = gate_v11
+    v62.preflight_v8 = preflight_v9
+    runtime.rejection_cycle = rejection_cycle
+    predecessor.ASYNC_CONTRACT = ASYNC_CONTRACT
+    predecessor.OPTIMIZATION_CONTRACT = OPTIMIZATION_CONTRACT
+    predecessor.validate_contract = validate_contract
+    original_v62_install = v62.install
+
+    def install_with_empty_wave_skip() -> None:
+        original_v62_install()
+        installed_measure = runtime._measure_batch_with_fair_coordination
+
+        def measure_or_skip_empty(**kwargs: Any):
+            assignments = kwargs.get("assignments") or {}
+            stage_prefix = str(kwargs["stage_prefix"])
+            output = Path(kwargs["output"])
+            state_path = Path(kwargs["state_path"])
+            state = kwargs["state"]
+            workers = kwargs.get("workers") or {}
+            if (
+                stage_prefix == "FORMAL_INCUMBENT_BASELINE"
+                and state.get("fresh_search") is False
+            ):
+                rows = _checkpoint_incumbent_measurements(
+                    assignments=assignments, workers=workers, state=state,
+                )
+                output.mkdir(parents=True, exist_ok=False, mode=0o700)
+                audit = {
+                    "schema_version": (
+                        "mysql_algorithm_c_checkpoint_incumbent_"
+                        "carry_forward_v2"
+                    ),
+                    "status": "PASS",
+                    "formal_scope": "mysql_only",
+                    "cross_engine_comparison_prohibited": True,
+                    "failures": [],
+                    "measurements": rows,
+                    "elapsed_seconds": 0.0,
+                    "checkpoint_path": state.get("checkpoint_path"),
+                    "checkpoint_sha256": state.get("checkpoint_sha256"),
+                    "checkpoint_incumbent_carry_forward": True,
+                    "qps_reference": "last_accepted_checkpoint_incumbent",
+                    "dynamic_noninterference_gate_started": False,
+                    "mysql_container_reset_performed": False,
+                    "physical_workload_started": False,
+                    "captured_at": alg.now(),
+                }
+                alg.atomic(output / "batch_result.json", audit)
+                state["stage"] = (
+                    "FORMAL_INCUMBENT_BASELINE_CHECKPOINT_CARRY_FORWARD"
+                )
+                state.setdefault(
+                    "checkpoint_incumbent_baseline_carry_forwards", [],
+                ).append({
+                    "path": str(output / "batch_result.json"),
+                    "sha256": alg.sha(output / "batch_result.json"),
+                    "physical_workload_started": False,
+                    "qps_reference": "last_accepted_checkpoint_incumbent",
+                })
+                alg.atomic(state_path, state)
+                return rows, state
+            candidate_batch_kind = _candidate_batch_kind(stage_prefix)
+            if (
+                candidate_batch_kind is None
+                or _has_formal_candidate_assignment(assignments)
+            ):
+                return installed_measure(**kwargs)
+            synthetic_measurements = _semantic_noop_measurements(
+                assignments, workers,
+            )
+            output.mkdir(parents=True, exist_ok=False, mode=0o700)
+            audit = {
+                "schema_version": "mysql_algorithm_c_semantic_empty_candidate_wave_skip_v4",
+                "status": "PASS",
+                "formal_scope": "mysql_only",
+                "cross_engine_comparison_prohibited": True,
+                "four_scene_wave_barrier": False,
+                "failures": [],
+                "measurements": synthetic_measurements,
+                "elapsed_seconds": 0.0,
+                "empty_candidate_wave": True,
+                "candidate_count": 0,
+                "candidate_batch_kind": candidate_batch_kind,
+                "companion_rank_zero_assignment_count": len(assignments),
+                "semantic_empty_predicate": "all_assignment_ranks_are_zero",
+                "caller_cardinality_satisfied_by_semantic_noop_rows": True,
+                "dynamic_noninterference_gate_started": False,
+                "mysql_container_reset_performed": False,
+                "physical_workload_started": False,
+                "semantic_decision_deferred_to_all_admitted_candidates": True,
+                "captured_at": alg.now(),
+            }
+            alg.atomic(output / "batch_result.json", audit)
+            state["stage"] = f"{stage_prefix}_EMPTY_CANDIDATE_WAVE_SKIPPED"
+            state.setdefault("empty_candidate_wave_skips", []).append({
+                "stage_prefix": stage_prefix,
+                "candidate_batch_kind": candidate_batch_kind,
+                "batch_result_path": str(output / "batch_result.json"),
+                "batch_result_sha256": alg.sha(output / "batch_result.json"),
+                "gate_started": False,
+                "reset_performed": False,
+                "measurement_started": False,
+                "companion_rank_zero_assignment_count": len(assignments),
+            })
+            alg.atomic(state_path, state)
+            return synthetic_measurements, state
+
+        runtime._measure_batch_with_fair_coordination = measure_or_skip_empty
+
+    v62.install = install_with_empty_wave_skip
+    original_checkpoint = checkpointmod.verify_checkpoint
+    original_partial = runtime._validate_formal_partial_continuation
+    original_v28_partial = v28.validate_formal_partial_continuation
+    checkpointmod.verify_checkpoint = verify_top4_checkpoint
+    runtime._validate_formal_partial_continuation = _validate_partial_topk_settlement
+    v28.validate_formal_partial_continuation = _validate_partial_topk_settlement
+    try:
+        return predecessor.main()
+    finally:
+        v62.install = original_v62_install
+        checkpointmod.verify_checkpoint = original_checkpoint
+        runtime._validate_formal_partial_continuation = original_partial
+        v28.validate_formal_partial_continuation = original_v28_partial
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

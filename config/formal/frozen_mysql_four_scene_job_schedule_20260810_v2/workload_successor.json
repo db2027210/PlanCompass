@@ -1,0 +1,47 @@
+{
+  "schema_version": "mysql_four_scene_job_staggered_schedule_successor_v2",
+  "status": "FROZEN",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_benchmarks": [
+    "job",
+    "tpch",
+    "hybench_xp"
+  ],
+  "predecessor_workload_freeze": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260809_v1/tpch_sf4_workload_successor.json",
+    "sha256": "c5b9f11b4bbd1ad92ad7b6da63447e3a84809b8dd765af85488be055d6f237b0"
+  },
+  "unchanged_contracts": [
+    "job.query_set",
+    "job.executions_per_measurement",
+    "job.worker_count",
+    "job.long_query_threshold_seconds",
+    "job.maximum_concurrent_long_queries",
+    "tpch",
+    "hybench_xp"
+  ],
+  "job": {
+    "database": "imdb_job",
+    "required_count": 113,
+    "executions_per_measurement": 1,
+    "workers": 16,
+    "long_query_threshold_seconds": 30,
+    "maximum_concurrent_long_queries": 4,
+    "long_query_workers": 4,
+    "short_query_workers": 12,
+    "long_query_order": "longest_estimated_first",
+    "short_query_order": "shortest_estimated_first",
+    "minimum_long_query_start_stagger_seconds": 30,
+    "schedule": "dedicated_long_query_pool_with_start_stagger",
+    "reason": "Prevent a shortest-first long-query tail while preserving exact coverage, 16 total workers, no more than four long queries, and staggered long-query starts."
+  },
+  "tpch": {
+    "scale_factor": 4,
+    "queries": "inherit_exact_q1_q22",
+    "lanes": "inherit_exact_five_balanced_lanes",
+    "executions_per_measurement": 1
+  },
+  "fresh_r0_required": true,
+  "predecessor_results_prohibited_as_successor_r0": true
+}

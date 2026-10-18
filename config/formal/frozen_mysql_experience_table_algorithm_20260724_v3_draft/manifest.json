@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "draft_id": "frozen_mysql_experience_table_algorithm_20260724_v3_draft",
+  "method": "experience_table_all_subset_sgd_with_plan_basin_escape_v3",
+  "formal_scope": "mysql_only",
+  "formal_launch_authorized": false,
+  "algorithm_contract": {
+    "outer_loop": "accept_real_candidate_then_update_incumbent_and_shrink_parameter_ranges",
+    "inner_loop": "all_nonempty_subsets_then_estimate_rank_then_staged_real_replay",
+    "subset_count": "2^k-1",
+    "real_replay_stages": [5, 10, "scenario_k"],
+    "online_feedback": "update_experience_table_and_rerank_unseen_suffix_after_top5",
+    "plan_basin_escape": {
+      "maximum_batches": 5,
+      "batches": [
+        "all_nonempty_subset_local_optimization",
+        "reverse_local_delta",
+        "expanded_local_delta",
+        "coordinate_endpoints",
+        "orthogonal_single_parameter"
+      ],
+      "required_plan_clusters": 2,
+      "cross_plan_selection": "one_strict_representative_per_generated_plan_cluster_before_score_fill",
+      "candidate_deduplication": "exact_float_hex_signature"
+    },
+    "rejection_feedback": {
+      "outer_parameter_ranges_shrink_on_rejection": false,
+      "escape_radius_gamma": 0.5,
+      "minimum_escape_radius": 0.005,
+      "minimum_radius_result": "LOCAL_CONVERGED"
+    },
+    "acceptance_gates_changed": false,
+    "workload_or_resource_envelope_changed": false
+  },
+  "registered_sources": [
+    {
+      "path": "mysql_parameter_optimizer.py",
+      "sha256": "c9a276d05635dae8af2621cb87f16a36fb9c217513d5ba3924b51a6db22ba613"
+    },
+    {
+      "path": "experience_table_escape_policy.py",
+      "sha256": "49830455d4a186e4205b586599caf31de854ed9fa7d44791d5a1504d538b02f2"
+    },
+    {
+      "path": "config/formal/frozen_mysql_experience_table_algorithm_20260724_v3_draft/algorithm_config.json",
+      "sha256": "88570bdcb27bfc3ba73804165508b1fe4ee860ca0f8e6762dbc25602b0410b61"
+    }
+  ],
+  "verification": [
+    {
+      "path": "shell/test_experience_table_escape_policy.py",
+      "sha256": "38b8866e8c903f100dd2cb68966829f854eb77dcce9f2b63a644e2cd69c1321d",
+      "result": "passed"
+    },
+    {
+      "path": "shell/test_mysql_all_subset_integration.py",
+      "sha256": "b645ca88483de15424c191a2ef69663c923c78a1257b7fa0a9a7baa42b575936",
+      "result": "passed"
+    },
+    {
+      "path": "shell/test_mysql_formal_outer_campaign.py",
+      "sha256": "223991ede80b495ee279eb118da02e713f6816a6ec556fa36de69e9f99946f15",
+      "result": "passed"
+    }
+  ],
+  "activation_blockers": [
+    "production formal service_factory is absent",
+    "per-lane full estimator and SQL plan configs are absent",
+    "existing formal readiness manifest has launch_authorized=false"
+  ],
+  "direct_runtime_policy": {
+    "current_runtime": "frozen_mysql_sgd_runtime_20260724_v2",
+    "method": "direct_fixed_probe_schedule",
+    "eligible_as_v3_result": false,
+    "checkpoint_migration": "provenance_only"
+  }
+}

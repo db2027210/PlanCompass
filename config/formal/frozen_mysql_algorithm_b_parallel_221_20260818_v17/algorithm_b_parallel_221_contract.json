@@ -1,0 +1,137 @@
+{
+  "schema_version": "mysql_four_scene_algorithm_b_parallel_221_contract_v1",
+  "release_version": "v17",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-18T01:30:00+00:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "candidate_parallelism": 2,
+  "continuation": {
+    "resume_boundary": "outer_005_before_scene_independent_decisions",
+    "source_run_root": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010",
+    "failure_class": "global_valid_candidate_cardinality_in_independent_scenes",
+    "completed_outer_decisions_reconstructed": [1, 2, 3, 4],
+    "outer5_prior_replay_used_for_state_or_decision": false,
+    "outer5_fresh_replay_required": true,
+    "outer5_fresh_candidate_ranks": [1, 2, 3, 4, 5],
+    "outer1_through_outer4_reconstruction_semantics": "legacy_coupled_global_candidate_cardinality",
+    "scene_independent_semantics_effective_from_outer": 5,
+    "four_scene_algorithmic_progress_independent": true,
+    "scene_local_valid_candidate_cardinality": true,
+    "scene_local_failure_attribution": true,
+    "scene_local_resource_windows": true,
+    "job_plan_capture_independent_of_tpch": true,
+    "zero_valid_scene_rejects_round_without_global_abort": true
+  },
+  "lane_sequence": {
+    "wave_1": {"w1": 1, "w2": 2},
+    "wave_2": {"w1": 3, "w2": 4},
+    "wave_3": {"w1": 5, "w2": null}
+  },
+  "convergence": {
+    "accepted_shrinks_required_per_scene": 10,
+    "fixed_real_top_k_per_scene": 5,
+    "maximum_interval_ratio": 1.01,
+    "required_consecutive_stable_accepted_rounds_per_scene": 2,
+    "same_progress_across_scenes_required": false
+  },
+  "score_contract": {
+    "resource_score_only": true,
+    "qps_score_contribution": 0,
+    "qps_used_for_resource_prediction_gradient_or_score": false,
+    "raw_payload_supplied_for_api_compatibility": true
+  },
+  "failure_isolation": {
+    "physical_joint_wave_preserved": true,
+    "rank_specific_derived_batches": true,
+    "failure_attribution_unit": "scene_and_rank",
+    "known_scene_failure_invalidates_only_that_scene_and_rank": true,
+    "unaffected_scene_measurements_retained": true,
+    "unknown_failure_invalidates_only_unattributable_physical_lane": true,
+    "cross_scene_measurement_mixing": false,
+    "global_candidate_validity_required": false
+  },
+  "isolation": {
+    "underlying_dynamic_gate_release": "v63",
+    "per_container_cpu_memory_swap_io_and_pids_readback_required": true,
+    "w1_w2_database_cpuset_disjoint": true,
+    "w1_w2_client_cpuset_disjoint": true,
+    "post_reset_storage_settle_fail_closed": true,
+    "write_inflight_authority": "/sys/class/block/nvme2n1/inflight"
+  },
+  "workload_contract": {
+    "four_scenes_concurrent_within_each_candidate": true,
+    "four_scenes_independent_tasks_and_result_windows": true,
+    "two_candidates_concurrent_on_disjoint_frozen_lanes": true,
+    "job": "113 canonical SQL exactly once per candidate",
+    "tpch": "SF4 Q1-Q22 exactly once in frozen five lanes per candidate",
+    "xp_cpu": "native IQ1-IQ7 uniform and frozen XAP:XTP ratio",
+    "xp_io": "native IQ1-IQ7 uniform and frozen XAP:XTP ratio",
+    "maximum_candidate_seconds_per_scene": 900
+  },
+  "source_bindings": {
+    "decision_core": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_lane_failure_isolation_core_v17.py",
+      "sha256": "02531055400f7f1d7dc190d037135fc065f6f5d5bc5c12118552ee0d777a057e"
+    },
+    "measurement": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_scene_independent_measurement_v1.py",
+      "sha256": "43d6048220ec84da6a69f56d8e95470d8a62fe11a5da3f4701548f05d8ddf9a7"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v17.py",
+      "sha256": "6ba7277a395760481552a17bf1753ebbebe0f759cde4296004273398e305c80e"
+    },
+    "launcher": {
+      "path": "scripts/launch_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v17.py",
+      "sha256": "b73e4e5633dbf05cfb7b6757cf46e85e8af430b0c369f8f2c53ec4ff530bc303"
+    },
+    "directed_test": {
+      "path": "tests/test_mysql_algorithm_b_parallel_221_resume_v17.py",
+      "sha256": "8a15414340e654339dedd8afbfd4690dca0fc5cccfaa5376da00a24ee022aee1"
+    },
+    "predecessor_controller": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v16.py",
+      "sha256": "a7717f6adb0c74334decbc63f3dd8c969445664e046eb903e593517769127746"
+    },
+    "predecessor_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_b_parallel_221_20260818_v16/algorithm_b_parallel_221_contract.json",
+      "sha256": "d30e65c9863f791521055da3bcec5473de4282bd86717b23df838feaf8b3a783"
+    },
+    "source_failure_state": {
+      "path": "history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010/run_state.json",
+      "sha256": "771851dd5578e0f87633c833fb04ae29158a30de6c59d6945624f65ea26bf9b2"
+    },
+    "outer5_rankings": {
+      "path": "history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010/outer_005/predicted_rankings.json",
+      "sha256": "13dd8c40537832b048f8952286791604ffd642c27429b047289c85a078a5de39"
+    },
+    "discarded_outer5_rank1": {
+      "path": "history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010/outer_005/top5_batch_1/batch_result.json",
+      "sha256": "62b5bd6bc60aefddd4b43802da9b3ad5b7b4ab5508c9ee493f2fdebc6588ede0"
+    },
+    "discarded_outer5_rank2": {
+      "path": "history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010/outer_005/top5_batch_2/batch_result.json",
+      "sha256": "8da94535f738f8f4e09030dfdb4e7baad90ae950267893e8ad7f7723ca893282"
+    },
+    "discarded_outer5_rank3": {
+      "path": "history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010/outer_005/top5_batch_3/batch_result.json",
+      "sha256": "c12de395fb359c9a16ec0926a6f69b6f518d53e5ef5ffb527587ebac007e95e9"
+    },
+    "discarded_outer5_rank4": {
+      "path": "history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010/outer_005/top5_batch_4/batch_result.json",
+      "sha256": "39151c04658910b85f30ec8a87786a139b0722ea4db7772e133fdbcd59dd50a5"
+    },
+    "discarded_outer5_rank5": {
+      "path": "history/mysql_four_scene_20260809/v16_formal_parallel221_outer5_rank5_write_settle_resume_20260818_attempt010/outer_005/top5_batch_5/batch_result.json",
+      "sha256": "55b9aaf78dfd9d734427c7764317091b708e89b1a415c6b3791935b8f80efd3d"
+    }
+  }
+}

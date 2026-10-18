@@ -1,0 +1,83 @@
+{
+  "algorithm": "A",
+  "baseline_mapping": {
+    "job_w1": "job_w1",
+    "job_w2": "job_w2",
+    "job_w3": "job_w1",
+    "job_w4": "job_w2"
+  },
+  "candidate_measurements_completed_before_transition": 0,
+  "candidate_set_changed": false,
+  "cross_engine_comparison_prohibited": true,
+  "cross_scene_completion_dependency": false,
+  "formal_scope": "mysql_only",
+  "full_job_113_once_per_measurement": true,
+  "interrupted_precondition_credit": 0,
+  "normalized_width_threshold": 0.01,
+  "outer_loop_semantics_changed": false,
+  "per_suite_hard_timeout_seconds": 900,
+  "physical_replay_parallelism": 4,
+  "predecessor_snapshot_path": "config/formal/frozen_mysql_algorithm_a_job4_round11_20260825_v1/resume_predecessor_snapshot.json",
+  "predecessor_snapshot_sha256": "97b8840287e05836522df87f13ef45ba524483951b33ec655cec880fe38e4a2a",
+  "preserved_accepted_count": 6,
+  "preserved_normalized_width": 0.015625,
+  "resource_envelope_changed": false,
+  "resumed_round_index": 11,
+  "scene": "job_memory",
+  "schema_version": "mysql_algorithm_a_job4_round11_resume_v1",
+  "slot_expansion_recalibration_repeated": false,
+  "source_bindings": {
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "99b7ffde65169a6c11dc90aa62eb0635576a109559e3d6cd4cc8970ac3a05b96"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_a_job4_round11_dynamic_resume_v1.py",
+      "sha256": "4e4cd35fbb673bbdac148d8eba96a090a1485cdafb3b868ce190bd41430b7c98"
+    },
+    "dynamic_noninterference_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v4.py",
+      "sha256": "20001fdf705d0b982c27299e8fe697592885dcb040512e6950378561c6534f3a"
+    },
+    "full_parallel_preflight": {
+      "path": "scripts/preflight_mysql_four_scene_v7.py",
+      "sha256": "78a674b2080aeb2179909fed7d474faa87d1ed29e3e87e5461ec1ffe35490320"
+    },
+    "job_measurement": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v10.py",
+      "sha256": "c04cf3e890c2bb147376fe814fa71ac45cad38f65abc71ecbc1faa18bf2ab9b0"
+    },
+    "job_measurement_contract": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260823_v10/cache_state_contract.json",
+      "sha256": "7041b85b19271237cfe512c410eb6976095ac040f3b649e7ba0da17c31c9eedb"
+    },
+    "original_boundary": {
+      "path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.predecessor_boundary_snapshot.json",
+      "sha256": "9ae2aee42cbc52e7e5fb590f670e76239a7d4f21f0fad7e94ccccf1d864f2a56"
+    },
+    "resource_freeze": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_external_diagnostic_slots_20260823_v1/job_four_worker_resource_successor.json",
+      "sha256": "b704b724b1fea47473dcc518d31ad9a5a777b198cabe130393ebcee50a2df3af"
+    },
+    "same_cohort_resume": {
+      "path": "scripts/run_mysql_algorithm_a_same_cohort_codefix_resume_v1.py",
+      "sha256": "5741d20c711a0dc8ced157cbba5c0c428355922b05b4ec6907b1b28023ac087c"
+    },
+    "snapshot_builder": {
+      "path": "scripts/freeze_mysql_algorithm_a_job4_round11_resume_v1.py",
+      "sha256": "05319b918448c940783cb6afa55bfe77b893f1cf6482b5cca96a920560515adc"
+    },
+    "source_state": {
+      "path": "history/mysql_four_scene_20260809/v152_to_a_job_round10_wave8_width1_network_recovered_20260825_attempt011_job/algorithm_a_state.json",
+      "sha256": "d64976c787d71f807998e7372ea05fcbe49d0532da793666977a34d5837c301e"
+    },
+    "transition_authority": {
+      "path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.transition_authority.json",
+      "sha256": "c11efc9746f3e0404750d3eb6f6ddd4301306260f73d68c9d5a4ed88ec770472"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "transition_authority_path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.transition_authority.json",
+  "transition_authority_sha256": "c11efc9746f3e0404750d3eb6f6ddd4301306260f73d68c9d5a4ed88ec770472",
+  "worker_start_stagger_seconds": 0
+}

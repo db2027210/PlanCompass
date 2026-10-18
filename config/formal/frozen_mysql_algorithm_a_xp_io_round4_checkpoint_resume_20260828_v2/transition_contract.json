@@ -1,0 +1,60 @@
+{
+  "accepted_rounds_retained": 3,
+  "active_parameters": [
+    "io_block_read_cost",
+    "disk_temptable_row_cost",
+    "disk_temptable_create_cost",
+    "memory_temptable_row_cost"
+  ],
+  "algorithm": "A",
+  "algorithm_a_feedback_to_b_or_c_false": true,
+  "algorithm_a_independent_posthoc_check_only": true,
+  "algorithm_flow_change": false,
+  "candidate_count_per_round": 16,
+  "candidate_vectors_used_by_b_or_c": false,
+  "canonical_baseline_reused_without_replay": true,
+  "complete_top4_candidate_set_required": true,
+  "created_at": "2026-08-28T19:33:24.252264+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "incumbent_reference_reused_without_replay": true,
+  "interrupted_round": 4,
+  "parameter_ranges_used_by_b_or_c": false,
+  "physical_replay_parallelism_eight": true,
+  "qps_used_by_b_or_c": false,
+  "round4_completed_candidate_measurements_reused_false": true,
+  "round4_new_physical_work_starts_at_rank1": true,
+  "rounds_1_to_3_retained": true,
+  "runtime_binding_refresh_only": true,
+  "scene": "hybench_xp_io",
+  "schema_version": "mysql_algorithm_a_xp_io_round4_checkpoint_resume_contract_v2",
+  "search_direction_used_by_b_or_c": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_a_xp_io_round4_checkpoint_resume_v2.py",
+      "sha256": "3db2b035a7f3ea5e76187e82bc459ddd0971e4c3803d80803e54f6b9b36db8ec"
+    },
+    "live_authority": {
+      "path": "history/mysql_four_scene_20260809/v1051_a_io_round4_post_c_live_authority_normalized_20260828/live_authority.json",
+      "sha256": "0fc2eebb12489b0a27b9b7c7b3ea1ed9a2cf7f7c9ec2d288cfe4bad6a9fabffc"
+    },
+    "reuse_manifest": {
+      "path": "history/mysql_four_scene_20260809/v1028_existing_b_a_reuse_no_rerun_a_check_only_20260828/reuse_manifest.json",
+      "sha256": "ed43ebb1b35eb4ffa49708946ef7366e01510ee2718e9f4e02e94f83378ecf2b"
+    },
+    "runtime_v13": {
+      "path": "scripts/run_mysql_algorithm_a_xp_top4_mixed_eight_worker_v13.py",
+      "sha256": "410f85377e1e09222e189f16401589220cd5f068e7179e260651439aa9899005"
+    },
+    "source_candidates": {
+      "path": "history/mysql_four_scene_20260809/v859_to_a_io_round2_wave2_physical_adapter_fixed_resume_20260828_xp_io/round_004/candidates.json",
+      "sha256": "dcaa751ed4e55a18b11ab51da8eb6f9fc845198da30108f5770eae756707d667"
+    },
+    "source_state": {
+      "path": "history/mysql_four_scene_20260809/v859_to_a_io_round2_wave2_physical_adapter_fixed_resume_20260828_xp_io/algorithm_a_state.json",
+      "sha256": "f00aa1be66dec762ad61c7f2c35d430970a34e73bcdc9b06805220b50094b04a"
+    }
+  },
+  "source_candidate_count": 16,
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

@@ -1,0 +1,192 @@
+{
+  "schema_version": "mysql_four_scene_algorithm_b_independent_resume_contract_v3",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "workload_contract": {
+    "job": "113 canonical SQL files exactly once, 16 workers, at most 4 long queries",
+    "tpch": "SF4 Q1-Q22 exactly once in the frozen five-lane schedule",
+    "hybench_xp_cpu": "native IQ1-IQ7 uniform, AT 35/25/15/15/7/3, frozen XAP:XTP ratio",
+    "hybench_xp_io": "native IQ1-IQ7 uniform, AT 35/25/15/15/7/3, frozen XAP:XTP ratio",
+    "formal_measurement_wall_seconds": [
+      600,
+      900
+    ],
+    "partial_or_single_query_runs_prohibited": true
+  },
+  "independence": {
+    "algorithm_c_used_only_as_launch_sequence_gate": true,
+    "algorithm_c_state_or_result_inputs": [],
+    "fresh_default_baseline": true,
+    "full_frozen_parameter_ranges": true,
+    "own_top15_calibration_per_scene": true,
+    "own_fresh_resource_models": true,
+    "own_candidate_history": true,
+    "own_accepted_rejected_and_convergence_state": true,
+    "technical_continuation_of_same_algorithm_b_run": true
+  },
+  "algorithm": {
+    "calibration_real_replays_per_scene": 15,
+    "calibration_scenes_measured_concurrently_per_wave": 4,
+    "coordinate_grid_points": 15,
+    "maximum_inner_passes": 20,
+    "no_improvement_patience": 2,
+    "interaction_subset_sizes": [
+      2,
+      4
+    ],
+    "interaction_values_per_parameter": 3,
+    "interaction_candidate_cap": 0,
+    "real_validation_top_k": 5,
+    "candidate_hard_pruning": false,
+    "qps_used_for_resource_prediction_gradient_or_score": false,
+    "real_resource_score_best_selected_before_outer_gate": true,
+    "accepted_binary_shrinks_required": 10,
+    "maximum_interval_ratio": 1.01,
+    "consecutive_stable_accepted_rounds_required": 2
+  },
+  "non_interference": {
+    "rolling_window_gate": "before every resumed calibration and Top-5 wave; v63 same-sample complete-isolation scoped D-state gate",
+    "co_resident_process_inventory": true,
+    "cpu_numa_memory_swap_process_and_storage_isolation": "fail_closed",
+    "external_process_mutation": false,
+    "read_only_external_affinity_observer": true,
+    "proved_isolated_external_d_state": "recorded_nonblocking",
+    "unknown_or_unproved_d_state": "fail_closed"
+  },
+  "source_bindings": {
+    "controller": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_four_scene_algorithm_b_independent_resume_wave11_v2.py",
+      "sha256": "9e8059e8a9add6b9c9b39178d06836db1510b673bb849ae7273d3d2a81405878"
+    },
+    "launcher": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/launch_mysql_four_scene_algorithm_b_independent_resume_wave11_v2.py",
+      "sha256": "387292423b514d9225aecd5b1073bb9a024fe14e26ead615d43259295223a985"
+    },
+    "external_pg_affinity_observer": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/observe_frozen_external_pg_client_affinity_v1.py",
+      "sha256": "5f7417512510a95d804bff628d62a25e21a761da11b015eccc62159662bde3d2"
+    },
+    "algorithm_c_sequence_gate": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/launch_mysql_algorithm_b_independent_after_c_terminal_release_v1.py",
+      "sha256": "2dbc340631098f8b1c49fa22e164499c8df16a4ad86790d7bfa2ee121175c06d"
+    },
+    "xp_reset": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/reset_mysql_xp_data_planes_v7.py",
+      "sha256": "db6d1b42c2ce3a41f6936b60e32cf5f6ddd32cbbcf1017c43e95da6b6595550a"
+    },
+    "shared_measurement_runtime": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v2.py",
+      "sha256": "13f510c8025daeb53cf832880b70904f247860d82b17af8de07638972ef02d22"
+    },
+    "shared_interval_convergence_helper": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_four_scene_algorithm_c_v2.py",
+      "sha256": "99985c763a2d5b2fadf087f996f236c71195abe710864a74c05fa6738b686aba"
+    },
+    "mysql_algorithm_b_policy": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/mysql_algorithm_b_policy.py",
+      "sha256": "4d7aafdc37d79754be3cc39b16542d9be465c81bd7b20dff899daca586b1f467"
+    },
+    "grid_optimizer": {
+      "path": "/home/anonymous/program/resource_adaptive/double_loop_grid_optimizer.py",
+      "sha256": "a5f54012022f3643dee48c6fd8a44b56354bed70ac6de9d68c262dc6fb76786c"
+    },
+    "search_common": {
+      "path": "/home/anonymous/program/resource_adaptive/double_loop_search_common.py",
+      "sha256": "823ff4dcb6456d16b1198fa9ae3f13d35f418196094e34ccbd28734321aa0029"
+    },
+    "fresh_scenario_model": {
+      "path": "/home/anonymous/program/resource_adaptive/double_loop_scenario.py",
+      "sha256": "8e43277711d5d65556e525d41ce143c5f7fb6da409b6b8d53614a2f258c7cdff"
+    },
+    "outer_acceptance": {
+      "path": "/home/anonymous/program/resource_adaptive/common_outer_loop.py",
+      "sha256": "c90049f8e7fb5741017bbc71f9f94f7b73ffec225a8ece7ce04139758ddd7bf7"
+    },
+    "resource_freeze": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_disk2_two_worker_20260813_v18/four_scene_effective_resource_successor.json",
+      "sha256": "a19dff2a72963f147ac914345e4b188522d9dca23dd35b5aa85cba6f1f4801df"
+    },
+    "runtime_preflight": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/preflight/mysql_four_scene_20260809/v54_recovered_xp_rebind_r0_20260817_attempt012_preflight.json",
+      "sha256": "ebff2a0843ab90c7ce31ccbf1f6b7784261a7cea79e87af3db5598ebd00ec25a"
+    },
+    "prepared_binding": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v68_outer16_post_baseline_rebind_20260817_attempt006_rebind/prepared_binding.json",
+      "sha256": "afa23ef951b8dfc312ab6514ab94e93dfc7e45b2664b66869817710238457bc6"
+    },
+    "benchmark_accounts": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v68_outer16_post_baseline_rebind_20260817_attempt006_accounts/benchmark_accounts_binding.json",
+      "sha256": "4c57dde69bdc6f654b01e980ae364896d8e895fb58488fcf23edf8aedc593d7f"
+    },
+    "predecessor_controller": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_four_scene_algorithm_b_independent_v1.py",
+      "sha256": "17825bc7ee6a56c5d7e2c0709033192cb072b2b9fed39c7dd0c5193409bd51e7"
+    },
+    "predecessor_launcher": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/launch_mysql_four_scene_algorithm_b_independent_v1.py",
+      "sha256": "9a9080d5ce9792de46450c21cfc25cfdeab2487ba923822613d0f2221c53aefc"
+    },
+    "device_scoped_coordination": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/mysql_cross_project_wave_coordination_v2.py",
+      "sha256": "958ba5b1d29e93f19e8f44bcf1891ea57579b7de9176c6983af92325f79dc158"
+    },
+    "co_resident_isolation_v12": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/mysql_co_resident_pg_isolation_v12.py",
+      "sha256": "a05d41f6245b59fb099cef9f433b41ef44fa9800a0175d9bec774f79d7a6b7dd"
+    },
+    "resume_test": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/tests/test_mysql_algorithm_b_independent_resume_wave11_v2.py",
+      "sha256": "be86bf34bfe8312f7317b77a3c43af44fc1a36d83ff9f6811abb694df7a33937"
+    },
+    "device_scoped_coordination_test": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/tests/test_mysql_cross_project_wave_coordination_v2.py",
+      "sha256": "a30627043e12214ed744af7d5f74be9dc0d5f71fb46cef644abd26983adf8302"
+    },
+    "coordination_contract_v63": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_cross_project_wave_coordination_20260817_v63/coordination_contract.json",
+      "sha256": "38b3e4b6c07567a690be096914345eea1fbf6ef89e4d63ed2220831e4ff2eae0"
+    },
+    "predecessor_algorithm_b_contract": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_algorithm_b_independent_20260817_v1/algorithm_b_contract.json",
+      "sha256": "29b6004d7ab1b760c993dda6eadaed22606b3f6fa9865ca0d1f6fb040d2cf065"
+    }
+  },
+  "technical_continuation": {
+    "source_run_root": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v2_formal_independent_resume_cal08_v63_20260817_attempt001",
+    "failure_phase": "calibration_wave_11_formal_tpch_lane_3_timeout",
+    "failed_wave": 11,
+    "failed_wave_measurement_started": true,
+    "partial_failed_wave_results_reused": false,
+    "completed_calibration_waves_reused": 10,
+    "calibration_wave_11_through_15_replayed_by_successor": true,
+    "baseline_reused_bit_identically": true,
+    "calibration_design_recomputed_and_identity_checked": true,
+    "accepted_or_rejected_outer_state_reused": false,
+    "outer_attempt_starts_at_zero": true,
+    "accepted_rounds_start_at_zero": true,
+    "algorithm_c_state_or_result_inputs": [],
+    "source_state_sha256": "65fa8b47f7cc77d78aee8fc9f83304edec2a8e550266cc3fdba6152c4f6ab45f",
+    "source_baseline_sha256": "2e39527a372ea2041b1a3970be11b6aae1ad776a44ecb69032558a860c2b41c2",
+    "source_calibration_design_sha256": "90166cb84d07d86d981b9c901eec8cc34a6a591d05bae0e4bca1ec78dd6372bc",
+    "source_failure_evidence_sha256": "0386e45949efc7c0622e22e82713c5bf38af5f95bccea116d4223a6f33f84bb5",
+    "source_completed_wave_sha256": {
+      "1": "6f21640265bc7c9c1d2b8ccbeeb4e6cd18b847d97b3e7f1c510f05ae50331596",
+      "2": "36de07e7a7016a1673930340976eae3d0bfa6146a443eb29f547637c7b5e9295",
+      "3": "68e445a2ef63fc7a7f9c9f10e1fdd5fceb0c3f4bde826788a6aa123b668342be",
+      "4": "8edd5700ef0c3c99e52112092292f5830317561f8f5fe003811cc823b59f07d9",
+      "5": "4dfd97922252c44616794ffe34ee7d0bfee72893f845b28bfad4b6a53c1ae078",
+      "6": "1d040bd8e14c60d7bbb740fb7bed19c7d10e0817b18c7812ceb455203eb802d6",
+      "7": "fe5fac0ab7bbade9b9134b1de9ebca42e4e53fa865c7add8329862665afa4772",
+      "8": "565af3f3ae4b245a0c025c743fc76e6f34dc8eb5468482179017f95868f3fa76",
+      "9": "45bbd055d1d39e8e07497645df79b4ba91c230bbed6d413e3bd4603e57ce20b8",
+      "10": "e0464ea6d4df33ba75f799198429d649975b7e68a39ea6bf290466c5b08eedbd"
+    }
+  }
+}

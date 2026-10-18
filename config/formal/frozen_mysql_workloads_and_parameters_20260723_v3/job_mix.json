@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+  "benchmark": "job",
+  "seed": 4508333,
+  "clients": 1,
+  "weights": {
+    "1a": 10,
+    "5a": 10,
+    "9a": 10,
+    "12a": 10,
+    "16a": 10,
+    "20a": 10,
+    "26a": 30,
+    "33a": 10,
+    "sensitive/title-in-cast-role-5-movie100k": 7.5
+  },
+  "weight_total": 107.5,
+  "sensitive_fraction": 0.06976744186046512,
+  "supersedes_text_value": 0.047619,
+  "active_params_unchanged": [
+    "io_block_read_cost",
+    "memory_block_read_cost",
+    "row_evaluate_cost",
+    "memory_temptable_row_cost"
+  ]
+}

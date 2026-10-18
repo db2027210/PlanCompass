@@ -1,0 +1,144 @@
+{
+  "accepted_target": 7,
+  "algorithm": "A",
+  "algorithm_b_sequence_gate_mode": "launch_bound_terminal_state_sha256",
+  "candidate_batches": [
+    [
+      1,
+      2,
+      3,
+      4
+    ]
+  ],
+  "candidate_search_contract": "lane_local_complete_lr_cartesian_physical_attempt_v2",
+  "complete_round_requires_every_parameter_vector_attempted": true,
+  "cpu_algorithm_b_predecessor_run": "runtime_launcher_argument",
+  "created_at": "2026-08-28T06:10:50.896794+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "dynamic_gate_release": "cpu_a_slots_v13",
+  "formal_scope": "mysql_only",
+  "four_scene_wave_barrier": false,
+  "fresh_baseline_required": true,
+  "historical_algorithm_b_or_c_credit": false,
+  "io_algorithm_b_predecessor_run": "runtime_launcher_argument",
+  "lease_mode": "none",
+  "maximum_concurrent_xp_mysql_workers": 8,
+  "maximum_rejected_outer_attempts": 10,
+  "method": "exhaustive_binary_factorial_algorithm_a_v2",
+  "normalized_width_threshold": 0.01,
+  "parallel_expansion_policy": "four_physical_workers_per_scene_at_each_wave_boundary",
+  "per_scene_outer_state_machine": true,
+  "physical_replay_parallelism_per_scene": 4,
+  "post_convergence_stability_required": false,
+  "post_target_physical_replays": 0,
+  "prediction_used_for_ordering": false,
+  "prediction_used_for_selection": false,
+  "qps_reference_mode": "last_accepted",
+  "resource_envelope_version": "cpu_a_slots_four_worker_20260828_v3",
+  "rolling_gate_observation_budget_seconds": 600,
+  "scenes": {
+    "hybench_xp_cpu": {
+      "active_parameters": [
+        "row_evaluate_cost",
+        "key_compare_cost",
+        "disk_temptable_row_cost",
+        "io_block_read_cost"
+      ],
+      "candidates_per_round": 16,
+      "physical_waves_per_round": 4,
+      "physical_workers": 4
+    },
+    "hybench_xp_io": {
+      "active_parameters": [
+        "io_block_read_cost",
+        "disk_temptable_row_cost",
+        "disk_temptable_create_cost",
+        "memory_temptable_row_cost"
+      ],
+      "candidates_per_round": 16,
+      "physical_waves_per_round": 4,
+      "physical_workers": 4
+    }
+  },
+  "schema_version": "mysql_algorithm_a_xp_top4_async_contract_v1",
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "builder": {
+      "path": "scripts/build_mysql_xp_top4_algorithm_a_cpu_a_slots_four_worker_release_v1.py",
+      "sha256": "3e685637ec38adfcc8b955febe30f21ad74e739cf97f0242028be43fa3d6c138"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_a_xp_top4_cpu_a_slots_four_worker_v1.py",
+      "sha256": "b8328402e8e4f2fa7193b0df436c7dee2aa0aa3eed08520f25859d49921cbcca"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_a_cpu_a_slots_four_worker_20260828_v12/coordination_contract.json",
+      "sha256": "0c7b9a985e38f2b8777c93d21d6e31acfaae875b6812c9ae184f92e58143ffcc"
+    },
+    "current_authority_refresh": {
+      "path": "scripts/refresh_mysql_cpu_a_slots_four_worker_scene_authority_v1.py",
+      "sha256": "abd33228044c05b8ffaaf8b8788557b5fa14fb3d2f3b3ef5b276806b93db3c70"
+    },
+    "dynamic_noninterference_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_cpu_a_slots_v13.py",
+      "sha256": "41e76f20d1bbf54a52eb8e2d45dcb977acd693b56e74220f4ca77de877b762c0"
+    },
+    "four_worker_runtime_adapter": {
+      "path": "scripts/run_mysql_algorithm_a_job_to_xp_resume_v1.py",
+      "sha256": "ef609f52170637dfb5e2c8514a66a8384eebcf4b8c41186c3bef016205e3dc33"
+    },
+    "full_factorial": {
+      "path": "scripts/mysql_algorithm_a_full_factorial_v1.py",
+      "sha256": "de8287de6c6a0447438faff2c09f8ce14258e51331176681d49d6749e5da437d"
+    },
+    "no_lease_measurement": {
+      "path": "scripts/mysql_algorithm_b_no_lease_measurement_v1.py",
+      "sha256": "97d3cdb86192dd8f768ccae72339cfb708e91521ebf7ee642c118a3965ef0ec6"
+    },
+    "pg_aligned_a_core": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "99b7ffde65169a6c11dc90aa62eb0635576a109559e3d6cd4cc8970ac3a05b96"
+    },
+    "pg_outer_policy": {
+      "path": "scripts/mysql_algorithm_b_pg_outer_policy_v36.py",
+      "sha256": "fd346d12bc1633265a1d8cb20774be5e18bda8ca556f0f0d8d4c143ba3a2c97e"
+    },
+    "resource_freeze": {
+      "path": "config/formal/frozen_mysql_four_scene_cpu_a_slots_four_worker_20260828_v3/four_scene_effective_resource_successor.json",
+      "sha256": "2c79da4c617c90de447fda98772a5384aaf437cebdf0987659553145b9df385e"
+    },
+    "scene_launcher": {
+      "path": "scripts/launch_mysql_algorithm_a_xp_top4_cpu_a_slots_four_worker_scene_v1.py",
+      "sha256": "3359c7e3910a71bdd87f53d0b9341ae34c73548c05ab184525fb711906936f4b"
+    },
+    "shared_measurement_core": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+      "sha256": "b27a7303c92a1b0e77d0461bc47a87445dae7311c3c898784740b83a62b2adb2"
+    },
+    "single_scene_measurement": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "workload_adapter": {
+      "path": "mysql_workload_adapter_v2.py",
+      "sha256": "bd88222170ca6cd9cfd8da791deedc5e9379bd77571ab8fbabcb27eba11930d8"
+    },
+    "xp_cpu_table": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.hybench_xp_cpu.top4.operator_physics_v1.json",
+      "sha256": "5be3d21037ce4fe757e95bc3bd6b6c9b603c619d5e88c23badf587eb4ac840ed"
+    },
+    "xp_io_table": {
+      "path": "config/formal/frozen_mysql_xp_top4_algorithm_c_20260825_v1/T.hybench_xp_io.top4.operator_physics_v1.json",
+      "sha256": "3d61e77e8e975c86f82bc32b017bc33169a8929a0985356c36c58d2efb4b269e"
+    },
+    "xp_reset": {
+      "path": "scripts/reset_mysql_xp_data_planes_mixed_four_worker_v2.py",
+      "sha256": "895a917683896f22209b3980ab1ec648ab7a94b761b8b86392109163b432c828"
+    },
+    "xp_reset_implementation": {
+      "path": "scripts/reset_mysql_xp_data_planes_mixed_four_worker_v1.py",
+      "sha256": "fcdbe678dd74a77e98c62ce98354178fb49ba1f191de63b25b3d8774432bf4b4"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

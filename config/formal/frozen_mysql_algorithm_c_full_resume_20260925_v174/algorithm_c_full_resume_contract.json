@@ -1,0 +1,31 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v174",
+  "release_version": "v174-effective-state-chain-binding",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "normal_stop_uses_actual_interval_width": true,
+  "accepted_round_target": null,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "candidate_set_or_workload_changed": false,
+  "resource_envelope_changed": false,
+  "formal_measurement_timeout_changed": false,
+  "completed_measurements_replayed": false,
+  "effective_state_binding": {
+    "resume_base": "async_v49.ORIGINAL_V27_STATE_DOCUMENT",
+    "effective_static_entry": "boundary_v32.ORIGINAL_V29_STATE_DOCUMENT",
+    "legacy_confirmation_counter_rehydration_disabled": true,
+    "v32_and_v34_release_records_preserved": true
+  },
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v84.py",
+      "sha256": "0f78f87951d1acdd8d749be952140549db99c167b872ed03a1624373a19c7112"
+    },
+    "parent_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260925_v173/algorithm_c_full_resume_contract.json",
+      "sha256": "17541512b9dea30555f63cd6b563dcc04064672ea3b452b2c6860dd339ad7a21"
+    }
+  }
+}

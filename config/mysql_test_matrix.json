@@ -1,0 +1,177 @@
+{
+  "cost_parameters": {
+    "active": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "key_compare_cost",
+      "disk_temptable_create_cost",
+      "disk_temptable_row_cost",
+      "memory_temptable_create_cost",
+      "memory_temptable_row_cost"
+    ],
+    "ranges": {
+      "io_block_read_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0},
+      "memory_block_read_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0},
+      "row_evaluate_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0},
+      "key_compare_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0},
+      "disk_temptable_create_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0},
+      "disk_temptable_row_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0},
+      "memory_temptable_create_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0},
+      "memory_temptable_row_cost": {"min_multiplier": 0.25, "max_multiplier": 4.0}
+    }
+  },
+  "sensitivity_table": {
+    "io_block_read_cost": {"cpu": 0.10, "memory": 0.05, "io": -0.30},
+    "memory_block_read_cost": {"cpu": 0.05, "memory": -0.20, "io": 0.10},
+    "row_evaluate_cost": {"cpu": -0.25, "memory": 0.00, "io": -0.10},
+    "key_compare_cost": {"cpu": -0.20, "memory": -0.10, "io": -0.05},
+    "disk_temptable_create_cost": {"cpu": 0.05, "memory": 0.10, "io": -0.30},
+    "disk_temptable_row_cost": {"cpu": 0.05, "memory": 0.10, "io": -0.30},
+    "memory_temptable_create_cost": {"cpu": 0.10, "memory": -0.25, "io": 0.10},
+    "memory_temptable_row_cost": {"cpu": 0.10, "memory": -0.25, "io": 0.10}
+  },
+  "optimizer": {
+    "eta": 2.0,
+    "max_iter": 20,
+    "patience": 3,
+    "max_param_delta_ratio": 0.2,
+    "min_param_delta_rel_pct": 10.0,
+    "max_param_delta_rel_pct": 20.0,
+    "adaptive_rejection_enabled": true,
+    "adaptive_rejection_stop_after": 10,
+    "exploration_acceptance_enabled": false,
+    "no_update_patience": 2
+  },
+  "mysql_workers": {
+    "cpu": {"host": "127.0.0.1", "port": 3306},
+    "memory": {"host": "127.0.0.1", "port": 3307},
+    "io": {"host": "127.0.0.1", "port": 3308}
+  },
+  "scenarios": {
+    "cpu": {
+      "benchmarks": ["h", "c", "ch"],
+      "capability": {"cpu": 24.0, "memory": 4.0, "io": 200.0},
+      "scoring": {
+        "overload_threshold": 0.8,
+        "score_mode": "band_target",
+        "resource_weights": {"cpu": 3.0, "memory": 1.0, "io": 1.0},
+        "resource_target_ranges": {
+          "cpu": {"min_pct": 65.0, "max_pct": 80.0, "hard_overload_pct": 90.0},
+          "memory": {"min_pct": 50.0, "max_pct": 80.0, "hard_overload_pct": 90.0},
+          "io": {"min_pct": 40.0, "max_pct": 75.0, "hard_overload_pct": 90.0}
+        }
+      }
+    },
+    "memory": {
+      "benchmarks": ["h", "c", "ch"],
+      "capability": {"cpu": 24.0, "memory": 4.0, "io": 200.0},
+      "scoring": {
+        "overload_threshold": 0.8,
+        "score_mode": "band_target",
+        "resource_weights": {"cpu": 1.0, "memory": 3.0, "io": 1.0},
+        "resource_target_ranges": {
+          "cpu": {"min_pct": 50.0, "max_pct": 80.0, "hard_overload_pct": 90.0},
+          "memory": {"min_pct": 70.0, "max_pct": 80.0, "hard_overload_pct": 90.0},
+          "io": {"min_pct": 40.0, "max_pct": 75.0, "hard_overload_pct": 90.0}
+        }
+      }
+    },
+    "io": {
+      "benchmarks": ["h", "c", "ch"],
+      "capability": {"cpu": 24.0, "memory": 4.0, "io": 200.0},
+      "scoring": {
+        "overload_threshold": 0.8,
+        "score_mode": "band_target",
+        "resource_weights": {"cpu": 1.0, "memory": 1.0, "io": 3.0},
+        "resource_target_ranges": {
+          "cpu": {"min_pct": 50.0, "max_pct": 80.0, "hard_overload_pct": 90.0},
+          "memory": {"min_pct": 50.0, "max_pct": 80.0, "hard_overload_pct": 90.0},
+          "io": {"min_pct": 50.0, "max_pct": 75.0, "hard_overload_pct": 90.0}
+        }
+      }
+    }
+  },
+  "benchmarks": {
+    "h": {
+      "family": "H_TPCH",
+      "mysql": {"user": "root", "database": "benchbase", "engine_name": "default"},
+      "search_estimator": {
+        "type": "trained_models", "benchmark": "H", "case_number": 11,
+        "artifacts": {
+          "cpu": "/home/anonymous/program/resource_adaptive/mysql_plan_models/cpu/artifacts/mysql_cpu_plan_model.joblib",
+          "memory": "/home/anonymous/program/resource_adaptive/mysql_plan_models/memory/artifacts/global_memory_model.joblib",
+          "io": "/home/anonymous/program/resource_adaptive/mysql_plan_models/io/output/mysql_total_io_plan_model.joblib"
+        },
+        "feature_source": {"query_files": ["/home/anonymous/program/resource_adaptive_mysql/model_workloads/tpch_q6.sql"], "active_sql_count": 1, "buffer_hit_rate": 0.95},
+        "memory_context": {"source": "performance_schema"},
+        "normalization": {"window_seconds": 5, "memory_mb_per_unit": 1024, "cpu_divisor": 5, "io_divisor": 5}
+      },
+      "validation_estimator": {"type": "command", "command": ["python", "examples/benchmark_json_example.py"], "cwd": "/home/anonymous/program/resource_adaptive_mysql"}
+    },
+    "c": {
+      "family": "C_TPCC",
+      "mysql": {"user": "root", "database": "benchbase", "engine_name": "default"},
+      "search_estimator": {
+        "type": "trained_models", "benchmark": "C", "case_number": 11,
+        "artifacts": {
+          "cpu": "/home/anonymous/program/resource_adaptive/mysql_plan_models/cpu/artifacts/mysql_cpu_plan_model.joblib",
+          "memory": "/home/anonymous/program/resource_adaptive/mysql_plan_models/memory/artifacts/global_memory_model.joblib",
+          "io": "/home/anonymous/program/resource_adaptive/mysql_plan_models/io/output/mysql_total_io_plan_model.joblib"
+        },
+        "feature_source": {"query_files": ["/home/anonymous/program/resource_adaptive_mysql/model_workloads/tpcc_stock_level.sql"], "active_sql_count": 4, "buffer_hit_rate": 0.95},
+        "memory_context": {"source": "performance_schema"},
+        "normalization": {"window_seconds": 5, "memory_mb_per_unit": 1024, "cpu_divisor": 5, "io_divisor": 5}
+      },
+      "validation_estimator": {"type": "command", "command": ["python", "examples/benchmark_json_example.py"], "cwd": "/home/anonymous/program/resource_adaptive_mysql"}
+    },
+    "ch": {
+      "family": "CH_HYBRID",
+      "mysql": {"user": "root", "database": "hybench", "engine_name": "default"},
+      "search_estimator": {
+        "type": "trained_models", "benchmark": "CH", "case_number": 21,
+        "artifacts": {
+          "cpu": "/home/anonymous/program/resource_adaptive/mysql_plan_models/cpu/artifacts/mysql_cpu_plan_model.joblib",
+          "memory": "/home/anonymous/program/resource_adaptive/mysql_plan_models/memory/artifacts/global_memory_model.joblib",
+          "io": "/home/anonymous/program/resource_adaptive/mysql_plan_models/io/output/mysql_total_io_plan_model.joblib"
+        },
+        "feature_source": {"query_files": ["/home/anonymous/program/resource_adaptive_mysql/model_workloads/hybench_ap.sql"], "active_sql_count": 4, "buffer_hit_rate": 0.95},
+        "memory_context": {"source": "performance_schema"},
+        "normalization": {"window_seconds": 5, "memory_mb_per_unit": 1024, "cpu_divisor": 5, "io_divisor": 5}
+      },
+      "validation_estimator": {"type": "command", "command": ["python", "examples/benchmark_json_example.py"], "cwd": "/home/anonymous/program/resource_adaptive_mysql"}
+    }
+  },
+  "workflow": {
+    "algorithms": ["gradient", "bruteforce"],
+    "top_k": 15,
+    "max_parallel": 3,
+    "max_search_candidates": 256,
+    "validation_repeats": 1,
+    "commit_best": false,
+    "output_directory": "history/mysql_matrix",
+    "bruteforce": {
+      "grid_points": 15,
+      "combination_max_size": 4,
+      "combination_values_per_param": 3
+    },
+    "quality_gate": {
+      "min_samples": 15,
+      "max_relative_error_p95": 1.0,
+      "max_relative_error_max": 5.0,
+      "min_r2": 0.0,
+      "max_pairwise_inversion_rate": 0.10,
+      "score_tie_margin": 0.01
+    },
+    "full_replay": {
+      "grid_points": 5,
+      "active_params": [],
+      "parameter_values": {},
+      "predict_before_replay": true,
+      "validation_repeats": 1,
+      "checkpoint_every": 1,
+      "commit_best": false,
+      "output_directory": "history/mysql_full_replay"
+    }
+  }
+}

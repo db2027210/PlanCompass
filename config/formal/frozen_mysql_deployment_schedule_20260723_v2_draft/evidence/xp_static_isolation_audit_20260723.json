@@ -1,0 +1,62 @@
+{
+  "schema_version": "mysql_xp_static_isolation_canonical_audit_v1",
+  "status": "OBSERVED_PREPARATION_ISOLATION_VERIFIED_FORMAL_GATE_NOT_READY",
+  "scenario": "hybench_xp_io",
+  "host": "192.0.2.4",
+  "mysql": {
+    "role": "temporary_mysql_database_for_sql_count_closure",
+    "effective_cpuset_cpus": "18-33,54-69",
+    "effective_cpuset_mems": "1",
+    "effective_io_device": "259:1",
+    "data_device": "/dev/nvme0n1p1",
+    "normalized_envelope_path": "history/mysql_sgd_env_agents_20260723/xp/formal_mysql_normalized_envelope_readback.json",
+    "normalized_envelope_sha256": "93df98a12569f95c88d25e7a3d23dbb07ae8de4f207462bf5f456cd2e44df033"
+  },
+  "observed_postgresql": {
+    "role": "co_resident_job_memory_runtime_not_xp_counterpart",
+    "container_id": "26ea08aa46f10b79e919e404516d882667809d3135aab9126daa0073b74183cb",
+    "running_before_and_after": true,
+    "requested_cpuset_cpus": "12-17,48-53",
+    "requested_cpuset_mems": "0",
+    "requested_io_device": "/dev/nvme2n1",
+    "effective_cgroup_readback_present": false,
+    "before_after_stable_fields_equal": true
+  },
+  "observed_non_overlap": {
+    "logical_cpu_sets_disjoint": true,
+    "physical_core_sets_disjoint": true,
+    "numa_memory_nodes_disjoint": true,
+    "data_devices_disjoint": true,
+    "mysql_physical_cores": [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
+    "postgresql_physical_cores": [12, 13, 14, 15, 16, 17],
+    "mysql_numa_nodes": [1],
+    "postgresql_numa_nodes": [0]
+  },
+  "source_evidence": {
+    "pg_before": {
+      "path": "history/mysql_sgd_env_agents_20260723/xp/xp_sql_count_20260723_0620/pg_read_only_before.json",
+      "sha256": "97a78c38a49109878bfe00af74c44c53885d965851038df5444b6ebfcb3ec444"
+    },
+    "pg_after": {
+      "path": "history/mysql_sgd_env_agents_20260723/xp/xp_sql_count_20260723_0620/pg_read_only_after.json",
+      "sha256": "5aaa363491b2bf7cd39ab01690cd73c617506b0f8beefa3ea69ac239bd92eeee"
+    }
+  },
+  "decision": {
+    "mysql_effective_envelope_verified": true,
+    "observed_preparation_pair_static_non_overlap_verified": true,
+    "formal_xp_postgresql_counterpart_present": false,
+    "postgresql_effective_cgroup_readback_present": false,
+    "cross_engine_envelope_equality": false,
+    "formal_static_isolation_gate_passed": false,
+    "ready": false
+  },
+  "formal_scope": {
+    "r0": false,
+    "sgd": false,
+    "accepted_iteration": false,
+    "readiness_changed": false,
+    "launch_authorized": false
+  },
+  "scope_note": "CPU, NUMA and storage non-overlap are established for the observed SQL-count preparation pair. It is not the formal XP engine pair: PostgreSQL is the JOB memory runtime and lacks effective cgroup evidence, so the formal static-isolation and paired-envelope gates remain failed."
+}

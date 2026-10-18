@@ -1,0 +1,47 @@
+{
+  "scenario": "none",
+  "benchmark": "tpcc",
+  "seed": 20260719,
+  "randomize_order": true,
+  "target": {
+    "container": "ra-mysql-grid-tpcc-cpu",
+    "required_label": "resource-adaptive-mysql.owner=mysql-grid-20260718",
+    "host": "127.0.0.1",
+    "port": 13308,
+    "pid": 1034978,
+    "expected_nano_cpus": 0,
+    "expected_memory_bytes": 17179869184,
+    "user": "root",
+    "password": "CHANGE_ME",
+    "database": "tpcc"
+  },
+  "baseline_values": {
+    "innodb_spin_wait_delay": 6,
+    "innodb_sync_spin_loops": 30,
+    "innodb_thread_concurrency": 4
+  },
+  "factors": {
+    "innodb_spin_wait_delay": [0, 6],
+    "innodb_sync_spin_loops": [0, 30],
+    "innodb_thread_concurrency": [0, 8]
+  },
+  "workload": {
+    "interval_sec": 1,
+    "warmup_samples": 5,
+    "timeout_sec": 360,
+    "argv": [
+      "/home/anonymous/miniconda3/envs/resource_adaptive/bin/python",
+      "mysql_benchmark_command.py",
+      "--benchmark", "tpcc",
+      "--host", "127.0.0.1",
+      "--port", "13308",
+      "--database", "tpcc",
+      "--user", "root",
+      "--password", "CHANGE_ME",
+      "--output-dir", "{output_dir}",
+      "--duration-sec", "60",
+      "--clients", "32",
+      "--scale-factor", "143"
+    ]
+  }
+}

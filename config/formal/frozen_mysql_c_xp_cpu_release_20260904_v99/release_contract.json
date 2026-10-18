@@ -1,0 +1,51 @@
+{
+  "schema_version": "mysql_c_xp_cpu_per_scene_release_contract_v99",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "hybench_xp_cpu",
+  "all_four_scenes_declared_in_parent_formal_campaign": true,
+  "release_reason": "same_scene_algorithm_b_complete",
+  "algorithm_b_complete_required": true,
+  "algorithm_b_results_used_as_search_prior": false,
+  "fresh_search": true,
+  "fresh_client_baseline_owned_by_controller": true,
+  "native_xp_workload_unchanged": true,
+  "physical_workers": 2,
+  "four_scene_wave_barrier": false,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "co_resident_b_xp_io_continues_unmodified": true,
+  "co_resident_c_memory_pair_continues_unmodified": true,
+  "failed_v98_measurement_started": false,
+  "failed_v98_accepted_or_rejected_credit": 0,
+  "checkpoint_verifier": "standard_four_scene_fresh_search",
+  "external_process_control_or_stop_performed": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "source_bindings": {
+    "parent_release_contract": {
+      "path": "config/formal/frozen_mysql_c_xp_cpu_release_20260904_v98/release_contract.json",
+      "sha256": "b5e6d1c4b5fc2115d00e9f7eea80de1f283acf6923c479a310fb1cc6dde2f3bf"
+    },
+    "algorithm_c_cpu_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v9.py",
+      "sha256": "2723b2bb823123f971143e40702419cd02829480875a05419c82ea434147efb3"
+    },
+    "failed_v98_launch_manifest": {
+      "path": "history/mysql_four_scene_20260809/v1201_mysql_c_xp_cpu_release_v98_20260904/launch_manifest.json",
+      "sha256": "ce76e1907577727b71d978bd600f6880ed75fd3a10649fb27c8b8fe4f1ae3a8f"
+    },
+    "algorithm_b_cpu_complete_state": {
+      "path": "history/mysql_four_scene_20260809/v1198_to_b_cpu_gate_v81_resume_20260904_xp_cpu/run_state.json",
+      "sha256": "407d27a171b7ba3cb4df1b1de11e02963c50696ceb92c3308879bdb69cccea2f"
+    },
+    "scene_authority_result": {
+      "path": "history/mysql_four_scene_20260809/v1200_to_c_xp_cpu_scene_authority_v97_20260904/authority/authority_result.json",
+      "sha256": "9768154de10912de92962c716414f9c0931d26c34d0173905ed969704751ba20"
+    },
+    "scene_fresh_r0": {
+      "path": "history/mysql_four_scene_20260809/v1200_to_c_xp_cpu_scene_fresh_r0_v97_20260904/fresh_r0_binding.json",
+      "sha256": "6c77784ac6c585692fd4b6002d14dd642dc9f06f712f55020613e0328bda4cd3"
+    }
+  }
+}

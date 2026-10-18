@@ -1,0 +1,48 @@
+{
+  "completed_outer_state_reused_through": 1,
+  "created_at": "2026-08-30T06:54:03.163347+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "frozen_partial_outer": 2,
+  "frozen_ranking_path": "history/mysql_four_scene_20260809/v1125_to_b_tpch_client_qps_disk2_normalized_20260830_tpch/outer_002/predicted_rankings.json",
+  "frozen_ranking_recomputed": false,
+  "frozen_ranking_sha256": "087a7accf9e2d7917223979569098a36544673cf5ba519155bcb1b9704220131",
+  "invalid_timeout_rank_preserved_without_measurement_credit": 2,
+  "next_physical_candidate_wave": [
+    3,
+    4
+  ],
+  "schema_version": "mysql_tpch_algorithm_b_outer2_ranking_resume_v4",
+  "source_bindings": {
+    "builder": {
+      "path": "scripts/build_mysql_tpch_b_outer2_ranking_resume_release_v1.py",
+      "sha256": "f38ccf359b767ef0a2841ce8f77c1fd01a038990b6bf16bc42f69d6053c9df2a"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_tpch_algorithm_b_timeout_resume_frozen_outer2_v3.py",
+      "sha256": "8d3f046485988dec5bdc2b48a003b28fef4e1b68c3ef359009d8b8dadf36ddf7"
+    },
+    "outer2_invalid_rank2": {
+      "path": "history/mysql_four_scene_20260809/v1128_tpch_b_outer2_timeout_recovery_evidence_20260830/rank_2/batch_result.json",
+      "sha256": "0ee83c1f43b53c5bfee91086889776d817024c805d7603d2dba4584817166c96"
+    },
+    "outer2_rankings": {
+      "path": "history/mysql_four_scene_20260809/v1125_to_b_tpch_client_qps_disk2_normalized_20260830_tpch/outer_002/predicted_rankings.json",
+      "sha256": "087a7accf9e2d7917223979569098a36544673cf5ba519155bcb1b9704220131"
+    },
+    "outer2_valid_rank1": {
+      "path": "history/mysql_four_scene_20260809/v1128_tpch_b_outer2_timeout_recovery_evidence_20260830/rank_1/batch_result.json",
+      "sha256": "16c6a03f2c59e8235ac6c392797c77b8b872ecb5e66b8bca87f8865544d62850"
+    },
+    "quality_reuse_controller": {
+      "path": "scripts/run_mysql_tpch_algorithm_b_timeout_resume_quality_reuse_v2.py",
+      "sha256": "8b3b225ebd4565e346f917d8396d4fc42dad2cfc35b72aa56fd329abc939319b"
+    },
+    "timeout_resume_controller": {
+      "path": "scripts/run_mysql_tpch_algorithm_b_timeout_resume_v1.py",
+      "sha256": "b5e22b941952a7d2e820e7edc01a0ca218c2bdaf705ec7b150cb36009dc799cd"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "valid_rank_reused": 1
+}

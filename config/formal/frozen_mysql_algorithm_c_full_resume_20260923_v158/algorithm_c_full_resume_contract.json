@@ -1,0 +1,47 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v158",
+  "release_version": "v158-startup-baseline-lineage-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "resume_only_from_completed_outer_boundary": true,
+  "incomplete_outer_credit": 0,
+  "startup_paper_baseline_gate_is_campaign_invariant": true,
+  "post_outer_incumbent_is_not_startup_baseline": true,
+  "paper_baseline_tolerance_percentage_points": 1.0,
+  "physical_baseline_remeasurement_on_resume": false,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "physical_workers_per_scene": 2,
+  "maximum_concurrent_mysql_workers": 8,
+  "four_scene_wave_barrier": false,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v157/algorithm_c_full_resume_contract.json",
+    "sha256": "8e68eb33fc8e64f699033ee7e3acdd8328a06d4229156b0288ace531ad60c5e9"
+  },
+  "source_bindings": {
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v68.py",
+      "sha256": "04352266e056a86deafb452e5600486e1e93e01726229fb0e777a06a14e0f614"
+    },
+    "launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v158_full_resume.py",
+      "sha256": "0c81d8224ffa14332111c9d5065377d6ea0c921a6cbb1163571d19fcbab77892"
+    },
+    "completion_monitor": {
+      "path": "scripts/monitor_mysql_algorithm_c_v158_full_resume.py",
+      "sha256": "82dac883a77636da6a099b9e04877e0fd021c4d76c587b2b9b411fc9f9bf41a4"
+    },
+    "completion_monitor_core": {
+      "path": "scripts/monitor_mysql_algorithm_c_v157_full_resume.py",
+      "sha256": "5b9652482169d45dc69f90000627bf4281a3239184428adcf29a1af4e93d2a26"
+    },
+    "failed_v157_attempt_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v157_full_algorithm_resume_20260923/failed_resume_attempt_audit.json",
+      "sha256": "6467ba844a8b0bcc0c1674db9bd6ceb550a4bee0da8215aa99cdbf08e90a16b7"
+    }
+  }
+}

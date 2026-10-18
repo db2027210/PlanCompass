@@ -1,0 +1,42 @@
+{
+  "schema_version": "mysql_tpch_algorithm_c_client_qps_outer_runtime_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "release_version": "tpch-client-qps-v1",
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "optimized_reset": {
+    "reset_concurrency": 4,
+    "per_scene_partial_reset": true,
+    "scene_local_storage_settle": true
+  },
+  "runtime_coordination": {
+    "lease_mode": "none",
+    "rolling_dynamic_noninterference_gate_required": true,
+    "per_wave_quiet_seconds": 15.0,
+    "maximum_quiet_wait_seconds": 90.0,
+    "shared_nvme_mutual_exclusion": false,
+    "numa_exclusive_scheduler_lock": false,
+    "whole_round_resource_lease": false,
+    "other_scene_completion_required": false,
+    "external_process_control_or_stop_performed": false
+  },
+  "pg_search_outer": {
+    "real_top_k_limit": 5,
+    "candidate_batches": [[1, 2], [3, 4], [5]],
+    "required_acceptance_tier": "qps_strict_progress",
+    "accepted_target": null,
+    "terminal_normalized_width": 0.01,
+    "outer_rejection_cycle_policy_id": "mysql_bc_qps_strict_two_reject_incumbent_shrink_v2",
+    "post_search_stability_confirmation": false,
+    "qps_metric": "fixed_five_lane_q1_q22_client_qps"
+  },
+  "bindings": {
+    "algorithm_source_path": "scripts/run_mysql_four_scene_algorithm_c_v2.py",
+    "algorithm_source_sha256": "48b0e652d721a10a8777173ac65c12d6ac919ebf6fab84093fa63f048148166d",
+    "reset_source_path": "scripts/reset_mysql_xp_data_planes_mixed_four_worker_v4.py",
+    "reset_source_sha256": "0e36da5621315281a157983fb8041a6e81e7e553be1399ff38be7fe95f5d0131",
+    "resource_freeze_path": "config/formal/frozen_mysql_tpch_bc_disk2_two_worker_20260830_v1/four_scene_effective_resource_successor.json",
+    "resource_freeze_sha256": "b4781e66d37919497a358e31fdbfe71bf95bd2c50a944385eb905dece0b73a06"
+  }
+}

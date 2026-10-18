@@ -1,0 +1,76 @@
+{
+  "after_readiness_sha256": "4ad17ac8db8e349148c85834738545e19d2c40f7136ee77fd622c0c2fd75c10c",
+  "already_promoted": false,
+  "audit_refresh_reason": "unrelated readiness evidence changed; JOB envelope projection and fail-closed gates revalidated",
+  "before_readiness_sha256": "3333f0dbaa3246b65b4ec768f88d2d448c09166ea3e0d1c558eba757eaeb4002",
+  "changed_json_paths": [
+    "scenarios.job_memory.mysql_envelope.freeze_id",
+    "scenarios.job_memory.mysql_envelope.normalized",
+    "scenarios.job_memory.mysql_envelope.readback"
+  ],
+  "evidence_verifier": {
+    "path": "shell/verify_mysql_job_formal_envelope_readback.py",
+    "sha256": "02c5efab9ab64880a8736751c1f7606f06266c2c61ca73f503bf4bc926b49415"
+  },
+  "evidence_verifier_result": {
+    "bundle_members": 14,
+    "clean_shutdown_container_network_removed": true,
+    "cross_engine_equality": false,
+    "eight_effective_fields": true,
+    "formal_static_gate": false,
+    "observed_cpu_numa_disk_nonoverlap": true,
+    "postgresql_unchanged": true,
+    "r0": false,
+    "readiness_projection": true,
+    "ready": false,
+    "retained_work_copy_current_contents_claimed_immutable": false,
+    "retained_work_copy_manifest_file_verified": true,
+    "sgd": false,
+    "shared_mutex_chain_verified": true,
+    "status": "PASS"
+  },
+  "promoted_mysql_envelope": {
+    "freeze_id": "frozen_paired_pg_mysql_resource_envelopes_20260723_v1",
+    "normalized": {
+      "cpu_isolation_degree": 3,
+      "cpu_quota_cores": 3,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "memory_bytes": 6442450944,
+      "memory_swap_bytes": 6442450944,
+      "numa_isolation_degree": 1,
+      "pids_max": 512
+    },
+    "readback": {
+      "path": "history/mysql_sgd_env_agents_20260723/job/formal_mysql_normalized_envelope_readback.json",
+      "sha256": "ad308d5ec0ad5ab992e6704348e305df49b2fc7705ccd0bf820b55ab7f0388f5"
+    }
+  },
+  "promoter": {
+    "path": "shell/promote_mysql_job_envelope_readback.py",
+    "sha256": "fbbd6e584e6ee836d09952af7c4407f31c16bfd8fdcf7d9db74e54db0e4abc07"
+  },
+  "protected_fields_unchanged": {
+    "cross_engine_envelope_gate_false": true,
+    "dynamic_interference_unchanged": true,
+    "global_status_not_ready": true,
+    "launch_authorized_false": true,
+    "postgresql_envelope_unchanged": true,
+    "postgresql_envelope_unpromoted": true,
+    "r0_calibration_unchanged": true,
+    "static_isolation_unchanged": true
+  },
+  "readiness_reverification": {
+    "failed": 95,
+    "passed": 83,
+    "ready": false,
+    "status": "NOT_READY"
+  },
+  "readiness_verifier": {
+    "path": "shell/verify_mysql_sgd_v2_readiness.py",
+    "sha256": "07a497a18a07bda50ae731ffe0ca0e0d9d0643a32da991f510593a10b4aac967"
+  },
+  "schema_version": 1,
+  "scope": "job_memory_mysql_envelope_only",
+  "superseded_after_readiness_sha256": "13fae8ddf219af059de51d5f1e7a5a89f4edf43ec9e221a90b88d7e997eb463e"
+}

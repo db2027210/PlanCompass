@@ -1,0 +1,27 @@
+{
+  "authorization": "explicit_operator_authorization_in_control_session",
+  "freeze_id": "frozen_mysql_deployment_schedule_20260723_v4_mysql_only",
+  "from_scope": "paired_cross_engine",
+  "publication_policy": {
+    "cross_engine_comparison_authorized": false,
+    "old_bundles_mutated": false,
+    "paired_result_merge_prohibited": true
+  },
+  "published_at": "2026-07-23T07:50:00+08:00",
+  "removed_readiness_requirements": [
+    "postgresql_counterpart_envelope",
+    "postgresql_envelope_readback",
+    "postgresql_mysql_field_equality"
+  ],
+  "retained_fail_closed_requirements": [
+    "mysql_effective_envelope_freeze_and_readback",
+    "co_resident_process_inventory",
+    "fixed_cpu_affinity",
+    "cpu_numa_memory_swap_disk_process_isolation",
+    "latest_six_30_second_window_dynamic_non_interference",
+    "explicit_ready_launch_authorization"
+  ],
+  "schema_version": "mysql_formal_scope_migration_v1",
+  "status": "PUBLISHED_NOT_READY",
+  "to_scope": "mysql_only"
+}

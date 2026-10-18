@@ -1,0 +1,33 @@
+{
+  "schema_version": "mysql_three_workload_scale_successor_v1",
+  "status": "FROZEN",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_benchmarks": [
+    "job",
+    "tpch",
+    "hybench_xp"
+  ],
+  "predecessor_workload_freeze": {
+    "path": "config/formal/frozen_mysql_three_workloads_20260806_v1/workload_freeze.json",
+    "sha256": "d616751aed412ff01e3cdb543fe3c441cd1c5529175ec7df79856cb4c08df74e"
+  },
+  "unchanged_contracts": [
+    "job",
+    "hybench_xp",
+    "tpch.query_set",
+    "tpch.lane_assignment",
+    "tpch.executions_per_measurement"
+  ],
+  "tpch": {
+    "scale_factor": 4,
+    "database": "tpch",
+    "queries": "inherit_exact_q1_q22",
+    "lanes": "inherit_exact_five_balanced_lanes",
+    "executions_per_measurement": 1,
+    "target_template_bytes_minimum": 9000000000,
+    "target_template_bytes_maximum": 13000000000
+  },
+  "predecessor_tpch_sf10_results_prohibited": true,
+  "fresh_sf4_r0_required": true
+}

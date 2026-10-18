@@ -1,0 +1,58 @@
+{
+  "schema_version": "mysql_sgd_pre_tuning_gate_v1",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "policy": {
+    "formal_launch_is_fail_closed": true,
+    "target_utilization_range_inclusive": [
+      0.85,
+      0.95
+    ],
+    "non_target_utilization_range_inclusive": [
+      0.3,
+      0.5
+    ],
+    "minimum_dynamic_interference_window_seconds": 180,
+    "failed_construction_requires_adjustment": true,
+    "permitted_adjustment_kinds": [
+      "machine_resource_envelope",
+      "experiment_config_json",
+      "machine_resource_and_config_json"
+    ],
+    "global_readiness_must_pass_at_exec_time": true
+  },
+  "required_pre_tuning_resource_envelope_fields": [
+    "cpu_quota_cores",
+    "cpuset_cpus",
+    "cpuset_mems",
+    "memory_bytes",
+    "memory_swap_bytes",
+    "io_read_bps",
+    "io_write_bps",
+    "pids_max",
+    "cpu_isolation_degree",
+    "numa_isolation_degree"
+  ],
+  "required_pre_tuning_context": [
+    "host_id",
+    "hostname",
+    "device",
+    "configured_resource_envelope",
+    "effective_resource_readback",
+    "config_json",
+    "process_inventory",
+    "dynamic_interference"
+  ],
+  "scenario_targets": {
+    "hybench_ap_memory": "memory",
+    "job_memory": "memory",
+    "hybench_xp_io": "io",
+    "tpch_memory": "memory",
+    "tpcc_cpu": "cpu"
+  },
+  "artifacts": {
+    "launch_request": "history/mysql_sgd_env_agents_20260723/manual_controllers/<scenario>/launch_request.json",
+    "frozen_pre_tuning_context": "history/mysql_sgd_env_agents_20260723/manual_controllers/<scenario>/pre_tuning_context.json",
+    "controller_state": "history/mysql_sgd_env_agents_20260723/manual_controllers/<scenario>/state.json"
+  }
+}

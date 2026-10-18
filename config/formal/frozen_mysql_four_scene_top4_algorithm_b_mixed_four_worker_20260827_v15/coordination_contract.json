@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-08-27T04:34:25.725246+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "dynamic_gate_source_path": "/home/anonymous/program/resource_adaptive_mysql/scripts/mysql_cross_project_wave_coordination_v14.py",
+  "dynamic_gate_source_sha256": "d7c6523501ab6e504a1e54bfd16623246139f3d72949805e12dcc3c5e28d5a29",
+  "external_process_control_or_stop_performed": false,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "lease_mode": "none",
+  "maximum_concurrent_mysql_workers": 16,
+  "maximum_idle_load1": 512.0,
+  "maximum_quiet_wait_seconds": 600,
+  "maximum_workers_per_scene": 4,
+  "numa_exclusive_scheduler_lock": false,
+  "per_wave_quiet_seconds": 15,
+  "release_version": "v68-container-scoped-pg-statistics-control-plane",
+  "schema_version": "mysql_algorithm_b_top4_mixed_four_worker_no_lease_coordination_v1",
+  "shared_nvme_mutual_exclusion": false,
+  "sibling_scene_wait": false,
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "whole_round_resource_lease": false
+}

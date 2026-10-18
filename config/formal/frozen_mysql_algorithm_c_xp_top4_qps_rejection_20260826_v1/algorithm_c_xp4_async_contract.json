@@ -1,0 +1,107 @@
+{
+  "accepted_history_preserved": true,
+  "accepted_round_credit_from_forced_shrink": false,
+  "algorithm_a_changed": false,
+  "algorithm_c_candidate_or_outer_flow_changed": true,
+  "candidate_batches": [
+    [
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "completed_candidate_replay_due_to_transition": 0,
+  "convergence_metric": "maximum_log_domain_width_relative_to_frozen_initial",
+  "created_at": "2026-08-26T09:16:05.542551+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_measurement_started": false,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "fresh_search_required": true,
+  "inner_candidate_generation_changed": false,
+  "inner_candidate_ranking_changed": false,
+  "lease_mode": "none",
+  "native_xp_workload_unchanged": true,
+  "outer_acceptance_policy": {
+    "acceptance_tier_affects_acceptance": false,
+    "algorithm_a_changed": false,
+    "comparison": "candidate_db_qps > incumbent_db_qps",
+    "first_reference": "canonical_baseline",
+    "latency_gate_affects_acceptance": false,
+    "minimum_gain_ratio": 0.0,
+    "non_target_resource_gate_affects_acceptance": false,
+    "outer_acceptance_mode": "qps_strictly_higher_than_last_accepted",
+    "qps_reference": "last_accepted_incumbent",
+    "rejected_round_changes_incumbent": false,
+    "schema_version": "mysql_outer_qps_strict_progress_v1",
+    "target_resource_drop_affects_acceptance": false,
+    "technical_measurement_validity_required": true
+  },
+  "outer_rejection_cycle_policy": {
+    "candidate_generation_per_unresolved_outer": [
+      "predicted_point_expansion",
+      "plan_tree_expansion"
+    ],
+    "consecutive_rejections_before_incumbent_centered_shrink": 2,
+    "equal_qps_accepted": false,
+    "forced_shrink_changes_incumbent": false,
+    "forced_shrink_grants_accepted_round_credit": false,
+    "forced_shrink_log_width_ratio": 0.5,
+    "incumbent_replacement": "technical_validity_and_db_qps_strictly_higher",
+    "lower_qps_accepted": false,
+    "policy_id": "mysql_bc_qps_strict_two_reject_incumbent_shrink_v1",
+    "stability_confirmation_required": false,
+    "terminal_normalized_width": 0.01
+  },
+  "physical_replay_parallelism": 4,
+  "post_search_stability_confirmation": false,
+  "previous_strategy_results_eligible_for_credit": false,
+  "recalibration_performed": false,
+  "schema_version": "mysql_algorithm_c_xp4_qps_rejection_contract_v1",
+  "semantic_top_k": 5,
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "authority": {
+      "path": "scripts/run_mysql_xp_four_worker_authority_v1.py",
+      "sha256": "6d47182f5a2dbf583b2ff26e9506713149c45dafeb4e5f37f8a3d05dcad08e6a"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_xp4_v20.py",
+      "sha256": "803cba3214f212f2cead52cf31dc02c186258bc0f3d7af308e677a3dc78c1ae1"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_xp_top4_qps_rejection_20260826_v1/coordination_contract.json",
+      "sha256": "4c72beed42d2c52cd1565186a07353be9236468eca41b5271de62c75146a480a"
+    },
+    "optimization_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_xp_top4_qps_rejection_20260826_v1/optimization_contract.json",
+      "sha256": "0dc4a820a091ac0f205f344459b2cd5fa8dec39d15ec6b213af2a0eee2b2c4e3"
+    },
+    "outer_rejection_cycle_policy": {
+      "path": "scripts/mysql_outer_rejection_cycle_v1.py",
+      "sha256": "52361415d051de5fc15258f5c8b20b13b3ebe1d704f2358489e897c2a38fbc66"
+    },
+    "qps_only_outer_policy": {
+      "path": "scripts/mysql_outer_qps_strict_progress_v1.py",
+      "sha256": "6836af020dfc9b3160f34e33525adf2c309f9c42de1b40ff988c6cf9c7aa7585"
+    },
+    "reset": {
+      "path": "scripts/reset_mysql_xp_data_planes_four_worker_v1.py",
+      "sha256": "97f9d929770f193e84ccdfd3c1a23f36e7af0bbd62be90e8746a9f3a10f7eef2"
+    },
+    "resource_successor": {
+      "path": "config/formal/frozen_mysql_algorithm_c_xp4_handoff_20260826_v2/xp_four_worker_resource_successor.json",
+      "sha256": "1d1b49df4beaa1a99c127242c2931985a0f9562e02ab14d8ac16279be82aef0b"
+    },
+    "runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_xp4_runtime_v1.py",
+      "sha256": "33de9a62802633e089a8ae6200c622b07111ce96145eaadc22b135c517696eae"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "terminal_normalized_width": 0.01
+}

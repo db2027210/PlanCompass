@@ -1,0 +1,377 @@
+{
+  "accepted_state_credit_increment": 0,
+  "algorithm_search_reexecuted": false,
+  "all_four_scenes_start_concurrently": true,
+  "assignments_by_scene": {
+    "hybench_xp_cpu": {
+      "xp_cpu_w2": "b_cpu"
+    },
+    "hybench_xp_io": {
+      "xp_io_w1": "b_io",
+      "xp_io_w2": "c_io"
+    }
+  },
+  "authority": {
+    "accounts_path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v1105_matched_xp_post_baseline_live_authority_20260829/benchmark_accounts_binding.json",
+    "accounts_sha256": "0699a3057c5c1661e89a5e45ddf34514cf24571c56fbb49f2f46f4080605f3b9",
+    "manifest_path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v1105_matched_xp_post_baseline_live_authority_20260829/live_authority.json",
+    "manifest_sha256": "dc4ce0f2298b4b17eeee279ff250c33abe0e6b31b318ca3498a8d3e4dd41367f",
+    "preflight_path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v1105_matched_xp_post_baseline_live_authority_20260829/transition_preflight.json",
+    "preflight_sha256": "a32589b6d0de27d7abbe4613bbf96690d14f5a74e9694b66c994bcc18d65bf74",
+    "prepared_path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/v1105_matched_xp_post_baseline_live_authority_20260829/prepared_binding.json",
+    "prepared_sha256": "e449d240fabb9e2583bcd654994f2aba758c981a25972ac326664ce323b347f3"
+  },
+  "baseline_replayed": false,
+  "champion_replayed": true,
+  "comparison_contract": {
+    "baseline_contract": {
+      "path": "config/formal/frozen_mysql_matched_xp_baseline_replay_20260829_v2/baseline_replay_contract.json",
+      "sha256": "4ac96d30d815e5e694259bf027c3143282e1183192eb9ccc15ebcc79ea2c3245"
+    },
+    "baseline_results": {
+      "matched_baseline_cpu": {
+        "path": "history/mysql_four_scene_20260809/v1103_matched_xp_baseline_cpu_20260829/baseline_replay_result.json",
+        "sha256": "adf09e8ad3393bce732c29f663287cfded1df501f239e43a12e0ab0ddf25038e"
+      },
+      "matched_baseline_io": {
+        "path": "history/mysql_four_scene_20260809/v1104_matched_xp_baseline_io_20260829/baseline_replay_result.json",
+        "sha256": "e3fe036afba90ffb5b22761a6888887d82388d74516304715dc8b79ce5430b0f"
+      }
+    },
+    "baseline_then_champion_order_required": true,
+    "cross_worker_averaging_prohibited": true,
+    "pairing": "same_worker_same_device_same_corrected_sampler",
+    "xp_cpu_worker_substitution": {
+      "from": "xp_cpu_w1",
+      "same_worker_used_for_fresh_baseline_and_fresh_champion": true,
+      "to": "xp_cpu_w2"
+    },
+    "zero_from_unobserved_sibling_device_prohibited": true
+  },
+  "contamination_audit": {
+    "a_cpu": {
+      "algorithm": "A",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.812657418656,
+        "io_block_read_cost": 9.82171889188,
+        "key_compare_cost": 0.0812657418656,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.1,
+        "row_evaluate_cost": 0.399542055895
+      },
+      "recorded_io": 0.00013498571316740207,
+      "scene": "hybench_xp_cpu",
+      "source": "history/mysql_four_scene_20260809/v843_to_a_cpu_round5_control2_resume_20260827_xp_cpu/algorithm_a_state.json"
+    },
+    "a_io": {
+      "algorithm": "A",
+      "params": {
+        "disk_temptable_create_cost": 176.336613355,
+        "disk_temptable_row_cost": 1.44513195501,
+        "io_block_read_cost": 0.194564006159,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.0321967844425,
+        "row_evaluate_cost": 0.1
+      },
+      "recorded_io": 0.3045419394686655,
+      "scene": "hybench_xp_io",
+      "source": "history/mysql_four_scene_20260809/v1060_to_a_io_round6_v2_resume_20260828_xp_io/algorithm_a_state.json"
+    },
+    "a_job": {
+      "algorithm": "A",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.5,
+        "io_block_read_cost": 0.615265410149,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.486410015397,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.101815172172,
+        "row_evaluate_cost": 0.0250286543117
+      },
+      "recorded_io": 0.025761105846997128,
+      "scene": "job_memory",
+      "source": "history/mysql_four_scene_20260809/v153_to_a_job4_round11_20260825_attempt001_job/algorithm_a_state.json"
+    },
+    "a_tpch": {
+      "algorithm": "A",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.705316537507,
+        "io_block_read_cost": 1.59993213908,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.1878955831,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.1,
+        "row_evaluate_cost": 0.120518769121
+      },
+      "recorded_io": 0.6267921889757179,
+      "scene": "tpch_sf4_memory",
+      "source": "history/mysql_four_scene_20260809/v100_to_a_tpch_external_diagnostic_resume_20260823_attempt001_tpch/algorithm_a_state.json"
+    },
+    "b_cpu": {
+      "algorithm": "B",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.5,
+        "io_block_read_cost": 6.581138830084191,
+        "key_compare_cost": 0.020622090756643,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.1,
+        "row_evaluate_cost": 0.733436787689828
+      },
+      "recorded_io": 0.0,
+      "scene": "hybench_xp_cpu",
+      "source": "history/mysql_four_scene_20260809/v551_to_b_cpu_mixed_eight_worker_v3_20260827_xp_cpu/run_state.json"
+    },
+    "b_io": {
+      "algorithm": "B",
+      "params": {
+        "disk_temptable_create_cost": 30.285714285714285,
+        "disk_temptable_row_cost": 2.525,
+        "io_block_read_cost": 0.1,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 1.0,
+        "row_evaluate_cost": 0.1
+      },
+      "recorded_io": 0.0,
+      "scene": "hybench_xp_io",
+      "source": "history/mysql_four_scene_20260809/v809_to_b_io_outer15_slow_docker_resume_20260827_xp_io/run_state.json"
+    },
+    "b_job": {
+      "algorithm": "B",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.5,
+        "io_block_read_cost": 0.24598352268205,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.126201642916687,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.40863213507598,
+        "row_evaluate_cost": 0.270385845073641
+      },
+      "recorded_io": 0.0,
+      "scene": "job_memory",
+      "source": "history/mysql_four_scene_20260809/v523_to_b_job_mixed_four_worker_boundary_resume_v73_20260827_job/run_state.json"
+    },
+    "b_tpch": {
+      "algorithm": "B",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 3.133367845898092,
+        "io_block_read_cost": 0.205352502645715,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.051338125661429,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.1,
+        "row_evaluate_cost": 0.020535250264571
+      },
+      "recorded_io": 0.42052156788223183,
+      "scene": "tpch_sf4_memory",
+      "source": "history/mysql_four_scene_20260809/v517_to_b_tpch_mixed_four_worker_boundary_resume_v73_20260827_tpch/run_state.json"
+    },
+    "c_cpu": {
+      "algorithm": "C",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.297831071764,
+        "io_block_read_cost": 0.750996226974,
+        "key_compare_cost": 0.0839385231499,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.1,
+        "row_evaluate_cost": 0.169931322561
+      },
+      "recorded_io": 0.0003115611027982505,
+      "scene": "hybench_xp_cpu",
+      "source": "history/mysql_four_scene_20260809/v1040_c_cpu_effective_terminal_projection_20260828/run_state.json"
+    },
+    "c_io": {
+      "algorithm": "C",
+      "params": {
+        "disk_temptable_create_cost": 40.6588410899,
+        "disk_temptable_row_cost": 1.01858618625,
+        "io_block_read_cost": 2.29664436515,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.0495988878854,
+        "row_evaluate_cost": 0.1
+      },
+      "recorded_io": 0.0,
+      "scene": "hybench_xp_io",
+      "source": "history/mysql_four_scene_20260809/v1042_c_io_effective_terminal_projection_20260828/run_state.json"
+    },
+    "c_job": {
+      "algorithm": "C",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.5,
+        "io_block_read_cost": 0.572136954652,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.47636517949,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.19981357954,
+        "row_evaluate_cost": 0.0523299114682
+      },
+      "recorded_io": 0.0,
+      "scene": "job_memory",
+      "source": "history/mysql_four_scene_20260809/v965_to_c_job_pg_coverage_mixed_resume_20260828_job/run_state.json"
+    },
+    "c_tpch": {
+      "algorithm": "C",
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.286480459331,
+        "io_block_read_cost": 0.573786069309,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.364493685234,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.1,
+        "row_evaluate_cost": 0.0687859912309
+      },
+      "recorded_io": 0.0,
+      "scene": "tpch_sf4_memory",
+      "source": "history/mysql_four_scene_20260809/v966_to_c_tpch_pg_coverage_mixed_resume_20260828_tpch/run_state.json"
+    }
+  },
+  "created_at": "2026-08-29T23:58:42.762956+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "historical_artifacts_mutated": false,
+  "omitted_nonzero_point_count": 6,
+  "per_scene_progress_independent": true,
+  "points": {
+    "b_cpu": {
+      "algorithm": "B",
+      "contaminated_recorded_io": 0.0,
+      "params": {
+        "disk_temptable_create_cost": 20.0,
+        "disk_temptable_row_cost": 0.5,
+        "io_block_read_cost": 6.581138830084191,
+        "key_compare_cost": 0.020622090756643,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.1,
+        "row_evaluate_cost": 0.733436787689828
+      },
+      "scene": "hybench_xp_cpu"
+    },
+    "b_io": {
+      "algorithm": "B",
+      "contaminated_recorded_io": 0.0,
+      "params": {
+        "disk_temptable_create_cost": 30.285714285714285,
+        "disk_temptable_row_cost": 2.525,
+        "io_block_read_cost": 0.1,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 1.0,
+        "row_evaluate_cost": 0.1
+      },
+      "scene": "hybench_xp_io"
+    },
+    "c_io": {
+      "algorithm": "C",
+      "contaminated_recorded_io": 0.0,
+      "params": {
+        "disk_temptable_create_cost": 40.6588410899,
+        "disk_temptable_row_cost": 1.01858618625,
+        "io_block_read_cost": 2.29664436515,
+        "key_compare_cost": 0.05,
+        "memory_block_read_cost": 0.25,
+        "memory_temptable_create_cost": 1.0,
+        "memory_temptable_row_cost": 0.0495988878854,
+        "row_evaluate_cost": 0.1
+      },
+      "scene": "hybench_xp_io"
+    }
+  },
+  "predecessor_contract": {
+    "path": "config/formal/frozen_mysql_contaminated_champion_replay_20260829_v1/champion_replay_contract.json",
+    "sha256": "9f2f661756bbbc75c3dab86b2bbef6e087078447f4c8b2ebcae7606bcfc7c81f"
+  },
+  "purpose": "replay_only_final_champions_with_exactly_zero_recorded_io",
+  "resource_freeze_by_scene": {
+    "hybench_xp_cpu": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_four_scene_cpu_a_slots_four_worker_20260828_v3/four_scene_effective_resource_successor.json",
+      "sha256": "2c79da4c617c90de447fda98772a5384aaf437cebdf0987659553145b9df385e"
+    },
+    "hybench_xp_io": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_xp_eight_worker_20260827_v1/xp_effective_resource_successor.json",
+      "sha256": "327bf4b69ba540bc4787d55f31b9acd6bbd727937771f2bf67d99f0aee9cb044"
+    }
+  },
+  "schema_version": "mysql_matched_xp_champion_replay_contract_v1",
+  "selected_point_count": 6,
+  "source_bindings": {
+    "authority_implementation": {
+      "path": "scripts/seal_mysql_matched_xp_replay_authority_v1.py",
+      "sha256": "f868f5303feaae0b8635f954051d8975289d4006f5de3d6a19a3d9908ca3b0c9"
+    },
+    "authority_sealer": {
+      "path": "scripts/seal_mysql_matched_xp_champion_authority_v1.py",
+      "sha256": "1f639633b328ce4893340526fb31d88ae41f10a7b3546084fa79bcdef9e375b2"
+    },
+    "builder": {
+      "path": "scripts/build_mysql_matched_xp_champion_contract_v1.py",
+      "sha256": "4061e3ce7853ab3307ed99659ed7dbeaad7e4c301da6cf9b6083bcb82219c588"
+    },
+    "c49_adapter": {
+      "path": "config/formal/frozen_mysql_c49_contaminated_champion_adapter_20260829_v4/algorithm_c_measurement_adapter_contract.json",
+      "sha256": "997acd807f329cfa349c06c117b69d8d339f5aa5add530a39b7fae531a5282fb"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260829_v76/coordination_contract.json",
+      "sha256": "c0caa43e3d92e9b2a42e84603e89f5048b6017b3a56e59e4bd8738a15a315e89"
+    },
+    "dynamic_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v24.py",
+      "sha256": "de29e9af772558749d157711b24db8790383154b0d5195f0f4948cf8b7c363e7"
+    },
+    "parallel_xp_reset": {
+      "path": "scripts/mysql_async_xp_post_reset_settle_v2.py",
+      "sha256": "8f5624a8947d8e942e55d1e41659d054d60f3be6c7b03d0a212e321697b13bef"
+    },
+    "runner": {
+      "path": "scripts/run_mysql_matched_champion_replay_v1.py",
+      "sha256": "9894b9d593c2386eddecd37d91093defd9c20d2b382d6ff300f48993bf322326"
+    },
+    "single_scene_measurement": {
+      "path": "scripts/mysql_single_scene_measurement_v2.py",
+      "sha256": "fcfbaac69e4ecb97880a7c2760ac2f6f63e5a7f5c6b8ef3d7a2c6956a3645e79"
+    }
+  },
+  "source_result_evidence": {
+    "b_cpu": {
+      "path": "history/mysql_four_scene_20260809/v551_to_b_cpu_mixed_eight_worker_v3_20260827_xp_cpu/run_state.json",
+      "sha256": "0867d37e27cc0072ee8f966d8aca8f12fe73792df18ecee0b990a42ca2ad9340"
+    },
+    "b_io": {
+      "path": "history/mysql_four_scene_20260809/v809_to_b_io_outer15_slow_docker_resume_20260827_xp_io/run_state.json",
+      "sha256": "4dc6edfc021c85f33d33d7edf69197e814265ce3a10b3b20d9361cc79d8c8f1d"
+    },
+    "c_io": {
+      "path": "history/mysql_four_scene_20260809/v1042_c_io_effective_terminal_projection_20260828/run_state.json",
+      "sha256": "c206823281b9b076aed3dc7c90d102c984a0b337e50901c15f494fe3941fbb93"
+    },
+    "matched_baseline_cpu": {
+      "path": "history/mysql_four_scene_20260809/v1103_matched_xp_baseline_cpu_20260829/baseline_replay_result.json",
+      "sha256": "adf09e8ad3393bce732c29f663287cfded1df501f239e43a12e0ab0ddf25038e"
+    },
+    "matched_baseline_io": {
+      "path": "history/mysql_four_scene_20260809/v1104_matched_xp_baseline_io_20260829/baseline_replay_result.json",
+      "sha256": "e3fe036afba90ffb5b22761a6888887d82388d74516304715dc8b79ce5430b0f"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

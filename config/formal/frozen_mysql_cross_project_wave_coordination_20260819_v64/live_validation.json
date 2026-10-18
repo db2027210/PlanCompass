@@ -1,0 +1,25 @@
+{
+  "schema_version": "mysql_co_resident_pg_algorithm_a_live_validation_v1",
+  "status": "PASS_ISOLATED_CO_RESIDENT_PG",
+  "created_at": "2026-08-19T15:48:28+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "coordination_contract_path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260819_v64/coordination_contract.json",
+  "coordination_contract_sha256": "93ef637bc55f507476d0dcf9a2261c6716c6fae385c1a3c156e4816c1affadbf",
+  "live_external_workload_count": 8,
+  "observed_external_client_cpu_sets": [
+    "176-179",
+    "180-183"
+  ],
+  "mysql_target_cpu_overlap": [],
+  "container_readback_passed": true,
+  "container_readback_errors": [],
+  "isolation_errors": [],
+  "host_mem_available_bytes": 932783550464,
+  "host_swap_total_bytes": 0,
+  "postgresql_storage_root": "/disk1",
+  "mysql_storage_root": "/disk2",
+  "storage_device_overlap": false,
+  "external_mutation": false,
+  "recalibration_performed": false
+}

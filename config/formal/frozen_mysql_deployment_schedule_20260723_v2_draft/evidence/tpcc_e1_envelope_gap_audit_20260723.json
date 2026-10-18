@@ -1,0 +1,88 @@
+{
+  "schema_version": "mysql_tpcc_e1_envelope_gap_canonical_audit_v1",
+  "status": "INSUFFICIENT_EFFECTIVE_READBACK_NOT_READY",
+  "scenario": "tpcc_cpu",
+  "host": "192.0.2.7",
+  "profile": "tpcc_cpu_r0_preregistered",
+  "expected_normalized_envelope": {
+    "cpu_quota_cores": 4,
+    "memory_bytes": 8589934592,
+    "memory_swap_bytes": 8589934592,
+    "io_read_bps": 1205862400,
+    "io_write_bps": 1205862400,
+    "pids_max": 512,
+    "cpu_isolation_degree": 4,
+    "numa_isolation_degree": 1
+  },
+  "database_container": {
+    "container_id": "9c43535cfdef7a00e9d97f3de03d8686b9258829c92a6f3fa0dbd28c323b7160",
+    "role": "mysql_database_template_builder",
+    "running_inspect_present": true,
+    "requested": {
+      "cpu_quota_cores": 4,
+      "memory_bytes": 8589934592,
+      "memory_swap_bytes": 8589934592,
+      "pids_max": 512,
+      "cpuset_cpus": "21-24,57-60",
+      "cpuset_mems": "1"
+    },
+    "effective": {
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "io_device": "259:2"
+    }
+  },
+  "loader_container": {
+    "container_id": "bb3f181544a4ef99a1c07817e65a7d8c50399314d28677a8bebc4aff755db438",
+    "role": "benchbase_loader_not_database_envelope",
+    "requested_cpu_quota_cores": 4,
+    "requested_memory_bytes": 4294967296,
+    "requested_memory_swap_bytes": 4294967296,
+    "requested_pids_max": 512,
+    "requested_cpuset_cpus": "25-28,61-64",
+    "requested_cpuset_mems": "1",
+    "must_not_be_used_as_database_readback": true
+  },
+  "qualified_effective_fields": ["io_read_bps", "io_write_bps"],
+  "missing_effective_fields": [
+    "cpu_quota_cores",
+    "memory_bytes",
+    "memory_swap_bytes",
+    "pids_max",
+    "cpu_isolation_degree",
+    "numa_isolation_degree"
+  ],
+  "static_isolation_observation": {
+    "database_vs_postgresql_requested_cpu_sets_disjoint": true,
+    "database_vs_postgresql_requested_numa_nodes_disjoint": true,
+    "database_vs_postgresql_data_devices_disjoint": true,
+    "database_data_device": "/dev/nvme3n1",
+    "postgresql_data_device_prefix": "/mnt/nvme2n1/",
+    "loader_vs_database_requested_cpu_sets_disjoint": true,
+    "loader_vs_database_numa_nodes_disjoint": false,
+    "formal_static_isolation_gate_passed": false
+  },
+  "source_evidence": {
+    "bundle_checksums_sha256": "c7b9183481b4228d52bbe11a805c127d2a7eb3048b908b43742f8e0a41c2adb7",
+    "db_inspect_sha256": "8ad7a68e03cca65b37c4ef5628de1a53f561fe83c2550cd2a2de88aa2ddeeece",
+    "loader_inspect_sha256": "330704f03963cf5547f5bfbf116d1f0088e58c6e7ccbe5fff46ecd429920d012",
+    "io_readback_sha256": "647cc582da529e8f79546c1e4ba7203b22c539db0d8a193c12190fcb8f73665b",
+    "io_writeback_sha256": "647cc582da529e8f79546c1e4ba7203b22c539db0d8a193c12190fcb8f73665b",
+    "pg_before_sha256": "3d16ebcc730a921174625a67d73be082246430a7e6956b15af17e368a1347135",
+    "pg_after_sha256": "3d16ebcc730a921174625a67d73be082246430a7e6956b15af17e368a1347135"
+  },
+  "decision": {
+    "mysql_normalized_envelope_generated": false,
+    "reason": "Six of eight normalized fields lack live effective cgroup readback; running Docker inspect records requested configuration only.",
+    "formal_static_isolation_gate_passed": false,
+    "cross_engine_envelope_equality": false,
+    "ready": false
+  },
+  "formal_scope": {
+    "r0": false,
+    "sgd": false,
+    "accepted_iteration": false,
+    "readiness_changed": false,
+    "launch_authorized": false
+  }
+}

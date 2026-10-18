@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-08-26T08:19:44.417232+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "dynamic_gate_release": "v63",
+  "external_process_control_or_stop_performed": false,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "lease_mode": "none",
+  "maximum_concurrent_xp_mysql_workers": 8,
+  "maximum_idle_load1": 16.0,
+  "maximum_quiet_wait_seconds": 180.0,
+  "numa_exclusive_scheduler_lock": false,
+  "parallel_expansion_maximum_workers_per_scene": 4,
+  "per_wave_quiet_seconds": 15.0,
+  "schema_version": "mysql_algorithm_b_top4_no_lease_coordination_v1",
+  "shared_nvme_mutual_exclusion": false,
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "dynamic_noninterference_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v8.py",
+      "sha256": "1ab97e617f24373bf3c79af6caac5ed4e4533a6cfe246e49d6d71abd9c20c797"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "whole_round_resource_lease": false
+}

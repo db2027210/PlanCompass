@@ -1,0 +1,56 @@
+{
+  "schema_version": "mysql_tpcc_v16_same_live_gate_commands_v1",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "attempt_id": "tpcc-v16-7e2e13aa-20260801t121500p08",
+  "bundle_id": "7e2e13aa76c0d2e2990ff098dcdcee9b09fdbb98a60abbf4fc08d52ea4fd6c77",
+  "steps": [
+    {
+      "stage": "read_only_same_live_snapshot",
+      "argv": [
+        "[PYTHON]", "[CONTROL]/mysql_tpcc_v16_same_live_gate_control_v1.py", "snapshot",
+        "--bundle", "[V16_BUNDLE]",
+        "--adopted-service", "[ATTEMPT]/adopted_service_authority.json",
+        "--phase-ledger", "[ATTEMPT]/phase_ledger_v2.json",
+        "--output-root", "[ATTEMPT]/measurement/same_live_gate_v1"
+      ]
+    },
+    {
+      "stage": "evaluate_fresh_four_flow_capture_gate",
+      "argv": [
+        "[PYTHON]", "[CONTROL]/mysql_tpcc_v16_same_live_gate_control_v1.py", "evaluate",
+        "--bundle", "[V16_BUNDLE]",
+        "--adopted-service", "[ATTEMPT]/adopted_service_authority.json",
+        "--phase-ledger", "[ATTEMPT]/phase_ledger_v2.json",
+        "--same-live-snapshot", "[SNAPSHOT]/same_live_snapshot.json",
+        "--binding-manifest", "[V16_BUNDLE]/authority/collector_payload_1878a2ca8b68e1b3917021499cda396e23f60a23baacd299496c78346e29c86c/tpcc_offline_binding_manifest.json",
+        "--dynamic-gate", "[FRESH_GATE]",
+        "--dynamic-gate-raw", "[FRESH_GATE].raw_evidence.json",
+        "--a-solo", "[A_SOLO]", "--a-paired", "[A_PAIRED]",
+        "--b-solo", "[B_SOLO]", "--b-paired", "[B_PAIRED]",
+        "--output-root", "[ATTEMPT]/measurement/same_live_gate_v1"
+      ]
+    },
+    {
+      "stage": "evaluate_postcapture_registry_gate",
+      "argv": [
+        "[REPEAT_READ_ONLY_SNAPSHOT_THEN_PREVIOUS_EVALUATE_ARGV_WITH_POSTCAPTURE_SNAPSHOT]",
+        "--collector-validation", "[REAL_TYPED_COLLECTOR_OUTPUT]/tpcc_agent_validation.json"
+      ]
+    }
+  ],
+  "required_order": [
+    "qualification_PASS_same_live",
+    "fresh_four_flow_PASS_same_live",
+    "typed_capture_capture_only",
+    "fresh_postcapture_same_live_snapshot",
+    "collector_34_of_34_and_L2_L3_PASS",
+    "registry_seal",
+    "fresh_R0"
+  ],
+  "missing_evidence_behavior": "FAIL_CLOSED_ZERO_CREDIT",
+  "formal_launch_authorized": false,
+  "accepted_round_authorized": false,
+  "accepted_rounds_credit": 0
+}

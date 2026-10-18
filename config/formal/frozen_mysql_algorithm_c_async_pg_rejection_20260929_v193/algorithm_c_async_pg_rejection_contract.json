@@ -1,0 +1,79 @@
+{
+  "cross_engine_comparison_prohibited": true,
+  "discarded_predecessor_formal_credit": 0,
+  "discarded_predecessor_runs": [
+    "v187",
+    "v189",
+    "v191",
+    "v192"
+  ],
+  "formal_scope": "mysql_only",
+  "fresh_search_required": true,
+  "legacy_runtime_overrides_prevented": [
+    "v13",
+    "v30"
+  ],
+  "parent_algorithm_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_hwloc_cpu_only_20260929_v190/algorithm_c_hwloc_contract.json",
+    "sha256": "43c45b0b637eb0984d8ae08916bdb7f234fa33529d22a4cb88e18abac765a74a"
+  },
+  "pg_interval_region_runtime_retained": true,
+  "postgresql_process_control_or_stop_performed": false,
+  "release_version": "v193-async-pg-rejection-binding",
+  "resource_envelope_changed": false,
+  "runtime_rejection_policy": {
+    "candidate_generation_per_unresolved_outer": [
+      "predicted_point_expansion",
+      "plan_tree_expansion"
+    ],
+    "consecutive_rejections_before_incumbent_centered_shrink": 2,
+    "equal_qps_accepted": false,
+    "forced_shrink_boundary_rule": "keep_transformed_half_interval_containing_incumbent",
+    "forced_shrink_changes_incumbent": false,
+    "forced_shrink_grants_accepted_round_credit": false,
+    "forced_shrink_log_width_ratio": 0.5,
+    "incumbent_replacement": "technical_validity_and_db_qps_strictly_higher",
+    "lower_qps_accepted": false,
+    "mysql_float_boundary_tolerance": {
+      "absolute": 1e-08,
+      "only_near_boundary_values_are_clamped": true,
+      "relative": 6e-06
+    },
+    "policy_id": "mysql_c_pg_half_interval_two_reject_shrink_v3",
+    "stability_confirmation_required": false,
+    "terminal_normalized_width": 0.01
+  },
+  "schema_version": "mysql_algorithm_c_async_pg_rejection_release_v1",
+  "source_bindings": {
+    "client_entry_v13": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v13.py",
+      "sha256": "ff4b5df95bdb8e9c97ffbd1c64ce8c3e4475fa6d5f3b1a39cec035b629d466d3"
+    },
+    "client_entry_v30": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v30.py",
+      "sha256": "c3cb1929776d02106668b30fbf41a4e847c6ff420735f348dc4babb1f6a5f32a"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v99.py",
+      "sha256": "93b41988738e5ce1f9de490dc7cb8ae29d3cfc877ce03061963dd06c3893adad"
+    },
+    "parent_algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_hwloc_cpu_only_20260929_v190/algorithm_c_hwloc_contract.json",
+      "sha256": "43c45b0b637eb0984d8ae08916bdb7f234fa33529d22a4cb88e18abac765a74a"
+    },
+    "parent_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v98.py",
+      "sha256": "7032911c7465844310699862876be430a3f5b9cd75ae7c5b889e304af8185735"
+    },
+    "pg_rejection_policy": {
+      "path": "scripts/mysql_outer_rejection_cycle_v3.py",
+      "sha256": "27a5d3ff3acbecd390c90038d0cfd06b2ffbbf90707758075ac7487841e71b2c"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_async_pg_rejection_v193.py",
+      "sha256": "e7b2bcb1b05dc32d31003918f39068bb7d4f1f9a562d589c16852f1865a8a8c3"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "workload_or_candidate_policy_changed": false
+}

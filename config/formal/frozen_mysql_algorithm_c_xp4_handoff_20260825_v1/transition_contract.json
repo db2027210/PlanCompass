@@ -1,0 +1,97 @@
+{
+  "accepted_history_preserved": true,
+  "candidate_batches_after": [
+    [
+      1,
+      2,
+      3,
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "candidate_batches_before": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "completed_candidate_replay_due_to_transition": 0,
+  "created_at": "2026-08-26T00:26:07.873863+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "lease_mode": "none",
+  "memory_scenes_must_complete_before_release": true,
+  "mixed_worker_cohort_round_prohibited": true,
+  "native_xp_workload_unchanged": true,
+  "per_scene_transition_independent": true,
+  "recalibration_performed": false,
+  "round_boundary_required_per_xp_scene": true,
+  "schema_version": "mysql_algorithm_c_xp4_handoff_contract_v1",
+  "semantic_top_k": 5,
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "authority": {
+      "path": "scripts/run_mysql_xp_four_worker_authority_v1.py",
+      "sha256": "4e2a0aad90dae2866ec137c86f14fe12381e59df163bc6d1758fb9449874f5c7"
+    },
+    "boundary_builder": {
+      "path": "scripts/build_mysql_algorithm_c_independent_round_boundary_checkpoint_v1.py",
+      "sha256": "7c8fa174f7e7741c0398e09df8b9214dccdff8da9102c758b780394c2472b9e0"
+    },
+    "checkpoint_rebinder": {
+      "path": "scripts/build_mysql_algorithm_c_xp4_transition_checkpoint_v1.py",
+      "sha256": "d77493fd7fef0e9e32cfba742f4b8bdbb249bdb4ee2929eda30babc076896732"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_async_scene_xp4_v1.py",
+      "sha256": "77cc233e251c260541887b9771bbfb373b9d2270fe5b82048b5feddbc3168182"
+    },
+    "coordination_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_xp4_handoff_20260825_v1/coordination_contract.json",
+      "sha256": "b64b91df8b01f6bcaa0b324995854f7c271ad02a5cccd2e9fd2119a30530081f"
+    },
+    "dynamic_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v4.py",
+      "sha256": "20001fdf705d0b982c27299e8fe697592885dcb040512e6950378561c6534f3a"
+    },
+    "optimization_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_xp4_handoff_20260825_v1/optimization_contract.json",
+      "sha256": "8787aeb72532b1d0a6f758aaf906928788fdd7313086f9c5ee12dce2cfe54da2"
+    },
+    "provisioner": {
+      "path": "scripts/provision_mysql_algorithm_c_job_to_xp_workers_v1.py",
+      "sha256": "f21536141d92442bfb2fd2f441b8a6d9b3afe5988b677a43b68558dd5851a6ef"
+    },
+    "reset": {
+      "path": "scripts/reset_mysql_xp_data_planes_four_worker_v1.py",
+      "sha256": "97f9d929770f193e84ccdfd3c1a23f36e7af0bbd62be90e8746a9f3a10f7eef2"
+    },
+    "resource_successor": {
+      "path": "config/formal/frozen_mysql_algorithm_c_xp4_handoff_20260825_v1/xp_four_worker_resource_successor.json",
+      "sha256": "7b5f00de516c4eb2913a50de52264a41735fb7fd3797b2db951f67deeb2f2095"
+    },
+    "runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_xp4_runtime_v1.py",
+      "sha256": "ad8abd261c42f093236848f7c8960d49560b4dfbf454d5d0f1aa42f9852c6695"
+    },
+    "scene_handoff_executor": {
+      "path": "scripts/execute_mysql_algorithm_c_xp4_scene_handoff_v1.py",
+      "sha256": "4328f8334bdd4584a69b4fd0deec914f5b74ff5b9cebbb5e023d1746a50aa325"
+    },
+    "slot_mapping": {
+      "path": "scripts/mysql_algorithm_c_job_to_xp_slots_v1.py",
+      "sha256": "fbf1059a99469a3856eca2138c57782448d74844226c0d542ef2cd83a0194ea2"
+    }
+  },
+  "status": "FROZEN"
+}

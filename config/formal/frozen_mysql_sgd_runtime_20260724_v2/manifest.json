@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "runtime_id": "frozen_mysql_sgd_runtime_20260724_v2",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "activation": {
+    "activated_utc": "2026-07-24T12:32:43Z",
+    "policy": "applies only to campaigns started after all five outer controllers reload this runtime",
+    "pre_v2_results": "may seed accepted checkpoints but must retain their original runtime provenance",
+    "first_campaigns": {
+      "hybench_ap_memory": "direct_20260724T203051",
+      "hybench_xp_io": "direct_20260724T203107",
+      "job_memory": "direct_20260724T203107",
+      "tpcc_cpu": "direct_20260724T203117",
+      "tpch_memory": "direct_20260724T203102"
+    }
+  },
+  "method_contract": {
+    "target_accepted_shrinks": 10,
+    "maximum_valid_candidates": 100,
+    "maximum_technical_retries": 3,
+    "measurement_seconds": 600,
+    "search_probe_order": [
+      {"direction_multiplier": 1.0, "log_space_step": 0.08},
+      {"direction_multiplier": -1.0, "log_space_step": 0.08},
+      {"direction_multiplier": 1.0, "log_space_step": 0.04},
+      {"direction_multiplier": -1.0, "log_space_step": 0.04}
+    ],
+    "acceptance_rule": "correctness_AND_qps_noninferiority_AND_target_noise_guard_AND_resource_utility_up",
+    "qps_relative_noninferiority": 0.05,
+    "target_utilization_absolute_tolerance": 0.005,
+    "utility_improvement_epsilon": 0.0001,
+    "failure_classification": {
+      "formal_correctness_gate_failed": "valid candidate rejection; consumes one valid-candidate and rejection count; no retry",
+      "infrastructure_or_missing_result": "technical failure; bounded retry; does not consume valid-candidate or rejection count"
+    },
+    "resume_semantics": "restore the latest accepted costs and metrics together with the cumulative inherited accepted-shrinkage count"
+  },
+  "registered_sources": [
+    {"path": "shell/run_mysql_sgd_direct_campaign.py", "sha256": "9e79ece5963b6d0fc6a22c32e54ee0383593fed1cd2526903d18fa771953e248"},
+    {"path": "shell/manual_mysql_sgd_r0_campaign.py", "sha256": "25c1f8ca900aab7f4e434d635deef06c94a5742932dea996f6a214cff2d88c61"},
+    {"path": "shell/manual_mysql_sgd_lane_controller.py", "sha256": "4d389d9abca8794a434f82350daf41f8e510482598fb4e47295bac7a2fb4035f"},
+    {"path": "shell/report_mysql_sgd_progress_every_5min.py", "sha256": "83c59a656ce08b9cfdc4787ac1c5cc083b8ef2c682feaaafb9cafa6a0498ac54"},
+    {"path": "shell/show_mysql_sgd_progress.py", "sha256": "b29bb385fdfc50a181c3868160bf8604608b3a94550b488a27273bd6fdcff939"},
+    {"path": "formal_mysql_sgd_orchestration.py", "sha256": "574a5f75b3082f9cb23ac68e15d0abe5ffaf135a91d22f063bd04b148362e14f"},
+    {"path": "formal_stability.py", "sha256": "42e7378e1cd9374ba0f6ef04e63fcf38e111e6daadf38022c04afe11a197fd87"},
+    {"path": "formal_job_continuous_session.py", "sha256": "892926bc86e567df9d2d4c5354f61739776f89046f5d4006171c75a6cf4c16a8"},
+    {"path": "formal_benchbase_continuous_session.py", "sha256": "d0930d81f8e7f82321600f3fdeeecaa213348ff964b6ddb525942639137804ec"},
+    {"path": "formal_hybench_continuous_session.py", "sha256": "d1cbd74b8d096ec8ba03b85b63aa12182b2b846f991ad036d3a844a0906a2c02"},
+    {"path": "formal_mysql_database_qps.py", "sha256": "907b1b3aaad4e7cf1b0444447c92dabb59f305b0a9e751b3ffc08ea29af22c51"},
+    {"path": "resource_utility.py", "sha256": "16d7bbbab1cb15f28f9da750ea859c460302831987ce39e111815a2483c034bb"},
+    {"path": "formal_benchbase_src_20260723/src/main/java/com/oltpbenchmark/FormalControl.java", "sha256": "6521d165d658f8ec1735e3e75e218f75e05076f21615b049651387ea49774972"}
+  ],
+  "registered_runtime_artifacts": [
+    {"path": "formal_benchbase_src_20260723/target/benchbase-2023-SNAPSHOT-formal-binding-trace-candidate.jar", "sha256": "2c88ef85ec1dc7a9a0f93c92443c7ce3f1e491e095a19e7b26ce1ed28eb66604"},
+    {"path": "preflight/frozen_formal_config_20260722_v9/measurement_protocol.json", "sha256": "cad09aac39b10cfc0c2c0210539c4bcac7dd798346d6404c140e007411315097"}
+  ],
+  "registered_configs": [
+    {"path": "config/formal/mysql_sgd_production/baseline_costs.json", "sha256": "628814aa737580a5a652271d6dee571d1a69cec26e606ea220b9287b8b4e3413"},
+    {"path": "config/formal/mysql_sgd_production/hybench_ap_memory.json", "sha256": "30bc9b3d2733534a2faa464c1693d5f4ac9e969e21148b7693a939b634f91992"},
+    {"path": "config/formal/mysql_sgd_production/hybench_xp_io.json", "sha256": "6f86fc876a9c3e683c7248eca158b85572722abef94cd1422821f32fbe2e00c5"},
+    {"path": "config/formal/mysql_sgd_production/job_memory.json", "sha256": "f2433c011c8e03cfa1fcabf0c5c0808223eb819e4a320ab947cd8a805fd9eb96"},
+    {"path": "config/formal/mysql_sgd_production/tpcc_cpu.json", "sha256": "973a045f67becaae04ae9199a6035ed59ac5836123e9c8b1fea127d094d36090"},
+    {"path": "config/formal/mysql_sgd_production/tpch_memory.json", "sha256": "ec034303532fee5c8bd7079ec0fdb8ff771466563a974c66235b379efa8abbec"},
+    {"path": "config/formal/mysql_sgd_production/profiles/hybench_ap_memory.json", "sha256": "958a75906c8f1c127a9b9c9ccf133b014041199edf71138269f941d149c5763d"},
+    {"path": "config/formal/mysql_sgd_production/profiles/hybench_xp_io.json", "sha256": "1ce2e4fe2a2fe5468c7599dda2c2f977f557635028151600f4754dcd089b4484"},
+    {"path": "config/formal/mysql_sgd_production/profiles/job_memory.json", "sha256": "ed5f2da966fb9006d5a562920674525eff80ee05dae2101272cad4f3683a2a2d"},
+    {"path": "config/formal/mysql_sgd_production/profiles/tpcc_cpu.json", "sha256": "a5a8d4bc3771a036eff68ff7b52416d31bb7ccb757b1d053d2724acd750878f8"},
+    {"path": "config/formal/mysql_sgd_production/profiles/tpch_memory.json", "sha256": "1a3592db71b0cab9bab6df31e4fcce99d2c05d753339fb767d84f446ee83e649"}
+  ],
+  "verification": [
+    {"path": "tests/test_run_mysql_sgd_direct_campaign.py", "sha256": "f5f357f3e1f5e20c248292d21c937ac378a00a9aded777e7566ff69bc100a078", "result": "4 passed; 9 passed with lane-controller contract tests"}
+  ]
+}

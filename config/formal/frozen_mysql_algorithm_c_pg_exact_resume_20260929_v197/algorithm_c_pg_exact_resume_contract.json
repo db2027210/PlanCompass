@@ -1,0 +1,49 @@
+{
+  "schema_version": "mysql_algorithm_c_pg_exact_resume_contract_v1",
+  "release_version": "v197-pg-exact-scene-boundary-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "fresh_search_lineage_required": true,
+  "fresh_search_reset_on_resume": false,
+  "completed_rounds_preserved": true,
+  "incomplete_outer_credit": 0,
+  "pg_interval_release": "v186",
+  "pg_rejection_release": "v195",
+  "workload_or_candidate_policy_changed": false,
+  "resource_envelope_changed": false,
+  "source_bindings": {
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v101.py",
+      "sha256": "41f9c48004e45d5ecb47e32225eac7be90b40173f98bf350a7edb9011f80d301"
+    },
+    "checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_scene_resume_checkpoint_v10.py",
+      "sha256": "8d8c0d14309c3193aa105c8c484f64668d3ba790cf5b9e1c50751f6cae51a7fe"
+    },
+    "quarantine_builder": {
+      "path": "scripts/build_mysql_algorithm_c_empty_quarantine_for_checkpoint_v2.py",
+      "sha256": "ab81a057c93123bb1dd98ef85dceea66e24311c4799f6da8dd53dc6f07f2fc29"
+    },
+    "fresh_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v100.py",
+      "sha256": "bf6dd1a58418cacdabd6f83b08e5208b15c22a3f5b417f1546f97f00c549990a"
+    },
+    "pg_rejection": {
+      "path": "scripts/mysql_outer_rejection_cycle_v3.py",
+      "sha256": "27a5d3ff3acbecd390c90038d0cfd06b2ffbbf90707758075ac7487841e71b2c"
+    },
+    "pg_interval": {
+      "path": "scripts/mysql_algorithm_c_interval_control_v2.py",
+      "sha256": "b2d206614c27a041305888d1054eef4ba95a07fef1bb81eeb03b3a63e77fef5d"
+    },
+    "plan_capture_timeout": {
+      "path": "scripts/mysql_algorithm_c_plan_capture_timeout_v1.py",
+      "sha256": "12f903e1172d2be7fac483aabf91b4ee272b6557fdc0265792fe95d304275e8c"
+    },
+    "runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v54.py",
+      "sha256": "c4822437f609824652977cb33f141aaeb60738c245683b1afb79611ff93700d5"
+    }
+  }
+}

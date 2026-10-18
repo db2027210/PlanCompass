@@ -1,0 +1,90 @@
+{
+  "accepted_target": 10,
+  "algorithm": "A",
+  "cached_attempted_ranks": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "cached_prefix_physically_replayed": false,
+  "cached_prefix_reclassified_with_v12": true,
+  "candidate_set_changed": false,
+  "cross_engine_comparison_prohibited": true,
+  "external_process_control_or_stop_prohibited": true,
+  "external_workload_wait_required": false,
+  "external_workloads_diagnostic_only": true,
+  "formal_scope": "mysql_only",
+  "interrupted_round_index": 3,
+  "new_physical_work_starts_at_rank": 13,
+  "outer_loop_semantics_changed": false,
+  "physical_replay_parallelism": 4,
+  "predecessor_state_path": "history/mysql_four_scene_20260809/v113_to_a_job4_no_recalibration_stagger_resume_20260824_attempt001_job/algorithm_a_state.json",
+  "predecessor_state_sha256": "2a62baff23ef4238d69abb70709e0373aa2e28f137509a5a139f6de485435d93",
+  "preserved_accepted_count": 2,
+  "resource_envelope_changed": false,
+  "scene": "job_memory",
+  "schema_version": "mysql_algorithm_a_job_partial_suite_timer_resume_v1",
+  "slot_expansion_recalibration_repeated": false,
+  "source_bindings": {
+    "algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_a_job_partial_per_suite_timer_resume_v1.py",
+      "sha256": "2684f0f26435f93a2d858a7e791d55cbcad4a6359c4c92a5a806bc779c9a46e0"
+    },
+    "external_diagnostic_gate": {
+      "path": "scripts/mysql_external_workload_diagnostic_gate_v1.py",
+      "sha256": "d7347b9ae3d982e59dc7e4d22144e6d8c71cc479c7e35515ba0fae377d98a9c1"
+    },
+    "freezer": {
+      "path": "scripts/freeze_mysql_algorithm_a_job_partial_suite_timer_resume_v1.py",
+      "sha256": "966aa00fe3a337a7309ae95f09ba1510421154599060b909d847e91c440fb0cd"
+    },
+    "measurement_v12": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v12.py",
+      "sha256": "6689e3a5979adf1f1aa2d84a49241f0d6ae3211fe1355f959e3849780bda7c4f"
+    },
+    "measurement_v12_contract": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260824_v12/cache_state_contract.json",
+      "sha256": "46b2488122a31ea18245a1763f6f5ac5f3e6bc7e987e78c028b2752fa8f28a81"
+    },
+    "original_boundary": {
+      "path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.predecessor_boundary_snapshot.json",
+      "sha256": "9ae2aee42cbc52e7e5fb590f670e76239a7d4f21f0fad7e94ccccf1d864f2a56"
+    },
+    "partial_round_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_partial_round_resume_20260822_v1/partial_round_resume_contract.json",
+      "sha256": "cfff6d72888123dbee10e520a9cbe135559b8b46f82f63f3cac37746717fc176"
+    },
+    "partial_round_controller": {
+      "path": "scripts/run_mysql_algorithm_a_partial_round_codefix_resume_v2.py",
+      "sha256": "3d8d361dab26fc4a2c85c963cf87d2bff9a93428220a87b9afc19efc2e177c1a"
+    },
+    "predecessor_state": {
+      "path": "history/mysql_four_scene_20260809/v113_to_a_job4_no_recalibration_stagger_resume_20260824_attempt001_job/algorithm_a_state.json",
+      "sha256": "2a62baff23ef4238d69abb70709e0373aa2e28f137509a5a139f6de485435d93"
+    },
+    "predecessor_wave3": {
+      "path": "history/mysql_four_scene_20260809/v113_to_a_job4_no_recalibration_stagger_resume_20260824_attempt001_job/round_003/wave_003/attempt_01/batch_result.json",
+      "sha256": "bbbb6127f6f02f166f3b52646c4be606f4769bd1adc448df86c2d7fc146629c4"
+    },
+    "transition_authority": {
+      "path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.transition_authority.json",
+      "sha256": "c11efc9746f3e0404750d3eb6f6ddd4301306260f73d68c9d5a4ed88ec770472"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "transition_authority_path": "history/mysql_four_scene_20260809/v99_to_a_external_diagnostic_resume_20260823_job_dynamic_slots_v1/job_memory.transition_authority.json",
+  "transition_authority_sha256": "c11efc9746f3e0404750d3eb6f6ddd4301306260f73d68c9d5a4ed88ec770472"
+}

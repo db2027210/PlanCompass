@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+  "immutable": true,
+  "engine": "mysql",
+  "derived_from": {
+    "freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+    "artifact_sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012"
+  },
+  "selection_chain": "parameter lower/upper -> EXPLAIN FORMAT=JSON -> current trained estimator input -> target bottleneck prediction",
+  "estimator": {
+    "path": "/home/anonymous/program/resource_adaptive_mysql/trained_model_estimator.py",
+    "sha256": "127bf2d53afb72edd035ccfd9b914de6601769c7aa46ffdd195eedf0b84868e9"
+  },
+  "bounds_rule": "lower=compiled_default/10; upper=compiled_default*10",
+  "all_parameter_definitions": {
+    "io_block_read_cost": {"lower": 0.1, "default": 1.0, "upper": 10.0, "transform": "log"},
+    "memory_block_read_cost": {"lower": 0.025, "default": 0.25, "upper": 2.5, "transform": "log"},
+    "row_evaluate_cost": {"lower": 0.01, "default": 0.1, "upper": 1.0, "transform": "log"},
+    "key_compare_cost": {"lower": 0.005, "default": 0.05, "upper": 0.5, "transform": "log"},
+    "disk_temptable_create_cost": {"lower": 2.0, "default": 20.0, "upper": 200.0, "transform": "log"},
+    "disk_temptable_row_cost": {"lower": 0.05, "default": 0.5, "upper": 5.0, "transform": "log"},
+    "memory_temptable_create_cost": {"lower": 0.1, "default": 1.0, "upper": 10.0, "transform": "log"},
+    "memory_temptable_row_cost": {"lower": 0.01, "default": 0.1, "upper": 1.0, "transform": "log"}
+  },
+  "benchmark_candidate_parameters": {
+    "hybench_ap": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "key_compare_cost",
+      "disk_temptable_create_cost",
+      "disk_temptable_row_cost",
+      "memory_temptable_create_cost",
+      "memory_temptable_row_cost"
+    ],
+    "job": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "memory_temptable_row_cost"
+    ],
+    "tpch": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "disk_temptable_row_cost"
+    ],
+    "tpcc": [
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "disk_temptable_row_cost",
+      "memory_temptable_row_cost"
+    ],
+    "hybench_xp": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "key_compare_cost",
+      "disk_temptable_create_cost",
+      "disk_temptable_row_cost",
+      "memory_temptable_row_cost"
+    ]
+  },
+  "candidate_count": {
+    "hybench_ap": 8,
+    "job": 4,
+    "tpch": 4,
+    "tpcc": 4,
+    "hybench_xp": 7
+  },
+  "application_rule": {
+    "only_listed_parameters_may_change": true,
+    "unlisted_cost_parameters": "must remain at compiled defaults with mysql.server_cost/mysql.engine_cost override_value=NULL",
+    "one_benchmark_may_not_borrow_parameters_from_another": true,
+    "command_line_or_environment_override": false,
+    "restore_exact_cost_table_snapshot_after_each_candidate": true,
+    "flush_optimizer_costs_after_apply_and_restore": true
+  }
+}

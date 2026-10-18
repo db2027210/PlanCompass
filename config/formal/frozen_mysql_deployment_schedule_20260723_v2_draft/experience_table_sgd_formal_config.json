@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "draft_id": "frozen_mysql_deployment_schedule_20260723_v2_draft",
+  "method": "experience_table_all_subset_sgd",
+  "formal_launch_authorized": false,
+  "inner_search": {
+    "algorithm": "experience_table_analytic_sgd_v1",
+    "enumeration": "all_nonempty_subsets",
+    "expected_subset_count_formula": "2^k-1",
+    "fixed_non_subset_parameters": "incumbent",
+    "estimation_parallelism": "bounded_worker_pool_with_independent_estimator_state",
+    "real_replay_parallelism_per_lane": 1,
+    "finite_difference_sgd_allowed": false
+  },
+  "optimistic_pruning": {
+    "framework": "resource_utility_joint_box_v2",
+    "resources": ["cpu", "memory", "io"],
+    "qps_prediction_error_allowed": false,
+    "upper_bound": "max_utility_over_full_joint_error_box",
+    "prune_condition": "score_upper <= accepted_best_utility",
+    "missing_error_or_scope_or_joint_coverage": "fail_open_to_real_replay"
+  },
+  "plan_clustering": {
+    "fingerprint": "mysql_strict_physical_plan_bundle_v1",
+    "cluster_id": "sha256_of_canonical_plan_bundle",
+    "missing_fingerprint": "independent_cluster",
+    "approximate_fingerprint_may_suppress": false,
+    "dynamic_sql_requires_representative_bindings_and_generic_custom_coverage": true
+  },
+  "real_replay": {
+    "stages": [5, 10, "scenario_k"],
+    "scenario_caps": {
+      "hybench_ap_memory": 20,
+      "job_memory": 16,
+      "hybench_xp_io": 10,
+      "tpch_memory": 16,
+      "tpcc_cpu": 20
+    },
+    "fewer_than_stage_representatives": "replay_all_available_then_stop"
+  },
+  "outer_loop": {
+    "acceptance": "db_qps_candidate > db_qps_incumbent AND target_utilization_candidate < target_utilization_incumbent",
+    "shrink_only_after_acceptance": true,
+    "accepted_shrink_target": 10,
+    "rejected_attempts_count_as_shrink": false
+  },
+  "measurement": {
+    "decision_seconds": [180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480, 510, 540, 570, 600],
+    "latest_window_count": 6,
+    "window_seconds": 30,
+    "stability_resources": ["cpu", "memory", "io"],
+    "qps_stability_required": false,
+    "unstable_first_run_valid_independent_repeat_count": 3,
+    "independent_repeat_aggregation": "arithmetic_mean",
+    "technical_failures_count_as_valid_repeat": false
+  },
+  "resource_gate": {
+    "target_utilization": [0.85, 0.95],
+    "non_target_utilization": [0.30, 0.50],
+    "throughput": "database_status_counter_db_qps",
+    "io_utilization": "(read_throughput+write_throughput)/total_io_capability"
+  },
+  "host02_job_xp_mutex": {
+    "required_scenarios": ["job_memory", "hybench_xp_io"],
+    "implementation": "posix_flock_exclusive_nonblocking",
+    "lock_path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/host02_control/job_xp_pressure.lock",
+    "journal_path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/host02_control/job_xp_lease_journal.jsonl",
+    "path_policy": "absolute_non_tmp_same_path_for_both_launches",
+    "pressure_scope": "before_R0_through_recovery_and_checksum",
+    "preflight_zero_pressure_required": true,
+    "postrun_zero_pressure_required": true,
+    "second_holder_policy": "reject_immediately",
+    "crash_policy": "kernel_flock_release_then_stale_owner_audit",
+    "handoff_journal": "append_only_sha256_chain_and_atomic_state_file"
+  },
+  "recovery": {
+    "persist_noncontiguous_replayed_candidate_ranks": true,
+    "verify_sealed_representative_order": true,
+    "rerun_r0_completed_subsets_or_replayed_ranks": false,
+    "checkpoint_and_point_journal_sha256": true,
+    "recovery_mismatch": "fail_closed"
+  }
+}

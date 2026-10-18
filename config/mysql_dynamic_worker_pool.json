@@ -1,0 +1,151 @@
+{
+  "label_key": "resource-adaptive-mysql.owner",
+  "label_value": "mysql-grid-20260718",
+  "worker_label_value": "mysql-grid-20260718-worker",
+  "image": "mysql:8.0",
+  "root_password": "CHANGE_ME",
+  "sources": {
+    "hybench": {
+      "container": "ra-mysql-grid-hybench-base",
+      "datadir": "/disk3/ra_mysql_isolated/hybench-base"
+    },
+    "job": {
+      "container": "ra-mysql-grid-job-base",
+      "datadir": "/disk3/ra_mysql_isolated/job-base"
+    },
+    "tpch": {
+      "container": "ra-mysql-grid-tpch-memory",
+      "datadir": "/disk3/ra_mysql_isolated/tpch-memory"
+    },
+    "tpcc": {
+      "container": "ra-mysql-grid-tpcc-cpu",
+      "datadir": "/disk3/ra_mysql_isolated/tpcc-cpu"
+    }
+  },
+  "workers": [
+    {
+      "worker_id": "hybench-1",
+      "family": "hybench",
+      "name": "ra-mysql-grid-hybench-w1",
+      "port": 13401,
+      "cpuset": "40-43,296-299",
+      "cpus": 8,
+      "memory": "8g",
+      "datadir": "/disk3/ra_mysql_workers/hybench-w1"
+    },
+    {
+      "worker_id": "hybench-2",
+      "family": "hybench",
+      "name": "ra-mysql-grid-hybench-w2",
+      "port": 13402,
+      "cpuset": "44-47,300-303",
+      "cpus": 8,
+      "memory": "8g",
+      "datadir": "/disk3/ra_mysql_workers/hybench-w2"
+    },
+    {
+      "worker_id": "hybench-3",
+      "family": "hybench",
+      "name": "ra-mysql-grid-hybench-w3",
+      "port": 13403,
+      "cpuset": "48-51,304-307",
+      "cpus": 8,
+      "memory": "7g",
+      "datadir": "/disk3/ra_mysql_workers/hybench-w3"
+    },
+    {
+      "worker_id": "hybench-4",
+      "family": "hybench",
+      "name": "ra-mysql-grid-hybench-w4",
+      "port": 13404,
+      "cpuset": "52-55,308-311",
+      "cpus": 8,
+      "memory": "7g",
+      "datadir": "/disk3/ra_mysql_workers/hybench-w4"
+    },
+    {
+      "worker_id": "hybench-5",
+      "family": "hybench",
+      "name": "ra-mysql-grid-hybench-w5",
+      "port": 13405,
+      "cpuset": "56-59,312-315",
+      "cpus": 8,
+      "memory": "8g",
+      "disk_bw_mb": 10.5,
+      "device": "/dev/sda",
+      "datadir": "/disk3/ra_mysql_workers/hybench-w5"
+    },
+    {
+      "worker_id": "hybench-6",
+      "family": "hybench",
+      "name": "ra-mysql-grid-hybench-w6",
+      "port": 13406,
+      "cpuset": "60-63,316-319",
+      "cpus": 8,
+      "memory": "8g",
+      "disk_bw_mb": 8.5,
+      "device": "/dev/sda",
+      "datadir": "/disk3/ra_mysql_workers/hybench-w6"
+    },
+    {
+      "worker_id": "job-1",
+      "family": "job",
+      "name": "ra-mysql-grid-job-w1",
+      "port": 13411,
+      "cpuset": "64-67,320-323",
+      "cpus": 8,
+      "memory": "7.5g",
+      "datadir": "/disk3/ra_mysql_workers/job-w1"
+    },
+    {
+      "worker_id": "job-2",
+      "family": "job",
+      "name": "ra-mysql-grid-job-w2",
+      "port": 13412,
+      "cpuset": "68-71,324-327",
+      "cpus": 8,
+      "memory": "8g",
+      "datadir": "/disk3/ra_mysql_workers/job-w2"
+    },
+    {
+      "worker_id": "tpch-1",
+      "family": "tpch",
+      "name": "ra-mysql-grid-tpch-w1",
+      "port": 13421,
+      "cpuset": "72-75,328-331",
+      "cpus": 8,
+      "memory": "7g",
+      "datadir": "/disk3/ra_mysql_workers/tpch-w1"
+    },
+    {
+      "worker_id": "tpch-2",
+      "family": "tpch",
+      "name": "ra-mysql-grid-tpch-w2",
+      "port": 13422,
+      "cpuset": "76-79,332-335",
+      "cpus": 8,
+      "memory": "8g",
+      "datadir": "/disk3/ra_mysql_workers/tpch-w2"
+    },
+    {
+      "worker_id": "tpcc-1",
+      "family": "tpcc",
+      "name": "ra-mysql-grid-tpcc-w1",
+      "port": 13431,
+      "cpuset": "80-83,336-339",
+      "cpus": 8,
+      "memory": "8g",
+      "datadir": "/disk3/ra_mysql_workers/tpcc-w1"
+    },
+    {
+      "worker_id": "tpcc-2",
+      "family": "tpcc",
+      "name": "ra-mysql-grid-tpcc-w2",
+      "port": 13432,
+      "cpuset": "84-87,340-343",
+      "cpus": 8,
+      "memory": "8g",
+      "datadir": "/disk3/ra_mysql_workers/tpcc-w2"
+    }
+  ]
+}

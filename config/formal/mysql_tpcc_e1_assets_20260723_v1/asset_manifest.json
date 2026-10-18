@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "asset_id": "mysql_tpcc_e1_assets_20260723_v1",
+  "status": "E1_ENVIRONMENT_PREPARATION_ONLY",
+  "formal_r0_authorized": false,
+  "host": "anonymous@192.0.2.7",
+  "hostname": "node04",
+  "project_root": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc",
+  "database": {
+    "image_id": "sha256:b3197d59eb3b270cf21bc1166fa726f9c511438416b421504068301df90c3172",
+    "version": "8.0.45",
+    "container_name": "ra_mysql_tpcc04_e1_template",
+    "port": 13310,
+    "cpuset_cpus": "21-24,57-60",
+    "cpuset_mems": "1",
+    "cpu_quota_cores": 4,
+    "memory_bytes": 8589934592,
+    "memory_swap_bytes": 8589934592,
+    "pids_max": 512,
+    "io_device": "/dev/nvme3n1",
+    "io_major_minor": "259:2",
+    "io_read_bps": 1205862400,
+    "io_write_bps": 1205862400,
+    "fixed_settings": {
+      "innodb_flush_log_at_trx_commit": 1,
+      "sync_binlog": 1,
+      "innodb_doublewrite": "ON",
+      "innodb_flush_method": "O_DIRECT",
+      "skip_log_bin": true
+    }
+  },
+  "loader": {
+    "container_name": "ra_mysql_tpcc04_e1_loader",
+    "cpuset_cpus": "25-28,61-64",
+    "cpuset_mems": "1",
+    "cpu_quota_cores": 4,
+    "memory_bytes": 4294967296,
+    "memory_swap_bytes": 4294967296,
+    "pids_max": 512,
+    "create": true,
+    "load": true,
+    "execute": false,
+    "warehouses": 10,
+    "terminals": 32
+  },
+  "storage": {
+    "device": "/dev/nvme3n1",
+    "major_minor": "259:2",
+    "serial": "S5LFNA0RA00595",
+    "filesystem": "xfs",
+    "filesystem_uuid": "bf82de40-be84-4610-8404-5a7dc7078ed9",
+    "mount": "/mnt/mysql_tpcc_nvme3n1",
+    "template": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/template"
+  },
+  "assets": {
+    "benchbase_jar": {
+      "local_path": "formal_benchbase_runtime_20260723/benchbase-formal.jar",
+      "sha256": "a1e587715621705c69488f955d1c14445e62dd8f5f34ab95b8682256f8cddff1"
+    },
+    "config_template": {
+      "local_path": "config/formal/mysql_tpcc_e1_assets_20260723_v1/tpcc_scale10_template.xml",
+      "sha256": "bbb9319b74a85d6dbb719e02f4c734c19790b47fe3fafe5ae11da74194fedbdf",
+      "contains_secret": false
+    },
+    "remote_library_tree": {
+      "path": "/mnt/nvme0n1/anonymous/resource_adaptive_mysql/tpch/code/benchbase-mysql/lib",
+      "sha256_file_index_v1": "3d3174c8a1141b6bd7cb5b54861c00bf4e4e763e3354cb50b4b3e5323695cfe7",
+      "file_count": 28,
+      "bytes": 12924398
+    },
+    "remote_jre_tree": {
+      "path": "/mnt/nvme0n1/anonymous/resource_adaptive_mysql/tpch/code/jre-23-benchbase",
+      "sha256_file_index_v1": "e7e0f8d100ca4562b7512baee02a16815c370d42c149fdf7d4e25a7a4172f213",
+      "file_count": 100,
+      "bytes": 58429996
+    },
+    "remote_config_tree": {
+      "path": "/mnt/nvme0n1/anonymous/resource_adaptive_mysql/tpch/code/benchbase-mysql/config",
+      "sha256_file_index_v1": "5220ef915da2f6482bda4c9a50253ae0dc8ced398a6820900801d49f962d40a5",
+      "file_count": 155,
+      "bytes": 275537,
+      "plugin_xml_sha256": "a770865560e0d1044c98a2954bacfd3d0c58ed3e956d3e783b2e830c7951d7e2"
+    }
+  },
+  "credential_contract": {
+    "root_password_file": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/secrets/mysql_root_password",
+    "mode": "0600",
+    "generation": "openssl_rand_hex_32_atomic",
+    "docker_interface": "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/root_password",
+    "secret_in_argv": false,
+    "secret_in_environment_value": false,
+    "secret_in_persistent_log": false,
+    "loader_credential": "random_ephemeral_file_revoked_and_removed_after_load"
+  },
+  "lease_contract": {
+    "directory": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/locks",
+    "file": "host04_mysql_lane.lock",
+    "owner": "host04_mysql_lane.owner.json",
+    "mechanism": "flock_nonblocking_with_hostname_pid_starttime_validation"
+  },
+  "completion_contract": {
+    "exact_counts": {
+      "warehouse": 10,
+      "district": 100,
+      "customer": 300000,
+      "history": 300000,
+      "oorder": 300000,
+      "new_order": 90000,
+      "item": 100000,
+      "stock": 1000000
+    },
+    "order_line_min": 1500000,
+    "order_line_max": 4500000,
+    "record_exact_order_line": true,
+    "clean_shutdown_required": true,
+    "tree_hash": "sha256_tree_v1",
+    "file_mode": "0444",
+    "directory_mode": "0555"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "algorithm_contract_path": "config/formal/frozen_mysql_algorithm_c_pg_boundary_fallback_20260929_v206/algorithm_c_pg_boundary_fallback_contract.json",
+  "algorithm_contract_sha256": "f643ad6efafa2cb3d9fb31c447b4aa4e32e24084af3c863ea8a46b219faf5069",
+  "all_four_scenes_start_concurrently": true,
+  "cross_engine_comparison_prohibited": true,
+  "empty_boundary_due_shrink_without_third_miss": true,
+  "empty_boundary_same_action_numeric_fallback": true,
+  "expanded_runtime_dependencies_bound": true,
+  "formal_scope": "mysql_only",
+  "four_scene_barrier": false,
+  "fresh_search_required": true,
+  "maximum_concurrent_mysql_workers": 8,
+  "outer_boundary_distinct_parameter_identities": true,
+  "per_scene_outer_state_machine": true,
+  "physical_workers_per_scene": 2,
+  "plan_capture_timeout_seconds": 900,
+  "postgresql_process_control_or_stop_performed": false,
+  "progressive_numeric_cursor_persisted": true,
+  "release_version": "v207-four-scene-pg-boundary-fallback",
+  "resource_contract_path": "config/formal/frozen_mysql_algorithm_c_paper_baseline_20260923_v156/algorithm_c_paper_baseline_contract.json",
+  "resource_contract_sha256": "17676fdf32bd24aeb4e3432f1931b725d22e9aa15b4657230cdc6671dea41108",
+  "resource_envelope_changed": false,
+  "schema_version": "mysql_algorithm_c_pg_boundary_fallback_four_scene_launch_contract_v1",
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_boundary_fallback_20260929_v206/algorithm_c_pg_boundary_fallback_contract.json",
+      "sha256": "f643ad6efafa2cb3d9fb31c447b4aa4e32e24084af3c863ea8a46b219faf5069"
+    },
+    "base_parallel_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v156_four_scene.py",
+      "sha256": "2ddb64bd07c77c6f88df9ce85ae5aac116bbf012c8a92948b421b4c9bbdf6ee1"
+    },
+    "launch_controller": {
+      "path": "scripts/launch_mysql_algorithm_c_v207_pg_boundary_fallback_four_scene.py",
+      "sha256": "a015576f9d5dd2da92cb07f2e6244e5ad46a31f9caf87ca8f2a2ec8b74878c93"
+    },
+    "recovery_policy": {
+      "path": "scripts/mysql_algorithm_c_pg_recovery_v2.py",
+      "sha256": "3056ed8e0d4e89241620c6db120ae253fb6dc6335de1567814d7772d8b0ed86e"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_pg_runtime_launch_v207.py",
+      "sha256": "8c69742fb965a4a75a71649dd8e8cf42cbab245f4371007e80f5a3c5ca2c6c76"
+    },
+    "resource_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_paper_baseline_20260923_v156/algorithm_c_paper_baseline_contract.json",
+      "sha256": "17676fdf32bd24aeb4e3432f1931b725d22e9aa15b4657230cdc6671dea41108"
+    },
+    "runtime_binding": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v58.py",
+      "sha256": "50cd4bfe715975b77fd1805c1c790a0a429b34a0a62b3692a7e9c68d18a24a42"
+    },
+    "scene_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v105.py",
+      "sha256": "977b5ec626df6200dc76b00beb10da218b94becb10c0a07a621d9a7aaea6a299"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "superseded_v205_rounds_reused": false,
+  "workload_changed": false
+}

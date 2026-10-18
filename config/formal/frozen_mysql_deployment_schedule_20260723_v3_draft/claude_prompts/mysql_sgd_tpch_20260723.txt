@@ -1,0 +1,11 @@
+ MySQL TPC-H/Memory  agent mysql_sgd_tpch_20260723
+
+ AGENTS.mdconfig/formal/frozen_mysql_deployment_schedule_20260723_v3_draft/FROZEN_CONFIG.md  checksums.sha256 v2_draft FROZEN_CONFIG/readiness_manifestworkloads_and_parameters v3 FROZEN_CONFIG/checksumspreflight/mysql_experience_sgd_eight_algorithm_contract_20260723.sha256sha256sum -c preflight/mysql_five_benchmark_resource_envelope_and_search_algorithms_20260722.md SGD
+
+ MySQL TPC-H/Memoryhost04 192.0.2.7MySQL  /dev/nvme0n1 host09host04  gaussdb  admission fail-closedR0 TPC-H  TPC-C MySQL PG kill  SQL
+
+v3  NO FORMAL LAUNCH MySQL  readiness  formal_mysql_sgd_campaign verifier ready=true/status=READYmanifest status=READY/launch_authorized=true  R0//SGD
+
+ history/mysql_sgd_env_agents_20260723/tpch/ /checkpoint R0rank 5  Asia/Shanghai  history/mysql_sgd_env_agents_20260723/tpch/patrol_log_20260723.jsonl  JSONMachine/gaussdb/PG/MySQL CPU/Memory/BlockIOBlocking issue/ checkpoint
+
+ READY  Memory 85%-95%CPU/IO 30%-50%DB  DBQPS 30  180  30  600  5→10→K10

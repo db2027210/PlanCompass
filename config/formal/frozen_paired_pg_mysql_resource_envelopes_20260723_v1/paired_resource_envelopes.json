@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "freeze_id": "frozen_paired_pg_mysql_resource_envelopes_20260723_v1",
+  "status": "DRAFT_NOT_READY",
+  "cross_engine_envelope_equality_required": true,
+  "normalized_fields": [
+    "cpu_quota_cores",
+    "memory_bytes",
+    "memory_swap_bytes",
+    "io_read_bps",
+    "io_write_bps",
+    "pids_max",
+    "cpu_isolation_degree",
+    "numa_isolation_degree"
+  ],
+  "profiles": {
+    "memory": {
+      "cpu_quota_cores": 3,
+      "memory_bytes": 6442450944,
+      "memory_swap_bytes": 6442450944,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "pids_max": 512,
+      "cpu_isolation_degree": 3,
+      "numa_isolation_degree": 1
+    },
+    "io": {
+      "cpu_quota_cores": 16,
+      "memory_bytes": 8589934592,
+      "memory_swap_bytes": 8589934592,
+      "io_read_bps": 104857600,
+      "io_write_bps": 104857600,
+      "pids_max": 1024,
+      "cpu_isolation_degree": 16,
+      "numa_isolation_degree": 1
+    },
+    "tpcc_cpu_r0_preregistered": {
+      "cpu_quota_cores": 4,
+      "memory_bytes": 8589934592,
+      "memory_swap_bytes": 8589934592,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "pids_max": 512,
+      "cpu_isolation_degree": 4,
+      "numa_isolation_degree": 1
+    }
+  },
+  "scenarios": {
+    "hybench_ap_memory": {"profile": "memory", "postgresql": "memory", "mysql": "memory"},
+    "job_memory": {"profile": "memory", "postgresql": "memory", "mysql": "memory"},
+    "tpch_memory": {"profile": "memory", "postgresql": "memory", "mysql": "memory"},
+    "hybench_xp_io": {"profile": "io", "postgresql": "io", "mysql": "io"},
+    "tpcc_cpu": {
+      "profile": "tpcc_cpu_r0_preregistered",
+      "postgresql": "tpcc_cpu_r0_preregistered",
+      "mysql": "tpcc_cpu_r0_preregistered",
+      "formal_value_frozen": false,
+      "requires_paired_refreeze_if_r0_fails": true
+    }
+  },
+  "r0_gate": {
+    "target_utilization": [0.85, 0.95],
+    "non_target_utilization": [0.30, 0.50],
+    "decision_window_seconds": 180,
+    "window_seconds": 30,
+    "latest_window_count": 6
+  }
+}

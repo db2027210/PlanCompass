@@ -1,0 +1,24 @@
+{
+  "queries": [
+    {
+      "path": "/home/anonymous/dataset/pg_data/join-order-benchmark/3a.sql",
+      "sha256": "c3d257a1f6e90d6d76104a64eb8ea4e459f91150c8758bc2f847a7154b2d0255"
+    },
+    {
+      "path": "/home/anonymous/dataset/pg_data/join-order-benchmark/6a.sql",
+      "sha256": "1b4c074faa478ed19461d877bcb24cc3854a2457f2c3eb767f7c4930b217957c"
+    },
+    {
+      "path": "/home/anonymous/dataset/pg_data/join-order-benchmark/10a.sql",
+      "sha256": "1dbbc85f6e036f06378fff2e9a7b6b713da263d4ff64c40f36aff6fbb0c90c9d"
+    },
+    {
+      "path": "/home/anonymous/dataset/pg_data/join-order-benchmark/17a.sql",
+      "sha256": "f80ff62e01d77a1322cdd5b8d314805ce96d85f824fa78480c4411b030c175fe"
+    },
+    {
+      "path": "/home/anonymous/dataset/pg_data/join-order-benchmark/25a.sql",
+      "sha256": "23839bacad13e78a23750a5368f58e1e8d67cad67c72ac5dd44576228ae78d27"
+    }
+  ]
+}

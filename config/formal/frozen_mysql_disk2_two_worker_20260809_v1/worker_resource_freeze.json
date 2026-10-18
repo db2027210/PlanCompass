@@ -1,0 +1,218 @@
+{
+  "schema_version": "mysql_disk2_two_worker_resource_freeze_v1",
+  "status": "FROZEN_PENDING_FRESH_RUNTIME_READBACK",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "active_scenes": [
+    "job",
+    "tpch",
+    "hybench_xp"
+  ],
+  "retired_scenes": [
+    "tpcc"
+  ],
+  "storage": {
+    "mount": "/disk2",
+    "device": "/dev/nvme2n1",
+    "device_major_minor": "259:6",
+    "filesystem": "ext4",
+    "runtime_root": "/disk2/resource_adaptive_mysql_algorithm_c_disk2_v1",
+    "copy_mode": "full_physical_copy_no_overlay_no_reflink",
+    "same_physical_ssd": true
+  },
+  "replay_policy": {
+    "independent_mysql_workers_per_scene": 2,
+    "effective_replay_parallelism_per_scene": 2,
+    "fixed_predicted_top_k": 5,
+    "fixed_rank_batches": [
+      [1, 2],
+      [3, 4],
+      [5]
+    ],
+    "plan_tree_replay_extension": {
+      "enabled": true,
+      "trigger": "fallback_qps_tier_and_fixed_top5_has_no_eligible_point",
+      "source": "same_pre_replay_sealed_global_ranking_after_rank_5",
+      "admission_predicate": "strict_l1_plan_tree_differs_from_incumbent",
+      "batch_size": 5,
+      "maximum_additional_replays": 127,
+      "stop_after_first_batch_with_eligible_point": true,
+      "rerank_after_real_replay_prohibited": true,
+      "qps_used_for_extension_selection": false,
+      "required_log_fields": [
+        "triggered",
+        "acceptance_tier",
+        "fixed_top5_replayed_count",
+        "fixed_top5_eligible_count",
+        "incumbent_l1_sha256",
+        "candidate_scan",
+        "batches",
+        "additional_replay_count",
+        "stop_reason"
+      ]
+    },
+    "reorder_after_real_replay_prohibited": true,
+    "same_mysql_instance_parallel_candidate_replay_prohibited": true,
+    "qps_role": "outer_acceptance_only",
+    "accepted_round_target_per_scene": 10
+  },
+  "workloads": {
+    "job": {
+      "policy": "canonical_113_sql_once",
+      "workers": 16,
+      "maximum_concurrent_long_queries": 4,
+      "missing_sql_fails_closed": true,
+      "wall_time_limit_seconds": 900
+    },
+    "tpch": {
+      "policy": "sf4_q1_q22_once_five_balanced_lanes",
+      "scale_factor": 4,
+      "target_template_bytes_minimum": 9000000000,
+      "target_template_bytes_maximum": 13000000000,
+      "lanes": 5,
+      "missing_sql_fails_closed": true,
+      "wall_time_limit_seconds": 900
+    },
+    "hybench_xp": {
+      "policy": "native_cpu_bottleneck",
+      "iq1_iq7": "uniform_random",
+      "at1_at6_percent": "35/25/15/15/7/3",
+      "xap_xtp_ratio": "1:1",
+      "sql_sequence_weight_or_mix_override_prohibited": true,
+      "duration_seconds": 600
+    }
+  },
+  "template_sources": {
+    "job": {
+      "path": "/disk2/resource_adaptive/unified_formal_20260721_v1/templates/job/datadir",
+      "database_manifest": "/disk2/resource_adaptive/unified_formal_20260721_v1/templates/job/database_manifest.json",
+      "database_manifest_sha256": "aa430eceaa6fcc710769ae25ece93458fa0544cf2bc0b9600a0034982652a552",
+      "database": "imdb_job",
+      "dataset": "imdb-job-full-v1"
+    },
+    "tpch": {
+      "path": "/disk2/resource_adaptive_mysql_tpch_sf4_20260809/template/datadir",
+      "storage_manifest": "/disk2/resource_adaptive_mysql_tpch_sf4_20260809/template/storage_manifest.json",
+      "storage_manifest_sha256": "runtime_build_output_must_be_bound_by_successor_launch_manifest",
+      "database": "tpch",
+      "dataset": "tpch_sf4",
+      "predecessor_template_read_only": "/disk2/ra_mysql_isolated_v2/tpch-memory",
+      "predecessor_dataset": "tpch_sf10",
+      "predecessor_reuse_prohibited": true
+    },
+    "hybench_xp": {
+      "path": "/disk2/resource_adaptive/unified_formal_20260721_v1/templates/hybench/datadir",
+      "database_manifest": "/disk2/resource_adaptive/unified_formal_20260721_v1/templates/hybench/database_manifest.json",
+      "database_manifest_sha256": "fd7c9918890fe6eea33f900da05a8d2825e204bc3f3cbf90505ddc43b98b52fa",
+      "database": "hybench_sf10x",
+      "dataset": "hybench-10x-v1"
+    }
+  },
+  "workers": [
+    {
+      "worker_id": "job_w1",
+      "scene": "job",
+      "container": "ra_mysql_disk2_algc_job_w1_20260809",
+      "host_port": 65311,
+      "database_cpuset": "120-127,376-383",
+      "client_cpuset": "224-231,480-487",
+      "cpuset_mems": "1",
+      "cpu_quota_cores": 3.0,
+      "memory_bytes": 6442450944,
+      "pids_max": 512,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "innodb_buffer_pool_bytes": 4294967296
+    },
+    {
+      "worker_id": "job_w2",
+      "scene": "job",
+      "container": "ra_mysql_disk2_algc_job_w2_20260809",
+      "host_port": 65312,
+      "database_cpuset": "128-135,384-391",
+      "client_cpuset": "240-247,496-503",
+      "cpuset_mems": "1",
+      "cpu_quota_cores": 3.0,
+      "memory_bytes": 6442450944,
+      "pids_max": 512,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "innodb_buffer_pool_bytes": 4294967296
+    },
+    {
+      "worker_id": "tpch_w1",
+      "scene": "tpch",
+      "container": "ra_mysql_disk2_algc_tpch_w1_20260809",
+      "host_port": 65321,
+      "database_cpuset": "208-215,464-471",
+      "client_cpuset": "224-231,480-487",
+      "cpuset_mems": "1",
+      "cpu_quota_cores": 7.5,
+      "memory_bytes": 5583454208,
+      "pids_max": 512,
+      "io_read_bps": 872415232,
+      "io_write_bps": 872415232,
+      "innodb_buffer_pool_bytes": 4294967296
+    },
+    {
+      "worker_id": "tpch_w2",
+      "scene": "tpch",
+      "container": "ra_mysql_disk2_algc_tpch_w2_20260809",
+      "host_port": 65322,
+      "database_cpuset": "216-223,472-479",
+      "client_cpuset": "240-247,496-503",
+      "cpuset_mems": "1",
+      "cpu_quota_cores": 7.5,
+      "memory_bytes": 5583454208,
+      "pids_max": 512,
+      "io_read_bps": 872415232,
+      "io_write_bps": 872415232,
+      "innodb_buffer_pool_bytes": 4294967296
+    },
+    {
+      "worker_id": "xp_w1",
+      "scene": "hybench_xp",
+      "container": "ra_mysql_disk2_algc_xp_w1_20260809",
+      "host_port": 65331,
+      "database_cpuset": "136-151,392-407",
+      "client_cpuset": "248-255,504-511",
+      "cpuset_mems": "1",
+      "cpu_quota_cores": 2.7682,
+      "memory_bytes": 8589934592,
+      "pids_max": 1024,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "innodb_buffer_pool_bytes": 4294967296
+    },
+    {
+      "worker_id": "xp_w2",
+      "scene": "hybench_xp",
+      "container": "ra_mysql_disk2_algc_xp_w2_20260809",
+      "host_port": 65332,
+      "database_cpuset": "184-199,440-455",
+      "client_cpuset": "168-175,424-431",
+      "cpuset_mems": "1",
+      "cpu_quota_cores": 2.7682,
+      "memory_bytes": 8589934592,
+      "pids_max": 1024,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "innodb_buffer_pool_bytes": 4294967296
+    }
+  ],
+  "launch_gates": {
+    "rolling_non_interference_seconds": 60,
+    "postgresql_inventory_required": true,
+    "postgresql_process_container_file_or_cpu_mutation_prohibited": true,
+    "fresh_effective_resource_readback_required": true,
+    "fresh_r0_required": true,
+    "readiness_correctness_stability_recovery_required": true
+  },
+  "formal_launch_authorized": false,
+  "accepted_rounds": {
+    "job": 0,
+    "tpch": 0,
+    "hybench_xp": 0
+  }
+}

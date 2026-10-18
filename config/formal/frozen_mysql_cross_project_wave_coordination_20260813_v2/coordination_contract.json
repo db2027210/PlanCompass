@@ -1,0 +1,103 @@
+{
+  "schema_version": "mysql_cross_project_fair_candidate_wave_lease_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "purpose": "Prevent PostgreSQL and MySQL physical benchmark waves from overlapping without starving either campaign for an entire outer round.",
+  "lock_path": "/tmp/resource_adaptive_pg_ssd_measurement_v1.lock",
+  "lock_mode": "exclusive",
+  "lease_scope": "one complete fixed MySQL candidate batch including reset, physical workload, resource sampling, coverage checks, and plan capture",
+  "lease_acquisition_timeout_seconds": 1200,
+  "per_wave_quiet_seconds": 30,
+  "maximum_quiet_wait_while_held_seconds": 180,
+  "maximum_idle_load1": 16.0,
+  "maximum_wave_lease_seconds": 1140,
+  "fair_release_yield_seconds": 0.5,
+  "candidate_batches": [
+    [1, 2],
+    [3, 4],
+    [5]
+  ],
+  "job_tpch_concurrent_full_suite_preserved": true,
+  "job_query_count_unchanged": 113,
+  "tpch_scale_factor_unchanged": 4,
+  "tpch_query_count_unchanged": 22,
+  "native_xp_workload_unchanged": true,
+  "native_xp_iq_selection": "IQ1-IQ7_uniform_random",
+  "native_xp_at_mix_percent": [35, 25, 15, 15, 7, 3],
+  "native_xp_xap_xtp_ratio": [1, 1],
+  "optimizer_invariants": {
+    "binary_interval_shrink_unchanged": true,
+    "maximum_normalized_interval_width": 0.01,
+    "required_consecutive_stable_rounds": 2,
+    "fixed_top_k": 5,
+    "candidate_order_unchanged": true,
+    "accepted_or_rejected_state_mutation_while_waiting": false,
+    "technical_failures_excluded": true
+  },
+  "co_resident_process_policy": {
+    "idle_postgresql_controllers": "inventoried_not_blocking_only_while_the_kernel_exclusive_physical_workload_lease_is_held_or_mysql_is_not_measuring",
+    "active_postgresql_physical_workloads": "fail_closed_during_mysql_reset_measurement_or_plan_capture",
+    "unknown_or_non_cooperating_workload": "runtime_watchdog_sigint_then_bounded_systemd_stop",
+    "host_d_state": "continuous_per_wave_unknown_or_target_relevant_d_state_must_be_zero; only topology-proven unrelated disk3 megasas status polling is exempt",
+    "host_load1": "continuous_per_wave_gate_must_not_exceed_16"
+  },
+  "fairness": {
+    "prelaunch_wait_uses_timed_kernel_blocking_queue": true,
+    "formal_wave_wait_uses_timed_kernel_blocking_queue": true,
+    "release_between_every_candidate_batch": true,
+    "postgresql_observed_lock_wait_timeout_seconds": 1200,
+    "mysql_maximum_wave_lease_seconds": 1140,
+    "safety_margin_seconds": 60,
+    "whole_outer_round_exclusive_lease_prohibited": true
+  },
+  "resource_envelope": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260811_v15/four_scene_effective_resource_successor.json",
+    "sha256": "b5d046ad8119ab764a2782ffa0189e11212202bb4e9660737ed52724c49e2c61",
+    "changed_by_this_contract": false
+  },
+  "outer_runtime_predecessor": {
+    "path": "config/formal/frozen_mysql_algorithm_c_outer_runtime_20260812_v1/optimization_contract.json",
+    "sha256": "bb98aa188ed6111cba3186b7833546061ad1d636d2790738aa67dac46fc8c503",
+    "measurement_semantics_changed": false
+  },
+  "live_validation": {
+    "path": "history/mysql_four_scene_20260809/cross_project_wave_coordination_validation_v1_20260813T0016p0800/validation_result.json",
+    "sha256": "3232c67c043dd7948a9ae2e59d4e10ced0950981204c078f2961d85d64b290e9",
+    "status": "PASS",
+    "workload_started": false,
+    "formal_state_mutation": false,
+    "lease_wait_seconds": 334.3319863769575,
+    "lease_held_seconds": 2.249206758046057,
+    "kernel_exclusive_lock_visible": true,
+    "external_physical_workload_count_while_held": 0,
+    "external_controller_count_while_held": 4
+  },
+  "predecessor_contract": {
+    "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260813_v1/coordination_contract.json",
+    "sha256": "ddf801a7748ee4de49ce5969527036784080331c5b63ffbae94ba509d6634ca0"
+  },
+  "device_scoped_dstate_successor": {
+    "authority_path": "history/mysql_four_scene_20260809/disk2_device_scoped_dstate_authority_v1_20260813T0412p0800/authority.json",
+    "authority_sha256": "309a74e00e4bcd835d2fdddecbdaf15f648837c3b73677832c9515e73aef6206",
+    "target_source": "/dev/nvme2n1",
+    "unrelated_source": "/dev/sda1",
+    "unrelated_driver": "megaraid_sas",
+    "maximum_unknown_or_target_relevant_d_state_processes": 0,
+    "all_user_and_unknown_d_state_remain_blocking": true
+  },
+  "source_bindings": {
+    "coordination_source_path": "scripts/mysql_cross_project_wave_coordination_v1.py",
+    "coordination_source_sha256": "bda8387207138514a21ff4802d33c8220f251d4e9905bd39c453390088566a3f",
+    "boundary_resume_controller_path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v2.py",
+    "boundary_resume_controller_sha256": "884d73d6b0f05d961d855904970fbf7274ce7aaa4e99aeb673c785fd59919e0c",
+    "runtime_watchdog_path": "scripts/watch_mysql_formal_external_postgres_interference_v1.py",
+    "runtime_watchdog_sha256": "e3759f96ccfa5397aef296d373a0a4c2fe1385533534a0e0d577d41355f2d0ce",
+    "live_preflight_path": "scripts/preflight_mysql_four_scene_live_v8.py",
+    "live_preflight_sha256": "dd110e42ff01338132a529564948eff2feeb9c3d049d038215c8d12e9738b588",
+    "auto_resume_waiter_path": "scripts/wait_and_resume_mysql_algorithm_c_after_quiet_v1.py",
+    "auto_resume_waiter_sha256": "27dd4eeabfe85e4cc153cbf2e6a28a9b94ea10a586bc018cfe080703edddab14",
+    "live_validator_path": "scripts/validate_mysql_cross_project_wave_coordination_v1.py",
+    "live_validator_sha256": "5f03714cf088c95e38e483f1ec842675209c5e98c07c7084fa5e0007ae83c5eb"
+  }
+}

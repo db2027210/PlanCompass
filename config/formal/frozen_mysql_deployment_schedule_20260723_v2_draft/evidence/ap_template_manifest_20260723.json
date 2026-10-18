@@ -1,0 +1,30 @@
+{
+  "manifest_version": "1.0_canonical",
+  "freeze_id": "mysql_hybench_ap_template_20260723",
+  "created": "2026-07-23T02:39:02+08:00",
+  "corrected": "2026-07-23T03:43:00+08:00",
+  "correction_reason": "arithmetic_sum_error_in_original_total_87695503_correct_is_87716003_delta_20500",
+  "database": "hybench_ap",
+  "mysql_version": "8.0.45",
+  "container": "mysql_hybench_ap_formal",
+  "host": "node01",
+  "tables": {
+    "blocked_checking": {"rows": 59835, "checksum": 3946240114},
+    "blocked_transfer": {"rows": 596168, "checksum": 1447439723},
+    "checking": {"rows": 6000000, "checksum": 308497319},
+    "checkingAccount": {"rows": 3020000, "checksum": 2970414865},
+    "company": {"rows": 20000, "checksum": 494083438},
+    "customer": {"rows": 3000000, "checksum": 3923355767},
+    "loanapps": {"rows": 6000000, "checksum": 516306405},
+    "loantrans": {"rows": 6000000, "checksum": 3837604159},
+    "savingAccount": {"rows": 3020000, "checksum": 2256117675},
+    "transfer": {"rows": 60000000, "checksum": 3843319591}
+  },
+  "total_rows": 87716003,
+  "verification": {
+    "mysql_vs_csv_match": true,
+    "all_10_tables_verified": true,
+    "no_headers_in_csv": true,
+    "no_filters_applied": true
+  }
+}

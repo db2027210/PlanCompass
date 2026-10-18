@@ -1,0 +1,30 @@
+{
+  "algorithm": "A",
+  "base_algorithm_a_contract_path": "config/formal/frozen_mysql_algorithm_a_async_20260822_v4/algorithm_a_contract.json",
+  "base_algorithm_a_contract_sha256": "d35c01e29c14aeeed4d82870725db686697d3d17188bea28ee9c323f418732bf",
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "partial_round_recovery_flow": {
+    "baseline_reused_without_replay": true,
+    "cached_attempted_prefix_physically_replayed": false,
+    "cached_attempted_prefix_reclassified_by_v4": true,
+    "cached_batch_sha256_required": true,
+    "candidate_document_exact_equivalence_required": true,
+    "incumbent_reference_reused_without_replay": true,
+    "new_physical_work_starts_after_cached_prefix": true,
+    "same_worker_cohort_required": true,
+    "technical_failures_count_as_semantic_rejections": false
+  },
+  "release_version": "v1",
+  "source_bindings": {
+    "partial_round_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_a_partial_round_codefix_resume_v1.py",
+      "sha256": "1e38991063788c18c5d1920785843ea418b408c7dddbe661f1c90d624c338673"
+    },
+    "partial_round_resume_test": {
+      "path": "tests/test_mysql_algorithm_a_partial_round_codefix_resume_v1.py",
+      "sha256": "fcdf2c23b23a97574f8554e1d43972ea97cc505daa6c33f4f6923d8d9e855088"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED"
+}

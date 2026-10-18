@@ -1,0 +1,45 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v169",
+  "release_version": "v169-bounded-control-sql-timeout-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scenes": ["hybench_xp_cpu", "tpch_sf4_memory"],
+  "resume_completed_outer_attempts": {
+    "hybench_xp_cpu": 5,
+    "tpch_sf4_memory": 6
+  },
+  "failed_outer_credit": 0,
+  "control_sql_timeout_seconds": 300,
+  "formal_measurement_timeout_changed": false,
+  "candidate_set_or_workload_changed": false,
+  "resource_envelope_changed": false,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v79.py",
+      "sha256": "c392b864d4bb5c9798198c03ebc19c99ec90b6f90be728ac149fe2bd133891b9"
+    },
+    "predecessor": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v75.py",
+      "sha256": "5f016cf41c23103504ce01e2009c1ea7867b6bc2ad400c56f80f5f37388dc1a9"
+    },
+    "xp_cpu_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v169_xp_cpu_outer5_checkpoint_20260923/prepared_binding.json",
+      "sha256": "56bf4420d68fb38e0a4504bf7c3aac929a1949a8664c251cc8d89584efb44b1d"
+    },
+    "tpch_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v169_tpch_outer6_checkpoint_20260923/prepared_binding.json",
+      "sha256": "5ea2f4814f7ae409767d039811154212c1a198c8d55a7ffb5dfdbb5d4b4c80b3"
+    },
+    "xp_cpu_failed_state": {
+      "path": "history/mysql_four_scene_20260809/c_v158_full_algorithm_resume_20260923_xp_cpu/run_state.json",
+      "sha256": "8f4b6a3caf1de6853e02a2323885f2750edbdc6f31a3cfe35b50870a56d21ffc"
+    },
+    "tpch_failed_state": {
+      "path": "history/mysql_four_scene_20260809/c_v160_tpch_live_normalization_resume_20260923_tpch/run_state.json",
+      "sha256": "ae059c473dfcd4b5af99269a4ffefceb878d07710a88f3bac7f3c5a0ee2abcdf"
+    }
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "schema_version": 2,
+  "contract_id": "unified_resource_awareness_20260721_v2",
+  "immutable": true,
+  "additional_fields_allowed": false,
+  "authoritative_for_outer_decision": true,
+  "authoritative_sources": {
+    "cpu": "docker_cgroup",
+    "memory": "docker_cgroup",
+    "io_limited": "docker_cgroup",
+    "io_unlimited": "host_proc_diskstats_for_resolved_database_device"
+  },
+  "adapter": {
+    "auto_detect_cgroup_version": true,
+    "cgroup_v1": {
+      "cpu_usage": {
+        "file": "cpuacct.usage",
+        "counter_unit": "nanoseconds",
+        "to_seconds_multiplier": 1e-09
+      },
+      "cpu_limit": {
+        "quota_file": "cpu.cfs_quota_us",
+        "period_file": "cpu.cfs_period_us",
+        "derived_unit": "cores"
+      },
+      "memory_current": {
+        "file": "memory.usage_in_bytes",
+        "unit": "bytes"
+      },
+      "memory_limit": {
+        "file": "memory.limit_in_bytes",
+        "unit": "bytes"
+      },
+      "io_bytes": {
+        "file": "blkio.throttle.io_service_bytes",
+        "counter_unit": "bytes"
+      },
+      "io_limit": {
+        "read_file": "blkio.throttle.read_bps_device",
+        "write_file": "blkio.throttle.write_bps_device",
+        "unit": "bytes_per_second"
+      }
+    },
+    "cgroup_v2": {
+      "cpu_usage": {
+        "file": "cpu.stat:usage_usec",
+        "counter_unit": "microseconds",
+        "to_seconds_multiplier": 1e-06
+      },
+      "cpu_limit": {
+        "file": "cpu.max",
+        "derived_unit": "cores"
+      },
+      "memory_current": {
+        "file": "memory.current",
+        "unit": "bytes"
+      },
+      "memory_limit": {
+        "file": "memory.max",
+        "unit": "bytes"
+      },
+      "io_bytes": {
+        "file": "io.stat",
+        "counter_unit": "bytes"
+      },
+      "io_limit": {
+        "file": "io.max",
+        "unit": "bytes_per_second"
+      }
+    },
+    "unlimited_io": {
+      "device_resolution": "findmnt_source_then_lsblk_major_minor",
+      "counter_source": "/proc/diskstats",
+      "utilization": "delta_io_time_ms / delta_wall_time_ms"
+    },
+    "requested_effective_readback_required": true
+  },
+  "measurement": {
+    "sample_interval_seconds": 1,
+    "warmup_seconds": 60,
+    "minimum_measurement_seconds": 180,
+    "maximum_measurement_seconds": 600,
+    "stability_window_seconds": 30,
+    "required_consecutive_stability_windows": 6,
+    "sample_coverage_min": 0.9
+  },
+  "stability": {
+    "calculation": "within_each_30_second_window_from_1_second_samples",
+    "cpu_cv_max": 0.1,
+    "memory_cv_max": 0.1,
+    "io_cv_max": 0.1,
+    "throughput_cv_max": 0.05,
+    "xp_xap_qps_cv_max": 0.1,
+    "xp_xtp_tps_cv_max": 0.1,
+    "resource_gate_applies_to": "cpu_memory_io_for_all_scenarios",
+    "low_utilization_ratio_threshold": 0.1,
+    "low_utilization_absolute_range_max": 0.05,
+    "low_utilization_rule": "when_window_mean_is_below_threshold_use_max_minus_min_instead_of_cv"
+  },
+  "metrics": {
+    "cpu": {
+      "raw_unit": "adapter_specific_counter_unit",
+      "derived_unit": "cores",
+      "utilization": "delta_cpu_usage_counter * to_seconds_multiplier / delta_wall_seconds / cpu_quota_cores"
+    },
+    "memory": {
+      "raw_unit": "bytes",
+      "utilization": "memory_current_bytes / memory_limit_bytes"
+    },
+    "io_limited": {
+      "raw_unit": "bytes",
+      "derived_unit": "bytes_per_second",
+      "utilization": "max(read_bps / read_cap_bps, write_bps / write_cap_bps)"
+    },
+    "io_unlimited": {
+      "raw_unit": "io_time_milliseconds",
+      "derived_unit": "ratio",
+      "utilization": "delta_io_time_ms / delta_wall_time_ms"
+    }
+  },
+  "scenarios": {
+    "memory": {
+      "target_resource": "memory",
+      "capability": {
+        "cpu_quota_cores": 8.0,
+        "memory_limit_bytes": 2147483648,
+        "read_cap_bps": 367001600,
+        "write_cap_bps": 367001600
+      }
+    },
+    "io": {
+      "target_resource": "io",
+      "capability": {
+        "cpu_quota_cores": 16.0,
+        "memory_limit_bytes": 8589934592,
+        "read_cap_bps": 104857600,
+        "write_cap_bps": 104857600
+      }
+    },
+    "none": {
+      "target_resource": "none",
+      "capability": {
+        "cpu_quota_cores": 32.0,
+        "memory_limit_bytes": 68719476736,
+        "read_cap_bps": null,
+        "write_cap_bps": null
+      }
+    }
+  },
+  "gates": {
+    "baseline_target_utilization_min": 0.85,
+    "baseline_non_target_utilization_max": 0.8,
+    "none_all_resource_utilization_max": 0.75,
+    "error_rate_max": 0.01
+  },
+  "decision_policy": {
+    "path_base": "shared_root",
+    "relative_path": "acceptance_policy.json",
+    "sha256_required": true,
+    "fallback_allowed": false,
+    "resource_input_unit": "ratio"
+  },
+  "estimator_boundary": {
+    "plan_estimator_allowed_for_inner_proposal_only": true,
+    "inner_step_label": "inner_step_accepted",
+    "inner_step_consumes_real_candidate_budget": false,
+    "live_replay_required_for_outer_candidate_decision": true,
+    "outer_candidate_label": "outer_candidate_accepted",
+    "database_internal_resource_metrics_are_diagnostic_only": true,
+    "benchmark_qps_latency_correctness_are_outer_decision_inputs": true
+  }
+}

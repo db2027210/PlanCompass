@@ -1,0 +1,94 @@
+{
+  "schema_version": "mysql_job_cache_state_contract_v9",
+  "release_version": "v9",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T09:40:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "successor_of": {
+    "path": "config/formal/frozen_mysql_job_cache_state_20260823_v8/cache_state_contract.json",
+    "sha256": "0b3e8d60734615c5d49ddcf523170e749b67de264525641939477b4d0ce158a1"
+  },
+  "precondition_mode": "fixed_optimizer_plan_full_job113_innodb_working_set_primer",
+  "precondition_parameter_role": "cache_priming_only_not_algorithm_default_or_scored_candidate",
+  "precondition_parameter_vector": {
+    "disk_temptable_create_cost": 20,
+    "disk_temptable_row_cost": 0.5,
+    "io_block_read_cost": 0.57544,
+    "key_compare_cost": 0.05,
+    "memory_block_read_cost": 0.43445,
+    "memory_temptable_create_cost": 1,
+    "memory_temptable_row_cost": 0.17378,
+    "row_evaluate_cost": 0.057544
+  },
+  "mysql_exact_persisted_readback_required": true,
+  "precondition_query_count": 113,
+  "precondition_replays_per_scored_measurement": 1,
+  "precondition_full_coverage_required": true,
+  "precondition_positive_qps_required": true,
+  "precondition_wall_time_recorded": true,
+  "precondition_wall_time_used_for_validity": false,
+  "precondition_metrics_used_for_scoring": false,
+  "precondition_accepted_state_credit": 0,
+  "precondition_interval_shrink_credit": 0,
+  "candidate_parameter_application_after_precondition": true,
+  "formal_measurement_replays_per_candidate": 1,
+  "full_job_sql_count": 113,
+  "scored_measurement_full_coverage_required": true,
+  "scored_measurement_wall_time_limit_seconds": 900,
+  "outer_loop_semantics_changed": false,
+  "candidate_generation_changed": false,
+  "candidate_ranking_changed": false,
+  "acceptance_policy_changed": false,
+  "convergence_policy_changed": false,
+  "reason": "The full JOB113 primer is a non-scoring cache-state operation. Two isolated cold-cache primers completed all 113 SQL files with positive QPS in 983.64-1205.23 seconds; applying the scored-measurement 900-second gate to that non-measurement phase prevented the required scored replay from starting. The formal scored replay remains fail-closed at 900 seconds.",
+  "observed_failure_evidence": {
+    "attempt_1": {
+      "path": "history/mysql_four_scene_20260809/v54_to_a_storage_compatible_20260823_attempt001_job/round_001/wave_003/attempt_01_job_cache_precondition/cache_precondition_result.json",
+      "sha256": "8a9a827bacb1caf76045556812fed001776b8bc9f5f177a647d992dda80bfcf0",
+      "completed_query_count_per_worker": 113,
+      "wall_time_seconds_range": [983.6375994379923, 985.0972902219801]
+    },
+    "attempt_2": {
+      "path": "history/mysql_four_scene_20260809/v54_to_a_storage_compatible_20260823_attempt001_job/round_001/wave_003/attempt_02_job_cache_precondition/cache_precondition_result.json",
+      "sha256": "83106733bed3150ae02a1aeb33f50da982c1e164082043fe287786dde93c8b49",
+      "completed_query_count_per_worker": 113,
+      "wall_time_seconds_range": [1188.871034122014, 1205.233530885016]
+    }
+  },
+  "source_bindings": {
+    "v9_measurement": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v9.py",
+      "sha256": "48f7290d8e0355b03394d83a68f202ab65fa4ba4d4592e771753f8831ca1fca1"
+    },
+    "v8_measurement_base": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v8.py",
+      "sha256": "b9915613513379b2c1edf48a6eed51ca2c3120780126d82c063e5043ad6eb489"
+    },
+    "v7_measurement_base": {
+      "path": "scripts/mysql_job_buffer_pool_preconditioned_measurement_v7.py",
+      "sha256": "d629693840e806ec9524b380bfb4ee453802b33c58a4a50974eda8ed3a8325be"
+    },
+    "legacy_precondition": {
+      "path": "scripts/mysql_job_cache_preconditioned_measurement_v1.py",
+      "sha256": "0ee61c68733abfc8495f0bdf9c375160b8c49310b6005cbe3abc5c156aacd1da"
+    },
+    "formal_single_scene_measurement": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "v8_contract": {
+      "path": "config/formal/frozen_mysql_job_cache_state_20260823_v8/cache_state_contract.json",
+      "sha256": "0b3e8d60734615c5d49ddcf523170e749b67de264525641939477b4d0ce158a1"
+    },
+    "attempt_1_failure_evidence": {
+      "path": "history/mysql_four_scene_20260809/v54_to_a_storage_compatible_20260823_attempt001_job/round_001/wave_003/attempt_01_job_cache_precondition/cache_precondition_result.json",
+      "sha256": "8a9a827bacb1caf76045556812fed001776b8bc9f5f177a647d992dda80bfcf0"
+    },
+    "attempt_2_failure_evidence": {
+      "path": "history/mysql_four_scene_20260809/v54_to_a_storage_compatible_20260823_attempt001_job/round_001/wave_003/attempt_02_job_cache_precondition/cache_precondition_result.json",
+      "sha256": "83106733bed3150ae02a1aeb33f50da982c1e164082043fe287786dde93c8b49"
+    }
+  }
+}

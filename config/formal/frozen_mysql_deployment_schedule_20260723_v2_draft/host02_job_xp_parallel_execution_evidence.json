@@ -1,0 +1,14 @@
+{
+  "schema_version": "host02_job_xp_parallel_execution_evidence_v1",
+  "passed": true,
+  "user_authorized": true,
+  "scenarios": [
+    "job_memory",
+    "hybench_xp_io"
+  ],
+  "cross_scenario_mutex_required": false,
+  "per_scenario_singleton_required": true,
+  "shared_host_interference_disclosed": true,
+  "result_annotation": "parallel_shared_host_user_authorized",
+  "note": "JOB and XP share host02 and may affect each other's resource measurements."
+}

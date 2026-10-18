@@ -1,0 +1,74 @@
+{
+  "completed_v196_rounds_reusable": false,
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "fresh_search_required": true,
+  "parent_algorithm_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_pg_rejection_authority_20260929_v195/algorithm_c_pg_rejection_authority_contract.json",
+    "sha256": "2fc7e72b763b4bff298a58184b6bfd2abd8d5b8147cce8183ea9b5ca57106207"
+  },
+  "pg_outer_correspondence": {
+    "accepted_candidate_shrink": "declared_active_subset_intersect_moved_subset",
+    "accepted_expansion_keeps_binary_shrink": true,
+    "accepted_expansion_restores_parent": false,
+    "complete_technically_valid_batch_is_counter_unit": true,
+    "first_valid_miss_expands_next_batch": true,
+    "forced_shrink_grants_accepted_credit": false,
+    "post_search_stability_confirmation": false,
+    "qps_used_for_inner_scoring": false,
+    "rejected_expansion_restores_parent": true,
+    "second_consecutive_valid_miss_bisects_incumbent": true,
+    "second_miss_anchor": "unchanged_last_accepted_incumbent",
+    "technical_or_empty_batch_counts_as_rejection": false,
+    "terminal_normalized_width": 0.01
+  },
+  "postgresql_process_control_or_stop_performed": false,
+  "release_version": "v199-pg-accepted-expansion-commit",
+  "resource_envelope_changed": false,
+  "schema_version": "mysql_algorithm_c_pg_expansion_commit_release_v1",
+  "search_state_transition_corrected": true,
+  "source_bindings": {
+    "controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v102.py",
+      "sha256": "3df964c04cf69d494917c999c94d247acf6c1ce2bebd2d909ad8fa42d2c43fb9"
+    },
+    "interval_regions": {
+      "path": "scripts/mysql_algorithm_c_interval_control_v2.py",
+      "sha256": "b2d206614c27a041305888d1054eef4ba95a07fef1bb81eeb03b3a63e77fef5d"
+    },
+    "outer_policy": {
+      "path": "scripts/mysql_algorithm_c_pg_outer_policy_v1.py",
+      "sha256": "5dbb4c8572d9d03bbd03fd4202a2a32f9bde2d24d03fc91bb3a3d6fd8cc4e130"
+    },
+    "parent_algorithm_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_c_pg_rejection_authority_20260929_v195/algorithm_c_pg_rejection_authority_contract.json",
+      "sha256": "2fc7e72b763b4bff298a58184b6bfd2abd8d5b8147cce8183ea9b5ca57106207"
+    },
+    "pg_adaptive_policy": {
+      "path": "/home/anonymous/program/resource_adaptive/algorithm_c_adaptive_search.py",
+      "sha256": "c5a09c2ea2dd4c70bf24a647a29cbb54c0fc36dad35a34a5f696e7b88f3825fa"
+    },
+    "pg_region_policy": {
+      "path": "/home/anonymous/program/resource_adaptive/algorithm_c_budget_policy.py",
+      "sha256": "3724dbf43adf53ff978c4b739a8a49f2e4180895e9263e44454555f540d3dae5"
+    },
+    "pg_runtime": {
+      "path": "/home/anonymous/program/resource_adaptive/shell/run_pg_algorithm_c_budgeted_scene.py",
+      "sha256": "361c8fdc8d1eda8c48d33cd20dfe6ddc6912fd822ef9920a6f230704a7ddc9ea"
+    },
+    "rejection_cycle": {
+      "path": "scripts/mysql_outer_rejection_cycle_v3.py",
+      "sha256": "27a5d3ff3acbecd390c90038d0cfd06b2ffbbf90707758075ac7487841e71b2c"
+    },
+    "release_builder": {
+      "path": "scripts/build_mysql_algorithm_c_pg_expansion_commit_v199.py",
+      "sha256": "dc96badd6251a4dad0fdb6bdc5d976860c8aa98f9131645610e4b9f2acb7f42f"
+    },
+    "runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v55.py",
+      "sha256": "2fd8fdd45d48ae431d55b330734ac8cc2bda97a8f9b92f6eacf9ab01ece0c904"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "workload_changed": false
+}

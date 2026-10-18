@@ -1,0 +1,77 @@
+{
+  "after_readiness_sha256": "4ad17ac8db8e349148c85834738545e19d2c40f7136ee77fd622c0c2fd75c10c",
+  "already_promoted": false,
+  "audit_refresh_reason": "unrelated readiness evidence changed; XP envelope projection and fail-closed gates revalidated",
+  "before_readiness_sha256": "f009cdce385f66e8ed42d903ebbcef1bb8a604e8801d0debacd977161b212594",
+  "changed_json_paths": [
+    "scenarios.hybench_xp_io.mysql_envelope.freeze_id",
+    "scenarios.hybench_xp_io.mysql_envelope.normalized",
+    "scenarios.hybench_xp_io.mysql_envelope.readback"
+  ],
+  "evidence_verifier": {
+    "path": "shell/verify_mysql_xp_tpcc_envelope_evidence.py",
+    "sha256": "3cf4c550f1900c63a4b4909ba0ee4f59b8d94ed9615c00859fd381e82ed7ac31"
+  },
+  "evidence_verifier_result": {
+    "r0": false,
+    "ready": false,
+    "sgd": false,
+    "status": "PASS",
+    "tpcc_bundle_members": 13,
+    "tpcc_cross_engine_equality": false,
+    "tpcc_formal_static_gate": false,
+    "tpcc_formal_value_frozen": false,
+    "tpcc_mysql_normalized_envelope": true,
+    "tpcc_readiness_projection": true,
+    "xp_bundle_members": 22,
+    "xp_cross_engine_equality": false,
+    "xp_formal_static_gate": false,
+    "xp_mysql_normalized_envelope": true,
+    "xp_observed_static_nonoverlap": true,
+    "xp_readiness_projection": true
+  },
+  "promoted_mysql_envelope": {
+    "freeze_id": "frozen_paired_pg_mysql_resource_envelopes_20260723_v1",
+    "normalized": {
+      "cpu_isolation_degree": 16,
+      "cpu_quota_cores": 16,
+      "io_read_bps": 104857600,
+      "io_write_bps": 104857600,
+      "memory_bytes": 8589934592,
+      "memory_swap_bytes": 8589934592,
+      "numa_isolation_degree": 1,
+      "pids_max": 1024
+    },
+    "readback": {
+      "path": "history/mysql_sgd_env_agents_20260723/xp/formal_mysql_normalized_envelope_readback.json",
+      "sha256": "93df98a12569f95c88d25e7a3d23dbb07ae8de4f207462bf5f456cd2e44df033"
+    }
+  },
+  "promoter": {
+    "path": "shell/promote_mysql_xp_envelope_readback.py",
+    "sha256": "bd11a065fcdfb392b3a8adf4b1f06ebc8e9a1759b0d380de40fdd758a20bf1d0"
+  },
+  "protected_fields_unchanged": {
+    "cross_engine_envelope_gate_false": true,
+    "dynamic_interference_unchanged": true,
+    "global_status_not_ready": true,
+    "launch_authorized_false": true,
+    "postgresql_envelope_unchanged": true,
+    "postgresql_envelope_unpromoted": true,
+    "r0_calibration_unchanged": true,
+    "static_isolation_unchanged": true
+  },
+  "readiness_reverification": {
+    "failed": 95,
+    "passed": 83,
+    "ready": false,
+    "status": "NOT_READY"
+  },
+  "readiness_verifier": {
+    "path": "shell/verify_mysql_sgd_v2_readiness.py",
+    "sha256": "07a497a18a07bda50ae731ffe0ca0e0d9d0643a32da991f510593a10b4aac967"
+  },
+  "schema_version": 1,
+  "scope": "hybench_xp_io_mysql_envelope_only",
+  "superseded_after_readiness_sha256": "13fae8ddf219af059de51d5f1e7a5a89f4edf43ec9e221a90b88d7e997eb463e"
+}

@@ -1,0 +1,104 @@
+{
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "candidate_diversity": {
+    "inner_candidate_score_modified": false,
+    "parameter_space_farthest_first_within_resource_score_window": true,
+    "qps_used": false,
+    "soft_negative_evidence_primary": true
+  },
+  "candidate_parallelism": 2,
+  "continuation": {
+    "accepted_round_credit_changed": false,
+    "completed_outer_decisions_reconstructed": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "historical_predicted_rankings_restored_verified_without_recomputation": true,
+    "historical_measurements_or_decisions_rewritten": false,
+    "outer11_fresh_ranks_required": [1, 2, 3, 4, 5],
+    "resume_boundary": "outer_010_complete_outer_011_before_real_replay"
+  },
+  "convergence": {
+    "accepted_shrinks_required_per_scene": 10,
+    "fixed_real_top_k_per_scene": 5,
+    "maximum_interval_ratio": 1.01,
+    "required_consecutive_stable_accepted_rounds_per_scene": 2,
+    "same_progress_across_scenes_required": false
+  },
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "range_shrink": {
+    "effective_from_outer": 7,
+    "historical_range_state_reconstructed": true,
+    "policy": "accepted_candidate_active_subset_only_v1",
+    "untested_active_parameter_ranges_shrunk": false
+  },
+  "online_resource_model_update": {
+    "accepted_and_rejected_valid_measurements_used": true,
+    "effective_from_outer": 11,
+    "historical_valid_top5_bootstrap_outers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "inner_candidate_score_modified": false,
+    "qps_used_as_model_input_feature": false,
+    "qps_used_for_resource_prediction_gradient_or_score": false,
+    "qps_used_for_resource_target": false,
+    "valid_formal_top5_resources_added_after_each_outer": true
+  },
+  "release_version": "v22",
+  "schema_version": "mysql_four_scene_algorithm_b_parallel_221_contract_v1",
+  "source_bindings": {
+    "clean_boundary_drain": {
+      "path": "history/mysql_four_scene_20260809/v21_formal_subset_shrink_diverse_symmetric_risk_outer7_20260818_attempt019/stopped_after_outer10_online_model_v22_drain.json",
+      "sha256": "4ca4476ec275cd6000febc08b999fcb82b7f303823c3749572f384de049d3471"
+    },
+    "candidate_diversity": {
+      "path": "scripts/mysql_algorithm_b_candidate_diversity_v1.py",
+      "sha256": "095e3ce5c3ee445008adb936bb299959b8d76807a67e8a7d5c851506974d1a6d"
+    },
+    "controller": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v22.py",
+      "sha256": "90edef13de6049aef819d123fc38dc0f410a085b7d70d01e24bb7a8e04912eca"
+    },
+    "core": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_independent_lane_failure_isolation_core_v22.py",
+      "sha256": "6765ef67f49a99217be475ad982526e66ff3dad50dff9840bb04a3a7e27fe66b"
+    },
+    "launcher": {
+      "path": "scripts/launch_mysql_four_scene_algorithm_b_independent_parallel_221_resume_v22.py",
+      "sha256": "ff16014c0c607b42e7c3b6fcdc2884f6ada41687e23c279389d5eb7c8233f879"
+    },
+    "measurement": {
+      "path": "scripts/run_mysql_four_scene_algorithm_b_scene_independent_measurement_v4.py",
+      "sha256": "d784d0028a79ddfcab75bcc95499dcdbc71a881d77e7e836ba60e82de04d4c70"
+    },
+    "session_drain": {
+      "path": "scripts/mysql_algorithm_b_benchmark_session_drain_v1.py",
+      "sha256": "43465b75ca638a6915816df864801f1bd95a8cee3d60dad07b0fc85897725d60"
+    },
+    "source_run_state": {
+      "path": "history/mysql_four_scene_20260809/v21_formal_subset_shrink_diverse_symmetric_risk_outer7_20260818_attempt019/run_state.json",
+      "sha256": "7c83fd7228ae45b8a6678775cc8213b41dfc5e81c255d1131a3b38469cf0aaf4"
+    },
+    "tpch_plan_ranker": {
+      "path": "scripts/mysql_algorithm_b_tpch_full_suite_plan_ranker_v3.py",
+      "sha256": "98c0f2ecec4e53d4c8a14a2b2c2bde53e34704101caa0734641e1280fa673173"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "tpch_plan_ranking": {
+    "candidate_hard_pruning": false,
+    "per_query_q1_q22_risk": true,
+    "qps_used_for_resource_prediction_or_score": false,
+    "shortlist_size": 64,
+    "symmetric_risk": true
+  },
+  "workload_contract": {
+    "job_full_sql_count": 113,
+    "maximum_valid_measurement_seconds": 900,
+    "native_xp_mix_unchanged": true,
+    "tpch_query_count": 22,
+    "tpch_scale_factor": 4
+  }
+}

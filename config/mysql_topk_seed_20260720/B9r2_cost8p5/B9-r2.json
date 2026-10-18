@@ -1,0 +1,9 @@
+{
+  "result": {
+    "final_params": {
+      "innodb_buffer_pool_size": 285212672,
+      "io_block_read_cost": 8.5,
+      "memory_block_read_cost": 8.5
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "bundle_publication_unchanged": true,
+  "generated_at": "2026-07-23T07:05:36+08:00",
+  "generator": {
+    "path": "shell/regenerate_mysql_sgd_r07_r10_evidence.py",
+    "sha256": "a5f937312297b4066e2fe65c370c3a2805d7f6756c5da7f81e535e2946aec35f"
+  },
+  "mode": "published_artifact",
+  "protected_readiness_fields_unchanged": true,
+  "ready_or_launch_authorization_set": false,
+  "reason": "eight-algorithm implementation update including automatic 10-to-K replay and frozen top-5 validation",
+  "replacement_sha256": {
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/experience_table_sgd_method_manifest.json": "682d65d7e360d0c23c46362217f536f854ce38497c2fdc361c3ba6244b5f3f48",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/global_readiness_audit_r07_r10.json": "cc94261873565d2968f331c1f48ba905cd8bc65bf59804e6fbc3691327d08fe2",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/host02_job_xp_mutex_test_evidence.json": "411d97b9e60fcb59c3ec476ffb86af6410c1ded56a4f3089fb29c9cd8d521585",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/logging_checkpoint_test_evidence.json": "0a5e1a799509a60dc09e8f5745eceeec8ee822bd09b1c9753535ab94cf3fed7b",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/readiness_manifest.json": "3b6b0c002eb685ba63de2cd178e673ab309e1e6faa332275ebb927e8e9b3bcb5",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/session_adapter_test_evidence.json": "62847266ea195dacacab248367fb54d904233c33f4059245154d10a15a13bee0",
+    "preflight/mysql_experience_sgd_eight_algorithm_contract_20260723.sha256": "e1001d380399a6c9a8c313d04cf64d525a7dd228b7e2216e1df9a44d7bd4b86f"
+  },
+  "schema_version": 1,
+  "scope": [
+    "R07",
+    "R08",
+    "R09",
+    "R10"
+  ],
+  "source_sha256": {
+    "AGENTS.md": "41dd43b1f492047ca48ea0456cc8cb1373cb3e6405fbc48fb71a98feff537352",
+    "common_outer_loop.py": "f429898e4fd0e33ab74a5b9167bb54454a6193e295208ae10c3753bf9ee47eb3",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/FROZEN_CONFIG.md": "9f960aa8752bae00d5163190fe447be7509f3f5ef54ff5c5210a310b3a274b0e",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/experience_table_sgd_formal_config.json": "fb913081367c38235806305b45bb7d05929b413c29c1971ba928f387224edd4e",
+    "experience_table_subset_optimizer.py": "217320aa3652e98cfc5517d1a9b8e5d76a2581ca2c4b87fc6320a0c7c2589a77",
+    "formal_benchbase_continuous_session.py": "4e78901c3b4d06555a90bfc7322bc88b5048aa55bcf13ef433e82b1ac615dc89",
+    "formal_hybench_continuous_session.py": "b8ccbbbe41abee38813c8a4fe4e0fbe769c46f51a47a7b7b7eec670617b16f52",
+    "formal_job_continuous_session.py": "7e282cedc87d0aaa87384a972a9bb1dd3fa9534a72a9e8eedda0048f9781932a",
+    "formal_mysql_continuous_session_factory.py": "7f6218d27f3e0f9dea83edacd4add0b9ffe2ab473225a9653fe12523560b3e32",
+    "formal_mysql_database_qps.py": "5059cd5c23decf00e2233accea6e9ec34bca0dd4d4e8ad01f638cc9a18f537c8",
+    "formal_mysql_sgd_campaign.py": "c2176dc3a2a7faff86ed533be56f3a74202dbfec89d3c8578ae6d51dc429d456",
+    "formal_mysql_sgd_checkpoint.py": "c97e78170807206004c28de3eba31759e11c6cf4764438d3b14b4e5ceb9f2afe",
+    "formal_mysql_sgd_orchestration.py": "34640e7dc03f40381a421781c14fcdb1a9200a22f0b32ccc8f19399a89323618",
+    "formal_resource_sampler_20260721.py": "1ba15ff3db1e4fd6828c32415ab3c264c5d88a356ea0a253bbc69ab64bbadeac",
+    "formal_stability.py": "1e1e83b919eb1d5dc10b4c72c71c5862845e650b30db991006d595446da63d95",
+    "gradient_descent_optimizer.py": "e508602a217a7fd7fb96bb32e0f5927f0fbf578ff58f91d33a7c5882b26da1da",
+    "host02_job_xp_mutex.py": "575d3bb92e8a3bcb69d2cd6b5c15ccbcf32209158bcd9f50dc950bbb417462fc",
+    "mysql_parameter_optimizer.py": "f9b85f66f46bf55b404a51836368da473282f7bdc64f155ea8bd66231039870d",
+    "mysql_plan_clustering.py": "515f9f77c479474aa326bea03dedab70beee9b0ff621ea467e004f203681cff1",
+    "preflight/mysql_five_benchmark_resource_envelope_and_search_algorithms_20260722.md": "c330ed7212368819ae7b2cc1e911ec49f8ae86c3050166db7d07d3a10d60bf1b",
+    "resource_utility.py": "16d7bbbab1cb15f28f9da750ea859c460302831987ce39e111815a2483c034bb",
+    "shell/regenerate_mysql_sgd_r07_r10_evidence.py": "a5f937312297b4066e2fe65c370c3a2805d7f6756c5da7f81e535e2946aec35f",
+    "shell/test_host02_job_xp_mutex.py": "5830800bfc9292432fb92637c883ac45f47bffccc9282a5543db1d5150761670",
+    "shell/test_mysql_all_subset_integration.py": "db8809abb7942e9c0a80a5d8cd93c1fca116bedee847b4d287eabfc264085980",
+    "shell/test_mysql_formal_outer_campaign.py": "4398870549e93650e270508366ff05a1255f17b4ff24ec2595903d18ac3d99f8",
+    "shell/test_verify_mysql_sgd_v2_readiness.py": "82fa145caaf45d0d1bc1645aa702aba08aa1b3f644cb31eb8d77b47ce22e2218",
+    "shell/verify_mysql_sgd_v2_readiness.py": "07a497a18a07bda50ae731ffe0ca0e0d9d0643a32da991f510593a10b4aac967",
+    "tests/test_formal_benchbase_continuous_session.py": "7b4fcf6d80d4c23b8a89aa4f16dcda9b80b940193cbc25365e645c999019b764",
+    "tests/test_formal_hybench_continuous_session.py": "74ee02c7f62e9ffad33b724704781efad3763302406bcd503ca4c33a906882df",
+    "tests/test_formal_job_continuous_session.py": "88b23151ad09b4d897e96247097b4d6d56838558bc6e65339a064c28a7a28e19",
+    "tests/test_formal_mysql_continuous_session_factory.py": "50e6b919730f5691149fd9a5d6267a269bebfd7803904805f8210c7f8b61e8ac",
+    "tests/test_formal_mysql_database_qps.py": "cb4429837989d2637951673e6624941901a56e1446b6822c5a45b2a090a23fab",
+    "tests/test_formal_mysql_sgd_checkpoint.py": "99da7fa5c561fa62076a64a7dd4db54f5092ab5bcb40b9758e6c88ba3d287529",
+    "tests/test_formal_mysql_sgd_orchestration.py": "b92cf97380b5b6a96a642bc8b83adbb93e38fa113c173072845b6d0891c43c9b",
+    "trained_model_estimator.py": "cba7cf31a3bacd67533ce222942d0c9eb9fa55a9e7cbe565cebff63a568b49ef"
+  },
+  "supersedes": {
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/experience_table_sgd_method_manifest.json": "0198173ee5681d79ca5b77ef4ea4409fa1529fa3e08cd0e8035ab125a93724ec",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/global_readiness_audit_r07_r10.json": "62a6a54ca24b75d426a1e0c66f80ea03462fe0f1a595717f5f842b326df33a3e",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/host02_job_xp_mutex_test_evidence.json": "8ca9b2301ea983a314f6cdd7d48bb6790bf9088eb18acd01238eff8a34e08970",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/logging_checkpoint_test_evidence.json": "2fe28ce28b8ab37eef7d53750ebb20f4f89e6400c8f4cb0cbf839adf8c4de0ba",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/readiness_manifest.json": "4ad17ac8db8e349148c85834738545e19d2c40f7136ee77fd622c0c2fd75c10c",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/session_adapter_test_evidence.json": "13b2cf0d0dc1bfa03198ca7909482cc186f85e18a9b7f9c97131b7dbbd13aed7",
+    "preflight/mysql_experience_sgd_eight_algorithm_contract_20260723.sha256": "2e3134c6ca9348835ae4c39a43ecd4b6c8137115e6594eab960a99bd64af050a"
+  },
+  "test_results": {
+    "host02_mutex": {
+      "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q shell/test_host02_job_xp_mutex.py shell/test_mysql_formal_outer_campaign.py shell/test_verify_mysql_sgd_v2_readiness.py",
+      "exit_code": 0,
+      "failed": 0,
+      "normalized_result": "19 passed",
+      "passed": 19,
+      "skipped": 0
+    },
+    "session_adapter": {
+      "command": "/home/anonymous/miniconda3/envs/py313/bin/python -m pytest -q tests/test_formal_mysql_database_qps.py tests/test_formal_mysql_sgd_orchestration.py tests/test_formal_mysql_sgd_checkpoint.py tests/test_formal_mysql_continuous_session_factory.py tests/test_formal_benchbase_continuous_session.py tests/test_formal_hybench_continuous_session.py tests/test_formal_job_continuous_session.py shell/test_mysql_all_subset_integration.py shell/test_mysql_formal_outer_campaign.py",
+      "exit_code": 0,
+      "failed": 0,
+      "normalized_result": "72 passed",
+      "passed": 72,
+      "skipped": 0
+    }
+  }
+}

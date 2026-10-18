@@ -1,0 +1,38 @@
+{
+  "cross_engine_comparison_prohibited": true,
+  "formal_scope": "mysql_only",
+  "freeze_id": "frozen_mysql_operator_physics_experience_tables_20260724_v1",
+  "model": {
+    "path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/operator_physics_model_v1.json",
+    "sha256": "6db71142839f1a16afebc58998c55d9ef1b7cb467ea1158f13a22a5dfac348fa"
+  },
+  "parameter_space": {
+    "path": "config/formal/frozen_mysql_workloads_and_parameters_20260723_v3/effective_parameter_spaces.json",
+    "sha256": "df30b58d8709fe8d48f75644c0d38b33a6545360a670ea92a0c162e462ce07f7"
+  },
+  "real_measurement": false,
+  "schema_version": "mysql_operator_physics_experience_bundle_v1",
+  "status": "FROZEN_OPERATOR_PHYSICS_PRIOR",
+  "tables": {
+    "hybench_ap_memory": {
+      "path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.hybench_ap_memory.operator_physics_v1.json",
+      "sha256": "1615de81bd23a0b71402725fcbe940447b3a55148a43f1c9513dc0893e460562"
+    },
+    "hybench_xp_io": {
+      "path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.hybench_xp_io.operator_physics_v1.json",
+      "sha256": "a6337802ba5aef5619f2ee13fbf000c3600a733cf8cc6e76c6954db0708765e2"
+    },
+    "job_memory": {
+      "path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.job_memory.operator_physics_v1.json",
+      "sha256": "e3999f61a9b9bd8e6451c4e08c8983cf34ca671dc22dbf6504e090dd1ad8e405"
+    },
+    "tpcc_cpu": {
+      "path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.tpcc_cpu.operator_physics_v1.json",
+      "sha256": "39c2d5bfab2c63910f3749a6467666ba65bb252e83e03af9b9333ea0897a1126"
+    },
+    "tpch_memory": {
+      "path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.tpch_memory.operator_physics_v1.json",
+      "sha256": "dfb85c3ade9b2f9770b8f815d3a3267615c75efb654227e8d83774561ac3e7f6"
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "accepted_decisions_preserved": 9,
+  "accepted_round_target": null,
+  "bounded_tpch_cleanup_retry": true,
+  "completed_outer_attempts_preserved": 10,
+  "created_at": "2026-09-29T16:31:26.190643+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "current_pg_runtime_release": "v59",
+  "discarded_incomplete_outer": 11,
+  "dynamic_gate_release": "v210",
+  "evidence_bindings": {
+    "benchmark_accounts": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_authority_v36_20260923/authority/benchmark_accounts_binding.json",
+      "sha256": "81ba93987b581681cb62a8b085173a9120b9edc535a75860db0e5493eb110ea6"
+    },
+    "checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v244_tpch_v243_outer10_timeout_checkpoint_20260929/prepared_binding.json",
+      "sha256": "d1f2cdd460cccf0982502f6f877e42ab97cb36ed930ed055a868ed753677d861"
+    },
+    "formal_baseline": {
+      "path": "history/mysql_four_scene_20260809/c_v148_paper_baseline_calibration_20260923_tpch/formal_incumbent_baseline/batch_result.json",
+      "sha256": "8b4a52a96a8d6d2a370fef2e331a21dc855114d05d0df98b3da56440fe61a5c4"
+    },
+    "formal_r0_set": {
+      "path": "history/mysql_four_scene_20260809/c_v152_formal_r0_set_v36_20260923/formal_r0_set.json",
+      "sha256": "b098e7a5aa510560d4c81e12f9be91faad939ca7e6e24dcdf992c7cb73bc3c4f"
+    },
+    "fresh_r0": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_fresh_r0_v36_20260923/fresh_r0_binding.json",
+      "sha256": "792d726757b53d2ba6e99ca90ce47ec4696a22c6b546c7895c66e16bc9fe8c37"
+    },
+    "prepared_binding": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_authority_v36_20260923/authority/prepared_binding.json",
+      "sha256": "8dcac4616c820ef6e3d60413e383a7ea3165616c68eaf0b684353bbb524fdb8b"
+    },
+    "quarantine": {
+      "path": "history/mysql_four_scene_20260809/c_v244_tpch_v243_outer10_timeout_quarantine_20260929/replay_quarantine.json",
+      "sha256": "582f06a956dd336ecfd6e8cae325210a976afc6d2ad3711ea5b29707ce69df32"
+    },
+    "quarantine_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v244_tpch_v243_outer10_timeout_checkpoint_20260929/prepared_binding.json",
+      "sha256": "d1f2cdd460cccf0982502f6f877e42ab97cb36ed930ed055a868ed753677d861"
+    },
+    "resource_freeze": {
+      "path": "config/formal/frozen_mysql_four_scene_two_worker_20260923_v36/four_scene_effective_resource_successor.json",
+      "sha256": "4861be654c45c7d7229acc82482db9e5e9929792eca6e12ba7db34c06b1c6090"
+    },
+    "source_batch_1": {
+      "path": "history/mysql_four_scene_20260809/c_v243_tpch_confirmed_cleanup_recovery_20260929_tpch/outer_011/top5_batch_1/batch_result.json",
+      "sha256": "ef84abaed1ecdeadd4cff08672a6bdb8fab42e53d7acb633636deefe09da21b4"
+    },
+    "source_batch_1_gate": {
+      "path": "history/mysql_four_scene_20260809/c_v243_tpch_confirmed_cleanup_recovery_20260929_tpch/outer_011/top5_batch_1_dynamic_noninterference_gate.json",
+      "sha256": "d74625c65717bfbe5497b217acd82d6fc7ffc3e0067b8d31a56ec915c13f1d70"
+    },
+    "source_ranking": {
+      "path": "history/mysql_four_scene_20260809/c_v243_tpch_confirmed_cleanup_recovery_20260929_tpch/outer_011/predicted_rankings.json",
+      "sha256": "c272f6c2aa6dfe75cb3878994d8f558a38c880cb7ce1c8b662bce293e5af5f75"
+    },
+    "source_state": {
+      "path": "history/mysql_four_scene_20260809/c_v243_tpch_confirmed_cleanup_recovery_20260929_tpch/run_state.json",
+      "sha256": "5ef943d643a6964c9ade1a3aca5278c40ff0a3ac1f45775ddfb91c2919de276e"
+    },
+    "transition_preflight": {
+      "path": "history/mysql_four_scene_20260809/c_v156_candidate_authority_v36_20260923/authority/transition_preflight.json",
+      "sha256": "956eb3e700b9b0242b5eb8f93dfdbba898a2769381429d3ac441450257051558"
+    }
+  },
+  "failed_outer_011_state_credit": 0,
+  "formal_scope": "mysql_only",
+  "fresh_search_lineage_preserved": true,
+  "fresh_search_reset_on_resume": false,
+  "latest_failed_outer_timeout_candidates": 3,
+  "latest_failed_outer_valid_zero_credit_replays": 2,
+  "legacy_post_target_cap_retired": true,
+  "normal_stop_uses_actual_interval_width": true,
+  "other_scene_control_or_stop_performed": false,
+  "permanent_invalid_candidate_count": 18,
+  "permanent_invalid_exclusion_all_candidate_paths": true,
+  "post_search_stability_confirmation": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "quarantined_candidate_count": 27,
+  "rejected_decisions_preserved": 1,
+  "release_version": "v244-tpch-fifth-timeout-recovery",
+  "resource_envelope_changed": false,
+  "scene": "tpch_sf4_memory",
+  "schema_version": "mysql_algorithm_c_tpch_fifth_timeout_recovery_contract_v1",
+  "soft_replayed_candidate_count": 9,
+  "source_bindings": {
+    "checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_scene_resume_checkpoint_v19.py",
+      "sha256": "77da22154771d7400f9748b4bd1ea76ac6025ef2584b52c2739a989ccba863e6"
+    },
+    "current_pg_runtime": {
+      "path": "scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v59.py",
+      "sha256": "66f2b1f6b59530ec34abeaa8dd6b9b489c596f5d45c2d9349f4c55c75828ef01"
+    },
+    "dynamic_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v31.py",
+      "sha256": "eb519377db253e660e9bd7a977106c7c2caa9d4b66853883c30e3895decc3d58"
+    },
+    "permanent_exclusion_helper": {
+      "path": "scripts/mysql_algorithm_c_interval_control_v3.py",
+      "sha256": "81143e488f718f6c3f80fef0d55d4ca4ab8ca0c97204c2307415083fbf09e27e"
+    },
+    "quarantine_builder": {
+      "path": "scripts/build_mysql_algorithm_c_tpc_timeout_quarantine_v7.py",
+      "sha256": "601ffd4f87a2a26ad35a494453a67b419f34f682fde0aa864cb9f77be9127ab6"
+    },
+    "recovery_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v244_tpch_fifth_timeout_recovery.py",
+      "sha256": "68fe8c1b22137d01d9247bcb708b69450614fce775d3facd249914ae98bfee4e"
+    },
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v135.py",
+      "sha256": "0b24bdf24a38653d6b202de3f004c4a9f84de30d3f68f5e2a859d92b8fe46a38"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "technical_timeout_candidate_count": 18,
+  "technical_timeout_rejected_round_increment": 0,
+  "technical_timeout_state_credit": 0,
+  "tpch_cleanup_attempt_limit": 3,
+  "tpch_cleanup_lock_wait_timeout_seconds": 5,
+  "tpch_cleanup_readback_after_error": true,
+  "workload_or_candidate_policy_changed": false
+}

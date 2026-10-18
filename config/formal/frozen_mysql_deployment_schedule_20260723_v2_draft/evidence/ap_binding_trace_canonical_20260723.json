@@ -1,0 +1,74 @@
+{
+  "schema_version": "mysql_ap_binding_trace_canonical_evidence_v1",
+  "status": "BINDING_TRACE_VERIFIED_NOT_READY",
+  "scenario": "hybench_ap_memory",
+  "benchmark": "hybench_ap",
+  "engine": "mysql",
+  "host": "192.0.2.3",
+  "run_id": "ap_binding_trace_20260723_0503",
+  "trace_identity": {
+    "event_schema_version": "formal_mysql_binding_trace_event_v1",
+    "event_count": 56,
+    "events_sha256": "7b0ebf424f70e6ed6ee93dea9d85a39cfc479f0d2356b6b379b6a866efc132dd",
+    "manifest_sha256": "b7c5fa631de70749c55da220d9e6d2a53d37643ea03e0c8520b6dcb94aaa3012",
+    "failed_attempt_count": 0
+  },
+  "coverage": {
+    "workers": ["T1", "T2", "T3", "T4"],
+    "events_per_worker": 14,
+    "query_ids_per_worker": ["AP-1", "AP-2", "AP-2-RAND", "AP-3", "AP-4", "AP-5", "AP-6", "AP-7", "AP-8", "AP-9", "AP-10", "AP-11", "AP-12", "AP-13"],
+    "all_outcomes_success": true,
+    "actual_binding_positions_contiguous": true,
+    "template_and_canonical_sql_hashes_present": true,
+    "seed_derivation_present": true
+  },
+  "runtime_isolation": {
+    "database_cpuset_cpus": "24-26,60-62",
+    "database_cpuset_mems": "1",
+    "database_cpu_quota_cores": 3,
+    "database_memory_bytes": 6442450944,
+    "database_memory_swap_bytes": 6442450944,
+    "database_pids_max": 512,
+    "client_cpuset_cpus": "27-29,63-65",
+    "client_cpuset_mems": "1",
+    "client_cpu_quota_cores": 3,
+    "client_memory_bytes": 2147483648,
+    "client_memory_swap_bytes": 2147483648,
+    "client_pids_max": 256,
+    "database_client_logical_and_physical_cpus_disjoint": true,
+    "database_client_numa_nodes_disjoint": false
+  },
+  "recovery": {
+    "candidate_client_removed": true,
+    "candidate_database_removed": true,
+    "candidate_network_removed": true,
+    "running_containers_after": 0,
+    "exact_postgres_processes_after": 0,
+    "disposable_datadir_retained": true
+  },
+  "source_evidence": {
+    "directory": "history/mysql_sgd_env_agents_20260723/ap/candidate_binding_trace_20260723_0503",
+    "bundle_checksums_sha256": "6aa38eb4dd049a9566e5e2a3cb8ea24a2e96638ed1f52acd7cb093cb72d7cc09",
+    "raw_trace_path": "history/mysql_sgd_env_agents_20260723/ap/candidate_binding_trace_20260723_0503/remote_artifacts/raw_trace.jsonl",
+    "raw_trace_sha256": "7b0ebf424f70e6ed6ee93dea9d85a39cfc479f0d2356b6b379b6a866efc132dd",
+    "trace_manifest_path": "history/mysql_sgd_env_agents_20260723/ap/candidate_binding_trace_20260723_0503/remote_artifacts/raw_trace.jsonl.manifest.json",
+    "trace_manifest_sha256": "b7c5fa631de70749c55da220d9e6d2a53d37643ea03e0c8520b6dcb94aaa3012",
+    "execution_result_path": "history/mysql_sgd_env_agents_20260723/ap/candidate_binding_trace_20260723_0503/execution_result.json"
+  },
+  "qualification": {
+    "binding_evidence": true,
+    "strict_physical_plan_evidence": false,
+    "postgresql_counterpart_evidence": false,
+    "formal_static_isolation_gate_passed": false,
+    "cross_engine_envelope_equality": false
+  },
+  "formal_scope": {
+    "candidate_implementation_evidence_only": true,
+    "r0": false,
+    "sgd": false,
+    "accepted_iteration": false,
+    "readiness_changed": false,
+    "ready": false,
+    "launch_authorized": false
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "mysql_algorithm_a_reboot_recovery_contract_v1",
+  "release_version": "v1",
+  "status": "FROZEN",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "algorithm": "A",
+  "contract": "mysql_algorithm_a_host_reboot_same_cohort_resume_v1",
+  "cause": "host_reboot",
+  "same_two_worker_cohort_required": true,
+  "preserve_accepted_search_state": true,
+  "preserve_canonical_baseline": true,
+  "discard_interrupted_partial_round": true,
+  "repeat_interrupted_round_from_start": true,
+  "fresh_baseline_per_worker": 1,
+  "incumbent_replay_required": true,
+  "post_convergence_stability_required": false,
+  "source_bindings": {
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_a_reboot_resume_v1.py",
+      "sha256": "386352cf923c1b56ef54e46fdce36f66f4d0c4f715c9d8095aaf68f326a5d5b1"
+    },
+    "base_algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v1.py",
+      "sha256": "35a3d0b5128d7fcf5ba08ab61344db2e1009b914bef05d79f3fe44add029458d"
+    },
+    "algorithm_a_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260820_v1/algorithm_a_contract.json",
+      "sha256": "864d252328f6c03e938177236ba6c09fbb60aa18d605ebe845bc83186d6856f5"
+    },
+    "predecessor_launch_manifest": {
+      "path": "history/mysql_four_scene_20260809/formal_launch_logs/v39_to_a_per_scene_20260820_attempt002.async_a.launch_manifest.json",
+      "sha256": "df4094d0f6770e88f5c6cd935085bbb6a3b1b822f2a870098378d7a58b4f26b0"
+    }
+  }
+}

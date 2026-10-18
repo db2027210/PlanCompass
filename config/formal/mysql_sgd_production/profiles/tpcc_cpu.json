@@ -1,0 +1,17 @@
+{
+  "schema_version": "mysql_formal_resource_profile_v1",
+  "scenario": "tpcc_cpu",
+  "benchmark": "tpcc",
+  "host": "anonymous@192.0.2.3",
+  "hostname": "node01",
+  "device": "/dev/nvme0n1",
+  "mount": "/mnt/mysql_nvme0n1",
+  "cpuset": "21-28,57-64",
+  "mems": "1",
+  "cpu_cores": 0.107,
+  "memory_bytes": 3221225472,
+  "pids": 1024,
+  "read_bps": 1130000,
+  "write_bps": 1130000,
+  "buffer_pool_bytes": 2147483648
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v157",
+  "release_version": "v157-complete-search-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "resume_only_from_completed_outer_boundary": true,
+  "incomplete_outer_credit": 0,
+  "completed_outer_attempts_preserved": 1,
+  "paper_baseline_tolerance_percentage_points": 1.0,
+  "paper_baseline_gate_status_required": "PASS",
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "post_search_stability_confirmation": false,
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "physical_workers_per_scene": 2,
+  "maximum_concurrent_mysql_workers": 8,
+  "four_scene_wave_barrier": false,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_paper_baseline_20260923_v156/algorithm_c_paper_baseline_contract.json",
+    "sha256": "17676fdf32bd24aeb4e3432f1931b725d22e9aa15b4657230cdc6671dea41108"
+  },
+  "source_bindings": {
+    "launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v157_full_resume.py",
+      "sha256": "d4c321ecd2c5a1bac1e68e5cf5ec9b18774e8a7a3ac2d443e9e7d264ad1676cd"
+    },
+    "completion_monitor": {
+      "path": "scripts/monitor_mysql_algorithm_c_v157_full_resume.py",
+      "sha256": "5b9652482169d45dc69f90000627bf4281a3239184428adcf29a1af4e93d2a26"
+    },
+    "resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v67.py",
+      "sha256": "842e7efbcb0847a4a03e33c1e3c83f9aa5d6a80b36e64e85faa1f4eece355a70"
+    },
+    "v156_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v66.py",
+      "sha256": "de0e58f55c96d147791cbd29090f1d20bbfe58faa903c1e32260e7cdd676deec"
+    },
+    "boundary_checkpoint_builder": {
+      "path": "scripts/build_mysql_algorithm_c_independent_round_boundary_checkpoint_v5.py",
+      "sha256": "0d3c2f68f594f8a479c2b66d64853d8386c84edb178ba8f668b1edd5b501d6d6"
+    },
+    "one_outer_completion_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923/one_outer_completion_audit.json",
+      "sha256": "71a24dd927e8989d82f78f6138af4dc97e43d2a00f79cf8bfd22405e73648e79"
+    },
+    "job_paper_baseline_gate": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_job/paper_baseline_resource_gate.json",
+      "sha256": "3a8d8145ce12d3876da45a1d44068dbe04642ae3e2a34f8dd09075c664f1a9c4"
+    },
+    "tpch_paper_baseline_gate": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_tpch/paper_baseline_resource_gate.json",
+      "sha256": "a68ed3cc791fc33dc458f083dd3cb88e1273ce85d999868948cc97f9220aaa23"
+    },
+    "xp_cpu_paper_baseline_gate": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_xp_cpu/paper_baseline_resource_gate.json",
+      "sha256": "4da883a40cd26e77da0e88d659a92669d407d356ec1fa8f8970192011477b700"
+    },
+    "xp_io_paper_baseline_gate": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_xp_io/paper_baseline_resource_gate.json",
+      "sha256": "9822b61e682889a492ffa2cf704b85cfd51dcbf3129c1024609a44bdd2b49497"
+    },
+    "job_cessation": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_job/completed_outer_001_cessation.json",
+      "sha256": "e3f887eed0421b8be418d9619f9451f6ec2f9d72bd796739d5561982be4f1bc9"
+    },
+    "tpch_cessation": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_tpch/completed_outer_001_cessation.json",
+      "sha256": "448b626b5fc4e623fa240e7a692663f3ebd9a4c050e4be8e6daaf119cf9f3fe9"
+    },
+    "xp_cpu_cessation": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_xp_cpu/completed_outer_001_cessation.json",
+      "sha256": "d265bf0e6b6c57a6e909f52cbb824a19f11be4430f986ade5e7afdd7f72a64ee"
+    },
+    "xp_io_cessation": {
+      "path": "history/mysql_four_scene_20260809/c_v156_four_scene_candidate_search_20260923_xp_io/completed_outer_001_cessation.json",
+      "sha256": "655edb47b29187d0c6c002be8aab603c9726dec8f12dda184556efcb542a6241"
+    }
+  }
+}

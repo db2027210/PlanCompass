@@ -1,0 +1,122 @@
+{
+  "accepted_ranges_incumbent_history_preserved": true,
+  "algorithm": "A",
+  "both_memory_scenes_complete_before_handoff": true,
+  "candidate_set_changed": false,
+  "canonical_baseline_preserved": true,
+  "contract": "mysql_algorithm_a_job_four_slots_to_xp_2_to_4_v1",
+  "cpu_pinning_retained": true,
+  "cross_engine_comparison_prohibited": true,
+  "cross_scene_reset_lock_used": false,
+  "current_job4_resume_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_a_job_valid_replica_refresh_resume_20260824_v1/resume_contract.json",
+    "sha256": "5dee8fc74e10ecec32b81b11e728bd306860498172cf15fd0f8ddab21c7f6b4b"
+  },
+  "effective_numa_and_memory_values_read_back": true,
+  "external_process_control_or_stop_prohibited": true,
+  "external_workload_wait_required": false,
+  "external_workloads_diagnostic_only": true,
+  "formal_scope": "mysql_only",
+  "fresh_baseline_repetitions_per_worker": 2,
+  "historical_accepted_rounds_preserved": true,
+  "incumbent_replay_required": true,
+  "job_nonconvergence_does_not_release_slots": true,
+  "job_run": "v129_to_a_job_valid_replica_refresh_pg_order_resume_20260824_attempt001_job",
+  "measurement_duration_policy_unchanged": true,
+  "mixed_worker_cohort_round_prohibited": true,
+  "native_xp_workload_unchanged": true,
+  "numa_exclusive_scheduler_lock_required": false,
+  "outer_loop_semantics_changed": false,
+  "partial_next_round_archived_and_not_credited": true,
+  "per_scene_independent_transition": true,
+  "post_convergence_stability_required": false,
+  "post_reset_syncfs_retained": true,
+  "postgresql_process_control_or_stop_prohibited": true,
+  "release_version": "external_diagnostic_xp4_v8_fast_reset",
+  "released_slot_mapping": {
+    "job_w1": "xp_cpu_w3",
+    "job_w2": "xp_cpu_w4",
+    "job_w3": "xp_io_w3",
+    "job_w4": "xp_io_w4"
+  },
+  "resource_recalibration_required": false,
+  "rolling_dynamic_noninterference_gate_retained": false,
+  "round_boundary_required": true,
+  "schema_version": "mysql_algorithm_a_job_to_xp_slot_contract_v1",
+  "shared_nvme_lease_used": false,
+  "source_bindings": {
+    "current_algorithm_a_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "current_job4_resume_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_valid_replica_refresh_resume_20260824_v1/resume_contract.json",
+      "sha256": "5dee8fc74e10ecec32b81b11e728bd306860498172cf15fd0f8ddab21c7f6b4b"
+    },
+    "current_xp_cpu_w1_recovery_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_xp_cpu_w1_reset_recovery_20260824_v1/transition_contract.json",
+      "sha256": "09d1c2e3d1f2387da5320c5909a5f515c9b1a1bfb97e2f67a58ab75da8f26f71"
+    },
+    "external_diagnostic_gate": {
+      "path": "scripts/mysql_external_workload_diagnostic_gate_v1.py",
+      "sha256": "d7347b9ae3d982e59dc7e4d22144e6d8c71cc479c7e35515ba0fae377d98a9c1"
+    },
+    "upstream_job4_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_job_external_diagnostic_slots_20260823_v1/transition_contract.json",
+      "sha256": "d44073093ffb32b9950e1d0971fb7a83649682ad2dfb87a4eeaecfd67805da8e"
+    },
+    "xp4_executor": {
+      "path": "scripts/execute_mysql_algorithm_a_external_diagnostic_to_xp4_v5.py",
+      "sha256": "ce9acab322fe546368e56aa8a88ffdc49bb326d58237824b8b9e9ce78392f86d"
+    },
+    "xp4_executor_base": {
+      "path": "scripts/execute_mysql_algorithm_a_external_diagnostic_to_xp4_v1.py",
+      "sha256": "f939016f85fd5dfa0c26e8cbc2228feb7598ea1814728207006b7170deb9d8c4"
+    },
+    "xp4_monitor": {
+      "path": "scripts/monitor_mysql_algorithm_a_external_diagnostic_to_xp4_v6.py",
+      "sha256": "ee38fe39ab896310b2b2c02b1383cf263064402624b8191c21f35cbfd752f58e"
+    },
+    "xp4_monitor_base": {
+      "path": "scripts/monitor_mysql_algorithm_a_external_diagnostic_to_xp4_v5.py",
+      "sha256": "afe8a284957c262306624dceeb85108dbffd83dbd0671aac9321a0c7fad1b6d4"
+    },
+    "xp4_monitor_implementation": {
+      "path": "scripts/monitor_mysql_algorithm_a_job_to_xp_slots_v1.py",
+      "sha256": "1b2c763da15aa993b9f7aa200c1c88a54db70972e63b2d33ad37af9529dbd3e1"
+    },
+    "xp4_resume": {
+      "path": "scripts/run_mysql_algorithm_a_job_to_xp_external_diagnostic_fast_reset_resume_v1.py",
+      "sha256": "810b5028960796225c8afeafd53145ea11223a116fbc6179d495f932a0e7b1d3"
+    },
+    "xp_parallel_reset": {
+      "path": "scripts/mysql_async_xp_post_reset_settle_v2.py",
+      "sha256": "8f5624a8947d8e942e55d1e41659d054d60f3be6c7b03d0a212e321697b13bef"
+    },
+    "xp_settle_predecessor": {
+      "path": "scripts/mysql_async_xp_post_reset_settle_v1.py",
+      "sha256": "9f3599f9da763bf75a90d0518b8b24047ac48a6084e7cfd18f1e10d1102de11a"
+    }
+  },
+  "source_resource_freeze": {
+    "path": "config/formal/frozen_mysql_algorithm_a_job_external_diagnostic_slots_20260823_v1/job_four_worker_resource_successor.json",
+    "sha256": "b704b724b1fea47473dcc518d31ad9a5a777b198cabe130393ebcee50a2df3af"
+  },
+  "status": "FROZEN",
+  "target_cgroup_quiet_gate_retained": true,
+  "tpch_complete_10_required": true,
+  "trigger_requires_job_complete_10": true,
+  "upstream_job4_transition_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_a_job_external_diagnostic_slots_20260823_v1/transition_contract.json",
+    "sha256": "d44073093ffb32b9950e1d0971fb7a83649682ad2dfb87a4eeaecfd67805da8e"
+  },
+  "worker_reset_parallelism_after_handoff": 4,
+  "worker_reset_serialization_removed": true,
+  "xp_cpu_does_not_wait_for_xp_io": true,
+  "xp_cpu_run": "v133_to_a_xp_cpu_w1_reset_external_diagnostic_resume_20260824_attempt001_xp_cpu",
+  "xp_io_does_not_wait_for_xp_cpu": true,
+  "xp_parallelism": {
+    "after": 4,
+    "before": 2
+  }
+}

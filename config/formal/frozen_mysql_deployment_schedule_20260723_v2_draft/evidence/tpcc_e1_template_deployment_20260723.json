@@ -1,0 +1,89 @@
+{
+  "schema_version": "mysql_tpcc_e1_canonical_template_deployment_evidence_v1",
+  "artifact_type": "mysql_template_deployment_evidence",
+  "status": "TEMPLATE_DEPLOYMENT_VERIFIED_NOT_READY",
+  "scenario": "tpcc_cpu",
+  "benchmark": "tpcc",
+  "engine": "mysql",
+  "host": "192.0.2.7",
+  "hostname": "node04",
+  "device": "/dev/nvme3n1",
+  "mount": "/mnt/mysql_tpcc_nvme3n1",
+  "template_path": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/template",
+  "run_id": "20260722T220924Z_1489393",
+  "template_identity": {
+    "template_manifest_sha256": "df833ed4591e7a4ceb728ee3c8bcd77216a923c0ad5d04c1c57211feae4e7fb8",
+    "datadir_sha256_tree_v1": "872c6861250d9e524e1c4cb2f96af4b640bda158f0e945bc548f5df30ca588ae",
+    "datadir_file_count": 174,
+    "datadir_directory_count": 6,
+    "datadir_bytes": 1452441280,
+    "clean_shutdown": true,
+    "read_only": true,
+    "regular_files_and_directories_only": true
+  },
+  "exact_row_counts": {
+    "warehouse": 10,
+    "district": 100,
+    "customer": 300000,
+    "history": 300000,
+    "oorder": 300000,
+    "new_order": 90000,
+    "item": 100000,
+    "stock": 1000000,
+    "order_line": 3000644
+  },
+  "postgresql_unchanged": {
+    "id": "5bfdab1bb8e8e6d382e70b15c252c9f3b2d74ae3e0ba0a1e05532e2291b479cc",
+    "running": true,
+    "cpuset_cpus": "0-15,36-51",
+    "cpuset_mems": "0",
+    "nano_cpus": 28800000000,
+    "memory": 2147483648,
+    "memory_swap": 2147483648,
+    "pids_limit": 512,
+    "before_after_readback_identical": true,
+    "storage_source_prefix": "/mnt/nvme2n1/"
+  },
+  "closure": {
+    "lease_free": true,
+    "temporary_template_container_absent": true,
+    "temporary_loader_container_absent": true,
+    "failed_attempt_evidence_preserved": true
+  },
+  "source_evidence": {
+    "retry6_local_bundle": {
+      "directory": "history/mysql_sgd_env_agents_20260723/tpcc/tpcc_e1_resume_publish_20260722T220924Z_1489393",
+      "checksums_path": "history/mysql_sgd_env_agents_20260723/tpcc/tpcc_e1_resume_publish_20260722T220924Z_1489393/checksums.sha256",
+      "checksums_sha256": "c7b9183481b4228d52bbe11a805c127d2a7eb3048b908b43742f8e0a41c2adb7",
+      "row_counts_path": "history/mysql_sgd_env_agents_20260723/tpcc/tpcc_e1_resume_publish_20260722T220924Z_1489393/row_counts.json",
+      "row_counts_sha256": "446724547b534f3537c61600472919f026e19a012c7c81136f99e24f343fe37b",
+      "final_path": "history/mysql_sgd_env_agents_20260723/tpcc/tpcc_e1_resume_publish_20260722T220924Z_1489393/final.json",
+      "final_sha256": "8e3e33a3715b85980df74a17a579c34ced5e987cc76bb1f581a54a81f5979ce1",
+      "pg_before_path": "history/mysql_sgd_env_agents_20260723/tpcc/tpcc_e1_resume_publish_20260722T220924Z_1489393/pg_readback.json",
+      "pg_before_sha256": "3d16ebcc730a921174625a67d73be082246430a7e6956b15af17e368a1347135",
+      "pg_after_path": "history/mysql_sgd_env_agents_20260723/tpcc/tpcc_e1_resume_publish_20260722T220924Z_1489393/pg_readback_after_resume_publish.json",
+      "pg_after_sha256": "3d16ebcc730a921174625a67d73be082246430a7e6956b15af17e368a1347135"
+    },
+    "retry6_remote_bundle": {
+      "directory": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/evidence/20260722T220924Z_1489393",
+      "checksums_path": "/mnt/mysql_tpcc_nvme3n1/anonymous/resource_adaptive_mysql/tpcc/evidence/20260722T220924Z_1489393/checksums.sha256",
+      "checksums_sha256": "c7b9183481b4228d52bbe11a805c127d2a7eb3048b908b43742f8e0a41c2adb7"
+    }
+  },
+  "readiness_guard": {
+    "path": "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/readiness_manifest.json",
+    "sha256_unchanged": "672d1fbc0a67f9c722817824b4bce712007d77fe844a2d3417a7bb534032a948",
+    "required_status": "NOT_READY",
+    "launch_authorized": false
+  },
+  "formal_scope": {
+    "template_deployment_only": true,
+    "r0": false,
+    "sgd": false,
+    "accepted_iteration": false,
+    "readiness_changed": false,
+    "ready": false,
+    "launch_authorized": false
+  },
+  "scope_note": "TPC-C E1 template deployment evidence only. It does not authorize or record R0, SGD, accepted iterations, readiness publication, or formal launch."
+}

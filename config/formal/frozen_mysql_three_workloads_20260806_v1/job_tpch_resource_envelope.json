@@ -1,0 +1,75 @@
+{
+  "cross_engine_comparison_prohibited": true,
+  "execution": "concurrent_separate_mysql_instances",
+  "execution_authorized": false,
+  "formal_scope": "mysql_only",
+  "job": {
+    "host_port": 65211,
+    "intended": {
+      "cpu_period_us": 100000,
+      "cpu_quota_cores": 3.0,
+      "cpu_quota_us": 300000,
+      "cpuset_cpus": "176-183,432-439",
+      "cpuset_mems": "1",
+      "innodb_buffer_pool_bytes": 4294967296,
+      "io_read_bps": 1205862400,
+      "io_write_bps": 1205862400,
+      "memory_bytes": 6442450944,
+      "memory_swap_bytes": 0,
+      "pids_max": 512
+    },
+    "storage_device": "/dev/nvme1n1",
+    "storage_device_major_minor": "259:5",
+    "storage_mount": "/disk1",
+    "template_exists_at_freeze": true,
+    "template_path": "/disk1/ra_mysql_isolated_v2/job-base"
+  },
+  "joint_required_gates": [
+    "disjoint_cpuset",
+    "disjoint_storage_device",
+    "disjoint_container",
+    "disjoint_host_port",
+    "co_resident_inventory",
+    "rolling_dynamic_non_interference",
+    "full_113_and_q1_q22_coverage"
+  ],
+  "known_prelaunch_condition": "retire_or_relocate_idle_mysql_job_preflight_before_claiming_job_cpuset",
+  "required_effective_readback_per_instance": [
+    "container_and_proc_identity",
+    "cpu_period_and_quota",
+    "cpuset_cpus",
+    "cpuset_mems",
+    "memory",
+    "swap",
+    "io_device_and_caps",
+    "pids",
+    "innodb_buffer_pool",
+    "session_owned_full_physical_copy",
+    "database_schema_and_row_count_attestation"
+  ],
+  "schema_version": "mysql_full_job_tpch_joint_resource_envelope_freeze_v1",
+  "shared_instance_prohibited": true,
+  "status": "FROZEN_INTENT_READBACK_REQUIRED",
+  "tpch": {
+    "host_port": 65212,
+    "intended": {
+      "cpu_period_us": 100000,
+      "cpu_quota_cores": 7.5,
+      "cpu_quota_us": 750000,
+      "cpuset_cpus": "200-207,456-463",
+      "cpuset_mems": "1",
+      "innodb_buffer_pool_bytes": 4294967296,
+      "io_read_bps": 872415232,
+      "io_write_bps": 872415232,
+      "memory_bytes": 5583454208,
+      "memory_swap_bytes": 0,
+      "pids_max": 512
+    },
+    "storage_device": "/dev/nvme2n1",
+    "storage_device_major_minor": "259:6",
+    "storage_mount": "/disk2",
+    "template_exists_at_freeze": true,
+    "template_path": "/disk2/ra_mysql_isolated_v2/tpch-memory"
+  },
+  "workload_freeze_sha256": "d616751aed412ff01e3cdb543fe3c441cd1c5529175ec7df79856cb4c08df74e"
+}

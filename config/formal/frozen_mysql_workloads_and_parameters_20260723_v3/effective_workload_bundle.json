@@ -1,0 +1,46 @@
+{
+  "schema_version": "mysql_effective_workload_bundle_v1",
+  "freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+  "engine": "mysql",
+  "status": "FROZEN_SEMANTICS_EXECUTION_REQUIRES_LANE_READY",
+  "composition": "v2_full_bundle_plus_v3_job_mix_delta",
+  "base": {
+    "freeze_id": "frozen_mysql_workloads_and_parameters_20260722_v2",
+    "workloads": {
+      "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/config/formal/frozen_mysql_workloads_and_parameters_20260722_v2/mysql_workloads.json",
+      "sha256": "de18f2f6b4ac7842516c57d0ed8c80ae0e50c7fb84ec0426dff87f77b7822d4b"
+    },
+    "parameter_spaces": {
+      "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/config/formal/frozen_mysql_workloads_and_parameters_20260722_v2/mysql_parameter_spaces.json",
+      "sha256": "dd24f770304294fc1a7ceab3b08dcf250adfa03eb94e82c36aafe8f74123e012"
+    },
+    "freeze_contract": {
+      "path": "/home/anonymous/program/resource_adaptive_double_loop_sgd_isolated/config/formal/frozen_mysql_workloads_and_parameters_20260722_v2/freeze_contract.json",
+      "sha256": "b9a86d442f5b39f444bb28f4d90ea0f04332444ed5132156f41b4a6fb5202d5a"
+    }
+  },
+  "effective_parameter_spaces": {
+    "path": "effective_parameter_spaces.json",
+    "sha256": "df30b58d8709fe8d48f75644c0d38b33a6545360a670ea92a0c162e462ce07f7",
+    "estimator_sha256": "127bf2d53afb72edd035ccfd9b914de6601769c7aa46ffdd195eedf0b84868e9",
+    "supersedes_base_embedded_estimator_sha256": "74c81a80a83c434e3dc9704a96098b01c5959c70f8de65d87738b6f2d8280167"
+  },
+  "delta": {
+    "scope": "job_sensitive_mix_text_conflict_only",
+    "artifact": {
+      "path": "job_mix.json",
+      "sha256": "40937789f3830d19eb33477b96a925896c023ed9cdae9df1e28ca24bf5a63896"
+    },
+    "effective_job_weight_total": 107.5,
+    "effective_job_sensitive_fraction": 0.06976744186046512,
+    "superseded_fraction": 0.047619
+  },
+  "included_benchmarks": [
+    "hybench_ap",
+    "job",
+    "tpch",
+    "tpcc",
+    "hybench_xp"
+  ],
+  "execution_authorized": false
+}

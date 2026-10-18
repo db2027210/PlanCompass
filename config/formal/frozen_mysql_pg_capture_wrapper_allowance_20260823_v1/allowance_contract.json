@@ -1,0 +1,40 @@
+{
+  "schema_version": "mysql_pg_capture_wrapper_allowance_contract_v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T14:25:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "purpose": "Avoid false interference waits caused only by bounded full-host-cpuset shims under the exact disk1 PostgreSQL JOB capture launcher.",
+  "capture_script_path": "/home/anonymous/program/resource_adaptive/shell/run_job_fixed_benchmark_capture.py",
+  "capture_script_sha256": "817a3f8028b45eb4ceae470b78f82cb91b655a4477a63234ccb0db75ff39a25d",
+  "maximum_recognized_processes": 4,
+  "maximum_wrapper_rss_bytes": 8388608,
+  "maximum_launcher_rss_bytes": 33554432,
+  "maximum_total_lifetime_cpu_cores": 0.1,
+  "maximum_ancestor_depth": 4,
+  "disk1_lineage_required": true,
+  "disk2_lineage_prohibited": true,
+  "base_container_and_workload_isolation_must_pass": true,
+  "external_mutation": false,
+  "postgresql_process_control_or_stop_prohibited": true,
+  "arbitrary_full_host_cpuset_process_allowed": false,
+  "rolling_dynamic_noninterference_gate_retained": true,
+  "source_bindings": {
+    "allowance_evaluator": {
+      "path": "scripts/mysql_co_resident_pg_isolation_v14.py",
+      "sha256": "8caebbd817a100aba2ec6600089cc0420d48073d1c8783cf38b8600c160535ed"
+    },
+    "predecessor_evaluator": {
+      "path": "scripts/mysql_co_resident_pg_isolation_v13.py",
+      "sha256": "19cf7fd9c18ce51a8833e0db606309cdc172772ce09fe4a24b2cd1e639e45fba"
+    },
+    "rolling_gate": {
+      "path": "scripts/mysql_cross_project_wave_coordination_v2.py",
+      "sha256": "9a29b954f4fd15d10abba5c5e133e47307264f789a51bb5c89226458ae27e405"
+    },
+    "base_coordination_contract": {
+      "path": "config/formal/frozen_mysql_cross_project_wave_coordination_20260819_v65/coordination_contract.json",
+      "sha256": "913fa4f81348ba3cdfa9b3db62c5615b6111cd1059ef0512c28908aee0df3c5c"
+    }
+  }
+}

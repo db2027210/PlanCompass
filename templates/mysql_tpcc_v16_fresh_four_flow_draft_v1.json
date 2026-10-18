@@ -1,0 +1,54 @@
+{
+  "schema_version": "mysql_tpcc_v16_fresh_four_flow_draft_v1",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "accepted_rounds_credit": 0,
+  "a336_bundle": "[PUBLISHED_A336_BUNDLE]",
+  "v16_bundle": "[PUBLISHED_V16_BUNDLE]",
+  "initial_a336_snapshot": "[FRESH_A336_SNAPSHOT_JSON]",
+  "python": {
+    "path": "[SEALED_3A807_PYTHON]/bin/python3.11",
+    "binary_sha256": "05bd6d6d900bd990b8c00d17df3b3e1425d6c32f0408f07cd29bc495ac4aff39",
+    "tree_content_sha256": "3a8073397536ab806e125061395c291b20edd40c1da015eb4edb87bc3c403c89"
+  },
+  "collector_bundle": "[ONE_CURRENT_SHARED_COLLECTOR_BUNDLE_FOR_BOTH_LANES]",
+  "collector_entry_relative": "qualification/mysql_tpch_tpcc_shared_collector_entry_v1.py",
+  "run_root": "[NEW_EXCLUSIVE_OUTPUT_ROOT]",
+  "lanes": {
+    "A": {
+      "scenario": "tpch_memory",
+      "bundle_path": "[CURRENT_TPCH_BUNDLE_PATH]",
+      "bundle_id": "[CURRENT_TPCH_BUNDLE_ID]",
+      "database_container_id": "[CURRENT_FULL_TPCH_DB_ID]",
+      "client_container_id": "[CURRENT_FULL_TPCH_CLIENT_ID]",
+      "database_cpuset": "18-20,54-56",
+      "client_cpuset": "0-7,36-43",
+      "device": "/dev/nvme0n1",
+      "device_major_minor": "259:1",
+      "mysql_port": 65103
+    },
+    "B": {
+      "scenario": "tpcc_cpu",
+      "bundle_id": "7e2e13aa76c0d2e2990ff098dcdcee9b09fdbb98a60abbf4fc08d52ea4fd6c77",
+      "database_container_id": "[FROM_A336_SNAPSHOT]",
+      "client_container_id": "[FROM_A336_SNAPSHOT]",
+      "database_cpuset": "21-24,57-60",
+      "client_cpuset": "8-15,44-51",
+      "device": "/dev/nvme3n1",
+      "device_major_minor": "259:2",
+      "mysql_port": 65106
+    }
+  },
+  "commands": {
+    "pre_snapshot": ["[PYTHON]", "[A336_CONTROL]", "snapshot", "--bundle", "[V16]", "--adopted-service", "[SERVICE]", "--phase-ledger", "[LEDGER]", "--output-root", "[RUN_ROOT]/pre_snapshot"],
+    "A_solo": ["/usr/bin/taskset", "-c", "0-7,36-43", "[PYTHON]", "[COLLECTOR_ENTRY]", "--qualification-solo", "[CURRENT_A_ARGS]", "--output", "[RUN_ROOT]/A_solo.evidence.json"],
+    "B_solo": ["/usr/bin/taskset", "-c", "8-15,44-51", "[PYTHON]", "[COLLECTOR_ENTRY]", "--qualification-solo", "[CURRENT_B_ARGS]", "--output", "[RUN_ROOT]/B_solo.evidence.json"],
+    "A_readback": ["/usr/bin/taskset", "-c", "0-7,36-43", "[PYTHON]", "[COLLECTOR_ENTRY]", "--collect-only", "[CURRENT_A_ARGS]", "--output", "[RUN_ROOT]/A_readback.json"],
+    "B_readback": ["/usr/bin/taskset", "-c", "8-15,44-51", "[PYTHON]", "[COLLECTOR_ENTRY]", "--collect-only", "[CURRENT_B_ARGS]", "--output", "[RUN_ROOT]/B_readback.json"],
+    "A_paired": ["/usr/bin/taskset", "-c", "0-7,36-43", "[PYTHON]", "[COLLECTOR_ENTRY]", "--qualification-paired", "[CURRENT_A_ARGS]", "--peer-readback", "[RUN_ROOT]/B_readback.json", "--peer-container", "[CURRENT_FULL_TPCC_DB_ID]", "--output", "[RUN_ROOT]/A_paired.evidence.json"],
+    "B_paired": ["/usr/bin/taskset", "-c", "8-15,44-51", "[PYTHON]", "[COLLECTOR_ENTRY]", "--qualification-paired", "[CURRENT_B_ARGS]", "--peer-readback", "[RUN_ROOT]/A_readback.json", "--peer-container", "[CURRENT_FULL_TPCH_DB_ID]", "--output", "[RUN_ROOT]/B_paired.evidence.json"],
+    "compare": ["[PYTHON]", "[COLLECTOR_ENTRY]", "--compare-bidirectional", "--a-solo-evidence", "[RUN_ROOT]/A_solo.evidence.json", "--a-paired-evidence", "[RUN_ROOT]/A_paired.evidence.json", "--b-solo-evidence", "[RUN_ROOT]/B_solo.evidence.json", "--b-paired-evidence", "[RUN_ROOT]/B_paired.evidence.json", "--output", "[RUN_ROOT]/dynamic_gate.tpcc.json", "--gate-scenario", "tpcc_cpu", "--host-id", "node04", "--attempt-token", "[NEW_GATE_TOKEN]"],
+    "post_snapshot": ["[PYTHON]", "[A336_CONTROL]", "snapshot", "--bundle", "[V16]", "--adopted-service", "[SERVICE]", "--phase-ledger", "[LEDGER]", "--output-root", "[RUN_ROOT]/post_snapshot"]
+  }
+}

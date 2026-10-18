@@ -1,0 +1,68 @@
+{
+  "draft_id": "frozen_mysql_deployment_schedule_20260723_v2_draft",
+  "formal_config": {
+    "path": "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/experience_table_sgd_formal_config.json",
+    "sha256": "fb913081367c38235806305b45bb7d05929b413c29c1971ba928f387224edd4e"
+  },
+  "formal_launch_authorized": false,
+  "integrity_contract": {
+    "path": "preflight/mysql_experience_sgd_eight_algorithm_contract_20260723.sha256",
+    "sha256": "e1001d380399a6c9a8c313d04cf64d525a7dd228b7e2216e1df9a44d7bd4b86f"
+  },
+  "method": "experience_table_all_subset_sgd",
+  "registered_sources": [
+    {
+      "path": "gradient_descent_optimizer.py",
+      "sha256": "e508602a217a7fd7fb96bb32e0f5927f0fbf578ff58f91d33a7c5882b26da1da"
+    },
+    {
+      "path": "experience_table_subset_optimizer.py",
+      "sha256": "217320aa3652e98cfc5517d1a9b8e5d76a2581ca2c4b87fc6320a0c7c2589a77"
+    },
+    {
+      "path": "common_outer_loop.py",
+      "sha256": "f429898e4fd0e33ab74a5b9167bb54454a6193e295208ae10c3753bf9ee47eb3"
+    },
+    {
+      "path": "resource_utility.py",
+      "sha256": "16d7bbbab1cb15f28f9da750ea859c460302831987ce39e111815a2483c034bb"
+    },
+    {
+      "path": "mysql_plan_clustering.py",
+      "sha256": "515f9f77c479474aa326bea03dedab70beee9b0ff621ea467e004f203681cff1"
+    },
+    {
+      "path": "trained_model_estimator.py",
+      "sha256": "cba7cf31a3bacd67533ce222942d0c9eb9fa55a9e7cbe565cebff63a568b49ef"
+    },
+    {
+      "path": "mysql_parameter_optimizer.py",
+      "sha256": "f9b85f66f46bf55b404a51836368da473282f7bdc64f155ea8bd66231039870d"
+    },
+    {
+      "path": "formal_stability.py",
+      "sha256": "1e1e83b919eb1d5dc10b4c72c71c5862845e650b30db991006d595446da63d95"
+    },
+    {
+      "path": "formal_resource_sampler_20260721.py",
+      "sha256": "1ba15ff3db1e4fd6828c32415ab3c264c5d88a356ea0a253bbc69ab64bbadeac"
+    },
+    {
+      "path": "formal_mysql_sgd_orchestration.py",
+      "sha256": "34640e7dc03f40381a421781c14fcdb1a9200a22f0b32ccc8f19399a89323618"
+    },
+    {
+      "path": "formal_mysql_sgd_checkpoint.py",
+      "sha256": "c97e78170807206004c28de3eba31759e11c6cf4764438d3b14b4e5ceb9f2afe"
+    },
+    {
+      "path": "formal_mysql_sgd_campaign.py",
+      "sha256": "c2176dc3a2a7faff86ed533be56f3a74202dbfec89d3c8578ae6d51dc429d456"
+    },
+    {
+      "path": "host02_job_xp_mutex.py",
+      "sha256": "575d3bb92e8a3bcb69d2cd6b5c15ccbcf32209158bcd9f50dc950bbb417462fc"
+    }
+  ],
+  "schema_version": 1
+}

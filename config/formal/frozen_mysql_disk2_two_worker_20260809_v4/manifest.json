@@ -1,0 +1,24 @@
+{
+  "schema_version": "mysql_disk2_four_scene_resource_successor_manifest_v4",
+  "status": "SEALED_RESOURCE_SUCCESSOR_RUNTIME_GATES_PENDING",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "predecessor_manifest": {
+    "path": "config/formal/frozen_mysql_disk2_two_worker_20260809_v3/manifest.json",
+    "sha256": "fc2c978145c0331a6e355bd831df83327fac9d01718c602574d69068a9ecfb3d"
+  },
+  "artifacts": {
+    "four_scene_resource_successor.json": "64ccf3bb0f56a93a0f57153bad040935b537bd6e84322f2dd992df7db5c93562",
+    "common_outer_loop.py": "047a69dae04031524c383e539ce67035117d9534aecf157e48e8d0ee79323530",
+    "mysql_parameter_optimizer.py": "d40213fe2945643a9022c35b2bcab16a1fa7de37222cf3c9fdf2f76aaafcf9dc",
+    "preflight_mysql_four_scene_v3.py": "cee059bcfd00c65dd9bfb420b6fe82765988fdbcbc105f84a0804a984bd4433a"
+  },
+  "formal_launch_authorized": false,
+  "launch_performed": false,
+  "accepted_rounds": {
+    "job_memory": 0,
+    "tpch_sf4_memory": 0,
+    "hybench_xp_cpu": 0,
+    "hybench_xp_io": 0
+  }
+}

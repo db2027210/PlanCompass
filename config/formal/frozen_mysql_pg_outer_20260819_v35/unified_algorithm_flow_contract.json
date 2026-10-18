@@ -1,0 +1,81 @@
+{
+  "schema_version": "mysql_unified_pg_algorithm_flow_v1",
+  "release_version": "v35",
+  "status": "FROZEN_RUNTIME_VALIDATED_FOR_B_AND_C",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "active_scenes": [
+    "job_memory",
+    "tpch_sf4_memory",
+    "hybench_xp_cpu",
+    "hybench_xp_io"
+  ],
+  "flow_equivalence_boundary": {
+    "source": "postgresql_algorithm_c_search_state_machine",
+    "runtime_equivalence_applies_to": ["B", "C"],
+    "algorithm_a_exception": "PostgreSQL Algorithm A physically attempts the complete 2^N L/R factorial set and therefore cannot be represented by the B/C partial Top-5 admission path",
+    "identical_across_mysql_algorithms": [
+      "fresh canonical baseline",
+      "offline candidate ranking followed by partial Top-5 admission",
+      "cached valid replay redecision before new physical work",
+      "complete physical [2,2,1] waves before semantic batch selection",
+      "strict-secondary-fallback same-batch ordering with fallback floor",
+      "fallback plan-change expansion",
+      "full-range plan-basin escape",
+      "accepted declared-and-moved subset binary shrink",
+      "rejected round leaves ranges and incumbent unchanged",
+      "technical-only no-valid round leaves semantic state unchanged",
+      "accepted-count target 10 and maximum 100 search rounds"
+    ],
+    "mysql_specific_only": [
+      "database connection and optimizer-cost interface",
+      "resource and QPS measurement adapters",
+      "plan capture and fingerprint adapters",
+      "resource prediction model"
+    ],
+    "explicit_experiment_override": {
+      "post_search_stability_confirmation": false,
+      "post_target_physical_replays": 0,
+      "terminal_condition": "accepted_count_reaches_10"
+    }
+  },
+  "shared_mysql_measurement_boundary": {
+    "applies_to": ["B", "C"],
+    "minimum_measurement_seconds": 300,
+    "decision_interval_seconds": 30,
+    "six_consecutive_30_second_target_resource_window_means": true,
+    "maximum_window_mean_cv": 0.1,
+    "qps_participates_in_stability": false,
+    "xp_maximum_measurement_seconds": 900,
+    "xp_stable_checkpoint_action": "graceful_quiescence_and_drain",
+    "job_tpch_full_sql_coverage_required": true,
+    "job_tpch_early_stability_does_not_truncate_sql": true,
+    "job_tpch_hard_timeout_seconds": 900
+  },
+  "algorithm_variants": {
+    "A": {
+      "inner_candidate_strategy": "required_postgresql_complete_lr_cartesian_physical_attempt",
+      "outer_flow": "not_frozen_until_a_mysql_factorial_runtime_exists",
+      "mysql_runtime_status": "NOT_IMPLEMENTED_NOT_LAUNCHABLE",
+      "formal_runtime_equivalence_claimed": false
+    },
+    "B": {
+      "inner_candidate_strategy": "grid15_coordinate_plus_exhaustive_interactions_2_to_4",
+      "outer_flow": "unified_pg_search_outer_v35",
+      "mysql_runtime_status": "FROZEN_LAUNCHABLE",
+      "formal_runtime_equivalence_claimed": true
+    },
+    "C": {
+      "inner_candidate_strategy": "mysql_contextual_plan_physics_experience_gradient",
+      "outer_flow": "unified_pg_search_outer_v35",
+      "mysql_runtime_status": "FROZEN_LAUNCHABLE",
+      "formal_runtime_equivalence_claimed": true
+    }
+  },
+  "fresh_campaign_rule": {
+    "historical_accepted_rejected_convergence_credit": false,
+    "historical_candidate_measurement_credit": false,
+    "old_results_role": "diagnostic_only",
+    "resource_and_data_plane_freezes_may_be_reused_after_readback": true
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v163",
+  "release_version": "v163-job-script-import-path-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "resume_only_from_completed_outer_boundary": true,
+  "resume_completed_outer_attempt": 2,
+  "discarded_incomplete_outer_attempt": 3,
+  "incomplete_outer_credit": 0,
+  "failed_v161_outer_credit": 0,
+  "failed_v162_outer_credit": 0,
+  "startup_gate_wrapper_nonrecursive": true,
+  "script_safe_repository_import_path": true,
+  "startup_paper_baseline_gate_is_campaign_invariant": true,
+  "paper_baseline_tolerance_percentage_points": 1.0,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "candidate_batches": [[1, 2], [3, 4], [5]],
+  "physical_workers_for_job": 2,
+  "sibling_scene_wait": false,
+  "lease_mode": "none",
+  "postgresql_process_control_or_stop_performed": false,
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v162/algorithm_c_full_resume_contract.json",
+    "sha256": "c5fdd11a7d1f85ea4114da000696f0a1562e9993d88086d7ecac7a416360854a"
+  },
+  "source_bindings": {
+    "job_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v73.py",
+      "sha256": "109cfd8e925a8f0b73a6b2a8f2229fddb3523e600fa9a70b81b4169d4c27c7b6"
+    },
+    "job_resume_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v163_job_resume.py",
+      "sha256": "31766bbd6f9580393d6f423921fdf508444df868aeaba653eab4fd0eb998d601"
+    },
+    "job_outer2_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v161_job_outer2_checkpoint_20260923/prepared_binding.json",
+      "sha256": "8fa9acc4fcfca65527ac3c986ad01566a2259fb458c7858d90e39afa40a74a54"
+    },
+    "failed_v161_attempt_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v161_job_outer2_resume_20260923/failed_resume_attempt_audit.json",
+      "sha256": "5cd71001d1e57a8a5b173b6828c0c9cc2f0d9cf1acbbef243f7ef33aa2f3d04b"
+    },
+    "failed_v162_attempt_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v162_job_outer2_resume_20260923/failed_resume_attempt_audit.json",
+      "sha256": "417c0815c1d9c0d15a89ec646d8ccd47016047100524685aa948218c57eee98b"
+    }
+  }
+}

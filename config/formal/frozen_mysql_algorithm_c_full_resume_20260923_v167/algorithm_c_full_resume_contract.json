@@ -1,0 +1,51 @@
+{
+  "schema_version": "mysql_algorithm_c_full_resume_contract_v167",
+  "release_version": "v167-job-persistent-exec-resume",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "resume_only_from_completed_outer_boundary": true,
+  "resume_completed_outer_attempt": 2,
+  "discarded_incomplete_outer_attempt": 3,
+  "incomplete_outer_credit": 0,
+  "failed_v166_job_outer_credit": 0,
+  "prelaunch_quiet_window_seconds": 120,
+  "formal_runtime_gate_still_required": true,
+  "systemd_launcher_execs_controller_in_place": true,
+  "plan_capture_timeout_seconds": 900,
+  "plan_capture_outside_formal_measurement_wall_time": true,
+  "candidate_set_changed": false,
+  "workload_changed": false,
+  "resource_envelope_changed": false,
+  "full_search_runs_until_runtime_terminal_condition": true,
+  "fixed_outer_round_stop": false,
+  "sibling_scene_wait": false,
+  "shared_nvme_mutual_exclusion": false,
+  "postgresql_process_control_or_stop_performed": false,
+  "parent_contract": {
+    "path": "config/formal/frozen_mysql_algorithm_c_full_resume_20260923_v166/algorithm_c_full_resume_contract.json",
+    "sha256": "780c99fcd5757b5c8a64ba21015dc1b3566c17ba2b2e9dae9f5f367e53c644bf"
+  },
+  "source_bindings": {
+    "job_resume_controller": {
+      "path": "scripts/run_mysql_algorithm_c_four_scene_client_primary_v77.py",
+      "sha256": "630740779836530eff808588d298f7239b548ed139988438707d2419a0907b42"
+    },
+    "exec_launcher": {
+      "path": "scripts/launch_mysql_algorithm_c_v167_job_exec_resume.py",
+      "sha256": "99e5bb1bdbb614d0fe8d13040a7598dc2c4d9d0600f8ef154b2b89f30c95d02a"
+    },
+    "failed_v166_supervised_launch_audit": {
+      "path": "history/mysql_four_scene_20260809/c_v166_job_quiet_resume_20260923/failed_supervised_launch_audit.json",
+      "sha256": "997cbe402816458c3ea2e49775a19b90d4a4d3b4e302e3170420eff37f0a1b9f"
+    },
+    "passed_quiet_window": {
+      "path": "history/mysql_four_scene_20260809/c_v166_job_quiet_resume_20260923/quiet_window_status.json",
+      "sha256": "33f0878e3d33fa98cf7b207a0036a2a2cf5927c7c32137e88e97cfaea2f25307"
+    },
+    "job_outer2_checkpoint": {
+      "path": "history/mysql_four_scene_20260809/c_v161_job_outer2_checkpoint_20260923/prepared_binding.json",
+      "sha256": "8fa9acc4fcfca65527ac3c986ad01566a2259fb458c7858d90e39afa40a74a54"
+    }
+  }
+}

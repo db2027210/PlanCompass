@@ -1,0 +1,155 @@
+{
+  "accepted_round_target": null,
+  "actual_accepted_decisions_restored": 11,
+  "candidate_batches": [
+    [
+      1,
+      2
+    ],
+    [
+      3,
+      4
+    ],
+    [
+      5
+    ]
+  ],
+  "chained_resume_entry_release": "v118",
+  "completed_outer_attempts_preserved": 19,
+  "completed_rounds_replayed": false,
+  "created_at": "2026-09-29T14:53:40.058972+08:00",
+  "cross_engine_comparison_prohibited": true,
+  "current_pg_runtime_release": "v59",
+  "dynamic_gate_environment_switches_to_each_generation": true,
+  "dynamic_gate_release": "v210",
+  "dynamic_gate_uses_latest_reset_result_identity": true,
+  "dynamic_noninterference_gate_relaxed": false,
+  "evidence_bindings": {
+    "authority_accounts": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_live_identity_rebind_20260929/authority/benchmark_accounts_binding.json",
+      "sha256": "ebccbc8a94ab41d949af8cf1f456f6684997040bf6833f2a4adb62a1f51e8146"
+    },
+    "authority_preflight": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_live_identity_rebind_20260929/authority/transition_preflight.json",
+      "sha256": "956eb3e700b9b0242b5eb8f93dfdbba898a2769381429d3ac441450257051558"
+    },
+    "authority_prepared": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_live_identity_rebind_20260929/authority/prepared_binding.json",
+      "sha256": "7266eed691b906df84dce71824d035a3efe43c31f4dbea87feae09ec435a48fc"
+    },
+    "checkpoint": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_v228_outer19_dynamic_gate_checkpoint_20260929/prepared_binding.json",
+      "sha256": "6af6ae30dfd3127cc17cedfd1501ea4e52d60a4a16df0f2b5744d5857b5f830e"
+    },
+    "failed_state": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v228_xp_cpu_reset_result_recovery_20260929_xp_cpu/run_state.json",
+      "sha256": "b0b6bb5d835058afc5106059b89b3bb22b476cbffe06e685fff12078e4e3b7f5"
+    },
+    "formal_baseline": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v149_paper_baseline_calibration_20260923_xp_cpu/formal_incumbent_baseline/batch_result.json",
+      "sha256": "38b88cb48d376ae545fc1de5247988e800b4c867de99761902097810cd8a9f7a"
+    },
+    "formal_r0_set": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v152_formal_r0_set_v36_20260923/formal_r0_set.json",
+      "sha256": "b098e7a5aa510560d4c81e12f9be91faad939ca7e6e24dcdf992c7cb73bc3c4f"
+    },
+    "fresh_r0": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_fresh_r0_identity_successor_20260929/fresh_r0_binding.json",
+      "sha256": "77be3700535ed1f361c504d591d381970243c358e7fe12f9450fa26bf4a749fc"
+    },
+    "identity_rebind_audit": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_live_identity_rebind_20260929/authority/container_identity_rebind_audit.json",
+      "sha256": "e46efbeb29b6d6720e8771c15bc8356b50aaa9d5a342dc35bdcf22e052d9eed8"
+    },
+    "outer19_decision": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v228_xp_cpu_reset_result_recovery_20260929_xp_cpu/outer_019/hybench_xp_cpu.decision.json",
+      "sha256": "76be18d94270a4eda9c2e0c5ba948bf78492e7f6cafc857fee4e1e4b5e8f7dc4"
+    },
+    "outer20_failed_gate": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v228_xp_cpu_reset_result_recovery_20260929_xp_cpu/outer_020/top5_batch_1_dynamic_noninterference_gate.json",
+      "sha256": "538a1155f1b2c25393857948d7293ebb578ed8788ce1448928b5206ead1ee3ce"
+    },
+    "quarantine": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_v228_outer19_dynamic_gate_quarantine_20260929/replay_quarantine.json",
+      "sha256": "1f22a82c4f398ab30649b4f382ef7384dce582419d9025ec16786a0b528f4728"
+    },
+    "v235_interrupted_state": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_runtime_gate_recovery_20260929_xp_cpu/run_state.json",
+      "sha256": "6c191572cc80ad3dea2055677d5f0857c0bf960a6d05b89f88baffd693809641"
+    },
+    "v235_outer20_gate": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_runtime_gate_recovery_20260929_xp_cpu/outer_020/top5_batch_1_dynamic_noninterference_gate.json",
+      "sha256": "d40a773c0d499f1572cdd5d83a3ad882ae8369a35fdbe263f81818dff4b63ca8"
+    },
+    "v235_reset_generation": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v235_xp_cpu_runtime_gate_recovery_20260929/runtime_gate_authority/generation_0001/prepared_binding.json",
+      "sha256": "c7ccdd7f2ef77af53beeee95ee2486e662ccfed16e9d10a39d86e9bdc87ead95"
+    },
+    "v236_preworkload_failure_log": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/history/mysql_four_scene_20260809/c_v236_xp_cpu_runtime_gate_recovery_20260929/xp_cpu.controller.log",
+      "sha256": "52e2ccc90c19ef7e1881a9c6f80659390d87575878b97d1e5421bcf6b3a1cb78"
+    }
+  },
+  "formal_scope": "mysql_only",
+  "fresh_search_lineage_preserved": true,
+  "fresh_search_reset_on_resume": false,
+  "incomplete_outer_attempt": 20,
+  "incomplete_outer_credit": 0,
+  "initial_startup_authority_preserved_until_install": true,
+  "legacy_post_target_cap_retired": true,
+  "normal_stop_uses_actual_interval_width": true,
+  "post_restart_identity_uses_reset_result": true,
+  "post_restart_swappiness_reapplied_and_read_back": true,
+  "post_search_stability_confirmation": false,
+  "prestart_swappiness_reapplied_and_read_back": true,
+  "rejected_decisions_preserved": 8,
+  "release_version": "v237-xp-cpu-runtime-gate-recovery",
+  "resource_envelope_changed": false,
+  "runtime_gate_authority_generation_is_sha_bound_in_each_gate": true,
+  "runtime_gate_authority_is_append_only": true,
+  "scene": "hybench_xp_cpu",
+  "schema_version": "mysql_algorithm_c_xp_cpu_runtime_gate_recovery_contract_v3",
+  "sibling_scene_wait": false,
+  "source_bindings": {
+    "checkpoint_builder": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/build_mysql_algorithm_c_scene_resume_checkpoint_v18.py",
+      "sha256": "387f6819353dbb1810d4623441c3ebd6adc85522ddd01d3e8b796f03b3fe8ac6"
+    },
+    "controller": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_algorithm_c_four_scene_client_primary_v132.py",
+      "sha256": "212346948e568357d920a46c81f82b831009efe3dafefde1bb28381c7f6e06be"
+    },
+    "dynamic_gate": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/mysql_cross_project_wave_coordination_v31.py",
+      "sha256": "eb519377db253e660e9bd7a977106c7c2caa9d4b66853883c30e3895decc3d58"
+    },
+    "identity_builder": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/build_mysql_algorithm_c_xp_cpu_w1_identity_rebind_v2.py",
+      "sha256": "f819e19207c25b26f37dec2fcb3684d772813b9893a546958cbe4ac51d864198"
+    },
+    "launcher": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/launch_mysql_algorithm_c_v237_xp_cpu_runtime_gate_recovery.py",
+      "sha256": "92b046beb78b8fb5b618484aedb52de56058a0578caaa32e50922761a18b33ec"
+    },
+    "pg_runtime": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/run_mysql_four_scene_algorithm_c_boundary_resume_v59.py",
+      "sha256": "66f2b1f6b59530ec34abeaa8dd6b9b489c596f5d45c2d9349f4c55c75828ef01"
+    },
+    "quarantine_builder": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/build_mysql_algorithm_c_empty_quarantine_for_scene_checkpoint_v2.py",
+      "sha256": "26ffaa924023ad1a7e0233cbaa71ae6f5857862fff96673f3d118849ff5513c4"
+    },
+    "reset_result_swappiness": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/mysql_algorithm_c_reset_affinity_v4.py",
+      "sha256": "e201b37fc5f0c7cdce345bec27226eb3e941355ca3f81fedad38e62f4902a737"
+    },
+    "runtime_gate_authority": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/scripts/mysql_algorithm_c_runtime_gate_authority_v1.py",
+      "sha256": "28c38cc2a03f93ee8a0ac6fe059404e624fc82f99afb0228491ff8e4cc980011"
+    }
+  },
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "terminal_normalized_width": 0.01,
+  "top_k_is_upper_bound": true,
+  "workload_or_candidate_policy_changed": false
+}

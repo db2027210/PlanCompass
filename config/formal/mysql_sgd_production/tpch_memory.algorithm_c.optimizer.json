@@ -1,0 +1,151 @@
+{
+  "schema_version": "mysql_experience_table_sgd_optimizer_config_v1",
+  "method_id": "experience_table_sgd",
+  "method": "experience_table_all_subset_sgd",
+  "scenario": "tpch_memory",
+  "benchmark": "tpch",
+  "exp_id": "mysql_algorithm_c_tpch_memory_v3",
+  "formal_scope": "mysql_only",
+  "freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+  "target_resource": "memory",
+  "profile": "config/formal/mysql_sgd_production/profiles/tpch_memory.json",
+  "production": {
+    "formal_entry": "formal_mysql_sgd_campaign:run_production_campaign",
+    "service_factory": "mysql_algorithm_c_production_services:build",
+    "readiness_manifest": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/readiness_manifest.json",
+    "launch_authorized": false
+  },
+  "capability": {
+    "cpu": 1.0,
+    "memory": 1.0,
+    "io": 1.0
+  },
+  "mysql": {
+    "mysql_binary": "mysql",
+    "host": "127.0.0.1",
+    "port": 65103,
+    "user": "root",
+    "database": "tpch_sf10",
+    "engine_name": "default",
+    "device_type": 0,
+    "query_timeout_sec": 120
+  },
+  "cost_parameters": {
+    "active": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "disk_temptable_row_cost"
+    ],
+    "baseline_values": {
+      "io_block_read_cost": 1.0,
+      "memory_block_read_cost": 0.25,
+      "row_evaluate_cost": 0.1,
+      "disk_temptable_row_cost": 0.5
+    },
+    "ranges": {
+      "io_block_read_cost": {"min_value": 0.1, "max_value": 10.0},
+      "memory_block_read_cost": {"min_value": 0.025, "max_value": 2.5},
+      "row_evaluate_cost": {"min_value": 0.01, "max_value": 1.0},
+      "disk_temptable_row_cost": {"min_value": 0.05, "max_value": 5.0}
+    }
+  },
+  "sensitivity_table": {
+    "io_block_read_cost": {"cpu": 0.092, "memory": 0.046, "io": -0.352},
+    "memory_block_read_cost": {"cpu": 0.046, "memory": -0.092, "io": 0.066},
+    "row_evaluate_cost": {"cpu": -0.322, "memory": 0.092, "io": 0.044},
+    "disk_temptable_row_cost": {"cpu": 0.092, "memory": 0.207, "io": -0.33}
+  },
+  "estimator": {
+    "type": "ratio_scale",
+    "baseline_real": {
+      "cpu": 0.3414982598198789,
+      "memory": 0.8973682235339845,
+      "io": 0.3508415146465555
+    },
+    "uncalibrated_transition_log_step": 0.05,
+    "feature_source": {
+      "benchmark_id": "tpch",
+      "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+      "registry_query_ids": [
+        "Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Q11",
+        "Q12", "Q13", "Q14", "Q15", "Q16", "Q17", "Q18", "Q19", "Q20", "Q21", "Q22"
+      ],
+      "require_strict_plan_registry": true,
+      "workload_registry_path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_workloads_and_parameters_20260723_v3/plan_workload_registries/tpch.production_binding_capture_contract_v1.json",
+      "workload_registry_sha256": "ed7687e544d5498da0590ef909777c1dfb0881883964da01fe8c47770670784b",
+      "dynamic_bindings_required": true
+    }
+  },
+  "evidence": {
+    "experience_table_sgd_formal_config": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v4_mysql_only/experience_table_sgd_formal_config.json",
+      "sha256": "7e3edba76792d96f404fdebf33d22582a25b63cb9988f6aa625715df237a6a80"
+    },
+    "experience_table": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/T.tpch_memory.operator_physics_v1.json",
+      "sha256": "8a8166b7500b7845151872366f8d4a6c012acc91746a5e4d1a9954dd72ec5336"
+    },
+    "r0_estimator_scale": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_r0_calibration_20260724_v1/tpch_memory.r0_calibration_v1.json",
+      "sha256": "b4d5cd32c67df75383ee5e79132f9d96fff8d9f3a29122c14206f72fbda9ed31"
+    },
+    "profile": {
+      "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/mysql_sgd_production/profiles/tpch_memory.json",
+      "sha256": "46831794f5dcb07ffa19ebb7649a9dee1f6ea85993d1fc4b5363767003104206"
+    },
+    "formal_incumbent_requires_fresh_measurement": true
+  },
+  "formal_outer_protocol": {
+    "target_accepted_shrinks": 10,
+    "max_outer_attempts": 100,
+    "formal_search_initial_replay_top_k": 5,
+    "formal_search_max_replay_top_k": 5,
+    "plan_basin_escape": {
+      "orthogonal_radius": 0.08,
+      "maximum_radius": 0.32,
+      "radius_gamma": 0.5,
+      "maximum_rejected_batches": 5,
+      "minimum_eta": 0.00031875
+    }
+  },
+  "optimizer": {
+    "candidate_generator": "all_nonempty_subsets_experience_table_analytic_sgd_v1",
+    "eta": 0.0051,
+    "gamma": 0.5,
+    "max_iter": 1,
+    "max_param_delta_ratio": 0.2,
+    "patience": 1,
+    "subset_max_workers": 4
+  },
+  "scoring": {
+    "score_mode": "band_target",
+    "overload_threshold": 0.8,
+    "resource_weights": {"cpu": 1.0, "memory": 1.0, "io": 1.0}
+  },
+  "host02_job_xp_mutex": {
+    "required": false,
+    "scenario": "tpch_memory",
+    "lock_path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/host02_control/job_xp_pressure.lock",
+    "journal_path": "/mnt/mysql_nvme1n1/anonymous/resource_adaptive_mysql/host02_control/job_xp_lease_journal.jsonl"
+  },
+  "workload_registry": {
+    "path": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_workloads_and_parameters_20260723_v3/plan_workload_registries/tpch.production_binding_capture_contract_v1.json",
+    "sha256": "ed7687e544d5498da0590ef909777c1dfb0881883964da01fe8c47770670784b",
+    "immutable": false,
+    "execution_authorized": false,
+    "dynamic_bindings_complete": false
+  },
+  "data_template": {
+    "migration_required": true,
+    "expected_host": "node01",
+    "expected_root": "/mnt/nvme1n1/anonymous/resource_adaptive_mysql/tpch",
+    "status": "BLOCKED_PENDING_LANE_MIGRATION",
+    "source_manifest": "/home/anonymous/program/resource_adaptive_mysql/config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/evidence/tpch_template_manifest_20260723.json"
+  },
+  "output": {
+    "directory": "history/mysql_sgd_algorithm_c/tpch_memory",
+    "verbose": true
+  },
+  "commit_best": false
+}

@@ -1,0 +1,542 @@
+{
+  "benchmark": "hybench_xp",
+  "benchmark_version": "frozen_mysql_workloads_and_parameters_20260723_v3",
+  "calibration": {
+    "magnitude_unit": "utilization_fraction_change_across_frozen_parameter_log_range",
+    "method": "mysql_parameter_operator_resource_expert_prior_v1",
+    "optional_calibration": "R0 baseline scaling or paired OAT may refine magnitudes later",
+    "real_measurement": false,
+    "scale_status": "UNCALIBRATED_PHYSICAL_PRIOR",
+    "source": "operator_physics_experience"
+  },
+  "database": "mysql",
+  "effect_evidence": {
+    "disk_temptable_create_cost": {
+      "cpu": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.05,
+        "observed_delta": 0.05,
+        "observed_median_effect_full_range": 0.05,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.05,
+        "tolerance": 1e-12
+      },
+      "io": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "decrease",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.325,
+        "observed_delta": -0.325,
+        "observed_median_effect_full_range": -0.325,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": -0.325,
+        "tolerance": 1e-12
+      },
+      "memory": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.12,
+        "observed_delta": 0.12,
+        "observed_median_effect_full_range": 0.12,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.12,
+        "tolerance": 1e-12
+      }
+    },
+    "disk_temptable_row_cost": {
+      "cpu": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.08,
+        "observed_delta": 0.08,
+        "observed_median_effect_full_range": 0.08,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.08,
+        "tolerance": 1e-12
+      },
+      "io": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "decrease",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.39,
+        "observed_delta": -0.39,
+        "observed_median_effect_full_range": -0.39,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": -0.39,
+        "tolerance": 1e-12
+      },
+      "memory": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.144,
+        "observed_delta": 0.144,
+        "observed_median_effect_full_range": 0.144,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.144,
+        "tolerance": 1e-12
+      }
+    },
+    "io_block_read_cost": {
+      "cpu": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.08,
+        "observed_delta": 0.08,
+        "observed_median_effect_full_range": 0.08,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.08,
+        "tolerance": 1e-12
+      },
+      "io": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "decrease",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.416,
+        "observed_delta": -0.416,
+        "observed_median_effect_full_range": -0.416,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": -0.416,
+        "tolerance": 1e-12
+      },
+      "memory": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.032,
+        "observed_delta": 0.032,
+        "observed_median_effect_full_range": 0.032,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.032,
+        "tolerance": 1e-12
+      }
+    },
+    "key_compare_cost": {
+      "cpu": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "decrease",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.16,
+        "observed_delta": -0.16,
+        "observed_median_effect_full_range": -0.16,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": -0.16,
+        "tolerance": 1e-12
+      },
+      "io": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.065,
+        "observed_delta": 0.065,
+        "observed_median_effect_full_range": 0.065,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.065,
+        "tolerance": 1e-12
+      },
+      "memory": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.08,
+        "observed_delta": 0.08,
+        "observed_median_effect_full_range": 0.08,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.08,
+        "tolerance": 1e-12
+      }
+    },
+    "memory_block_read_cost": {
+      "cpu": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.04,
+        "observed_delta": 0.04,
+        "observed_median_effect_full_range": 0.04,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.04,
+        "tolerance": 1e-12
+      },
+      "io": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.078,
+        "observed_delta": 0.078,
+        "observed_median_effect_full_range": 0.078,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.078,
+        "tolerance": 1e-12
+      },
+      "memory": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "decrease",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.064,
+        "observed_delta": -0.064,
+        "observed_median_effect_full_range": -0.064,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": -0.064,
+        "tolerance": 1e-12
+      }
+    },
+    "memory_temptable_row_cost": {
+      "cpu": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.06,
+        "observed_delta": 0.06,
+        "observed_median_effect_full_range": 0.06,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.06,
+        "tolerance": 1e-12
+      },
+      "io": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.286,
+        "observed_delta": 0.286,
+        "observed_median_effect_full_range": 0.286,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.286,
+        "tolerance": 1e-12
+      },
+      "memory": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "decrease",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.2,
+        "observed_delta": -0.2,
+        "observed_median_effect_full_range": -0.2,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": -0.2,
+        "tolerance": 1e-12
+      }
+    },
+    "row_evaluate_cost": {
+      "cpu": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "decrease",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.28,
+        "observed_delta": -0.28,
+        "observed_median_effect_full_range": -0.28,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": -0.28,
+        "tolerance": 1e-12
+      },
+      "io": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.052,
+        "observed_delta": 0.052,
+        "observed_median_effect_full_range": 0.052,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.052,
+        "tolerance": 1e-12
+      },
+      "memory": {
+        "confidence": {
+          "cross_engine_prior_used": false,
+          "decision": "SUPPORTED",
+          "level": "PHYSICAL_PRIOR",
+          "magnitude_calibrated": false,
+          "parameter_operator_chain_complete": true,
+          "real_measurement": false,
+          "source": "operator_physics_experience"
+        },
+        "direction": "increase",
+        "evidence_status": "DETECTED_EFFECT",
+        "magnitude_full_range": 0.064,
+        "observed_delta": 0.064,
+        "observed_median_effect_full_range": 0.064,
+        "parameter_effect_status": "DETECTED_EFFECT",
+        "signed_effect_full_range": 0.064,
+        "tolerance": 1e-12
+      }
+    }
+  },
+  "estimator": {
+    "id": "mysql_parameter_operator_resource_physics_v1",
+    "sha256": "6db71142839f1a16afebc58998c55d9ef1b7cb467ea1158f13a22a5dfac348fa",
+    "version": "frozen_mysql_operator_physics_experience_tables_20260724_v1"
+  },
+  "parameter_space": {
+    "active_params": [
+      "io_block_read_cost",
+      "memory_block_read_cost",
+      "row_evaluate_cost",
+      "key_compare_cost",
+      "disk_temptable_create_cost",
+      "disk_temptable_row_cost",
+      "memory_temptable_row_cost"
+    ],
+    "ranges": {
+      "disk_temptable_create_cost": {
+        "lower": 2.0,
+        "upper": 200.0
+      },
+      "disk_temptable_row_cost": {
+        "lower": 0.05,
+        "upper": 5.0
+      },
+      "io_block_read_cost": {
+        "lower": 0.1,
+        "upper": 10.0
+      },
+      "key_compare_cost": {
+        "lower": 0.005,
+        "upper": 0.5
+      },
+      "memory_block_read_cost": {
+        "lower": 0.025,
+        "upper": 2.5
+      },
+      "memory_temptable_row_cost": {
+        "lower": 0.01,
+        "upper": 1.0
+      },
+      "row_evaluate_cost": {
+        "lower": 0.01,
+        "upper": 1.0
+      }
+    },
+    "sha256": "df30b58d8709fe8d48f75644c0d38b33a6545360a670ea92a0c162e462ce07f7",
+    "version": "frozen_mysql_workloads_and_parameters_20260723_v3"
+  },
+  "provenance": {
+    "cross_engine_prior_used": false,
+    "evidence_class": "mysql_operator_physics_parameter_operator_resource_v1",
+    "generator": {
+      "path": "shell/build_mysql_operator_physics_experience_tables.py",
+      "sha256": "a27848ae8921b9e1ef5d90c8c5aadfa203a36ed91a182859fadbeb74e6751258"
+    },
+    "operator_model": {
+      "path": "config/formal/frozen_mysql_operator_physics_experience_tables_20260724_v1/operator_physics_model_v1.json",
+      "sha256": "6db71142839f1a16afebc58998c55d9ef1b7cb467ea1158f13a22a5dfac348fa"
+    },
+    "real_measurement": false,
+    "request_sha256": "2a3c479b8da2b23dff8bb1d48f93f896902321c10f67801f25b91bc897c6df85",
+    "source": "operator_physics_experience"
+  },
+  "resource_columns": [
+    "cpu",
+    "memory",
+    "io"
+  ],
+  "scenario": "hybench_xp_io",
+  "schema_version": "mysql_experience_table_t_v1",
+  "sql_registry": {
+    "id": "hybench_xp.production_binding_capture_contract_v1",
+    "sha256": "d2fa8c4a79027c53a1c86eb442aa2b213439e28b0ec3a7dd2c9ecf2ed1228180"
+  },
+  "table": {
+    "disk_temptable_create_cost": {
+      "cpu": 0.05,
+      "io": -0.325,
+      "memory": 0.12
+    },
+    "disk_temptable_row_cost": {
+      "cpu": 0.08,
+      "io": -0.39,
+      "memory": 0.144
+    },
+    "io_block_read_cost": {
+      "cpu": 0.08,
+      "io": -0.416,
+      "memory": 0.032
+    },
+    "key_compare_cost": {
+      "cpu": -0.16,
+      "io": 0.065,
+      "memory": 0.08
+    },
+    "memory_block_read_cost": {
+      "cpu": 0.04,
+      "io": 0.078,
+      "memory": -0.064
+    },
+    "memory_temptable_row_cost": {
+      "cpu": 0.06,
+      "io": 0.286,
+      "memory": -0.2
+    },
+    "row_evaluate_cost": {
+      "cpu": -0.28,
+      "io": 0.052,
+      "memory": 0.064
+    }
+  },
+  "version": "hybench_xp_io.operator_physics_T_v1",
+  "workload_freeze_id": "frozen_mysql_workloads_and_parameters_20260723_v3",
+  "workload_registry_sha256": "d2fa8c4a79027c53a1c86eb442aa2b213439e28b0ec3a7dd2c9ecf2ed1228180"
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "mysql_job_cache_state_contract_v1",
+  "release_version": "v1",
+  "status": "FROZEN_RUNTIME_VALIDATED",
+  "created_at": "2026-08-23T03:00:00+08:00",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "scene": "job_memory",
+  "successor_reason": "prevent host-restart-dependent cold versus warm JOB cache state from changing optimizer uplift",
+  "historical_artifacts_immutable": true,
+  "historical_accepted_rounds_reusable": false,
+  "precondition_mode": "default_cost_full_job113_warm_state",
+  "precondition_parameter_vector": {
+    "disk_temptable_create_cost": 20,
+    "disk_temptable_row_cost": 0.5,
+    "io_block_read_cost": 1,
+    "key_compare_cost": 0.05,
+    "memory_block_read_cost": 0.25,
+    "memory_temptable_create_cost": 1,
+    "memory_temptable_row_cost": 0.1,
+    "row_evaluate_cost": 0.1
+  },
+  "precondition_query_count": 113,
+  "precondition_replays_per_scored_measurement": 1,
+  "precondition_coverage_fail_closed": true,
+  "precondition_timeout_seconds": 900,
+  "precondition_metrics_used_for_scoring": false,
+  "precondition_accepted_state_credit": 0,
+  "precondition_interval_shrink_credit": 0,
+  "candidate_parameter_application_after_precondition": true,
+  "formal_measurement_replays_per_candidate": 1,
+  "formal_measurement_query_set": "all 113 canonical JOB SQL files exactly once",
+  "outer_loop_semantics_changed": false,
+  "candidate_generation_changed": false,
+  "candidate_ranking_changed": false,
+  "acceptance_policy_changed": false,
+  "convergence_policy_changed": false,
+  "mysql_measurement_interface_changed": true,
+  "tpch_execution_changed": false,
+  "xp_execution_changed": false,
+  "source_bindings": {
+    "cache_preconditioned_measurement": {
+      "path": "scripts/mysql_job_cache_preconditioned_measurement_v1.py",
+      "sha256": "0ee61c68733abfc8495f0bdf9c375160b8c49310b6005cbe3abc5c156aacd1da"
+    },
+    "algorithm_a_cache_fixed_controller": {
+      "path": "scripts/run_mysql_algorithm_a_job_cache_fixed_v1.py",
+      "sha256": "dd9319c0e919b7eb8bee639f217f8da25c68d0b84069ffd95eb5092dc09cfa75"
+    },
+    "algorithm_a_cache_fixed_launcher": {
+      "path": "scripts/launch_mysql_algorithm_a_job_cache_fixed_v1.py",
+      "sha256": "2ae8d5d6c6318b9f35c0520ddb4caad6cdc79a0fbac309fa2c7b40dee1ed27ae"
+    },
+    "single_scene_predecessor": {
+      "path": "scripts/mysql_single_scene_measurement_v1.py",
+      "sha256": "8fb7e6cdaa94ab4ea6d6bbfef266b84290e37889f133f8e56eb8afb588814ab7"
+    },
+    "algorithm_a_predecessor_controller": {
+      "path": "scripts/run_mysql_algorithm_a_async_scene_v3.py",
+      "sha256": "83183a71138a31ce459e2603c6088a89e0b766e9daba071ee1cc3ad080b893ca"
+    },
+    "algorithm_a_predecessor_contract": {
+      "path": "config/formal/frozen_mysql_algorithm_a_async_20260822_v4/algorithm_a_contract.json",
+      "sha256": "d35c01e29c14aeeed4d82870725db686697d3d17188bea28ee9c323f418732bf"
+    }
+  }
+}

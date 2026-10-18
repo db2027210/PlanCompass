@@ -1,0 +1,40 @@
+{
+  "audited_at": "2026-07-23T07:05:36+08:00",
+  "findings": {
+    "R07.method_bundle": {
+      "basis": "Regenerated registered source and integrity-contract hashes after passing frozen local suites.",
+      "passed": true
+    },
+    "R08.session_adapter": {
+      "basis": "Frozen session adapter suite passed: 72 passed.",
+      "passed": true
+    },
+    "R09.logging_contract": {
+      "basis": "Logging/checkpoint contracts passed in the 72-test frozen suite.",
+      "passed": true
+    },
+    "R10.host02_job_xp_mutex": {
+      "basis": "Frozen host02 mutex suite passed: 19 passed.",
+      "passed": true
+    }
+  },
+  "launch_authorized": false,
+  "overall_ready": false,
+  "regeneration_reason": "eight-algorithm implementation update including automatic 10-to-K replay and frozen top-5 validation",
+  "schema_version": 1,
+  "scope": [
+    "R07.method_bundle",
+    "R08.session_adapter",
+    "R09.logging_contract",
+    "R10.host02_job_xp_mutex"
+  ],
+  "supersedes": {
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/experience_table_sgd_method_manifest.json": "0198173ee5681d79ca5b77ef4ea4409fa1529fa3e08cd0e8035ab125a93724ec",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/global_readiness_audit_r07_r10.json": "62a6a54ca24b75d426a1e0c66f80ea03462fe0f1a595717f5f842b326df33a3e",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/host02_job_xp_mutex_test_evidence.json": "8ca9b2301ea983a314f6cdd7d48bb6790bf9088eb18acd01238eff8a34e08970",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/logging_checkpoint_test_evidence.json": "2fe28ce28b8ab37eef7d53750ebb20f4f89e6400c8f4cb0cbf839adf8c4de0ba",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/readiness_manifest.json": "4ad17ac8db8e349148c85834738545e19d2c40f7136ee77fd622c0c2fd75c10c",
+    "config/formal/frozen_mysql_deployment_schedule_20260723_v2_draft/session_adapter_test_evidence.json": "13b2cf0d0dc1bfa03198ca7909482cc186f85e18a9b7f9c97131b7dbbd13aed7",
+    "preflight/mysql_experience_sgd_eight_algorithm_contract_20260723.sha256": "2e3134c6ca9348835ae4c39a43ecd4b6c8137115e6594eab960a99bd64af050a"
+  }
+}

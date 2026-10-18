@@ -1,0 +1,87 @@
+{
+  "schema_version": "mysql_job_v13_xp_v20_short_ttl_commands_v1",
+  "status": "TEMPLATE_NOT_AUTHORITY_NOT_EXECUTED",
+  "formal_scope": "mysql_only",
+  "cross_engine_comparison_prohibited": true,
+  "postgresql_mutation_prohibited": true,
+  "job_bundle_id": "6b4844bcdcc7ada8dfd76c6676f87c98dc382aa76979504d3edc65baaab52dd7",
+  "xp_bundle_id": "f2dd55ea6b5ea4db704aa533bddc9161b378c30735b9606a092efccc1315179f",
+  "xp_manifest_sha256": "3df7740447d613a653ef500100a54edf755ab05b8728336460ac96b5105ee17f",
+  "xp_collector_sha256": "1e1c713791e4b801444501fd43f52cb7bdef350331d3cea14a46628446ab509e",
+  "xp_qualification_authority_sha256": "27ec2a069af573f35267ec66d35a06ba94f5e4bc9bcb628754648c393667ecb7",
+  "xp_adopted_service_sha256": "66b795d589eccba94d6cf3b70b6d6b07bfbc4b17c5a60ae2764d6b48e84d41e2",
+  "replace_bracketed_values_before_execution": true,
+  "preconditions": [
+    "JOB bootstrap evidence is sealed and still live",
+    "XP v19 adopted-service evidence is sealed and still live",
+    "four unique qualification attempt IDs and four unique 0600 token files exist",
+    "paired JOB and XP metric leaves share one existing attempt-owned tmpfs ancestor",
+    "no command in this template grants formal or accepted-round authority"
+  ],
+  "time_budget_seconds": {
+    "per_flow_authority_ttl": 900,
+    "four_flow_authority_ttl": 3600,
+    "four_flow_expected_maximum": 720,
+    "fresh_r0_handoff_ttl": 900,
+    "fresh_r0_expected_maximum": 300
+  },
+  "commands": [
+    {
+      "stage": "transactionally_publish_support_bundle_on_target_host",
+      "argv": ["[PYTHON]", "[LOCAL_SUPPORT]/publisher/mysql_content_addressed_bundle_publish_v1.py", "--source-bundle", "[LOCAL_SUPPORT]", "--destination-root", "[TARGET_SUPPORT_ARTIFACT_ROOT]", "--expected-bundle-id", "[SUPPORT_BUNDLE_ID_FROM_MANIFEST]"]
+    },
+    {
+      "stage": "job_solo_materialize",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_job_v13_qualification_authority_v2.py", "--bootstrap-spec", "[JOB_BOOTSTRAP_SPEC]", "--bootstrap-evidence", "[JOB_BOOTSTRAP_EVIDENCE]", "--shared-dispatch", "[SUPPORT]/qualification/mysql_job_xp_shared_qualification_dispatch_v1.py", "--mode", "qualification_solo", "--qualification-attempt-id", "[JOB_SOLO_ID]", "--output-directory", "[JOB_SOLO_AUTH_DIR]", "--ttl-seconds", "900"]
+    },
+    {
+      "stage": "xp_solo_materialize",
+      "argv": ["[PYTHON]", "[XP_BUNDLE]/qualification/mysql_xp_qualification_authority_v1.py", "--bundle", "[XP_BUNDLE]", "--adopted-service", "[XP_ADOPTED_SERVICE]", "--mode", "qualification_solo", "--qualification-attempt-id", "[XP_SOLO_ID]", "--main-agent-token-file", "[XP_SOLO_TOKEN_0600]", "--output-directory", "[XP_SOLO_AUTH_DIR]"]
+    },
+    {
+      "stage": "job_paired_materialize_first_to_break_peer_leaf_race",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_job_v13_qualification_authority_v2.py", "--bootstrap-spec", "[JOB_BOOTSTRAP_SPEC]", "--bootstrap-evidence", "[JOB_BOOTSTRAP_EVIDENCE]", "--shared-dispatch", "[SUPPORT]/qualification/mysql_job_xp_shared_qualification_dispatch_v1.py", "--mode", "qualification_paired", "--qualification-attempt-id", "[JOB_PAIRED_ID]", "--output-directory", "[JOB_PAIRED_AUTH_DIR]", "--ttl-seconds", "900", "--peer-scenario", "hybench_xp_io", "--peer-qualification-attempt-id", "[XP_PAIRED_ID]", "--peer-workload-metric-stream", "[XP_PAIRED_AUTH_DIR]/workload_metrics.jsonl", "--peer-readback", "[XP_LIVE_READBACK]", "--peer-container", "[XP_DATABASE_CONTAINER]"]
+    },
+    {
+      "stage": "xp_paired_materialize",
+      "argv": ["[PYTHON]", "[XP_BUNDLE]/qualification/mysql_xp_qualification_authority_v1.py", "--bundle", "[XP_BUNDLE]", "--adopted-service", "[XP_ADOPTED_SERVICE]", "--mode", "qualification_paired", "--qualification-attempt-id", "[XP_PAIRED_ID]", "--main-agent-token-file", "[XP_PAIRED_TOKEN_0600]", "--output-directory", "[XP_PAIRED_AUTH_DIR]", "--peer-scenario", "job_memory", "--peer-qualification-attempt-id", "[JOB_PAIRED_ID]", "--peer-workload-metric-stream", "[JOB_PAIRED_METRIC_STREAM]"]
+    },
+    {
+      "stage": "adapt_xp_solo_launch",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_xp_v18_v19_v20_qualification_launch_adapter_v1.py", "--bundle", "[XP_BUNDLE]", "--adopted-service", "[XP_ADOPTED_SERVICE]", "--command-spec", "[XP_SOLO_AUTH_DIR]/command.json", "--main-agent-authority", "[XP_SOLO_AUTH_DIR]/main_agent_authority.json", "--main-agent-token-file", "[XP_SOLO_TOKEN_0600]", "--shared-dispatch", "[SUPPORT]/qualification/mysql_job_xp_shared_qualification_dispatch_v1.py", "--output", "[XP_SOLO_AUTH_DIR]/launch.json"]
+    },
+    {
+      "stage": "adapt_xp_paired_launch",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_xp_v18_v19_v20_qualification_launch_adapter_v1.py", "--bundle", "[XP_BUNDLE]", "--adopted-service", "[XP_ADOPTED_SERVICE]", "--command-spec", "[XP_PAIRED_AUTH_DIR]/command.json", "--main-agent-authority", "[XP_PAIRED_AUTH_DIR]/main_agent_authority.json", "--main-agent-token-file", "[XP_PAIRED_TOKEN_0600]", "--shared-dispatch", "[SUPPORT]/qualification/mysql_job_xp_shared_qualification_dispatch_v1.py", "--output", "[XP_PAIRED_AUTH_DIR]/launch.json", "--peer-readback", "[JOB_LIVE_READBACK]", "--peer-container", "[JOB_DATABASE_CONTAINER]"]
+    },
+    {
+      "stage": "build_four_flow_plan",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_job_xp_four_flow_controller_v1.py", "--build-plan", "--plan", "[FOUR_FLOW_PLAN]", "--shared-dispatch", "[SUPPORT]/qualification/mysql_job_xp_shared_qualification_dispatch_v1.py", "--job-solo-launch", "[JOB_SOLO_AUTH_DIR]/launch.json", "--job-paired-launch", "[JOB_PAIRED_AUTH_DIR]/launch.json", "--xp-solo-launch", "[XP_SOLO_AUTH_DIR]/launch.json", "--xp-paired-launch", "[XP_PAIRED_AUTH_DIR]/launch.json", "--job-attempt-token", "[JOB_ATTEMPT_TOKEN]", "--xp-attempt-token", "[XP_ATTEMPT_TOKEN]", "--job-gate-output", "[JOB_GATE_OUTPUT]", "--xp-gate-output", "[XP_GATE_OUTPUT]"]
+    },
+    {
+      "stage": "authorize_four_flow_plan",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_job_xp_four_flow_controller_v1.py", "--authorize-plan", "--plan", "[FOUR_FLOW_PLAN]", "--authority", "[FOUR_FLOW_AUTHORITY]", "--main-agent-token-file", "[FOUR_FLOW_TOKEN_0600_NEW_PATH]", "--ttl-seconds", "3600"]
+    },
+    {
+      "stage": "execute_four_flow_gate",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_job_xp_four_flow_controller_v1.py", "--execute", "--plan", "[FOUR_FLOW_PLAN]", "--authority", "[FOUR_FLOW_AUTHORITY]", "--main-agent-token-file", "[FOUR_FLOW_TOKEN_0600_NEW_PATH]"]
+    },
+    {
+      "stage": "build_fresh_r0_handoff_immediately_after_gate",
+      "argv": ["[PYTHON]", "[JOB_BUNDLE]/qualification/mysql_job_distributed_v2_authority_tmpfs_v2.py", "--spec", "[JOB_BOOTSTRAP_SPEC]", "--build-handoff", "--fresh-r0-launch", "--dynamic-gate", "[JOB_GATE_OUTPUT]", "--output", "[FRESH_R0_HANDOFF]"]
+    },
+    {
+      "stage": "materialize_fresh_r0_collector_authority",
+      "argv": ["[PYTHON]", "[SUPPORT]/controller/mysql_job_v13_qualification_authority_v2.py", "--bootstrap-spec", "[JOB_BOOTSTRAP_SPEC]", "--bootstrap-evidence", "[JOB_BOOTSTRAP_EVIDENCE]", "--shared-dispatch", "[SUPPORT]/qualification/mysql_job_xp_shared_qualification_dispatch_v1.py", "--mode", "qualification_solo", "--qualification-attempt-id", "[JOB_FRESH_R0_ID]", "--output-directory", "[JOB_FRESH_R0_AUTH_DIR]", "--ttl-seconds", "600"]
+    },
+    {
+      "stage": "execute_fresh_r0_same_live",
+      "argv": ["[PYTHON]", "[SUPPORT]/qualification/mysql_job_v13_fresh_r0_runner_v1.py", "--shared-dispatch", "[SUPPORT]/qualification/mysql_job_xp_shared_qualification_dispatch_v1.py", "--shared-dispatch-sha256", "[SHARED_DISPATCH_SHA256_FROM_SUPPORT_MANIFEST]", "--bundle", "[JOB_BUNDLE]", "--bootstrap", "[JOB_BOOTSTRAP_EVIDENCE]", "--dynamic-gate", "[JOB_GATE_OUTPUT]", "--handoff", "[FRESH_R0_HANDOFF]", "--command-spec", "[JOB_FRESH_R0_AUTH_DIR]/command.json", "--main-agent-authority", "[JOB_FRESH_R0_AUTH_DIR]/main_agent_authority.json", "--main-agent-token-file", "[JOB_FRESH_R0_AUTH_DIR]/main_agent_token", "--database-container", "[JOB_DATABASE_CONTAINER]", "--client-container", "[JOB_CLIENT_CONTAINER]", "--mysql-defaults-file", "[JOB_MYSQL_DEFAULTS_FILE]", "--output", "[FRESH_R0_OUTPUT]"]
+    }
+  ],
+  "qualification_credit": 0,
+  "r0_credit": 0,
+  "accepted_rounds_credit": 0,
+  "formal_launch_authorized": false,
+  "accepted_round_authorized": false
+}
